@@ -155,7 +155,7 @@ The exact deployed runtime, canonical vector-capable database integration, embed
 
 **WHY OPEN**
 
-OB1 demonstrates the behavior with Supabase Postgres/pgvector, and the human selected Supabase as the canonical BUILD 0 substrate without inheriting OB1's schema or adjacent services. A previously provisioned Neon resource is preserved but disconnected. Supabase provisioning is pending one-time Marketplace terms acceptance. The embedding route and independently verified vector dimension remain unresolved.
+OB1 demonstrates the behavior with Supabase Postgres/pgvector, and the human selected Supabase as the canonical BUILD 0 substrate without inheriting OB1's schema or adjacent services. A previously provisioned Neon resource is preserved but disconnected. Supabase project `ecb-v2-brain` (`vezxivrvhakclxuvxzso`) is provisioned, connected to Vercel, and read-only verified; pgvector `0.8.2` is available but not installed. The embedding route, independently verified vector dimension, human-door runtime, and combined physical-substrate ADR remain unresolved.
 
 **CURRENT EFFECT**
 
@@ -163,11 +163,11 @@ The provider-independent BUILD 0 contract, MCP surface, persistence minimum, enf
 
 **TRIGGER**
 
-The Supabase resource is provisioned and the human authorizes an embedding execution route that can be tested without exposing credentials.
+The human authorizes an embedding execution route that can be tested without exposing credentials, and the first required AI client plus BUILD 0 technical access mechanism are named.
 
 **ROUTE**
 
-Accept Supabase Marketplace terms → provision and connect the free `sfo1` resource → verify pgvector availability without changing schema → enable an authorized embedding route without exposing credentials → verify model identity and dimension through a live call → close the human-door deployment choice → record the physical choices and reopening conditions in ADRs → enable pgvector through the first governed migration → begin BUILD 0 implementation.
+Enable an authorized embedding route without exposing credentials → verify model identity and dimension through a live call → name the first required AI client and technical access mechanism → close the human-door deployment choice → record the physical choices and reopening conditions in ADRs → enable pgvector through the first governed migration → begin BUILD 0 implementation.
 
 ## AP-10 — Formal semantics of bounded action abstraction
 
@@ -203,7 +203,7 @@ OB1 demonstrates the Supabase Edge Function path. Vercel provides a full Node.js
 
 **CURRENT EFFECT**
 
-Supabase may be provisioned and the provider-independent tool, schema, and test contracts may be refined. Do not deploy two doors or designate either candidate current before the decision is closed. The canonical Supabase database remains the same under either choice.
+Supabase is provisioned and the provider-independent tool, schema, and test contracts may be refined. Do not deploy two doors or designate either candidate current before the decision is closed. The canonical Supabase database remains the same under either choice.
 
 **TRIGGER**
 
