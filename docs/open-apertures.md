@@ -147,6 +147,28 @@ Repeated human use demonstrates a stable view deserves persistent interface affo
 **ROUTE**  
 Separate UI Shape.
 
+## AP-09 — BUILD 0 physical substrate activation
+
+**WHAT**
+
+The exact deployed runtime, canonical vector-capable database integration, embedding route, model identity, and vector dimension for BUILD 0.
+
+**WHY OPEN**
+
+OB1 demonstrates the behavior with Postgres/pgvector and multiple provider combinations, but those implementations are lineage evidence rather than inherited architecture. During the 2026-09-03 Sense pass, the Vercel CLI had no authenticated session and live integration discovery stopped at the device-login gate. No database or embedding credentials were locally available, and no viable local embedding runtime was installed.
+
+**CURRENT EFFECT**
+
+The provider-independent BUILD 0 contract, MCP surface, persistence minimum, enforcement surfaces, and Golden Trace execution are shaped in `/BUILD_CHECKOUT.md`. Do not write a migration or runtime implementation until this aperture is resolved; doing so would silently select new persistent architecture.
+
+**TRIGGER**
+
+A Vercel CLI session is authenticated, or the human explicitly selects a non-Vercel execution substrate.
+
+**ROUTE**
+
+Revalidate the environment → run live integration discovery → select one canonical vector-capable store and one embedding model → verify vector dimension → record the physical choice and reopening condition in an ADR → provision the real services → pull environment variables → begin BUILD 0 implementation.
+
 ## Aperture rule
 
 If a build discovers a new consequential unknown:
