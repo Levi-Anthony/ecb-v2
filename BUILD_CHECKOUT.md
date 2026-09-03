@@ -61,14 +61,17 @@ The Build Contract and Golden Trace remain unchanged. Implementation may adapt O
 - Live marketplace discovery completed for storage and AI categories.
 - The free Neon resource `ecb-v2-brain` is preserved, empty, and disconnected from the Vercel project. It is evidence/fallback, not the selected substrate.
 - The human selected Supabase as BUILD 0's canonical substrate because it carries demonstrated OB1 behavior while allowing a clean v2 schema.
-- The Supabase Marketplace integration is installed on the Vercel team under its free plan; no Supabase resource is connected to `ecb-v2` and no v2 schema exists.
-- Creating `ecb-v2-brain` in `sfo1` is blocked because the human already occupies both Supabase free-project slots with active `open-brain` and `Crucible` projects.
-- A read-only safety check found no Crucible API, Postgres, Auth, Storage, or Edge Function logs in the preceding 24 hours, no deployed Edge Functions, and no database branches. Direct schema and migration inspection failed because Supabase's stored `postgres` and read-only database credentials are stale.
-- The ECOS Spike 1 remote-build runbook explicitly marks Crucible project ref `fjamkrfhopumigfscgnm` as a never-target stop condition. Weak inactivity evidence does not authorize overriding that boundary, so Crucible was not paused.
+- The Supabase Marketplace integration is installed on the Vercel team under its free plan.
+- A browser-authenticated, read-only inspection established that Crucible (`fjamkrfhopumigfscgnm`) is an isolated evidence store: two public tables (`specimens`, 10 records; `transform_receipts`, 27 records), three migrations, and no Auth users, Storage buckets, Edge Functions, database branches, repository connection, or backups. The earlier 24-hour service-log check was empty before dashboard inspection, and the project showed no active database connections.
+- The ECOS Spike 1 remote-build runbook's never-target rule governs deployment targeting for that spike. No Spike 1 deployment or Crucible data/schema mutation occurred. With the user's authorization, Crucible was paused on 2026-09-03 to release the free-plan slot; its data remains preserved and the project is restorable.
+- Vercel provisioned `ecb-v2-brain` on the Supabase free plan in `sfo1` (Supabase `us-west-1`) and connected it to `levi-anthonys-projects/ecb-v2`. Supabase project ref: `vezxivrvhakclxuvxzso`; status at verification: `ACTIVE_HEALTHY`.
+- Vercel injected the following Supabase resource variables into Production, Preview, and Development: `POSTGRES_URL`, `POSTGRES_HOST`, `POSTGRES_USER`, `POSTGRES_DATABASE`, `POSTGRES_PASSWORD`, `POSTGRES_PRISMA_URL`, `POSTGRES_URL_NON_POOLING`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_JWT_SECRET`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`. Values were not recorded.
+- The Development variables were pulled to gitignored `.env.local`. Vercel initially preserved pre-existing local-only Neon aliases that are absent from the Vercel project; those aliases were moved without exposing their values to gitignored `.env.neon-preserved.local`. Active `.env.local` now contains only the project-linked Supabase variables plus Vercel's local OIDC token.
+- Read-only database inspection succeeded. The new public schema is empty, and pgvector `0.8.2` is available but not installed. No schema, extension, table, migration, or row was created.
 - AI Gateway discovery confirms `openai/text-embedding-3-small` remains available and OB1 reports a 1536-dimensional vector for it, but v2 has not independently verified the dimension.
 - A live Gateway embedding request using local Vercel OIDC returned `403` because the Vercel team has no payment card on file. No billing change was attempted.
 - The remote human-door host remains open between Supabase Edge Functions and Vercel Fluid Functions; see `/docs/deployment-shapes/human-door.md` and AP-11.
-- No Supabase database credentials, AI Gateway API key, local Ollama runtime, running Docker daemon, or local Postgres client were available during Sense.
+- No AI Gateway API key, local Ollama runtime, running Docker daemon, or local Postgres client was available during Sense.
 
 These environment observations are dated evidence, not durable architecture. Revalidate them when AP-09 triggers.
 
@@ -181,10 +184,11 @@ Do not substitute a mock store, keyword search, sample-data fallback, or unprovi
 - [x] Human selects Supabase as the canonical BUILD 0 substrate.
 - [x] Human accepts the Supabase marketplace terms.
 - [x] Install the Supabase Marketplace integration on the Vercel team.
-- [ ] Resolve Supabase free-plan capacity without mutating a protected project or authorize a paid plan.
-- [ ] Provision the free Supabase resource in `sfo1`.
-- [ ] Pull and verify Supabase environment variable names without exposing values.
-- [ ] Verify Supabase connectivity and pgvector availability without changing schema.
+- [x] Resolve Supabase free-plan capacity without mutating Crucible data or schema.
+- [x] Provision the free Supabase resource in `sfo1`.
+- [x] Pull and verify Supabase environment variable names without exposing values.
+- [x] Verify Supabase connectivity and pgvector availability without changing schema.
+- [x] Isolate the preserved local-only Neon aliases before runtime code selects a database URL.
 - [ ] Verify and freeze the embedding model and vector dimension.
 - [ ] Close the human-door deployment choice through ADR.
 - [ ] Record the physical substrate ADR.
