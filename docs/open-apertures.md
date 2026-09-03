@@ -155,7 +155,7 @@ The exact deployed runtime, canonical vector-capable database integration, embed
 
 **WHY OPEN**
 
-OB1 demonstrates the behavior with Postgres/pgvector and multiple provider combinations, but those implementations are lineage evidence rather than inherited architecture. During the 2026-09-03 Sense pass, the Vercel CLI had no authenticated session and live integration discovery stopped at the device-login gate. No database or embedding credentials were locally available, and no viable local embedding runtime was installed.
+OB1 demonstrates the behavior with Postgres/pgvector and multiple provider combinations, but those implementations are lineage evidence rather than inherited architecture. Live Vercel discovery selected Neon as the smallest single-store candidate. Provisioning is paused until a human accepts the Neon marketplace terms. AI Gateway discovery confirms the proposed embedding model remains available, but local OIDC authentication returned `403`, so v2 has not independently verified the embedding dimension.
 
 **CURRENT EFFECT**
 
@@ -163,11 +163,33 @@ The provider-independent BUILD 0 contract, MCP surface, persistence minimum, enf
 
 **TRIGGER**
 
-A Vercel CLI session is authenticated, or the human explicitly selects a non-Vercel execution substrate.
+The human accepts the Neon marketplace terms and either an AI Gateway API key or a deployed Vercel OIDC execution path is available. Alternatively, the human explicitly selects a non-Vercel execution substrate.
 
 **ROUTE**
 
-Revalidate the environment → run live integration discovery → select one canonical vector-capable store and one embedding model → verify vector dimension → record the physical choice and reopening condition in an ADR → provision the real services → pull environment variables → begin BUILD 0 implementation.
+Accept Neon marketplace terms → retry the recorded free `pdx1` resource install with built-in app authentication disabled → pull environment variables → verify `openai/text-embedding-3-small` output dimension through an authorized Gateway call → record the physical choice and reopening condition in an ADR → begin BUILD 0 implementation.
+
+## AP-10 — Formal semantics of bounded action abstraction
+
+**WHAT**
+
+Whether action-envelope compilation can be formalized using operational equivalence, abstract interpretation, and eventually a Galois-style abstraction/concretization relation.
+
+**WHY OPEN**
+
+The conceptual correspondence is strong, especially the pairing of an over-approximation of possible concrete states with an under-approximation of legitimately permitted actions. Functioning ECB v2 envelope specimens do not yet exist, and meaningful partial orders and soundness relations have not been derived from observed behavior.
+
+**CURRENT EFFECT**
+
+No block on BUILDS 0–7. Operational equivalence, robust-action soundness, semantic normalization stability, and commuting preservation checks may be used as reasoning machinery and candidate test generators. They do not become governing invariants or frozen acceptance tests merely by appearing in a probe.
+
+**TRIGGER**
+
+Automated envelope compilation, or a build failure, requires a formal answer to whether a lossy abstraction still safely licenses an action.
+
+**ROUTE**
+
+Use the formal-semantics research pipeline → derive semantics from actual envelope specimens → test operational equivalence and robust-action soundness first → introduce a Galois connection, categorical structure, or metric only if it adds discriminating power → route any closure through a frozen acceptance test, ADR, or explicit human authorization as appropriate.
 
 ## Aperture rule
 

@@ -46,8 +46,13 @@ Layer A must stand on its own.
 ### Current environment evidence
 
 - Vercel CLI `59.11.2` is installed.
-- No Vercel CLI session, AI Gateway key, database URL, local Ollama runtime, running Docker daemon, or local Postgres client was available during Sense.
-- Live Vercel integration discovery reached the device-login gate. No integration was selected or provisioned.
+- Vercel CLI is authenticated as `levi-anthony`.
+- The Vercel project `levi-anthonys-projects/ecb-v2` exists and is connected to the GitHub repository.
+- Live marketplace discovery completed for storage and AI categories.
+- Neon is the selected storage candidate because one Postgres/pgvector store can own both the canonical thought record and vector index without introducing a second authority.
+- Neon provisioning is paused at Vercel's marketplace-terms acceptance gate; no Neon resource exists yet.
+- AI Gateway discovery confirms `openai/text-embedding-3-small` remains available and OB1 reports a 1536-dimensional vector for it, but a local Vercel OIDC probe returned `403`; v2 has not independently verified the dimension.
+- No AI Gateway API key, database URL, local Ollama runtime, running Docker daemon, or local Postgres client was available during Sense.
 
 These environment observations are dated evidence, not durable architecture. Revalidate them when AP-09 triggers.
 
@@ -150,6 +155,19 @@ Before writing the first migration or runtime file:
 6. implement only the vertical slice above.
 
 Do not substitute a mock store, keyword search, sample-data fallback, or unprovisioned provider abstraction.
+
+### Activation progress
+
+- [x] Authenticate the Vercel CLI.
+- [x] Create and link the `ecb-v2` Vercel project.
+- [x] Run live storage and AI marketplace discovery.
+- [x] Select Neon as the single-store candidate.
+- [ ] Human accepts the Neon marketplace terms.
+- [ ] Provision the free Neon resource in `pdx1` with built-in app authentication disabled.
+- [ ] Pull and verify environment variable names without exposing values.
+- [ ] Verify and freeze the embedding model and vector dimension.
+- [ ] Record the physical substrate ADR.
+- [ ] Begin BUILD 0 implementation.
 
 ## STANDING
 
