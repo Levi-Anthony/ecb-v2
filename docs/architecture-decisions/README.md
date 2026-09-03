@@ -8,11 +8,40 @@ Create an ADR when the active Build Unit requires a local architectural choice t
 
 Each ADR must record:
 
-- context;
-- decision;
-- consequences;
-- governing sources;
-- alternatives considered;
-- reopening condition.
+- **CONTEXT** — the concrete condition requiring a choice;
+- **LOCAL DECISION** — the bounded choice being closed;
+- **WHY REQUIRED NOW** — why the active Build Unit cannot proceed without closure;
+- **ALTERNATIVES CONSIDERED** — the viable options actually compared;
+- **INVARIANTS AFFECTED** — governing constraints served or placed under pressure;
+- **STANDING / AUTHORITY** — who or what licenses this local closure;
+- **REVERSIBILITY** — what can be undone and what evidence would survive;
+- **REOPENING CONDITION** — the concrete observation that makes this closure insufficient.
 
-An ADR may not silently amend a frozen invariant or broaden the build boundary.
+An ADR may close a locally delegated architectural choice.
+
+It may not amend a governing invariant or broaden the build contract unless separately authorized through the governing change route.
+
+## Minimal template
+
+```text
+STATUS: PROPOSED | ACCEPTED | SUPERSEDED
+DISPOSITION: DECISION_RECORD
+
+# ADR-NNN — Decision title
+
+## CONTEXT
+
+## LOCAL DECISION
+
+## WHY REQUIRED NOW
+
+## ALTERNATIVES CONSIDERED
+
+## INVARIANTS AFFECTED
+
+## STANDING / AUTHORITY
+
+## REVERSIBILITY
+
+## REOPENING CONDITION
+```

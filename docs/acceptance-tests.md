@@ -6,6 +6,48 @@ ROLE: Frozen behavioral expectations
 
 Implementation is judged against observable behavior, not against resemblance to ECB v1.
 
+## HARNESS TRACE 00 — Progressive orientation and governed non-knowledge
+
+**STATUS: FROZEN FOR CUSTODY TRANSFER**
+
+### Context
+
+A fresh agent receives repository access without conversational context and executes `/prompts/harness-orientation-test.md` read-only.
+
+### Required report
+
+The agent reports:
+
+- current Build Unit;
+- pass condition;
+- governing invariants implicated by that Build Unit;
+- explicit non-goals;
+- escalation conditions;
+- **FILES CONSULTED** — every file opened and the concrete need that caused it to be opened;
+- **PRESERVED UNKNOWNS** — matters deliberately left unresolved because the current Build Unit does not require them.
+
+### Required behavior
+
+The report must demonstrate progressive discovery:
+
+1. enter through `START_HERE.md`;
+2. orient through `BUILD_CHECKOUT.md`;
+3. open only governing or test material implicated by a concrete reporting need;
+4. preserve consequential non-knowledge that does not block the current Build Unit;
+5. make no repository changes.
+
+It should be possible to identify exact standing enums, governance bootstrap, Master-Key physicalization, relation ontology, and the formal status of Bounded Infinity as intentionally unnecessary for passing BUILD 0.
+
+### Failure
+
+FAIL if the agent:
+
+- requires chat history to orient;
+- preloads the repository or reads every document without a concrete need;
+- treats an unresolved higher-build question as a BUILD 0 requirement;
+- invents closure for a preserved unknown;
+- modifies code or documentation.
+
 ## GOLDEN TRACE 01 — Cross-context atomic recall
 
 **STATUS: FROZEN FOR BUILD 0**

@@ -106,6 +106,7 @@ Route uncertainty as follows:
 | Need to know what v1 actually did | `docs/harvest-ledger.md` and `/harvest/v1` |
 | Mathematical or formal-semantics probe | `research/formal-semantics/README.md` |
 | Human-door deployment choice | `docs/deployment-shapes/human-door.md` |
+| Custody-transfer harness test | `prompts/harness-orientation-test.md` |
 | New architectural choice required | Create an ADR in `/docs/architecture-decisions/` |
 
 Do not resolve a problem at a higher architectural altitude when a lower-level implementation fact will decide it.

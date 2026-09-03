@@ -1,5 +1,6 @@
 STATUS: CONTROLLED WORKING VOCABULARY  
-DISPOSITION: GOVERNING WHERE MARKED; OTHERWISE PROVISIONAL  
+DISPOSITION: GOVERNING
+
 ROLE: Prevent implementation-by-terminology-drift
 
 # Minimal Glossary
@@ -58,11 +59,11 @@ Artifact identity does not equal referent identity of what the artifact represen
 
 **STATUS: GOVERNING SEMANTICS; PHYSICALIZATION DEFERRED**
 
-A local orientation and compression authority for one bounded room of work.
+A locally governing discriminator used to bound present relevance for a focal Move.
 
-It selects relevance and present salience under warrant.
+It may select what requires attention under the current orientation.
 
-It cannot manufacture truth, admissibility, authority, or warrant.
+It cannot manufacture truth, standing, warrant, admissibility, authority, or authorization.
 
 Currentness requires explicit designation.
 
@@ -70,9 +71,11 @@ Currentness requires explicit designation.
 
 **STATUS: GOVERNING SEMANTICS; PHYSICALIZATION DEFERRED**
 
-An encountered unresolved seam whose non-closure is worth preserving.
+An explicitly preserved dimension of non-closure through which excluded complexity may later become relevant.
 
-An aperture does not represent every conceivable unknown.
+Repository aperture records are instantiated only for encountered, consequential seams.
+
+The architecture does not require representing every conceivable unknown.
 
 ## Standing
 

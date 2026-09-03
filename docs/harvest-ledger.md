@@ -11,7 +11,9 @@ Do not port because a feature exists.
 
 Record what behavior earned survival.
 
-## KEEP
+Use four harvest verdicts.
+
+## HARVEST VERDICT: KEEP
 
 Capability must survive recognizably in v2.
 
@@ -24,7 +26,7 @@ For every item record:
 - MINIMUM SURVIVING BEHAVIOR
 - V1 EVIDENCE / LOCATOR
 
-## REBUILD
+## HARVEST VERDICT: REBUILD
 
 Behavior is valuable; implementation is not.
 
@@ -34,7 +36,7 @@ Record the same fields plus:
 
 Do not prescribe the v2 replacement here.
 
-## ARCHIVE
+## HARVEST VERDICT: ARCHIVE
 
 Historical/source value survives. Runtime obligation does not.
 
@@ -44,7 +46,7 @@ Record:
 - WHY IT DOES NOT BELONG IN V2 RUNTIME
 - SOURCE LOCATION
 
-## DROP
+## HARVEST VERDICT: DROP
 
 Maintenance cost or complexity exceeded demonstrated value.
 

@@ -42,7 +42,9 @@ Referent registration does not imply:
 
 ## Enforcement
 
-Every consequential normative requirement SHALL declare:
+Every consequential transition requirement that is implemented or activated SHALL declare its enforcement mode and enforcement surface.
+
+Available modes are:
 
 **MODE**
 
@@ -51,7 +53,7 @@ Every consequential normative requirement SHALL declare:
 - AUTHORITY
 - OBSERVATIONAL
 
-and:
+Available surfaces are:
 
 **SURFACE**
 

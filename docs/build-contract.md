@@ -6,13 +6,15 @@ SCOPE: Greenfield ECB v2
 
 # ECB v2 Build Contract
 
-## Master Key
+## Current Orientation Expression
 
-**Governing ideal**
+The following distinctions travel together for the current build boundary. Their compound expression does not redefine the Master Key.
+
+**Telos / governing ideal**
 
 Produce the smallest clean ECB v2 substrate capable of preserving OB1’s disproportionate value while carrying forward only ECB extensions whose value and architectural necessity have been demonstrated.
 
-**Relevant distinction**
+**Master Key / governing discriminator**
 
 proven capability ≠ inherited implementation
 
