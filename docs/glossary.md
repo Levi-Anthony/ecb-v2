@@ -1,0 +1,106 @@
+STATUS: CONTROLLED WORKING VOCABULARY  
+DISPOSITION: GOVERNING WHERE MARKED; OTHERWISE PROVISIONAL  
+ROLE: Prevent implementation-by-terminology-drift
+
+# Minimal Glossary
+
+## Referent
+
+**STATUS: GOVERNING**
+
+A stable identity used to address a persistent first-class subject of inspection or relation.
+
+**NOT EQUIVALENT TO:** its description; map; artifact representation; authority.
+
+## Thought
+
+**STATUS: GOVERNING**
+
+An atomic Open Brain evidence record optimized for future semantic retrieval.
+
+**NOT EQUIVALENT TO:** promoted claim; canonical knowledge; governance referent merely by capture.
+
+## Claim
+
+**STATUS: GOVERNING**
+
+A structured assertion or typed relation with identifiable scope, provenance, and standing.
+
+**NOT EQUIVALENT TO:** evidence; warrant; authority.
+
+## Evidence Link
+
+**STATUS: GOVERNING**
+
+A typed connection between a claim/evaluation and stable evidence.
+
+**NOT EQUIVALENT TO:** proof; automatic support; promotion.
+
+## Event
+
+**STATUS: GOVERNING**
+
+An immutable record of a consequential transformation, designation, action, correction, propagation, or other state transition.
+
+Correction creates a successor event.
+
+## Artifact
+
+**STATUS: GOVERNING**
+
+A versioned representation produced or used by the system.
+
+Examples may include maps, receipts, Master-Key expressions, evaluations, envelopes, policies, and packets.
+
+Artifact identity does not equal referent identity of what the artifact represents.
+
+## Master Key
+
+**STATUS: GOVERNING SEMANTICS; PHYSICALIZATION DEFERRED**
+
+A local orientation and compression authority for one bounded room of work.
+
+It selects relevance and present salience under warrant.
+
+It cannot manufacture truth, admissibility, authority, or warrant.
+
+Currentness requires explicit designation.
+
+## Aperture
+
+**STATUS: GOVERNING SEMANTICS; PHYSICALIZATION DEFERRED**
+
+An encountered unresolved seam whose non-closure is worth preserving.
+
+An aperture does not represent every conceivable unknown.
+
+## Standing
+
+**STATUS: DIMENSIONAL SEPARATION GOVERNING; EXACT ENUMS OPEN**
+
+Do not collapse:
+
+- claim kind;
+- evidentiary basis;
+- epistemic standing;
+- governance standing;
+- action standing;
+- warrant.
+
+Exact controlled vocabularies are intentionally deferred until the build that requires them.
+
+## Warrant
+
+**STATUS: GOVERNING**
+
+The valid basis authorizing a specified operation by a specified actor in a specified scope.
+
+Technical capability, standing, or confidence does not create warrant.
+
+## Current
+
+**STATUS: GOVERNING**
+
+Explicitly designated as operative for a declared scope/operation.
+
+**NOT EQUIVALENT TO:** newest; most recently retrieved; most polished.
