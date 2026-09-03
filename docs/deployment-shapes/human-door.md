@@ -1,4 +1,4 @@
-STATUS: SHAPING
+STATUS: READY FOR HUMAN DESIGNATION
 
 DISPOSITION: PROJECTION
 
@@ -99,6 +99,8 @@ Then select one candidate and implement Golden Trace 01 only there.
 Supabase Edge Function is the evidence-leading candidate because OB1 has already demonstrated it and it minimizes the distance to the canonical store.
 
 This is not designation. Vercel should win if the actual first-client handshake, MCP library compatibility, or function constraints make the Supabase door unable to pass BUILD 0 cleanly.
+
+The bounded resolution is now recorded as [ADR-001](../architecture-decisions/001-build-0-human-door.md): Codex first, a Supabase Edge Function, a shared bearer key, native `gte-small` embeddings, and no Vercel billing change. It remains `PROPOSED` until the human confirms that exact bundle.
 
 ## Human inputs required before closure
 
