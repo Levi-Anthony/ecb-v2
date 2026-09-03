@@ -18,6 +18,16 @@ Layer A must stand on its own.
 
 ## SENSE — COMPLETE 2026-09-03
 
+### Mandatory OB1 mine-first interlock — SATISFIED 2026-09-03
+
+Canonical OB1 was inventoried and deep-mined at pinned `main` commit [`9543c29a3e44a210ce278392b9fac11248997461`](https://github.com/NateBJones-Projects/OB1/commit/9543c29a3e44a210ce278392b9fac11248997461).
+
+The complete evidence matrix, conflicts, declared coverage gaps, and receipt are in `/docs/ob1-prior-art.md`.
+
+Current disposition: **RESUME BUILD 0 WITH SIMPLIFIED PLAN**.
+
+The Build Contract and Golden Trace remain unchanged. Implementation may adapt OB1's proven Supabase/pgvector/MCP mechanics, but must reimplement its partial two-write capture boundary and must not import optional lineage into BUILD 0.
+
 ### Evidence inspected
 
 - OB1 substrate lineage at commit [`9543c29a3e44a210ce278392b9fac11248997461`](https://github.com/NateBJones-Projects/OB1/commit/9543c29a3e44a210ce278392b9fac11248997461).
@@ -51,7 +61,7 @@ Layer A must stand on its own.
 - Live marketplace discovery completed for storage and AI categories.
 - The free Neon resource `ecb-v2-brain` is preserved, empty, and disconnected from the Vercel project. It is evidence/fallback, not the selected substrate.
 - The human selected Supabase as BUILD 0's canonical substrate because it carries demonstrated OB1 behavior while allowing a clean v2 schema.
-- The free Supabase `sfo1` resource is pending one-time Marketplace terms acceptance; no Supabase resource or schema exists yet.
+- The human reports that the one-time Supabase Marketplace terms have been accepted; no Supabase resource or schema has yet been verified in this repository.
 - AI Gateway discovery confirms `openai/text-embedding-3-small` remains available and OB1 reports a 1536-dimensional vector for it, but v2 has not independently verified the dimension.
 - A live Gateway embedding request using local Vercel OIDC returned `403` because the Vercel team has no payment card on file. No billing change was attempted.
 - The remote human-door host remains open between Supabase Edge Functions and Vercel Fluid Functions; see `/docs/deployment-shapes/human-door.md` and AP-11.
@@ -166,7 +176,7 @@ Do not substitute a mock store, keyword search, sample-data fallback, or unprovi
 - [x] Run live storage and AI marketplace discovery.
 - [x] Preserve and disconnect the unused Neon resource.
 - [x] Human selects Supabase as the canonical BUILD 0 substrate.
-- [ ] Human accepts the Supabase marketplace terms.
+- [x] Human accepts the Supabase marketplace terms.
 - [ ] Provision the free Supabase resource in `sfo1`.
 - [ ] Pull and verify Supabase environment variable names without exposing values.
 - [ ] Verify Supabase connectivity and pgvector availability without changing schema.

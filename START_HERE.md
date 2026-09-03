@@ -85,6 +85,10 @@ Read only as needed, in this order:
 
    Use when ECB v1 behavior or implementation becomes relevant. v1 may supply evidence. It does not supply authority merely by existing.
 
+8. `/docs/ob1-prior-art.md`
+
+   Use when canonical OB1 behavior, lineage, or reuse becomes relevant. It pins the upstream state, separates core from optional/community precedent, and records the mine-first coverage receipt. It is evidence, not authority.
+
 ## Progressive discovery rule
 
 Do not preload the whole architecture.
@@ -104,6 +108,7 @@ Route uncertainty as follows:
 | Term ambiguous | `docs/glossary.md` |
 | Question intentionally unresolved | `docs/open-apertures.md` |
 | Need to know what v1 actually did | `docs/harvest-ledger.md` and `/harvest/v1` |
+| Need to know what canonical OB1 already solves | `docs/ob1-prior-art.md` |
 | Mathematical or formal-semantics probe | `research/formal-semantics/README.md` |
 | Human-door deployment choice | `docs/deployment-shapes/human-door.md` |
 | Custody-transfer harness test | `prompts/harness-orientation-test.md` |
