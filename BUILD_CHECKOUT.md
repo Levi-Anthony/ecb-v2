@@ -61,7 +61,10 @@ The Build Contract and Golden Trace remain unchanged. Implementation may adapt O
 - Live marketplace discovery completed for storage and AI categories.
 - The free Neon resource `ecb-v2-brain` is preserved, empty, and disconnected from the Vercel project. It is evidence/fallback, not the selected substrate.
 - The human selected Supabase as BUILD 0's canonical substrate because it carries demonstrated OB1 behavior while allowing a clean v2 schema.
-- The human reports that the one-time Supabase Marketplace terms have been accepted; no Supabase resource or schema has yet been verified in this repository.
+- The Supabase Marketplace integration is installed on the Vercel team under its free plan; no Supabase resource is connected to `ecb-v2` and no v2 schema exists.
+- Creating `ecb-v2-brain` in `sfo1` is blocked because the human already occupies both Supabase free-project slots with active `open-brain` and `Crucible` projects.
+- A read-only safety check found no Crucible API, Postgres, Auth, Storage, or Edge Function logs in the preceding 24 hours, no deployed Edge Functions, and no database branches. Direct schema and migration inspection failed because Supabase's stored `postgres` and read-only database credentials are stale.
+- The ECOS Spike 1 remote-build runbook explicitly marks Crucible project ref `fjamkrfhopumigfscgnm` as a never-target stop condition. Weak inactivity evidence does not authorize overriding that boundary, so Crucible was not paused.
 - AI Gateway discovery confirms `openai/text-embedding-3-small` remains available and OB1 reports a 1536-dimensional vector for it, but v2 has not independently verified the dimension.
 - A live Gateway embedding request using local Vercel OIDC returned `403` because the Vercel team has no payment card on file. No billing change was attempted.
 - The remote human-door host remains open between Supabase Edge Functions and Vercel Fluid Functions; see `/docs/deployment-shapes/human-door.md` and AP-11.
@@ -177,6 +180,8 @@ Do not substitute a mock store, keyword search, sample-data fallback, or unprovi
 - [x] Preserve and disconnect the unused Neon resource.
 - [x] Human selects Supabase as the canonical BUILD 0 substrate.
 - [x] Human accepts the Supabase marketplace terms.
+- [x] Install the Supabase Marketplace integration on the Vercel team.
+- [ ] Resolve Supabase free-plan capacity without mutating a protected project or authorize a paid plan.
 - [ ] Provision the free Supabase resource in `sfo1`.
 - [ ] Pull and verify Supabase environment variable names without exposing values.
 - [ ] Verify Supabase connectivity and pgvector availability without changing schema.
