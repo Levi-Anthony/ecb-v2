@@ -49,10 +49,13 @@ Layer A must stand on its own.
 - Vercel CLI is authenticated as `levi-anthony`.
 - The Vercel project `levi-anthonys-projects/ecb-v2` exists and is connected to the GitHub repository.
 - Live marketplace discovery completed for storage and AI categories.
-- Neon is the selected storage candidate because one Postgres/pgvector store can own both the canonical thought record and vector index without introducing a second authority.
-- Neon provisioning is paused at Vercel's marketplace-terms acceptance gate; no Neon resource exists yet.
-- AI Gateway discovery confirms `openai/text-embedding-3-small` remains available and OB1 reports a 1536-dimensional vector for it, but a local Vercel OIDC probe returned `403`; v2 has not independently verified the dimension.
-- No AI Gateway API key, database URL, local Ollama runtime, running Docker daemon, or local Postgres client was available during Sense.
+- The free Neon resource `ecb-v2-brain` is preserved, empty, and disconnected from the Vercel project. It is evidence/fallback, not the selected substrate.
+- The human selected Supabase as BUILD 0's canonical substrate because it carries demonstrated OB1 behavior while allowing a clean v2 schema.
+- The free Supabase `sfo1` resource is pending one-time Marketplace terms acceptance; no Supabase resource or schema exists yet.
+- AI Gateway discovery confirms `openai/text-embedding-3-small` remains available and OB1 reports a 1536-dimensional vector for it, but v2 has not independently verified the dimension.
+- A live Gateway embedding request using local Vercel OIDC returned `403` because the Vercel team has no payment card on file. No billing change was attempted.
+- The remote human-door host remains open between Supabase Edge Functions and Vercel Fluid Functions; see `/docs/deployment-shapes/human-door.md` and AP-11.
+- No Supabase database credentials, AI Gateway API key, local Ollama runtime, running Docker daemon, or local Postgres client were available during Sense.
 
 These environment observations are dated evidence, not durable architecture. Revalidate them when AP-09 triggers.
 
@@ -147,11 +150,11 @@ The test must exercise the deployed or locally running MCP boundary. Direct data
 
 Before writing the first migration or runtime file:
 
-1. authenticate the Vercel CLI;
-2. run live integration discovery for a vector-capable persistent database;
+1. provision the selected Supabase project and pull its environment variables;
+2. verify pgvector availability without changing schema;
 3. verify a current embedding model and its output dimension;
-4. record the selected runtime, store, embedding route, and reopening condition in an ADR;
-5. provision the real integration and pull its environment variables;
+4. Shape and close the human-door deployment choice in an ADR;
+5. record the selected runtime, store, embedding route, and reopening condition in a physical-substrate ADR;
 6. implement only the vertical slice above.
 
 Do not substitute a mock store, keyword search, sample-data fallback, or unprovisioned provider abstraction.
@@ -161,11 +164,14 @@ Do not substitute a mock store, keyword search, sample-data fallback, or unprovi
 - [x] Authenticate the Vercel CLI.
 - [x] Create and link the `ecb-v2` Vercel project.
 - [x] Run live storage and AI marketplace discovery.
-- [x] Select Neon as the single-store candidate.
-- [ ] Human accepts the Neon marketplace terms.
-- [ ] Provision the free Neon resource in `pdx1` with built-in app authentication disabled.
-- [ ] Pull and verify environment variable names without exposing values.
+- [x] Preserve and disconnect the unused Neon resource.
+- [x] Human selects Supabase as the canonical BUILD 0 substrate.
+- [ ] Human accepts the Supabase marketplace terms.
+- [ ] Provision the free Supabase resource in `sfo1`.
+- [ ] Pull and verify Supabase environment variable names without exposing values.
+- [ ] Verify Supabase connectivity and pgvector availability without changing schema.
 - [ ] Verify and freeze the embedding model and vector dimension.
+- [ ] Close the human-door deployment choice through ADR.
 - [ ] Record the physical substrate ADR.
 - [ ] Begin BUILD 0 implementation.
 

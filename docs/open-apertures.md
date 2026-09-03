@@ -155,7 +155,7 @@ The exact deployed runtime, canonical vector-capable database integration, embed
 
 **WHY OPEN**
 
-OB1 demonstrates the behavior with Postgres/pgvector and multiple provider combinations, but those implementations are lineage evidence rather than inherited architecture. Live Vercel discovery selected Neon as the smallest single-store candidate. Provisioning is paused until a human accepts the Neon marketplace terms. AI Gateway discovery confirms the proposed embedding model remains available, but local OIDC authentication returned `403`, so v2 has not independently verified the embedding dimension.
+OB1 demonstrates the behavior with Supabase Postgres/pgvector, and the human selected Supabase as the canonical BUILD 0 substrate without inheriting OB1's schema or adjacent services. A previously provisioned Neon resource is preserved but disconnected. Supabase provisioning is pending one-time Marketplace terms acceptance. The embedding route and independently verified vector dimension remain unresolved.
 
 **CURRENT EFFECT**
 
@@ -163,11 +163,11 @@ The provider-independent BUILD 0 contract, MCP surface, persistence minimum, enf
 
 **TRIGGER**
 
-The human accepts the Neon marketplace terms and either an AI Gateway API key or a deployed Vercel OIDC execution path is available. Alternatively, the human explicitly selects a non-Vercel execution substrate.
+The Supabase resource is provisioned and the human authorizes an embedding execution route that can be tested without exposing credentials.
 
 **ROUTE**
 
-Accept Neon marketplace terms → retry the recorded free `pdx1` resource install with built-in app authentication disabled → pull environment variables → verify `openai/text-embedding-3-small` output dimension through an authorized Gateway call → record the physical choice and reopening condition in an ADR → begin BUILD 0 implementation.
+Accept Supabase Marketplace terms → provision and connect the free `sfo1` resource → verify pgvector availability without changing schema → enable an authorized embedding route without exposing credentials → verify model identity and dimension through a live call → close the human-door deployment choice → record the physical choices and reopening conditions in ADRs → enable pgvector through the first governed migration → begin BUILD 0 implementation.
 
 ## AP-10 — Formal semantics of bounded action abstraction
 
@@ -190,6 +190,28 @@ Automated envelope compilation, or a build failure, requires a formal answer to 
 **ROUTE**
 
 Use the formal-semantics research pipeline → derive semantics from actual envelope specimens → test operational equivalence and robust-action soundness first → introduce a Galois connection, categorical structure, or metric only if it adds discriminating power → route any closure through a frozen acceptance test, ADR, or explicit human authorization as appropriate.
+
+## AP-11 — Human-door deployment
+
+**WHAT**
+
+Whether BUILD 0's single remote MCP human door is deployed as a Supabase Edge Function beside the canonical database or as a Vercel Fluid Function connected to Supabase.
+
+**WHY OPEN**
+
+OB1 demonstrates the Supabase Edge Function path. Vercel provides a full Node.js runtime, GitHub-native deployment, and longer general function duration. The governing behavior does not require one host, and current MCP client authentication/transport behavior has not yet been tested against both candidates.
+
+**CURRENT EFFECT**
+
+Supabase may be provisioned and the provider-independent tool, schema, and test contracts may be refined. Do not deploy two doors or designate either candidate current before the decision is closed. The canonical Supabase database remains the same under either choice.
+
+**TRIGGER**
+
+Before the first remote MCP endpoint is implemented or deployed for Golden Trace 01.
+
+**ROUTE**
+
+Use `/docs/deployment-shapes/human-door.md` → identify the first required AI client → test or resolve its transport and technical access-control requirements → compare operational limits and secret boundaries → record one selected door and reopening condition in an ADR → deploy exactly one current endpoint.
 
 ## Aperture rule
 

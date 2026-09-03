@@ -104,3 +104,13 @@ Technical capability, standing, or confidence does not create warrant.
 Explicitly designated as operative for a declared scope/operation.
 
 **NOT EQUIVALENT TO:** newest; most recently retrieved; most polished.
+
+## Human Door
+
+**STATUS: PROVISIONAL; DEPLOYMENT CHOICE OPEN**
+
+The externally reachable interface through which a human, ordinarily through an AI client, accesses the canonical brain's bounded MCP capabilities.
+
+For BUILD 0, the human door exposes only capture, semantic search, and fetch.
+
+**NOT EQUIVALENT TO:** the canonical brain; a second store; a dashboard; governance authority; a warrant.
