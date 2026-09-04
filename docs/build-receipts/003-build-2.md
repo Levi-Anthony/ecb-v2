@@ -1,4 +1,4 @@
-STATUS: IMPLEMENTED — METABOLIZE AWAITING HUMAN CLOSURE 2026-09-04 AMERICA/PHOENIX
+STATUS: ACCEPTED AND CLOSED 2026-09-04 AMERICA/PHOENIX
 DISPOSITION: EVIDENCE
 ROLE: BUILD 2 execution and acceptance receipt
 AUTHORITY: Does not amend the Build Contract, invariants, acceptance fixture, or accepted ADRs
@@ -7,7 +7,7 @@ AUTHORITY: Does not amend the Build Contract, invariants, acceptance fixture, or
 
 ## Result
 
-**PASS — frozen Worked Trace 02 completed. Human closure remains pending.**
+**PASS — frozen Worked Trace 02 completed and human metabolization closure accepted.**
 
 BUILD 2 installed the identity-only Referent registry, same-UUID Thought coupling, atomic registration
 trigger, activation interlock, and frozen least-privilege boundary in the one canonical Supabase brain.
@@ -22,6 +22,13 @@ The human explicitly released implementation from:
 
 The release was reachable on `origin/main`, local `main` matched it, and the working tree was clean before
 Move began.
+
+## Closure provenance
+
+The human accepted the implementation and execution evidence and closed BUILD 2 with:
+
+- implementation commit: `80fc19f8a50bc949fa95e551f77bd81ba5504b77`;
+- implementation root tree: `99dccc334966878edd7fbfd0615c2da138606bf1`.
 
 ## Installed migration
 
@@ -113,5 +120,9 @@ condition was encountered. The registered-only row demonstrates that stable pers
 exact-UUID addressability can precede description, classification, or an encountered native Thought
 binding without creating semantic standing.
 
-This receipt records PASS evidence only. It does not declare BUILD 2 closed, authorize BUILD 3, or
-install a successor checkout. Those transitions remain on the human rail.
+The human accepted this PASS evidence and closed BUILD 2. Closure preserves the installed canonical
+migration and Referent identity spine, this receipt and acceptance harness, ADR-003 and ADR-004, all
+explicit BUILD 2 apertures and reopening conditions, and the closed state of BUILD 0 and BUILD 1.
+
+BUILD 3 implementation remains unopened and unauthorized. The next permitted operation is BUILD 3
+Sense/Shape under its own bounded checkout and governance.

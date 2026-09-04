@@ -102,7 +102,7 @@ FAIL if:
 
 ## Worked Trace 02 — Stable referent resolution
 
-**STATUS: PASSED 2026-09-04 — HUMAN METABOLIZATION CLOSURE PENDING**
+**STATUS: PASSED AND ACCEPTED 2026-09-04 — BUILD 2 CLOSED**
 **EXECUTION EVIDENCE: [`build-receipts/003-build-2.md`](build-receipts/003-build-2.md)**
 
 ### Fixtures
