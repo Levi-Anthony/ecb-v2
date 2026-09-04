@@ -76,6 +76,8 @@ The acceptance covered:
 
 A temporary JWT-protected Supabase Edge Function executed the selected model in the deployed runtime. An unauthenticated request returned HTTP 401. An authenticated request returned model `gte-small`, 384 finite values, norm `1`, and `normalized = true`. The probe persisted no data and was deleted after verification; the project returned to zero deployed functions and zero public tables.
 
+The final `open-brain-mcp` Edge Function was subsequently deployed with body-level bearer authentication, registered with Codex using an environment-variable token reference, and exercised by two separate ephemeral Codex processes. Unauthorized access returned HTTP 401. The remote tool inventory contained exactly `capture_thought`, `search`, and `fetch`, and Golden Trace 01 completed without meeting a reopening condition. See [`../build-receipts/001-build-0.md`](../build-receipts/001-build-0.md).
+
 ## REVERSIBILITY
 
 The Edge Function, its technical key, and the client registration can be rotated or removed without moving or rewriting canonical thought records. The migration will preserve `embedding_model`, so a later model change is explicit; existing vectors would require deliberate re-embedding rather than silent reinterpretation.

@@ -1,4 +1,4 @@
-STATUS: ACTIVE  
+STATUS: BUILD 0 PASSED — METABOLIZATION HOLD
 DISPOSITION: PROJECTION  
 ROLE: Current human/agent checkout  
 AUTHORITY: Derived from build contract, invariants, and acceptance tests  
@@ -103,7 +103,7 @@ Minimum persistent evidence capability:
 - get/fetch by stable record identity;
 - source/provenance metadata sufficient for Golden Trace 01.
 
-## SHAPE — COMPLETE; BUILD 0 IMPLEMENTATION ACTIVE
+## SHAPE — COMPLETE; BUILD 0 PASSED 2026-09-03
 
 ### Smallest vertical slice
 
@@ -194,11 +194,21 @@ Do not substitute a mock store, keyword search, sample-data fallback, or unprovi
 - [x] Verify and freeze the embedding model and vector dimension.
 - [x] Accept ADR-001 to close the human-door deployment choice.
 - [x] Record the physical substrate ADR.
-- [x] Begin BUILD 0 implementation with the governed persistence migrations.
+- [x] Apply and verify the governed persistence migrations.
+- [x] Deploy the three-tool Supabase Edge Function behind the bearer boundary.
+- [x] Register the deployed Streamable HTTP endpoint with Codex.
+- [x] Execute Golden Trace 01 through two fresh Codex client processes.
+- [x] Verify one exact canonical row and no promoted/governance record.
 
-### Next implementation move
+### Golden Trace result
 
-Implement the single Supabase Edge Function MCP surface in `server/open-brain-mcp/`, deploy it behind the accepted bearer-key boundary, and execute Golden Trace 01 from two fresh Codex client processes.
+**PASS.** Context A captured the frozen fixture once and returned durable ID `19a949ea-a8fc-4250-a386-fa64e5530180`. A separate ephemeral Context B received neither the fixture sentence nor its identity, recovered that row semantically with similarity `0.919231799818033`, and fetched the exact persisted record by the returned ID.
+
+Direct substrate verification found exactly one canonical row, the expected source and model, and a 384-dimensional embedding. The public schema contains only `thoughts`; capture created no promoted or governance object. The complete execution and verification evidence is recorded in [`docs/build-receipts/001-build-0.md`](docs/build-receipts/001-build-0.md).
+
+### Current move — metabolization hold
+
+Do not begin BUILD 1 automatically. Review the observed BUILD 0 behavior and receipt, preserve any earned implementation lessons, then install BUILD 1 as a separate checkout only after that metabolization move is accepted.
 
 ## STANDING
 
@@ -227,7 +237,7 @@ No semantic or governance transition is introduced by BUILD 0.
 
 ## PASS
 
-Golden Trace 01 passes exactly.
+Golden Trace 01 passed exactly on 2026-09-03 America/Phoenix (`2026-09-04` UTC).
 
 ## DO NOT BUILD
 

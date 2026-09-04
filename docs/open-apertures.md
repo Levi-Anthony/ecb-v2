@@ -155,7 +155,7 @@ The exact deployed runtime, canonical vector-capable database integration, embed
 
 **CLOSURE EVIDENCE**
 
-Supabase project `ecb-v2-brain` (`vezxivrvhakclxuvxzso`) is provisioned and connected. A deployed probe verified native `gte-small` output as 384 finite normalized values. ADR-001 selects the Codex/Supabase Edge Function door and bearer boundary; ADR-002 records the combined physical substrate. The probe was deleted, and the first governed migrations installed pgvector plus the empty canonical table and similarity function.
+Supabase project `ecb-v2-brain` (`vezxivrvhakclxuvxzso`) is provisioned and connected. A deployed probe verified native `gte-small` output as 384 finite normalized values. ADR-001 selects the Codex/Supabase Edge Function door and bearer boundary; ADR-002 records the combined physical substrate. The probe was deleted, the governed migrations installed pgvector plus the canonical table and similarity function, and Golden Trace 01 passed through the deployed runtime without triggering reopening.
 
 **CURRENT EFFECT**
 
@@ -203,7 +203,7 @@ The human accepted ADR-001: Codex is the first client, one Supabase Edge Functio
 
 **CURRENT EFFECT**
 
-Implement and deploy only the selected Supabase door. Vercel Fluid Functions remain a compatibility fallback, not a co-equal endpoint.
+The selected Supabase door is deployed and passed Golden Trace 01. Vercel Fluid Functions remain a compatibility fallback, not a co-equal endpoint. Do not add a second door during post-BUILD-0 metabolization.
 
 **REOPENING TRIGGER**
 

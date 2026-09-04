@@ -50,7 +50,9 @@ FAIL if the agent:
 
 ## GOLDEN TRACE 01 — Cross-context atomic recall
 
-**STATUS: FROZEN FOR BUILD 0**
+**STATUS: PASSED 2026-09-03 AMERICA/PHOENIX (`2026-09-04` UTC)**
+
+Execution evidence: [`build-receipts/001-build-0.md`](build-receipts/001-build-0.md). The fixture remains frozen as regression authority.
 
 ### Fixture
 

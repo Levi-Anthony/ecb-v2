@@ -49,6 +49,10 @@ Licensed by the BUILD 0 physical activation gate, the human's 2026-09-03 accepta
 
 The Edge Function and technical key can be rotated or replaced without moving canonical records. Changing the embedding model or dimension requires an explicit migration and deliberate re-embedding; existing vectors may not be silently reinterpreted.
 
+## VERIFICATION RECEIPT
+
+The two governed migrations are installed in the canonical project. The deployed runtime passed its local contract suite, remote authorization and tool-inventory probes, and Golden Trace 01 through two fresh Codex processes. Direct database verification found one exact canonical fixture row with a 384-dimensional `gte-small` embedding and no additional public table. See [`../build-receipts/001-build-0.md`](../build-receipts/001-build-0.md).
+
 ## REOPENING CONDITION
 
 Reopen if Golden Trace 01 cannot pass with one complete-row insert and exact vector scan, if the accepted Edge runtime meets an ADR-001 reopening condition, or if measured data volume earns a vector index. Do not add a second store or door as a fallback.
