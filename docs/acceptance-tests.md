@@ -543,11 +543,13 @@ Freeze expected answers before implementation.
 
 ## Worked Trace 06 — Typed relation claim
 
-**STATUS: FROZEN ADVERSARIAL ACCEPTANCE AUTHORITY — SHAPE CLOSED; MOVE UNRELEASED**
+**STATUS: PASSED 2026-09-04 AMERICA/PHOENIX — ACCEPTED AND CLOSED AT METABOLIZE**
 
 **UNLOCKS: BUILD 4**
 
-**IMPLEMENTATION: UNOPENED**
+**IMPLEMENTATION: INSTALLED AND VERIFIED**
+
+**EXECUTION EVIDENCE: [`build-receipts/005-build-4.md`](build-receipts/005-build-4.md)**
 
 **FROZEN: 2026-09-04 America/Phoenix at BUILD 4 Shape closure**
 
@@ -750,4 +752,6 @@ FAIL if any frozen challenge produces a counterexample, including if:
 - an unexplained canonical object, new table, new function, or BUILD 5+ surface appears; or
 - an enduring BUILD 0–3 behavior in the projection above regresses.
 
-Freezing does not authorize implementation. A separate human Move release remains required.
+Freezing did not authorize implementation. The later explicit human Move release authorized the
+installed and verified BUILD 4 transition, and the human accepted its evidence at Metabolize. This trace
+remains frozen test authority; passing it did not open or authorize BUILD 5.

@@ -1,4 +1,4 @@
-STATUS: MOVE COMPLETE; VERIFICATION PASSED; HUMAN METABOLIZE CLOSURE REQUIRED
+STATUS: ACCEPTED AND CLOSED 2026-09-04 AMERICA/PHOENIX
 DISPOSITION: EVIDENCE
 ROLE: BUILD 4 execution and acceptance receipt
 AUTHORITY: Does not amend the Build Contract, closed Shape, apertures, invariants, or acceptance fixture
@@ -7,10 +7,10 @@ AUTHORITY: Does not amend the Build Contract, closed Shape, apertures, invariant
 
 ## Result
 
-**PASS — the bound BUILD 4 Output Contract is implemented and frozen Worked Trace 06 completed.**
+**PASS — the bound BUILD 4 Output Contract is implemented, frozen Worked Trace 06 completed, and human
+metabolization closure is accepted.**
 
-This is Move evidence, not Metabolize closure. BUILD 4 remains on the human rail, and BUILD 5 is not
-opened or authorized.
+BUILD 4 is closed. This closure does not open or authorize BUILD 5.
 
 ## Release provenance
 
@@ -31,6 +31,21 @@ The Layer A historical baseline also passed before installation:
 - BUILD 2 cross-build regression: PASS.
 
 No BUILD 0–3 reopening condition and no canonical substrate drift were present.
+
+## Closure provenance
+
+The human reviewed the Move evidence, accepted it at Metabolize, and closed BUILD 4 with:
+
+- implementation commit: `d11401297e69af0f2e9e18aa55da41af4e8b5f31`;
+- implementation root tree: `13beae75500e8b76b1280e7a16ef460b1078fe85`.
+
+Closure verification on 2026-09-04 America/Phoenix confirmed that `HEAD`, local `main`, and
+`origin/main` all equalled the implementation commit, that both worktrees were clean, and that the
+canonical substrate still matched this receipt exactly: four public tables, four public functions, no
+view, one Thought, six Referents, three Claims, one Evidence Link, the five-migration ledger, Claim C at
+`ecb_inference`/`unassessed`, Evidence Link L at the frozen GT01 digest, and GT01 intact. That
+verification was read-only; the adversarial harnesses were not re-run, because they had passed minutes
+earlier against this exact commit and their probes mutate transactionally.
 
 ## Installed migration
 
@@ -55,9 +70,13 @@ canonical migration ledger order is now:
 5. `20260904215929_build_4_typed_relation_claims`.
 
 This differs from BUILD 3, which was applied through the managed migration runner and therefore logged
-nested-transaction warnings. The direct application avoided an outer wrapping transaction. The ledger
-row was written as a separate statement after the activation committed, so schema activation was atomic
-while the ledger row was not part of that transaction.
+nested-transaction warnings. The direct application avoided an outer wrapping transaction.
+
+**Recorded execution-method deviation, accepted at Metabolize.** Schema activation was atomic under the
+migration's own explicit transaction. The migration-ledger write occurred immediately afterwards as a
+separate statement and was therefore not part of that transaction. The human reviewed and accepted this
+deviation at closure; it did not block closure. A future build that requires ledger and activation to
+commit together must select that mechanism explicitly rather than inheriting this one by precedent.
 
 ## Canonical state
 
@@ -260,12 +279,24 @@ test defects were found and corrected during Move:
 Defects 2 through 4 were local test-implementation defects. None indicates a BUILD 4 representation or
 database discrepancy, and none required changing the frozen Shape or Output Contract.
 
+The human reviewed all four at Metabolize and dispositioned them as probe and test defects rather than
+Shape or Output Contract defects. Their correction does not justify reopening architecture.
+
 ## Metabolize disposition
 
-`READY_FOR_HUMAN_METABOLIZE_REVIEW`
+`METABOLIZED_AND_CLOSED`
 
-Observed behavior matches the closed BUILD 4 Shape under the frozen adversarial surface. No reopening
-condition was encountered, but this receipt does not declare BUILD 4 metabolized or closed. The exact
-next action is explicit human review and closure or a concrete reopening instruction. BUILD 5 remains
-unopened and unauthorized, and `depends_on` remains a persisted unassessed relation assertion that
-operationalizes nothing.
+Observed behavior matches the closed BUILD 4 Shape under the frozen adversarial surface, and the human
+accepted that evidence and closed BUILD 4. No reopening condition was encountered.
+
+Closure is bounded. It accepts the installed substrate and its execution evidence only. It confers no
+standing on Claim C2's proposition or on the asserted dependency, promotes no aperture, and does not
+authorize BUILD 5. `depends_on` remains a persisted unassessed relation assertion that operationalizes
+nothing: it propagates no standing, support, truth, currentness, or authorization, and mutates no
+endpoint.
+
+The two-layer regression boundary is preserved. The frozen BUILD 2 and BUILD 3 harnesses remain
+historical Layer A authority, and BUILD 4's Layer B regression independently reproduced the inherited
+outcomes without modifying them. Narrowed AP-01 and AP-07 remainders, and preserved AP-02 and AP-03,
+stay open on their recorded terms. The next permitted operation is a bounded BUILD 5 Sense under its own
+checkout and governance.

@@ -1,14 +1,14 @@
-STATUS: MOVE COMPLETE — VERIFICATION PASSED; HUMAN METABOLIZE CLOSURE REQUIRED; BUILD 5 UNOPENED
+STATUS: ACCEPTED AND CLOSED 2026-09-04 AMERICA/PHOENIX; BUILD 5 UNOPENED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
-AUTHORITY: Derived from the Build Contract, constitutive invariants, closed BUILD 0–3 evidence, the anchored BUILD 4 Sense closure, and explicit human BUILD 4 Shape authorization
-CURRENT BUILD UNIT: BUILD 4 — Typed Relation Claims (MOVE COMPLETE; METABOLIZE REVIEW REQUIRED)
+AUTHORITY: Derived from the Build Contract, constitutive invariants, closed BUILD 0–3 evidence, the anchored BUILD 4 Sense and Shape closures, and explicit human BUILD 4 metabolization closure
+CURRENT BUILD UNIT: BUILD 4 — Typed Relation Claims (CLOSED)
 
 # BUILD 4 — Typed Relation Claims
 
 ## CURRENT MOVE
 
-`MOVE COMPLETE → HUMAN METABOLIZE CLOSURE REQUIRED`
+`MOVE COMPLETE → METABOLIZED AND CLOSED`
 
 ```text
 SENSE=CLOSED
@@ -19,7 +19,9 @@ MOVE_PERMISSION=RELEASED_AND_CONSUMED
 IMPLEMENTATION=INSTALLED_AND_VERIFIED
 WORKED_TRACE_06_EXECUTION=PASS
 BUILD_0_TO_3_CURRENT_STATE_REGRESSION=PASS
-METABOLIZE=READY_FOR_HUMAN_REVIEW_NOT_CLOSED
+CLOSURE_VERIFICATION=PASS
+METABOLIZE=ACCEPTED_AND_CLOSED
+BUILD_4=CLOSED
 BUILD_5=UNOPENED_AND_UNAUTHORIZED
 AP01=NARROWED; BUILD_4_SECOND_CLAIM_KIND_SELECTED; BROADER_VOCABULARY_OPEN
 AP07=NARROWED; BUILD_4_SINGLE_PREDICATE_SELECTED; FULL_ONTOLOGY_DEFERRED
@@ -50,9 +52,21 @@ execution evidence is recorded in `docs/build-receipts/005-build-4.md`. Migratio
 foreign keys, replaced `prepare_claim`, and installed Claim C2 and relation Claim R, adding no table and
 no function.
 
+The human then accepted that evidence at Metabolize and closed BUILD 4 with implementation commit
+`d11401297e69af0f2e9e18aa55da41af4e8b5f31` and root tree
+`13beae75500e8b76b1280e7a16ef460b1078fe85` as closure provenance. The four reported discrepancies were
+dispositioned as probe and test defects rather than Shape or Output Contract defects, and the direct
+migration-application method was accepted as a recorded execution-method deviation.
+
+This closure accepts the installed substrate and its execution evidence only. It confers no standing on
+Claim C2's proposition or on the asserted dependency, promotes no aperture, and does not open or
+authorize BUILD 5. The next permitted operation is a bounded BUILD 5 Sense under its own checkout and
+governance.
+
 BUILD 0, BUILD 1, BUILD 2, and BUILD 3 remain closed. BUILD 3's physical surface was changed by this
 Move under the recorded E-2 authorization; that is lawful expansion, not reopening, and accepted BUILD 3
-assertion behavior is verified preserved by the cross-build regression harness.
+assertion behavior is verified preserved by the cross-build regression harness. The frozen BUILD 2 and
+BUILD 3 harnesses remain historical Layer A authority and were not modified.
 
 ## PURPOSE
 
@@ -499,10 +513,10 @@ This checkout records closed Sense, closed Shape, the frozen Worked Trace 06 adv
 authority, the frozen enduring BUILD 3 projection, and the executed Output Contract with passing
 Worked Trace 06 and two-layer BUILD 0–3 regression evidence.
 
-Move is complete. BUILD 4 is ready for explicit human Metabolize review but is not declared metabolized
-or closed. No ADR was created, and BUILD 5 remains unopened and unauthorized.
+Move is complete and BUILD 4 is closed. No ADR was created, and BUILD 5 remains unopened and
+unauthorized.
 
-## POST-MOVE HOLD
+## POST-CLOSURE HOLD
 
 **SEMANTIC — review against governing text:**
 
@@ -518,10 +532,13 @@ or closed. No ADR was created, and BUILD 5 remains unopened and unauthorized.
 - the migration, harnesses, and receipt may be preserved but not extended beyond the bound Output
   Contract; and
 - no further schema, runtime, MCP, deployment, ADR, BUILD 5+, or remote-state transition is authorized
-  without explicit human instruction.
+  without explicit human instruction; and
+- the installed BUILD 4 result may not be mutated absent a recorded reopening condition and explicit
+  human authorization.
 
-The implemented BUILD 4 transition is active in the canonical database. Its passing evidence does not
-itself confer Metabolize closure.
+The implemented BUILD 4 transition is active in the canonical database and its passing evidence has been
+accepted at Metabolize. Closure is provenance of that acceptance, not authorization for the next Build
+Unit.
 
 ## FAILURE BEHAVIOR
 
@@ -566,6 +583,7 @@ expansion, not reopening.
 
 ## NON-GOALS / DO NOT BUILD
 
+- do not infer BUILD 5 implementation authorization from BUILD 4 closure;
 - do not extend the installed BUILD 4 substrate beyond the released Output Contract;
 - do not add a second predicate, a third claim kind, inverse/symmetry machinery, a predicate taxonomy,
   a traversal surface, or a graph ontology;
@@ -586,9 +604,9 @@ expansion, not reopening.
 
 ## NEXT HANDLE
 
-`AWAIT EXPLICIT HUMAN METABOLIZE CLOSURE.`
+`AWAIT EXPLICIT BUILD 5 AUTHORIZATION.`
 
-The exact next authorized action is read-only human review of the BUILD 4 implementation and execution
-receipt. Do not begin BUILD 5 or perform another schema, runtime, MCP, deployment, ADR, or remote-state
-transition unless the human explicitly closes or reopens BUILD 4 and separately authorizes the next
-phase.
+BUILD 4 is closed. The exact next authorized action is a bounded BUILD 5 Sense under its own checkout,
+opened only on explicit human instruction. Do not begin BUILD 5 Sense, Shape, or implementation, and do
+not perform another schema, runtime, MCP, deployment, ADR, or remote-state transition, until the human
+authorizes that phase.
