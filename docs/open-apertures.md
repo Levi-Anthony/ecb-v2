@@ -147,27 +147,27 @@ Repeated human use demonstrates a stable view deserves persistent interface affo
 **ROUTE**  
 Separate UI Shape.
 
-## AP-09 — BUILD 0 physical substrate activation
+## AP-09 — BUILD 0 physical substrate activation — CLOSED 2026-09-03
 
 **WHAT**
 
 The exact deployed runtime, canonical vector-capable database integration, embedding route, model identity, and vector dimension for BUILD 0.
 
-**WHY OPEN**
+**CLOSURE EVIDENCE**
 
-OB1 demonstrates the behavior with Supabase Postgres/pgvector, and the human selected Supabase as the canonical BUILD 0 substrate without inheriting OB1's schema or adjacent services. A previously provisioned Neon resource is preserved but disconnected. Supabase project `ecb-v2-brain` (`vezxivrvhakclxuvxzso`) is provisioned, connected to Vercel, and read-only verified; pgvector `0.8.2` is available but not installed. The embedding route, independently verified vector dimension, human-door runtime, and combined physical-substrate ADR remain unresolved.
+Supabase project `ecb-v2-brain` (`vezxivrvhakclxuvxzso`) is provisioned and connected. A deployed probe verified native `gte-small` output as 384 finite normalized values. ADR-001 selects the Codex/Supabase Edge Function door and bearer boundary; ADR-002 records the combined physical substrate. The probe was deleted, and the first governed migrations installed pgvector plus the empty canonical table and similarity function.
 
 **CURRENT EFFECT**
 
-The provider-independent BUILD 0 contract, MCP surface, persistence minimum, enforcement surfaces, and Golden Trace execution are shaped in `/BUILD_CHECKOUT.md`. Do not write a migration or runtime implementation until this aperture is resolved; doing so would silently select new persistent architecture.
+BUILD 0 runtime implementation is authorized only within ADR-001, ADR-002, and `/BUILD_CHECKOUT.md`. No additional store, model, door, persistent field, or tool is licensed.
 
-**TRIGGER**
+**REOPENING TRIGGER**
 
-The human authorizes an embedding execution route that can be tested without exposing credentials, and the first required AI client plus BUILD 0 technical access mechanism are named.
+Golden Trace 01 cannot pass using the selected store, runtime, model, dimension, or bearer boundary.
 
 **ROUTE**
 
-Enable an authorized embedding route without exposing credentials → verify model identity and dimension through a live call → name the first required AI client and technical access mechanism → close the human-door deployment choice → record the physical choices and reopening conditions in ADRs → enable pgvector through the first governed migration → begin BUILD 0 implementation.
+Identify the exact failed physical assumption → reopen ADR-001 or ADR-002 only as narrowly as required → preserve one canonical brain and one current door.
 
 ## AP-10 — Formal semantics of bounded action abstraction
 
@@ -191,27 +191,27 @@ Automated envelope compilation, or a build failure, requires a formal answer to 
 
 Use the formal-semantics research pipeline → derive semantics from actual envelope specimens → test operational equivalence and robust-action soundness first → introduce a Galois connection, categorical structure, or metric only if it adds discriminating power → route any closure through a frozen acceptance test, ADR, or explicit human authorization as appropriate.
 
-## AP-11 — Human-door deployment
+## AP-11 — Human-door deployment — CLOSED 2026-09-03
 
 **WHAT**
 
 Whether BUILD 0's single remote MCP human door is deployed as a Supabase Edge Function beside the canonical database or as a Vercel Fluid Function connected to Supabase.
 
-**WHY OPEN**
+**CLOSURE EVIDENCE**
 
-OB1 demonstrates the Supabase Edge Function path. Vercel provides a full Node.js runtime, GitHub-native deployment, and longer general function duration. The governing behavior does not require one host, and current MCP client authentication/transport behavior has not yet been tested against both candidates.
+The human accepted ADR-001: Codex is the first client, one Supabase Edge Function is the current door, a shared bearer key is the BUILD 0 technical boundary, and Vercel billing is out of scope. Codex's installed client supports Streamable HTTP with a bearer token sourced from an environment variable.
 
 **CURRENT EFFECT**
 
-Supabase is provisioned and the provider-independent tool, schema, and test contracts may be refined. Do not deploy two doors or designate either candidate current before the decision is closed. The canonical Supabase database remains the same under either choice.
+Implement and deploy only the selected Supabase door. Vercel Fluid Functions remain a compatibility fallback, not a co-equal endpoint.
 
-**TRIGGER**
+**REOPENING TRIGGER**
 
-Before the first remote MCP endpoint is implemented or deployed for Golden Trace 01.
+An ADR-001 reopening condition is observed during the minimum client experiment or Golden Trace 01.
 
 **ROUTE**
 
-Use `/docs/deployment-shapes/human-door.md` → identify the first required AI client → test or resolve its transport and technical access-control requirements → compare operational limits and secret boundaries → record one selected door and reopening condition in an ADR → deploy exactly one current endpoint.
+Record the concrete failure → test Vercel Fluid Functions as the first fallback → amend or supersede ADR-001 through the human route → keep exactly one current endpoint.
 
 ## Aperture rule
 

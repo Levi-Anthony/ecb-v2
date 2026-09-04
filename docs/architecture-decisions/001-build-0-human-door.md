@@ -1,4 +1,4 @@
-STATUS: PROPOSED
+STATUS: ACCEPTED 2026-09-03
 DISPOSITION: DECISION_RECORD
 
 # ADR-001 — Supabase Edge Function as the BUILD 0 human door
@@ -19,7 +19,7 @@ The built-in model is English-only and truncates inputs after 512 tokens. Those 
 
 ## LOCAL DECISION
 
-Propose the following bounded BUILD 0 designation:
+The following bounded BUILD 0 designation is accepted:
 
 1. Use **Codex** as the first required human-door client.
 2. Deploy exactly one **Supabase Edge Function** as the current MCP endpoint.
@@ -64,13 +64,17 @@ OpenAI embeddings through Vercel AI Gateway preserve OB1's 1536-dimensional mode
 
 ## STANDING / AUTHORITY
 
-The Build Contract delegates selection of the physical substrate and human door through AP-09 and AP-11. This ADR is **PROPOSED** because the repository does not supply authority to choose the first human client or accept a shared technical key on the human's behalf.
+The Build Contract delegates selection of the physical substrate and human door through AP-09 and AP-11. The human accepted this exact bundle on 2026-09-03.
 
-Acceptance requires the human to confirm this exact bundle:
+The acceptance covered:
 
 - Codex is the first required client;
 - a shared bearer key is acceptable for BUILD 0;
 - no Vercel payment-card change is in scope for BUILD 0.
+
+## VERIFICATION RECEIPT
+
+A temporary JWT-protected Supabase Edge Function executed the selected model in the deployed runtime. An unauthenticated request returned HTTP 401. An authenticated request returned model `gte-small`, 384 finite values, norm `1`, and `normalized = true`. The probe persisted no data and was deleted after verification; the project returned to zero deployed functions and zero public tables.
 
 ## REVERSIBILITY
 

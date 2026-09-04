@@ -1,4 +1,4 @@
-STATUS: READY FOR HUMAN DESIGNATION
+STATUS: DESIGNATED BY ADR-001
 
 DISPOSITION: PROJECTION
 
@@ -100,7 +100,7 @@ Supabase Edge Function is the evidence-leading candidate because OB1 has already
 
 This is not designation. Vercel should win if the actual first-client handshake, MCP library compatibility, or function constraints make the Supabase door unable to pass BUILD 0 cleanly.
 
-The bounded resolution is now recorded as [ADR-001](../architecture-decisions/001-build-0-human-door.md): Codex first, a Supabase Edge Function, a shared bearer key, native `gte-small` embeddings, and no Vercel billing change. It remains `PROPOSED` until the human confirms that exact bundle.
+The bounded resolution is accepted in [ADR-001](../architecture-decisions/001-build-0-human-door.md): Codex first, a Supabase Edge Function, a shared bearer key, native `gte-small` embeddings, and no Vercel billing change.
 
 ## Human inputs required before closure
 

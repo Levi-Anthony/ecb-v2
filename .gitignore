@@ -2,4 +2,5 @@
 .env*
 .DS_Store
 .agents/
+supabase/.temp/
 skills-lock.json

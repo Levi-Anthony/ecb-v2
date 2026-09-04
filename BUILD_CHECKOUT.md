@@ -68,7 +68,8 @@ The Build Contract and Golden Trace remain unchanged. Implementation may adapt O
 - Vercel injected the following Supabase resource variables into Production, Preview, and Development: `POSTGRES_URL`, `POSTGRES_HOST`, `POSTGRES_USER`, `POSTGRES_DATABASE`, `POSTGRES_PASSWORD`, `POSTGRES_PRISMA_URL`, `POSTGRES_URL_NON_POOLING`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_JWT_SECRET`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`. Values were not recorded.
 - The Development variables were pulled to gitignored `.env.local`. Vercel initially preserved pre-existing local-only Neon aliases that are absent from the Vercel project; those aliases were moved without exposing their values to gitignored `.env.neon-preserved.local`. Active `.env.local` now contains only the project-linked Supabase variables plus Vercel's local OIDC token.
 - Read-only database inspection succeeded. The new public schema is empty, and pgvector `0.8.2` is available but not installed. No schema, extension, table, migration, or row was created.
-- [ADR-001](docs/architecture-decisions/001-build-0-human-door.md) proposes Codex as the first client, a Supabase Edge Function with bearer-key access, native 384-dimensional `gte-small` embeddings, and no Vercel billing change. It is not accepted and no runtime has been deployed.
+- [ADR-001](docs/architecture-decisions/001-build-0-human-door.md) accepts Codex as the first client, a Supabase Edge Function with bearer-key access, native 384-dimensional `gte-small` embeddings, and no Vercel billing change. A temporary authenticated probe verified the deployed model output and was deleted without persisting data. [ADR-002](docs/architecture-decisions/002-build-0-physical-substrate.md) records the combined physical substrate.
+- The first governed migrations are applied: pgvector `0.8.2`, one empty RLS-enabled `public.thoughts` table, and one invoker-rights `public.search_thoughts` function. `anon` and `authenticated` have no table or function access; `service_role` has only table `SELECT`/`INSERT` plus function `EXECUTE`. Invalid empty content, model mismatch, and missing embedding writes fail structurally without creating a row.
 - AI Gateway discovery confirms `openai/text-embedding-3-small` remains available and OB1 reports a 1536-dimensional vector for it, but v2 has not independently verified the dimension.
 - A live Gateway embedding request using local Vercel OIDC returned `403` because the Vercel team has no payment card on file. No billing change was attempted.
 - The remote human-door host remains open between Supabase Edge Functions and Vercel Fluid Functions; see `/docs/deployment-shapes/human-door.md` and AP-11.
@@ -102,7 +103,7 @@ Minimum persistent evidence capability:
 - get/fetch by stable record identity;
 - source/provenance metadata sufficient for Golden Trace 01.
 
-## SHAPE — READY; PHYSICAL ACTIVATION GATED BY AP-09
+## SHAPE — COMPLETE; BUILD 0 IMPLEMENTATION ACTIVE
 
 ### Smallest vertical slice
 
@@ -190,10 +191,14 @@ Do not substitute a mock store, keyword search, sample-data fallback, or unprovi
 - [x] Pull and verify Supabase environment variable names without exposing values.
 - [x] Verify Supabase connectivity and pgvector availability without changing schema.
 - [x] Isolate the preserved local-only Neon aliases before runtime code selects a database URL.
-- [ ] Verify and freeze the embedding model and vector dimension.
-- [ ] Accept or revise ADR-001 to close the human-door deployment choice.
-- [ ] Record the physical substrate ADR.
-- [ ] Begin BUILD 0 implementation.
+- [x] Verify and freeze the embedding model and vector dimension.
+- [x] Accept ADR-001 to close the human-door deployment choice.
+- [x] Record the physical substrate ADR.
+- [x] Begin BUILD 0 implementation with the governed persistence migrations.
+
+### Next implementation move
+
+Implement the single Supabase Edge Function MCP surface in `server/open-brain-mcp/`, deploy it behind the accepted bearer-key boundary, and execute Golden Trace 01 from two fresh Codex client processes.
 
 ## STANDING
 
