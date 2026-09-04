@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "postgres": "npm:postgres@3.4.7"
+  },
+  "tasks": {
+    "check": "deno fmt --check harness.ts deno.json README.md && deno lint harness.ts && deno check harness.ts",
+    "test": "deno run --env-file=../../.env.local --allow-env --allow-net harness.ts"
+  }
+}

@@ -217,8 +217,11 @@ FAIL if:
 
 ## Worked Trace 03 — Evidence versus inference
 
-**STATUS: FROZEN ADVERSARIAL ACCEPTANCE SURFACE — SHAPE CLOSED; MOVE UNRELEASED**
-**IMPLEMENTATION: UNOPENED**
+**STATUS: PASSED 2026-09-04 AMERICA/PHOENIX — MOVE COMPLETE; HUMAN METABOLIZE CLOSURE REQUIRED**
+
+**IMPLEMENTATION: INSTALLED AND VERIFIED**
+
+**EXECUTION EVIDENCE: [`build-receipts/004-build-3.md`](build-receipts/004-build-3.md)**
 
 ### Frozen fixtures
 
@@ -508,7 +511,9 @@ FAIL if any frozen challenge produces a counterexample, including if:
 - the implementation adds a forbidden BUILD 4/5, governance, SIGMA/ECOS, runtime, public, or exhaustive
   ontology surface.
 
-Freeze does not authorize implementation. A separate human Move release remains required.
+Freeze did not authorize implementation. The later explicit human Move release authorized the
+installed and verified BUILD 3 transition only; passing this surface does not close Metabolize or open
+BUILD 4.
 
 ## Worked Trace 04 — Standing change with history
 

@@ -1,14 +1,14 @@
-STATUS: SHAPE CLOSED — OUTPUT CONTRACT BOUND; MOVE PERMISSION REQUIRED; IMPLEMENTATION UNOPENED
+STATUS: MOVE COMPLETE — VERIFICATION PASSED; HUMAN METABOLIZE CLOSURE REQUIRED; BUILD 4 UNOPENED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
 AUTHORITY: Derived from the Build Contract, constitutive invariants, Worked Trace 03 falsification target, closed BUILD 0–2 evidence, and explicit human BUILD 3 phase instruction
-CURRENT BUILD UNIT: BUILD 3 — Claims + Standing + Evidence Links (SHAPE CLOSED; MOVE UNRELEASED)
+CURRENT BUILD UNIT: BUILD 3 — Claims + Standing + Evidence Links (MOVE COMPLETE; METABOLIZE REVIEW REQUIRED)
 
 # BUILD 3 — Claims + Standing + Evidence Links
 
 ## CURRENT MOVE
 
-`CLOSE SHAPE → MOVE PERMISSION REQUIRED`
+`MOVE COMPLETE → HUMAN METABOLIZE CLOSURE REQUIRED`
 
 ```text
 SENSE=CLOSED
@@ -24,16 +24,20 @@ WORKED_TRACE_03=FROZEN_ADVERSARIAL_ACCEPTANCE_SURFACE
 REGRESSION_AUTHORITY_COMPOSITION=NARROW_REOPENING_CORRECTED_AND_RECLOSED
 CROSS_CUTTING_PRESERVATION=future SIGMA/ECOS projection freedom
 OUTPUT_CONTRACT=BOUND
-MOVE_PERMISSION=REQUIRED
-IMPLEMENTATION=UNOPENED
+MOVE_PERMISSION=RELEASED_AND_CONSUMED
+IMPLEMENTATION=INSTALLED_AND_VERIFIED
+WORKED_TRACE_03_EXECUTION=PASS
+BUILD_0_TO_2_CURRENT_STATE_REGRESSION=PASS
+METABOLIZE=READY_FOR_HUMAN_REVIEW_NOT_CLOSED
+BUILD_4=UNOPENED_AND_UNAUTHORIZED
 ```
 
 Shape closed after one exact physical candidate survived the remaining pressure and the final Worked
 Trace 03 construction froze as an adversarial acceptance surface.
 
-The bound Output Contract describes what a future Move may produce; it does not release Move. Do not
-create or alter schema, migrations, runtime, MCP, database, deployment, or remote state until a human
-separately authorizes implementation against this exact contract.
+The human released Move against corrected Shape anchor
+`29b2601faf4b76062cf85e449ac9b05a82a75dd3`. The bound Output Contract is now installed and verified;
+execution evidence is recorded in `docs/build-receipts/004-build-3.md`.
 
 BUILD 0, BUILD 1, and BUILD 2 remain closed. Preserve their receipts, fixtures, runtime, migrations,
 and installed state unless a recorded reopening condition is observed.
@@ -653,11 +657,11 @@ Shape reopened only far enough to compose regression authority in two layers, th
 harness. Worked Trace 03 carries the complementary proof that only BUILD 3-authorized objects and the
 C/L Referents explain the expansion, with no unexplained canonical object or BUILD 4+ surface.
 
-## OUTPUT CONTRACT — BOUND; MOVE UNRELEASED
+## OUTPUT CONTRACT — BOUND AND EXECUTED
 
 `OUTPUT_CONTRACT=BOUND`
 
-When and only when a human separately releases Move, BUILD 3 may produce:
+The released BUILD 3 Move produced exactly:
 
 1. one atomic, timestamped SQL migration that:
    - makes `pgcrypto` available in the `extensions` schema if the canonical project does not already
@@ -696,9 +700,9 @@ BEGIN
 → COMMIT
 ```
 
-Any failure rolls back the entire activation. The Output Contract does not authorize a runtime, MCP,
-deployment, public API, resolver, view, RPC, Event, Artifact, standing history, relation endpoint,
-additional canonical fixture, or remote action outside that future released migration.
+Any failure rolls back the entire activation. The Output Contract did not authorize and Move did not
+add a runtime, MCP, deployment, public API, resolver, view, RPC, Event, Artifact, standing history,
+relation endpoint, additional canonical fixture, or other surface outside the released migration.
 
 ## TEST / PASS CONDITION FOR SHAPE — MET
 
@@ -721,18 +725,18 @@ Shape closed because:
 9. enforcement modes, surfaces, activation ordering, failure behavior, and reopening conditions are
    explicit enough to judge implementation without inventing architecture during Move.
 
-Passing this Shape test does not authorize implementation. The user's instruction authorizes closure
-when the candidate survives, but explicitly withholds Move; a separate human release remains required.
+Passing this Shape test did not authorize implementation. The later explicit human release authorized
+the now-complete Move only; it did not close Metabolize or open BUILD 4.
 
 ## CURRENT STANDING
 
-This checkout records closed Sense, closed Shape, the frozen Worked Trace 03 adversarial surface, and a
-bound but unreleased Output Contract.
+This checkout records closed Sense, closed Shape, the executed Output Contract, and the passing frozen
+Worked Trace 03 and cross-build regression evidence.
 
-It selects the BUILD 3 Shape but does not confer implementation standing, warrant, authority, or Move
-authorization. No ADR was created, as explicitly required by the human instruction.
+Move is complete. BUILD 3 is ready for explicit human Metabolize review but is not declared metabolized
+or closed. No ADR was created, and BUILD 4 remains unopened and unauthorized.
 
-## ENFORCEMENT UNTIL MOVE RELEASE
+## POST-MOVE HOLD
 
 **SEMANTIC — review against governing text:**
 
@@ -741,15 +745,17 @@ authorization. No ADR was created, as explicitly required by the human instructi
   unasserted Thought text; and
 - reject any candidate whose correctness depends only on callers remembering provenance or version.
 
-**OBSERVATIONAL — repository diff and falsification target:**
+**OBSERVATIONAL — installed state and falsification target:**
 
-- the closure diff may change governing documentation but may not add an ADR;
-- it may not add schema, migration, runtime, MCP, test-execution, database, deployment, or remote-state
-  changes; and
-- any proposed implementation is judged against the frozen Worked Trace 03 surface plus the two-layer
-  BUILD 0–2 regression composition after Move is released.
+- the implementation is judged against frozen Worked Trace 03 plus the two-layer BUILD 0–2 regression
+  composition;
+- the migration, harnesses, and receipt may be preserved but not extended beyond the bound Output
+  Contract; and
+- no further schema, runtime, MCP, deployment, ADR, BUILD 4+, or remote-state transition is authorized
+  without explicit human instruction.
 
-No implemented consequential transition is active in this checkout.
+The implemented BUILD 3 transition is active in the canonical database. Its passing evidence does not
+itself confer Metabolize closure.
 
 ## FAILURE BEHAVIOR
 
@@ -785,7 +791,7 @@ the focal object or a Sense-closed decision.
 
 ## NON-GOALS / DO NOT BUILD
 
-- do not implement BUILD 3 until a separate human Move release;
+- do not extend the installed BUILD 3 substrate beyond the released Output Contract;
 - do not turn Thoughts into assertions or add standing fields to Thoughts;
 - do not change Referent identity or BUILD 2 coupling;
 - do not implement typed relation Claims, relation endpoints, predicates, or a relation ontology;
@@ -801,9 +807,9 @@ the focal object or a Sense-closed decision.
 
 ## NEXT HANDLE
 
-`AWAIT EXPLICIT HUMAN MOVE RELEASE.`
+`AWAIT EXPLICIT HUMAN METABOLIZE CLOSURE.`
 
-The exact next authorized action is read-only human review of this closed Shape and bound Output
-Contract. No implementation, migration authoring/application, test execution against the canonical
-database, deployment, commit, ADR, or remote mutation is authorized. After an explicit Move release,
-implement only the bound Output Contract and stop again for acceptance of observed execution evidence.
+The exact next authorized action is read-only human review of the BUILD 3 implementation and execution
+receipt. Do not begin BUILD 4 or perform another schema, runtime, MCP, deployment, ADR, or remote-state
+transition unless the human explicitly closes or reopens BUILD 3 and separately authorizes the next
+phase.
