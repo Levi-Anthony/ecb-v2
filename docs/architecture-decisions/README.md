@@ -11,6 +11,7 @@ ROLE: Index and template for local architectural closure
 | [ADR-001](001-build-0-human-door.md) | ACCEPTED | Supabase Edge Function as the BUILD 0 human door |
 | [ADR-002](002-build-0-physical-substrate.md) | ACCEPTED | BUILD 0 physical substrate |
 | [ADR-003](003-build-2-persistent-first-class-identity.md) | ACCEPTED | Persistent first-class identity registration for BUILD 2 |
+| [ADR-004](004-build-2-physical-realization.md) | ACCEPTED | BUILD 2 trigger, coupling, interlock, and privilege realization |
 
 Create an ADR when the active Build Unit requires a local architectural choice that is not already licensed by governing sources.
 

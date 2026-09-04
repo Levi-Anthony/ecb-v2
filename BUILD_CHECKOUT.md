@@ -1,18 +1,18 @@
 STATUS: RATIFIED PRE-IMPLEMENTATION SHAPE — HUMAN IMPLEMENTATION RELEASE REQUIRED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
-AUTHORITY: Derived from the Build Contract, invariants, ADR-003, frozen acceptance behavior, and explicit human reentry instruction
+AUTHORITY: Derived from the Build Contract, invariants, ADR-003, ADR-004, frozen acceptance behavior, and explicit human reentry instruction
 CURRENT BUILD UNIT: BUILD 2 — Universal Referents (SHAPED; IMPLEMENTATION UNOPENED)
 
 # BUILD 2 — Universal Referents
 
 ## CURRENT MOVE
 
-BUILD 2 Shape is ratified. Stop at the human implementation gate.
+BUILD 2 semantic and physical Shape are ratified. Stop at the human implementation gate.
 
 Do not create or alter schema, migrations, runtime, MCP, database, deployment, or remote state until a
 separate explicit human release opens implementation. The committed root tree containing this checkout,
-ADR-003, and Worked Trace 02 is the required pre-implementation provenance checkpoint.
+ADR-003, ADR-004, and Worked Trace 02 is the required pre-implementation provenance checkpoint.
 
 BUILD 0 and BUILD 1 remain closed. Preserve their receipts, fixtures, runtime, migrations, and deployed
 state exactly unless a recorded reopening condition is observed.
@@ -58,6 +58,24 @@ table.
 
 The registry contains identity only. Type-specific content remains in its native record.
 
+## SELECTED PHYSICAL REALIZATION
+
+ADR-004 freezes one imperative migration using:
+
+- a `SECURITY INVOKER` row-level `BEFORE INSERT` trigger on `public.thoughts` that inserts only `NEW.id`
+  into `public.referents` and contains no conflict suppression;
+- the existing direct Thought runtime unchanged;
+- no SQL resolver function, view, RPC, stored observation, or MCP addition;
+- service-role `SELECT` plus column-level `INSERT (id)` on `public.referents`, with no `UPDATE` or
+  `DELETE`;
+- an immediate, `NOT DEFERRABLE`, same-UUID foreign key with no cascade, set-null, or set-default
+  behavior;
+- registered-only fixture insertion inside activation;
+- a `SHARE ROW EXCLUSIVE` activation lock on `public.thoughts`; and
+- rollback proof after the trigger has attempted registration.
+
+Error serialization remains outside BUILD 2 because there is no production Referent resolver/API.
+
 ## ACTIVATION TRANSITION
 
 Before BUILD 2 activation, an accepted BUILD 0 Thought without a Referent row is expected substrate
@@ -65,17 +83,27 @@ state.
 
 Activation SHALL be one database transaction that:
 
-1. creates `public.referents` with exactly the selected two-column Shape;
-2. registers every existing `public.thoughts` UUID without changing that UUID;
-3. assigns those backfilled rows one database-generated activation-transaction time rather than
-   rewriting Thought `captured_at` as registration time; and
-4. installs structural same-UUID coupling from every Thought to its Referent.
+1. begins and acquires `SHARE ROW EXCLUSIVE` on `public.thoughts` before any activation change;
+2. creates `public.referents` with exactly the selected two-column Shape and a
+   `transaction_timestamp()` default for `registered_at`;
+3. creates and installs the invoker registration trigger;
+4. registers every then-existing `public.thoughts` UUID without changing that UUID;
+5. registers fixture `2eede0e4-b27a-4383-850e-a448f0113c9f` without a Thought;
+6. assigns all activation registrations the database transaction time rather than rewriting Thought
+   `captured_at` as registration time;
+7. installs the immediate, non-deferrable, non-cascading same-UUID foreign key;
+8. enables RLS, installs and verifies the frozen grants, and verifies the schema/coupling Shape; and
+9. commits, releasing queued writers only after every preceding change is active.
 
 If any step fails, none of activation commits.
 
 After activation, a committed Thought without its same-UUID Referent is an integrity violation. New
 Thought creation and its new same-UUID Referent registration SHALL commit atomically. A failed Thought
 capture may not leave that newly created Referent committed.
+
+The trigger inserts a fresh Thought UUID into `public.referents` before the Thought insert. It does not
+use `ON CONFLICT`. An already-registered UUID therefore fails rather than silently acquiring a later
+Thought binding.
 
 Existing BUILD 0 Thoughts retain exactly their existing UUID. GT01 remains:
 
@@ -112,6 +140,7 @@ activation.
 - BUILD 1 closure checkout, receipt, fixture, and identity clarification;
 - the Build Contract and constitutive invariants as amended through ADR-003;
 - ADR-003;
+- ADR-004;
 - frozen Worked Trace 02; and
 - the exact pre-implementation commit/tree anchor for this Shape.
 
@@ -123,6 +152,7 @@ One bounded BUILD 2 implementation that produces:
 - same-UUID registration of every existing Thought;
 - structural post-activation Thought-to-Referent coupling;
 - atomic registration for every newly committed Thought;
+- a write-interlocked activation transition;
 - one registered Referent with no Thought in the inspected scope; and
 - exact-UUID observations matching all four declared `R`/`T` cases.
 
@@ -149,6 +179,8 @@ It does not:
 
 - UUID primary-key uniqueness in `public.referents`;
 - post-activation same-UUID foreign-key coupling from `public.thoughts` to `public.referents`;
+- a row-level invoker registration trigger on every direct Thought insert;
+- a `SHARE ROW EXCLUSIVE` activation interlock that queues concurrent Thought writers;
 - atomic activation/backfill/coupling installation; and
 - atomic creation of a new Thought with its new Referent.
 
@@ -159,7 +191,8 @@ It does not:
 - return the frozen `R`/`T` observation; and
 - rerun BUILD 0 and BUILD 1 regression suites.
 
-The resolver result is not another truth store.
+The resolver result is not another truth store. Observation uses harness queries only; no persistent
+resolver object is authorized.
 
 ## AUTHORIZATION BOUNDARY
 
@@ -168,8 +201,9 @@ No new public, client, or MCP authorization surface is part of BUILD 2.
 - preserve the existing single human door and bearer boundary;
 - grant `anon` and `authenticated` no direct access to `public.referents` or BUILD 2 resolver behavior;
 - enable RLS without client policies on `public.referents`;
-- keep only the `SELECT` and bounded registration/capture access required by BUILD 2 inside the
-  existing server-side service-role boundary, with no `UPDATE` or `DELETE`; and
+- grant the service role only `SELECT` plus column-level `INSERT (id)` on `public.referents`, with no
+  table-level insert, `UPDATE`, or `DELETE`;
+- revoke direct trigger-function `EXECUTE` from `PUBLIC`, `anon`, and `authenticated`; and
 - do not infer governance authority from database capability or bearer possession.
 
 Worked Trace 02 is verified at the canonical persistence boundary. No new MCP tool is required to pass.
@@ -183,17 +217,22 @@ Pass only if frozen Worked Trace 02 proves across fresh contexts that:
    standing, authority, currentness, or native-binding row;
 3. the absent fixture resolves as `R=0, T=0` without manufacturing unknown/question state;
 4. a `T=1, R=0` commit is structurally rejected and classified as coupling failure when observed;
-5. failed new-Thought capture leaves neither the Thought nor its newly created Referent committed;
-6. database inspection finds only the selected identity spine plus the required coupling change;
-7. the BUILD 0 MCP regression suite still passes 6/6;
-8. the BUILD 1 fixture suite still passes 5/5 and deterministic traces do not drift; and
-9. no BUILD 3+ standing, claim, evidence-link, relation, event, artifact, governance, or binding
+5. a direct Thought insert queues behind the activation lock and resumes only through the committed
+   trigger and foreign key;
+6. the rollback probe fires the trigger and then fails an existing Thought constraint, leaving neither
+   the Thought nor its newly attempted Referent committed;
+7. database inspection finds only the selected identity spine plus the required trigger/coupling
+   machinery;
+8. the BUILD 0 MCP regression suite still passes 6/6 with the runtime and tool inventory unchanged;
+9. the BUILD 1 fixture suite still passes 5/5 and deterministic traces do not drift; and
+10. no BUILD 3+ standing, claim, evidence-link, relation, event, artifact, governance, or binding
    machinery exists.
 
 ## FAILURE BEHAVIOR
 
 - invalid or unregistered UUID lookup returns `referent_not_registered`; it does not guess by text;
 - duplicate UUID registration fails explicitly and does not claim subject equivalence;
+- concurrent Thought writes queue at the activation interlock and do not cross the old insert path;
 - activation failure rolls back the entire activation transition;
 - Thought/Referent coupling failure blocks commit;
 - capture failure rolls back both newly attempted rows; and
@@ -223,7 +262,7 @@ Reopen Shape before implementation if Worked Trace 02 cannot pass without:
 - creating co-reference/entity-resolution behavior;
 - adding a new public/MCP authorization surface;
 - changing an existing Thought UUID; or
-- weakening atomic activation or post-activation coupling.
+- weakening the invoker trigger, activation interlock, atomic rollback, or post-activation coupling.
 
 ## NON-GOALS / DO NOT BUILD
 
@@ -231,6 +270,8 @@ Reopen Shape before implementation if Worked Trace 02 cannot pass without:
 - do not add `native_type`;
 - do not add description, alias, metadata, semantic state, standing, authority, or currentness;
 - do not add a native-binding table;
+- do not add a SQL resolver function, view, RPC, stored observation, or MCP Referent tool;
+- do not replace the direct Thought insert with a transactional RPC or deploy a runtime change;
 - do not implement later binding/refinement of an already-registered Referent;
 - do not implement semantic discovery, co-reference, entity resolution, merge, split, or deduplication;
 - do not add claims, Evidence Links, typed relation claims, Events, Artifacts, warrants, governance
@@ -247,5 +288,5 @@ or passing the trace requires crossing a non-goal.
 
 ## CURRENT HUMAN GATE
 
-The pre-implementation Shape is ratified and remotely anchored. Implementation remains unopened until
-the human explicitly releases BUILD 2 from this committed state.
+The semantic and physical pre-implementation Shape are ratified and remotely anchored. Implementation
+remains unopened until the human explicitly releases BUILD 2 from this committed state.

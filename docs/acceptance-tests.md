@@ -109,16 +109,22 @@ FAIL if:
 
 - existing Thought / Referent UUID: `19a949ea-a8fc-4250-a386-fa64e5530180` (GT01);
 - registered-only UUID: `2eede0e4-b27a-4383-850e-a448f0113c9f`;
-- absent probe UUID: `ce654422-bb4f-4c6b-bf3d-e32b3dd10e8f`.
+- absent probe UUID: `ce654422-bb4f-4c6b-bf3d-e32b3dd10e8f`;
+- rollback-probe UUID: `09eb6cc9-b204-4a6d-a1a4-b62fafcf8141`;
+- activation-concurrency UUID: `93d06071-b8aa-4b2d-b20d-99d2d6fc1ed7`.
 
 The fixture labels live only in this test authority. They are not descriptions, aliases,
 classifications, claims, standing, or native-binding records in the canonical brain.
 
 ### Context A — activation and registration
 
-Activate BUILD 2 in one transaction. Register every existing Thought under its unchanged UUID, install
-post-activation same-UUID coupling, and register the registered-only fixture without creating a Thought
-or other native record for it.
+Activate BUILD 2 in one transaction using ADR-004's exact order. Acquire `SHARE ROW EXCLUSIVE` on
+`public.thoughts` before any activation change; install the invoker registration trigger before
+backfill; register every existing Thought under its unchanged UUID; register the registered-only
+fixture without a Thought or other native record; then install the immediate non-deferrable same-UUID
+foreign key and frozen privilege boundary before commit.
+
+The registered-only fixture is part of activation, not later acceptance setup.
 
 For backfilled Thoughts, `registered_at` is one database-generated activation-transaction time, not a
 copy of Thought `captured_at`. Registration time is database-assigned for every new Referent.
@@ -130,9 +136,10 @@ the declared Thought scope.
 
 ### Operation
 
-For each UUID, inspect only whether it exists in the universal registry (`R`) and whether the same UUID
-exists in the current Thought surface (`T`). Resolve by exact UUID, never by description or semantic
-similarity.
+For each UUID, the acceptance harness queries only whether it exists in the universal registry (`R`)
+and whether the same UUID exists in the current Thought surface (`T`). Resolve by exact UUID, never by
+description or semantic similarity. Do not create a SQL resolver function, view, RPC, stored
+observation, or MCP tool.
 
 ### Required result
 
@@ -149,14 +156,29 @@ or an isolated noncanonical harness state, never by leaving canonical corruption
 
 ### Atomicity result
 
-Force one new Thought capture to fail after its new UUID has been selected. Neither the Thought nor its
-new Referent may remain committed.
+Directly attempt to insert Thought UUID `09eb6cc9-b204-4a6d-a1a4-b62fafcf8141` with empty content and
+otherwise structurally valid values. The `BEFORE INSERT` trigger must attempt Referent registration
+before the existing nonempty-content constraint rejects the Thought. Neither the Thought nor the
+trigger-created Referent may remain committed.
+
+A pre-database embedding failure does not satisfy this proof.
+
+### Activation concurrency result
+
+While the activation transaction holds its `SHARE ROW EXCLUSIVE` lock, a second database session
+attempts to insert Thought UUID `93d06071-b8aa-4b2d-b20d-99d2d6fc1ed7`. The insert must queue. After
+activation commits, it may proceed only through the installed registration trigger and immediate
+foreign key, producing `R=1, T=1` inside the probe transaction. Roll back the probe transaction so
+neither probe row becomes canonical fixture state.
 
 ### Authorization result
 
 - `anon` and `authenticated` have no direct registry or resolver access;
 - `public.referents` has RLS enabled with no client policy, and the service role has no registry
   `UPDATE` or `DELETE` capability;
+- the service role has registry `SELECT` plus column-level `INSERT (id)` only and cannot supply
+  `registered_at`;
+- direct trigger-function `EXECUTE` is unavailable to `PUBLIC`, `anon`, and `authenticated`;
 - the current bearer-protected MCP tool inventory remains exactly `capture_thought`, `fetch`, and
   `search`;
 - canonical-boundary verification uses only the existing server-side service-role/admin boundary; and
@@ -166,6 +188,8 @@ new Referent may remain committed.
 
 - GT01's exact BUILD 0 UUID and Thought content/provenance;
 - one identity-only registry with exactly `id` and `registered_at`;
+- the existing direct Thought runtime path, unchanged;
+- one invoker registration trigger and immediate non-deferrable non-cascading same-UUID foreign key;
 - description-independent, classification-independent, binding-independent addressability;
 - observation results are derived, not stored as semantic state;
 - registered-only absence does not create a persisted question or epistemic standing;
@@ -179,11 +203,14 @@ FAIL if:
 
 - any existing Thought UUID changes or lacks its same-UUID Referent after activation;
 - activation, backfill, and coupling are not atomic;
+- a concurrent Thought writer can cross activation through the old insert path instead of queuing;
 - a new Thought can commit without its Referent;
-- a failed new-Thought capture can leave its newly created Referent committed;
+- the rollback probe does not attempt registration before failure or leaves either probe row committed;
 - the registered-only fixture requires or acquires description, classification, native type, native
   binding, assertion, standing, authority, warrant, authorization, or currentness;
 - exact lookup guesses, searches semantically, or merges UUIDs;
+- a SQL resolver function, view, RPC, stored observation, or MCP Referent tool appears;
+- the direct Thought runtime changes or a transactional capture RPC is added;
 - a new public/MCP authorization surface appears;
 - the registry contains another column or BUILD 2 adds another persistent table; or
 - later refinement/binding of the registered-only fixture is implemented.
