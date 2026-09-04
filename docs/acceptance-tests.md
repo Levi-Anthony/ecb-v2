@@ -543,77 +543,211 @@ Freeze expected answers before implementation.
 
 ## Worked Trace 06 — Typed relation claim
 
-**STATUS: CANDIDATE — NOT ACCEPTANCE AUTHORITY**
+**STATUS: FROZEN ADVERSARIAL ACCEPTANCE AUTHORITY — SHAPE CLOSED; MOVE UNRELEASED**
 
-**UNLOCKS: BUILD 4 (proposed)**
+**UNLOCKS: BUILD 4**
 
-**RECORDED: 2026-09-04 America/Phoenix at BUILD 4 Sense closure**
+**IMPLEMENTATION: UNOPENED**
 
-This section records a candidate falsification target derived during BUILD 4 Sense. It is **not frozen**
-and may not be cited as acceptance authority, as a pass condition, or as justification for any
-implementation. BUILD 4 Shape freezes the final construction after the predicate and representation
-questions close.
+**FROZEN: 2026-09-04 America/Phoenix at BUILD 4 Shape closure**
 
-Trace ordinals run by creation order, not build order: Worked Trace 04 unlocks BUILD 5 and Worked Trace
-05 unlocks BUILD 7/8. Identifier 06 was selected as the next free ordinal so that no reserved trace is
+Promoted from candidate to acceptance authority after one representation survived the BUILD 4 second
+examination. Trace ordinals run by creation order, not build order: Worked Trace 04 unlocks BUILD 5 and
+Worked Trace 05 unlocks BUILD 7/8. Identifier 06 is the next free ordinal, so no reserved trace is
 renumbered or repurposed.
 
-### Candidate focal behavior
+### Frozen focal behavior
 
 Express one referent-to-referent relation as a Claim, under a single relation truth store, without
 collapsing relation Claim into Evidence Link or asserted relation into relational fact.
 
-### Candidate fixtures
+### Frozen vocabulary
 
-Already-installed Referents only; no new canonical Thought is required:
+```text
+CLAIM_KIND ∈ { assertion, relation }
+PREDICATE  = depends_on
+```
 
-- endpoint (i) — Claim C `0f89e778-b16e-4840-9129-a2aa3eb6f697`, a Referent whose native record is a
-  Claim;
-- endpoint (ii) — GT01 `19a949ea-a8fc-4250-a386-fa64e5530180`, a Referent whose native record is a
-  Thought;
-- endpoint (iii) — registered-only `2eede0e4-b27a-4383-850e-a448f0113c9f`, a Referent with no native
-  record.
+`depends_on` means the subject Claim's validity is conditional on the object Referent. It asserts
+neither endpoint's truth, support, confidence, currentness, standing, or authority, and triggers no
+propagation or cascade.
 
-A relation over (i) and (ii) exercises referent-to-referent addressing across different native types
-through one universal identity. Endpoint (iii) probes endpoint existence without deleting anything.
+### Frozen fixtures
 
-The predicate, direction semantics, arity, physical representation, and second `claim_kind` value are
-**not selected here**. They are BUILD 4 Shape decisions under narrowly reactivated AP-01 and minimally
-activated AP-07.
+- existing GT01 Thought / Referent `T`: `19a949ea-a8fc-4250-a386-fa64e5530180`;
+- existing registered-only Referent `X`: `2eede0e4-b27a-4383-850e-a448f0113c9f`;
+- existing BUILD 3 assertion Claim `C`: `0f89e778-b16e-4840-9129-a2aa3eb6f697`;
+- existing BUILD 3 Evidence Link `L`: `4c6c0f50-a936-4da6-bb09-233f93320639`;
+- new assertion Claim `C2`: `c7f7d330-e778-4ae5-be96-3a172bea1166`;
+- new relation Claim `R`: `cb429206-5abd-4adb-8ff9-d6d6a885034c`;
+- rollback-only reversal probe `RR`: `1d43f2e8-d5ac-47f9-bf11-0aee12e840ea`;
+- rollback-only duplicate-triple probe `RD`: `99452a5e-9ee4-4e09-9426-e706fc24cffd`;
+- rollback-only unbound-endpoint probe `RU`: `6a628b2e-2a01-4d90-aa58-7ee2e14d4a9c`;
+- rollback-only self-relation probe `RS`: `d19eb743-7768-4624-aaa5-ea7dd2e6e31b`; and
+- rollback-only Evidence Link on relation Claim probe `LR6`:
+  `4bbf51ab-c29d-4fa5-90e1-6d7d329d9370`.
 
-### Candidate falsifiers
+The BUILD 4 activation inserts only `C2` and `R`. Probe identifiers are used inside rolled-back
+transactions and may not remain in canonical state.
 
-1. reversing the endpoints yields an observably different and wrong assertion, prevented structurally
-   rather than by caller convention;
-2. a relation Claim is distinguishable from an Evidence Link in persistence, not by caller memory;
-3. asserting the relation confers no support, currentness, supersession, or standing change on either
-   endpoint;
-4. two separately asserted relation Claims over the same triple remain two Claims, with no upsert,
-   accumulation, or tuple-uniqueness collapse;
-5. no relation fact is representable in two places;
-6. the relation Claim has a same-UUID Referent, and loss of an endpoint's native binding does not erase
-   the relation Claim while the endpoint Referent remains registered;
-7. classification-shaped input does not become governing truth;
-8. asserting a relation between two Referents performs no co-reference or entity resolution;
-9. only BUILD 4-authorized objects and Referents explain the canonical expansion, with no BUILD 5+
-   surface; and
-10. accepted BUILD 3 assertion behavior is preserved under the cross-build regression projection.
+Claim `C2` is exactly:
 
-Falsifier 6 concerns native-binding loss only. It does not grant or imply a general deletion policy.
+```text
+proposition=The described scene contains at least two distinct objects.
+scope=worked_trace_06:gt01_interpretation_dependency
+claim_kind=assertion
+origin=ecb_inference
+epistemic_standing=unassessed
+asserted_at=database transaction time
+subject_referent_id=null; predicate=null; object_referent_id=null
+```
 
-### Candidate BUILD 3 regression composition
+Relation Claim `R` is exactly:
 
-Any BUILD 4 candidate must carry the two-layer composition already recorded at BUILD 4 Sense:
+```text
+proposition=null
+scope=worked_trace_06:claim_dependency
+claim_kind=relation
+origin=ecb_inference
+epistemic_standing=unassessed
+asserted_at=database transaction time
+subject_referent_id=c7f7d330-e778-4ae5-be96-3a172bea1166
+predicate=depends_on
+object_referent_id=0f89e778-b16e-4840-9129-a2aa3eb6f697
+```
 
-- **Layer A — historical acceptance.** `tests/build-3/harness.ts` remains byte-frozen as BUILD 3 closure
-  provenance. It is not weakened, rewritten, or re-run as a post-BUILD 4 whole-schema gate. Its
-  closure-state assertions — the exact public table list, the exact public function list, and
-  `claim_count = 1`, `link_count = 1`, `referent_count = 4` — proved that BUILD 3 installed no
-  later-build machinery. They are not permanent prohibitions on an authorized later Build Unit adding
-  its own Referent-backed records. The cardinality assertion in particular breaks unconditionally once a
-  relation Claim exists, even if BUILD 4 adds no table and no function.
-- **Layer B — current-state regression.** A minimum cross-build BUILD 3 regression harness verifies the
-  enduring projection, including preserved accepted assertion behavior, plus a BUILD 4 expansion proof.
+### Required machine-legible outcomes
 
-The exact enduring BUILD 3 projection is an open BUILD 4 Shape question and is frozen with this trace,
-not before it.
+The harness queries by exact UUID and emits exactly one of:
+
+```text
+relation_claim_recorded
+relation_claim_endpoint_unbound
+not_a_relation_claim
+```
+
+Every result contains `claim_id` and `claim_kind`. Relation results also contain `scope`, `origin`,
+`epistemic_standing`, `asserted_at`, `subject_referent_id`, `predicate`, `object_referent_id`, and a
+per-endpoint native-binding presence flag.
+
+| Status | Required fields | What it establishes |
+|---|---|---|
+| `relation_claim_recorded` | both endpoints registered and natively bound | `R` exists as a relation Claim and both endpoint Referents currently have a native record in the inspected scope. |
+| `relation_claim_endpoint_unbound` | at least one endpoint registered with no native record | The relation Claim and its endpoint Referents persist while a native binding is absent. It does not establish deletion, invalidity, or loss of the assertion. |
+| `not_a_relation_claim` | relation fields null | The identified Claim is an assertion Claim. It does not establish that no relation exists elsewhere. |
+
+Precedence: `claim_kind = 'assertion'` yields `not_a_relation_claim`; otherwise an unbound endpoint
+yields `relation_claim_endpoint_unbound`; otherwise `relation_claim_recorded`.
+
+No SQL resolver, view, RPC, MCP tool, or production serialization surface is permitted.
+
+### Frozen adversarial challenges
+
+PASS means no falsifier below is produced. A happy-path result alone is insufficient.
+
+1. **Baseline and bounded expansion**
+   - Verify `C2`, `R`, and their same-UUID Referents, and obtain `relation_claim_recorded`.
+   - Verify exact `claims` columns, the kind, shape, predicate, and self-relation constraints, both
+     restrictive endpoint foreign keys, the trigger, RLS, and grants.
+   - Verify **no new table and no new function** were added, and that no view, resolver, RPC, index, or
+     BUILD 5+ object appeared.
+2. **Direction**
+   - Insert `RR` asserting `C depends_on C2`, the exact reversal, in a rolled-back transaction. It must
+     succeed as a **different** Claim with different endpoints, never collapse to `R`, and never be
+     reported as the same relation. Roll back.
+3. **Relation versus Evidence Link**
+   - Verify a relation Claim carries a predicate and two Referent endpoints and no revision scheme,
+     digest, or role; and that an Evidence Link carries scheme, digest, and role and no predicate.
+   - In a rolled-back transaction attach Evidence Link `LR6` to relation Claim `R` through the allowed
+     boundary. It must succeed, derive the frozen GT01 digest, and leave `R` a relation Claim rather
+     than converting it into evidence or converting the link into a relation. Roll back.
+4. **No support, currentness, supersession, or standing change**
+   - Verify `R` carries no column capable of expressing support, confidence, currentness, validity
+     interval, or supersession.
+   - Verify that asserting `R` left Claim `C` and Claim `C2` rows unchanged, including their
+     `epistemic_standing` and `asserted_at`.
+5. **Multiplicity**
+   - Insert `RD` asserting the identical triple `C2 depends_on C` in a rolled-back transaction. It must
+     succeed as a second, distinct Claim with its own identity, Referent, and assertion time. No
+     uniqueness violation, upsert, accumulation, or counter increment may occur. Roll back.
+6. **Endpoint addressing and native-binding disappearance**
+   - Insert `RU` asserting `C2 depends_on X`, where `X` is registered with no native record, in a
+     rolled-back transaction. It must succeed, proving endpoints address Referents rather than native
+     types. Observe `relation_claim_endpoint_unbound`. Roll back.
+   - In an owner transaction delete only the native `claims` row for `C2`. `R`, `C2`'s Referent, and
+     `C`'s Referent must survive, and the outcome must be `relation_claim_endpoint_unbound`. Roll back.
+   - Deleting any endpoint Referent, or `C` while dependent rows exist, must fail rather than cascade
+     or null an endpoint.
+7. **Self-relation**
+   - Insert `RS` asserting `C2 depends_on C2` in a rolled-back transaction. It must fail on
+     `claims_depends_on_not_self`. Verify the constraint is predicate-scoped and imposes no universal
+     prohibition on future predicates.
+8. **Caller forgery and least privilege**
+   - As `service_role`, attempts to supply `origin`, `epistemic_standing`, or `asserted_at` must fail at
+     the column privilege boundary.
+   - A relation Claim missing any relation field, an assertion Claim carrying any relation field, a
+     relation Claim with a non-null proposition, an assertion Claim with a null or blank proposition,
+     and any predicate other than `depends_on` must each fail.
+   - `service_role` attempts to update or delete any Claim, Evidence Link, or Referent must fail.
+     `PUBLIC`, `anon`, and `authenticated` must have no access.
+9. **No co-reference and no model authority**
+   - Verify asserting `R` created no identity, equivalence, merge, or resolution record, and that
+     `public.referents` remains exactly `id + registered_at`.
+   - Verify no column can carry confidence, classifier identity, model version, or rationale, so
+     classifier-shaped input cannot become governing truth.
+10. **BUILD 0–3 regression under the two-layer model**
+    - Apply the frozen enduring BUILD 3 projection below. The public and MCP inventory remains exactly
+      `capture_thought`, `fetch`, and `search`.
+
+### Frozen enduring BUILD 3 projection
+
+#### Layer A — historical acceptance
+
+`tests/build-3/harness.ts` remains byte-frozen as BUILD 3 closure provenance. It is not weakened,
+rewritten, or re-run as a post-BUILD 4 whole-schema gate. Its closure-state assertions — the exact public
+table list, the exact public function list, and `claim_count = 1`, `link_count = 1`,
+`referent_count = 4` — proved that BUILD 3 installed no later-build machinery. They are not permanent
+prohibitions on an authorized later Build Unit. The cardinality assertion breaks unconditionally once a
+relation Claim exists.
+
+#### Layer B — current-state regression
+
+After BUILD 4 installation, verify that:
+
+- `claims` and `evidence_links` exist with same-UUID Referent coupling;
+- every assertion Claim requires a non-null, non-empty `proposition` and carries
+  `claim_kind='assertion'`, `origin='ecb_inference'`, `epistemic_standing='unassessed'`, and a
+  database-assigned `asserted_at`;
+- Claim `C` retains its exact proposition, scope, kind, origin, standing, and assertion time;
+- Evidence Link `L` retains its exact role, scheme, digest, endpoints, and link time;
+- the GT01 revision digest remains independently reproducible and yields `linked_revision_match`;
+- all four frozen Worked Trace 03 outcomes remain producible;
+- `evidence_links` retains no foreign key to `thoughts` and historical lineage does not cascade;
+- `prepare_evidence_link` remains `SECURITY DEFINER` with its `FOR SHARE` lock and caller-forgery
+  rejection;
+- service-role privileges are no weaker and no `UPDATE` or `DELETE` is granted on either table;
+- RLS remains enabled with zero policies on both tables; and
+- no uniqueness rule collapses repeated historical uses of the same evidence.
+
+The following are closure-state snapshots and are **not** enduring invariants: the exact public table
+and function lists; `claim_count = 1`, `link_count = 1`, `referent_count = 4`; `claims` having exactly
+the seven BUILD 3 columns; `claim_kind` admitting only `assertion`; and `proposition` being
+unconditionally `NOT NULL`.
+
+### Failure
+
+FAIL if any frozen challenge produces a counterexample, including if:
+
+- endpoint reversal collapses to the same relation or is reported identically;
+- a relation Claim is indistinguishable from an Evidence Link without caller memory;
+- asserting a relation changes any endpoint's standing or implies support, currentness, or
+  supersession;
+- two separately asserted identical triples become one record;
+- any relation fact becomes canonically representable in two places;
+- native-binding disappearance erases a relation Claim whose endpoint Referent remains registered;
+- confidence, classifier identity, or model output acquires governing effect;
+- asserting a relation performs co-reference or entity resolution;
+- an unexplained canonical object, new table, new function, or BUILD 5+ surface appears; or
+- an enduring BUILD 0–3 behavior in the projection above regresses.
+
+Freezing does not authorize implementation. A separate human Move release remains required.

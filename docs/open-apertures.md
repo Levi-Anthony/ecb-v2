@@ -20,14 +20,16 @@ Exact enum values for claim kind, evidentiary basis, epistemic standing, governa
 The dimensional separation is architecturally required. The exact vocabulary has not yet been exercised enough by real v2 records to justify freezing it.
 
 **CURRENT EFFECT**  
-REACTIVATED NARROWLY FOR BUILD 4 on 2026-09-04 America/Phoenix by explicit human disposition, because
-BUILD 4 requires a second Claim kind for typed-relation Claims. BUILD 4 may not route around
-`claim_kind` to avoid this reactivation; the governing Claim distinction already includes assertion
-Claims and typed-relation Claims.
+NARROWED BY CLOSED BUILD 4 SHAPE. AP-01 was reactivated for BUILD 4 because BUILD 4 requires a second
+Claim kind for typed-relation Claims, and BUILD 4 Shape has now closed that requirement.
 
-The reactivation is bounded. AP-01 narrows only far enough to support the relation-Claim behavior earned
-by the BUILD 4 Worked Trace. **The exact second `claim_kind` value is not selected by BUILD 4 Sense; it
-is a Shape decision.**
+`claim_kind` is closed at exactly `assertion` and `relation`. `relation` designates a typed
+referent-to-referent relation Claim and matches the Build Contract's "assertion or typed relation"
+without inventing vocabulary. Origin and epistemic-standing values are unchanged from BUILD 3: a
+relation Claim is recorded with `origin=ecb_inference` and `epistemic_standing=unassessed` exactly as an
+assertion Claim is.
+
+No third claim kind, no relation-specific origin, and no relation-specific standing value is admitted.
 
 The closed BUILD 3 values remain accepted and unchanged: `claim_kind=assertion`,
 `origin=ecb_inference`, and `epistemic_standing=unassessed`. `unassessed` means only that no separate
@@ -40,14 +42,13 @@ Broader claim-kind, origin, evidentiary-basis, epistemic, governance-standing, a
 qualification, and history vocabularies remain open on their existing terms.
 
 **TRIGGER**  
-Reactivate further when a build needs an additional claim kind or origin beyond BUILD 4's, a qualified
-epistemic value, governance or action standing, or a standing transition that `unassessed` cannot
-represent.
+Reactivate when a build needs a claim kind or origin beyond `assertion`, `relation`, and
+`ecb_inference`, a qualified epistemic value, governance or action standing, or a standing transition
+that `unassessed` cannot represent.
 
 **ROUTE**  
-BUILD 4 Shape for the second claim-kind value only. Worked Trace 04 / BUILD 5 for qualification history;
-otherwise the first build whose behavior requires the additional controlled value. Preserve all
-dimensional separations.
+Worked Trace 04 / BUILD 5 for qualification history; otherwise the first build whose behavior requires
+the additional controlled value. Preserve all dimensional separations.
 
 ## AP-02 — Stable evidence interface
 
@@ -156,20 +157,25 @@ Complete set/hierarchy of relation predicates.
 The system has not earned a universal relation taxonomy.
 
 **CURRENT EFFECT**  
-ACTIVATED TO MINIMUM RESOLUTION ONLY on 2026-09-04 America/Phoenix for BUILD 4. BUILD 3 did not activate
-this aperture. BUILD 4 may introduce exactly one relation predicate, earned by its candidate Worked
-Trace, and no broader vocabulary.
+NARROWED BY CLOSED BUILD 4 SHAPE. BUILD 3 did not activate this aperture. BUILD 4 closes exactly one
+predicate: `depends_on`, meaning the subject Claim's validity is conditional on the object Referent.
 
-The complete relation ontology remains DEFERRED. Minimum activation does not authorize a predicate
-taxonomy or hierarchy, inverse or symmetry machinery, a graph traversal surface, relation lifecycle,
-co-reference or entity resolution, or adoption of the six-label OB1 typed-edge vocabulary by
-resemblance. The predicate is selected in BUILD 4 Shape, not in Sense.
+`depends_on` asserts neither endpoint's truth, support, confidence, currentness, standing, or authority,
+and triggers no propagation or cascade. It was selected because it is the only candidate that is
+asymmetric, makes endpoint reversal observably wrong, and imports neither support semantics adjacent to
+Evidence Link nor BUILD 5 currentness semantics.
+
+The complete relation ontology remains DEFERRED. BUILD 4 admits no second predicate, taxonomy or
+hierarchy, inverse or symmetry machinery, graph traversal surface, relation lifecycle, co-reference or
+entity resolution, and no adoption of the six-label OB1 typed-edge vocabulary by resemblance. The
+self-relation prohibition closed by BUILD 4 is scoped to `depends_on` alone and imposes no universal
+rule on future predicates.
 
 **TRIGGER**  
 Repeated ambiguity, integrity failures, or cross-domain reuse demonstrates a higher-order relation grammar is needed.
 
 **ROUTE**  
-BUILD 4 Shape for the single earned predicate. Relation-schema ADR for anything broader.
+Relation-schema ADR for anything broader than BUILD 4's single closed predicate.
 
 ## AP-08 — Final human UI
 
