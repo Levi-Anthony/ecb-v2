@@ -65,7 +65,9 @@ Semantic retrieval remains the fallback path when richer structure has not earne
 Begin with five logical primitives:
 
 **Referent**  
-Universal stable identity for persistently addressable governance objects.
+Universal stable identity for a persistent first-class subject of inspection or relation. This includes
+persisted Thoughts and governance objects. Registration may precede description, classification, or an
+encountered native binding.
 
 **Claim**  
 Assertion or typed relation with scope, provenance, and standing.
@@ -102,6 +104,10 @@ Keep distinct:
 
 **Referent registration**  
 Stable addressability.
+
+Registration does not assert what the subject is, establish that two UUIDs identify the same subject,
+or confer semantic discoverability, promotion, standing, authority, warrant, authorization, or
+currentness.
 
 **Semantic promotion**  
 Change in structured claim/governance standing.

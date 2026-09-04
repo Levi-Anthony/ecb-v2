@@ -11,7 +11,14 @@ ROLE: Prevent implementation-by-terminology-drift
 
 A stable identity used to address a persistent first-class subject of inspection or relation.
 
-**NOT EQUIVALENT TO:** its description; map; artifact representation; authority.
+Registration is the existence of the UUID in the universal referent registry. It may precede
+description, classification, or an encountered native binding.
+
+Referential addressability does not guarantee semantic discoverability. UUID uniqueness does not
+establish subject uniqueness, co-reference, or entity resolution.
+
+**NOT EQUIVALENT TO:** its description; map; artifact representation; assertion; standing; authority;
+currentness.
 
 ## Thought
 
@@ -21,7 +28,22 @@ An atomic Open Brain evidence record optimized for future semantic retrieval.
 
 A persisted thought's durable UUID supplies stable referential addressability.
 
+After BUILD 2 activation, a committed Thought and its Referent use exactly the same UUID. Before
+activation, an accepted BUILD 0 Thought without a Referent registry row is expected historical
+substrate state.
+
 **NOT EQUIVALENT TO:** promoted claim; canonical knowledge; Universal Referent implementation; standing; authority; governing designation; currentness.
+
+## Native binding
+
+**STATUS: GOVERNING FOR BUILD 2 OBSERVATION; GENERAL BINDING LIFECYCLE DEFERRED**
+
+The observed presence of a native record with the same UUID in a declared scope. For BUILD 2, the only
+native scope inspected is the current Thought surface.
+
+Absence in that scope does not mean the Referent is unregistered or invalid, and it does not create
+epistemic or question standing. BUILD 2 does not implement later refinement or binding of an already
+registered unclassified Referent into a native representation.
 
 ## Claim
 

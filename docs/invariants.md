@@ -31,16 +31,26 @@ Implementation SHALL preserve recoverability of these distinctions:
 
 ## Universal identity
 
-Every persisted claim, event, artifact, Master-Key expression, envelope, packet, aperture, warrant, evaluation, enforcement rule, and other first-class governance object SHALL possess a stable referent identity.
+Every persistent first-class subject of inspection or relation SHALL possess a stable referent identity.
+This includes Thoughts, claims, events, artifacts, Master-Key expressions, envelopes, packets,
+apertures, warrants, evaluations, enforcement rules, and other first-class governance objects.
+
+Stable referent identity MAY precede description, classification, or an encountered native binding.
 
 Type-specific content remains in its native record.
 
 Referent registration does not imply:
 
+- description or semantic discoverability;
+- assertion;
 - authority;
 - standing;
 - promotion;
+- currentness;
 - or ontological significance.
+
+UUID uniqueness does not imply subject uniqueness. Referential identity does not perform co-reference
+or entity resolution.
 
 ## Enforcement
 

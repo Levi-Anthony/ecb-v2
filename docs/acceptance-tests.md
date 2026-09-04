@@ -102,12 +102,91 @@ FAIL if:
 
 ## Worked Trace 02 — Stable referent resolution
 
-**STATUS: RESERVED**  
-**UNLOCKS: BUILD 2**
+**STATUS: FROZEN — PRE-IMPLEMENTATION**
+**UNLOCKS: BUILD 2 IMPLEMENTATION ONLY AFTER EXACT SHAPE ANCHOR AND HUMAN RELEASE**
 
-Freeze before BUILD 2 implementation.
+### Fixtures
 
-Must prove repeated references can resolve to one stable identity without making description equal identity.
+- existing Thought / Referent UUID: `19a949ea-a8fc-4250-a386-fa64e5530180` (GT01);
+- registered-only UUID: `2eede0e4-b27a-4383-850e-a448f0113c9f`;
+- absent probe UUID: `ce654422-bb4f-4c6b-bf3d-e32b3dd10e8f`.
+
+The fixture labels live only in this test authority. They are not descriptions, aliases,
+classifications, claims, standing, or native-binding records in the canonical brain.
+
+### Context A — activation and registration
+
+Activate BUILD 2 in one transaction. Register every existing Thought under its unchanged UUID, install
+post-activation same-UUID coupling, and register the registered-only fixture without creating a Thought
+or other native record for it.
+
+For backfilled Thoughts, `registered_at` is one database-generated activation-transaction time, not a
+copy of Thought `captured_at`. Registration time is database-assigned for every new Referent.
+
+### Context reset
+
+Context B begins without conversational access to Context A. It receives only the three exact UUIDs and
+the declared Thought scope.
+
+### Operation
+
+For each UUID, inspect only whether it exists in the universal registry (`R`) and whether the same UUID
+exists in the current Thought surface (`T`). Resolve by exact UUID, never by description or semantic
+similarity.
+
+### Required result
+
+| UUID / condition | R | T | Required observation |
+|---|---:|---:|---|
+| absent probe | 0 | 0 | `referent_not_registered(scope=thoughts)` |
+| registered-only fixture | 1 | 0 | registered + `native_binding.absent_in_scope(scope=thoughts)` |
+| GT01 | 1 | 1 | registered + `native_binding.present(type=thought)` |
+| attempted/observed broken coupling | 0 | 1 | commit rejected; observation class `referent_coupling_broken` |
+
+The `R=0, T=1` row defines integrity-failure classification. Structural coupling must make it
+uncommittable after activation; the test may exercise it through a deliberately rejected transaction
+or an isolated noncanonical harness state, never by leaving canonical corruption behind.
+
+### Atomicity result
+
+Force one new Thought capture to fail after its new UUID has been selected. Neither the Thought nor its
+new Referent may remain committed.
+
+### Authorization result
+
+- `anon` and `authenticated` have no direct registry or resolver access;
+- `public.referents` has RLS enabled with no client policy, and the service role has no registry
+  `UPDATE` or `DELETE` capability;
+- the current bearer-protected MCP tool inventory remains exactly `capture_thought`, `fetch`, and
+  `search`;
+- canonical-boundary verification uses only the existing server-side service-role/admin boundary; and
+- technical capability confers no standing, authority, warrant, or currentness.
+
+### Must preserve
+
+- GT01's exact BUILD 0 UUID and Thought content/provenance;
+- one identity-only registry with exactly `id` and `registered_at`;
+- description-independent, classification-independent, binding-independent addressability;
+- observation results are derived, not stored as semantic state;
+- registered-only absence does not create a persisted question or epistemic standing;
+- UUID uniqueness does not become subject uniqueness or co-reference/entity resolution;
+- BUILD 0 and BUILD 1 evidence remains unchanged; and
+- no BUILD 3+ primitive or later native-binding/refinement behavior.
+
+### Failure
+
+FAIL if:
+
+- any existing Thought UUID changes or lacks its same-UUID Referent after activation;
+- activation, backfill, and coupling are not atomic;
+- a new Thought can commit without its Referent;
+- a failed new-Thought capture can leave its newly created Referent committed;
+- the registered-only fixture requires or acquires description, classification, native type, native
+  binding, assertion, standing, authority, warrant, authorization, or currentness;
+- exact lookup guesses, searches semantically, or merges UUIDs;
+- a new public/MCP authorization surface appears;
+- the registry contains another column or BUILD 2 adds another persistent table; or
+- later refinement/binding of the registered-only fixture is implemented.
 
 ## Worked Trace 03 — Evidence versus inference
 

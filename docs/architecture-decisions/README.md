@@ -4,6 +4,14 @@ ROLE: Index and template for local architectural closure
 
 # Architecture Decision Records
 
+## Index
+
+| ADR | Status | Bounded decision |
+|---|---|---|
+| [ADR-001](001-build-0-human-door.md) | ACCEPTED | Supabase Edge Function as the BUILD 0 human door |
+| [ADR-002](002-build-0-physical-substrate.md) | ACCEPTED | BUILD 0 physical substrate |
+| [ADR-003](003-build-2-persistent-first-class-identity.md) | ACCEPTED | Persistent first-class identity registration for BUILD 2 |
+
 Create an ADR when the active Build Unit requires a local architectural choice that is not already licensed by governing sources.
 
 Each ADR must record:
