@@ -1,6 +1,257 @@
 # BRINGALONG — SIGMA→ECOS Formal Reconnaissance
 
-**Paste this entire document.** It is self-contained. You do not need filesystem access to use it.
+**Paste this whole document.** It is self-contained. You do not need file access to use it.
+
+**Part 1 is plain English with no codes.** Read that. Part 2 decodes the jargon. Part 3 is the
+same content in labelled form for a machine reader — skip it unless you are one.
+
+---
+
+# PART 1 — PLAIN ENGLISH
+
+## What this is
+
+I read 100 academic papers to find out whether existing, well-tested mathematics or computer
+science already solves problems ECB v2 is working on.
+
+**Nothing here has been decided or installed.** It is all proposals waiting on a human. No rule,
+contract, test, or decision record in ECB v2 was changed.
+
+## The result in one sentence
+
+ECB v2 is very good at saying what must stay true, and has almost no way to check whether it
+actually stayed true. Most of what I found is tests and warning signs, not new architecture.
+
+Concretely: of seven areas I examined, **four have no test at all**. And the papers produced about
+four times as many "make this rule sharper" results as "build this new thing" results.
+
+---
+
+## Finding 1 — "We'll come back to this later" can never be enforced automatically
+
+ECB v2 has a hard rule: nothing important may depend on a person or an AI simply *remembering* to
+do it. It has to be built into the structure.
+
+But ECB v2 is also full of promises shaped like *"reopen this when X happens."* Every open question
+in the system has one.
+
+Here is the problem, and it is a proven result rather than an opinion:
+
+- A watchdog program **can** catch "something bad happened." The bad thing shows up, and it stops you.
+- A watchdog program **can never** catch "something good never happened," because at any moment the
+  good thing might still be coming. There is no point at which it can declare failure.
+
+So "we'll revisit this when X" cannot be caught by any watchdog. Which makes it exactly the thing
+the rule forbids — someone remembering.
+
+**The fix is cheap.** Either attach a deadline ("revisit by this date, or when this specific event
+happens"), which turns it into something a watchdog *can* catch — or hand it to a human on purpose
+and write down that you did.
+
+## Finding 2 — Receipts you can check, instead of receipts you have to trust
+
+When a commitment in SIGMA gets turned into something running in ECOS, how do you know the
+translation was faithful?
+
+Two options:
+
+1. Prove the translator is always correct. That is a multi-year research project.
+2. Every time it translates, it also produces a short note saying *"here is why this output kept
+   what mattered,"* and a separate small program checks that note.
+
+Option 2 is what compiler engineers actually do when proving the whole compiler is out of reach.
+It is available now. It changes a receipt from *a record of what happened* into *a record you can
+verify*.
+
+It also solves a second problem: how ECB v2 accepts work from an AI it cannot fully trust. The AI
+ships its reasoning in checkable form, and a small checker — not the AI's confidence or reputation
+— decides whether it is accepted.
+
+## Finding 3 — The obvious academic theory has exactly the wrong rule built into it
+
+There is a well-developed field on how a body of belief should change when new information arrives.
+
+Its central theory has a rule baked in at the foundation: **new information is always accepted.**
+
+That is the precise opposite of "newest is not automatically current." So that theory cannot be
+used — not because it is too weak, but because its defining assumption is the thing ECB v2 exists
+to refuse.
+
+However, there is a branch of the same field where incoming information has to **earn** admission,
+and can be turned away with nothing changing. That branch fits.
+
+And here is the useful part: that branch describes what your Charter's intake lane already does — a
+specimen arrives, gets no privilege from being new, and may itself turn out to be the thing
+rejected. **You reinvented it.** The gain is not novelty. It is that the academic version comes with
+a checklist of properties you can test your process against, instead of judging each case by feel.
+
+## Finding 4 — One free win and one hard limit
+
+**The free win.** You often need to say "these two situations count as the same for what I am doing
+right now." That can be made rigorous with no new machinery at all: *two situations are the same
+when they permit exactly the same actions.* That is automatically a well-behaved notion of sameness.
+Nothing invented, no outside mathematics imported, no cost.
+
+**The hard limit.** If two genuinely different underlying situations always produce identical
+evidence coming back from the running system, then no amount of evidence will ever tell them apart.
+This is a structural fact, not a matter of building better instruments.
+
+The consequence matters: some of ECB v2's core principles probably can **never** be re-checked by
+watching the system run. They can only be re-decided by a person. It is worth knowing which ones,
+because attaching an "evidence will trigger a review" promise to a principle that evidence can
+never see means that review will never happen.
+
+## Finding 5 — The two obvious ways to keep two things in sync are both wrong here
+
+Software has two famous techniques for keeping two copies of something in agreement. One guarantees
+that any edit you make to a summary view gets pushed back into the source. The other lets separate
+copies drift apart and then merges them automatically.
+
+**Both work by automatically accepting changes.** ECB v2's whole point is that changes get reviewed
+before they count. So both are out — and they are out for the *same underlying reason*, which is
+worth noticing on its own.
+
+There is a third, less famous technique that only requires: *if the two already agree, leave them
+alone.* That one fits, because it permits a partial fix, a proposed fix, or no fix at all.
+
+**Two words to avoid.** "Bidirectional" implies the automatic acceptance you do not want, and it
+means four different things in four different fields. "Capability" is worse: in security research a
+capability **is** permission to act — the exact opposite of what it means in your invariants.
+Importing that word would quietly invert one of your frozen rules.
+
+## Finding 6 — One of your open questions may already be answered, and I am not the one who gets to say so
+
+There is a note in your architecture saying, roughly: *we cannot do the more formal version of this
+yet, because we have not earned the right kind of ordering.*
+
+I think that ordering may already exist for free, as a side effect of the free win in Finding 4.
+
+But your build contract explicitly freezes that whole area, and research does not get to overrule
+the build contract. So this goes to you as a **question** — is that note's stated reason still true?
+— and not as a change.
+
+It also depends on the cheap test below, and it rests on my weakest sourcing. Treat it last.
+
+---
+
+## The cheapest next thing to do
+
+One test decides a lot of this, and you can do it on paper today, with no code.
+
+**Question:** given the same situation, the same guiding discriminator, and the same operation — is
+what is permitted always the same? Or does it sometimes depend on something nobody wrote down?
+
+Test it against three decisions you have already made and documented: the two architecture decision
+records, and the substrate closure.
+
+- If permission is fully determined, Finding 4's free win holds and Finding 6 becomes worth asking.
+- If it depends on unwritten context, a good chunk of what I built collapses — and that is a genuinely
+  important thing to learn **about the architecture**, not about the mathematics.
+
+## The one thing with a deadline
+
+Everything else can wait. This cannot.
+
+When a claim is stored, if you do not store *why it is supported* at the same moment, then later —
+when the supporting evidence is withdrawn — you can never work out what should happen to that claim.
+It is not recoverable after the fact.
+
+So it has to be decided when claims are first built, not afterwards.
+
+## What you should not trust too far
+
+- **I ran none of the experiments.** Four are specified; zero were executed.
+- **I checked 21 of the 100 citations properly.** The rest are well-known works I did not re-verify.
+  One check caught a real error, which tells me the unchecked ones contain more.
+- **Findings 4 and 6 rest on the citations I did not check** — and Finding 6 is the one with the
+  biggest consequences. Verify before acting on it.
+- **Five of the fourteen topic areas produced no rejected ideas at all**, and two of those were
+  chosen after I already knew what I wanted to find. That is a bias, and I am flagging it rather
+  than hiding it.
+- **This is not a complete survey** and does not claim to be.
+
+## What you may do with this, and what you may not
+
+**You may** reason from it, disagree with it, and use it provisionally as long as anything you build
+on it stays clearly conditional and easy to cut loose.
+
+**You may not** treat it as settled or as governing ECB v2. Only Levi can ratify it — not by saying
+"sounds good," and not by failing to object. Each of the six findings can be accepted or rejected on
+its own without disturbing the others.
+
+---
+
+# PART 2 — DECODER
+
+## Codes I invented for this research
+
+They are filing labels, nothing more.
+
+| Code | Means |
+|---|---|
+| `R001`–`R100` | The 100 papers, numbered |
+| `TC-001`–`TC-019` | **Transfer contract** — one proposal to move an idea from a paper into ECB v2, together with what would prove it wrong |
+| `CF-01`–`CF-14` | **Candidate formalism** — a precise statement worth keeping |
+| `NR-01`–`NR-12` | **Negative result** — an appealing idea that did not survive inspection |
+| `FP-001`–`FP-004` | **Formalization probe** — a small experiment I specified but did **not** run |
+| `QF-…` | An open question, sorted by whether it blocks work |
+| `ACP-01`, `ACP-02` | The two items that need a human decision |
+| `S-1`–`S-7` | The seven areas of the build I was authorised to research |
+| `REQ-S1`–`REQ-S7` | What each of those areas currently requires |
+
+## Academic terms, plainly
+
+| Term | Plain meaning |
+|---|---|
+| safety property | "Nothing bad happens." You can catch a violation from what has happened so far |
+| liveness property | "Something good eventually happens." You can **never** catch a violation from what has happened so far, because it might still happen |
+| execution monitor | A program that watches a system run and can stop it |
+| monitorable | Whether a watchdog could ever reach a verdict at all |
+| translation validation | Rather than proving a translator always works, check each individual translation as it happens |
+| proof-carrying | The submitted thing brings its own evidence that it is acceptable; a small checker verifies it |
+| belief revision | The study of how a body of belief should change when new information arrives |
+| semiring | A way of combining evidence where "A and B together" behaves like multiplication and "A or B separately" behaves like addition |
+| provenance | A record of *how* a result was derived, not just that it holds |
+| lens | A sync technique that guarantees edits to a view get pushed back to the source |
+| CRDT | A technique letting copies drift apart and merge back automatically, with no coordination |
+| constraint maintainer | A gentler sync technique that only requires "if they already agree, leave them alone" |
+| Galois connection | A formal pairing between a detailed view and a simplified view. Needs an ordering on both |
+| refinement mapping | A way of showing a concrete implementation genuinely implements an abstract specification |
+| institution | A framework for moving a specification between formal languages without its meaning changing |
+| observability | Whether you can work out a system's internal state from its outputs |
+| bitemporal | Recording *when something was true* and *when you learned it* as two separate facts |
+| truth maintenance | Machinery that tracks why each belief is held, so retracting support propagates correctly |
+| recursive feasibility | The guarantee that acting now never leaves you unable to continue lawfully later |
+
+## Terms from your own ratified contract
+
+| Term | Plain meaning |
+|---|---|
+| Band **R** | I retrieved a fact from an identified source |
+| Band **M** | I computed or reformatted something mechanically |
+| Band **I** | I interpreted evidence |
+| Band **D** | I derived something new that downstream work could build on. Highest stakes |
+| **ATTESTED** | "I saw this; you cannot check it from where you are sitting" |
+| `BRANCH_FORCING` | Adopting this would force you to close an architectural question you deliberately left open |
+| `BRANCH_CONFLICTING` | This contradicts something ECB v2 has already committed to |
+| `BRANCH_NEUTRAL` | This works no matter how the open questions get settled |
+
+## Notation I used
+
+| Symbol | Plain meaning |
+|---|---|
+| `∼(M,O)` | "Same for this purpose" — two situations treated as equivalent under discriminator M for operation O |
+| `γ(a)` | All the concrete situations a simplified view still allows |
+| `Permitted_O(x)` | The set of actions allowed in situation x for operation O |
+| `ker(Permitted_O)` | Grouping situations together exactly when they permit the same actions |
+
+---
+
+# PART 3 — LABELLED FORM FOR MACHINE READERS
+
+Everything below repeats Part 1 in the labelled form required by Interpretation Contract v1.1.
+It exists so a receiving agent can carry origin, authority, and branch-cut information. **A human
+reader can stop here** — Part 1 already contains the whole result.
 
 ---
 
