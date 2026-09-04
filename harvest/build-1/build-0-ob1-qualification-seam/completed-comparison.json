@@ -1,0 +1,112 @@
+{
+  "comparison_id": "build-0-ob1-comparison",
+  "candidate_id": "independent-build-0-candidate",
+  "canonical_prior_art": {
+    "repository": "https://github.com/NateBJones-Projects/OB1",
+    "commit": "9543c29a3e44a210ce278392b9fac11248997461",
+    "local_receipt": "d0f869a:docs/ob1-prior-art.md",
+    "encountered": true
+  },
+  "independently_derived": [
+    "Require capture to produce one complete canonical evidence row or fail explicitly, eliminating OB1's partial two-write capture outcome.",
+    "Keep retrieval read-only and prohibit retrieval from upserting, duplicating, promoting, or transforming evidence.",
+    "Treat a durable thought UUID only as stable referential addressability, without promotion, assertion, standing, authority, governance, currentness, or BUILD 2 Universal Referent semantics.",
+    "Use Golden Trace 01 to verify record-count stability and exact identity across discarded and fresh conversational contexts.",
+    "Escalate if Golden Trace 01 requires an excluded distinction instead of expanding BUILD 0 scope."
+  ],
+  "already_present_in_prior_art": [
+    "One canonical shared persistent Postgres thought store used across AI clients.",
+    "Database-generated durable UUID identity for thought records.",
+    "Embedding-based semantic retrieval using one consistent model space for capture and query.",
+    "Server-side vector similarity ranking over canonical thought rows.",
+    "MCP access through stateless per-request transport across fresh clients.",
+    "Capture, semantic search, and fetch-by-ID as the relevant minimal behavior, with broader list, stats, update, delete, and dashboard surfaces excluded from BUILD 0.",
+    "A fetch operation that reads the canonical store by durable UUID.",
+    "Explicit MCP error signaling and recognition that missing IDs must be distinguished from storage or transport failure.",
+    "Service-role database isolation behind an authenticated MCP boundary.",
+    "Source and timestamp provenance associated with persisted thoughts.",
+    "No conversational-memory or authoritative local-cache dependency for cross-context recovery.",
+    "Atomic complete capture identified as the required correction to OB1's two-write upsert-then-embedding-patch implementation.",
+    "Evidence-only treatment of captured thoughts without importing claims, referents, standing, governance, graphs, or other optional OB1 lineage.",
+    "Golden Trace recovery by capturing in one fresh context, searching in another, and fetching the identical persisted record."
+  ],
+  "conflicts_or_differences": [
+    {
+      "topic": "Canonical substrate selection",
+      "candidate": "Treats the database engine as an open implementation choice, provided there is one durable shared database.",
+      "prior_art": "The receipt adapts OB1's Supabase/Postgres lineage, and BUILD_CHECKOUT.md records Supabase as the human-selected BUILD 0 canonical substrate with provisioning and pgvector verification as activation gates.",
+      "decision_consequence": "Leaving the engine open would change installation prerequisites and the physical activation plan already fixed by the checkout.",
+      "disposition": "ADAPT"
+    },
+    {
+      "topic": "MCP operation names",
+      "candidate": "Names the read operations semantic_search and get_thought.",
+      "prior_art": "OB1 provides search and fetch, and BUILD_CHECKOUT.md explicitly retains those exact compatibility names for the three-operation BUILD 0 surface.",
+      "decision_consequence": "Using the candidate names would change the MCP contract, compatibility tests, and Golden Trace implementation.",
+      "disposition": "ADAPT"
+    },
+    {
+      "topic": "Canonical row shape",
+      "candidate": "Proposes fields for durable ID, exact text, embedding, source, captured_at, and minimal capture provenance, without explicitly requiring embedding_model.",
+      "prior_art": "The qualified BUILD 0 row uses id, content, source, captured_at, embedding, and a non-empty embedding_model, with model identity and vector dimension enforced structurally and no generic metadata bag.",
+      "decision_consequence": "The candidate shape would omit a required model-space protection and could introduce an underspecified provenance field or metadata bag.",
+      "disposition": "ADAPT"
+    },
+    {
+      "topic": "Capture timestamp input",
+      "candidate": "Says capture_thought validates required metadata, which can imply captured_at is always caller-required.",
+      "prior_art": "BUILD_CHECKOUT.md defines non-empty content and source as required inputs and captured_at as optional, while persisting a timezone-aware capture timestamp on every row.",
+      "decision_consequence": "Making captured_at mandatory would change the public installation contract; failing to guarantee a database-backed timestamp would weaken the required record shape.",
+      "disposition": "ADAPT"
+    },
+    {
+      "topic": "Authentication and privileged storage access",
+      "candidate": "Allows MCP transport and authentication to remain thin adapters and says BUILD 0 needs no governance or authorization primitives.",
+      "prior_art": "OB1 already proves an authenticated remote MCP boundary with server-side service-role access behind RLS; the receipt requires header-only secret transport and rejects URL secrets, while treating these as access protections rather than governance ontology.",
+      "decision_consequence": "Thin adapters are acceptable only if they preserve the required authentication, secret-handling, RLS, and service-role isolation protections.",
+      "disposition": "ADAPT"
+    },
+    {
+      "topic": "Embedding infrastructure",
+      "candidate": "Allows an auxiliary derived and rebuildable vector index if canonical thought rows remain authoritative.",
+      "prior_art": "The qualified plan uses pgvector on the canonical Supabase/Postgres thought relation and requires pgvector availability to be verified before implementation.",
+      "decision_consequence": "Introducing an auxiliary index would alter installation conditions and failure interpretation even if it is non-authoritative; it is unnecessary for the qualified BUILD 0 plan.",
+      "disposition": "REJECT"
+    },
+    {
+      "topic": "Golden Trace provenance assertion",
+      "candidate": "Requires exact timestamp, provenance, and capture interface/context metadata equality.",
+      "prior_art": "Golden Trace 01 requires exact identity, content, source, and captured-time equality; BUILD 0 defines only source and captured_at as necessary provenance and excludes a generic metadata bag.",
+      "decision_consequence": "Requiring additional interface/context provenance would broaden the persistent schema and acceptance test beyond the qualified minimum.",
+      "disposition": "ADAPT"
+    },
+    {
+      "topic": "Semantic relevance threshold",
+      "candidate": "Allows a small top-k search without a universal relevance threshold if the fixture is returned as relevant.",
+      "prior_art": "OB1's RPC supports threshold and limit, while BUILD_CHECKOUT.md requires meaning-ranked recovery of the fixture but does not freeze a universal threshold.",
+      "decision_consequence": "No present conflict changes the BUILD 0 plan; threshold policy remains an implementation detail subject to Golden Trace success.",
+      "disposition": "PRESERVE_OPEN"
+    },
+    {
+      "topic": "Retry and deduplication identity",
+      "candidate": "Requires record-count stability but does not adopt normalized-content fingerprint identity or define retry semantics.",
+      "prior_art": "OB1 has content-fingerprint deduplication, but the receipt defers it because equating normalized text with identity is stronger than BUILD 0 licenses.",
+      "decision_consequence": "Record-count stability must be tested for the single Golden Trace capture without silently importing OB1's content-identity policy; generalized retry behavior remains unopened.",
+      "disposition": "PRESERVE_OPEN"
+    }
+  ],
+  "open_conflicts": [
+    "The verified embedding provider, model, and vector dimension remain activation-gated; the candidate's consistency assumption does not close that gate.",
+    "The human-door deployment runtime remains open between Supabase Edge Functions and Vercel Fluid Functions and must be closed by ADR before implementation.",
+    "Generalized capture retry semantics remain open; Golden Trace record-count stability does not authorize normalized-content deduplication."
+  ],
+  "qualification": {
+    "comparison_provenance_complete": true,
+    "requirement_satisfied": true,
+    "accepted": false,
+    "installed": false,
+    "authority_conferred": false,
+    "governing": false,
+    "current": false
+  }
+}

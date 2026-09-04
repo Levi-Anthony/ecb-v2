@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "test": "deno test --allow-read harness.test.ts",
+    "trace": "deno run --allow-read --allow-write=traces run.ts"
+  },
+  "fmt": {
+    "lineWidth": 100
+  }
+}

@@ -1,4 +1,4 @@
-STATUS: VERIFIED 2026-09-03 AMERICA/PHOENIX (`2026-09-04` UTC)
+STATUS: ACCEPTED AND CLOSED 2026-09-03 AMERICA/PHOENIX (`2026-09-04` UTC)
 DISPOSITION: EVIDENCE
 ROLE: BUILD 0 execution and metabolization receipt
 AUTHORITY: Does not amend the Build Contract, invariants, acceptance fixture, or accepted ADRs
@@ -81,6 +81,10 @@ Before the trace, direct API checks confirmed that empty content, an embedding-m
 
 BUILD 0 did not add claims, referents, relations, standing, review, supersession, lifecycle, deduplication, list/update/delete operations, a dashboard, a second store, a second human door, or a generalized governance substrate.
 
-## Current disposition
+## Metabolization and closure
 
-BUILD 0 is complete and held for metabolization. No ADR-001 or ADR-002 reopening condition was observed. BUILD 1 has not started.
+The human accepted this evidence on 2026-09-03 America/Phoenix (`2026-09-04` UTC). BUILD 0 is closed.
+
+The observed behavior matched the bounded target: atomic capture produced one complete canonical evidence row, semantic retrieval crossed a fresh-context boundary, fetch preserved durable identity and provenance, failures were explicit, and no governance object was created. The implementation choices recorded by ADR-001 and ADR-002 remain scoped to BUILD 0; their success does not promote them into inherited architecture for later Build Units. No reopening condition was observed.
+
+BUILD 1 — Harvest Fixture Path is installed as a separate checkout under an orientation / review hold. Its implementation has not begun.

@@ -1,298 +1,308 @@
-STATUS: BUILD 0 PASSED — METABOLIZATION HOLD
-DISPOSITION: PROJECTION  
-ROLE: Current human/agent checkout  
-AUTHORITY: Derived from build contract, invariants, and acceptance tests  
-CURRENT BUILD UNIT: BUILD 0 — Clean OB1 Kernel
+STATUS: ACCEPTED AND CLOSED 2026-09-04 AMERICA/PHOENIX
+DISPOSITION: PROJECTION
+ROLE: Current human/agent checkout
+AUTHORITY: Derived from the Build Contract, invariants, Harvest Ledger, and explicit human re-Shape instruction
+CURRENT BUILD UNIT: BUILD 1 — Harvest Fixture Path (CLOSED)
 
-# BUILD 0 — Clean OB1 Kernel
+# BUILD 1 — Harvest Fixture Path
+
+## CURRENT MOVE
+
+BUILD 1 metabolization is accepted and closed.
+
+Preserve this checkout, receipt, fixture, and evidence as the BUILD 1 provenance checkpoint. BUILD 2 remains unopened; do not install or begin it without a separate explicit human release.
+
+## PURPOSE
+
+Harvest and freeze one minimal evidence fixture that makes the already-earned self-installation/regrowth pressure executable before BUILD 2 opens universal referential identity.
+
+The fixture preserves one coupled requirement without implementing its later machinery: generative Freedom remains available, Control makes prior-art qualification unavoidable before authority-bearing installation, and Awareness can detect omission or basis drift during Metabolize and route the condition back through Control before the next such installation.
 
 ## TARGET
 
-A fresh ECB v2 substrate can persist an atomic thought captured through one AI context and semantically recover the same evidence from another fresh context.
+The single fixture must expose all of the following:
 
-## WHY THIS BUILD EXISTS
+1. a fresh capable agent receives frozen Shape that permits forward generation;
+2. a bounded problem permits strong independent derivation;
+3. a pinned prior-art source contains a prior solution, constraint, failure, or decision whose omission could change installation permission, installation conditions, required protections, or failure interpretation under the active Master Key;
+4. independent derivation is permitted to occur;
+5. before the candidate acquires installation or promotion consequence, the pinned prior-art qualification encounter becomes unavoidable;
+6. the comparison retains source provenance; and
+7. omission of the encounter remains visibly failed or unfinished qualification and cannot become silently accepted forward state.
 
-Before governance, referents, standing, or ECOS automation exist, ECB v2 must prove that the Open Brain substrate itself is useful and durable.
+This target tests pressure and transition logic as evidence. It does not implement the self-installation kernel.
 
-Layer A must stand on its own.
+## SELECTED CAPABILITY / REQUIREMENT
 
-## SENSE — COMPLETE 2026-09-03
+**Mandatory provenance-bearing prior-art qualification before authority-bearing installation, with Metabolize-phase detection of omitted or stale qualification basis.**
 
-### Mandatory OB1 mine-first interlock — SATISFIED 2026-09-03
+Minimum surviving behavior:
 
-Canonical OB1 was inventoried and deep-mined at pinned `main` commit [`9543c29a3e44a210ce278392b9fac11248997461`](https://github.com/NateBJones-Projects/OB1/commit/9543c29a3e44a210ce278392b9fac11248997461).
+- Freedom may independently derive a candidate;
+- the candidate remains non-installable until Control records the required pinned-source encounter and comparison;
+- a missing encounter produces an unfinished qualification outcome, not installed/current state; and
+- Awareness may discover omission, staleness, drift, or a qualification gap during Metabolize and route it through Control before the next authority-bearing installation.
 
-The complete evidence matrix, conflicts, declared coverage gaps, and receipt are in `/docs/ob1-prior-art.md`.
+## SELECTED HARVEST DISPOSITION
 
-Current disposition: **RESUME BUILD 0 WITH SIMPLIFIED PLAN**.
+**REBUILD**
 
-The Build Contract and Golden Trace remain unchanged. Implementation may adapt OB1's proven Supabase/pgvector/MCP mechanics, but must reimplement its partial two-write capture boundary and must not import optional lineage into BUILD 0.
+The behavior and constraint have earned survival. The observed mechanism did not: a human had to introduce canonical OB1 manually because the forward-build path had no mandatory prior-art encounter at the installation seam. BUILD 1 preserves the failure and expected behavior without prescribing BUILD 2+ persistence or controller design.
 
-### Evidence inspected
+Exactly one disposition is recorded in the Harvest Ledger.
 
-- OB1 substrate lineage at commit [`9543c29a3e44a210ce278392b9fac11248997461`](https://github.com/NateBJones-Projects/OB1/commit/9543c29a3e44a210ce278392b9fac11248997461).
-- OB1's canonical MCP surface in `server/index.ts`.
-- OB1's compact Vercel/Neon path in `recipes/vercel-neon-telegram/`.
-- The current local execution environment and Vercel integration gate.
+## SELECTED FIXTURE
 
-### Behavior that has earned survival
+**Fixture ID:** `build-0-ob1-qualification-seam`
 
-- one canonical thought record shared across AI clients;
-- vector embedding at capture time;
-- meaning-ranked retrieval;
-- stable record identity returned across search and fetch;
-- MCP as the cross-context interface;
-- explicit source and capture time.
+**Installed path:** `/harvest/build-1/build-0-ob1-qualification-seam/`
 
-### Implementation that has not earned inheritance
+**Smallest concrete case:** replay the BUILD 0 planning boundary from frozen pre-interlock Shape, permit an independent candidate plan, and require a provenance-bearing comparison with pinned canonical OB1 evidence before the candidate can be treated as qualified for installation. Omitting the OB1 encounter must end as unfinished qualification.
 
-- Supabase or Neon merely because an OB1 implementation uses one;
-- OpenRouter or a provider-specific AI SDK merely because an OB1 implementation uses one;
-- LLM metadata extraction during capture;
-- list, stats, dashboard, Telegram, Slack, deduplication, update, or delete surfaces;
-- a capture path that persists a row before its embedding is durably attached;
-- ECB v1 schema or runtime.
+The fixture will freeze only the prompts/inputs, pinned locators, expected qualification boundary, and expected observable outcomes needed for this case. It will not copy whole repositories or implement an installation controller.
 
-### Current environment evidence
+## PINNED SOURCE SET
 
-- Vercel CLI `59.11.2` is installed.
-- Vercel CLI is authenticated as `levi-anthony`.
-- The Vercel project `levi-anthonys-projects/ecb-v2` exists and is connected to the GitHub repository.
-- Live marketplace discovery completed for storage and AI categories.
-- The free Neon resource `ecb-v2-brain` is preserved, empty, and disconnected from the Vercel project. It is evidence/fallback, not the selected substrate.
-- The human selected Supabase as BUILD 0's canonical substrate because it carries demonstrated OB1 behavior while allowing a clean v2 schema.
-- The Supabase Marketplace integration is installed on the Vercel team under its free plan.
-- A browser-authenticated, read-only inspection established that Crucible (`fjamkrfhopumigfscgnm`) is an isolated evidence store: two public tables (`specimens`, 10 records; `transform_receipts`, 27 records), three migrations, and no Auth users, Storage buckets, Edge Functions, database branches, repository connection, or backups. The earlier 24-hour service-log check was empty before dashboard inspection, and the project showed no active database connections.
-- The ECOS Spike 1 remote-build runbook's never-target rule governs deployment targeting for that spike. No Spike 1 deployment or Crucible data/schema mutation occurred. With the user's authorization, Crucible was paused on 2026-09-03 to release the free-plan slot; its data remains preserved and the project is restorable.
-- Vercel provisioned `ecb-v2-brain` on the Supabase free plan in `sfo1` (Supabase `us-west-1`) and connected it to `levi-anthonys-projects/ecb-v2`. Supabase project ref: `vezxivrvhakclxuvxzso`; status at verification: `ACTIVE_HEALTHY`.
-- Vercel injected the following Supabase resource variables into Production, Preview, and Development: `POSTGRES_URL`, `POSTGRES_HOST`, `POSTGRES_USER`, `POSTGRES_DATABASE`, `POSTGRES_PASSWORD`, `POSTGRES_PRISMA_URL`, `POSTGRES_URL_NON_POOLING`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_JWT_SECRET`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`. Values were not recorded.
-- The Development variables were pulled to gitignored `.env.local`. Vercel initially preserved pre-existing local-only Neon aliases that are absent from the Vercel project; those aliases were moved without exposing their values to gitignored `.env.neon-preserved.local`. Active `.env.local` now contains only the project-linked Supabase variables plus Vercel's local OIDC token.
-- Read-only database inspection succeeded. The new public schema is empty, and pgvector `0.8.2` is available but not installed. No schema, extension, table, migration, or row was created.
-- [ADR-001](docs/architecture-decisions/001-build-0-human-door.md) accepts Codex as the first client, a Supabase Edge Function with bearer-key access, native 384-dimensional `gte-small` embeddings, and no Vercel billing change. A temporary authenticated probe verified the deployed model output and was deleted without persisting data. [ADR-002](docs/architecture-decisions/002-build-0-physical-substrate.md) records the combined physical substrate.
-- The first governed migrations are applied: pgvector `0.8.2`, one empty RLS-enabled `public.thoughts` table, and one invoker-rights `public.search_thoughts` function. `anon` and `authenticated` have no table or function access; `service_role` has only table `SELECT`/`INSERT` plus function `EXECUTE`. Invalid empty content, model mismatch, and missing embedding writes fail structurally without creating a row.
-- AI Gateway discovery confirms `openai/text-embedding-3-small` remains available and OB1 reports a 1536-dimensional vector for it, but v2 has not independently verified the dimension.
-- A live Gateway embedding request using local Vercel OIDC returned `403` because the Vercel team has no payment card on file. No billing change was attempted.
-- The remote human-door host remains open between Supabase Edge Functions and Vercel Fluid Functions; see `/docs/deployment-shapes/human-door.md` and AP-11.
-- No AI Gateway API key, local Ollama runtime, running Docker daemon, or local Postgres client was available during Sense.
+### S1 — Frozen forward Shape
 
-These environment observations are dated evidence, not durable architecture. Revalidate them when AP-09 triggers.
+- **Source:** `8568a00:BUILD_CHECKOUT.md` in this repository.
+- **Standing:** historical governing checkout for the initial BUILD 0 boundary; superseded as a checkout, retained as versioned evidence.
+- **FACT:** it gives a fresh agent the BUILD 0 target, invariants, pass condition, exclusions, and stop conditions without an installed prior-art qualification obligation.
+- **INFERENCE:** it can serve as the forward-generation input without teaching the fixture's expected comparison result.
+- **OPEN / CONFLICT:** the full pre-OB1 conversational derivation is not versioned in the repository; the fixture therefore tests the observed failure condition rather than claiming to reproduce every historical utterance.
+- **Smallest case:** derive a BUILD 0 candidate plan from this frozen checkout.
 
-## INVARIANTS SERVED
+### S2 — Canonical OB1 encounter and plan delta
 
-- one persistent brain;
-- atomic evidence first;
-- semantic retrieval remains fundamental;
-- local interfaces do not become separate brains;
-- evidence ≠ assertion;
-- thought ≠ promoted object.
+- **Source:** `d0f869a:docs/ob1-prior-art.md` and `d0f869a:BUILD_CHECKOUT.md` in this repository; upstream OB1 pinned at [`9543c29a3e44a210ce278392b9fac11248997461`](https://github.com/NateBJones-Projects/OB1/commit/9543c29a3e44a210ce278392b9fac11248997461).
+- **Standing:** ECB v2 evidence/receipt plus canonical upstream implementation evidence; neither independently governs architecture.
+- **FACT:** the recon installed a mandatory mine-first interlock, identified upstream mechanics that could be adapted, rejected OB1's partial two-write capture boundary, and changed the disposition to “resume BUILD 0 with simplified plan.”
+- **INFERENCE:** omission could change the implementation plan, inherited failure exposure, and whether the candidate had completed pre-install qualification.
+- **OPEN / CONFLICT:** OB1 does not supply ECB governance standing or the general qualification mechanism; it supplies the prior art whose encounter is tested.
+- **Smallest case:** compare a candidate's capture/storage/identity plan with the recorded OB1 solved mechanics and two-write failure.
+
+### S3 — Installation/currentness and SSMM transition constraint
+
+- **Source:** ECB v1 commit `cfa7a6dd3b849f399a4aff9f7596da1752bc7871`, `experiments/ssmm-spike-1/docs/spike-1/path-card.md`.
+- **Standing:** frozen ECB v1 Spike 1 execution-path evidence; ECB v1 remains evidence, not v2 architecture authority.
+- **FACT:** acceptance alone is not installation; required installation conditions must be met or explicitly waived before Move begins, and Metabolize compares result and evidence with installed Shape before closure.
+- **INFERENCE:** a prior-art encounter can be an installation condition without suppressing proposal generation or becoming a universal pre-action gate.
+- **OPEN / CONFLICT:** this source does not define prior-art qualification; it establishes the already-earned seam where the fixture places that condition.
+- **Smallest case:** an accepted candidate with one unmet installation condition cannot enter Move as installed.
+
+### S4 — Demonstrated acceptance/install failure and repair
+
+- **Source:** ECB v1 commit `c18738b5f24714add846ec6aef59617dc040af73`, `experiments/ssmm-spike-1/docs/spike-1/review-response-2026-07-26.md`.
+- **Standing:** superseded review response retained as implementation evidence; its stated replacement is Slice Contract v0.2.
+- **FACT:** an earlier scaffold treated acceptance as installation; the reviewed replacement separated proposal, acceptance, installation evidence/waiver, and the exactly-once installed transition.
+- **INFERENCE:** silent passage from plausible/accepted candidate to installed state is a demonstrated failure class, not a hypothetical concern.
+- **OPEN / CONFLICT:** the repaired v1 mechanism is not selected for inheritance.
+- **Smallest case:** withhold one required installation condition and verify that acceptance does not become installation.
+
+### S5 — Projection provenance and Metabolize feedback
+
+- **Source:** ECB v1 commit `c18738b5f24714add846ec6aef59617dc040af73`, `experiments/ssmm-spike-1/docs/spike-1/future-ecb-semantic-memory-amendment.md`.
+- **Standing:** evidence-informed, explicitly non-governing direction at its source revision.
+- **FACT:** proposal, acceptance, and installation remain distinct authority states; projections retain provenance to the originating loop and installed Shape; Metabolize selects human-confirmed durable meaning for later projection rather than inferring authoritative state from memory.
+- **INFERENCE:** Awareness can preserve provenance and condition later Sense/Control without becoming a second authority model.
+- **OPEN / CONFLICT:** the document's proposed physical co-location and table direction are outside BUILD 1 and are not harvested by this fixture.
+- **Smallest case:** retain the source and installed-Shape basis for a Metabolize finding that qualification was omitted or became stale.
+
+### S6 — BUILD 1 review observation
+
+- **Source:** human instruction titled “ECB v2 — BUILD 1 Re-Shape / Deployment Instruction,” received 2026-09-03 America/Phoenix and metabolized into this checkout revision.
+- **Standing:** explicit human build-boundary clarification; it does not replace the frozen architecture or authorize implementation.
+- **FACT:** a capable agent generated plausible forward machinery and approached installation without a mandatory encounter with already-applicable canonical OB1; the human supplied OB1 manually.
+- **INFERENCE:** the failure belongs to Control/Awareness at the qualification seam, not to generative Freedom.
+- **OPEN / CONFLICT:** no independently versioned transcript of the omitted encounter was found; S1–S5 provide the reproducible fixture boundary and already-settled constraints.
+- **Smallest case:** allow derivation, withhold the S2 encounter, and require an unfinished qualification outcome.
+
+## SECONDARY INQUIRY / EXCLUSIONS
+
+The bounded source inquiry stops here because S1–S6 jointly expose every target condition and each retained source prevents a distinct loss:
+
+- omit S1 and the fixture no longer proves forward generation from frozen Shape;
+- omit S2 and it lacks the concrete prior-art encounter and plan consequence;
+- omit S3 and it lacks the frozen installation/currentness seam;
+- omit S4 and acceptance-to-installation collapse becomes merely hypothetical;
+- omit S5 and projection provenance plus Metabolize feedback are absent; or
+- omit S6 and the observed OB1-miss anomaly is not preserved.
+
+The Spike 1 README, Slice Contract, runtime code, database migrations, broader ECB v1 corpus, older conversations, and OB1 packages outside the existing recon are excluded because they add no distinction required to evaluate this one fixture. Reopen a source only if one of the six stated contributions cannot be reproduced from its pin.
+
+This is an analytical stop condition, not a source-count quota.
+
+## FIXTURE SELECTION GATE — SATISFIED FOR REVIEW
+
+- [x] The behavior/constraint earned survival through an observed failure and frozen SSMM records.
+- [x] Every repository source has a commit pin; canonical OB1 has an upstream commit pin.
+- [x] The declared source boundary is reproducible without relying on the dirty ECB v1 working tree.
+- [x] The BUILD 0 case exposes the failure without surrounding runtime machinery.
+- [x] The evidence test requires no BUILD 2+ persistence.
+- [x] Frozen Shape remains closed.
+- [x] Success and failure are stated as observable transition outcomes, not naked evaluatives.
+- [x] Human explicitly released BUILD 1 implementation.
+
+## PRIOR-ART DISCOVERY METHOD
+
+Do not begin with a repository-wide or conversation-count search.
+
+Ask the source with the strongest standing and direct bearing on the active installation decision:
+
+> What already-settled requirement, decision, or demonstrated failure in this source bears directly on stable continuity through projection or descent, installation/currentness, SSMM-shaped transition, and mandatory prior-art qualification before forward installation?
+
+Return only FACT, INFERENCE, OPEN / CONFLICT, exact source/provenance, supersession/standing if known, and the smallest concrete case that exposes the requirement.
+
+Ask the secondary question only to decide inclusion:
+
+> What distinction would be lost or what failure would become possible if this source were omitted from the fixture?
+
+Exclude a source when the answer is “none.” Stop when the selected pinned set exposes every target condition and another source would not change fixture inclusion, expected outcome, installation qualification, or conflict routing under the active Master Key.
+
+Priority order:
+
+1. leading-edge specification or requirements conversations;
+2. surviving charters, ledgers, contracts, decisions, acceptance records, and architecture receipts;
+3. focused derivation or falsification records explaining why a decision survived;
+4. canonical OB1 prior art and implementation behavior;
+5. ECB v1 evidence; and
+6. older or superseded material only to resolve provenance or contradiction.
+
+Recency, polish, implementation existence, and retrieval rank confer no authority.
 
 ## INPUTS
 
-Fresh v2 substrate only.
+- the six-source pinned set above;
+- the active Master Key `proven capability ≠ inherited implementation`;
+- the Build Contract's Freedom/Control/Awareness clarification;
+- the Harvest Ledger's `REBUILD` requirements; and
+- the frozen observable outcomes in this checkout.
 
-No ECB v1 runtime dependency.
+## OUTPUT — COMPLETE
 
-## OUTPUTS
+Exactly one bounded evidence package:
 
-Minimum persistent evidence capability:
+- one fixture directory at `/harvest/build-1/build-0-ob1-qualification-seam/`;
+- one `REBUILD` entry in `/docs/harvest-ledger.md`;
+- pinned provenance for every fixture input;
+- one independent candidate output;
+- one provenance-bearing qualification comparison;
+- one control case in which omitted prior art remains unfinished qualification; and
+- one BUILD 1 receipt.
 
-- thought capture;
-- durable thought identity;
-- embedding;
-- semantic retrieval;
-- get/fetch by stable record identity;
-- source/provenance metadata sufficient for Golden Trace 01.
+## NEW PERSISTENT STATE
 
-## SHAPE — COMPLETE; BUILD 0 PASSED 2026-09-03
+No application, database, embedding, MCP, referent, claim, event, governance, deployment, or remote state.
 
-### Smallest vertical slice
-
-One canonical persisted `thoughts` record supports exactly three MCP operations:
-
-1. `capture_thought`
-   - input: non-empty `content`, non-empty `source`, and optional `captured_at`;
-   - behavior: validate → embed → persist the complete canonical row → return its durable ID;
-   - no row is created if embedding fails;
-   - no successful response is returned if persistence fails.
-2. `search`
-   - input: non-empty semantic `query`;
-   - behavior: embed the query with the same model family and rank canonical thought rows by vector similarity;
-   - output: durable ID, content, source, captured time, and similarity for each result;
-   - no keyword, conversational-memory, fabricated, or alternate-store fallback.
-3. `fetch`
-   - input: durable thought ID returned by `search`;
-   - behavior: read the canonical row by primary key;
-   - missing identity is an explicit not-found result, never evidence of nonexistence beyond this store.
-
-`search` and `fetch` names are retained because they are the smallest read-only MCP compatibility surface demonstrated by OB1 and required by Golden Trace 01.
-
-### Minimum persistent state
-
-One `thoughts` relation only:
-
-- `id` — server-generated durable UUID, primary key;
-- `content` — non-empty atomic thought text;
-- `source` — non-empty provenance label;
-- `captured_at` — timezone-aware capture timestamp;
-- `embedding` — non-null vector stored on the canonical row;
-- `embedding_model` — non-empty model identity used to create the vector.
-
-No generic metadata bag, promoted referent, claim, standing, governance field, second vector store, or authoritative cache is introduced.
-
-### Enforcement surfaces
-
-| Requirement | Mode | Surface |
-|---|---|---|
-| One complete canonical record | STRUCTURAL | table constraints and single insert path |
-| Durable stable identity | STRUCTURAL | database-generated primary key |
-| Same model space for capture and search | STRUCTURAL | configured model identity plus vector dimension constraint |
-| No partial capture | STRUCTURAL | embedding completes before the canonical insert |
-| Cross-context recovery | OBSERVATIONAL | Golden Trace 01 through two fresh MCP client processes |
-| Explicit failures | OBSERVATIONAL | executable failure-path tests at embedding, persistence, search, and fetch boundaries |
-
-### Golden Trace execution
-
-1. Start Context A as a fresh MCP client process.
-2. Call `capture_thought` with the frozen GT01 content and `source = golden_trace_01`.
-3. Record the returned ID and end Context A.
-4. Start Context B as a new MCP client process with no GT01 sentence in its prompt or process state.
-5. Call `search` with the frozen semantic question.
-6. Require the returned result ID to equal Context A's ID.
-7. Call `fetch` with that ID.
-8. Require exact content, source, captured time, and identity equality.
-9. Verify the canonical store contains one GT01 row and that no promoted/governance record exists.
-
-The test must exercise the deployed or locally running MCP boundary. Direct database calls do not satisfy the cross-context condition.
-
-### Physical activation gate
-
-Before writing the first migration or runtime file:
-
-1. provision the selected Supabase project and pull its environment variables;
-2. verify pgvector availability without changing schema;
-3. verify a current embedding model and its output dimension;
-4. Shape and close the human-door deployment choice in an ADR;
-5. record the selected runtime, store, embedding route, and reopening condition in a physical-substrate ADR;
-6. implement only the vertical slice above.
-
-Do not substitute a mock store, keyword search, sample-data fallback, or unprovisioned provider abstraction.
-
-### Activation progress
-
-- [x] Authenticate the Vercel CLI.
-- [x] Create and link the `ecb-v2` Vercel project.
-- [x] Run live storage and AI marketplace discovery.
-- [x] Preserve and disconnect the unused Neon resource.
-- [x] Human selects Supabase as the canonical BUILD 0 substrate.
-- [x] Human accepts the Supabase marketplace terms.
-- [x] Install the Supabase Marketplace integration on the Vercel team.
-- [x] Resolve Supabase free-plan capacity without mutating Crucible data or schema.
-- [x] Provision the free Supabase resource in `sfo1`.
-- [x] Pull and verify Supabase environment variable names without exposing values.
-- [x] Verify Supabase connectivity and pgvector availability without changing schema.
-- [x] Isolate the preserved local-only Neon aliases before runtime code selects a database URL.
-- [x] Verify and freeze the embedding model and vector dimension.
-- [x] Accept ADR-001 to close the human-door deployment choice.
-- [x] Record the physical substrate ADR.
-- [x] Apply and verify the governed persistence migrations.
-- [x] Deploy the three-tool Supabase Edge Function behind the bearer boundary.
-- [x] Register the deployed Streamable HTTP endpoint with Codex.
-- [x] Execute Golden Trace 01 through two fresh Codex client processes.
-- [x] Verify one exact canonical row and no promoted/governance record.
-
-### Golden Trace result
-
-**PASS.** Context A captured the frozen fixture once and returned durable ID `19a949ea-a8fc-4250-a386-fa64e5530180`. A separate ephemeral Context B received neither the fixture sentence nor its identity, recovered that row semantically with similarity `0.919231799818033`, and fetched the exact persisted record by the returned ID.
-
-Direct substrate verification found exactly one canonical row, the expected source and model, and a 384-dimensional embedding. The public schema contains only `thoughts`; capture created no promoted or governance object. The complete execution and verification evidence is recorded in [`docs/build-receipts/001-build-0.md`](docs/build-receipts/001-build-0.md).
-
-### Current move — metabolization hold
-
-Do not begin BUILD 1 automatically. Review the observed BUILD 0 behavior and receipt, preserve any earned implementation lessons, then install BUILD 1 as a separate checkout only after that metabolization move is accepted.
+After release, the only permitted durable output is the single version-controlled evidence fixture, its single Harvest Ledger disposition, and its receipt.
 
 ## STANDING
 
-Captured thoughts are evidence records.
+The fixture and harvest disposition remain evidence.
 
-Capture does not:
+They do not:
 
-- create a promoted referent;
-- create a governing claim;
-- grant standing beyond evidence;
-- create architectural authority.
+- make OB1 or ECB v1 architecture governing;
+- authorize a port or runtime installation;
+- create a universal referent, claim, Evidence Link, Event, Artifact, warrant, or standing object;
+- implement Freedom, Control, Awareness, SSMM, or self-installation machinery;
+- grant authority to a candidate plan; or
+- open BUILD 2.
+
+## INVARIANTS SERVED
+
+- proven capability ≠ inherited implementation;
+- evidence ≠ assertion;
+- relevance ≠ authority;
+- current ≠ newest;
+- capability ≠ warrant or authorization;
+- decision-complete reachability ≠ ontological collapse;
+- directional position ≠ permanent ontological class; and
+- local phenotype ≠ inherited architecture.
 
 ## ENFORCEMENT
 
-**STRUCTURAL:**
+**OBSERVATIONAL — revalidation mechanism:**
 
-- one canonical persisted thought record;
-- durable ID;
-- no silent alternate storage path.
+- compare fixture inputs with their pinned sources;
+- run the same bounded problem with and without the mandatory S2 encounter;
+- require source provenance in the qualification comparison;
+- require omitted S2 to remain unfinished qualification;
+- verify no fixture path produces installed/current state; and
+- verify the diff contains no runtime, schema, migration, MCP, deployment, database, governance, or BUILD 2+ implementation change.
 
-**OBSERVATIONAL:**
+**SEMANTIC — semantic evaluation:**
 
-- capture can be verified through fresh-context retrieval and fetch.
+- verify each prior-art finding is labeled FACT, INFERENCE, or OPEN / CONFLICT;
+- require every inclusion/exclusion decision to name the installation consequence or lost distinction under the active Master Key; and
+- slop-scan the fixture and ledger entry for evaluatives lacking a standard, comparator, decision consequence, or trace to the active Master Key.
 
-No semantic or governance transition is introduced by BUILD 0.
+## TEST / PASS CONDITION
 
-## PASS
+BUILD 1 passes only if a fresh agent can independently generate a candidate and the evidence harness produces both of these observable outcomes:
 
-Golden Trace 01 passed exactly on 2026-09-03 America/Phoenix (`2026-09-04` UTC).
+1. **Encounter present:** the candidate remains non-authoritative, the pinned source comparison is provenance-bearing, and qualification records the OB1-derived plan constraints or conflict before any hypothetical installation consequence.
+2. **Encounter omitted:** qualification ends explicitly unfinished/failed and no output represents the candidate as installed, promoted, or current.
 
-## DO NOT BUILD
+A fresh reviewer must also be able to trace the Metabolize finding back to the source and installed-Shape basis, identify the single `REBUILD` disposition, reproduce every source pin, and confirm that no BUILD 2+ machinery was created.
 
-- universal governance referents;
-- claims;
-- relation claims;
-- standing promotion;
-- Master Keys;
-- warrants;
-- semantic evaluations;
-- action envelopes;
-- governance bootstrap;
-- packets;
-- dashboards;
-- v1 migration;
-- generalized ECOS abstractions.
+## EXECUTION RESULT
+
+**PASS.** The executable fixture is installed at [`/harvest/build-1/build-0-ob1-qualification-seam/`](harvest/build-1/build-0-ob1-qualification-seam/README.md), the single `REBUILD` disposition is registered in `/docs/harvest-ledger.md`, and the complete evidence is recorded in [`/docs/build-receipts/002-build-1.md`](docs/build-receipts/002-build-1.md).
+
+The missing-encounter path preserved independent derivation but returned unfinished qualification, Metabolize feedback, and no installation/currentness standing. The completed-encounter path recorded the pinned OB1 comparison and completed only this fixture's qualification requirement; it conferred no acceptance, installation, authority, governing designation, or currentness. A drifted OB1 pin returned unfinished qualification through the same Awareness-to-Control route.
 
 ## FAILURE BEHAVIOR
 
-Capture, embedding, search, and fetch failures must be explicit.
+Stop and return to the human rail if:
 
-Do not silently:
+- any pin cannot resolve to the declared content;
+- the historical transcript gap prevents the fixture from testing the stated observable failure without speculation;
+- a source must be widened beyond the stated boundary to avoid a misleading comparison;
+- the test requires a persistent referent, claim, event, artifact, standing, or installation controller;
+- the encounter can be omitted while the candidate still appears installed/current;
+- the disposition requires prescribing a v2 implementation; or
+- the hard drift check fails.
 
-- fall back to another store;
-- fabricate retrieval;
-- reinterpret missing evidence as nonexistence.
+Absence from the bounded source set is not evidence of nonexistence elsewhere.
 
 ## APERTURE
 
-Everything above the Open Brain evidence substrate remains intentionally unopened.
+The later physical form of self-installation, universal identity, stable tracers, qualification records, Control, and Awareness remains unopened.
 
-This is not missing implementation.
-
-It is outside BUILD 0.
+BUILD 1 freezes an executable pressure fixture only. The fixture may use explicit labels and expected outcomes inside the test; those labels do not establish universal enums or persistent object types.
 
 ## REVALIDATION TRIGGER
 
-Reopen the Build 0 boundary only if Golden Trace 01 cannot pass without adding a distinction excluded above.
+Reopen this checkout before implementation only if the selected fixture cannot expose the required encounter and observable unfinished state without:
 
-If triggered, identify the exact missing distinction before proposing structure.
+- reopening frozen Shape;
+- implementing BUILD 2+ persistence;
+- adding a generalized prior-art ingestion framework;
+- suppressing independent derivation; or
+- widening beyond one fixture and one disposition.
 
-## NEXT AFTER PASS
+## NON-GOALS / DO NOT BUILD
 
-Metabolize BUILD 0 evidence.
-
-Then install BUILD 1 — Harvest Fixture Path.
-
-Do not automatically begin BUILD 1 merely because BUILD 0 compiles.
+- do not implement Universal Referents or any BUILD 2 primitive;
+- do not implement the self-installation kernel;
+- do not reopen, rename, or refactor SSMM;
+- do not migrate ECB v1;
+- do not perform broad architecture discovery or broad prior-art ingestion;
+- do not prove the frozen Shape philosophically correct;
+- do not create a Container primitive, Level ontology, hierarchy, or relational register;
+- do not convert the Master Key into a universal ontology object;
+- do not suppress generative Freedom;
+- do not make Awareness a universal pre-action gate;
+- do not create runtime, schema, migration, MCP, deployment, database, or governance machinery; and
+- do not change Golden Trace 01.
 
 ## HUMAN STOP CONDITIONS
 
-Return to the human rail if implementation appears to require:
+Return to the human rail if implementation would cross a non-goal, require authority not already granted, expose protected source material, collapse an invariant, or make fixture success depend on an evaluative judgment whose standard and decision consequence are absent.
 
-- violation of a frozen invariant;
-- new persistent architecture not licensed by BUILD 0;
-- an architectural assumption absent from governing sources;
-- migration of ECB v1 implementation;
-- changing Golden Trace 01 to match the implementation.
+## CLOSURE / NEXT HANDLE
+
+The human accepted the BUILD 1 PASS evidence for metabolization closure on 2026-09-04 America/Phoenix. BUILD 1 is closed.
+
+BUILD 2 remains unopened. Do not install or begin BUILD 2 automatically; await a separate explicit human release.

@@ -1,0 +1,39 @@
+{
+  "fixture_id": "build-0-ob1-qualification-seam",
+  "case": "completed_qualification_encounter",
+  "freedom": {
+    "independent_derivation_preserved": true,
+    "candidate_id": "independent-build-0-candidate"
+  },
+  "control": {
+    "prior_art_qualification": "complete",
+    "this_requirement_satisfied": true,
+    "overall_installation_qualified": false,
+    "installation_seam_crossed": false,
+    "reason": "pinned_comparison_recorded_without_installation_consequence"
+  },
+  "awareness": {
+    "detected_condition": null,
+    "feedback_phase": null,
+    "route": null
+  },
+  "identity": {
+    "durable_uuid_implies_stable_referential_addressability": true,
+    "universal_referents_implemented": false
+  },
+  "standing": {
+    "accepted": false,
+    "promoted": false,
+    "installed": false,
+    "authority_conferred": false,
+    "governing": false,
+    "current": false
+  },
+  "comparison": {
+    "artifact": "completed-comparison.json",
+    "canonical_commit": "9543c29a3e44a210ce278392b9fac11248997461",
+    "independently_derived_count": 5,
+    "already_present_count": 14,
+    "conflict_or_difference_count": 9
+  }
+}

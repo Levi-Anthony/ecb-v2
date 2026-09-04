@@ -1,0 +1,116 @@
+{
+  "fixture_id": "build-0-ob1-qualification-seam",
+  "harvest_disposition": "REBUILD",
+  "master_key": "proven capability != inherited implementation",
+  "recorded_at": "2026-09-04T04:35:00Z",
+  "required_prior_art": {
+    "source_id": "S2",
+    "repository": "https://github.com/NateBJones-Projects/OB1",
+    "commit": "9543c29a3e44a210ce278392b9fac11248997461",
+    "local_receipt": "d0f869a:docs/ob1-prior-art.md",
+    "decision_standard": "Omission changes the BUILD 0 implementation plan, inherited partial-write failure exposure, MCP compatibility surface, or installation prerequisites."
+  },
+  "source_set": [
+    {
+      "id": "S1",
+      "repository": "ECB v2 — Greenfield",
+      "commit": "8568a00",
+      "path": "BUILD_CHECKOUT.md",
+      "git_blob": "bd6bcf36027e2662689177eb88a9efb74e8d818e"
+    },
+    {
+      "id": "S2a",
+      "repository": "ECB v2 — Greenfield",
+      "commit": "d0f869a",
+      "path": "docs/ob1-prior-art.md",
+      "git_blob": "fff9fef1326f93ef18f6bf71001e44aa8a5f3421"
+    },
+    {
+      "id": "S2b",
+      "repository": "ECB v2 — Greenfield",
+      "commit": "d0f869a",
+      "path": "BUILD_CHECKOUT.md",
+      "git_blob": "b0c97de951d102784d4a00b616a4784687f6076f"
+    },
+    {
+      "id": "S3",
+      "repository": "ECB v1 / ecos",
+      "commit": "cfa7a6dd3b849f399a4aff9f7596da1752bc7871",
+      "path": "experiments/ssmm-spike-1/docs/spike-1/path-card.md",
+      "git_blob": "24b53d0fcc2b500660fd215682b0903b3be28ab8"
+    },
+    {
+      "id": "S4",
+      "repository": "ECB v1 / ecos",
+      "commit": "c18738b5f24714add846ec6aef59617dc040af73",
+      "path": "experiments/ssmm-spike-1/docs/spike-1/review-response-2026-07-26.md",
+      "git_blob": "e061e006391a641456a47eabee4af2d16c1633ed"
+    },
+    {
+      "id": "S5",
+      "repository": "ECB v1 / ecos",
+      "commit": "c18738b5f24714add846ec6aef59617dc040af73",
+      "path": "experiments/ssmm-spike-1/docs/spike-1/future-ecb-semantic-memory-amendment.md",
+      "git_blob": "636610dd361082abb65eb3c9f06edc4f4edf9eaf"
+    },
+    {
+      "id": "S6",
+      "repository": "current human rail",
+      "commit": null,
+      "path": "BUILD 1 Re-Shape / Deployment Instruction, metabolized in BUILD_CHECKOUT.md",
+      "git_blob": null
+    }
+  ],
+  "generation": {
+    "candidate": {
+      "source_shape": "8568a00:BUILD_CHECKOUT.md",
+      "prior_art_preloaded": false,
+      "runtime": "codex-cli 0.148.0",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "none",
+      "sandbox": "read-only",
+      "ephemeral": true,
+      "artifact": "independent-candidate.json",
+      "sha256": "989644f36482b5cfc7753737cde378dc883df6c8644c345d84958439f8ac0517"
+    },
+    "comparison": {
+      "source_checkout": "d0f869a",
+      "read_boundary": [
+        "d0f869a:docs/ob1-prior-art.md",
+        "d0f869a:BUILD_CHECKOUT.md",
+        "independent-candidate.json"
+      ],
+      "runtime": "codex-cli 0.148.0",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "none",
+      "sandbox": "read-only",
+      "ephemeral": true,
+      "artifact": "completed-comparison.json",
+      "sha256": "3fb66a7dc903a9ebcb22ff9a793a175167ab6410f7f7790309752c427d2df5e6"
+    }
+  },
+  "identity_boundary": {
+    "antecedent": "persisted thought has a durable UUID",
+    "consequence": "stable referential addressability",
+    "consequence_required": true,
+    "universal_referents_implemented": false,
+    "does_not_imply": [
+      "promotion",
+      "assertion",
+      "standing",
+      "authority",
+      "governing designation",
+      "currentness"
+    ]
+  },
+  "cases": {
+    "missing_qualification_encounter": {
+      "candidate_artifact": "independent-candidate.json",
+      "comparison_artifact": null
+    },
+    "completed_qualification_encounter": {
+      "candidate_artifact": "independent-candidate.json",
+      "comparison_artifact": "completed-comparison.json"
+    }
+  }
+}

@@ -21,6 +21,8 @@ Implementation SHALL preserve recoverability of these distinctions:
 - confidence ≠ standing
 - standing ≠ warrant
 - capability ≠ warrant or authorization
+- directional position ≠ permanent ontological class
+- decision-complete reachability ≠ ontological collapse
 - local phenotype ≠ inherited architecture
 - current ≠ newest
 - runtime reorientation ≠ constitutional redesign
@@ -68,6 +70,19 @@ Available surfaces are:
 A requirement may compose modes.
 
 No consequential transition may depend solely on an agent remembering an instruction.
+
+## Evaluative-language discipline
+
+Governing text SHALL NOT rely on a naked evaluative such as `relevant`, `sufficient`, `appropriate`, `meaningful`, `material`, `good`, or `useful`.
+
+The text must state or traceably obtain from the active Master Key at least one of:
+
+- the applicable standard;
+- the comparator;
+- the decision consequence; or
+- the governing discriminator.
+
+When quantity has not earned decision significance, stopping conditions SHALL identify the analytical condition that ends inquiry rather than prescribe a count. Rule-based detection of naked evaluatives is linting inside the broader slop-scan discipline; passing such lint does not establish analytical quality.
 
 ## Hard stop
 

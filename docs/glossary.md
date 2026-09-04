@@ -19,7 +19,9 @@ A stable identity used to address a persistent first-class subject of inspection
 
 An atomic Open Brain evidence record optimized for future semantic retrieval.
 
-**NOT EQUIVALENT TO:** promoted claim; canonical knowledge; governance referent merely by capture.
+A persisted thought's durable UUID supplies stable referential addressability.
+
+**NOT EQUIVALENT TO:** promoted claim; canonical knowledge; Universal Referent implementation; standing; authority; governing designation; currentness.
 
 ## Claim
 
@@ -59,13 +61,35 @@ Artifact identity does not equal referent identity of what the artifact represen
 
 **STATUS: GOVERNING SEMANTICS; PHYSICALIZATION DEFERRED**
 
-A locally governing discriminator used to bound present relevance for a focal Move.
+A locally governing discriminator and decision-complete orientation handle for a focal Move.
 
-It may select what requires attention under the current orientation.
+Anything capable of changing the current decision must be carried in the active Master-Key expression or be traceably reachable from it through a stable pointer or tracer. Wired sensors travel with their explicit trigger or alarm conditions.
+
+Operational language may say “under Master Key K” without repeatedly restating every carried or reachable distinction.
+
+Decision-complete reachability does not merge the focal object, frame, warrant, standing, evidence, sensors, or other distinctions into one ontology object. Each remains independently inspectable and addressable.
 
 It cannot manufacture truth, standing, warrant, admissibility, authority, or authorization.
 
 Currentness requires explicit designation.
+
+## Directional level check
+
+**STATUS: GOVERNING CLARIFICATION; NOT A NEW PRIMITIVE**
+
+`constituent objects ↔ focal object ↔ same-level peers ↔ container object`
+
+These are directional positions under the current projection, not permanent ontological classes. Any encountered object may become focal under a lawful change of perspective or resolution.
+
+**DO NOT INFER:** a Container primitive; Level ontology; fixed hierarchy; parallel relational register.
+
+## SSMM / “Tiny SSMM”
+
+**STATUS: GOVERNING CLARIFICATION; NO ARCHITECTURAL CHANGE**
+
+“Tiny SSMM” is inherited shorthand for a particularly small or local projection of the already-fractal SSMM grammar. It is not separate machinery inside another unnamed SSMM object.
+
+The locally necessary expression may vary with focal object, active Master Key, resolution, and decision consequence. The nickname does not reopen SSMM phases, decision law, or runtime role.
 
 ## Aperture
 

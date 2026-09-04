@@ -1,0 +1,33 @@
+{
+  "fixture_id": "build-0-ob1-qualification-seam",
+  "case": "missing_qualification_encounter",
+  "freedom": {
+    "independent_derivation_preserved": true,
+    "candidate_id": "independent-build-0-candidate"
+  },
+  "control": {
+    "prior_art_qualification": "unfinished",
+    "this_requirement_satisfied": false,
+    "overall_installation_qualified": false,
+    "installation_seam_crossed": false,
+    "reason": "required_prior_art_encounter_missing"
+  },
+  "awareness": {
+    "detected_condition": "required_encounter_omitted",
+    "feedback_phase": "metabolize",
+    "route": "control_before_next_authority_bearing_installation"
+  },
+  "identity": {
+    "durable_uuid_implies_stable_referential_addressability": true,
+    "universal_referents_implemented": false
+  },
+  "standing": {
+    "accepted": false,
+    "promoted": false,
+    "installed": false,
+    "authority_conferred": false,
+    "governing": false,
+    "current": false
+  },
+  "comparison": null
+}

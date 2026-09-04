@@ -1,0 +1,14 @@
+{
+  "fixture_id": "build-0-ob1-qualification-seam",
+  "recorded_at": "2026-09-04T04:35:00Z",
+  "result": "PASS",
+  "cases": {
+    "missing_qualification_encounter": "unfinished",
+    "completed_qualification_encounter": "complete",
+    "drifted_qualification_basis": "unfinished"
+  },
+  "freedom_preserved": true,
+  "installation_seam_crossed": false,
+  "standing_conferred": false,
+  "build_2_opened": false
+}

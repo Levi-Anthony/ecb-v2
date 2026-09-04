@@ -18,6 +18,10 @@ Produce the smallest clean ECB v2 substrate capable of preserving OB1’s dispro
 
 proven capability ≠ inherited implementation
 
+Operationally, the active Master-Key expression is the decision-complete orientation handle. Anything capable of changing the current decision must be carried in that expression or be traceably reachable from it through a stable pointer or tracer. This includes wired sensors and their explicit trigger or alarm conditions.
+
+Normal operational language may therefore say “under Master Key K” without restating the focal object, frame, warrant, standing, evidence, sensors, and other carried or reachable distinctions. Those distinctions remain independently inspectable and addressable; decision-complete reachability does not collapse them into one ontology object.
+
 **Current leverage**
 
 Separate harvesting from rebuilding.
@@ -121,7 +125,9 @@ Governance state must be reconstructible after restart.
 
 ## Runtime boundary
 
-Tiny SSMM is not reopened here.
+“Tiny SSMM” is inherited shorthand for a particularly small or local projection of the existing fractal SSMM grammar. It is not a separate architectural mechanism, layer, or object contained inside a different SSMM.
+
+The shorthand does not reopen SSMM phases, decision law, or runtime role. Locally necessary expression may change with focal object, active Master Key, resolution, and decision consequence while the constitutive grammar projects across scale.
 
 When governance becomes active, runtime receives a validated, designated action envelope.
 
@@ -131,11 +137,25 @@ Governance retains the conditions that made the envelope legitimate.
 
 Self-hosting means governance objects can themselves become focal referents using the same grammar.
 
+The minimum relational level check is directional under the current projection:
+
+`constituent objects ↔ focal object ↔ same-level peers ↔ container object`
+
+These positions are not permanent ontological classes. Any encountered object may become focal under a lawful change of perspective or resolution. Do not create a Container primitive, Level ontology, hierarchy, or parallel relational register from this check.
+
 Recursive inspection is lazy.
 
 Open recursive inspection only when an encountered condition creates material uncertainty about legitimacy, orientation, standing, warrant, scope, propagation, consequence, or permitted action.
 
 Do not instantiate conceivable recursive depths merely because they exist conceptually.
+
+## Forward freedom and installation control
+
+Freedom may explore, infer, derive, and independently reinvent. Do not suppress generative search merely to force historical imitation.
+
+Control owns the promotion or installation seam. Before a candidate acquires authority-bearing installation consequence, it must encounter and disposition already-settled prior art whose omission could change whether the candidate may be installed, the conditions of installation, the protections the installed candidate must preserve, or the interpretation of a failure under the active Master Key. The encounter and comparison must retain source provenance. “Check relevant prior art” alone does not satisfy this obligation.
+
+Awareness supplies the Metabolize feedback loop. It tests whether the basis supporting a completed transition drifted, became stale, omitted a required encounter, or exposed a qualification gap. A triggered condition returns through Control before the next authority-bearing installation. Awareness is not a universal pre-action gate.
 
 ## Build sequence
 

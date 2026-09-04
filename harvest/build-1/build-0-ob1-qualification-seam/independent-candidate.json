@@ -1,0 +1,34 @@
+{
+  "candidate_id": "independent-build-0-candidate",
+  "source_shape": "8568a00:BUILD_CHECKOUT.md",
+  "prior_art_seen": false,
+  "approach": [
+    "Create one canonical persistent thought store with fields for durable ID, exact text, embedding, source, captured_at, and minimal capture provenance.",
+    "Expose only three MCP operations: capture_thought, semantic_search, and get_thought.",
+    "Make capture_thought validate required metadata, generate a stable opaque ID, compute the embedding, and atomically persist the single evidence record; fail explicitly if embedding or persistence fails.",
+    "Make semantic_search embed the query and rank canonical thought records by vector similarity, returning the stored record identity, text, source, captured_at, and relevance score without creating or modifying records.",
+    "Make get_thought read the same canonical store by durable ID and return the persisted source record; missing IDs and storage failures remain explicit and are not interpreted as nonexistence.",
+    "Keep all AI contexts stateless with respect to evidence: Context A and Context B connect through the same persistent store, with no authoritative local cache or conversational-memory dependency.",
+    "Represent every captured item only as an atomic evidence thought; introduce no claim, referent, standing, governance, promotion, or alternate relation structure.",
+    "Verify Golden Trace 01 end to end: capture the exact fixture in Context A, discard conversational context, search from fresh Context B, confirm semantic recovery, fetch by returned ID, and assert exact record identity, text, source, timestamp, provenance, and record-count stability."
+  ],
+  "assumptions": [
+    "A single durable database available to both fresh AI contexts is sufficient for BUILD 0; the specific database engine is an implementation choice rather than frozen architecture.",
+    "The selected database or extension supports vector storage and similarity search without requiring a second authoritative index; if an auxiliary index is used, it is derived and rebuildable from the canonical thought records.",
+    "One embedding model and vector dimensionality are configured consistently for capture and query during the acceptance test.",
+    "Minimal provenance consists of source, captured_at, and capture interface/context metadata; Golden Trace 01 does not require a broader provenance ontology.",
+    "A generated UUID or equivalent opaque stable identifier satisfies durable thought identity without introducing BUILD 2 universal referents.",
+    "Semantic search may use a small top-k result set and need not establish a universal relevance threshold, provided the frozen fixture is returned as relevant.",
+    "MCP transport and authentication can remain thin adapters around the three operations and do not require governance or authorization primitives in BUILD 0.",
+    "Retrieval is read-only and therefore must not upsert, duplicate, promote, or otherwise transform the canonical thought record.",
+    "No ECB v1 runtime, schema, cache, migration, or implementation detail is required.",
+    "Any inability to pass Golden Trace 01 without an excluded distinction is a stop condition requiring escalation rather than scope expansion."
+  ],
+  "standing": {
+    "candidate_only": true,
+    "accepted": false,
+    "installed": false,
+    "governing": false,
+    "current": false
+  }
+}
