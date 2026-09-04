@@ -517,12 +517,61 @@ trace remains frozen test authority; passing it did not open or authorize BUILD 
 
 ## Worked Trace 04 — Standing change with history
 
-**STATUS: RESERVED**  
+**STATUS: RESERVED — SENSE BACKBONE RECORDED; AUTHORIZED FOR SHARPENING AT SHAPE**
+
 **UNLOCKS: BUILD 5**
 
 Freeze before BUILD 5 implementation.
 
 Must prove a prior representation can become stale/superseded/revalidation-required without losing historical reconstructibility.
+
+That reserved sentence is a minimum governing commitment, not the final frozen specification. Sense and
+Shape are authorized to add the exact fixture, statuses, falsifiers, negative cases, concurrency
+requirements, and reconstructibility obligations required to make it executable. Sharpen it; do not
+weaken or substitute it.
+
+### Sense backbone — recorded 2026-09-04 America/Phoenix, not yet frozen
+
+The minimum coherent episode, using only already-installed state:
+
+```text
+T0   Claim C as inherited from BUILD 3: origin=ecb_inference, epistemic_standing=unassessed.
+     Evidence Link L anchors C's historical basis to GT01 @ digest_v1.
+     Relation R remains C2 depends_on C.
+T0q  BUILD 5 records a qualification of C against digest_v1, giving C a qualified
+     epistemic standing Q. Q's vocabulary is a Shape question.
+     History reconstructs: unassessed -> Q, basis = digest_v1.
+T1   GT01's source-bearing fields change outside ECB's control.
+     ECB does not know when the external change occurred.
+T2   ECB observes current digest_v2 != linked digest_v1 and records that the mismatch was
+     observed at T2, that Q was evaluated against digest_v1, that Q can no longer be relied
+     upon without re-examination, and that C transitions Q -> revalidation_required.
+T3   A fresh context reconstructs both prior standing states and their ordering, the
+     digest_v1 anchor, the T2 observation, that ECB does not claim to know when GT01
+     actually changed, and that C2 and relation R are unchanged with no propagation.
+```
+
+The qualification step T0q is constitutive. Without it the path would read
+`unassessed -> revalidation_required`, which is semantically wrong: `unassessed` means no separate
+epistemic qualification has been recorded, so nothing exists to revalidate and `revalidation_required`
+would become workflow status rather than epistemic standing.
+
+Recorded Sense constraints on the eventual frozen trace:
+
+- transaction and observation time are sufficient; the trace must not claim the external change time;
+- Evidence Link L does not become stale and is not mutated; what becomes unreliable is C's
+  qualification against the historical basis;
+- relation R and Claim C2 must be observably unchanged across the episode, proving `depends_on`
+  propagates nothing;
+- qualification rejection or preserved conflict must not require a negative epistemic-standing value,
+  and rejected evidence must not disappear as though never observed;
+- `claims.epistemic_standing` is the materialized/applied standing produced by a successful
+  qualification transition, and is not described in recency or authority terms; and
+- the transition and the history that makes it reconstructible must not be able to diverge.
+
+Fixtures, statuses, exact vocabulary, record shape, transition mechanism, concurrency requirements, and
+the enduring BUILD 4 regression projection are Shape decisions. This backbone carries no acceptance
+authority until the trace is frozen at Shape closure.
 
 ## Worked Trace 05 — Governed local closure
 

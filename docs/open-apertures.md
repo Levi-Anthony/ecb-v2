@@ -20,8 +20,26 @@ Exact enum values for claim kind, evidentiary basis, epistemic standing, governa
 The dimensional separation is architecturally required. The exact vocabulary has not yet been exercised enough by real v2 records to justify freezing it.
 
 **CURRENT EFFECT**  
-NARROWED BY CLOSED BUILD 4 SHAPE. AP-01 was reactivated for BUILD 4 because BUILD 4 requires a second
-Claim kind for typed-relation Claims, and BUILD 4 Shape has now closed that requirement.
+REACTIVATED NARROWLY FOR BUILD 5 on 2026-09-04 America/Phoenix, over the closed BUILD 4 narrowing.
+
+BUILD 5's Worked Trace 04 episode requires a qualified epistemic value and a standing transition that
+`unassessed` cannot represent: the recorded standing path is `unassessed -> Q -> revalidation_required`.
+**No standing vocabulary is selected at BUILD 5 Sense.** The exact qualification value Q and the exact
+spelling of the revalidation state are Shape questions.
+
+Qualification outcome is not standing. A qualification may reject or preserve conflict while leaving the
+prior epistemic standing unchanged, so BUILD 5 does **not** create `rejected`, `failed`, or any negative
+standing value merely to encode a qualification outcome. Preserve
+`evidence arrival != qualification outcome != standing change`. Rejected evidence or qualification must
+not disappear as though never observed; the minimum representation preserving that outcome is a Shape
+question if the E08 branch enters frozen Worked Trace 04.
+
+`claims.epistemic_standing` is the materialized/applied epistemic standing resulting from a successful
+qualification transition. It is not to be renamed or described as "latest authorized standing":
+"latest" imports recency semantics and "authorized" imports authority and warrant semantics BUILD 5 has
+not earned.
+
+The BUILD 4 narrowing remains accepted and unchanged.
 
 `claim_kind` is closed at exactly `assertion` and `relation`. `relation` designates a typed
 referent-to-referent relation Claim and matches the Build Contract's "assertion or typed relation"
@@ -42,9 +60,9 @@ Broader claim-kind, origin, evidentiary-basis, epistemic, governance-standing, a
 qualification, and history vocabularies remain open on their existing terms.
 
 **TRIGGER**  
-Reactivate when a build needs a claim kind or origin beyond `assertion`, `relation`, and
-`ecb_inference`, a qualified epistemic value, governance or action standing, or a standing transition
-that `unassessed` cannot represent.
+Reactivate further when a build needs a claim kind or origin beyond `assertion`, `relation`, and
+`ecb_inference`, an epistemic value beyond those BUILD 5 Shape closes, governance or action standing, or
+a standing transition those values cannot represent.
 
 **ROUTE**  
 Worked Trace 04 / BUILD 5 for qualification history; otherwise the first build whose behavior requires
@@ -71,6 +89,12 @@ Thought disappearance preserve Claim and Link and never substitute changed bytes
 General locator policy, historical payload retention, digest-scheme migration, versioned Artifacts,
 and standing/current-support history remain open.
 
+CONSULTED; NOT REACTIVATED at BUILD 5 Sense closure. Reactivation is conditional on the Worked Trace 04
+reconstructibility question resolving toward retaining what a prior basis *was* rather than that it
+*changed*. On Worked Trace 03's precedent, which deliberately serializes no changed source payload, it
+is expected to stay closed. Storing an observed digest is not payload retention and does not reactivate
+this aperture.
+
 **TRIGGER**  
 Reactivate if a new source-bearing Thought field is outside the v1 projection, historical payload must
 be reconstructed after drift/disappearance, SHA-256 or the v1 encoding must migrate, or a non-Thought
@@ -89,7 +113,10 @@ Exact payload and lifecycle for typed semantic evaluations used by consequential
 The architectural requirement is settled. No early build yet needs a consequential semantic transition.
 
 **CURRENT EFFECT**  
-Does not block BUILDS 0–4.
+Does not block BUILDS 0–4. CONSULTED; NOT REACTIVATED at BUILD 5 Sense closure: the Worked Trace 04
+mismatch condition is a digest comparison, decidable structurally with no semantic-evaluation payload.
+Conditional reactivation only if qualification Q resolves toward an outcome that is a judgment rather
+than a comparison.
 
 **TRIGGER**  
 BUILD 5 or later introduces a transition that cannot be decided structurally.
@@ -106,7 +133,9 @@ Exact schema for transition policies describing structural, semantic, authority,
 The enforcement classification is ratified. The concrete transition set is not yet instantiated.
 
 **CURRENT EFFECT**  
-Does not block evidence-layer work.
+Does not block evidence-layer work. OPEN AND INACTIVE at BUILD 5 Sense closure: the focal episode
+contains no consequential governance-policy transition. Activation is not inferred from standing history
+alone.
 
 **TRIGGER**  
 First consequential governance transition.
@@ -170,6 +199,12 @@ hierarchy, inverse or symmetry machinery, graph traversal surface, relation life
 entity resolution, and no adoption of the six-label OB1 typed-edge vocabulary by resemblance. The
 self-relation prohibition closed by BUILD 4 is scoped to `depends_on` alone and imposes no universal
 rule on future predicates.
+
+NOT ACTIVATED BY INHERITANCE at BUILD 5 Sense closure. BUILD 5 being open does not broaden this
+aperture. BUILD 5 may encounter supersession or currentness semantics, but must not broaden BUILD 4's
+relation ontology or repurpose `depends_on` to mean supersedes, supports, or current. `depends_on`
+remains non-propagating: dependency exists is distinct from evidence or basis changed, from revalidation
+required, from standing changed, and from any currentness or supersession designation.
 
 **TRIGGER**  
 Repeated ambiguity, integrity failures, or cross-domain reuse demonstrates a higher-order relation grammar is needed.

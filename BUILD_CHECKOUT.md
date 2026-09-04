@@ -1,14 +1,14 @@
-STATUS: BUILD 5 SENSE OPEN 2026-09-04 AMERICA/PHOENIX; SHAPE UNOPENED
+STATUS: BUILD 5 SENSE CLOSED 2026-09-04 AMERICA/PHOENIX; SHAPE UNOPENED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
-AUTHORITY: Derived from the Build Contract, constitutive invariants, closed BUILD 0–4 evidence, frozen acceptance authority, open apertures, and explicit human BUILD 5 Sense-opening instruction
-CURRENT BUILD UNIT: BUILD 5 — Immutable Events + Versioned Artifacts + First Transformation Receipt (SENSE)
+AUTHORITY: Derived from the Build Contract, constitutive invariants, closed BUILD 0–4 evidence, reserved acceptance authority, open apertures, and explicit human BUILD 5 Sense-opening and Sense-closure dispositions
+CURRENT BUILD UNIT: BUILD 5 — Immutable Events + Versioned Artifacts + First Transformation Receipt (SENSE CLOSED)
 
 # BUILD 5 — Immutable Events + Versioned Artifacts + First Transformation Receipt
 
 ## CURRENT MOVE
 
-`ENTER SENSE → QUESTION FORWARD → DO NOT SHAPE YET`
+`CLOSE SENSE → AWAIT EXPLICIT SHAPE AUTHORIZATION`
 
 ```text
 BUILD_0=CLOSED
@@ -16,13 +16,25 @@ BUILD_1=CLOSED
 BUILD_2=CLOSED
 BUILD_3=CLOSED
 BUILD_4=CLOSED
-BUILD_5=SENSE_OPEN
+BUILD_5=SENSE_CLOSED
+SENSE_REOPEN_REQUIRED=NO
 SHAPE=UNOPENED
 MOVE_PERMISSION=NOT_RELEASED
 IMPLEMENTATION=UNAUTHORIZED
-WORKED_TRACE_04=RESERVED; MUST_BE_SHAPED_AND_FROZEN_BEFORE_IMPLEMENTATION
+SCOPE=TRACE_BOUNDED_WITH_CONTRACT_ACCOUNTABILITY_GUARD
+WORKED_TRACE_04=RESERVED; BACKBONE_RECORDED; SHARPEN_AT_SHAPE; FREEZE_BEFORE_IMPLEMENTATION
+STANDING_PATH=unassessed -> Q -> revalidation_required
+Q_VOCABULARY=SHAPE_QUESTION
+AP01=REACTIVATED_NARROWLY
+AP02=CONDITIONAL_NOT_REACTIVATED
+AP03=CONDITIONAL_NOT_REACTIVATED
+AP04=OPEN_AND_INACTIVE
+AP07=NARROWED_TO_depends_on; NOT_ACTIVATED_BY_INHERITANCE
+ARTIFACT_EARNED=NO_ON_CURRENT_EVIDENCE
+TRANSFORMATION_RECEIPT_EARNED=NO_ON_CURRENT_EVIDENCE
+BITEMPORALITY_EARNED=NO
+E3_UPDATE_GRANT_QUESTION=DORMANT
 BUILD_6_PLUS=UNOPENED_AND_UNAUTHORIZED
-SENSE_REOPEN_REQUIRED=NO
 ```
 
 BUILD 4 closed cleanly at implementation commit `d11401297e69af0f2e9e18aa55da41af4e8b5f31`, root tree
@@ -35,17 +47,20 @@ four public tables, four public functions, no public view, and the five-migratio
 Claim C2 remain `ecb_inference / unassessed`; relation Claim R remains an unassessed
 `C2 depends_on C` assertion that propagates no standing, support, truth, currentness, or authorization.
 
+This checkout reconciles forward onto the earlier BUILD 5 Sense-opening state
+`672c2f9bc5ce6f3d13c11c1aee7df890a685e9ce`, which is preserved as provenance rather than replaced. The
+process friction harvest carried in that state is retained verbatim under renamed identifiers
+FH-01 through FH-07; the opening Question Forward set is retained below and marked superseded.
+
 ## PURPOSE
 
-Sense the smallest BUILD 5 vertical slice that makes historical change reconstructible through:
+Sense the smallest BUILD 5 vertical slice that makes historical change reconstructible.
 
-- immutable transition/history evidence;
-- immutable or versioned representations;
-- one first transformation receipt; and
-- the minimum standing/currentness/supersession behavior required by Worked Trace 04.
-
-Do not assume that all four bullets require separate physical structures. BUILD 5 must earn its Shape
-from the observable behavior and governing distinctions, not from the nouns in the Build Contract.
+The Sense-opening statement of purpose enumerated immutable transition/history evidence, immutable or
+versioned representations, one first transformation receipt, and minimum standing/currentness/
+supersession behavior. **That literal enumeration is superseded by the human trace-bounded
+disposition recorded under FOCAL OBJECT.** The enumerated nouns remain contract obligations subject to
+the accountability guard; they are not assumed to require separate physical structures.
 
 ## GOVERNING BUILD CONTRACT
 
@@ -59,22 +74,22 @@ The BUILD 5 sequence slot is exactly:
 
 `Immutable Events + Versioned Artifacts + First Transformation Receipt`
 
-Structure remains earned. Dedicated persistence is justified only by integrity pressure, recurring
-semantic ambiguity, difficult repeated queries, transactional requirements, measurable performance
-pressure, or repeated reconstruction risk. Philosophical importance alone is insufficient.
+That official Build Unit title is retained unchanged.
 
 ## FROZEN ACCEPTANCE DIRECTION
 
-Worked Trace 04 is reserved for BUILD 5 and must be shaped and frozen before implementation.
+Worked Trace 04 is reserved for BUILD 5, is authorized for sharpening during Shape, and must be frozen
+before implementation.
 
-Its current minimum requirement is:
+Its minimum governing requirement is preserved verbatim and may be sharpened but not weakened or
+substituted:
 
 > Prove a prior representation can become stale, superseded, or revalidation-required without losing
 > historical reconstructibility.
 
-That sentence is authority over the direction of Sense, not yet a complete test specification or a
-license to invent currentness, supersession, or revalidation machinery beyond what the eventual frozen
-trace earns.
+That sentence is authority over the direction of Sense and Shape. It is not yet a complete test
+specification, and it is not a license to invent currentness, supersession, or revalidation machinery
+beyond what the eventual frozen trace earns.
 
 ## INVARIANTS IN PLAY
 
@@ -101,29 +116,43 @@ Conversely, do not create separate tables or primitives merely to mirror the con
 
 ## FOCAL OBJECT
 
-The focal object for Sense is **one reconstructible transformation/history episode** sufficient to
-force BUILD 5's distinctions to become observable.
+`TRACE-BOUNDED, WITH CONTRACT-ACCOUNTABILITY GUARD`
 
-The episode must be able to answer, after a fresh context/restart:
+The BUILD 5 Sense focal object is **the minimum reconstructible transition/history episode required to
+make Worked Trace 04 pass.**
+
+Do not assume that Event, Artifact, Transformation Receipt, standing history, supersession/currentness,
+revalidation, or bitemporality each require separate physical structures merely because they appear in
+or near the BUILD 5 contract boundary. Earn them from the focal episode and its falsifiers.
+
+**Contract-accountability guard.** This does not silently narrow BUILD 5 closure. Before BUILD 5 can
+eventually close, every obligation named by the Build Contract must be either:
+
+1. satisfied by the selected coherent BUILD 5 Shape; or
+2. explicitly dispositioned through a later human decision, including a Build Contract amendment if
+   genuine decomposition has been earned.
+
+BUILD 5 is not split and the Build Contract is not amended. Decomposition remains a possible conclusion
+to be supported by actual coupling and diff evidence.
+
+The episode must be able to answer, after a fresh context or restart:
 
 - what representation existed before;
 - what representation exists after;
 - what transformation or transition occurred;
-- what historical basis made each recorded representation/standing legible;
+- what historical basis made each recorded representation and standing legible;
 - whether an older representation is stale, superseded, or requires revalidation if the trace earns one
   of those distinctions; and
 - which state, if any, is explicitly current without treating newest as current by default.
-
-Sense must discover the minimum sufficient episode and exact observable questions before selecting a
-schema.
-
 ## BUILD 1–4 FRICTION HARVEST — FEED-FORWARD METHOD
 
-The following is implementation-process evidence carried into BUILD 5. It constrains how Sense/Shape/
+The following is implementation-process evidence carried into BUILD 5. Its identifiers were renamed
+from F1-F7 to FH-01-FH-07 at Sense closure so that F1-F6 could be reserved for the substantive
+BUILD 5 Sense findings. The content is otherwise preserved verbatim from the Sense-opening state. It constrains how Sense/Shape/
 Move should be conducted where applicable; it does **not** itself add BUILD 5 ontology, schema, or
 acceptance requirements.
 
-### F1 — Qualify relevant prior art before authority-bearing invention
+### FH-01 — Qualify relevant prior art before authority-bearing invention
 
 BUILD 1 demonstrated that independent derivation is valuable because it exposes the actual problem and
 prevents historical imitation, but installation control still requires an explicit encounter with
@@ -137,7 +166,7 @@ authority-bearing installation decision.
 This is not a universal pre-action gate. Awareness remains a Metabolize feedback loop, not a reason to
 preload all history.
 
-### F2 — Any strengthened invariant over live state needs an explicit concurrency story
+### FH-02 — Any strengthened invariant over live state needs an explicit concurrency story
 
 BUILD 2 showed that a correct steady-state invariant can still be violated during activation if a live
 writer crosses the transition boundary under the old rules.
@@ -149,7 +178,7 @@ canonical records, Sense/Shape must ask:
 
 The answer may be "no special mechanism required," but it may not remain implicit.
 
-### F3 — Preserve Layer A historical authority; project Layer B regression forward
+### FH-03 — Preserve Layer A historical authority; project Layer B regression forward
 
 BUILD 3 and BUILD 4 established a two-layer regression model:
 
@@ -162,7 +191,7 @@ BUILD 3 and BUILD 4 established a two-layer regression model:
 If BUILD 5 lawfully changes whole-schema cardinality or surface shape, preserve the historical harness
 and create only the minimum new cross-build regression required to prove enduring behavior.
 
-### F4 — Validate the validator before canonical contact
+### FH-04 — Validate the validator before canonical contact
 
 BUILD 3/4 friction clustered in harnesses and assertions rather than architecture: SQL/test wiring,
 format/check failures, an incomplete inherited-constraint expectation, a vacuous always-pass assertion,
@@ -181,7 +210,7 @@ lightweight probe-integrity pass:
 
 This is validation of executable evidence, not an additional architecture stage.
 
-### F5 — Select migration execution mechanics explicitly
+### FH-05 — Select migration execution mechanics explicitly
 
 BUILD 3 used the managed migration runner and inherited an outer transaction around a migration already
 carrying its own transaction. BUILD 4 used byte-identical direct execution, gaining clear
@@ -194,7 +223,7 @@ indivisible transition. Then select the execution mechanism that actually provid
 
 Do not inherit BUILD 3's runner or BUILD 4's direct application merely because it was used before.
 
-### F6 — Canonical contact must buy information
+### FH-06 — Canonical contact must buy information
 
 Rollback probes, concurrency probes, independent reproduction, and cross-build regression are valuable
 when they answer a live evidentiary question. Re-running a mutation-bearing harness against an unchanged
@@ -204,7 +233,7 @@ information.
 **Forward heuristic:** every canonical probe should name the uncertainty or falsifier it resolves. Do
 not substitute ritual reruns for new evidence.
 
-### F7 — Classify discrepancies before reopening architecture
+### FH-07 — Classify discrepancies before reopening architecture
 
 BUILD 3/4 demonstrated that a failed test is not automatically a failed Shape.
 
@@ -230,40 +259,199 @@ implementation count, specific fixture UUID patterns, or universal rerunning of 
 harness. The observed weak surface across BUILD 1–4 is the translation from precise Shape into precise
 executable proof; BUILD 5 should improve proof construction rather than add architecture ceremony.
 
-## RELEVANT OPEN APERTURES AT ENTRY
+## SENSE CLOSURE — 2026-09-04 AMERICA/PHOENIX
 
-### AP-01 — Controlled standing vocabulary
+### Entry verification
 
-Reactivated only as far as BUILD 5 behavior requires. BUILD 4 closed `claim_kind` at exactly
-`assertion | relation` and retained `origin=ecb_inference`, `epistemic_standing=unassessed`. BUILD 5 may
-need a qualified epistemic value or standing transition that `unassessed` cannot represent, but no such
-vocabulary is selected at Sense opening.
+```text
+SENSE_OPENING_STATE=672c2f9bc5ce6f3d13c11c1aee7df890a685e9ce   (preserved as provenance)
+BUILD_4_CLOSURE=494b842e8854b60b909c08ca3735109e4ad22741
+HEAD=main=origin/main=672c2f9   verified before writing
+MAIN_WORKTREE=CLEAN   SENSE_WORKTREE=CLEAN
+CANONICAL_TABLES=claims, evidence_links, referents, thoughts
+CANONICAL_FUNCTIONS=prepare_claim, prepare_evidence_link, register_thought_referent, search_thoughts
+COUNTS=1 Thought; 6 Referents; 3 Claims; 1 Evidence Link
+SUBSTRATE_DRIFT=NONE   BUILD_0_TO_4_REOPENING_CONDITION=NONE
+```
 
-### AP-02 — Stable evidence interface
+Verification was read-only. No canonical database mutation occurred during BUILD 5 Sense.
 
-BUILD 3 closed the Thought-backed evidence revision interface. General historical payload retention,
-digest-scheme migration, non-Thought evidence, versioned Artifacts, and standing/current-support history
-remain open. BUILD 5 may exercise these only where the vertical slice requires them.
+### The focal episode — Worked Trace 04 backbone
 
-### AP-03 — Semantic-evaluation schema
+Recorded as the Sense backbone. Fixtures reuse only already-installed state.
 
-May activate only if BUILD 5 introduces a transition that cannot be decided structurally. Specify only
-the evaluation type the actual transition requires.
+```text
+T0   Claim C exists exactly as inherited from BUILD 3:
+     origin=ecb_inference, epistemic_standing=unassessed.
+     Evidence Link L anchors C's historical basis to GT01 @ digest_v1.
+     Relation R remains C2 depends_on C.
 
-### AP-04 — Enforcement-policy payload
+T0q  BUILD 5 records a qualification of C against digest_v1.
+     C now has some qualified epistemic standing Q.
+     Exact vocabulary Q remains a Shape question.
+     Historical state now reconstructs: unassessed -> Q, basis = digest_v1.
 
-May activate if BUILD 5's first consequential transition requires a concrete policy payload. Do not
-import BUILD 6 governance bootstrap merely because policy enforcement will eventually exist.
+T1   GT01's source-bearing fields change outside ECB's control.
+     ECB does not know when the external change occurred.
 
-### AP-07 — Full relation ontology
+T2   ECB observes current digest_v2 != linked digest_v1, and records:
+       - the mismatch was observed at T2;
+       - C's qualification Q was evaluated against digest_v1;
+       - that qualification can no longer be relied upon without re-examination;
+       - C transitions Q -> revalidation_required.
 
-Remains narrowed exactly to `depends_on`. BUILD 5 may need supersession/currentness semantics, but it
-must not silently broaden BUILD 4's relation ontology or repurpose `depends_on` to mean supersedes,
-supports, or current.
+T3   Fresh context reconstructs:
+       - C was originally asserted unassessed;
+       - C was subsequently qualified as Q against digest_v1;
+       - digest_v1 remains the historical evidence anchor;
+       - a mismatch with digest_v2 was observed at T2;
+       - C moved Q -> revalidation_required at T2;
+       - both prior standing states and their ordering remain recoverable;
+       - ECB does not claim to know when GT01 actually changed;
+       - C2 and relation R are unchanged;
+       - R itself caused no propagation.
+```
 
-## QUESTION FORWARD — OPENING SET
+The qualification step T0q is constitutive, not decorative. Without it the path would read
+`unassessed -> revalidation_required`, which is semantically wrong under the existing contract:
+`unassessed` means no separate epistemic qualification has been recorded, so there would be nothing to
+revalidate, and `revalidation_required` would quietly become workflow status rather than epistemic
+standing. The three-state path forces BUILD 5 to represent an actual standing transition.
 
-These are Sense questions, not candidate decisions. Sense should inspect governing text, accepted build
+The episode reuses BUILD 3's existing drift detection. BUILD 5 supplies consequence and history, not
+detection.
+
+### Sense findings
+
+**F1 — Bitemporality is not presently earned.** Worked Trace 04 needs to know when ECB observed the
+mismatch and when ECB changed standing. It explicitly does not need to claim when the external source
+actually changed. Transaction and observation time are sufficient for this vertical slice, and the
+unknown external change time stays unknown. E09 is directly on point: do not assign revalidation to a
+property that is not observable through the declared return channel. This is cleaner than installing
+valid-time prophylactically.
+
+**F2 — Evidence Link L does not become stale.** L remains a truthful historical record that C used
+GT01 @ digest_v1 as basis. The current Thought no longer matching digest_v1 does not invalidate that
+history. BUILD 3 already established this distinction.
+
+**F3 — What becomes unreliable is the qualification of C against that historical basis.** The state
+transition therefore belongs to Claim qualification and standing history, not to Evidence Link
+mutation.
+
+**F4 — `depends_on` still does nothing automatically.** Relation R remains untouched across the
+episode. T2 must be caused by an explicit observation or qualification mechanism. If later machinery
+examines R and concludes C2 also requires review, that is a separate transition with its own evidence
+and history, not hidden propagation from the predicate.
+
+**F5 — Decomposition evidence, not speculation.** The episode unquestionably earns immutable
+transition/history, standing qualification and change, historical reconstructibility, and an atomicity
+question about transition plus history. It does not yet earn a versioned Artifact or a Transformation
+Receipt merely to make Worked Trace 04 pass. Recorded as required: *Worked Trace 04's minimum coherent
+episode currently earns Event/history plus standing-transition machinery; no requirement encountered so
+far independently earns a versioned Artifact or Transformation Receipt.* The trace-bounded first slice
+is materially smaller than the literal contract line. The Build Contract is not amended.
+
+**F6 — Event Referent identity follows by invariant, not by choice.** The universal-identity section of
+`docs/invariants.md` names events explicitly among persistent first-class subjects that SHALL possess
+stable referent identity. A BUILD 5 Event is therefore Referent-backed as a consequence of an existing
+invariant. This is settled, not a Shape question. What remains open is the physical record shape, not
+whether identity attaches.
+
+### Human dispositions recorded at Sense
+
+**Scope.** Trace-bounded, with the contract-accountability guard recorded under FOCAL OBJECT. BUILD 5 is
+not split; the Build Contract is not amended.
+
+**Worked Trace 04.** RESERVED text is a minimum governing commitment, not the final frozen
+specification. Sense and Shape may add the exact fixture, statuses, falsifiers, negative cases,
+concurrency requirements, and reconstructibility obligations required to make it executable. Sharpen but
+do not weaken or substitute the reserved requirement. Freeze before implementation.
+
+**E08 / qualification outcome.** Qualification rejection does not require a negative epistemic-standing
+value. Preserve `evidence arrival ≠ qualification outcome ≠ standing change`. A qualification may reject
+or preserve conflict while leaving the prior epistemic standing unchanged. Do not create `rejected`,
+`failed`, or similar standing merely to encode the outcome of qualification. The minimum standing path
+remains `unassessed -> Q -> revalidation_required`, and Shape must name and define Q. Carried forward:
+rejected evidence or qualification must not disappear as though never observed, and Shape must
+determine the minimum representation required to preserve that outcome if the E08 branch is
+incorporated into frozen Worked Trace 04.
+
+**Q4 / current ≠ newest.** BUILD 5 does not introduce an explicit currentness designation merely to
+manufacture divergence between current and newest. `claims.epistemic_standing` is treated as the
+**materialized/applied epistemic standing resulting from a successful qualification transition**. It is
+explicitly **not** to be renamed or described as "latest authorized standing": "latest" imports recency
+semantics and "authorized" imports authority and warrant semantics that this build has not earned.
+Event and history ordering does not itself confer currentness. `current ≠ newest` remains preserved as a
+constitutive distinction but is not independently exercised by this vertical slice unless the eventual
+Worked Trace 04 Shape naturally produces such an observation.
+
+**E-3 / write boundary.** Dormant. The existing insert-only service-role posture is the preferred
+boundary. If Shape selects a mechanism in which the caller inserts a transition or history request and
+an owner-privileged database mechanism atomically applies the standing change, no service-role UPDATE
+grant is required. Reopen E-3 only if the selected Shape actually requires a different write boundary.
+
+**BUILD 4 boundary preservation.** `depends_on` acquires no automatic propagation by interpretation.
+Keep separately observable: dependency exists ≠ evidence/basis changed ≠ revalidation required ≠
+standing changed ≠ currentness/supersession designation. If BUILD 5 earns a causal or enforcement
+connection among those states, represent and test that connection explicitly rather than smuggling it
+into the predicate.
+
+### Question Forward — tightened coupled surface
+
+Everything else, including Artifacts, receipts, valid-time, AP-03, AP-04, and dependency propagation, is
+tested against whether these four actually force it.
+
+1. **What is qualification Q, minimally, and what does it actually assert?** Q must be basis-relative:
+   if Q asserts nothing about C evaluated against digest_v1, a change of basis gives no reason for Q to
+   become unreliable and T2 has no warrant. Q must not import truth, governance acceptance, currentness,
+   confidence, warrant, or workflow state. Under the E08 disposition, Q does not need a negative
+   counterpart value.
+2. **What immutable record proves `unassessed -> Q -> revalidation_required`?** Per transition it must
+   carry the subject Referent, the prior standing, the new standing, the basis anchor the qualification
+   was evaluated against, what was observed when the transition is for cause, the transaction time, and
+   recoverable ordering. Open: one typed record with from/to plus an optional observation payload, or
+   two distinct record kinds. Open: whether the T2 record stores observed digest_v2 or only that a
+   mismatch was observed. Storing a digest is not payload retention and does not reactivate AP-02.
+3. **What mechanism guarantees the standing transition and its history cannot diverge
+   transactionally?** The rejected prior art is exactly this failure. Candidate branches: a trigger on
+   the Claim update writes the Event in the same transaction; a single privileged transition function
+   performs both writes as the only legal path; or the caller inserts the transition record and a
+   trigger applies it to the Claim. The third branch also keeps the insert-only posture intact and is
+   the branch that makes E-3 dormant. A concurrency story is required either way, because a truthful
+   `from` standing must be read before it is superseded.
+4. **Where is current standing explicitly represented without deriving current = newest?** Under the Q4
+   disposition, `claims.epistemic_standing` holds applied standing produced by a successful transition,
+   and BUILD 5 introduces no independent currentness machinery. Shape must not describe it in recency or
+   authority terms.
+
+Carried alongside, at lower resolution: the enduring BUILD 4 regression projection required after lawful
+BUILD 5 expansion, and the contract-accountability accounting of which BUILD 5 obligations the selected
+Shape satisfies.
+
+### Targeted prior-art dispositions
+
+| OB1 construct | Disposition | Reason |
+|---|---|---|
+| `thought_audit` append-only durability: `GRANT SELECT, INSERT` only, no UPDATE or DELETE | **QUARRY** | Correct immutability posture enforced by privilege rather than convention, consistent with ECB's existing least-privilege stance. |
+| `thought_audit.thought_id` deliberately not a foreign key, so audit rows outlive their subject | **QUARRY** | The same non-cascade lineage reasoning BUILD 3 and BUILD 4 adopted independently. |
+| Fire-and-forget audit write path whose failure never blocks the main operation | **REJECT — governing negative exemplar** | A transition and the Event or history required to make that transition reconstructible may not diverge merely because audit persistence failed. |
+| Agent Memory `memory_artifacts` | **DEFER** | Artifact pointers, not ECB Artifact standing or lifecycle. Relevant only if the reconstructibility question resolves toward payload retention. |
+| Agent Memory lifecycle statuses | **DEFER** | Multiple mechanisms with source-of-truth hazards. Evidence bearing on AP-01, not a vocabulary to inherit. |
+
+### Contradictions, dependencies, blockers
+
+No governing-source contradiction was found. BUILD 5 depends on the accepted BUILD 3 Evidence-Link
+revision interface and the BUILD 4 Claim surface, both installed and covered by regression evidence.
+
+**Blockers: none.** The two escalations that gated this Sense, the E08 tension and the Q4 currentness
+question, are dispositioned above. E-3 is dormant and reopens only on a Shape branch that requires a
+different write boundary.
+## QUESTION FORWARD — OPENING SET (PROVENANCE; SUPERSEDED AT SENSE CLOSURE)
+
+Retained as provenance of the Sense-opening state. Superseded by the tightened coupled surface
+recorded above; items 1-3, 5, 8, 9 and 13 are resolved or absorbed there, and items 4, 6, 7, 10 and
+11 are answered by the finding that this episode does not earn an Artifact or Transformation
+Receipt. These are Sense questions, not candidate decisions. Sense should inspect governing text, accepted build
 evidence, relevant pinned prior art, and the canonical predecessor state before answering them.
 
 1. **What exact transformation episode should Worked Trace 04 exercise?** What must change, and what
@@ -306,7 +494,47 @@ Before Sense closes, convert every material uncertainty, contradiction, missing 
 unresolved acceptance cell into an answerable Question Forward item at the resolution required by the
 current Master Key. Do not close Sense merely because a plausible schema has appeared.
 
-## SENSE EVIDENCE TO INSPECT
+## APERTURES AT SENSE CLOSURE
+
+### AP-01 — Controlled standing vocabulary
+
+**REACTIVATED NARROWLY.** BUILD 5 requires a qualified epistemic value and a standing transition that
+`unassessed` cannot represent. BUILD 4 closed `claim_kind` at exactly `assertion | relation` and
+retained `origin=ecb_inference`. No standing vocabulary is selected at Sense: the exact Q and the exact
+`revalidation_required` spelling are Shape questions. Under the E08 disposition, no negative standing
+value is created to encode a qualification outcome.
+
+### AP-02 — Stable evidence interface
+
+**CONSULTED; NOT REACTIVATED.** BUILD 3 closed the Thought-backed evidence revision interface. General
+historical payload retention, digest-scheme migration, non-Thought evidence, versioned Artifacts, and
+standing/current-support history remain open. Reactivation is conditional on the reconstructibility
+question resolving toward retaining what the prior basis *was* rather than that it *changed*. On WT03's
+precedent, which deliberately serializes no changed source payload, it is expected to stay closed.
+
+### AP-03 — Semantic-evaluation schema
+
+**CONSULTED; NOT REACTIVATED.** The T2 trigger condition is a digest comparison, decidable structurally
+with no semantic-evaluation payload. Conditional reactivation only if qualification Q resolves toward an
+outcome that is a judgment rather than a comparison.
+
+### AP-04 — Enforcement-policy payload
+
+**OPEN AND INACTIVE.** The focal episode contains no consequential governance-policy transition.
+Activation is not inferred from standing history alone.
+
+### AP-07 — Full relation ontology
+
+**NARROWED TO `depends_on`; NOT ACTIVATED BY INHERITANCE.** BUILD 5 may encounter supersession or
+currentness semantics, but it must not silently broaden BUILD 4's relation ontology or repurpose
+`depends_on` to mean supersedes, supports, or current. This aperture is not activated merely because
+BUILD 5 is open.
+
+## SENSE EVIDENCE PATH (PROVENANCE; FOLLOWED AT SENSE)
+
+Retained from the Sense-opening state. This path was followed during Sense; the Build Contract,
+invariants, glossary, acceptance surface, apertures, receipts, and pinned OB1 audit prior art were
+each inspected at the resolution the coupled questions required.
 
 Minimum progressive discovery path:
 
@@ -328,7 +556,7 @@ complex than prior builds.
 
 ## ENTRY FACTS / INFERENCES / UNKNOWNS
 
-### FACT
+### FACT (at Sense opening; still true unless noted)
 
 - BUILD 0–4 are accepted and closed.
 - BUILD 5 is the next ordered Build Unit.
@@ -341,7 +569,7 @@ complex than prior builds.
 - Existing frozen historical harnesses are not current whole-schema authority after later lawful
   expansion; the two-layer regression model is established.
 
-### INFERENCE
+### INFERENCE (at Sense opening; see resolution note below)
 
 - BUILD 5 will probably force the first explicit distinction between immutable historical transition
   evidence and some current projection/designation, because `current ≠ newest` cannot be demonstrated by
@@ -354,7 +582,7 @@ complex than prior builds.
 
 These are hypotheses to attack during Sense, not Shape commitments.
 
-### UNKNOWN
+### UNKNOWN (at Sense opening; see resolution note below)
 
 - exact Worked Trace 04 fixtures and statuses;
 - exact standing vocabulary beyond `unassessed`, if any;
@@ -372,73 +600,103 @@ These are hypotheses to attack during Sense, not Shape commitments.
 
 Preserve these as unknown until evidence earns closure.
 
-## SENSE PASS CONDITION
+### Resolution note at Sense closure
 
-Sense may close only when:
+The opening inference that BUILD 5 would force the first explicit distinction between immutable history
+and a current projection is **partly superseded**. Under the recorded Q4 disposition, BUILD 5 does not
+introduce independent currentness machinery, and `current ≠ newest` is preserved as a constitutive
+distinction without being independently exercised by this slice.
+
+Of the opening unknowns, Sense resolved: bitemporality is not earned (F1); the transition attaches to
+Claim qualification rather than Evidence Link mutation (F3); Event Referent identity follows by
+invariant (F6); and no versioned Artifact or Transformation Receipt is earned by the focal episode (F5).
+The remainder stay unknown and are routed to the tightened coupled surface or to their named apertures.
+
+## SENSE PASS CONDITION — MET
+
+Sense closed because:
 
 1. the focal transformation episode is concrete enough to make failure observable;
-2. Worked Trace 04 has a complete candidate behavioral surface ready for Shape to examine and freeze,
-   without yet binding implementation;
-3. the minimum required distinctions among Event, Artifact, receipt, standing/history, currentness,
-   supersession/revalidation, identity, and evidence are explicit, including deliberate non-collapses;
-4. all materially relevant AP-01/AP-02/AP-03/AP-04/AP-07 questions are either resolved narrowly,
+2. Worked Trace 04 has a recorded backbone and a candidate behavioral direction ready for Shape to
+   sharpen and freeze, without binding implementation;
+3. the minimum required distinctions among Event, standing/history, qualification, revalidation,
+   currentness, identity, and evidence are explicit, including the deliberate non-collapses recorded in
+   the BUILD 4 boundary disposition;
+4. all materially relevant AP-01, AP-02, AP-03, AP-04, and AP-07 questions are resolved narrowly,
    explicitly deferred, or routed to Shape with a named reason;
-5. concurrency risk for any strengthened invariant is explicitly characterized;
-6. relevant prior-art encounter requirements are identified, while generative derivation remains free;
-7. enduring BUILD 0–4 behavior that must survive lawful expansion is identified separately from
-   historical closure snapshots;
+5. the concurrency risk in reading a truthful prior standing before it is superseded is explicitly
+   named in coupled question 3;
+6. prior-art encounter requirements are identified and dispositioned while generative derivation
+   remains free;
+7. enduring BUILD 0–4 behavior that must survive lawful expansion is separated from historical closure
+   snapshots by the established two-layer model, carried forward as FH-03;
 8. no required answer depends on a caller-memory convention that should instead be structural;
 9. material unknowns are represented as Question Forward items rather than premature schema choices;
-10. no BUILD 6+ mechanism has been imported merely to make BUILD 5 feel complete; and
+10. no BUILD 6+ mechanism has been imported to make BUILD 5 feel complete; and
 11. blockers, contradictions, falsifiers, and reopening conditions are explicit enough to enter Shape
     without inventing the problem there.
 
-Passing Sense does not authorize Shape automatically. Stop at the human rail with the candidate Sense
-closure and request explicit Shape authorization.
+Passing Sense does not authorize Shape. A separate explicit human authorization is required.
 
 ## SENSE FAILURE / ESCALATION
 
-Return to the human rail before Shape if:
+Return to the human rail before or during Shape if:
 
 - the required trace cannot distinguish historical record from current designation without importing a
   BUILD 6+ governance authority mechanism;
 - historical reconstructibility requires changing a closed BUILD 2–4 invariant rather than lawfully
   expanding around it;
-- a first-class Event/Artifact/receipt cannot acquire stable Referent identity without violating the
-  universal identity contract;
+- a first-class Event cannot acquire stable Referent identity without violating the universal identity
+  contract;
 - a candidate creates two canonical truth stores for the same standing, supersession, currentness, or
   transformation fact;
 - the vertical slice requires broad relation ontology, generalized semantic evaluation, enforcement
   policy, or payload retention beyond what the trace exercises;
-- relevant pinned prior art materially contradicts a candidate's installability or required protections;
-  or
+- relevant pinned prior art materially contradicts a candidate's installability or required
+  protections; or
 - a material unknown cannot be converted into a bounded question without changing the BUILD 5 focal
   object.
 
+## REVALIDATION / REOPENING TRIGGERS
+
+`SENSE_REOPEN_REQUIRED=NO`. Reopen Sense only if newly encountered governing evidence changes the focal
+object, the recorded episode, a Sense finding F1–F6, a recorded human disposition, or the no-blocker
+finding.
+
+Do not reopen Sense for a narrow difficulty in selecting Q, a record shape, a transition mechanism, or a
+regression projection. Those are Shape decisions routed above.
+
+Reopen E-3 only if the selected Shape requires a write boundary other than the insert-only posture.
+
 ## NON-GOALS / DO NOT BUILD
 
-During Sense:
+Until Shape is authorized and, where noted, until Move is released:
 
+- do not enter Shape or freeze any Shape decision;
 - do not write a migration;
 - do not create or modify tests as frozen acceptance authority yet;
 - do not contact or mutate the canonical database except for explicitly justified read-only
-  verification if needed for Sense evidence;
+  verification;
 - do not select an Event table, Artifact table, currentness table, history table, receipt table, or
   versioning schema by name alone;
 - do not select standing, stale, supersession, validity, revalidation, or currentness enums before the
   Worked Trace earns them;
+- do not create a negative epistemic-standing value to encode a qualification outcome;
+- do not describe `claims.epistemic_standing` in recency or authority terms;
 - do not broaden `depends_on` or the relation ontology by analogy;
 - do not add propagation, cascade, automatic standing change, confidence, classifier authority, or
   semantic-evaluation machinery unless the BUILD 5 trace demonstrably requires it;
 - do not open BUILD 6 governance bootstrap, BUILD 7 Master Key designation, BUILD 8 action-envelope
   lifecycle, BUILD 9 recursive self-application, or BUILD 10 propagation;
 - do not change MCP tools, runtime behavior, deployment, credentials, or public API;
-- do not rewrite frozen BUILD 0–4 harnesses; and
+- do not rewrite frozen BUILD 0–4 harnesses;
+- do not amend the Build Contract or split BUILD 5; and
 - do not authorize Move.
 
 ## NEXT HANDLE
 
-`BUILD 5 SENSE: INSPECT → QUESTION FORWARD → DEFINE THE MINIMUM TRANSFORMATION EPISODE → STOP BEFORE SHAPE.`
+`AWAIT EXPLICIT HUMAN SHAPE AUTHORIZATION.`
 
-BUILD 5 Sense is open by explicit human instruction. Shape and implementation remain unopened and
-unauthorized.
+BUILD 5 Sense is closed. The exact next authorized action is read-only human review of this closed Sense
+state. Shape entry, schema selection, Worked Trace 04 freezing, migration authoring, canonical database
+mutation, deployment, and Move all remain unauthorized until the human authorizes the next phase.
