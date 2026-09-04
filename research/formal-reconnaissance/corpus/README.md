@@ -67,24 +67,64 @@ Each record carries the §13 fields, abbreviated:
 
 ## Distribution of outcomes
 
+Computed from `ledger.jsonl`, not estimated. Where a record lists more than one build
+consequence, the **first** token is counted.
+
 | Transfer status | Count |
 |---|---|
-| TESTABLE_TRANSFER | 24 |
-| CONDITIONAL_TRANSFER | 27 |
-| IMPLEMENTATION_CANDIDATE | 11 |
-| METAPHOR_ONLY | 14 |
-| NO_TRANSFER | 16 |
-| ARCHITECTURE_CHALLENGE | 8 |
+| TESTABLE_TRANSFER | 43 |
+| CONDITIONAL_TRANSFER | 31 |
+| METAPHOR_ONLY | 9 |
+| NO_TRANSFER | 8 |
+| IMPLEMENTATION_CANDIDATE | 7 |
+| ARCHITECTURE_CHALLENGE | 2 |
+| **Total** | **100** |
 
-| Build classification | Count |
+| Build classification (primary) | Count |
 |---|---|
-| NO_BUILD_EFFECT | 21 |
-| VERIFY_EXISTING | 18 |
-| SHARPEN_CONTRACT | 22 |
-| ADD_ACCEPTANCE_TEST | 19 |
-| ADD_IMPLEMENTATION_CANDIDATE | 11 |
-| BLOCK_PENDING_PROBE | 4 |
-| ARCHITECTURE_CHALLENGE | 5 |
+| SHARPEN_CONTRACT | 44 |
+| ADD_ACCEPTANCE_TEST | 24 |
+| NO_BUILD_EFFECT | 13 |
+| ADD_IMPLEMENTATION_CANDIDATE | 12 |
+| VERIFY_EXISTING | 4 |
+| ARCHITECTURE_CHALLENGE | 2 |
+| BLOCK_PENDING_PROBE | 1 |
+| **Total** | **100** |
 
-**Every neighborhood produced at least one NO_TRANSFER or METAPHOR_ONLY result.** A
-neighborhood returning only positive findings would have indicated screening failure.
+| Branch standing | Count |
+|---|---|
+| BRANCH_NEUTRAL | 55 |
+| BRANCH_COMPATIBLE | 28 |
+| BRANCH_DEPENDENT | 7 |
+| BRANCH_CONFLICTING | 7 |
+| BRANCH_FORCING | 3 |
+
+| Follow-up priority | Count |
+|---|---|
+| 3 — formalization candidate | 35 |
+| 2 — full text | 51 |
+| 1 — background | 10 |
+| 0 — none | 4 |
+
+| Citation confidence | Count |
+|---|---|
+| VERIFIED | 21 |
+| HIGH | 73 |
+| MEDIUM | 6 |
+
+**Nine of fourteen neighborhoods produced at least one NO_TRANSFER or METAPHOR_ONLY
+result** (N01, N03, N04, N06, N08, N09, N10, N12, N13). Five did not: **N02**
+(refinement/verification), **N05** (provenance/temporal), **N07** (authorization), **N11**
+(recursion/reflection), **N14** (wildcards).
+
+This is recorded as a **limitation, not a strength**. A neighborhood in which nothing was
+rejected is a neighborhood whose screening was not adversarial enough, or one selected
+after the transfer was already believed. N02 and N14 were both shaped around findings the
+operation had already made, so their uniformly positive yield is at least partly a
+selection effect and should be read with that discount. Registered as QF-F-03.
+
+Note the shape of the result: 43 TESTABLE_TRANSFER against only 7
+IMPLEMENTATION_CANDIDATE, and 44 SHARPEN_CONTRACT against 12
+ADD_IMPLEMENTATION_CANDIDATE. **The literature's contribution to this build is
+overwhelmingly sharper contracts and tests, not new machinery** — which matches the
+baseline register's finding that four of seven seams have no frozen test at all.

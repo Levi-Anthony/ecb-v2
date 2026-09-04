@@ -93,7 +93,11 @@ The wildcard expansion covers **runtime enforcement/monitorability** (W1–W3),
 ## Permitted effort and hard bounds
 
 - No probe executed. No implementation written. No schema proposed as ready.
-- No repository governing surface edited. This directory is additive.
+- No repository governing surface edited. This directory is additive, with **one
+  exception, recorded here for accuracy**: a single routing row was added to
+  `START_HERE.md`, whose disposition is PROJECTION and whose declared role is to route.
+  Without it the repository's own progressive-discovery model gives a fresh agent no path
+  to this work. No GOVERNING, TEST_AUTHORITY or DECISION_RECORD surface was touched.
 - No ECB artifact patched, no Charter amendment proposed.
 - Prior art inspected only in regions the seams implicate — `docs/ob1-prior-art.md`,
   `docs/harvest-ledger.md`, FS-0001, and the ECB Crucible/Charter admission law. OB1 was

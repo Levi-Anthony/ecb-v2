@@ -53,7 +53,7 @@ Every record carries a `CITE` line ending in a confidence token:
 - `MEDIUM` — correctly attributed work whose exact venue, year, or page range was not
   re-checked and may be off by an edition or a preprint/journal split.
 
-19 records are `VERIFIED`, and one verification produced a correction carried into the
+21 records are `VERIFIED`, and one verification produced a correction carried into the
 corpus: Abadi & Lamport, *The Existence of Refinement Mappings*, is **TCS 82(2), 1991**,
 not TOPLAS (the 1988 LICS paper is the earlier version).
 
