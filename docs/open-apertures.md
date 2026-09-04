@@ -20,13 +20,20 @@ Exact enum values for claim kind, evidentiary basis, epistemic standing, governa
 The dimensional separation is architecturally required. The exact vocabulary has not yet been exercised enough by real v2 records to justify freezing it.
 
 **CURRENT EFFECT**  
-Does not block BUILDS 0–2. BUILD 3 must resolve the minimum vocabulary required by its golden trace.
+NARROWED BY CLOSED BUILD 3 SHAPE. The BUILD 3 requirement is resolved and no longer blocks Move:
+`claim_kind=assertion`, `origin=ecb_inference`, and `epistemic_standing=unassessed`. `unassessed` means
+only that no separate epistemic qualification has been recorded under the BUILD 3 model; it does not
+mean unsupported, false, doubtful, low-confidence, provisional, accepted, current, unauthorized, or
+invalid. `inference` is origin, not standing. Broader claim-kind, origin, evidentiary-basis, epistemic,
+governance, and action vocabularies remain open.
 
 **TRIGGER**  
-BUILD 3 requires persisted standing fields or validation rules.
+Reactivate when a build needs a second claim kind or origin, a qualified epistemic value, governance or
+action standing, or a standing transition that `unassessed` cannot represent.
 
 **ROUTE**  
-Build 3 Shape → propose minimum vocabulary → test against worked traces → ADR if consequential.
+Worked Trace 04 / BUILD 5 for qualification history; otherwise the first build whose behavior requires
+the additional controlled value. Preserve all dimensional separations.
 
 ## AP-02 — Stable evidence interface
 
@@ -34,16 +41,29 @@ Build 3 Shape → propose minimum vocabulary → test against worked traces → 
 Exact guarantees Layer A supplies to governance for evidence identity, version/hash, locator, retention, and mutation behavior.
 
 **WHY OPEN**  
-The contract is clear that governance requires stable evidence. The clean v2 Open Brain substrate has not yet been built and observed.
+BUILD 3 has closed the minimum stable interface for a Thought-backed Evidence Link. The broader locator,
+retention, algorithm-migration, non-Thought evidence, privileged-mutation history, Event, and Artifact
+contracts have not been exercised enough to close without importing later-build machinery.
 
 **CURRENT EFFECT**  
-BUILD 0 may proceed.
+NARROWED BY CLOSED BUILD 3 SHAPE. The BUILD 3 requirement is resolved and no longer blocks Move. Evidence
+revision is the Thought Referent UUID plus a database-derived digest using scheme
+`ecb_thought_revision_v1_sha256`: SHA-256 over the frozen tagged, length-framed UTF-8 text and signed
+UTC-microsecond encoding of `content + source + captured_at`. The Evidence-Link trigger locks the
+persisted Thought `FOR SHARE`, derives the digest inside link creation, and prevents normal callers from
+supplying canonical revision fields. Embedding and retrieval state are excluded. Mismatch and native
+Thought disappearance preserve Claim and Link and never substitute changed bytes as original evidence.
+General locator policy, historical payload retention, digest-scheme migration, versioned Artifacts,
+and standing/current-support history remain open.
 
 **TRIGGER**  
-BUILD 3 attempts to create the first evidence link.
+Reactivate if a new source-bearing Thought field is outside the v1 projection, historical payload must
+be reconstructed after drift/disappearance, SHA-256 or the v1 encoding must migrate, or a non-Thought
+evidence surface requires a different locator/retention contract.
 
 **ROUTE**  
-Derive the minimum interface from actual BUILD 0/1 behavior rather than importing v1 assumptions.
+Reopen AP-02 and the narrow BUILD 3 Shape only for a v1-contract falsifier; otherwise route payload and
+version history to BUILD 5+ and derive later interfaces from observed evidence behavior.
 
 ## AP-03 — Semantic-evaluation schema
 
@@ -122,7 +142,8 @@ Complete set/hierarchy of relation predicates.
 The system has not earned a universal relation taxonomy.
 
 **CURRENT EFFECT**  
-BUILD 4 may introduce only predicates required by its worked trace.
+DEFERRED. BUILD 3 must not activate this aperture. BUILD 4 may introduce only predicates required by
+its worked trace.
 
 **TRIGGER**  
 Repeated ambiguity, integrity failures, or cross-domain reuse demonstrates a higher-order relation grammar is needed.
