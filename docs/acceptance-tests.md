@@ -102,8 +102,8 @@ FAIL if:
 
 ## Worked Trace 02 — Stable referent resolution
 
-**STATUS: FROZEN — PRE-IMPLEMENTATION**
-**UNLOCKS: BUILD 2 IMPLEMENTATION ONLY AFTER EXACT SHAPE ANCHOR AND HUMAN RELEASE**
+**STATUS: PASSED 2026-09-04 — HUMAN METABOLIZATION CLOSURE PENDING**
+**EXECUTION EVIDENCE: [`build-receipts/003-build-2.md`](build-receipts/003-build-2.md)**
 
 ### Fixtures
 

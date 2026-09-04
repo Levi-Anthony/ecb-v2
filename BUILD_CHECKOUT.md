@@ -1,18 +1,24 @@
-STATUS: RATIFIED PRE-IMPLEMENTATION SHAPE — HUMAN IMPLEMENTATION RELEASE REQUIRED
+STATUS: IMPLEMENTED — METABOLIZE AWAITING HUMAN CLOSURE
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
 AUTHORITY: Derived from the Build Contract, invariants, ADR-003, ADR-004, frozen acceptance behavior, and explicit human reentry instruction
-CURRENT BUILD UNIT: BUILD 2 — Universal Referents (SHAPED; IMPLEMENTATION UNOPENED)
+CURRENT BUILD UNIT: BUILD 2 — Universal Referents (IMPLEMENTED; CLOSURE UNOPENED)
 
 # BUILD 2 — Universal Referents
 
 ## CURRENT MOVE
 
-BUILD 2 semantic and physical Shape are ratified. Stop at the human implementation gate.
+BUILD 2 is implemented in the canonical database and frozen Worked Trace 02 passes. Stop at BUILD 2
+Metabolize for human closure.
 
-Do not create or alter schema, migrations, runtime, MCP, database, deployment, or remote state until a
-separate explicit human release opens implementation. The committed root tree containing this checkout,
-ADR-003, ADR-004, and Worked Trace 02 is the required pre-implementation provenance checkpoint.
+The human explicitly released implementation from Shape commit
+`866b3fcac248e667af80cee4e0e60e6d8ff07cfe` and root tree
+`d058b9f29fee15f9741512380cb5d17c5aac6d02`. Migration
+`20260904093341_build_2_universal_referents` is installed in canonical Supabase project
+`vezxivrvhakclxuvxzso`. Execution evidence is recorded in
+[`docs/build-receipts/003-build-2.md`](docs/build-receipts/003-build-2.md).
+
+Do not declare BUILD 2 closed or open BUILD 3 without explicit human metabolization closure.
 
 BUILD 0 and BUILD 1 remain closed. Preserve their receipts, fixtures, runtime, migrations, and deployed
 state exactly unless a recorded reopening condition is observed.
@@ -144,7 +150,7 @@ activation.
 - frozen Worked Trace 02; and
 - the exact pre-implementation commit/tree anchor for this Shape.
 
-## OUTPUT — AFTER HUMAN IMPLEMENTATION RELEASE ONLY
+## OUTPUT — OBSERVED
 
 One bounded BUILD 2 implementation that produces:
 
@@ -156,7 +162,8 @@ One bounded BUILD 2 implementation that produces:
 - one registered Referent with no Thought in the inspected scope; and
 - exact-UUID observations matching all four declared `R`/`T` cases.
 
-No implementation output is authorized by the current checkout.
+This output is installed in the canonical project. Passing execution evidence does not itself close the
+Build Unit.
 
 ## STANDING
 
@@ -209,6 +216,10 @@ No new public, client, or MCP authorization surface is part of BUILD 2.
 Worked Trace 02 is verified at the canonical persistence boundary. No new MCP tool is required to pass.
 
 ## TEST / PASS CONDITION
+
+**EXECUTION RESULT: PASS — HUMAN METABOLIZATION CLOSURE PENDING**
+
+See [`docs/build-receipts/003-build-2.md`](docs/build-receipts/003-build-2.md).
 
 Pass only if frozen Worked Trace 02 proves across fresh contexts that:
 
@@ -266,7 +277,7 @@ Reopen Shape before implementation if Worked Trace 02 cannot pass without:
 
 ## NON-GOALS / DO NOT BUILD
 
-- do not implement BUILD 2 before explicit human release;
+- do not treat implementation or PASS evidence as human closure;
 - do not add `native_type`;
 - do not add description, alias, metadata, semantic state, standing, authority, or currentness;
 - do not add a native-binding table;
@@ -282,11 +293,11 @@ Reopen Shape before implementation if Worked Trace 02 cannot pass without:
 
 ## HUMAN STOP CONDITIONS
 
-Stop and return to the human rail if implementation has not been explicitly released, the exact Shape
-anchor is absent or unreachable, a BUILD 0/1 reopening condition appears, an invariant would collapse,
-or passing the trace requires crossing a non-goal.
+Stop and return to the human rail if the exact Shape anchor becomes absent or unreachable, a BUILD 0/1
+reopening condition appears, an invariant would collapse, passing the trace requires crossing a
+non-goal, or any step would open BUILD 3 before BUILD 2 closure.
 
 ## CURRENT HUMAN GATE
 
-The semantic and physical pre-implementation Shape are ratified and remotely anchored. Implementation
-remains unopened until the human explicitly releases BUILD 2 from this committed state.
+BUILD 2 implementation and acceptance evidence are complete. Human metabolization closure remains
+required before BUILD 2 can be declared closed or a BUILD 3 checkout can be installed.
