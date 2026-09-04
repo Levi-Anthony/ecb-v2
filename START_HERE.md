@@ -81,11 +81,15 @@ Read only as needed, in this order:
 
    Use when you encounter something the architecture intentionally does not yet answer. An aperture is not permission to guess.
 
-7. `/docs/harvest-ledger.md`
+7. `/docs/build-evidence.md`
+
+   Use during Sense when the active decision surface intersects candidate architectural evidence recorded there. Evidence must be considered before the affected decision closes, but it does not govern or promote itself.
+
+8. `/docs/harvest-ledger.md`
 
    Use when ECB v1 behavior or implementation becomes relevant. v1 may supply evidence. It does not supply authority merely by existing.
 
-8. `/docs/ob1-prior-art.md`
+9. `/docs/ob1-prior-art.md`
 
    Use when canonical OB1 behavior, lineage, or reuse becomes relevant. It pins the upstream state, separates core from optional/community precedent, and records the mine-first coverage receipt. It is evidence, not authority.
 
@@ -107,6 +111,7 @@ Route uncertainty as follows:
 | Expected result unclear | `docs/acceptance-tests.md` |
 | Term ambiguous | `docs/glossary.md` |
 | Question intentionally unresolved | `docs/open-apertures.md` |
+| Active decision intersects candidate BUILD evidence | `docs/build-evidence.md` |
 | Need to know what v1 actually did | `docs/harvest-ledger.md` and `/harvest/v1` |
 | Need to know what canonical OB1 already solves | `docs/ob1-prior-art.md` |
 | Mathematical or formal-semantics probe | `research/formal-semantics/README.md` |
