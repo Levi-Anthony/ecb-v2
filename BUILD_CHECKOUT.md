@@ -1,830 +1,439 @@
-STATUS: ACCEPTED AND CLOSED 2026-09-04 AMERICA/PHOENIX; BUILD 4 UNOPENED
+STATUS: SENSE CLOSED — SHAPE UNOPENED; MOVE UNAUTHORIZED; IMPLEMENTATION UNOPENED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
-AUTHORITY: Derived from the Build Contract, constitutive invariants, Worked Trace 03 falsification target, closed BUILD 0–2 evidence, and explicit human BUILD 3 metabolization closure
-CURRENT BUILD UNIT: BUILD 3 — Claims + Standing + Evidence Links (CLOSED)
+AUTHORITY: Derived from the Build Contract, constitutive invariants, closed BUILD 0–3 evidence, accepted BUILD 3 closure anchor, and explicit human BUILD 4 Sense authorization
+CURRENT BUILD UNIT: BUILD 4 — Typed Relation Claims (SENSE CLOSED; SHAPE UNOPENED)
 
-# BUILD 3 — Claims + Standing + Evidence Links
+# BUILD 4 — Typed Relation Claims
 
 ## CURRENT MOVE
 
-`MOVE COMPLETE → METABOLIZED AND CLOSED`
+`CLOSE SENSE → AWAIT EXPLICIT SHAPE AUTHORIZATION`
 
 ```text
 SENSE=CLOSED
-SHAPE=CLOSED
-SENSE_REOPEN_REQUIRED=NO
-AP01=NARROWED; BUILD_3_REQUIREMENT_RESOLVED; BROADER_VOCABULARY_OPEN
-AP02=NARROWED; BUILD_3_REQUIREMENT_RESOLVED; GENERAL_RETENTION_AND_HISTORY_OPEN
-AP07=DEFERRED
-FIRST_SHAPE_PRESSURE=COMPLETE
-SECOND_SHAPE_PRESSURE=COMPLETE_AS_FALSIFICATION_PASS
-MINIMUM_REMAINING_SHAPE_PRESSURE=PASSED
-WORKED_TRACE_03=FROZEN_ADVERSARIAL_ACCEPTANCE_SURFACE
-REGRESSION_AUTHORITY_COMPOSITION=NARROW_REOPENING_CORRECTED_AND_RECLOSED
-CROSS_CUTTING_PRESERVATION=future SIGMA/ECOS projection freedom
-OUTPUT_CONTRACT=BOUND
-MOVE_PERMISSION=RELEASED_AND_CONSUMED
-IMPLEMENTATION=INSTALLED_AND_VERIFIED
-WORKED_TRACE_03_EXECUTION=PASS
-BUILD_0_TO_2_CURRENT_STATE_REGRESSION=PASS
-INDEPENDENT_CLOSURE_REVERIFICATION=PASS
-METABOLIZE=ACCEPTED_AND_CLOSED
-BUILD_3=CLOSED
-BUILD_4=UNOPENED_AND_UNAUTHORIZED
+SHAPE=UNOPENED
+MOVE=UNAUTHORIZED
+IMPLEMENTATION=UNOPENED
+AP01=REACTIVATED_NARROWLY_FOR_BUILD_4
+AP07=ACTIVATED_MINIMUM_RELATION_PREDICATE_ONLY
+FULL_RELATION_ONTOLOGY=DEFERRED
+AP02=PRESERVED_AS_NARROWED
+AP03=PRESERVED_UNCHANGED
+BUILD_5_TEMPORAL_HISTORY_CURRENTNESS_SUPERSESSION=UNOPENED
+BUILD_3_REGRESSION_AUTHORITY=TWO_LAYER_OBLIGATION_CARRIED_INTO_SENSE
+WORKED_TRACE_06=CANDIDATE_NOT_ACCEPTANCE_AUTHORITY
 ```
 
-Shape closed after one exact physical candidate survived the remaining pressure and the final Worked
-Trace 03 construction froze as an adversarial acceptance surface.
+The human authorized BUILD 4 Sense only, entered from accepted BUILD 3 closure anchor
+`da00e015385877d54c7f326784f80dafd207446e`. Sense verified that anchor, the clean working state, and the
+canonical substrate before substantive work. No drift was found.
 
-The human released Move against corrected Shape anchor
-`29b2601faf4b76062cf85e449ac9b05a82a75dd3`. The bound Output Contract is installed and verified;
-execution evidence is recorded in `docs/build-receipts/004-build-3.md`.
+BUILD 3 is closed and is not reopened by this checkout. BUILD 0, BUILD 1, and BUILD 2 remain closed.
+Preserve their receipts, fixtures, runtime, migrations, harnesses, and installed state unless a recorded
+reopening condition is observed.
 
-The human then accepted that evidence and closed BUILD 3 with implementation commit
-`e2560faf9d536f5cd48cde8df946017ce44a4797` and root tree
-`01ea3565d66bd730ecca71738b8a9dd06930bd18` as closure provenance.
-
-This closure accepts the installed substrate and its execution evidence only. It does not confer
-standing on the Claim fixture's proposition, promote a narrowed or deferred aperture, or open or
-authorize BUILD 4. The next permitted operation is a bounded BUILD 4 Sense/Shape under its own
-checkout and governance.
-
-BUILD 0, BUILD 1, and BUILD 2 remain closed. Preserve their receipts, fixtures, runtime, migrations,
-and installed state unless a recorded reopening condition is observed.
+Do not enter Shape, freeze a physical schema, select a predicate or claim-kind value, write or apply a
+migration, mutate the canonical database, add runtime or MCP behavior, deploy, create an ADR, or open
+BUILD 5+ until a human separately authorizes the next phase.
 
 ## PURPOSE
 
-Define the minimum persistent Claim + Standing + Evidence Link substrate that lets a later fresh
-context reconstruct which words came from Layer A evidence and which proposition ECB asserted by
-inference.
+Define the minimum persistent typed-relation Claim that lets ECB assert one referent-to-referent
+relation as a Claim while preserving the installed Claim, Evidence Link, and Referent distinctions and
+creating no competing relation truth store.
 
 ## GOVERNING DISTINCTION
 
-`what the source says ≠ what ECB infers from the source`
+`ECB asserts that A stands in relation R to B ≠ A stands in relation R to B`
 
 Keep distinct:
 
-- evidence ≠ assertion;
-- Thought ≠ Claim;
-- Claim ≠ Evidence Link;
-- evidentiary basis ≠ epistemic standing;
+- relation Claim ≠ Evidence Link;
+- assertion Claim ≠ typed relation Claim;
+- asserted relation ≠ relational fact;
 - confidence ≠ standing;
-- standing ≠ warrant;
-- relevance ≠ authority;
-- provenance ≠ proof;
-- support loss ≠ falsity;
-- support loss ≠ deletion; and
-- assertion claim ≠ typed relation claim.
+- relation assertion ≠ currentness, supersession, or support;
+- directional position ≠ permanent ontological class;
+- one relation truth store ≠ convenient duplication;
+- relation assertion ≠ co-reference or entity resolution;
+- native binding loss ≠ Claim erasure; and
+- classification output ≠ governing truth.
 
 ## INVARIANTS SERVED
 
 - evidence ≠ assertion;
-- thought ≠ promoted object;
 - confidence ≠ standing;
 - standing ≠ warrant;
 - capability ≠ warrant or authorization;
 - relevance ≠ authority;
-- current ≠ newest; and
-- every persistent first-class Claim and Evidence Link has stable Referent identity.
+- current ≠ newest;
+- identity ≠ description;
+- unknown ≠ nonexistent;
+- directional position ≠ permanent ontological class; and
+- every persistent first-class Claim has stable Referent identity.
 
 ## FOCAL OBJECT
 
-The smallest persistent Claim + Standing + Evidence Link substrate required to survive the ready
-Worked Trace 03 falsification target.
+The smallest persistent typed-relation Claim required to express one referent-to-referent relation as a
+Claim under a single relation truth store.
 
-The focal object is not a general epistemology, relation ontology, review system, or governance model.
+The focal object is not a relation ontology, predicate taxonomy, graph traversal surface, co-reference
+or entity-resolution mechanism, relation lifecycle, or inverse/symmetry machinery.
 
 ## SENSE CLOSURE — 2026-09-04 AMERICA/PHOENIX
 
+### Entry verification
+
+```text
+ANCHOR=da00e015385877d54c7f326784f80dafd207446e
+MAIN=ANCHOR; ORIGIN_MAIN=ANCHOR; WORKING_TREE=CLEAN
+CANONICAL_TABLES=claims, evidence_links, referents, thoughts
+CANONICAL_FUNCTIONS=prepare_claim, prepare_evidence_link, register_thought_referent, search_thoughts
+CANONICAL_VIEWS=0
+COUNTS=1 Thought; 4 Referents; 1 Claim; 1 Evidence Link
+MIGRATIONS=20260903235721, 20260904000010, 20260904093341, 20260904163938
+CLAIM_C=origin ecb_inference; epistemic_standing unassessed
+LINK_L=5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55
+GT01=content, source, and capture instant intact
+SUBSTRATE_DRIFT=NONE
+```
+
+Verification was read-only. The frozen adversarial harnesses were not executed, because their
+rollback-only probes mutate within a transaction and Sense does not authorize canonical mutation.
+
 ### Evidence inspected
 
-- the Build Contract's BUILD 3 order and logical definitions of Claim and Evidence Link;
-- the constitutive non-collapse invariants and controlled glossary;
-- frozen BUILD 0–2 acceptance behavior, receipts, migrations, and current checkout;
-- AP-01, which is now triggered because BUILD 3 needs a minimum standing vocabulary;
-- AP-02, which is now triggered because BUILD 3 will create the first stable Evidence Link;
-- OB1 prior-art findings for source references, provenance chains, typed edges, review/lifecycle state,
-  semantic evaluations, and the absence of a sufficient dedicated proposition Claim; and
-- BUILD evidence E01–E03, E12, E14, E17, and E21–E22 as candidate evidence bearing on uncertainty,
-  Sense/Shape separation, support lineage, absence, capability vocabulary, Output Contract timing, and
-  reopening design.
+- the Build Contract's BUILD 4 order, Layer B primitives, "structure is earned" test, and the closed
+  rule that a referent-to-referent relation is expressed as a Claim;
+- the constitutive non-collapse invariants, universal-identity section, and enforcement classification;
+- the controlled glossary entries for Claim, Evidence Link, Referent, and Standing;
+- the accepted BUILD 3 checkout, migration, receipt, and frozen harness, including its closure-state
+  cardinality assertions;
+- the current acceptance-test surface, including reserved Worked Trace 04 and Worked Trace 05;
+- AP-07 and the materially adjacent AP-01, AP-02, and AP-03;
+- targeted OB1 relation prior art read directly from the pinned canonical clone at
+  `9543c29a3e44a210ce278392b9fac11248997461`, specifically
+  `schemas/typed-reasoning-edges/schema.sql` and `recipes/typed-edge-classifier/README.md`; and
+- BUILD evidence E01 Question Forward, E02 Sense Closure Contract, E04 Variable Resolution, E13
+  Bitemporality, E14 Absence Observed, and E22 Reopen Conditions Designed Before Failure.
 
 Consultation does not promote evidence into architecture.
 
 ### Relevant known state
 
-- Every persistent first-class Claim and Evidence Link must possess stable Referent identity.
-- Layer A Thoughts already have durable UUID identity, non-empty content, source, capture time,
-  embedding, and embedding-model identity.
-- New and backfilled Thoughts are coupled to the universal Referent registry under the same UUID.
-- The application service-role surface can select and insert Thoughts but cannot update or delete them.
-- Layer A has no explicit evidence-version column, content digest, mutation history, Event, or Artifact.
-- No current runtime operation creates a Claim, standing record, or Evidence Link.
-- No sufficient Claim/Evidence Link representation was found in pinned OB1 prior art. Its provenance,
-  classifier, and review patterns are evidence to quarry, not schema to inherit.
-- Worked Trace 04 reserves standing change with history for BUILD 5. BUILD 3 must preserve later
-  requalification lineage without implementing that transition history now.
+- `public.claims` holds `id, proposition, scope, claim_kind, origin, epistemic_standing, asserted_at`
+  with an immediate restrictive same-UUID Referent foreign key, RLS enabled and no policies, and a
+  service-role insert grant limited to `id`, `proposition`, and `scope`.
+- `public.claims` currently cannot hold a non-assertion Claim. The `claims_kind_assertion` check
+  constrains `claim_kind = 'assertion'`, and `prepare_claim` unconditionally overwrites `claim_kind`,
+  `origin`, `epistemic_standing`, and `asserted_at`.
+- `public.evidence_links` holds `id, claim_id, evidence_referent_id, role, evidence_revision_scheme,
+  evidence_revision_digest, linked_at` with three immediate restrictive foreign keys and deliberately no
+  foreign key to `thoughts`, so evidence disappearance preserves historical lineage.
+- BUILD 3 imposed no uniqueness collapsing repeated historical uses of the same evidence and no
+  requirement that every Claim have an Evidence Link.
+- `public.referents` remains exactly `id + registered_at` and is native-type agnostic.
+- Four Referents are registered: GT01 Thought `19a949ea-a8fc-4250-a386-fa64e5530180`; registered-only
+  `2eede0e4-b27a-4383-850e-a448f0113c9f` with no native record; Claim C
+  `0f89e778-b16e-4840-9129-a2aa3eb6f697`; Evidence Link L `4c6c0f50-a936-4da6-bb09-233f93320639`.
+- No current runtime operation creates a relation Claim, and no relation surface exists in canonical
+  state.
+- No sufficient relation-Claim representation exists in pinned OB1 prior art.
 
 ### Inputs
 
-- accepted BUILD 0–2 migrations, receipts, fixtures, and regression behavior;
-- GT01 Thought / Referent UUID `19a949ea-a8fc-4250-a386-fa64e5530180`;
-- `docs/build-contract.md`;
-- `docs/invariants.md` and `docs/glossary.md`;
-- the ready Worked Trace 03 falsification target in `docs/acceptance-tests.md`;
-- triggered AP-01 and AP-02 plus deferred AP-07 in `docs/open-apertures.md`;
-- applicable candidate evidence in `docs/build-evidence.md`; and
-- pinned Claim, Evidence Link, provenance, and review findings in `docs/ob1-prior-art.md`.
+- accepted BUILD 0–3 migrations, receipts, fixtures, harnesses, and regression behavior;
+- `docs/build-contract.md`, `docs/invariants.md`, and `docs/glossary.md`;
+- `docs/acceptance-tests.md`, including reserved Worked Traces 04 and 05;
+- `docs/open-apertures.md`, specifically AP-01, AP-02, AP-03, and AP-07;
+- applicable candidate evidence in `docs/build-evidence.md`;
+- `docs/ob1-prior-art.md` plus the pinned OB1 sources named above; and
+- the explicit human BUILD 4 Sense authorization and the E-1 and E-2 dispositions recorded below.
 
-### Worked Trace 03 status
+### Human dispositions recorded at Sense
 
-```text
-WORKED_TRACE_03_FALSIFICATION_SURFACE=FROZEN
-WORKED_TRACE_03_FINAL_CONSTRUCTION=FROZEN
-```
+**E-1 — RESOLVED.** AP-01 is narrowly reactivated for BUILD 4 because BUILD 4 requires a second Claim
+kind. BUILD 4 may not route around `claim_kind` merely to avoid reopening AP-01; the governing Claim
+distinction already includes assertion Claims and typed-relation Claims. AP-01 narrows only far enough
+to support the relation-Claim behavior earned by the Worked Trace. **The exact second `claim_kind` value
+is not selected by Sense; that vocabulary decision belongs to Shape.** Broader claim-kind, origin,
+epistemic-standing, governance-standing, action-standing, qualification, and history vocabularies remain
+open on their existing terms.
 
-The ready target falsifies any Shape that cannot let a fresh context distinguish source evidence from
-an ECB assertion and reconstruct the persisted evidence lineage without prompt memory. It also
-falsifies a Shape that silently accepts evidence revision drift or turns citation into proof,
-promotion, warrant, authority, or currentness.
-
-The final construction is frozen in `docs/acceptance-tests.md`. Its Claim fixture, Evidence Link,
-standing, version scheme, machine-legible outcomes, and adversarial probes were selected only after the
-Shape pressure passes; Sense was not reopened.
+**E-2 — RESOLVED.** BUILD 4 Shape may alter or supersede the BUILD 3-installed `claims_kind_assertion`
+constraint and `prepare_claim` behavior if the selected Shape requires that change to admit
+typed-relation Claims. The permission does not require that physical design. Any BUILD 4 candidate must
+preserve accepted BUILD 3 assertion behavior and must demonstrate that preservation through the
+cross-build regression projection. BUILD 3's assertion-only constraint was the closed physical surface of
+BUILD 3, not the complete Claim ontology, and must not be read as a permanent prohibition on later Claim
+kinds. **This does not reopen BUILD 3.**
 
 ### Closed decisions that Shape may not reopen
 
-- Thoughts remain evidence, not assertions.
-- Referent identity and same-UUID Thought coupling remain unchanged.
-- Evidence does not become an assertion merely because a Claim cites it.
-- Standing remains separate from confidence, evidentiary basis, warrant, and authority.
-- BUILD 3 includes assertion Claims only; typed relation Claims begin no earlier than BUILD 4.
-- BUILD 3 adds no Events, Artifacts, standing-change history, governance activation, or action
-  authorization.
-- The existing single human door and BUILD 0 MCP inventory remain unchanged unless Shape proves the
-  falsification target cannot be exercised at the canonical persistence boundary without a new
-  interface.
+- a referent-to-referent relation is a Claim;
+- no competing relation truth store may be created;
+- every persistent first-class Claim retains stable Referent identity under the same UUID;
+- Thoughts remain evidence and gain no standing fields;
+- Evidence Link remains distinct from a relation Claim;
+- confidence remains distinct from standing, and standing from warrant and authority;
+- relation classification or model output does not become governing truth automatically;
+- directional position does not become a permanent ontological class;
+- Referent registration performs no co-reference or entity resolution, and UUID uniqueness does not
+  imply subject uniqueness;
+- `unassessed` continues to mean only that no separate epistemic qualification has been recorded;
+- BUILD 5 retains standing-change history, Events, versioned Artifacts, transformation receipts, and
+  supersession/currentness history, including temporal validity and bitemporality;
+- the complete relation ontology remains deferred; and
+- BUILD 0–3 closed behavior remains reconstructibly preserved.
+
+### Question Forward set
+
+These questions can each change schema, constraints, vocabulary, or the pass harness. They enter Shape
+explicitly rather than being answered during Sense.
+
+1. **Earned predicate.** Which single predicate is actually earned by the trace? `supersedes` and
+   `evolved_into` import BUILD 5 currentness; `supports` imports support semantics adjacent to Evidence
+   Link and standing; `contradicts` imports least but reads symmetric and under-tests direction;
+   `depends_on` is cleanly asymmetric and imports neither support nor currentness; `related_to` may
+   assert too little to be falsifiable. Which makes direction reversal observably wrong without
+   importing deferred semantics?
+2. **Physical representation.** Extend `public.claims` with nullable endpoint columns and a second
+   claim kind; keep one `claims` identity/standing spine plus a one-to-one typed extension holding
+   endpoints; or use a standalone relation-Claim table with its own Referent. Falsifier for all three:
+   does any relation fact become representable in two places? A separate table is not automatically a
+   competing store, but must justify why relation Claims need a parallel standing model.
+3. **BUILD 3 surface change.** Which branches require altering `claims_kind_assertion` and
+   `prepare_claim`? E-2 permits but does not require that change; the cross-build projection must prove
+   preserved assertion behavior either way.
+4. **Direction and arity.** Binary and directed is the minimum. Is anything beyond binary earned, and
+   how is direction made unambiguous structurally rather than by caller convention?
+5. **Symmetry and inverse.** Asserted, derived, or absent? Absent is smallest. If a predicate reads
+   symmetric, does a single directed row over-claim?
+6. **Canonical structure versus proposition text.** `claims.proposition` is non-null and non-empty. For
+   a relation Claim, is proposition text derived, supplied, or absent? If both structure and text
+   exist, which is canonical, and what prevents disagreement inside one row?
+7. **Origin, standing, time, and Evidence-Link reuse.** Do relation Claims reuse `ecb_inference` and
+   `unassessed` unchanged? May an existing Evidence Link attach to a relation Claim without
+   modification, and does that reuse assert anything unintended about basis?
+8. **Endpoint existence and native-binding loss.** Endpoints should target `referents` with restrictive
+   foreign keys, mirroring BUILD 3's deliberate omission of a `thoughts` foreign key. Must an endpoint
+   Referent exist at assertion time? What is observed when an endpoint's native record later
+   disappears?
+9. **Multiplicity and uniqueness.** Would tuple uniqueness over subject, predicate, and object wrongly
+   collapse distinct Claims asserted at different times, scopes, or bases? What, if anything,
+   legitimately deduplicates?
+10. **Self-relations.** Is a self-relation invalid universally or only per predicate? A universal check
+    is premature ontology; a predicate-property table is premature ontology in the other direction.
+    Does BUILD 4 need to represent this at all?
+11. **Co-reference exclusion.** Two Referents may denote the same subject. What observation proves
+    BUILD 4 performed no co-reference or entity resolution?
+12. **Boundary against support, currentness, supersession, and history.** What exact observable proves
+    a relation Claim confers none of these, analogous to BUILD 3's historical-lineage-only
+    `used_as_basis`?
+13. **Enduring BUILD 3 projection.** Which BUILD 3 behaviors are permanent invariants versus
+    closure-state snapshots?
 
 ### Contradictions and dependencies
 
-No governing-source contradiction was found.
+**C1 — AP-07 presumes a BUILD 4 trace that does not exist.** AP-07 permits only predicates required by
+BUILD 4's worked trace, but Worked Trace 04 is reserved for BUILD 5 and no BUILD 4 trace exists.
+Resolution is to construct the trace, never to infer predicates from OB1's vocabulary.
 
-BUILD 3 depends on the accepted BUILD 2 Referent spine and the exact GT01 Thought. Both are installed
-and covered by regression evidence. No external service, provider choice, or unresolved deployment
-dependency is required for Shape.
+**C2 — AP-01 reactivation.** A typed relation Claim requires a second `claim_kind`, which is AP-01's own
+recorded reactivation trigger. Resolved by E-1.
+
+**C3 — BUILD 3 surface authority.** Two of the three representation branches require altering
+BUILD 3-installed objects. Resolved by E-2, which permits without requiring that change and does not
+reopen BUILD 3.
+
+**C4 — BUILD 3 regression-authority composition, carried into Sense.** The frozen BUILD 3 harness
+asserts a closure-state whole-schema snapshot that any authorized BUILD 4 expansion breaks:
+
+```text
+tables    === ["claims", "evidence_links", "referents", "thoughts"]
+functions === ["prepare_claim", "prepare_evidence_link",
+               "register_thought_referent", "search_thoughts"]
+claim_count === "1" && link_count === "1" && referent_count === "4"
+```
+
+The cardinality assertion breaks unconditionally, because inserting a relation Claim into
+`public.claims` increments `claim_count` even if BUILD 4 adds no table and no function. No BUILD 4
+design can satisfy the frozen BUILD 3 harness. The obligation is therefore recorded now rather than
+discovered at Move:
+
+1. **Layer A — historical acceptance.** `tests/build-3/harness.ts` remains byte-frozen as BUILD 3
+   closure provenance. It is not weakened, rewritten, or re-run as a post-BUILD 4 whole-schema gate.
+2. **Layer B — current-state regression.** A minimum cross-build BUILD 3 regression harness verifies
+   the enduring projection, including preserved accepted assertion behavior required by E-2, plus a
+   BUILD 4 expansion proof that only authorized objects and Referents explain the delta and no BUILD 5+
+   surface appears.
+
+The exact enduring projection is Question 13 and is frozen with the trace, not here.
+
+**Dependencies.** Installed BUILD 2 Referent spine; installed BUILD 3 `claims` and `evidence_links`; the
+four existing Referents as candidate fixtures. No external service, provider choice, or unresolved
+deployment dependency is required for Shape.
 
 ### Blockers
 
 None.
 
-The open questions below can each change schema, constraints, or the pass harness. They therefore enter
-Shape explicitly rather than being answered during Sense.
+E-1 and E-2 were the two escalations gating Shape entry. Both are resolved. The Question Forward set is
+routed to Shape, and remaining unknowns route to narrowly reactivated AP-01, minimally activated AP-07,
+preserved AP-02 and AP-03, or BUILD 5.
 
-## SHAPE DECISION SURFACE — CLOSED
+## TARGETED PRIOR-ART DISPOSITIONS
 
-Shape answered exactly these questions:
+Read directly from the pinned canonical clone at `9543c29a3e44a210ce278392b9fac11248997461`. Evidence,
+not authority. Nothing is promoted by resemblance.
 
-1. **Minimum Claim representation** — What persistent fields are required to identify one assertion,
-   preserve its proposition, scope, origin, time, and standing without encoding a typed relation?
-2. **Minimum standing dimensions and vocabulary** — Which independently stored dimension(s) and value(s)
-   are required to identify the fixture as ECB inference without collapsing basis, confidence,
-   warrant, authority, governance standing, or action standing?
-3. **Minimum stable Evidence Link contract** — What direction, type/role, evidence identity, exact-version
-   anchor, and creation provenance must persist so a fresh context can reconstruct the basis without
-   treating the link as proof or promotion?
-4. **Layer A evidence stability/version semantics** — Does the existing insert-only application
-   boundary make a Thought a stable evidence revision, or must BUILD 3 add a digest/version guard so
-   changed bytes cannot be silently accepted as the evidence originally linked?
-5. **Support lineage required now for later requalification** — What must be stored while Claim C's
-   relationship to evidence S is known so BUILD 5 can later evaluate withdrawal, supersession,
-   contradiction, invalidation, or drift without treating unsupported as false or deleting C?
-6. **Boundary before typed relation Claims** — What structural exclusions prevent an assertion-only
-   Claim from becoming a hidden subject–predicate–object registry or competing relation truth store?
-
-### Required Shape pressure pass
-
-Before Shape closes, examine each answer for:
-
-- assumptions that would change the falsification target or implementation boundary if false;
-- a smaller representation that still passes every positive and negative observation;
-- an alternative physical realization with a different integrity or reconstruction consequence;
-- a counterexample that makes source text and ECB inference indistinguishable;
-- dependency on mutation prevention, version verification, or caller memory that is not enforced;
-- preservation obligations for BUILD 0–2 data and the future BUILD 5 requalification seam;
-- unresolved material that must remain in AP-01, AP-02, or a new governed aperture; and
-- a concrete observation that would reopen the selected Shape.
-
-### First Shape pressure — COMPLETE; SURVIVOR HANDED TO SECOND PRESSURE
-
-`evidence stability × support lineage × standing reconstructibility`
-
-Examine these as one coupled pressure:
-
-- **Evidence stability:** a later observer must be able to identify or verify the evidence state that
-  was linked, rather than silently substituting changed evidence.
-- **Support lineage:** the Claim-to-evidence relationship known at qualification time must remain
-  reconstructible for later withdrawal, supersession, contradiction, invalidation, or drift analysis.
-- **Standing reconstructibility:** a later observer must be able to recover the Claim's standing as a
-  dimension distinct from the evidence basis, link existence, confidence, warrant, and authority.
-
-A candidate fails this pressure if it preserves any one dimension by collapsing or discarding another.
-No field, vocabulary, version anchor, or physical table is selected by stating the pressure.
-
-### First pressure result — CANDIDATE, NOT CLOSURE
-
-```text
-EVIDENCE_MECHANISM=UUID + DATABASE-DERIVED REVISION DIGEST
-EVIDENCE_MECHANISM_ASSESSMENT=LEADING_STRONGLY
-REVISION_PROJECTION=content + source + captured_at
-REVISION_PROJECTION_ASSESSMENT=STRONG_CANDIDATE
-EMBEDDING_IN_REVISION=NO
-DIGEST_SEMANTICS=detect identity-preserving evidence drift, not preserve historical payload
-MUTATION_RESPONSE=explicit mismatch; never substitute changed evidence
-ORIGIN=derivation / assertion provenance
-EPISTEMIC_STANDING=separate qualifyable dimension
-INFERENCE_AS_STANDING=LIKELY_REJECT
-AT_FIRST_PRESSURE_OUTPUT_CONTRACT=UNBOUND
-```
-
-First-pressure reading, retained as the input to the second pass:
-
-- Stable evidence addressability remains the Thought UUID. A database-derived revision digest is
-  leading as the verification mechanism for the evidence state linked by a Claim.
-- The strong revision-projection candidate contains `content`, `source`, and `captured_at`. Embedding is
-  excluded because it serves semantic retrieval and does not determine what the source said or when
-  that evidence was captured.
-- The digest is a drift detector, not a historical payload store. On mismatch, reconstruction must
-  return an explicit mismatch and must never substitute the changed row as the originally linked
-  evidence.
-- Derivation or assertion provenance belongs to origin. Epistemic standing remains a separately
-  qualifyable dimension. Encoding `inference` as standing is therefore likely rejected because it
-  would collapse origin/basis into epistemic qualification.
-
-`LEADING_STRONGLY`, `STRONG_CANDIDATE`, and `LIKELY_REJECT` were first-pressure assessments, not
-persisted standing values, authority, warrant, or implementation decisions. The second-pressure
-dispositions below supersede those assessment labels where they resolve or reject a choice.
-
-The first pressure did not select this candidate. It handed the candidate and its unresolved physical
-choices to the second falsification pressure below.
-
-### Second Shape pressure — COMPLETE; SEMANTIC SURVIVOR HANDED FORWARD
-
-`caller-forged revision × privileged mutation × evidence disappearance × non-evidence mutation × origin/standing independence × historical basis/current support`
-
-The six seams were attacked together. A candidate does not survive merely by handling the ordinary
-unchanged-evidence path.
-
-```text
-SECOND_SHAPE_PRESSURE=COMPLETE
-SURVIVING_REPRESENTATION=CLAIM + HISTORICAL_EVIDENCE_LINK + REFERENT-ANCHORED_THOUGHT_REVISION
-EVIDENCE_REVISION_MECHANISM=RESOLVED_IN_SHAPE
-EVIDENCE_REVISION_PROJECTION=RESOLVED_IN_SHAPE
-ORIGIN_SEMANTICS=RESOLVED_IN_SHAPE
-INFERENCE_AS_EPISTEMIC_STANDING=REJECTED
-AT_SECOND_PRESSURE_MINIMUM_EPISTEMIC_STANDING_VALUE=UNRESOLVED
-AT_SECOND_PRESSURE_OUTPUT_CONTRACT=UNBOUND
-```
-
-#### Surviving representation
-
-- **Claim and Evidence Link remain separate first-class native records.** Each has its own same-UUID
-  Referent identity. Neither adds semantic, positional, standing, or type columns to the Referent row.
-- **Claim is assertion-only in BUILD 3.** Its native record contains the proposition, bounded scope,
-  assertion-only claim kind, origin, epistemic standing, and database-assigned assertion time. It has no
-  subject, predicate, object, relation endpoint, directional-position, SIGMA-cell, or ECOS-face field.
-- **Origin records derivation/assertion provenance.** For the Worked Trace 03 Claim, origin identifies
-  ECB inference. Origin is stable when later evidence changes epistemic qualification.
-- **Epistemic standing is independently qualifyable.** It is not origin, claim kind, evidentiary basis,
-  confidence, warrant, authority, governance standing, action standing, or currentness. BUILD 3 still
-  must choose the minimum honest initial value and its semantics.
-- **Evidence Link records the historical fact `used_as_basis`.** It traverses
-  `Claim -> Evidence Link -> Thought Referent`. The evidence endpoint is the Thought's stable Referent
-  UUID, not a deletion-dependent promise that the native Thought row will always remain available.
-- **The linked evidence revision is the pair `(Thought Referent UUID, revision digest)`.** Inside the
-  Evidence Link creation transaction, the database reads the persisted Thought and derives the
-  canonical digest. A caller-supplied digest is neither canonical input nor an authority to choose the
-  revision.
-- **The revision projection is exactly source-bearing Thought state:** `content`, `source`, and
-  `captured_at`. It excludes `embedding`, `embedding_model`, and other retrieval representations.
-- **The digest detects drift; it is not a payload archive.** Reconstruction distinguishes an exact
-  current match, a present-but-mismatched Thought, and an unavailable native Thought. On mismatch or
-  unavailability it retains Claim and link lineage, does not return the current Thought as the original
-  source, and does not claim to reconstruct historical payload bytes.
-- **Known lineage is non-cascading and non-rewritable.** Later contradiction, withdrawal,
-  invalidation, or requalification neither deletes nor changes the historical `used_as_basis` link.
-  Current-support semantics and standing-transition history remain later independently addressable
-  structures, not reinterpretations of this link.
-
-At this stage the observation classes were Shape semantics, not yet frozen result names or a production
-API. The minimum remaining pressure later froze the harness-only names below.
-Within BUILD 3's persisted lineage scope, a retained link can establish that the Claim historically
-used evidence Referent T even when T's native Thought is unavailable. A Claim with no such link has no
-recorded BUILD 3 evidence basis; BUILD 3 may not strengthen that absence into a universal assertion
-that the Claim was never supported.
-
-#### Candidate disposition under exact falsifiers
-
-| Candidate decision | Disposition | Exact falsifier or surviving observation | Build route |
-|---|---|---|---|
-| Separate Claim and Evidence Link records, each same-UUID Referent-backed | **SURVIVES CURRENT FALSIFICATION** | A fresh context can distinguish proposition from source and traverse retained lineage without enriching Referent identity. | Required in BUILD 3 Shape. |
-| Assertion-only Claim with proposition, bounded scope, claim kind, origin, epistemic standing, and database assertion time | **SURVIVES CURRENT FALSIFICATION** | It preserves the required assertion and independent qualification while exposing no relation endpoints. | Required in BUILD 3 Shape; exact physical constraints remain open. |
-| Thought UUID plus database-derived revision digest | **SURVIVES CURRENT FALSIFICATION; MECHANISM RESOLVED** | Caller cannot choose the canonical revision; privileged source-bearing mutation becomes an explicit mismatch. | Required in BUILD 3 Shape. |
-| Revision projection over `content + source + captured_at` | **SURVIVES CURRENT FALSIFICATION; PROJECTION RESOLVED** | Mutation of each source-bearing component changes the revision, while embedding-only mutation does not. | Required in BUILD 3 Shape. |
-| Evidence endpoint retained through the Thought Referent UUID, with no cascade from native Thought disappearance | **SURVIVES CURRENT FALSIFICATION** | Deleting or making the native Thought unavailable preserves the identity and digest of the historically used evidence. | Required in BUILD 3 Shape. |
-| Fixed historical role `used_as_basis` | **SURVIVES CURRENT FALSIFICATION** | Later contradiction or withdrawal leaves lineage true without claiming continuing support. | Required in BUILD 3 Shape. |
-| Origin as stable derivation/assertion provenance, independently stored from standing | **SURVIVES CURRENT FALSIFICATION; SEMANTICS RESOLVED** | The same ECB-derived Claim can be requalified without rewriting who/what produced the assertion. | Required in BUILD 3 Shape. |
-| Caller-supplied revision token or digest | **REJECTED** | A caller can bind L to invented bytes or stale revision R while current Thought T is different. | Rejected in BUILD 3. |
-| Thought UUID alone as exact evidence revision | **REJECTED** | Privileged in-place mutation preserves UUID and silently substitutes changed source evidence. | Rejected in BUILD 3. |
-| Digest projection omitting `content`, `source`, or `captured_at` | **REJECTED** | Mutation of the omitted source-bearing field is accepted as the originally linked revision. | Rejected in BUILD 3. |
-| Digest projection including `embedding`, `embedding_model`, or retrieval representation | **REJECTED** | Re-embedding unchanged source evidence creates a false source-revision mismatch. | Rejected in BUILD 3. |
-| Evidence Link whose deletion behavior cascades from Thought or Referent | **REJECTED** | Evidence disappearance erases the only record that Claim C historically used T. | Rejected in BUILD 3. |
-| Evidence Link directly dependent on permanent native-Thought retention | **REJECTED** | The required deleted/unavailable-Thought observation cannot preserve a usable historical endpoint; retention policy is mistaken for evidence identity. | Rejected in BUILD 3. |
-| Full historical Thought payload copied into Evidence Link | **REJECTED AS NON-MINIMUM** | It creates a second evidence payload store although the BUILD 3 trace requires drift detection and lineage, not byte reconstruction. | Historical payload/versioned Artifact remains BUILD 5+ unless a new requirement reopens the boundary. |
-| `inference` as epistemic standing, or one combined origin/standing enum | **REJECTED** | Corroboration, conflict, or invalidation would require falsifying stable derivation provenance or would prevent standing from changing independently. | Rejected in BUILD 3; broader origin vocabulary stays apertured. |
-| Evidence role `supports` or `currently_supports` | **REJECTED** | Later contradiction or withdrawal makes the old link false and forces rewrite/deletion of true historical lineage. | Current-support evaluation belongs in BUILD 5+. |
-| Claim subject/predicate/object fields or relation endpoints | **REJECTED** | They activate AP-07 and make the assertion record a hidden BUILD 4 relation truth store. | BUILD 4 at earliest. |
-| Epistemic, positional, quadrant, Claim, or Evidence-Link semantics on the Referent identity row | **REJECTED** | Type-specific state pollutes universal identity and prevents contextual re-projection over the same stable focal Referent. | Rejected across builds. |
-| Claim + Evidence Link as an exhaustive future examination ontology | **REJECTED** | Later shaped examinations, evaluations, frames, SIGMA/ECOS projections, or Artifacts cannot remain independently addressable first-class objects. | Future builds earn their own Referent-backed native structures. |
-| Contextual faces/cells or directional positions as permanent classes | **REJECTED** | A lawful change of focal object or resolution changes the position while the model makes it permanent. | Rejected across builds. |
-
-#### Privileged-mutation and disappearance observations
-
-Let `D_link` be the database-derived digest stored on L at link creation and `D_now` the digest derived
-from the currently persisted T using the same canonical projection.
-
-| Later state of native Thought T | Required reconstruction |
-|---|---|
-| T is present and `D_now = D_link` | Return T as the currently verified linked source revision and preserve L as historical basis. |
-| T is present and `D_now != D_link` | Return explicit evidence-revision mismatch; preserve C and L; do not return changed T as the original source. |
-| T is unavailable or absent | Return explicit linked-evidence unavailability with T's Referent UUID and `D_link`; preserve C and L; do not infer that no basis ever existed. |
-| Only embedding, embedding model, or retrieval representation changed | `D_now = D_link`; do not report a source-evidence revision. |
-
-At this stage the exact error/result serialization was not frozen. The behavioral distinctions were
-handed to the minimum remaining pressure.
-
-#### Origin versus standing counterexample
-
-For one Claim C:
-
-```text
-C.origin = ecb_inference                         # remains stable
-C.epistemic_standing = initial qualification     # BUILD 3 value unresolved
-later corroborating/conflicting/invalidating evidence arrives
-C.origin = ecb_inference                         # must not be rewritten
-C.epistemic_standing = later qualification       # may change independently
-historical Evidence Links = retained             # must not be rewritten or deleted
-```
-
-BUILD 3 must make this independence possible but does not implement the transition or its history.
-Worked Trace 04 and BUILD 5 must earn the versioned standing/evaluation/Event/Artifact representation.
-
-#### Questions handed to the minimum remaining pressure
-
-| Choice | Why unresolved | Route |
+| OB1 construct | Disposition | Exact reason |
 |---|---|---|
-| Minimum initial epistemic-standing value and exact meaning | The pressure rejects `inference`, but evidence does not yet distinguish whether the honest initial qualification should mean unassessed, provisional, or another narrowly defined state. The chosen term must not smuggle in support, confidence, truth, warrant, or authority. | AP-01; must resolve in BUILD 3 Shape for Worked Trace 03. |
-| Canonical digest byte encoding and collision-resistant digest algorithm | The projection is closed, but naïve concatenation can create ambiguous inputs and implementation-specific serialization can produce false mismatch. | AP-02; must resolve in BUILD 3 Shape. |
-| Atomic derivation/enforcement surface and privileges | Shape has not selected trigger, generated value, constrained write path, or bounded database function, nor the concurrency/locking proof that prevents a caller bypass. | AP-02; must resolve in BUILD 3 Shape without changing the public/MCP surface unless separately reopened. |
-| Exact Claim and Evidence Link column/constraint realization | The semantic minimum survives, but nullability, controlled-value enforcement, immutability, link-to-Referent constraints, and database-assigned times still require one judged physical Shape. | BUILD 3 Shape. |
-| Exact mismatch/unavailability result names and final harness queries | Behavioral classes are known; freezing serialization now would bind the final Worked Trace before the physical surface is selected. | Final Worked Trace 03 construction after remaining Shape choices resolve. |
-| Broader origin and standing vocabularies | BUILD 3 needs only the fixture's origin and one honest initial epistemic qualification. Broader taxonomies have not been exercised. | Remain apertured after BUILD 3 under AP-01. |
-| Standing-change history, current-support evaluation, contradiction/withdrawal semantics, and historical payload recovery | They are not required to distinguish evidence from inference or detect drift in BUILD 3. | BUILD 5+ and Worked Trace 04; do not pull forward. |
-| Typed relation Claims and predicate vocabulary | Assertion-only Claim passes the current target without them. | AP-07 / BUILD 4 at earliest. |
-| SIGMA/ECOS examination structures and projection machinery | BUILD 3 need only avoid foreclosing their independent identity and contextual projection. | Later mandatory shaped structures; do not physicalize now. |
-
-#### Reopening conditions discovered by the second pressure
-
-- Reopen BUILD 3 Shape and AP-02 if a newly introduced Thought field can change what the source says or
-  its source-bearing capture provenance while remaining outside the revision projection.
-- Reopen the revision projection if two source-bearing Thought states can produce the same canonical
-  digest input without requiring a cryptographic collision.
-- Stop at the human rail if a BUILD 3 requirement demands reconstruction of historical source payload
-  after privileged mutation or deletion; the surviving digest mechanism deliberately detects loss or
-  drift and does not satisfy payload retention.
-- Reopen the Evidence Link Shape if a required current-support query cannot be answered without
-  reinterpreting or mutating `used_as_basis`; do not silently broaden that role.
-- Reopen the Claim boundary if Worked Trace 03 cannot assign one epistemic qualification without
-  importing confidence, truth, warrant, authority, governance, action, or typed-relation semantics.
-
-These conditions reopen the narrow Shape or route forward by default. Sense reopens only if the new
-evidence changes its focal object, closed decisions, decision surface, or no-blocker finding.
-
-### Minimum remaining Shape pressure — PASSED
-
-The remaining questions were tested only to the resolution required to bind BUILD 3. No broader
-standing taxonomy, payload-version store, current-support model, or future examination phenotype was
-selected.
-
-```text
-INITIAL_EPISTEMIC_STANDING=unassessed
-DIGEST_SCHEME=ecb_thought_revision_v1_sha256
-DIGEST_ALGORITHM=SHA-256
-ATOMIC_CREATION_BOUNDARY=DATABASE BEFORE INSERT TRIGGER + THOUGHT ROW SHARE LOCK
-NORMAL_WRITE_BOUNDARY=SERVICE-ROLE COLUMN INSERT + DATABASE-DERIVED FIELDS
-OBSERVATION_SURFACE=ACCEPTANCE HARNESS ONLY
-NEW_APERTURE=NO
-PARALLEL_LEGACY_INQUIRY_EFFECT=NO_CONCRETE_BUILD_3_FALSIFIER
-MINIMUM_REMAINING_SHAPE_PRESSURE=PASSED
-```
-
-#### Initial epistemic-standing decision
-
-`unassessed` means exactly: **no separate epistemic qualification of this proposition has been
-recorded under the BUILD 3 model**.
-
-It does not mean unsupported, false, doubtful, low-confidence, provisional, accepted, current,
-unauthorized, or invalid. Claim creation records an assertion; `used_as_basis` records historical
-lineage. Neither operation silently performs epistemic qualification.
-
-The value is falsified if a separately identifiable epistemic qualification is recorded at or before
-Claim creation while the Claim still says `unassessed`. Later qualification may replace or supersede
-this current value only through the standing-history representation earned by Worked Trace 04 / BUILD
-5; the Claim's origin and historical Evidence Links remain unchanged.
-
-Alternatives fail as follows:
-
-| Candidate | Disposition | Exact falsifier |
-|---|---|---|
-| `unassessed` | **SURVIVES; SELECTED FOR BUILD 3** | No separate qualification exists in the frozen trace, and the value asserts no truth, support, confidence, warrant, or authority conclusion. |
-| `provisional` | **REJECTED** | It asserts tentative positive acceptance or operative candidacy, but the trace observes only assertion plus historical basis and contains no acceptance evaluation. |
-| `supported` / `corroborated` | **REJECTED** | It converts `used_as_basis` into a present support judgment or invents independent corroboration. |
-| `true`, `accepted`, or `current` | **REJECTED** | It imports truth, governance acceptance, or current designation absent from BUILD 3. |
-| `uncertain` / confidence-ranked values | **REJECTED** | It imports a confidence judgment that the trace does not measure. |
-| `pending` / `draft` | **REJECTED** | It encodes workflow or lifecycle state rather than epistemic qualification. |
-
-AP-01 is therefore narrowed. BUILD 3 closes only `claim_kind=assertion`, `origin=ecb_inference`, and
-`epistemic_standing=unassessed`. Broader values remain apertured and do not block Move.
-
-#### Canonical evidence-revision encoding
-
-The exact scheme identifier is `ecb_thought_revision_v1_sha256`.
-
-Its digest input is this byte sequence:
-
-```text
-ASCII("ECB-THOUGHT-REVISION-V1") || UINT8(0x00)
-|| frame(0x01, UTF8_EXACT(content))
-|| frame(0x02, UTF8_EXACT(source))
-|| frame(0x03, INT64_BE(captured_at_unix_microseconds))
-
-frame(tag, payload) = UINT8(tag) || UINT64_BE(octet_length(payload)) || payload
-digest = SHA-256(digest_input)
-```
-
-- Field order and one-byte tags are fixed as shown.
-- `content` and `source` use the exact persisted PostgreSQL text encoded as UTF-8. Do not trim,
-  case-fold, normalize Unicode, append a terminator, or reinterpret line endings.
-- `captured_at` is normalized to the represented UTC instant and encoded as signed 64-bit big-endian
-  microseconds since `1970-01-01T00:00:00Z`. Display timezone and textual formatting do not participate.
-- All three Thought fields are already non-null. A null, infinite timestamp, invalid UTF-8 conversion,
-  or timestamp outside the signed 64-bit microsecond domain rejects link creation; no sentinel or
-  partial digest is permitted.
-- The domain prefix, tags, and length framing make materially different field boundaries
-  unambiguous before hashing, including embedded NULs.
-- The stored digest is exactly 32 bytes. Machine display uses 64 lowercase hexadecimal characters.
-
-For the frozen GT01 values, two independent local implementations produced:
-
-```text
-captured_at_unix_microseconds=1788480755225093
-digest_input_octets=131
-sha256=5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55
-```
-
-AP-02 is narrowed. BUILD 3 closes this evidence-revision scheme and creation/observation promise;
-historical payload retention, algorithm migration, general locator policy, and versioned evidence
-Artifacts remain open for the build that requires them.
-
-#### Enforcement properties before surfaces
-
-| Obligation | Enforcement property | Selected surface |
-|---|---|---|
-| Claim and Evidence Link have stable same-UUID Referents | Structural and transactional | Immediate non-deferrable native-record-to-Referent foreign keys plus one row-level `BEFORE INSERT` registration trigger per native table. |
-| Canonical revision comes from the persisted Thought, not caller input | Transactional and structural | Evidence-Link `BEFORE INSERT` trigger reads and locks the Thought, derives and overwrites scheme/digest, then inserts the Link in the same transaction. |
-| Concurrent Thought change cannot slip between derivation and Link creation | Transactional | The trigger selects the exact Thought row `FOR SHARE`; conflicting update/delete waits until the Link transaction ends. |
-| Changed or disappeared evidence is not substituted | Observational | Harness recomputes from current Thought and emits one frozen outcome without a production resolver. |
-| Normal callers cannot set semantic constants, digests, or database times | Authority and structural | Column-level `INSERT` grants expose only caller-owned fields; fixed values, digest, and times are database-assigned. No normal `UPDATE` or `DELETE`. |
-| Historical lineage cannot cascade away | Structural | Immediate non-deferrable restrictive foreign keys; evidence endpoint targets the Referent, with no Link foreign key to the deletable Thought row. |
-| Client roles cannot access the new substrate | Authority | RLS enabled with no policies; no grants to `PUBLIC`, `anon`, or `authenticated`; trigger-function execution revoked. |
-
-The selected Evidence-Link trigger is `SECURITY DEFINER`, owned by the migration owner, with empty
-`search_path`, schema-qualified references, no dynamic SQL, and no callable grant. The elevation is
-limited to taking the Thought row lock, reading the source-bearing fields, deriving the digest, and
-registering the Link Referent. A `SECURITY INVOKER` trigger was rejected because the existing
-least-privilege service role must not acquire Thought update authority merely to take the required
-write-conflicting row lock.
-
-Race disposition is exact:
-
-- mutation committed before the trigger locks T is the revision linked;
-- concurrent mutation after the trigger requests the lock waits until the Link transaction commits or
-  rolls back;
-- mutation committed after Link creation produces explicit mismatch;
-- a Thought absent when the trigger obtains its snapshot rejects Link creation and rolls back any new
-  Link Referent;
-- a privileged same-transaction mutation after derivation can at worst commit an immediately
-  mismatched Link and Thought; it cannot forge equality, and the first observation detects it.
-
-No database design can constrain a superuser who disables triggers or rewrites catalog state. Such an
-operation is outside the normal write boundary and constitutes a detectable integrity violation, not a
-second canonical creation path.
-
-#### Minimum native constraints
-
-`public.claims` contains exactly:
-
-```text
-id uuid primary key default gen_random_uuid()
-proposition text not null check (length(btrim(proposition)) > 0)
-scope text not null check (length(btrim(scope)) > 0)
-claim_kind text not null check (claim_kind = 'assertion')
-origin text not null check (origin = 'ecb_inference')
-epistemic_standing text not null check (epistemic_standing = 'unassessed')
-asserted_at timestamptz not null
-  database-assigned as transaction_timestamp()
-```
-
-`id` has an immediate, non-deferrable, restrictive same-UUID foreign key to `public.referents(id)`.
-One `BEFORE INSERT` trigger registers `NEW.id` without conflict suppression and assigns the three fixed
-controlled values plus `asserted_at`. The service role may insert only `id`, `proposition`, and `scope`.
-
-`public.evidence_links` contains exactly:
-
-```text
-id uuid primary key default gen_random_uuid()
-claim_id uuid not null
-evidence_referent_id uuid not null
-role text not null check (role = 'used_as_basis')
-evidence_revision_scheme text not null
-  check (evidence_revision_scheme = 'ecb_thought_revision_v1_sha256')
-evidence_revision_digest bytea not null
-  check (octet_length(evidence_revision_digest) = 32)
-linked_at timestamptz not null
-  database-assigned as transaction_timestamp()
-```
-
-`id` references its same-UUID Referent, `claim_id` references `claims(id)`, and
-`evidence_referent_id` references `referents(id)`. All are immediate, non-deferrable, and restrictive;
-none cascades, sets null, or sets default. There is deliberately no Evidence-Link foreign key to
-`thoughts`: the preparation trigger proves native Thought presence at creation, while the Referent
-endpoint preserves lineage after native evidence disappearance.
-
-One `BEFORE INSERT` preparation trigger locks the exact Thought, registers `NEW.id`, assigns role,
-scheme, digest, and `linked_at`, and returns the Link. The service role may insert only `id`, `claim_id`,
-and `evidence_referent_id`.
-
-Both tables enable RLS with no policies. The service role has `SELECT` plus only the stated column-level
-`INSERT`; it has no table-level `INSERT`, `UPDATE`, or `DELETE`. `PUBLIC`, `anon`, and `authenticated`
-have no table access. No uniqueness constraint collapses repeated historical uses of the same evidence,
-and no constraint requires every Claim to have an Evidence Link because the frozen no-recorded-basis
-observation must remain representable.
-
-No subject, predicate, object, relation type, relation endpoint, confidence, warrant, authority,
-currentness, governance, action, SIGMA/ECOS position, metadata bag, Event, Artifact, or history column
-is permitted.
-
-#### Frozen machine-legible observations
-
-Worked Trace 03 freezes exactly these harness-only status strings:
-
-```text
-linked_revision_match
-linked_revision_mismatch
-linked_evidence_unavailable
-no_recorded_build_3_evidence_link
-```
-
-Every result includes `claim_id`. Link-bearing results also include `evidence_link_id`,
-`evidence_referent_id`, `evidence_revision_scheme`, and lowercase `linked_revision_digest`.
-
-- `linked_revision_match` additionally includes equal `current_revision_digest` and the exact current
-  Thought as `source_evidence`.
-- `linked_revision_mismatch` includes the unequal `current_revision_digest` and
-  `source_evidence=null`; changed Thought payload may be used internally to compute the digest but may
-  not be serialized as the linked source.
-- `linked_evidence_unavailable` includes `current_revision_digest=null` and `source_evidence=null`. It
-  asserts only that the historical Link exists and the Thought is absent from the current evidence
-  surface.
-- `no_recorded_build_3_evidence_link` includes null Link/revision/source fields. It asserts only that no
-  BUILD 3 Evidence Link is recorded for that Claim.
-
-No SQL resolver, view, RPC, MCP tool, or production serialization surface is added. The acceptance
-harness selects the Claim, left-joined Link, and left-joined Thought by exact UUID, independently
-recomputes the digest, and applies the precedence `no link -> unavailable -> mismatch -> match`.
-
-#### Final pressure disposition
-
-The exact candidate survives caller forgery, source-bearing mutation, evidence disappearance,
-embedding-only mutation, concurrent mutation, direct-write privilege probes, origin/standing
-independence, historical-basis/current-support separation, and the SIGMA/ECOS preservation constraint.
-
-The parallel legacy inquiry produced no BUILD 3 falsifier. The selected representation keeps evidence,
-assertion, standing, identity, and current-support semantics recoverably separate and does not confer
-obedience, authority, live-state, or operative-structure semantics. Its candidate distinctions remain
-parallel evidence for later qualification.
-
-No new aperture is required. Remaining unknowns route to narrowed AP-01, narrowed AP-02, deferred
-AP-07, or Worked Trace 04 / BUILD 5.
-
-### Cross-cutting preservation
-
-`future SIGMA/ECOS projection freedom`
-
-BUILD 3 Shape must not make Claim, standing, or Evidence Link semantics depend on one future SIGMA or
-ECOS physical representation. Later work must remain free to project the persisted distinctions across
-those surfaces while preserving evidence/assertion separation and support/standing reconstructibility.
-
-Claim and Evidence Link are the minimum native records earned by this trace, not an exhaustive
-ontology. Later mandatory shaped examinations must remain free to exist as independently addressable
-Referents or versioned Artifacts over stable focal Referents. Contextual faces, cells, quadrants, and
-directional positions remain projection-relative and may not be persisted as permanent identity
-classes.
-
-This is a forward-compatibility obligation, not authorization to physicalize SIGMA, ECOS, projection
-machinery, transformations, Events, Artifacts, or receipts in BUILD 3.
-
-### Narrow Shape reopening — regression-authority composition corrected and re-closed
-
-The first released Move preflight exposed one composition contradiction: the historical BUILD 2
-closure harness correctly proves that BUILD 2 itself added no later-build tables, functions, or
-Referents, but those closure-state cardinalities cannot also prohibit an explicitly authorized later
-Build Unit from adding its own Referent-backed native records.
-
-Sense remained closed. Claim, standing, Evidence Link, digest, transaction, privilege, aperture,
-SIGMA/ECOS-preservation, and every other substantive BUILD 3 decision remained closed and unchanged.
-Shape reopened only far enough to compose regression authority in two layers, then re-closed:
-
-1. **Historical acceptance:** the original BUILD 0–2 harnesses, receipts, and acceptance evidence remain
-   unchanged as provenance of their closed Build Units. Before the first released BUILD 3 Move began,
-   the BUILD 0 suite passed 6/6, the BUILD 1 suite passed 5/5 with its deterministic trace passing, and
-   the unchanged historical BUILD 2 harness passed against the released baseline.
-2. **Current-state regression:** after BUILD 3 installation, enduring BUILD 0–2 behavior and invariants
-   must pass against the legitimately expanded BUILD 3 substrate. BUILD 2 uses the exact cross-build
-   projection frozen in `docs/acceptance-tests.md`; its closure-state whole-schema and total-row
-   cardinalities are not permanent invariants.
-
-`tests/build-2/harness.ts` remains unchanged and is not repurposed as a post-BUILD 3 whole-database
-harness. Worked Trace 03 carries the complementary proof that only BUILD 3-authorized objects and the
-C/L Referents explain the expansion, with no unexplained canonical object or BUILD 4+ surface.
-
-## OUTPUT CONTRACT — BOUND AND EXECUTED
-
-`OUTPUT_CONTRACT=BOUND`
-
-The released BUILD 3 Move produced exactly:
-
-1. one atomic, timestamped SQL migration that:
-   - makes `pgcrypto` available in the `extensions` schema if the canonical project does not already
-     provide it there;
-   - creates exactly `public.claims` and `public.evidence_links` with the selected columns and
-     constraints;
-   - creates exactly one non-callable preparation/registration trigger function and one row-level
-     `BEFORE INSERT` trigger for each new table;
-   - installs the exact RLS and least-privilege boundary;
-   - inserts the frozen Claim C and Evidence Link L fixtures in one transaction, deriving L's revision
-     from GT01 through the installed trigger; and
-   - verifies before commit that the schema, constraints, functions, triggers, grants, fixtures,
-     Referent coupling, and expected GT01 digest match this Shape;
-2. one local BUILD 3 acceptance harness that independently implements the frozen byte encoding and
-   attacks every Worked Trace 03 falsifier using rollback-only mutation, disappearance, forgery, and
-   concurrency probes;
-3. one minimum local cross-build BUILD 2 regression harness implementing only the enduring projection
-   frozen in `docs/acceptance-tests.md`, without modifying the historical BUILD 2 harness;
-4. the minimum local test/readme wiring required to run those harnesses;
-5. a BUILD 3 execution receipt only after the authorized migration and full two-layer regression
-   surface passes;
-   and
-6. an updated checkout recording observed implementation evidence without opening BUILD 4.
-
-The migration activation order is:
-
-```text
-BEGIN
-→ ensure digest dependency
-→ create Claim and Evidence Link tables
-→ create/revoke trigger functions and install triggers
-→ insert Claim C (same-transaction Referent registration)
-→ insert Evidence Link L (lock GT01, derive digest, register L, insert L)
-→ enable RLS and install exact grants
-→ verify bounded schema, privileges, fixtures, digest, and non-cascade constraints
-→ COMMIT
-```
-
-Any failure rolls back the entire activation. The Output Contract did not authorize and Move did not
-add a runtime, MCP, deployment, public API, resolver, view, RPC, Event, Artifact, standing history,
-relation endpoint, additional canonical fixture, or other surface outside the released migration.
-
-## TEST / PASS CONDITION FOR SHAPE — MET
-
-Shape closed because:
-
-1. it answers all six questions with one minimum physical representation;
-2. every field, vocabulary value, constraint, and query surface is necessary for a named positive or
-   negative observation in Worked Trace 03 or a governing invariant;
-3. a fresh-context harness can distinguish the source answer from the inference answer and
-   reconstruct the evidence lineage without caller memory;
-4. evidence drift cannot be silently accepted and the selected mechanism does not require BUILD 5
-   history;
-5. later support requalification remains possible without deleting the Claim or erasing its known
-   evidence basis;
-6. the representation preserves future SIGMA/ECOS projection freedom without implementing either
-   surface or its projection machinery;
-7. no typed relation, Event, Artifact, governance, public/MCP, or second-truth-store surface appears;
-8. BUILD 0–2 regression authority is preserved through unchanged historical acceptance provenance plus
-   current-state verification of enduring behavior and invariants; and
-9. enforcement modes, surfaces, activation ordering, failure behavior, and reopening conditions are
-   explicit enough to judge implementation without inventing architecture during Move.
-
-Passing this Shape test did not authorize implementation. The later explicit human release authorized
-the now-complete Move only; it did not close Metabolize or open BUILD 4.
+| `thought_edges` keyed to `thoughts.id` beside `edges` keyed to `entities.id` | REJECT | Per-native-type edge tables are what a universal Referent exists to avoid. Confirms BUILD 2. |
+| `id BIGSERIAL` surrogate key | REJECT | No stable Referent identity; violates universal identity. |
+| `UNIQUE (from, to, relation)` | REJECT | Collapses two distinct assertions into one row. |
+| `thought_edges_upsert` accumulating `support_count`, taking `GREATEST(confidence)`, extending `valid_until` | REJECT | Mutates one row to represent repeated assertion, destroying per-assertion identity, time, origin, and basis. |
+| `CHECK (from_thought_id <> to_thought_id)` | REJECT AS UNIVERSAL RULE | Universal self-relation prohibition is premature ontology; if it matters it is predicate-specific. |
+| `ON DELETE CASCADE` on both endpoints | REJECT | Erases relation history on native deletion; contradicts BUILD 3 non-cascade lineage. |
+| `confidence NUMERIC(3,2)` on the edge | REJECT FOR BUILD 4 | Collapses confidence into the relation record. |
+| `valid_from`, `valid_until`, `decay_weight`, "NULL valid_until = still current" | REJECT / DEFER | Currentness and temporal validity on the relation row; reserved to BUILD 5 and E13. |
+| `updated_at` trigger with UPDATE and DELETE grants | REJECT | Mutable relation rows; a Claim is asserted, not edited. |
+| `metadata JSONB` bag | REJECT | BUILD 3 excluded a metadata bag. |
+| Six-label vocabulary `supports`, `contradicts`, `evolved_into`, `supersedes`, `depends_on`, `related_to` | DEFER | AP-07 permits only what the trace earns. A candidate pool, never an inherited enum. |
+| `classifier_version` tag | QUARRY | Separates model-output provenance from truth and distinguishes vocabulary changes during audit. Routes to AP-03. |
+| Same supersession represented in `thought_edges` and `thoughts.supersedes`, mirrored non-atomically across two calls, best-effort, without preflight or automatic reconciliation | REJECT — GOVERNING NEGATIVE EXEMPLAR | The competing-relation-truth-store invariant demonstrated in its own source. |
+| Documented backwards direction writes in pre-fix classifier builds, setting `supersedes` on the older thought pointing at the newer and inverting the stated contract | REJECT — PROMOTE TO FALSIFIER | Direction correctness was violated in production by caller convention. Direction must be enforced structurally and reversal must be falsified. |
+
+## CANDIDATE FALSIFICATION TARGET — CANDIDATE ONLY
+
+`WORKED_TRACE_06=CANDIDATE_NOT_ACCEPTANCE_AUTHORITY`
+
+Recorded in `docs/acceptance-tests.md` under the non-colliding identifier **Worked Trace 06 — Typed
+relation claim**, unlocking BUILD 4. Trace ordinals already run by creation order rather than build
+order, since Worked Trace 04 unlocks BUILD 5. Reserved Worked Traces 04 and 05 are untouched and are not
+renumbered or repurposed.
+
+This target is candidate material for Shape. It is not frozen and carries no acceptance authority. Shape
+freezes the final construction after the predicate and representation questions close.
+
+Candidate fixture design uses only already-installed Referents and requires no new canonical Thought:
+
+- endpoint (i) Claim C `0f89e778-b16e-4840-9129-a2aa3eb6f697`, a Referent whose native record is a Claim;
+- endpoint (ii) GT01 `19a949ea-a8fc-4250-a386-fa64e5530180`, a Referent whose native record is a Thought;
+- endpoint (iii) registered-only `2eede0e4-b27a-4383-850e-a448f0113c9f`, a Referent with no native
+  record.
+
+Candidate falsifiers:
+
+1. reversing endpoints yields an observably different and wrong assertion, structurally prevented;
+2. a relation Claim is distinguishable from an Evidence Link in persistence, not by caller memory;
+3. asserting the relation confers no support, currentness, supersession, or standing change on either
+   endpoint;
+4. two separately asserted relation Claims over the same triple remain two Claims, with no upsert,
+   accumulation, or tuple-uniqueness collapse;
+5. no relation fact is representable in two places;
+6. the relation Claim has a same-UUID Referent, and **loss of an endpoint's native binding does not
+   erase the relation Claim while the endpoint Referent remains registered**;
+7. classification-shaped input does not become governing truth;
+8. asserting a relation between two Referents performs no co-reference;
+9. only BUILD 4-authorized objects and Referents explain the expansion, with no BUILD 5+ surface; and
+10. accepted BUILD 3 assertion behavior is preserved under the cross-build projection.
+
+Falsifier 6 concerns native-binding loss only. It does not grant or imply a general deletion policy.
 
 ## CURRENT STANDING
 
-This checkout records closed Sense, closed Shape, the executed Output Contract, the passing frozen
-Worked Trace 03 and cross-build regression evidence, and accepted human metabolization closure.
+This checkout records closed BUILD 4 Sense, the verified entry anchor, the recorded E-1 and E-2
+dispositions, the Question Forward set, targeted prior-art dispositions, the carried BUILD 3
+regression-authority obligation, and a candidate falsification target.
 
-Move is complete and BUILD 3 is closed. No ADR was created, and BUILD 4 remains unopened and
-unauthorized.
+It does not select a predicate, a `claim_kind` value, a physical representation, or an enforcement
+surface. It confers no implementation standing, warrant, authority, Shape authorization, or Move
+authorization. No ADR was created.
 
-## POST-CLOSURE HOLD
+## ENFORCEMENT UNTIL SHAPE AUTHORIZATION
 
 **SEMANTIC — review against governing text:**
 
 - preserve every listed non-collapse distinction;
-- reject any candidate that answers a source query with Claim text or an inference query with
-  unasserted Thought text; and
-- reject any candidate whose correctness depends only on callers remembering provenance or version.
+- reject any candidate that lets a relation Claim read as a relational fact, a support judgment, or a
+  currentness designation; and
+- reject any candidate whose correctness depends on callers remembering endpoint direction.
 
-**OBSERVATIONAL — installed state and falsification target:**
+**OBSERVATIONAL — repository diff:**
 
-- the implementation is judged against frozen Worked Trace 03 plus the two-layer BUILD 0–2 regression
-  composition;
-- the migration, harnesses, and receipt may be preserved but not extended beyond the bound Output
-  Contract; and
-- no further schema, runtime, MCP, deployment, ADR, BUILD 4+, or remote-state transition is authorized
-  without explicit human instruction; and
-- the installed BUILD 3 result may not be mutated absent a recorded reopening condition and explicit
-  human authorization.
+- the Sense closure diff may change governing documentation only;
+- it may not add an ADR, schema, migration, runtime, MCP, test-execution, database, deployment, or
+  remote-state change; and
+- the candidate falsification target may not be cited as acceptance authority.
 
-The implemented BUILD 3 transition is active in the canonical database and its passing evidence has
-been accepted at Metabolize. Closure is provenance of that acceptance, not authorization for the next
-Build Unit.
+No implemented consequential transition is active in this checkout.
 
 ## FAILURE BEHAVIOR
 
-Reopen the narrow Shape and return to the human rail if:
+Return to the human rail if:
 
-- passing Worked Trace 03 requires changing a closed Thought or Referent identity decision;
-- exact evidence reconstruction requires BUILD 5 Event/Artifact/history machinery;
-- a candidate collapses standing into confidence, basis, warrant, authority, or capability;
-- the minimum Claim cannot be represented without typed relation semantics;
-- support lineage cannot survive without cascade deletion or an unrecorded caller convention;
-- a BUILD 0–2 regression or reopening condition is observed;
-- a new public/MCP authorization surface becomes necessary; or
-- an implementation would require departing from the bound Output Contract.
+- expressing one relation Claim requires changing a closed Thought, Referent, or Evidence Link identity
+  decision;
+- the minimum relation Claim cannot be represented without importing BUILD 5 temporal, history,
+  currentness, or supersession machinery;
+- a candidate collapses relation Claim into Evidence Link, or confidence into standing;
+- preserving accepted BUILD 3 assertion behavior proves impossible alongside a second claim kind;
+- a single relation truth store proves insufficient, which would be an invariant conflict rather than a
+  design problem;
+- a BUILD 0–3 reopening condition is observed; or
+- a new public or MCP authorization surface becomes necessary.
 
 ## APERTURES
 
-- **AP-01 — Controlled standing vocabulary:** NARROWED. BUILD 3's values are closed as `assertion`,
-  `ecb_inference`, and `unassessed`; broader vocabularies remain apertured and do not block Move.
-- **AP-02 — Stable evidence interface:** NARROWED. BUILD 3's exact digest scheme, transaction boundary,
-  mismatch behavior, and non-cascading identity promise are closed; general locator, retention,
-  algorithm migration, Artifact, and history semantics remain apertured and do not block Move.
-- **AP-07 — Full relation ontology:** DEFERRED. BUILD 3 must not activate it.
+- **AP-01 — Controlled standing vocabulary:** REACTIVATED NARROWLY FOR BUILD 4. A second `claim_kind` is
+  required. The exact value is a Shape decision. Broader claim-kind, origin, epistemic-standing,
+  governance-standing, action-standing, qualification, and history vocabularies remain open on their
+  existing terms.
+- **AP-07 — Full relation ontology:** ACTIVATED TO MINIMUM RESOLUTION ONLY. Exactly one predicate,
+  earned by the BUILD 4 trace. The complete relation ontology remains deferred.
+- **AP-02 — Stable evidence interface:** PRESERVED AS NARROWED BY BUILD 3. Unchanged by BUILD 4 Sense.
+- **AP-03 — Semantic-evaluation schema:** PRESERVED UNCHANGED. Classifier provenance and evaluation
+  payloads route here, not to BUILD 4.
 
 ## REVALIDATION / REOPENING TRIGGERS
 
-SENSE_REOPEN_REQUIRED remains `NO`. Reopen Sense only if newly encountered governing evidence changes
-the focal object, a closed decision, the six-question surface, the no-blocker finding, or the ready
-falsification target.
+Reopen BUILD 4 Sense only if newly encountered governing evidence changes the focal object, a
+Sense-closed decision, the Question Forward set, the no-blocker finding, or the recorded E-1 or E-2
+dispositions.
 
-Do not reopen Sense for a narrow failure of a selected table, constraint, vocabulary, digest, or
-transaction mechanism. Reopen BUILD 3 Shape or the named aperture first unless the observation changes
-the focal object or a Sense-closed decision.
+Do not reopen Sense for a narrow difficulty in selecting a predicate, representation, constraint, or
+harness projection. Those are Shape decisions routed above.
+
+Reopen BUILD 3 only on its own recorded reopening conditions. E-2 does not reopen BUILD 3.
 
 ## NON-GOALS / DO NOT BUILD
 
-- do not infer BUILD 4 implementation authorization from BUILD 3 closure;
-- do not extend the installed BUILD 3 substrate beyond the released Output Contract;
-- do not turn Thoughts into assertions or add standing fields to Thoughts;
-- do not change Referent identity or BUILD 2 coupling;
-- do not implement typed relation Claims, relation endpoints, predicates, or a relation ontology;
-- do not implement confidence scoring, warrants, authority, currentness, governance standing,
-  governance activation, or action authorization;
-- do not implement standing transitions, review history, supersession history, Events, Artifacts, or
-  transformation receipts;
-- do not physicalize SIGMA, ECOS, or projection machinery during BUILD 3;
-- do not add a second evidence store, authoritative cache, or competing relation truth store;
+- do not enter Shape until a separate human authorization;
+- do not select the predicate, the second `claim_kind` value, or the physical representation during
+  Sense;
+- do not freeze the candidate Worked Trace 06 as acceptance authority;
+- do not implement a relation ontology, predicate taxonomy, graph traversal, or inverse/symmetry
+  machinery;
+- do not add confidence scoring, warrants, authority, currentness, governance standing, governance
+  activation, or action authorization;
+- do not implement temporal validity, decay, standing transitions, review history, supersession
+  history, Events, Artifacts, or transformation receipts;
+- do not perform or imply co-reference or entity resolution;
+- do not add a second relation truth store, evidence store, or authoritative cache;
 - do not import OB1 or ECB v1 schema by resemblance;
+- do not modify the frozen BUILD 3 harness or reinterpret its closure-state snapshot as an enduring
+  invariant;
 - do not add or change MCP tools, runtime behavior, deployment, credentials, or remote state; and
-- do not select the BUILD 4 or BUILD 5 Shape.
+- do not open or select BUILD 5+.
 
 ## NEXT HANDLE
 
-`AWAIT EXPLICIT BUILD 4 AUTHORIZATION.`
+`AWAIT EXPLICIT HUMAN SHAPE AUTHORIZATION.`
 
-BUILD 3 is closed. The exact next authorized action is a bounded BUILD 4 Sense under its own checkout,
-opened only on explicit human instruction. Do not begin BUILD 4 Sense, Shape, or implementation, and do
-not perform another schema, runtime, MCP, deployment, ADR, or remote-state transition, until the human
-authorizes that phase.
+The exact next authorized action is read-only human review of this closed Sense state. No Shape entry,
+predicate or vocabulary selection, schema freeze, migration authoring or application, test execution
+against the canonical database, deployment, ADR, or remote mutation is authorized. After an explicit
+Shape authorization, answer the Question Forward set adversarially and stop again before binding an
+Output Contract.

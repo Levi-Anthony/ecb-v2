@@ -540,3 +540,80 @@ Must include:
 - revalidation trigger.
 
 Freeze expected answers before implementation.
+
+## Worked Trace 06 — Typed relation claim
+
+**STATUS: CANDIDATE — NOT ACCEPTANCE AUTHORITY**
+
+**UNLOCKS: BUILD 4 (proposed)**
+
+**RECORDED: 2026-09-04 America/Phoenix at BUILD 4 Sense closure**
+
+This section records a candidate falsification target derived during BUILD 4 Sense. It is **not frozen**
+and may not be cited as acceptance authority, as a pass condition, or as justification for any
+implementation. BUILD 4 Shape freezes the final construction after the predicate and representation
+questions close.
+
+Trace ordinals run by creation order, not build order: Worked Trace 04 unlocks BUILD 5 and Worked Trace
+05 unlocks BUILD 7/8. Identifier 06 was selected as the next free ordinal so that no reserved trace is
+renumbered or repurposed.
+
+### Candidate focal behavior
+
+Express one referent-to-referent relation as a Claim, under a single relation truth store, without
+collapsing relation Claim into Evidence Link or asserted relation into relational fact.
+
+### Candidate fixtures
+
+Already-installed Referents only; no new canonical Thought is required:
+
+- endpoint (i) — Claim C `0f89e778-b16e-4840-9129-a2aa3eb6f697`, a Referent whose native record is a
+  Claim;
+- endpoint (ii) — GT01 `19a949ea-a8fc-4250-a386-fa64e5530180`, a Referent whose native record is a
+  Thought;
+- endpoint (iii) — registered-only `2eede0e4-b27a-4383-850e-a448f0113c9f`, a Referent with no native
+  record.
+
+A relation over (i) and (ii) exercises referent-to-referent addressing across different native types
+through one universal identity. Endpoint (iii) probes endpoint existence without deleting anything.
+
+The predicate, direction semantics, arity, physical representation, and second `claim_kind` value are
+**not selected here**. They are BUILD 4 Shape decisions under narrowly reactivated AP-01 and minimally
+activated AP-07.
+
+### Candidate falsifiers
+
+1. reversing the endpoints yields an observably different and wrong assertion, prevented structurally
+   rather than by caller convention;
+2. a relation Claim is distinguishable from an Evidence Link in persistence, not by caller memory;
+3. asserting the relation confers no support, currentness, supersession, or standing change on either
+   endpoint;
+4. two separately asserted relation Claims over the same triple remain two Claims, with no upsert,
+   accumulation, or tuple-uniqueness collapse;
+5. no relation fact is representable in two places;
+6. the relation Claim has a same-UUID Referent, and loss of an endpoint's native binding does not erase
+   the relation Claim while the endpoint Referent remains registered;
+7. classification-shaped input does not become governing truth;
+8. asserting a relation between two Referents performs no co-reference or entity resolution;
+9. only BUILD 4-authorized objects and Referents explain the canonical expansion, with no BUILD 5+
+   surface; and
+10. accepted BUILD 3 assertion behavior is preserved under the cross-build regression projection.
+
+Falsifier 6 concerns native-binding loss only. It does not grant or imply a general deletion policy.
+
+### Candidate BUILD 3 regression composition
+
+Any BUILD 4 candidate must carry the two-layer composition already recorded at BUILD 4 Sense:
+
+- **Layer A — historical acceptance.** `tests/build-3/harness.ts` remains byte-frozen as BUILD 3 closure
+  provenance. It is not weakened, rewritten, or re-run as a post-BUILD 4 whole-schema gate. Its
+  closure-state assertions — the exact public table list, the exact public function list, and
+  `claim_count = 1`, `link_count = 1`, `referent_count = 4` — proved that BUILD 3 installed no
+  later-build machinery. They are not permanent prohibitions on an authorized later Build Unit adding
+  its own Referent-backed records. The cardinality assertion in particular breaks unconditionally once a
+  relation Claim exists, even if BUILD 4 adds no table and no function.
+- **Layer B — current-state regression.** A minimum cross-build BUILD 3 regression harness verifies the
+  enduring projection, including preserved accepted assertion behavior, plus a BUILD 4 expansion proof.
+
+The exact enduring BUILD 3 projection is an open BUILD 4 Shape question and is frozen with this trace,
+not before it.

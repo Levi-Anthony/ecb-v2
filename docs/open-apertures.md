@@ -20,20 +20,34 @@ Exact enum values for claim kind, evidentiary basis, epistemic standing, governa
 The dimensional separation is architecturally required. The exact vocabulary has not yet been exercised enough by real v2 records to justify freezing it.
 
 **CURRENT EFFECT**  
-NARROWED BY CLOSED BUILD 3 SHAPE. The BUILD 3 requirement is resolved and no longer blocks Move:
-`claim_kind=assertion`, `origin=ecb_inference`, and `epistemic_standing=unassessed`. `unassessed` means
-only that no separate epistemic qualification has been recorded under the BUILD 3 model; it does not
-mean unsupported, false, doubtful, low-confidence, provisional, accepted, current, unauthorized, or
-invalid. `inference` is origin, not standing. Broader claim-kind, origin, evidentiary-basis, epistemic,
-governance, and action vocabularies remain open.
+REACTIVATED NARROWLY FOR BUILD 4 on 2026-09-04 America/Phoenix by explicit human disposition, because
+BUILD 4 requires a second Claim kind for typed-relation Claims. BUILD 4 may not route around
+`claim_kind` to avoid this reactivation; the governing Claim distinction already includes assertion
+Claims and typed-relation Claims.
+
+The reactivation is bounded. AP-01 narrows only far enough to support the relation-Claim behavior earned
+by the BUILD 4 Worked Trace. **The exact second `claim_kind` value is not selected by BUILD 4 Sense; it
+is a Shape decision.**
+
+The closed BUILD 3 values remain accepted and unchanged: `claim_kind=assertion`,
+`origin=ecb_inference`, and `epistemic_standing=unassessed`. `unassessed` means only that no separate
+epistemic qualification has been recorded under the BUILD 3 model; it does not mean unsupported, false,
+doubtful, low-confidence, provisional, accepted, current, unauthorized, or invalid. `inference` is
+origin, not standing. BUILD 3's assertion-only physical constraint was the closed physical surface of
+BUILD 3, not the complete Claim ontology, and is not a permanent prohibition on later Claim kinds.
+
+Broader claim-kind, origin, evidentiary-basis, epistemic, governance-standing, action-standing,
+qualification, and history vocabularies remain open on their existing terms.
 
 **TRIGGER**  
-Reactivate when a build needs a second claim kind or origin, a qualified epistemic value, governance or
-action standing, or a standing transition that `unassessed` cannot represent.
+Reactivate further when a build needs an additional claim kind or origin beyond BUILD 4's, a qualified
+epistemic value, governance or action standing, or a standing transition that `unassessed` cannot
+represent.
 
 **ROUTE**  
-Worked Trace 04 / BUILD 5 for qualification history; otherwise the first build whose behavior requires
-the additional controlled value. Preserve all dimensional separations.
+BUILD 4 Shape for the second claim-kind value only. Worked Trace 04 / BUILD 5 for qualification history;
+otherwise the first build whose behavior requires the additional controlled value. Preserve all
+dimensional separations.
 
 ## AP-02 — Stable evidence interface
 
@@ -142,14 +156,20 @@ Complete set/hierarchy of relation predicates.
 The system has not earned a universal relation taxonomy.
 
 **CURRENT EFFECT**  
-DEFERRED. BUILD 3 must not activate this aperture. BUILD 4 may introduce only predicates required by
-its worked trace.
+ACTIVATED TO MINIMUM RESOLUTION ONLY on 2026-09-04 America/Phoenix for BUILD 4. BUILD 3 did not activate
+this aperture. BUILD 4 may introduce exactly one relation predicate, earned by its candidate Worked
+Trace, and no broader vocabulary.
+
+The complete relation ontology remains DEFERRED. Minimum activation does not authorize a predicate
+taxonomy or hierarchy, inverse or symmetry machinery, a graph traversal surface, relation lifecycle,
+co-reference or entity resolution, or adoption of the six-label OB1 typed-edge vocabulary by
+resemblance. The predicate is selected in BUILD 4 Shape, not in Sense.
 
 **TRIGGER**  
 Repeated ambiguity, integrity failures, or cross-domain reuse demonstrates a higher-order relation grammar is needed.
 
 **ROUTE**  
-Relation-schema ADR.
+BUILD 4 Shape for the single earned predicate. Relation-schema ADR for anything broader.
 
 ## AP-08 — Final human UI
 
