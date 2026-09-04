@@ -1,22 +1,26 @@
-STATUS: SHAPE CLOSED — OUTPUT CONTRACT BOUND; MOVE PERMISSION REQUIRED; IMPLEMENTATION UNOPENED
+STATUS: MOVE COMPLETE — VERIFICATION PASSED; HUMAN METABOLIZE CLOSURE REQUIRED; BUILD 5 UNOPENED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
 AUTHORITY: Derived from the Build Contract, constitutive invariants, closed BUILD 0–3 evidence, the anchored BUILD 4 Sense closure, and explicit human BUILD 4 Shape authorization
-CURRENT BUILD UNIT: BUILD 4 — Typed Relation Claims (SHAPE CLOSED; MOVE UNRELEASED)
+CURRENT BUILD UNIT: BUILD 4 — Typed Relation Claims (MOVE COMPLETE; METABOLIZE REVIEW REQUIRED)
 
 # BUILD 4 — Typed Relation Claims
 
 ## CURRENT MOVE
 
-`CLOSE SHAPE → MOVE PERMISSION REQUIRED`
+`MOVE COMPLETE → HUMAN METABOLIZE CLOSURE REQUIRED`
 
 ```text
 SENSE=CLOSED
 SENSE_REOPEN_REQUIRED=NO
 SHAPE=CLOSED
 SECOND_EXAMINATION=COMPLETE
-MOVE_PERMISSION=REQUIRED
-IMPLEMENTATION=UNOPENED
+MOVE_PERMISSION=RELEASED_AND_CONSUMED
+IMPLEMENTATION=INSTALLED_AND_VERIFIED
+WORKED_TRACE_06_EXECUTION=PASS
+BUILD_0_TO_3_CURRENT_STATE_REGRESSION=PASS
+METABOLIZE=READY_FOR_HUMAN_REVIEW_NOT_CLOSED
+BUILD_5=UNOPENED_AND_UNAUTHORIZED
 AP01=NARROWED; BUILD_4_SECOND_CLAIM_KIND_SELECTED; BROADER_VOCABULARY_OPEN
 AP07=NARROWED; BUILD_4_SINGLE_PREDICATE_SELECTED; FULL_ONTOLOGY_DEFERRED
 FULL_RELATION_ONTOLOGY=DEFERRED
@@ -29,7 +33,7 @@ NEW_FUNCTIONS=0
 BUILD_3_SURFACE_CHANGE=AUTHORIZED_BY_E2_AND_TAKEN
 BUILD_3_REGRESSION_AUTHORITY=TWO_LAYER; ENDURING_PROJECTION_FROZEN
 BUILD_5_TEMPORAL_HISTORY_CURRENTNESS_SUPERSESSION=UNOPENED
-OUTPUT_CONTRACT=BOUND
+OUTPUT_CONTRACT=BOUND_AND_EXECUTED
 ```
 
 Shape entered from anchored Sense commit `3232dfd4042c0ff76be906e303a523b820c6256f`, root tree
@@ -37,11 +41,18 @@ Shape entered from anchored Sense commit `3232dfd4042c0ff76be906e303a523b820c625
 worktree and no canonical substrate drift.
 
 One candidate survived the second examination. Worked Trace 06 is promoted from candidate to frozen
-adversarial acceptance authority. The bound Output Contract describes what a future Move may produce; it
-does not release Move.
+adversarial acceptance authority.
 
-BUILD 0, BUILD 1, BUILD 2, and BUILD 3 remain closed. BUILD 3's physical surface is changed by the
-future Move under the recorded E-2 authorization; that is lawful expansion, not reopening.
+The human released Move against the closed Shape anchor
+`33bf6fe7924bf476edf75802de193d23ca309c00`. The bound Output Contract is installed and verified;
+execution evidence is recorded in `docs/build-receipts/005-build-4.md`. Migration
+`20260904215929_build_4_typed_relation_claims` added the relation columns, constraints, endpoint
+foreign keys, replaced `prepare_claim`, and installed Claim C2 and relation Claim R, adding no table and
+no function.
+
+BUILD 0, BUILD 1, BUILD 2, and BUILD 3 remain closed. BUILD 3's physical surface was changed by this
+Move under the recorded E-2 authorization; that is lawful expansion, not reopening, and accepted BUILD 3
+assertion behavior is verified preserved by the cross-build regression harness.
 
 ## PURPOSE
 
@@ -411,11 +422,11 @@ endpoint addressing is proved by rollback-only probe rather than by additional c
 `tests/build-3/harness.ts` remains byte-frozen as BUILD 3 closure provenance and is never re-run as a
 post-BUILD 4 whole-schema gate.
 
-## OUTPUT CONTRACT — BOUND; MOVE UNRELEASED
+## OUTPUT CONTRACT — BOUND AND EXECUTED
 
 `OUTPUT_CONTRACT=BOUND`
 
-When and only when a human separately releases Move, BUILD 4 may produce:
+The released BUILD 4 Move produced exactly:
 
 1. one atomic, timestamped SQL migration that:
    - adds exactly the three relation columns to `public.claims`;
@@ -485,11 +496,13 @@ Passing this Shape test does not authorize implementation.
 ## CURRENT STANDING
 
 This checkout records closed Sense, closed Shape, the frozen Worked Trace 06 adversarial acceptance
-authority, the frozen enduring BUILD 3 projection, and a bound but unreleased Output Contract.
+authority, the frozen enduring BUILD 3 projection, and the executed Output Contract with passing
+Worked Trace 06 and two-layer BUILD 0–3 regression evidence.
 
-It confers no implementation standing, warrant, authority, or Move authorization. No ADR was created.
+Move is complete. BUILD 4 is ready for explicit human Metabolize review but is not declared metabolized
+or closed. No ADR was created, and BUILD 5 remains unopened and unauthorized.
 
-## ENFORCEMENT UNTIL MOVE RELEASE
+## POST-MOVE HOLD
 
 **SEMANTIC — review against governing text:**
 
@@ -500,13 +513,15 @@ It confers no implementation standing, warrant, authority, or Move authorization
 
 **OBSERVATIONAL — repository diff and falsification target:**
 
-- the closure diff may change governing documentation only and may not add an ADR;
-- it may not add schema, migration, runtime, MCP, test-execution, database, deployment, or remote-state
-  changes; and
-- any proposed implementation is judged against frozen Worked Trace 06 plus the two-layer BUILD 0–3
-  regression composition after Move is released.
+- the implementation is judged against frozen Worked Trace 06 plus the two-layer BUILD 0–3 regression
+  composition;
+- the migration, harnesses, and receipt may be preserved but not extended beyond the bound Output
+  Contract; and
+- no further schema, runtime, MCP, deployment, ADR, BUILD 5+, or remote-state transition is authorized
+  without explicit human instruction.
 
-No implemented consequential transition is active in this checkout.
+The implemented BUILD 4 transition is active in the canonical database. Its passing evidence does not
+itself confer Metabolize closure.
 
 ## FAILURE BEHAVIOR
 
@@ -551,7 +566,7 @@ expansion, not reopening.
 
 ## NON-GOALS / DO NOT BUILD
 
-- do not implement BUILD 4 until a separate human Move release;
+- do not extend the installed BUILD 4 substrate beyond the released Output Contract;
 - do not add a second predicate, a third claim kind, inverse/symmetry machinery, a predicate taxonomy,
   a traversal surface, or a graph ontology;
 - do not add a relation table, edge registry, extension table, view, resolver, RPC, or index;
@@ -571,9 +586,9 @@ expansion, not reopening.
 
 ## NEXT HANDLE
 
-`AWAIT EXPLICIT HUMAN MOVE RELEASE.`
+`AWAIT EXPLICIT HUMAN METABOLIZE CLOSURE.`
 
-The exact next authorized action is read-only human review of this closed Shape and bound Output
-Contract. No implementation, migration authoring or application, test execution against the canonical
-database, deployment, ADR, or remote mutation is authorized. After an explicit Move release, implement
-only the bound Output Contract and stop again for acceptance of observed execution evidence.
+The exact next authorized action is read-only human review of the BUILD 4 implementation and execution
+receipt. Do not begin BUILD 5 or perform another schema, runtime, MCP, deployment, ADR, or remote-state
+transition unless the human explicitly closes or reopens BUILD 4 and separately authorizes the next
+phase.
