@@ -21,6 +21,7 @@ FIRST_SHAPE_PRESSURE=COMPLETE
 SECOND_SHAPE_PRESSURE=COMPLETE_AS_FALSIFICATION_PASS
 MINIMUM_REMAINING_SHAPE_PRESSURE=PASSED
 WORKED_TRACE_03=FROZEN_ADVERSARIAL_ACCEPTANCE_SURFACE
+REGRESSION_AUTHORITY_COMPOSITION=NARROW_REOPENING_CORRECTED_AND_RECLOSED
 CROSS_CUTTING_PRESERVATION=future SIGMA/ECOS projection freedom
 OUTPUT_CONTRACT=BOUND
 MOVE_PERMISSION=REQUIRED
@@ -628,6 +629,30 @@ classes.
 This is a forward-compatibility obligation, not authorization to physicalize SIGMA, ECOS, projection
 machinery, transformations, Events, Artifacts, or receipts in BUILD 3.
 
+### Narrow Shape reopening — regression-authority composition corrected and re-closed
+
+The first released Move preflight exposed one composition contradiction: the historical BUILD 2
+closure harness correctly proves that BUILD 2 itself added no later-build tables, functions, or
+Referents, but those closure-state cardinalities cannot also prohibit an explicitly authorized later
+Build Unit from adding its own Referent-backed native records.
+
+Sense remained closed. Claim, standing, Evidence Link, digest, transaction, privilege, aperture,
+SIGMA/ECOS-preservation, and every other substantive BUILD 3 decision remained closed and unchanged.
+Shape reopened only far enough to compose regression authority in two layers, then re-closed:
+
+1. **Historical acceptance:** the original BUILD 0–2 harnesses, receipts, and acceptance evidence remain
+   unchanged as provenance of their closed Build Units. Before the first released BUILD 3 Move began,
+   the BUILD 0 suite passed 6/6, the BUILD 1 suite passed 5/5 with its deterministic trace passing, and
+   the unchanged historical BUILD 2 harness passed against the released baseline.
+2. **Current-state regression:** after BUILD 3 installation, enduring BUILD 0–2 behavior and invariants
+   must pass against the legitimately expanded BUILD 3 substrate. BUILD 2 uses the exact cross-build
+   projection frozen in `docs/acceptance-tests.md`; its closure-state whole-schema and total-row
+   cardinalities are not permanent invariants.
+
+`tests/build-2/harness.ts` remains unchanged and is not repurposed as a post-BUILD 3 whole-database
+harness. Worked Trace 03 carries the complementary proof that only BUILD 3-authorized objects and the
+C/L Referents explain the expansion, with no unexplained canonical object or BUILD 4+ surface.
+
 ## OUTPUT CONTRACT — BOUND; MOVE UNRELEASED
 
 `OUTPUT_CONTRACT=BOUND`
@@ -649,10 +674,13 @@ When and only when a human separately releases Move, BUILD 3 may produce:
 2. one local BUILD 3 acceptance harness that independently implements the frozen byte encoding and
    attacks every Worked Trace 03 falsifier using rollback-only mutation, disappearance, forgery, and
    concurrency probes;
-3. the minimum local test/readme wiring required to run that harness;
-4. a BUILD 3 execution receipt only after the authorized migration and full regression surface pass;
+3. one minimum local cross-build BUILD 2 regression harness implementing only the enduring projection
+   frozen in `docs/acceptance-tests.md`, without modifying the historical BUILD 2 harness;
+4. the minimum local test/readme wiring required to run those harnesses;
+5. a BUILD 3 execution receipt only after the authorized migration and full two-layer regression
+   surface passes;
    and
-5. an updated checkout recording observed implementation evidence without opening BUILD 4.
+6. an updated checkout recording observed implementation evidence without opening BUILD 4.
 
 The migration activation order is:
 
@@ -688,7 +716,8 @@ Shape closed because:
 6. the representation preserves future SIGMA/ECOS projection freedom without implementing either
    surface or its projection machinery;
 7. no typed relation, Event, Artifact, governance, public/MCP, or second-truth-store surface appears;
-8. BUILD 0–2 regression obligations remain unchanged; and
+8. BUILD 0–2 regression authority is preserved through unchanged historical acceptance provenance plus
+   current-state verification of enduring behavior and invariants; and
 9. enforcement modes, surfaces, activation ordering, failure behavior, and reopening conditions are
    explicit enough to judge implementation without inventing architecture during Move.
 
@@ -717,8 +746,8 @@ authorization. No ADR was created, as explicitly required by the human instructi
 - the closure diff may change governing documentation but may not add an ADR;
 - it may not add schema, migration, runtime, MCP, test-execution, database, deployment, or remote-state
   changes; and
-- any proposed implementation is judged against the frozen Worked Trace 03 surface plus BUILD 0–2
-  regressions after Move is released.
+- any proposed implementation is judged against the frozen Worked Trace 03 surface plus the two-layer
+  BUILD 0–2 regression composition after Move is released.
 
 No implemented consequential transition is active in this checkout.
 

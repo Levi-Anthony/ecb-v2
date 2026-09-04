@@ -438,8 +438,55 @@ alone is insufficient.
    - `public.referents` remains exactly `id + registered_at`.
    - Claims and Links contain no relation endpoints or positional/quadrant semantics and are not treated
      as exhaustive of future Referent-backed examination structures.
-   - BUILD 0–2 harnesses pass unchanged; the public/MCP inventory remains exactly `capture_thought`,
-     `fetch`, and `search`.
+   - Apply the two-layer regression authority below. The public/MCP inventory remains exactly
+     `capture_thought`, `fetch`, and `search`.
+
+### Frozen two-layer BUILD 0–2 regression authority
+
+#### Layer A — historical acceptance
+
+The original BUILD 0–2 acceptance evidence and harnesses remain unchanged as provenance of their
+respective closed Build Units. In particular, `tests/build-2/harness.ts` remains the historical BUILD 2
+closure harness; its assertions are not weakened, rewritten, or reinterpreted as post-BUILD 3
+whole-database cardinality requirements.
+
+The completed pre-Move execution against the released BUILD 3 baseline established:
+
+```text
+BUILD_0=PASS (6/6)
+BUILD_1=PASS (5/5; deterministic trace PASS)
+BUILD_2_HISTORICAL_ACCEPTANCE_HARNESS=PASS
+```
+
+#### Layer B — current-state regression
+
+After BUILD 3 installation, verify all enduring BUILD 0–2 behavior and invariants in the legitimately
+expanded substrate. Run the BUILD 0 runtime contract suite and BUILD 1 fixture/trace suite unchanged.
+For BUILD 2, a minimum local cross-build regression harness verifies that:
+
+- `public.referents` remains exactly the accepted identity-only `id + registered_at` registry;
+- every existing Thought UUID retains a same-UUID Referent;
+- the immediate, non-deferrable, restrictive Thought-to-Referent foreign key remains accepted;
+- the accepted Thought registration trigger and direct Thought runtime behavior remain effective;
+- a new Thought capture atomically creates its same-UUID Referent;
+- a failed Thought capture leaves neither attempted Thought nor Referent committed;
+- the registered-only BUILD 2 fixture remains registered without a Thought or semantic standing;
+- GT01 retains its accepted UUID and BUILD 0/2-preserved state except inside rollback-only adversarial
+  probes;
+- BUILD 2 Referent RLS and privileges are no weaker;
+- exact-UUID Referent semantics remain unchanged; and
+- no BUILD 2 SQL resolver, view, RPC, MCP Referent tool, co-reference behavior, or
+  native-binding/refinement behavior appears.
+
+The cross-build projection does not require the entire public schema to contain only `referents` and
+`thoughts`, the entire public function inventory to contain only `register_thought_referent` and
+`search_thoughts`, or total Referent count to equal total Thought count plus one. Those assertions
+proved that BUILD 2 itself installed no later-build machinery; they are not permanent prohibitions on
+authorized later Build Units adding their own Referent-backed native records.
+
+Worked Trace 03 supplies the complementary expansion proof: only the BUILD 3-authorized public tables,
+functions, and triggers are added; Claim C and Evidence Link L account for their required new
+Referents; and no additional unexplained canonical object or forbidden BUILD 4+ surface appears.
 
 ### Failure
 
