@@ -217,7 +217,7 @@ FAIL if:
 
 ## Worked Trace 03 — Evidence versus inference
 
-**STATUS: PASSED 2026-09-04 AMERICA/PHOENIX — MOVE COMPLETE; HUMAN METABOLIZE CLOSURE REQUIRED**
+**STATUS: PASSED 2026-09-04 AMERICA/PHOENIX — ACCEPTED AND CLOSED AT METABOLIZE**
 
 **IMPLEMENTATION: INSTALLED AND VERIFIED**
 
@@ -512,8 +512,8 @@ FAIL if any frozen challenge produces a counterexample, including if:
   ontology surface.
 
 Freeze did not authorize implementation. The later explicit human Move release authorized the
-installed and verified BUILD 3 transition only; passing this surface does not close Metabolize or open
-BUILD 4.
+installed and verified BUILD 3 transition, and the human accepted its evidence at Metabolize. This
+trace remains frozen test authority; passing it did not open or authorize BUILD 4.
 
 ## Worked Trace 04 — Standing change with history
 
