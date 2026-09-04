@@ -40,6 +40,7 @@ are drafted and are awaiting human governance; both are marked as such.
 | J | `10-question-forward.md` | Question Forward register |
 | §17 | `11-synthesis-matrix.md` | Cross-corpus synthesis by build function |
 | A | `EXECUTIVE-EXTRACTION.md` | **Start here if you only read one file** |
+| — | `BRINGALONG.md` | Self-contained portable package for agents with no filesystem access |
 | §19 | `19-architecture-change-proposals.md` | Two proposals awaiting governance |
 
 ## Citation confidence
