@@ -13,6 +13,7 @@ ROLE: Index and template for local architectural closure
 | [ADR-003](003-build-2-persistent-first-class-identity.md) | ACCEPTED | Persistent first-class identity registration for BUILD 2 |
 | [ADR-004](004-build-2-physical-realization.md) | ACCEPTED | BUILD 2 trigger, coupling, interlock, and privilege realization |
 | [ADR-005](005-cross-cutting-integrity-and-promotion-discipline.md) | ACCEPTED BY HUMAN GOVERNING DISPOSITION | Cross-cutting integrity, promotion, requalification, and adversarial-disposition discipline |
+| [ADR-006](006-build-5b-artifact-receipt-boundary.md) | ACCEPTED AT REQUALIFIED SHAPE; MOVE UNRELEASED | BUILD 5B Artifact specimens, bounded checks, and committed attempt boundary |
 
 Create an ADR when the active Build Unit requires a local architectural choice that is not already licensed by governing sources.
 
