@@ -21,4 +21,8 @@ BUILD 4 migration:
 
 - `20260904215929_build_4_typed_relation_claims.sql` — atomically adds the three kind-exclusive relation columns to `public.claims`, replaces the superseded BUILD 3 Claim constraints with the kind, shape, predicate, and predicate-scoped self-relation constraints, installs the two restrictive endpoint foreign keys to `public.referents`, replaces `prepare_claim`, widens the service-role insert columns while preserving database ownership of origin, standing, and assertion time, and inserts Worked Trace 06 Claim C2 and relation Claim R. It adds no table and no function.
 
+BUILD 5A migration:
+
+- `20260905022247_build_5a_standing_transition_history.sql` — atomically creates the immutable, Referent-backed `public.claim_standing_transitions` record that is the only legal path for changing a Claim's applied epistemic standing, adds the non-callable `thought_revision_digest` and `prepare_claim_standing_transition` functions and the row-level BEFORE INSERT trigger, replaces the single-value Claim standing constraint with the three-value vocabulary, applies the frozen least-privilege boundary without granting any UPDATE on Claims, and inserts transition TR1 qualifying Claim C against its declared basis.
+
 Add only migrations licensed by the active Build Unit.

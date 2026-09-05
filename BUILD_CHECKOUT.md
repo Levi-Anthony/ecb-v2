@@ -1,14 +1,14 @@
-STATUS: BUILD 5A SHAPE CLOSED 2026-09-04 AMERICA/PHOENIX; OUTPUT CONTRACT BOUND; MOVE UNRELEASED
+STATUS: BUILD 5A MOVE COMPLETE 2026-09-05 AMERICA/PHOENIX; VERIFICATION PASSED; HUMAN METABOLIZE CLOSURE REQUIRED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
 AUTHORITY: Derived from the Build Contract, constitutive invariants, closed BUILD 0–4 evidence, reserved acceptance authority, open apertures, and explicit human BUILD 5 Sense-opening and Sense-closure dispositions
-CURRENT BUILD UNIT: BUILD 5A — Immutable Events + Standing Transition History (SHAPE CLOSED; MOVE UNRELEASED)
+CURRENT BUILD UNIT: BUILD 5A — Immutable Events + Standing Transition History (MOVE COMPLETE; METABOLIZE REVIEW REQUIRED)
 
 # BUILD 5A — Immutable Events + Standing Transition History
 
 ## CURRENT MOVE
 
-`CLOSE SHAPE → MOVE PERMISSION REQUIRED`
+`MOVE COMPLETE → HUMAN METABOLIZE CLOSURE REQUIRED`
 
 ```text
 BUILD_0=CLOSED
@@ -22,8 +22,12 @@ BUILD_5B=INSERTED_NOT_OPENED; MUST_CLOSE_BEFORE_BUILD_6
 SENSE_REOPEN_REQUIRED=NO
 SHAPE=CLOSED
 SECOND_EXAMINATION=COMPLETE
-MOVE_PERMISSION=REQUIRED
-IMPLEMENTATION=UNOPENED
+MOVE_PERMISSION=RELEASED_AND_CONSUMED
+IMPLEMENTATION=INSTALLED_AND_VERIFIED
+WORKED_TRACE_04_EXECUTION=PASS
+BUILD_0_TO_4_CURRENT_STATE_REGRESSION=PASS
+OPEN_DISCREPANCY=D1_SHAPE_OR_CONTRACT_DEFECT_IN_FROZEN_CHALLENGE_4
+METABOLIZE=READY_FOR_HUMAN_REVIEW_NOT_CLOSED
 BUILD_CONTRACT_AMENDED=NARROWLY_BY_HUMAN_DISPOSITION
 SCOPE=TRACE_BOUNDED_WITH_CONTRACT_ACCOUNTABILITY_GUARD
 WORKED_TRACE_04=FROZEN_ADVERSARIAL_ACCEPTANCE_AUTHORITY
@@ -44,7 +48,8 @@ FIRST_TRANSFORMATION_RECEIPT=DECOMPOSITION_EARNED_ROUTED_TO_5B
 BITEMPORALITY_EARNED=NO
 E3_UPDATE_GRANT_QUESTION=DORMANT
 BUILD_6_PLUS=UNOPENED_AND_UNAUTHORIZED
-OUTPUT_CONTRACT=BOUND
+OUTPUT_CONTRACT=BOUND_AND_EXECUTED
+MIGRATION=20260905022247_build_5a_standing_transition_history
 ```
 
 BUILD 4 closed cleanly at implementation commit `d11401297e69af0f2e9e18aa55da41af4e8b5f31`, root tree
@@ -577,11 +582,13 @@ gaining any UPDATE privilege. The insert-only posture survives intact.
 
 No unresolved blocker remains.
 
-## OUTPUT CONTRACT — BOUND; MOVE UNRELEASED
+## OUTPUT CONTRACT — BOUND AND EXECUTED
 
 `OUTPUT_CONTRACT=BOUND`
 
-When and only when a human separately releases Move, BUILD 5A may produce:
+The released BUILD 5A Move produced exactly the following. Execution evidence is recorded in
+`docs/build-receipts/006-build-5a.md`, which is implementation evidence and **not** the BUILD 5B
+Transformation Receipt.
 
 1. one atomic, timestamped SQL migration that:
    - creates exactly `public.claim_standing_transitions` with the selected columns, checks, and three
@@ -874,7 +881,7 @@ Reopen E-3 only if the selected Shape requires a write boundary other than the i
 
 Until Shape is authorized and, where noted, until Move is released:
 
-- do not implement BUILD 5A until a separate human Move release;
+- do not extend the installed BUILD 5A substrate beyond the released Output Contract;
 - do not open BUILD 5B or treat its deferral as removal;
 - do not write a migration;
 - do not create or modify tests as frozen acceptance authority yet;
@@ -898,11 +905,10 @@ Until Shape is authorized and, where noted, until Move is released:
 
 ## NEXT HANDLE
 
-`AWAIT EXPLICIT HUMAN MOVE RELEASE.`
+`AWAIT EXPLICIT HUMAN METABOLIZE DISPOSITION.`
 
-BUILD 5A Shape is closed, Worked Trace 04 is frozen, and the Output Contract is bound. The exact next
-authorized action is read-only human review of this closed Shape and bound Output Contract. No
-implementation, migration authoring or application, test execution against the canonical database,
-deployment, ADR, or remote mutation is authorized. After an explicit Move release, implement only the
-bound Output Contract and stop again for acceptance of observed execution evidence. Do not open
-BUILD 5B.
+The bound Output Contract is installed and verified. The exact next authorized action is read-only human
+review of the BUILD 5A implementation and execution receipt, including disposition of the recorded D1
+SHAPE_OR_CONTRACT_DEFECT in frozen Worked Trace 04 challenge 4. Do not begin BUILD 5B or perform another
+schema, runtime, MCP, deployment, ADR, or remote-state transition unless the human explicitly closes or
+reopens BUILD 5A and separately authorizes the next phase.
