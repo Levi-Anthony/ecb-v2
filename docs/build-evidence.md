@@ -543,3 +543,68 @@ Candidate directional chain:
 `Master Key → Question-Forward Sense → explicit Sense closure → adversarial Shape → preservation + falsification + reopen conditions → Output Contract → Move → checked evidence/receipt → Metabolize → evidence-bearing return → qualification → possible revalidation`
 
 The chain is preserved here as candidate synthesis only. It does not supersede the current BUILD contract or SSMM doctrine unless separately promoted.
+
+
+## Promotion record — 2026-09-05 America/Phoenix
+
+**Disposition:** HUMAN-AUTHORIZED NARROW GOVERNING SYNTHESES. The governing text is in
+[invariants](invariants.md#cross-cutting-integrity-and-promotion-discipline) and
+[Build Contract](build-contract.md#standing-cross-cutting-adversarial-pressure).
+[ADR-005](architecture-decisions/005-cross-cutting-integrity-and-promotion-discipline.md) records
+provenance, not a competing authority surface.
+
+**Authority:** the human's CROSS-CUTTING CONSTITUTIONAL HARDENING authorization and subsequent
+RECONCILIATION AUTHORIZATION — PRESERVE PRE-HARDENING BUILD 5B SHAPE in this thread. Governing changes
+are confined to the enumerated amendments; evidence accumulation alone did not promote them.
+
+**Historical standing:** every preceding evidence entry remains unchanged in its original standing.
+This record promotes narrower syntheses supported by multiple evidence paths; it does not
+retroactively promote all contents of E07, E20, FH-04, or adjacent evidence. Historical uses of
+“NOT PROMOTED” remain truthful descriptions of those entries. Closed BUILD 0–5A is not reopened.
+
+| Promoted synthesis | Evidence/provenance paths and the bounded inference |
+|---|---|
+| No silent promotion across dimensions | Existing registration/standing/currentness distinctions; BUILD 1 qualification without installation, BUILD 3 basis versus assertion, BUILD 4 non-propagation; E08/E19 and human review. One dimension does not confer another's standing. |
+| Shared seam ≠ shared semantics | BUILD 2 universal identity without native semantics; BUILD 4 typed Claim reuse without automatic support; BUILD 5B retained representation/receipt-role distinction. Sharing an integrity seam does not make a universal semantic kernel. |
+| Verification ≠ truth/authority | BUILD 0 bounded capture/recall evidence; BUILD 3 digest comparison; BUILD 5A Event ≠ Receipt limitation; E06/E07/E09 and BUILD 5B check scope. Checks carry their declared evidentiary limits. |
+| Role non-collapse | Existing map/mapper and capability/authorization distinctions; BUILD 1 installation control; E20 and BUILD 5B producer/checker/human/custody separation. No Actor ontology follows. |
+| Proof sensitivity | FH-04 validator defects; BUILD 5A D1–D3 correction history; E06/E07/E15; BUILD 5B false-success and wrong-source controls. PASS needs contract-relevant discrimination, not happy-path observation alone. |
+| Invariant requalification | Existing hard stop/change route; real BUILD 5 decomposition; BUILD 5A D1 explicit repair rather than silent workaround; E11/E19/E22 and human review. Contrary slice evidence permits explicit governing reconsideration, not local exception. |
+| Dependency hypothesis and earned reordering | Build Contract structure-is-earned rule and human-authorized BUILD 5A/5B decomposition. The order remains operative without becoming ontology. |
+| Adversarial disposition and leased deferral | BUILD 0 atomicity, BUILD 2 concurrency, BUILD 3 drift/disappearance, BUILD 4 identity/non-propagation, BUILD 5A rollback/restart/validator pressure; FH-02–FH-07, E01/E10/E11/E22, and BUILD 5B Sense/Shape pressure. Disposition is universal across consequential Shapes; implementation mechanisms are not. |
+
+Accepted execution sources: [BUILD 0](build-receipts/001-build-0.md),
+[BUILD 1](build-receipts/002-build-1.md), [BUILD 2](build-receipts/003-build-2.md),
+[BUILD 3](build-receipts/004-build-3.md), [BUILD 4](build-receipts/005-build-4.md), and
+[BUILD 5A](build-receipts/006-build-5a.md). FH-01–FH-07 are preserved in
+`d2ee85b7fcf38192c94720977e1d51325769ddc0:BUILD_CHECKOUT.md`.
+
+BUILD 5B evidence is pre-hardening design pressure, not executed capability or canonical Shape
+acceptance. Its exact recovered state is preserved on `wip/build-5b-shape-pre-hardening` at
+`ea549649ad9993b0f89674227a2846423ce97076`, root tree
+`889be0d1062a05f16a4d2c06d4953c45f3e1cd32`, particularly
+`docs/build-sense/007-build-5b.md`, `docs/build-shape/007-build-5b.md`, and
+`docs/acceptance/build-5b-wt07.md`. Independent derivation and multiple evidence paths strengthen the
+case for human disposition; they are not a claim that every source or checker was independently
+validated. The WIP's closure labels do not confer canonical authority.
+
+**Explicitly NOT selected by this hardening:**
+
+- validator architecture;
+- Actor ontology;
+- contextual-standing schema;
+- universal current-state projection;
+- universal idempotency mechanism;
+- Artifact DAG;
+- bitemporality;
+- universal relation/transition kernel;
+- disaster-recovery architecture;
+- specific content-hash algorithm.
+
+**Requalification:** contrary vertical-slice evidence routes through the governing invariant change
+route for explicit preserve/narrow/amend/supersede/retire disposition. Existing constraints remain
+operative until then. No silent exception or wholesale evidence promotion is authorized.
+
+**Boundary:** documentation only. No BUILD 5B Sense closure, Shape closure, Move, acceptance-fixture
+change, schema, runtime, MCP, deployment, or canonical database action is part of this hardening.
+The subsequent authorized Shape reconciliation must occur on this hardened lineage.

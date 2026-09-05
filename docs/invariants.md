@@ -94,6 +94,79 @@ The text must state or traceably obtain from the active Master Key at least one 
 
 When quantity has not earned decision significance, stopping conditions SHALL identify the analytical condition that ends inquiry rather than prescribe a count. Rule-based detection of naked evaluatives is linting inside the broader slop-scan discipline; passing such lint does not establish analytical quality.
 
+## Cross-cutting integrity and promotion discipline
+
+Human-authorized governing additions, 2026-09-05 America/Phoenix. These laws constrain interpretation,
+checking, and consequential use across Builds. They add no physical mechanism or domain ontology.
+
+### No silent promotion across dimensions
+
+A record, observation, representation, result, or transition in one dimension SHALL NOT silently
+acquire truth, standing, warrant, authority, authorization, currentness, governance acceptance, or
+other target-dimension standing. Any such promotion must have an explicit basis and pass the governing
+route for that target dimension. Registration, persistence, successful execution, checking, and
+recency do not supply that basis by themselves.
+
+This constrains cross-dimensional inference and activation. It does not forbid explicitly warranted
+promotion or prescribe a standing schema, promotion service, or universal transition mechanism.
+
+### Shared seam ≠ shared semantics
+
+Sharing an identity, storage, integrity, checking, or reconstruction seam SHALL NOT collapse the
+semantic obligations of the subjects using it. Shared machinery must leave their distinct scope,
+meaning, and governing conditions recoverable; reuse alone does not establish common domain validity.
+
+This constrains semantic inference from technical reuse. It neither forbids shared machinery nor
+requires separate tables, and does not prescribe a universal relation or domain-validity kernel.
+
+### Verification ≠ truth/authority
+
+A verification result SHALL be interpreted within the identified checker/method/version, identified
+inputs and outputs, predeclared obligations, observed findings, and declared limits that support it.
+It does not by itself establish truth beyond that checked proposition, correctness outside that scope,
+warrant, authority, authorization, governing acceptance, or currentness.
+
+This constrains the claim made from a check. It does not deny bounded evidentiary value or prescribe
+validator architecture, an external trust root, or a universal receipt representation.
+
+### Role non-collapse
+
+Producing, mapping, checking/validating, observing, technically executing, holding custody, authorizing,
+and closing a human/governing phase SHALL remain distinguishable wherever their difference can change
+an obligation, result interpretation, or permission. Participation in one role does not confer another
+role's standing. One participant may occupy multiple roles only without erasing their distinct bases
+and limits.
+
+This constrains attribution and role-derived inference. It does not require distinct people,
+processes, or credentials for every role, and introduces no Actor primitive or fixed role ontology.
+
+### Proof sensitivity
+
+PASS establishes its intended proposition only where the checking surface has contract-relevant
+discriminating sensitivity to violation of that proposition. The asserted scope must be supported by
+evidence that the same checking surface can distinguish violation from correspondence, using a
+contract-relevant negative control or another explicit demonstration of that discrimination.
+Otherwise preserve observational or indeterminate standing rather than asserting proof of the
+intended proposition. Happy-path success alone is insufficient. A control sensitive to one violation
+does not prove coverage of unrelated obligations or universal checker correctness.
+
+This constrains the evidentiary force and scope of PASS. It does not prescribe a universal test count,
+checker implementation, proof calculus, or immunity from correlated specification/checker error.
+
+### Invariant requalification
+
+Contrary vertical-slice evidence may trigger explicit governing disposition to preserve, narrow,
+amend, supersede, or retire an invariant. Record the challenged scope, evidence, affected obligations,
+authorized disposition, and surviving/replaced rule through the existing governing change route.
+An ADR records provenance; it cannot authorize a governing amendment by itself.
+
+Until that disposition is authorized, the existing invariant and hard-stop requirement remain in
+force. No silent local exception, implementation workaround, or retroactive reinterpretation is
+permitted. Preserve the prior rule and evidence as history when changing its governing scope.
+
+This constrains how laws may change in response to evidence. It does not weaken any existing invariant,
+automatically reopen closed Builds, or prescribe an invariant-lifecycle schema or runtime mechanism.
+
 ## Hard stop
 
 If a schema, tool, migration, prompt, or implementation would make one of these distinctions unrecoverable:

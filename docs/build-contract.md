@@ -165,6 +165,13 @@ Awareness supplies the Metabolize feedback loop. It tests whether the basis supp
 
 ## Build sequence
 
+The BUILD 0–10 sequence below, including the earned 5A/5B decomposition, is the current dependency
+hypothesis, not canonical ontology. It remains the operative order until an earned decomposition or
+reordering is explicitly dispositioned through governing human/architecture authority. Such a change
+must account for affected obligations and dependencies; local convenience or a numbered label does
+not authorize it. This clarification changes no current dependency, opens no Build, and does not
+remove the requirement that BUILD 5B close before BUILD 6 opens.
+
 1. BUILD 0 — Clean OB1 Kernel
 2. BUILD 1 — Harvest Fixture Path
 3. BUILD 2 — Universal Referents
@@ -201,6 +208,39 @@ independent verification, acceptance, successful preservation of declared obliga
 the acting mechanism, or receipt standing. Those questions belong to BUILD 5B, to which candidate
 evidence E07 — Checked Receipts is routed. BUILD 5A does not promote E07 or select an
 independent-validator architecture.
+
+## Standing cross-cutting adversarial pressure
+
+Every consequential Shape SHALL disposition each pressure below as `APPLICABLE`, `NOT_APPLICABLE`, or
+`DEFERRED` against its bounded behavior, trust boundary, and preservation obligations:
+
+- duplicate/replay;
+- concurrency;
+- stale state/basis;
+- partial failure/rollback;
+- restart/reconstruction;
+- wrong identity/role;
+- wrong version;
+- basis drift/revocation;
+- checker bypass/false PASS;
+- retry/idempotency;
+- time/order ambiguity;
+- unauthorized mutation.
+
+Every `APPLICABLE` pressure SHALL become an explicit acceptance obligation or Shape constraint at the
+minimum strength needed to preserve the declared contract. Trace each disposition to that obligation
+or constraint. `NOT_APPLICABLE` records why the pressure does not affect the bounded behavior; it is
+not permission to omit an applicable failure path.
+
+`DEFERRED` is valid only with both a reason deferral is currently safe and an explicit expiry
+condition: a trigger, dependency, horizon, or named aperture/route whose activation requires renewed
+disposition. A bare “later” or an unconditioned pointer does not suffice. When the expiry condition
+holds, the deferral must be re-examined before the affected Shape decision is relied on.
+
+This is an inquiry/disposition surface, not a mandate to implement every pressure's possible
+mechanisms in every Build. One obligation can address several pressures; one pressure can require
+several bounded obligations. The rule prescribes no universal idempotency, concurrency, recovery,
+versioning, relation, or transition mechanism and does not reopen closed Builds automatically.
 
 ## Freeze line
 
