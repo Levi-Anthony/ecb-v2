@@ -1,4 +1,4 @@
-STATUS: MOVE COMPLETE; VERIFICATION PASSED; HUMAN METABOLIZE CLOSURE REQUIRED
+STATUS: ACCEPTED AND CLOSED 2026-09-05 AMERICA/PHOENIX
 DISPOSITION: EVIDENCE
 ROLE: BUILD 5A execution and acceptance receipt
 AUTHORITY: Does not amend the Build Contract, closed Shape, apertures, invariants, or acceptance fixture
@@ -7,11 +7,11 @@ AUTHORITY: Does not amend the Build Contract, closed Shape, apertures, invariant
 
 ## Result
 
-**PASS — the bound BUILD 5A Output Contract is implemented and frozen Worked Trace 04 completed, with
-one recorded SHAPE_OR_CONTRACT_DEFECT in the frozen trace text requiring human disposition.**
+**PASS — the bound BUILD 5A Output Contract is implemented, frozen Worked Trace 04 completed, the D1
+acceptance-specification defect is repaired and resolved, and human metabolization closure is
+accepted.**
 
-This is Move evidence, not Metabolize closure. BUILD 5A remains on the human rail, and BUILD 5B is not
-opened or authorized.
+BUILD 5A is closed. This closure does not open or authorize BUILD 5B.
 
 **This execution receipt is implementation evidence. It is not the BUILD 5B Transformation Receipt and
 carries no E07 independent-validator semantics.** The migration and the harness were produced by the
@@ -151,7 +151,7 @@ C's applied standing at their canonical values.
 
 ## Discrepancies
 
-### D1 — SHAPE_OR_CONTRACT_DEFECT (open; requires human disposition)
+### D1 — SHAPE_OR_CONTRACT_DEFECT, ACCEPTANCE_SPECIFICATION_SUBTYPE (RESOLVED)
 
 **Frozen Worked Trace 04 challenge 4 is unsatisfiable as written.** It requires that session B "must
 queue on the Claim row lock and then be rejected because its declared prior standing no longer matches"
@@ -169,12 +169,28 @@ through `pg_blocking_pids`; and a transition whose declared prior standing does 
 standing is rejected by the identical mechanism. Together these establish that two transitions
 declaring the same prior standing cannot both commit as independently valid.
 
-**Proposed minimum correction, for human disposition at Metabolize:** amend challenge 4 to require that
-B queues on the lock and that, after A's outcome is known, B either commits with a still-truthful prior
-standing or is rejected with a stale one — with challenge 5 retained as the rejection proof. No
-substantive requirement changes; only the internally contradictory conjunction is repaired.
+**RESOLVED 2026-09-05 America/Phoenix.** The human dispositioned D1 as a SHAPE_OR_CONTRACT_DEFECT of
+the acceptance-specification subtype — a defect in the frozen trace produced during Shape, not in the
+K4 architecture, the Output Contract, the installed transition mechanism, the concurrency invariant, or
+the canonical substrate — and authorized a minimal repair without reopening architectural Shape.
 
-BUILD 5A's installed substrate is unaffected by this defect.
+Frozen challenge 4 now requires that B queues while A holds the lock and that, after A resolves, B is
+rejected if A committed away from the prior standing, or may proceed if A rolled back and that standing
+remains applied. Challenge 5 remains the explicit stale-prior rejection proof, and no test formulation
+may require an additional committed canonical transition merely to prove concurrency. Probe residue
+requirements are unchanged.
+
+The BUILD 5A acceptance harness was updated so the repaired requirement is **asserted rather than
+merely observed**: it now asserts that B queued, that the prior standing remained applied after A rolled
+back, and that B then proceeded on that still-truthful prior. Post-repair verification returned Worked
+Trace 04 PASS across all ten checks with `concurrency_queued=true`, and canonical state was confirmed
+identical before and after — one Thought, seven Referents, three Claims, one Evidence Link, one
+transition, Claim C at `basis_qualified`, Evidence Link L and GT01 unchanged. **No new canonical
+mutation was performed for this repair.**
+
+The repair changed no semantic, architectural, enforcement, concurrency, privilege, or implementation
+requirement. BUILD 5A's installed substrate was unaffected by the defect and is unaffected by the
+repair.
 
 ### D2 — TEST_OR_PROBE_DEFECT (corrected)
 
@@ -188,16 +204,35 @@ now asserts the outcome it actually observes and documents the two-part proof.
 connections. Removed.
 
 Both test defects were corrected before canonical contact by the mandated pre-mutation probe-validation
-pass. No implementation or execution-tooling defect was encountered: the migration applied on its first
-canonical attempt after a clean rollback probe.
+pass, and the human accepted them as corrected TEST_OR_PROBE_DEFECTS. No implementation or
+execution-tooling defect was encountered: the migration applied on its first canonical attempt after a
+clean rollback probe.
+
+## Closure provenance
+
+The human accepted the Move evidence, dispositioned and resolved D1, and closed BUILD 5A with:
+
+- implementation commit: `7648b394dc22aff878d5293d3f0c4083e0fb4aeb`;
+- implementation root tree: `fb7e982ffbc0e567acc8b1047e5dc666c7214c68`.
+
+Accepted at closure: Worked Trace 04 PASS; BUILD 3+4 Layer B projection PASS; BUILD 2 cross-build PASS;
+BUILD 0 and BUILD 1 regression PASS; frozen Layer A authority unchanged; no unauthorized BUILD 5B+
+surface; no Claims UPDATE grant; Evidence Link L preserved; Claim C2 and relation Claim R unchanged and
+non-propagating; historical basis and observed revision distinguishable; no probe residue.
 
 ## Metabolize disposition
 
-`READY_FOR_HUMAN_METABOLIZE_REVIEW`
+`METABOLIZED_AND_CLOSED`
 
-Observed behavior matches the closed BUILD 5A Shape under the frozen adversarial surface, except for the
-recorded D1 defect in the frozen trace text, which requires human disposition. No BUILD 0–4 reopening
-condition was encountered.
+Observed behavior matches the closed BUILD 5A Shape under the repaired frozen adversarial surface, and
+the human accepted that evidence and closed BUILD 5A. No BUILD 0–4 reopening condition was encountered
+and no discrepancy remains open.
 
-BUILD 5A is not declared accepted or closed. BUILD 5B remains unopened and unauthorized, E07 remains
-candidate evidence routed to BUILD 5B, and `depends_on` continues to propagate nothing.
+Closure is bounded. It accepts the installed substrate and its execution evidence only. It confers no
+standing on Claim C's proposition beyond the recorded `basis_qualified` qualification against its
+declared basis, promotes no aperture, does not promote E07, and does not authorize BUILD 5B.
+`depends_on` continues to propagate nothing, and `revalidation_required` continues to assert neither
+falsity, lack of support, supersession, nor loss of currentness.
+
+BUILD 5B remains unopened and unauthorized and must close before BUILD 6 may open. The next permitted
+operation is a bounded BUILD 5B Sense under its own checkout and governance.

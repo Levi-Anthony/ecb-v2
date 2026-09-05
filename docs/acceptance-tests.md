@@ -640,10 +640,23 @@ PASS means no falsifier is produced. A happy-path result alone is insufficient.
    transition may exist.
 3. **Atomicity B — standing-change failure blocks the history.** Force the Claim update to fail; no
    transition row and no Referent may remain.
-4. **Concurrency C — competing transitions.** Session A opens a transaction and inserts CP against C
-   declaring the true prior standing; session B concurrently inserts SP declaring the same prior
-   standing. B must queue on the Claim row lock and then be rejected because its declared prior standing
-   no longer matches. Both roll back; neither may remain.
+4. **Concurrency C — competing transitions.** Repaired 2026-09-05 America/Phoenix by explicit human
+   disposition; see the repair note below. Session A acquires the Claim row lock while attempting a
+   transition away from applied standing `S`. Session B attempts a competing transition declaring the
+   same prior standing `S`. B **must queue** while A holds the lock. After A resolves:
+   - if A **committed** a transition away from `S`, B **must be rejected** because its declared prior
+     standing is stale;
+   - if A **rolled back** and `S` therefore remains applied standing, B **may proceed** because its
+     declared prior standing remains truthful.
+
+   The harness may prove these two consequences separately: direct concurrent blocking and
+   serialization using rollback-only probe transactions, and stale-prior rejection through the identical
+   transition mechanism, which challenge 5 supplies. **No test formulation may require an additional
+   committed canonical transition merely to prove concurrency.** Probe residue requirements are
+   unchanged.
+
+   The required property is unchanged: two competing transitions declaring the same prior standing must
+   serialize, and cannot both commit as independently valid successors of that same prior state.
 5. **Stale prior standing.** A transition declaring a prior standing that is not C's applied standing
    must be rejected.
 6. **No-op transition.** NP with `from_standing = to_standing` must be rejected.
@@ -664,6 +677,19 @@ PASS means no falsifier is produced. A happy-path result alone is insufficient.
 12. **Residue.** No probe transition, Referent, standing change, or evidence mutation may remain.
 13. **Regression.** Apply the frozen enduring BUILD 3 and BUILD 4 projection below. The public and MCP
     inventory remains exactly `capture_thought`, `fetch`, and `search`.
+
+### Repair note — challenge 4, 2026-09-05 America/Phoenix
+
+The originally frozen challenge 4 carried a logically unsatisfiable conjunction, found during BUILD 5A
+Move and dispositioned by the human as a SHAPE_OR_CONTRACT_DEFECT of the acceptance-specification
+subtype. It required both that session B be rejected for a stale prior standing and that session A roll
+back. B can be rejected for a stale prior only if A committed a transition away from that standing; if A
+rolls back, B's declared prior becomes truthful again and B may lawfully proceed. The two requirements
+cannot both hold.
+
+The repair removes only the contradictory conjunction. It changes no semantic, architectural,
+enforcement, concurrency, privilege, or implementation requirement, and it does not reopen the BUILD 5A
+Shape, Output Contract, transition mechanism, concurrency invariant, or canonical substrate.
 
 ### Frozen enduring BUILD 3 + BUILD 4 projection
 

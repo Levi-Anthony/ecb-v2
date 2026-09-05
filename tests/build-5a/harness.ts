@@ -610,20 +610,19 @@ async function verifyRejections(): Promise<void> {
   }
 }
 
-/** Falsifier C is established in two parts, because it cannot be established in
- * one without permanently committing a second canonical transition.
+/** Repaired frozen challenge 4, rollback-only branch.
  *
- * Part 1, here: session B's transition against the same Claim QUEUES on the row
- * lock taken by session A's open transition, so competing transitions are
- * serialized rather than interleaved. After A rolls back, B's declared prior
- * standing is again truthful and B legitimately succeeds; B is then rolled back.
+ * Session A acquires the Claim row lock while attempting a transition away from
+ * applied standing S. Session B attempts a competing transition declaring the
+ * same prior standing S and MUST queue while A holds the lock. A then rolls back,
+ * so S remains applied standing and B MAY lawfully proceed; B is rolled back too.
  *
- * Part 2, in verifyRejections: a transition whose declared prior standing does
- * not match applied standing is rejected by the identical mechanism.
- *
- * Together: two transitions declaring the same prior standing cannot both commit
- * as independently valid, because the second one to reach the lock finds either
- * the same standing (serialized, still truthful) or a changed one (rejected). */
+ * This asserts all three of: B queued; S remained applied after A resolved; and
+ * B proceeded on that still-truthful prior. The committed branch of challenge 4 —
+ * A commits away from S, so B is rejected for a stale prior — is proven by
+ * challenge 5 in verifyRejections through the identical mechanism, because no
+ * test formulation may require an additional committed canonical transition
+ * merely to prove concurrency. */
 async function verifyConcurrency(sql: Sql): Promise<boolean> {
   const sessionA = connect();
   const sessionB = connect();
@@ -685,10 +684,18 @@ async function verifyConcurrency(sql: Sql): Promise<boolean> {
 
     await sessionA.unsafe("rollback");
     openA = false;
+    const [afterRollback] = await observer<{ applied: string }[]>`
+      select epistemic_standing as applied from public.claims
+      where id = ${CLAIM_C}::uuid
+    `;
+    assert(
+      afterRollback.applied === "basis_qualified",
+      "session A's rollback did not leave the prior standing applied",
+    );
     await sessionBResult;
     assert(
       secondSucceededAfterRelease,
-      "the queued transition neither committed nor was rejected after release",
+      "the queued transition did not proceed on a still-truthful prior standing",
     );
   } finally {
     if (openA) await sessionA.unsafe("rollback").catch(() => undefined);

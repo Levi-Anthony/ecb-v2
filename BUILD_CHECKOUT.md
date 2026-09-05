@@ -1,14 +1,14 @@
-STATUS: BUILD 5A MOVE COMPLETE 2026-09-05 AMERICA/PHOENIX; VERIFICATION PASSED; HUMAN METABOLIZE CLOSURE REQUIRED
+STATUS: BUILD 5A ACCEPTED AND CLOSED 2026-09-05 AMERICA/PHOENIX; BUILD 5B UNOPENED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
 AUTHORITY: Derived from the Build Contract, constitutive invariants, closed BUILD 0–4 evidence, reserved acceptance authority, open apertures, and explicit human BUILD 5 Sense-opening and Sense-closure dispositions
-CURRENT BUILD UNIT: BUILD 5A — Immutable Events + Standing Transition History (MOVE COMPLETE; METABOLIZE REVIEW REQUIRED)
+CURRENT BUILD UNIT: BUILD 5A — Immutable Events + Standing Transition History (CLOSED)
 
 # BUILD 5A — Immutable Events + Standing Transition History
 
 ## CURRENT MOVE
 
-`MOVE COMPLETE → HUMAN METABOLIZE CLOSURE REQUIRED`
+`MOVE COMPLETE → METABOLIZED AND CLOSED`
 
 ```text
 BUILD_0=CLOSED
@@ -18,7 +18,7 @@ BUILD_3=CLOSED
 BUILD_4=CLOSED
 BUILD_5=DECOMPOSED_INTO_5A_AND_5B
 BUILD_5A=SHAPE_CLOSED
-BUILD_5B=INSERTED_NOT_OPENED; MUST_CLOSE_BEFORE_BUILD_6
+BUILD_5B=INSERTED_NOT_OPENED; MUST_CLOSE_BEFORE_BUILD_6; NOT_OPENED_BY_THIS_CLOSURE
 SENSE_REOPEN_REQUIRED=NO
 SHAPE=CLOSED
 SECOND_EXAMINATION=COMPLETE
@@ -26,8 +26,12 @@ MOVE_PERMISSION=RELEASED_AND_CONSUMED
 IMPLEMENTATION=INSTALLED_AND_VERIFIED
 WORKED_TRACE_04_EXECUTION=PASS
 BUILD_0_TO_4_CURRENT_STATE_REGRESSION=PASS
-OPEN_DISCREPANCY=D1_SHAPE_OR_CONTRACT_DEFECT_IN_FROZEN_CHALLENGE_4
-METABOLIZE=READY_FOR_HUMAN_REVIEW_NOT_CLOSED
+D1=RESOLVED; ACCEPTANCE_SPECIFICATION_DEFECT_REPAIRED_WITHOUT_REOPENING_SHAPE
+D2_D3=ACCEPTED_AS_CORRECTED_TEST_OR_PROBE_DEFECTS
+OPEN_DISCREPANCY=NONE
+METABOLIZE=ACCEPTED_AND_CLOSED
+BUILD_5A=CLOSED
+WORKED_TRACE_04=FROZEN; CHALLENGE_4_REPAIRED_2026-09-05
 BUILD_CONTRACT_AMENDED=NARROWLY_BY_HUMAN_DISPOSITION
 SCOPE=TRACE_BOUNDED_WITH_CONTRACT_ACCOUNTABILITY_GUARD
 WORKED_TRACE_04=FROZEN_ADVERSARIAL_ACCEPTANCE_AUTHORITY
@@ -798,6 +802,30 @@ Claim qualification rather than Evidence Link mutation (F3); Event Referent iden
 invariant (F6); and no versioned Artifact or Transformation Receipt is earned by the focal episode (F5).
 The remainder stay unknown and are routed to the tightened coupled surface or to their named apertures.
 
+## CLOSURE — 2026-09-05 AMERICA/PHOENIX
+
+BUILD 5A is accepted and closed with implementation commit
+`7648b394dc22aff878d5293d3f0c4083e0fb4aeb` and root tree
+`fb7e982ffbc0e567acc8b1047e5dc666c7214c68` as closure provenance. Execution and closure evidence is
+recorded in `docs/build-receipts/006-build-5a.md`.
+
+The human accepted the Move evidence, dispositioned D1 as a SHAPE_OR_CONTRACT_DEFECT of the
+acceptance-specification subtype, and accepted D2 and D3 as corrected test defects. Frozen Worked
+Trace 04 challenge 4 was repaired under that authorization: the repair removed only a logically
+unsatisfiable conjunction and changed no semantic, architectural, enforcement, concurrency, privilege,
+or implementation requirement. No architectural Shape was reopened, and no new canonical mutation was
+performed for the repair. The acceptance harness now asserts the repaired requirement rather than merely
+observing it, and returned PASS across all ten checks afterwards.
+
+Closure is bounded. It accepts the installed substrate and its execution evidence only. It confers no
+standing on Claim C's proposition beyond the recorded `basis_qualified` qualification against its
+declared basis, promotes no aperture, does not promote E07, and does not open or authorize BUILD 5B.
+`depends_on` continues to propagate nothing, and `revalidation_required` continues to assert neither
+falsity, lack of support, supersession, nor loss of currentness.
+
+This execution receipt is implementation evidence, not the BUILD 5B Transformation Receipt, and carries
+no E07 independent-validator semantics.
+
 ## SHAPE PASS CONDITION — MET
 
 Shape closed because:
@@ -881,6 +909,7 @@ Reopen E-3 only if the selected Shape requires a write boundary other than the i
 
 Until Shape is authorized and, where noted, until Move is released:
 
+- do not infer BUILD 5B authorization from BUILD 5A closure;
 - do not extend the installed BUILD 5A substrate beyond the released Output Contract;
 - do not open BUILD 5B or treat its deferral as removal;
 - do not write a migration;
@@ -905,10 +934,10 @@ Until Shape is authorized and, where noted, until Move is released:
 
 ## NEXT HANDLE
 
-`AWAIT EXPLICIT HUMAN METABOLIZE DISPOSITION.`
+`AWAIT EXPLICIT BUILD 5B AUTHORIZATION.`
 
-The bound Output Contract is installed and verified. The exact next authorized action is read-only human
-review of the BUILD 5A implementation and execution receipt, including disposition of the recorded D1
-SHAPE_OR_CONTRACT_DEFECT in frozen Worked Trace 04 challenge 4. Do not begin BUILD 5B or perform another
-schema, runtime, MCP, deployment, ADR, or remote-state transition unless the human explicitly closes or
-reopens BUILD 5A and separately authorizes the next phase.
+BUILD 5A is closed. The exact next authorized action is a bounded BUILD 5B Sense — Versioned Artifacts +
+First Transformation Receipt — under its own checkout, opened only on explicit human instruction.
+BUILD 5B must close before BUILD 6 may open. Do not begin BUILD 5B Sense, Shape, or implementation, and
+do not perform another schema, runtime, MCP, deployment, ADR, or remote-state transition, until the
+human authorizes that phase.
