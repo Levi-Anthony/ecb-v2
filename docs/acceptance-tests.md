@@ -965,3 +965,14 @@ FAIL if any frozen challenge produces a counterexample, including if:
 Freezing did not authorize implementation. The later explicit human Move release authorized the
 installed and verified BUILD 4 transition, and the human accepted its evidence at Metabolize. This trace
 remains frozen test authority; passing it did not open or authorize BUILD 5.
+
+
+## Worked Trace 07 — Exact-version transformation checks
+
+**STATUS: FROZEN IN BUILD 5B SHAPE; MOVE UNRELEASED**
+
+[Complete BUILD 5B authority](acceptance/build-5b-wt07.md): retained A1/A2 payloads, predeclared
+transformation obligations, both source grounding and preservation, database-derived receipts,
+committed check-attempt evidence, producer false-success, and twenty-two adversarial challenges.
+
+This addition does not alter any preceding trace or release implementation.

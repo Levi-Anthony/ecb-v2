@@ -107,6 +107,20 @@ reconstructibility question resolving toward retaining what a prior basis *was* 
 is expected to stay closed. Storing an observed digest is not payload retention and does not reactivate
 this aperture.
 
+BUILD 5B: REACTIVATED NARROWLY for exact Artifact version payload and retention under explicit human
+Sense-closure and Shape authorization. The candidate episode needs to recover what a representation contained, not
+merely detect that its digest changed. This activates the later Artifact seam; it does not alter the
+closed Thought revision scheme, broaden Evidence Link endpoints, or promise historical Thought
+payload reconstruction. See [the BUILD 5B examination](build-sense/007-build-5b.md), Q1 and Q4.
+
+NARROWED BY CLOSED BUILD 5B SHAPE: retain exact Artifact text, individual version identity, fixed
+operation/checker specification, durable attempts, and receipt/witness observations under the bounded
+[WT07 contract](acceptance/build-5b-wt07.md). No deletion/expiry policy is activated. Digest remains an
+integrity anchor rather than payload. This local narrowing does not extend the Thought revision
+projection, Evidence Link endpoint contract, or retention of all historical evidence. Move remains
+unreleased; these are selected guarantees to implement, not observations of installed behavior.
+
+
 **TRIGGER**  
 Reactivate if a new source-bearing Thought field is outside the v1 projection, historical payload must
 be reconstructed after drift/disappearance, SHA-256 or the v1 encoding must migrate, or a non-Thought

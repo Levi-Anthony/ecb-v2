@@ -12,6 +12,7 @@ ROLE: Index and template for local architectural closure
 | [ADR-002](002-build-0-physical-substrate.md) | ACCEPTED | BUILD 0 physical substrate |
 | [ADR-003](003-build-2-persistent-first-class-identity.md) | ACCEPTED | Persistent first-class identity registration for BUILD 2 |
 | [ADR-004](004-build-2-physical-realization.md) | ACCEPTED | BUILD 2 trigger, coupling, interlock, and privilege realization |
+| [ADR-005](005-build-5b-artifact-receipt-boundary.md) | ACCEPTED AT SHAPE; MOVE UNRELEASED | BUILD 5B Artifact specimens, bounded checks, and committed attempt boundary |
 
 Create an ADR when the active Build Unit requires a local architectural choice that is not already licensed by governing sources.
 
