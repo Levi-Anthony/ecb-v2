@@ -22,12 +22,24 @@ The dimensional separation is architecturally required. The exact vocabulary has
 **CURRENT EFFECT**  
 REACTIVATED NARROWLY FOR BUILD 5 on 2026-09-04 America/Phoenix, over the closed BUILD 4 narrowing.
 
-BUILD 5's Worked Trace 04 episode requires a qualified epistemic value and a standing transition that
-`unassessed` cannot represent: the recorded standing path is `unassessed -> Q -> revalidation_required`.
-**No standing vocabulary is selected at BUILD 5 Sense.** The exact qualification value Q and the exact
-spelling of the revalidation state are Shape questions.
+NARROWED BY CLOSED BUILD 5A SHAPE. `epistemic_standing` is closed at exactly `unassessed`,
+`basis_qualified`, and `revalidation_required`.
 
-Qualification outcome is not standing. A qualification may reject or preserve conflict while leaving the
+`basis_qualified` means the proposition was examined against the evidence revision declared by its
+Evidence Link and the qualification succeeded. It asserts no truth, support strength, confidence,
+warrant, authority, authorization, governance acceptance, currentness, or workflow position. Its entire
+content is qualification with respect to a declared basis, which is what makes it capable of becoming
+unreliable when that basis moves.
+
+`revalidation_required` means the evidence currently observed for the declared basis differs from the
+revision the recorded qualification was evaluated against, so that qualification cannot be relied upon
+without re-examination. It does not assert that the Claim is false, unsupported, superseded, not
+current, or invalid.
+
+Broader vocabularies remain open.
+
+BUILD 5A exercises no qualification-rejection branch, so no negative value is closed and none is
+needed. Qualification outcome is not standing. A qualification may reject or preserve conflict while leaving the
 prior epistemic standing unchanged, so BUILD 5 does **not** create `rejected`, `failed`, or any negative
 standing value merely to encode a qualification outcome. Preserve
 `evidence arrival != qualification outcome != standing change`. Rejected evidence or qualification must

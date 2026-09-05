@@ -1,14 +1,14 @@
-STATUS: BUILD 5 SENSE CLOSED 2026-09-04 AMERICA/PHOENIX; SHAPE UNOPENED
+STATUS: BUILD 5A SHAPE CLOSED 2026-09-04 AMERICA/PHOENIX; OUTPUT CONTRACT BOUND; MOVE UNRELEASED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
 AUTHORITY: Derived from the Build Contract, constitutive invariants, closed BUILD 0–4 evidence, reserved acceptance authority, open apertures, and explicit human BUILD 5 Sense-opening and Sense-closure dispositions
-CURRENT BUILD UNIT: BUILD 5 — Immutable Events + Versioned Artifacts + First Transformation Receipt (SENSE CLOSED)
+CURRENT BUILD UNIT: BUILD 5A — Immutable Events + Standing Transition History (SHAPE CLOSED; MOVE UNRELEASED)
 
-# BUILD 5 — Immutable Events + Versioned Artifacts + First Transformation Receipt
+# BUILD 5A — Immutable Events + Standing Transition History
 
 ## CURRENT MOVE
 
-`CLOSE SENSE → AWAIT EXPLICIT SHAPE AUTHORIZATION`
+`CLOSE SHAPE → MOVE PERMISSION REQUIRED`
 
 ```text
 BUILD_0=CLOSED
@@ -16,25 +16,35 @@ BUILD_1=CLOSED
 BUILD_2=CLOSED
 BUILD_3=CLOSED
 BUILD_4=CLOSED
-BUILD_5=SENSE_CLOSED
+BUILD_5=DECOMPOSED_INTO_5A_AND_5B
+BUILD_5A=SHAPE_CLOSED
+BUILD_5B=INSERTED_NOT_OPENED; MUST_CLOSE_BEFORE_BUILD_6
 SENSE_REOPEN_REQUIRED=NO
-SHAPE=UNOPENED
-MOVE_PERMISSION=NOT_RELEASED
-IMPLEMENTATION=UNAUTHORIZED
+SHAPE=CLOSED
+SECOND_EXAMINATION=COMPLETE
+MOVE_PERMISSION=REQUIRED
+IMPLEMENTATION=UNOPENED
+BUILD_CONTRACT_AMENDED=NARROWLY_BY_HUMAN_DISPOSITION
 SCOPE=TRACE_BOUNDED_WITH_CONTRACT_ACCOUNTABILITY_GUARD
-WORKED_TRACE_04=RESERVED; BACKBONE_RECORDED; SHARPEN_AT_SHAPE; FREEZE_BEFORE_IMPLEMENTATION
-STANDING_PATH=unassessed -> Q -> revalidation_required
-Q_VOCABULARY=SHAPE_QUESTION
-AP01=REACTIVATED_NARROWLY
+WORKED_TRACE_04=FROZEN_ADVERSARIAL_ACCEPTANCE_AUTHORITY
+STANDING_PATH=unassessed -> basis_qualified -> revalidation_required
+STANDING_VOCABULARY=unassessed | basis_qualified | revalidation_required
+TRANSITION_MECHANISM=TRANSITION_INSERT_WITH_OWNER_PRIVILEGED_TRIGGER
+NEW_TABLES=1  NEW_FUNCTIONS=2
+E07_ROUTED_TO=BUILD_5B
+EVENT_IS_NOT_A_TRANSFORMATION_RECEIPT=TRUE
+AP01=NARROWED
 AP02=CONDITIONAL_NOT_REACTIVATED
 AP03=CONDITIONAL_NOT_REACTIVATED
 AP04=OPEN_AND_INACTIVE
 AP07=NARROWED_TO_depends_on; NOT_ACTIVATED_BY_INHERITANCE
-ARTIFACT_EARNED=NO_ON_CURRENT_EVIDENCE
-TRANSFORMATION_RECEIPT_EARNED=NO_ON_CURRENT_EVIDENCE
+IMMUTABLE_EVENTS=SATISFIED_BY_SELECTED_SHAPE
+VERSIONED_ARTIFACTS=DECOMPOSITION_EARNED_ROUTED_TO_5B
+FIRST_TRANSFORMATION_RECEIPT=DECOMPOSITION_EARNED_ROUTED_TO_5B
 BITEMPORALITY_EARNED=NO
 E3_UPDATE_GRANT_QUESTION=DORMANT
 BUILD_6_PLUS=UNOPENED_AND_UNAUTHORIZED
+OUTPUT_CONTRACT=BOUND
 ```
 
 BUILD 4 closed cleanly at implementation commit `d11401297e69af0f2e9e18aa55da41af4e8b5f31`, root tree
@@ -446,6 +456,177 @@ revision interface and the BUILD 4 Claim surface, both installed and covered by 
 **Blockers: none.** The two escalations that gated this Sense, the E08 tension and the Q4 currentness
 question, are dispositioned above. E-3 is dormant and reopens only on a Shape branch that requires a
 different write boundary.
+## SHAPE CLOSURE — 2026-09-04 AMERICA/PHOENIX
+
+### Contract decomposition authorized
+
+The human accepted the Shape finding that Versioned Artifact and First Transformation Receipt are not
+reachable from Worked Trace 04's falsifiers while immutable Event/history and standing transition are
+load-bearing, and that their deferral is structurally low-coupling. `docs/build-contract.md` is amended
+narrowly: BUILD 5A — Immutable Events + Standing Transition History; BUILD 5B — Versioned Artifacts +
+First Transformation Receipt; BUILD 6 — Governance Bootstrap. Subsequent numbering is unchanged.
+
+BUILD 5B is inserted as a required Build Unit, is not opened, and must close before BUILD 6 may open.
+Candidate evidence E07 — Checked Receipts is routed to BUILD 5B. BUILD 5A does not promote E07 or select
+an independent-validator architecture.
+
+`Event ≠ Transformation Receipt`. The BUILD 5A Event is the immutable authoritative transition record
+and participates structurally in the only legal standing-transition path. It claims no independent
+verification, acceptance, preservation of declared obligations, correctness of the acting mechanism, or
+receipt standing.
+
+The previous contract-accountability blocker is replaced by this disposition.
+
+### Second examination — candidates compared
+
+| Candidate | Disposition | Exact falsifier or cost |
+|---|---|---|
+| **K1** caller updates the Claim, then separately inserts history | **REJECTED** | Fails falsifiers A and B. Nothing structurally prevents a standing change committing without its history or the reverse. This is the OB1 fire-and-forget audit pattern already dispositioned REJECT. Also requires an UPDATE grant. |
+| **K2** caller updates the Claim; trigger writes history | **REJECTED** | Requires `UPDATE (epistemic_standing)` to `service_role`, breaking the insert-only posture held across four builds and reopening E-3. An UPDATE grant also makes transition semantics advisory rather than constitutive: the caller sets the value directly and the trigger merely narrates it. |
+| **K3** privileged transition function with EXECUTE granted to `service_role` | **REJECTED** | Survives A–E and preserves table grants, but introduces the substrate's first caller-invocable function, a new authorization surface and an API signature. BUILD 3 and BUILD 4 both revoked EXECUTE from every role including `service_role`. Strictly larger than K4 with no compensating property. |
+| **K4** caller inserts a transition record; owner-privileged trigger applies the standing | **SURVIVES; SELECTED** | Preserves the insert-only posture, makes the Event constitutive of the legal transition path rather than a side effect, and handles concurrency explicitly. |
+| **K5** no applied-standing column; standing derived from history | **REJECTED** | Requires dropping or voiding `claims.epistemic_standing`, breaking the accepted BUILD 3/4 surface, and requires a separate designation mechanism because latest row cannot mean current — the machinery the Q4 disposition declines. |
+| Subject a new Claim C3 plus new Link L2, leaving C untouched | **REJECTED** | Viable, but adds two canonical fixtures and two Referents to avoid a consequence the two-layer regression model exists to absorb. Less trace-bounded. The consequence is recorded in the projection instead. |
+
+### Selected semantic representation
+
+A **standing transition** is a first-class immutable record asserting that at a recorded time, a Claim
+moved from one standing to another, evaluated against the basis declared by a specific Evidence Link,
+having observed a specific evidence revision.
+
+The record is simultaneously the only legal way to change applied standing and the historical witness
+that it changed. This is not a request/record collapse: a rejected insert leaves no row, so every
+persisted row is by construction an applied transition.
+
+Vocabulary closed at exactly `unassessed`, `basis_qualified`, `revalidation_required`, defined in
+`docs/acceptance-tests.md` under frozen Worked Trace 04 and in AP-01.
+
+### Selected physical representation
+
+One new table, two new functions, one new trigger. No view, resolver, RPC, or index.
+
+```text
+public.claim_standing_transitions
+  id                       uuid primary key default gen_random_uuid()
+  claim_id                 uuid not null
+  from_standing            text not null
+  to_standing              text not null
+  basis_evidence_link_id   uuid not null
+  observed_revision_digest bytea not null
+  recorded_at              timestamptz not null      database-assigned
+
+  check (from_standing <> to_standing)
+  check (from_standing in ('unassessed','basis_qualified','revalidation_required'))
+  check (to_standing   in ('unassessed','basis_qualified','revalidation_required'))
+  check (octet_length(observed_revision_digest) = 32)
+  id, claim_id, basis_evidence_link_id -> public.referents(id)
+    immediate, non-deferrable, on update restrict, on delete restrict
+```
+
+`public.claims`: `claims_standing_unassessed` is replaced by a three-value vocabulary check. No other
+BUILD 3 or BUILD 4 constraint changes and **no grant on `claims` changes.**
+
+**The basis digest is deliberately not copied onto the transition.** Evidence Link L already holds it
+immutably, so copying it would create a second representation of one fact — the BUILD 4 governing
+exemplar. The transition references L; the anchor is read from L; mismatch is computed as
+`observed_revision_digest <> L.evidence_revision_digest`.
+
+**Ordering requires no sequence column.** The `from → to` chain is a total order per Claim, structurally
+enforced by the prior-standing verification. `recorded_at` orders across transactions and the chain
+resolves ties.
+
+`public.thought_revision_digest(uuid) returns bytea` is added as a non-callable helper implementing the
+frozen `ecb_thought_revision_v1_sha256` encoding, so the transition trigger derives the observed
+revision rather than accepting it from the caller. BUILD 3's `prepare_evidence_link` is **not** modified
+and retains its inline derivation. Two implementations of one pure encoding are not a second truth
+store, because there is no state to diverge; frozen challenge 11 asserts they agree.
+
+`public.prepare_claim_standing_transition()` is `SECURITY DEFINER`, owner-owned, empty `search_path`,
+schema-qualified, non-callable by any role. It registers the transition Referent, verifies the Evidence
+Link belongs to the subject Claim, takes `SELECT … FOR UPDATE` on the Claim, rejects a declared prior
+standing that does not match applied standing, derives the observed revision, assigns `recorded_at`, and
+applies the new standing to the Claim.
+
+### Enforcement / authority / concurrency matrix
+
+| Obligation | MODE | SURFACE |
+|---|---|---|
+| Transition and history cannot diverge | STRUCTURAL + TRANSACTIONAL | The history row is the write path; one statement, one transaction |
+| Standing change is legal only via a transition | AUTHORITY | No UPDATE grant on `claims`; only the definer trigger mutates it |
+| Declared prior standing is truthful | TRANSACTIONAL | `SELECT … FOR UPDATE` on the Claim, compare, reject on mismatch |
+| Competing transitions cannot both apply | TRANSACTIONAL | Row lock serializes; the loser's declared prior no longer matches |
+| History is immutable | AUTHORITY | `SELECT` plus column-scoped `INSERT` only; no UPDATE or DELETE to any role |
+| Transition has stable Referent identity | STRUCTURAL + TRANSACTIONAL | Same-UUID restrictive foreign key plus BEFORE INSERT registration |
+| History survives native-record loss | STRUCTURAL | Foreign keys target `referents`, never `claims` or `evidence_links` |
+| Observed revision cannot be forged | AUTHORITY + STRUCTURAL | Database-derived from the current Thought; not a caller-insertable column |
+| Basis belongs to the subject Claim | STRUCTURAL | Trigger verifies `evidence_links.claim_id = claim_id` |
+| Callers cannot forge time | AUTHORITY | `recorded_at` database-assigned and ungrantable |
+| Client roles excluded | AUTHORITY | RLS enabled with no policies; no PUBLIC/anon/authenticated grant; trigger non-callable |
+| No propagation from `depends_on` | OBSERVATIONAL | Frozen Worked Trace 04 asserts C2 and R unchanged |
+
+**E-3 remains dormant.** The trigger is owner-privileged, so it updates `claims` without `service_role`
+gaining any UPDATE privilege. The insert-only posture survives intact.
+
+### Contract accounting
+
+| Obligation | Disposition |
+|---|---|
+| Immutable Events | **SATISFIED_BY_SELECTED_SHAPE** — an immutable, Referent-backed transition/history record matching the Build Contract definition, guaranteed with the transition rather than beside it, at the resolution the trace earns. |
+| Versioned Artifacts | **DECOMPOSITION_EARNED** — routed to BUILD 5B by authorized amendment. |
+| First Transformation Receipt | **DECOMPOSITION_EARNED** — routed to BUILD 5B by authorized amendment, with E07. |
+
+No unresolved blocker remains.
+
+## OUTPUT CONTRACT — BOUND; MOVE UNRELEASED
+
+`OUTPUT_CONTRACT=BOUND`
+
+When and only when a human separately releases Move, BUILD 5A may produce:
+
+1. one atomic, timestamped SQL migration that:
+   - creates exactly `public.claim_standing_transitions` with the selected columns, checks, and three
+     immediate non-deferrable restrictive Referent foreign keys;
+   - creates exactly `public.thought_revision_digest(uuid)` and
+     `public.prepare_claim_standing_transition()`, both non-callable by `PUBLIC`, `anon`,
+     `authenticated`, and `service_role`, and one row-level `BEFORE INSERT` trigger;
+   - replaces `claims_standing_unassessed` with the three-value vocabulary check and changes nothing
+     else on `public.claims`;
+   - enables RLS with no policies and grants `SELECT` plus column-scoped
+     `INSERT (id, claim_id, from_standing, to_standing, basis_evidence_link_id)` to `service_role`;
+   - inserts transition TR1 in one transaction, applying `basis_qualified` to Claim C through the
+     installed trigger; and
+   - verifies before commit that schema, constraints, functions, trigger, grants, RLS, the TR1 fixture,
+     Referent coupling, the derived observed revision, Claim C's applied standing, and the preservation
+     of Claim C2, relation Claim R, and Evidence Link L all match this Shape;
+2. one local BUILD 5A acceptance harness implementing frozen Worked Trace 04, including an independent
+   reimplementation of the revision encoding and rollback-only atomicity, concurrency, stale-prior,
+   no-op, forgery, drift, propagation, and residue probes;
+3. one minimum local cross-build BUILD 3 + BUILD 4 regression harness implementing only the enduring
+   projection frozen in `docs/acceptance-tests.md`, without modifying any frozen historical harness;
+4. the minimum local test and readme wiring required to run those harnesses;
+5. a BUILD 5A execution receipt only after the authorized migration and the full two-layer regression
+   surface passes; and
+6. an updated checkout recording observed implementation evidence without opening BUILD 5B.
+
+Activation order:
+
+```text
+BEGIN
+→ create claim_standing_transitions
+→ create thought_revision_digest and prepare_claim_standing_transition; revoke execute
+→ install BEFORE INSERT trigger
+→ replace the Claim standing vocabulary constraint
+→ insert TR1 (same-transaction Referent registration; trigger applies basis_qualified to C)
+→ enable RLS and install exact grants
+→ verify bounded schema, privileges, fixtures, derived revision, and BUILD 3/4 preservation
+→ COMMIT
+```
+
+Any failure rolls back the entire activation. The Output Contract does not authorize an Artifact,
+transformation receipt, second predicate, third claim kind, additional standing value, currentness
+designation, temporal validity, propagation, view, resolver, RPC, index, runtime, MCP tool, deployment,
+public API, additional canonical fixture, or any remote action outside that future released migration.
+
 ## QUESTION FORWARD — OPENING SET (PROVENANCE; SUPERSEDED AT SENSE CLOSURE)
 
 Retained as provenance of the Sense-opening state. Superseded by the tightened coupled surface
@@ -494,41 +675,39 @@ Before Sense closes, convert every material uncertainty, contradiction, missing 
 unresolved acceptance cell into an answerable Question Forward item at the resolution required by the
 current Master Key. Do not close Sense merely because a plausible schema has appeared.
 
-## APERTURES AT SENSE CLOSURE
+## APERTURES AT SHAPE CLOSURE
 
 ### AP-01 — Controlled standing vocabulary
 
-**REACTIVATED NARROWLY.** BUILD 5 requires a qualified epistemic value and a standing transition that
-`unassessed` cannot represent. BUILD 4 closed `claim_kind` at exactly `assertion | relation` and
-retained `origin=ecb_inference`. No standing vocabulary is selected at Sense: the exact Q and the exact
-`revalidation_required` spelling are Shape questions. Under the E08 disposition, no negative standing
-value is created to encode a qualification outcome.
+**NARROWED BY CLOSED BUILD 5A SHAPE.** `epistemic_standing` is closed at exactly `unassessed`,
+`basis_qualified`, and `revalidation_required`. `claim_kind` remains exactly `assertion | relation` and
+`origin` remains `ecb_inference`, both unchanged from BUILD 4. Under the E08 disposition no negative
+standing value is created to encode a qualification outcome, and BUILD 5A exercises no
+qualification-rejection branch. Broader vocabularies remain open.
 
 ### AP-02 — Stable evidence interface
 
-**CONSULTED; NOT REACTIVATED.** BUILD 3 closed the Thought-backed evidence revision interface. General
-historical payload retention, digest-scheme migration, non-Thought evidence, versioned Artifacts, and
-standing/current-support history remain open. Reactivation is conditional on the reconstructibility
-question resolving toward retaining what the prior basis *was* rather than that it *changed*. On WT03's
-precedent, which deliberately serializes no changed source payload, it is expected to stay closed.
+**NOT REACTIVATED.** The reconstructibility question resolved toward recording *that* the basis changed:
+the transition stores a database-derived observed revision digest and reads the historical anchor from
+Evidence Link L. A digest is an anchor, not retained payload. Versioned Artifacts route to BUILD 5B.
+Historical payload retention, digest-scheme migration, and non-Thought evidence remain open.
 
 ### AP-03 — Semantic-evaluation schema
 
-**CONSULTED; NOT REACTIVATED.** The T2 trigger condition is a digest comparison, decidable structurally
-with no semantic-evaluation payload. Conditional reactivation only if qualification Q resolves toward an
-outcome that is a judgment rather than a comparison.
+**NOT REACTIVATED.** The transition condition is a digest comparison, decided structurally with no
+semantic-evaluation payload. `basis_qualified` records that a qualification succeeded against a declared
+basis; it carries no evaluation payload, confidence, model identity, or rationale.
 
 ### AP-04 — Enforcement-policy payload
 
-**OPEN AND INACTIVE.** The focal episode contains no consequential governance-policy transition.
+**OPEN AND INACTIVE.** The closed Shape contains no consequential governance-policy transition.
 Activation is not inferred from standing history alone.
 
 ### AP-07 — Full relation ontology
 
-**NARROWED TO `depends_on`; NOT ACTIVATED BY INHERITANCE.** BUILD 5 may encounter supersession or
-currentness semantics, but it must not silently broaden BUILD 4's relation ontology or repurpose
-`depends_on` to mean supersedes, supports, or current. This aperture is not activated merely because
-BUILD 5 is open.
+**NARROWED TO `depends_on`; NOT ACTIVATED.** BUILD 5A adds no predicate and no supersession relation.
+`depends_on` is unchanged and non-propagating, and frozen Worked Trace 04 asserts that Claim C2 and
+relation Claim R are unchanged across every standing transition.
 
 ## SENSE EVIDENCE PATH (PROVENANCE; FOLLOWED AT SENSE)
 
@@ -612,6 +791,29 @@ Claim qualification rather than Evidence Link mutation (F3); Event Referent iden
 invariant (F6); and no versioned Artifact or Transformation Receipt is earned by the focal episode (F5).
 The remainder stay unknown and are routed to the tightened coupled surface or to their named apertures.
 
+## SHAPE PASS CONDITION — MET
+
+Shape closed because:
+
+1. one candidate survived the second examination against five materially viable alternatives, each
+   rejected with an exact falsifier or cost;
+2. `basis_qualified` and `revalidation_required` are semantically closed and neither implies truth,
+   confidence, warrant, authority, authorization, governance acceptance, or workflow state;
+3. enforcement mode and surface are explicit for every consequential obligation, and authority,
+   atomicity, and concurrency are structural rather than conventional;
+4. Worked Trace 04 is frozen and implementation-complete as a specification, with fixtures, sequence,
+   vocabulary, basis anchors, machine-legible outcomes, fresh-context reconstruction, thirteen
+   adversarial challenges, the residue rule, prohibited interpretations, and the regression projection;
+5. the enduring BUILD 3 and BUILD 4 Layer B projection is frozen, including the honest demotion of
+   Claim C's `unassessed` standing from enduring invariant to closure snapshot;
+6. apertures are dispositioned, with AP-01 narrowed and AP-02, AP-03, AP-04, and AP-07 not reactivated;
+7. all three BUILD 5 contract obligations are accounted for, with Artifact and Receipt routed to
+   BUILD 5B by authorized amendment rather than silently deferred;
+8. no unresolved blocker remains; and
+9. the Output Contract leaves no architectural decision for Move to invent.
+
+Passing this Shape test does not authorize implementation.
+
 ## SENSE PASS CONDITION — MET
 
 Sense closed because:
@@ -672,15 +874,16 @@ Reopen E-3 only if the selected Shape requires a write boundary other than the i
 
 Until Shape is authorized and, where noted, until Move is released:
 
-- do not enter Shape or freeze any Shape decision;
+- do not implement BUILD 5A until a separate human Move release;
+- do not open BUILD 5B or treat its deferral as removal;
 - do not write a migration;
 - do not create or modify tests as frozen acceptance authority yet;
 - do not contact or mutate the canonical database except for explicitly justified read-only
   verification;
 - do not select an Event table, Artifact table, currentness table, history table, receipt table, or
   versioning schema by name alone;
-- do not select standing, stale, supersession, validity, revalidation, or currentness enums before the
-  Worked Trace earns them;
+- do not add a standing value beyond the three closed by this Shape, or any stale, supersession,
+  validity, or currentness enum;
 - do not create a negative epistemic-standing value to encode a qualification outcome;
 - do not describe `claims.epistemic_standing` in recency or authority terms;
 - do not broaden `depends_on` or the relation ontology by analogy;
@@ -690,13 +893,16 @@ Until Shape is authorized and, where noted, until Move is released:
   lifecycle, BUILD 9 recursive self-application, or BUILD 10 propagation;
 - do not change MCP tools, runtime behavior, deployment, credentials, or public API;
 - do not rewrite frozen BUILD 0–4 harnesses;
-- do not amend the Build Contract or split BUILD 5; and
+- do not amend the Build Contract further; and
 - do not authorize Move.
 
 ## NEXT HANDLE
 
-`AWAIT EXPLICIT HUMAN SHAPE AUTHORIZATION.`
+`AWAIT EXPLICIT HUMAN MOVE RELEASE.`
 
-BUILD 5 Sense is closed. The exact next authorized action is read-only human review of this closed Sense
-state. Shape entry, schema selection, Worked Trace 04 freezing, migration authoring, canonical database
-mutation, deployment, and Move all remain unauthorized until the human authorizes the next phase.
+BUILD 5A Shape is closed, Worked Trace 04 is frozen, and the Output Contract is bound. The exact next
+authorized action is read-only human review of this closed Shape and bound Output Contract. No
+implementation, migration authoring or application, test execution against the canonical database,
+deployment, ADR, or remote mutation is authorized. After an explicit Move release, implement only the
+bound Output Contract and stop again for acceptance of observed execution evidence. Do not open
+BUILD 5B.

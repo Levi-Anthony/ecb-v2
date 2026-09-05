@@ -517,61 +517,196 @@ trace remains frozen test authority; passing it did not open or authorize BUILD 
 
 ## Worked Trace 04 — Standing change with history
 
-**STATUS: RESERVED — SENSE BACKBONE RECORDED; AUTHORIZED FOR SHARPENING AT SHAPE**
+**STATUS: FROZEN ADVERSARIAL ACCEPTANCE AUTHORITY — BUILD 5A SHAPE CLOSED; MOVE UNRELEASED**
 
-**UNLOCKS: BUILD 5**
+**UNLOCKS: BUILD 5A**
 
-Freeze before BUILD 5 implementation.
+**IMPLEMENTATION: UNOPENED**
 
-Must prove a prior representation can become stale/superseded/revalidation-required without losing historical reconstructibility.
+**FROZEN: 2026-09-04 America/Phoenix**
 
-That reserved sentence is a minimum governing commitment, not the final frozen specification. Sense and
-Shape are authorized to add the exact fixture, statuses, falsifiers, negative cases, concurrency
-requirements, and reconstructibility obligations required to make it executable. Sharpen it; do not
-weaken or substitute it.
+The reserved minimum governing requirement is preserved verbatim and is sharpened, not weakened:
 
-### Sense backbone — recorded 2026-09-04 America/Phoenix, not yet frozen
+> Prove a prior representation can become stale, superseded, or revalidation-required without losing
+> historical reconstructibility.
 
-The minimum coherent episode, using only already-installed state:
+BUILD 5A discharges it through the revalidation-required path. Stale and superseded designations are
+not built; `revalidation_required` asserts neither.
+
+### Frozen vocabulary
 
 ```text
-T0   Claim C as inherited from BUILD 3: origin=ecb_inference, epistemic_standing=unassessed.
-     Evidence Link L anchors C's historical basis to GT01 @ digest_v1.
-     Relation R remains C2 depends_on C.
-T0q  BUILD 5 records a qualification of C against digest_v1, giving C a qualified
-     epistemic standing Q. Q's vocabulary is a Shape question.
-     History reconstructs: unassessed -> Q, basis = digest_v1.
-T1   GT01's source-bearing fields change outside ECB's control.
-     ECB does not know when the external change occurred.
-T2   ECB observes current digest_v2 != linked digest_v1 and records that the mismatch was
-     observed at T2, that Q was evaluated against digest_v1, that Q can no longer be relied
-     upon without re-examination, and that C transitions Q -> revalidation_required.
-T3   A fresh context reconstructs both prior standing states and their ordering, the
-     digest_v1 anchor, the T2 observation, that ECB does not claim to know when GT01
-     actually changed, and that C2 and relation R are unchanged with no propagation.
+epistemic_standing ∈ { unassessed, basis_qualified, revalidation_required }
 ```
 
-The qualification step T0q is constitutive. Without it the path would read
-`unassessed -> revalidation_required`, which is semantically wrong: `unassessed` means no separate
-epistemic qualification has been recorded, so nothing exists to revalidate and `revalidation_required`
-would become workflow status rather than epistemic standing.
+`basis_qualified` — the proposition was examined against the evidence revision declared by its Evidence
+Link and the qualification succeeded. Asserts no truth, support strength, confidence, warrant,
+authority, authorization, governance acceptance, currentness, or workflow position.
 
-Recorded Sense constraints on the eventual frozen trace:
+`revalidation_required` — the evidence currently observed for the declared basis differs from the
+revision the recorded qualification was evaluated against, so that qualification cannot be relied upon
+without re-examination. Asserts neither falsity, lack of support, supersession, nor loss of currentness.
 
-- transaction and observation time are sufficient; the trace must not claim the external change time;
-- Evidence Link L does not become stale and is not mutated; what becomes unreliable is C's
-  qualification against the historical basis;
-- relation R and Claim C2 must be observably unchanged across the episode, proving `depends_on`
-  propagates nothing;
-- qualification rejection or preserved conflict must not require a negative epistemic-standing value,
-  and rejected evidence must not disappear as though never observed;
-- `claims.epistemic_standing` is the materialized/applied standing produced by a successful
-  qualification transition, and is not described in recency or authority terms; and
-- the transition and the history that makes it reconstructible must not be able to diverge.
+### Frozen fixtures
 
-Fixtures, statuses, exact vocabulary, record shape, transition mechanism, concurrency requirements, and
-the enduring BUILD 4 regression projection are Shape decisions. This backbone carries no acceptance
-authority until the trace is frozen at Shape closure.
+Inherited: GT01 Thought `19a949ea-a8fc-4250-a386-fa64e5530180`; Claim C
+`0f89e778-b16e-4840-9129-a2aa3eb6f697`; Evidence Link L `4c6c0f50-a936-4da6-bb09-233f93320639`; Claim C2
+`c7f7d330-e778-4ae5-be96-3a172bea1166`; relation Claim R `cb429206-5abd-4adb-8ff9-d6d6a885034c`.
+
+Installed by BUILD 5A activation:
+
+```text
+TR1 = a6925494-a862-441b-a361-5f5ec41dc9dc
+      claim_id=C  from=unassessed  to=basis_qualified
+      basis_evidence_link_id=L
+      observed_revision_digest=<derived>  recorded_at=<database-assigned>
+```
+
+Rollback-only probes, which may not remain in canonical state:
+
+```text
+TR2 = db18ae39-8bf8-483f-a56c-ba4e29fb37d2   basis_qualified -> revalidation_required after drift
+SP  = 6efc5da1-cf53-4749-bcc6-b02a74fd76bf   stale declared prior standing
+FP  = 05332754-b2e3-45cb-8f65-aaca27410cb5   privilege/forgery probe
+NP  = b3912428-eaac-4469-bcfe-672abdca08f3   no-op transition (from = to)
+CP  = 7ddc3b5d-c4df-48df-9aa4-92e08af3bc49   concurrency probe
+```
+
+`digest_v1 = 5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55`
+`digest_v2 = 5ce23dfa64a69e028ef9b92a160eab15afd32471f0e21245157e58b3dfc26c53`, produced by the frozen
+BUILD 3 content mutation `GT01: The brass heron waits beneath the cobalt staircase.`
+
+**Canonical activation installs TR1 only.** GT01 must not be permanently mutated, because BUILD 0, 2 and
+3 preservation depends on it. The drift and revalidation steps are exercised entirely inside rolled-back
+transactions, and the complete three-state sequence is proven executably within one such transaction.
+Canonical end state: Claim C at `basis_qualified` with exactly one recorded transition.
+
+### Frozen sequence
+
+```text
+T0   C inherited: origin=ecb_inference, epistemic_standing=unassessed.
+     L anchors C's historical basis to GT01 @ digest_v1. R remains C2 depends_on C.
+T0q  Insert TR1. The trigger locks C, verifies the declared prior standing, derives the
+     observed revision from the current Thought, and applies basis_qualified.
+T1   (probe) Owner mutates GT01 content to the frozen BUILD 3 string, yielding digest_v2.
+T2   (probe) Insert TR2. The trigger derives digest_v2, verifies the declared prior standing,
+     and applies revalidation_required.
+T3   Reconstruct from persistence alone, then roll back.
+```
+
+### Frozen machine-legible outcomes
+
+```text
+no_recorded_standing_transition
+standing_history_reconstructed
+applied_standing_diverged_from_history      ← must never appear
+```
+
+Every result carries `claim_id`, `applied_standing`, and an ordered `history` array. Each history entry
+carries `from_standing`, `to_standing`, `basis_evidence_link_id`, `basis_revision_digest` read from the
+Evidence Link, `observed_revision_digest`, a derived `basis_match` boolean, and `recorded_at`.
+
+Ordering is by `recorded_at`, with the `from → to` chain as the structural integrity guarantee: each
+entry's `from_standing` must equal the previous entry's `to_standing`, and the first must equal
+`unassessed`. `applied_standing` must equal the final entry's `to_standing`, or the result is
+`applied_standing_diverged_from_history` and the trace fails.
+
+### Frozen fresh-context reconstruction
+
+Given only C's UUID and no conversational memory, the harness must establish:
+
+- C was originally asserted `unassessed`;
+- C was qualified `basis_qualified` against the basis declared by L, whose anchor is `digest_v1`;
+- `digest_v1` remains L's immutable historical anchor and L is unmutated;
+- a differing revision was observed at the recorded revalidation time;
+- C moved `basis_qualified → revalidation_required` at that time;
+- both prior standing states and their ordering are recoverable;
+- ECB makes no claim about when GT01 actually changed; and
+- C2 and relation R are unchanged.
+
+The historical basis anchor read from L must be distinguishable from the currently observed evidence
+revision. A harness that cannot tell them apart fails.
+
+### Frozen adversarial challenges
+
+PASS means no falsifier is produced. A happy-path result alone is insufficient.
+
+1. **Baseline and bounded expansion.** Verify TR1, C at `basis_qualified`, the same-UUID Referent for
+   TR1, exact columns, checks, three restrictive Referent foreign keys, trigger shape and ownership,
+   RLS, and grants. Verify exactly one new table and the authorized functions; no view, resolver, RPC,
+   index, Artifact, receipt, or BUILD 5B/6+ surface appears.
+2. **Atomicity A — history persistence failure blocks the transition.** Force the transition insert to
+   fail after the standing update is attempted; C's applied standing must be unchanged and no
+   transition may exist.
+3. **Atomicity B — standing-change failure blocks the history.** Force the Claim update to fail; no
+   transition row and no Referent may remain.
+4. **Concurrency C — competing transitions.** Session A opens a transaction and inserts CP against C
+   declaring the true prior standing; session B concurrently inserts SP declaring the same prior
+   standing. B must queue on the Claim row lock and then be rejected because its declared prior standing
+   no longer matches. Both roll back; neither may remain.
+5. **Stale prior standing.** A transition declaring a prior standing that is not C's applied standing
+   must be rejected.
+6. **No-op transition.** NP with `from_standing = to_standing` must be rejected.
+7. **Forgery and least privilege.** `service_role` attempts to supply `recorded_at` or
+   `observed_revision_digest` must fail at the column privilege boundary; the observed revision is
+   database-derived. Attempts to update or delete any transition, Claim, Evidence Link, or Referent must
+   fail. `PUBLIC`, `anon`, and `authenticated` must have no access. A transition whose
+   `basis_evidence_link_id` belongs to a different Claim must be rejected.
+8. **Drift and revalidation.** Mutate GT01, insert TR2, observe `basis_match=false` on that entry and
+   `standing_history_reconstructed` with the full ordered chain, then roll back leaving no residue.
+9. **Evidence Link is not mutated and does not go stale.** L's role, scheme, digest, endpoints and link
+   time must be identical before and after the whole trace.
+10. **No propagation.** Claim C2 and relation Claim R must be byte-identical before and after every
+    transition. Asserting a standing change on C must alter neither.
+11. **Encoding agreement.** The database-derived observed revision for an unmutated GT01 must equal L's
+    stored anchor and the harness's independent reimplementation of
+    `ecb_thought_revision_v1_sha256`.
+12. **Residue.** No probe transition, Referent, standing change, or evidence mutation may remain.
+13. **Regression.** Apply the frozen enduring BUILD 3 and BUILD 4 projection below. The public and MCP
+    inventory remains exactly `capture_thought`, `fetch`, and `search`.
+
+### Frozen enduring BUILD 3 + BUILD 4 projection
+
+**Layer A — historical acceptance.** `tests/build-2/harness.ts`, `tests/build-3/harness.ts`, and
+`tests/build-4/harness.ts` remain byte-frozen as closure provenance of their own Build Units. None is
+re-run as a post-BUILD 5A whole-schema gate.
+
+**Layer B — current-state regression.** After BUILD 5A installation verify that: the kind-exclusive
+Claim shape holds; `claim_kind` admits exactly `assertion` and `relation`; `predicate` admits exactly
+`depends_on` with the predicate-scoped self-relation prohibition; Claim endpoint foreign keys remain
+restrictive to `referents` with no foreign key to `claims` or `thoughts`; no uniqueness collapses the
+endpoint triple; `prepare_claim` remains SECURITY INVOKER, non-callable, lock-free, and does not
+overwrite `claim_kind`; `service_role` insert columns on `claims` are unchanged with still no UPDATE or
+DELETE; RLS remains enabled with zero policies; relation Claim R and Claim C2 are unchanged; Evidence
+Link L is unchanged; GT01's digest remains independently reproducible; all four Worked Trace 03 outcomes
+remain producible; `evidence_links` retains no foreign key to `thoughts`; and `prepare_evidence_link`
+retains SECURITY DEFINER with its FOR SHARE lock and caller-forgery rejection.
+
+**Demoted from enduring to closure snapshot by this lawful expansion:** *Claim C retains
+`epistemic_standing = unassessed`*. BUILD 5A lawfully moves it to `basis_qualified`. The re-projected
+obligation is that C retains its exact proposition, scope, kind, origin, and `asserted_at`, while its
+applied standing is whatever the recorded transition chain applies. Also demoted: the exact public table
+and function lists; the three-Claim, six-Referent, one-Link counts; `claims` having exactly ten columns;
+and `epistemic_standing` admitting only `unassessed`.
+
+### Prohibited interpretations
+
+`revalidation_required` does not mean false, unsupported, superseded, or not current.
+`basis_qualified` does not mean true, accepted, warranted, or authorized. A recorded transition confers
+no currentness by virtue of being newest. A BUILD 5A Event is not a Transformation Receipt and claims no
+independent verification, acceptance, preservation of declared obligations, correctness of the acting
+mechanism, or receipt standing.
+
+### Failure
+
+FAIL if any frozen challenge produces a counterexample, including if a standing change commits without
+its transition or a transition remains recording a standing change that did not commit; if two
+transitions declaring the same prior standing both commit; if applied standing diverges from the chain;
+if the historical basis anchor cannot be distinguished from currently observed evidence; if L is
+mutated or treated as stale; if C2 or R change; if an unexplained canonical object, Artifact, receipt,
+or BUILD 5B/6+ surface appears; or if an enduring BUILD 0–4 behavior regresses.
+
+Freezing does not authorize implementation. A separate human Move release remains required.
 
 ## Worked Trace 05 — Governed local closure
 

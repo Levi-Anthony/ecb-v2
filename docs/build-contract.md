@@ -170,14 +170,37 @@ Awareness supplies the Metabolize feedback loop. It tests whether the basis supp
 3. BUILD 2 — Universal Referents
 4. BUILD 3 — Claims + Standing + Evidence Links
 5. BUILD 4 — Typed Relation Claims
-6. BUILD 5 — Immutable Events + Versioned Artifacts + First Transformation Receipt
-7. BUILD 6 — Governance Bootstrap
-8. BUILD 7 — First Local Master Key + Explicit Designation
-9. BUILD 8 — Action Envelope Lifecycle
-10. BUILD 9 — Recursive Self-Application
-11. BUILD 10 — Propagation / Kernel Packets
+6. BUILD 5A — Immutable Events + Standing Transition History
+7. BUILD 5B — Versioned Artifacts + First Transformation Receipt
+8. BUILD 6 — Governance Bootstrap
+9. BUILD 7 — First Local Master Key + Explicit Designation
+10. BUILD 8 — Action Envelope Lifecycle
+11. BUILD 9 — Recursive Self-Application
+12. BUILD 10 — Propagation / Kernel Packets
 
 Do not skip forward merely because later architecture is already understood conceptually.
+
+### BUILD 5 decomposition
+
+Amended 2026-09-04 America/Phoenix by explicit human disposition. The original single slot
+`BUILD 5 — Immutable Events + Versioned Artifacts + First Transformation Receipt` is decomposed into
+BUILD 5A and BUILD 5B. Subsequent Build Unit numbering is unchanged.
+
+The decomposition was earned, not assumed. Versioned Artifact and First Transformation Receipt are not
+reachable from Worked Trace 04's falsifiers, while immutable Event/history and standing transition are
+load-bearing for the complete episode. Their deferral is structurally low-coupling: Artifact and Receipt
+machinery compose additively onto the completed Referent-backed Event substrate without requiring
+redesign of the BUILD 5A transition/history mechanism.
+
+BUILD 5B is inserted as a required Build Unit. It is not opened by this amendment and **must close
+before BUILD 6 may open.** Deferral is not silent removal.
+
+`Event ≠ Transformation Receipt`. A BUILD 5A Event may be the immutable authoritative transition record
+and may participate structurally in the only legal standing-transition path. It must not thereby claim
+independent verification, acceptance, successful preservation of declared obligations, correctness of
+the acting mechanism, or receipt standing. Those questions belong to BUILD 5B, to which candidate
+evidence E07 — Checked Receipts is routed. BUILD 5A does not promote E07 or select an
+independent-validator architecture.
 
 ## Freeze line
 
