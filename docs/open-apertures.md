@@ -71,6 +71,14 @@ BUILD 3, not the complete Claim ontology, and is not a permanent prohibition on 
 Broader claim-kind, origin, evidentiary-basis, epistemic, governance-standing, action-standing,
 qualification, and history vocabularies remain open on their existing terms.
 
+BUILD 6 SENSE SHARPENING — 2026-09-06 America/Phoenix: CONDITIONAL; NO FURTHER
+REACTIVATION. The authority-chain inquiry requires recoverable bases, scopes and
+designations, but has not demonstrated a need for new controlled governance-standing
+values. Bootstrap/governance activity alone does not justify new enums. Existing
+closed vocabulary is unchanged. Reactivate further only when the accepted episode
+requires a distinction that earns an additional controlled value. See
+[BUILD 6 Question Forward](build-sense/008-build-6.md#question-forward--updated-live-set).
+
 **TRIGGER**  
 Reactivate further when a build needs a claim kind or origin beyond `assertion`, `relation`, and
 `ecb_inference`, an epistemic value beyond those BUILD 5 Shape closes, governance or action standing, or
@@ -153,21 +161,36 @@ Specify only the evaluation types required by that transition.
 ## AP-04 — Enforcement-policy payload
 
 **WHAT**  
-Exact schema for transition policies describing structural, semantic, authority, and observational enforcement.
+Exact representation of transition policies describing structural, semantic, authority,
+and observational enforcement.
 
 **WHY OPEN**  
-The enforcement classification is ratified. The concrete transition set is not yet instantiated.
+The enforcement classification is ratified. BUILD 6 now examines the first consequential
+governance transition, but its behavioral authority graph is not yet decision-complete.
+Selecting the enforcement-policy payload before that graph is resolved would encode
+assumed authority. Exact representation belongs to subsequent Shape.
 
 **CURRENT EFFECT**  
-Does not block evidence-layer work. OPEN AND INACTIVE at BUILD 5 Sense closure: the focal episode
-contains no consequential governance-policy transition. Activation is not inferred from standing history
-alone.
+REACTIVATED NARROWLY FOR BUILD 6 — 2026-09-06 America/Phoenix. The trigger has fired:
+BUILD 6 concerns bootstrap, initial policy activation, human/warrant authority designation,
+bootstrap exhaustion and the first ordinary governed succession. This opens inquiry
+into their enforcement-policy obligations; no payload, mechanism or policy is selected.
+Sense can examine prior authority and necessary recoverable facts. Shape must later
+resolve the exact representation within the accepted behavioral scope.
+
+Historical BUILD 5 disposition remains: open and inactive at its Sense closure because
+that episode contained no consequential governance-policy transition. BUILD 6 activation
+is not inferred from Claim standing history or a passing transformation receipt.
 
 **TRIGGER**  
-First consequential governance transition.
+First consequential governance transition — FIRED FOR BUILD 6. Broader transition-policy
+coverage requires a separately encountered need; this narrow activation does not license
+a universal policy engine.
 
 **ROUTE**  
-BUILD 5/6 contract extraction.
+[BUILD 6 Sense](build-sense/008-build-6.md) for the behavioral authority graph and prior
+bases, then BUILD 6 Shape for exact enforcement-policy representation after authorized
+phase transition. No Output Contract is bound during this Sense pass.
 
 ## AP-05 — Kernel packet physicalization
 

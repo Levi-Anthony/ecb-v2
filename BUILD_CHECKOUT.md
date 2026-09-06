@@ -1,24 +1,28 @@
-STATUS: BUILD 6 SENSE OPEN
+STATUS: BUILD 6 SENSE OPEN — SENSE_NOT_CLOSEABLE AFTER BOUNDED SHARPENING
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
-AUTHORITY: Governing repository sources and human “Open 6” / “Continue”
+AUTHORITY: Governing sources, existing “Open 6” / “Continue”, and explicit bounded Sense-sharpening instruction
 CURRENT BUILD UNIT: BUILD 6 — Governance Bootstrap
 
 # BUILD 6 — Governance Bootstrap
 
 ## CURRENT MOVE
 
-`SENSE: ESTABLISH THE BOUNDED BOOTSTRAP EPISODE AND ITS AUTHORITY BASIS`
+`SENSE: RESOLVE THE PRIOR AUTHORITY BASIS FOR EVERY BOOTSTRAP-TO-SUCCESSION TRANSITION`
 
 ```text
 BUILD_0_TO_5B=CLOSED
 BUILD_5B_EXECUTION=7f3790786d947ac278501632a6072433db8d0c6e
 BUILD_5B_EVIDENCE=7c89e82eaba27ecd3972bf0100a1133363b3304c
-BUILD_5B_HUMAN_CLOSURE=5af44bb
-BUILD_6=SENSE_OPEN
-FOCAL_EPISODE=EXTERNAL_ROOT_TO_INITIAL_POLICY_TO_EXHAUSTION_TO_ORDINARY_SUCCESSION; CANDIDATE
-SENSE_CLOSURE=PENDING
-PRIOR_ART_QUALIFICATION=PARTIAL; SOURCE_FOLLOWUP_REQUIRED
+BUILD_5B_HUMAN_CLOSURE=5af44bb1a14cc098f2f3f105d611cff406135cf9
+BUILD_6=SENSE_OPEN; NOT_REOPENED
+ENTRY_LINEAGE=984f16d9267082aec2b0dce33de597aad7e46abf
+ROOT_EQUALS_LEVI_OR_H=UNESTABLISHED; PRIOR_ASSUMPTION_WITHDRAWN
+AUTHORITY_GRAPH=M1_OR_M2_CONDITIONAL; NOT_SELECTED
+SENSE_DISPOSITION=SENSE_NOT_CLOSEABLE
+AP04=REACTIVATED_NARROWLY; EXACT_PAYLOAD_UNRESOLVED
+AP01=CONDITIONAL; NO_NEW_VOCABULARY_DEMONSTRATED
+PRIOR_ART_QUALIFICATION=PARTIAL; EXISTING_PINS_PRESERVED
 SHAPE=UNOPENED
 OUTPUT_CONTRACT=UNBOUND
 MOVE_PERMISSION=UNRELEASED
@@ -29,93 +33,101 @@ BUILD_7_PLUS=UNOPENED
 
 ## AUTHORIZATION / PREDECESSOR
 
-After the completed BUILD 5B execution report and linked receipt, the human said
-**“Open 6”**, then **“Continue”**. In context this accepts the reported predecessor
-for advancement and authorizes opening BUILD 6 at Sense. The
-[BUILD 5B closure](docs/build-receipts/007-build-5b.md#human-metabolize-and-closure--2026-09-06-americaphoenix)
-records that disposition without inventing a separate exhaustive human audit.
-No further confirmation is needed to conduct this authorized Sense work.
+BUILD 6 is already open on `build/build-6-sense`, descending from human-closed
+BUILD 5B. The current instruction authorizes one bounded Sense-sharpening pass,
+using Question Forward to correct the conflation of bootstrap root with external
+human authority/Levi and to examine the behavioral authorization graph.
+It does not reopen either Build, close Sense, enter Shape, or authorize implementation.
 
-The accepted evidence at `7c89e82` records nine canonical Artifacts, sixteen
-Referents, RC1=PASS and the expected RC2=FAIL. Raw evidence, checker limits, frozen
-WT07 and inherited BUILD 0–5A behavior remain unchanged. These are accepted earlier
-observations, not a new canonical database read. Branch `build/build-6-sense`
-descends from the explicit closure commit. Git integration/PR status is separate
-from Build acceptance; opening BUILD 6 does not itself merge an earlier PR.
+The [BUILD 5B receipt](docs/build-receipts/007-build-5b.md) and raw evidence remain
+unchanged. Their canonical observations are accepted earlier evidence, not a new
+canonical read. The human's closure remains operative independently of Git integration.
 
 ## PURPOSE / INVARIANT SERVED
 
-Make the origin and retirement of bootstrap authority explicit and reconstructible
-so ordinary governance can succeed it without self-authorization. Preserve
-technical ability versus warrant, evidence versus authority, candidate versus
-operative policy, human authorization versus agent interpretation, identity versus
-role, current versus newest, and policy validity versus recording time where the
-accepted episode requires that distinction.
+Explain the full episode as a non-circular chain: every authority-bearing transition
+must have an independently recoverable basis that existed before the act it licenses.
+Keep bootstrap trust root, human source of authorization, technical executor, custody,
+designated human/warrant authority and operative policy distinguishable. Common
+person or machinery does not merge the competences or their bases.
 
-Governing sequence from the [Build Contract](docs/build-contract.md#governance-activation):
+The [governing sequence](docs/build-contract.md#governance-activation) remains:
 `bootstrap trust root → initial policy activation → human/warrant authority designation → bootstrap exhaustion → ordinary governed succession`.
 
 ## INPUTS / OUTPUT / STANDING
 
-Inputs: governing Build Contract/invariants/glossary; accepted BUILD 0–5B;
-AP-01/AP-04 and conditional AP-03/AP-07; E13/E17/E18/E20; scoped legacy source
-encounters. Details and exact pins are in [BUILD 6 Sense](docs/build-sense/008-build-6.md).
+Inputs: governing contract/invariants/glossary; accepted BUILD 0–5B; existing source
+encounters and their limits; the human's correction and decision criterion. The
+[revised Sense analysis](docs/build-sense/008-build-6.md) preserves source pins,
+separates root alternatives, gives every candidate arrow a required prior basis,
+applies falsifiers and updates Question Forward.
 
-Current output: an evidence-grounded focal-episode recommendation, explicit root
-and succession questions, alternatives, failure cases and a next examination.
-These are candidate analysis, not installed policy or frozen acceptance authority.
-Physical policy storage, exact roles, identity authentication, activation events,
-bootstrap exhaustion and recovery semantics remain to be earned in Shape.
+Findings: the contract does not by itself require a human root. M1 can delegate
+H designation to already-operative P0 only if bootstrap-internal policy authority
+is lawfully available. M2 can authorize initialization under a prior root grant only
+if R has that wider competence. Neither actual scope is established. A third graph
+with independently licensed steps has no demonstrated smaller advantage.
+These are conditional behavioral findings, not installed authority or frozen tests.
 
 ## ENFORCEMENT / FAILURE BEHAVIOR
 
-Sense must separate STRUCTURAL checks, SEMANTIC judgment, AUTHORITY designation,
-and OBSERVATIONAL evidence. The future consequential transition cannot rely solely
-on the agent remembering a rule. Surface selection is not yet made.
+No credential, claimed actor, candidate policy or future designation supplies its
+own warrant. Distinguish structural checks, authority, semantic judgments and
+observational evidence without selecting enforcement surfaces yet. Preserve actual
+prior basis, scope, conditions and transition ordering as reconstruction obligations;
+their physical representation remains undecided.
 
-Continue independent read-only inquiry when a fact is unresolved. Do not infer a
-human credential binding, silently promote legacy active metadata, reinterpret a
-transformation receipt as approval, or use a new policy to authorize its own birth.
-A missing decision blocks the operations that depend on it, not all inquiry.
+If an arrow can be justified only by the result it creates, reject that explanation.
+If a needed prior basis is unavailable, preserve the corresponding forward question.
+An incomplete record or restart must not manufacture unused bootstrap permission.
+Do not move the unresolved behavioral graph into Shape as an implementation choice.
 
 ## APERTURE / REVALIDATION TRIGGER
 
-Consult AP-01 for needed governance/role dimensions and AP-04 for the first policy
-transition. Their exact payloads/enums remain open. AP-03 is conditional on an
-executable semantic judgment; AP-07 on a new asserted relation. Do not duplicate
-these unresolved questions as new apertures. E13's bitemporal hypothesis is evidence,
-not a selected schema. The four BUILD 5B deferral leases remain recorded in Shape;
-a proposed new reliance on receipts for governance must re-examine the affected lease.
+[AP-04](docs/open-apertures.md#ap-04--enforcement-policy-payload) is now explicitly
+reactivated for BUILD 6's first consequential governance transition. Exact payload
+and representation remain unresolved for later Shape. AP-01 remains conditional:
+this pass has demonstrated no need for a new controlled governance-standing value.
+No enums are invented. AP-03/AP-07 and prior BUILD 5B leases retain their conditions.
 
-Reframe the candidate if the required bootstrap sequence cannot be demonstrated
-without circular authority, unbounded reuse of bootstrap permission, loss of
-historical authority basis, or violation of a governing distinction. Route an
-invariant/build-boundary change through explicit human architectural disposition.
+Reframe a candidate if it relies on self-authorizing P0, self-designating H, replayable
+exhausted authority, credential-as-warrant, newer-as-governing, or an unreconstructible
+prior basis. No broader governance system or BUILD 7/8 behavior is licensed to repair it.
 
-## TEST / CURRENT PASS CONDITION
+## TEST / DISPOSITION
 
-This Sense opening passes when the checkout identifies the current decision,
-accepted predecessor, inspected source limits, unresolved authority questions,
-proposed discriminating episode, and concrete next source inspection. No BUILD 6
-executable PASS is claimed. Later Shape must freeze correspondence/violation tests
-including legitimate succession, forged authority, stale versions, bootstrap
-replay, concurrency, partial failure, and fresh reconstruction, with all twelve
-cross-cutting pressures dispositioned.
+**SENSE_NOT_CLOSEABLE.** Conditional graphs pass the documentary non-circularity test
+only under unestablished premises. The actual root/competence, H/designating basis,
+M1 versus M2 scope, and exhaustion/ordinary succession conditions are unresolved.
+No executable BUILD 6 test or canonical check was run. The pass checks document
+consistency, preserved evidence and repository ancestry only.
+
+When resolved, a future Shape must inherit the accepted root/trust limit, chosen
+prior-authority graph, H's designation/remit, bounded P0/P1 succession behavior,
+exhaustion/interrupted-completion rule and required reconstruction facts. This list
+is a conditional handoff criterion, not a bound Output Contract or Shape selection.
+
+## REPOSITORY INTEGRATION BOUNDARY
+
+Read-only verification: PR #2 is OPEN, draft and MERGEABLE, head `5af44bb` targeting
+main; remote main remains `07fcb9f`. BUILD 6 entry `984f16d` descends from that accepted
+PR head. The clean predecessor integration path remains **PR #2 → main**, required
+as repository normalization before Shape, subject to separate merge authorization.
+This is not a reason to reopen BUILD 5B or invalidate BUILD 6. No GitHub mutation,
+merge or push is authorized for this pass.
 
 ## NON-GOALS
 
-No migration, canonical policy activation, credential change, runtime/controller
-installation, new authority/standing enum, Actor ontology, universal policy engine,
-Master-Key designation, action-envelope lifecycle, propagation, or collaboration
-pilot is opened by this Sense entry. BUILD 7+ and BUILD 6 Move remain unopened.
-The existing untracked collaboration research remains untouched as candidate evidence.
+No phase advance, Output Contract, implementation, canonical contact, policy
+installation, physical transaction boundary, table, enum, UUID, RPC, credential
+architecture, Actor ontology, UI, universal policy engine, Master Key machinery,
+action-envelope semantics or BUILD 7+. The untracked collaboration draft is untouched.
 
 ## NEXT HANDLE
 
-Continue [Sense Q1/Q2](docs/build-sense/008-build-6.md): use the now-inspected human-approval
-boundary to settle the external bootstrap root and the smallest policy-succession
-scope for disposition. The legacy path checks authenticated identity plus an active
-authority registry, but does not establish its own bootstrap legitimacy. Recommend
-Levi's scoped bootstrap designation, but do not fabricate its exact identity binding,
-policy bytes, resources or permissions. No Output Contract is bound before the
-focal episode and decision surface have been examined.
+Resolve [Q1–Q3](docs/build-sense/008-build-6.md#question-forward--updated-live-set):
+what independent basis gives R its competence; who/what becomes H under which prior
+basis; and whether R authorizes exact P0 activation alone or complete initialization.
+Then resolve Q4–Q6 for the surviving graph's exhaustion, first succession and
+reconstructibility. Keep Sense open until the actual episode, not merely a conditional
+example, satisfies the prior-authority criterion. PR integration is a separate step.

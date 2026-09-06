@@ -1,89 +1,272 @@
-STATUS: SENSE OPEN — INITIAL EXAMINATION; NO SHAPE OR MOVE RELEASE
+STATUS: SENSE_NOT_CLOSEABLE — BOUNDED SHARPENING PASS; SENSE REMAINS OPEN
 DISPOSITION: PROJECTION
-ROLE: BUILD 6 focal episode candidate, evidence encounter, and Question Forward
-AUTHORITY: Human “Open 6” / “Continue”; subordinate to governing repository sources
+ROLE: BUILD 6 authority-chain analysis and Question Forward
+AUTHORITY: Existing BUILD 6 opening plus explicit human Sense-sharpening instruction; subordinate to governing sources
 
 # BUILD 6 Sense — Governance Bootstrap
 
-## Decision and governing basis
+## Decision criterion and correction
 
-Determine the smallest reproducible transition from externally authorized bootstrap
-to ordinary governed succession, while making the authority basis reconstructible
-and preventing a candidate policy from authorizing its own installation.
+Can the complete bootstrap-to-ordinary-succession episode be explained as a
+non-circular chain in which every authority-bearing transition is licensed by an
+independently recoverable authority basis that existed before that transition?
 
-The [Build Contract](../build-contract.md#governance-activation) already requires:
+The human directs Question Forward as the method for this pass: retain only
+uncertainty that changes an authority basis, permitted transition, branch selection
+or interpretation of failure; convert it into a discriminating question instead of
+an assumed answer. E01 in [build evidence](../build-evidence.md#e01--question-forward)
+remains evidence in its original standing. Its use here is explicitly commissioned;
+this does not promote E01 wholesale into repository doctrine.
+
+The [Build Contract](../build-contract.md#governance-activation) requires:
 
 `bootstrap trust root → initial policy activation → human/warrant authority designation → bootstrap exhaustion → ordinary governed succession`
 
-That sequence governs. The concrete policy, root, authentication binding, storage,
-transition atomicity, and fixture remain undecided. The discriminator remains
-`proven capability ≠ inherited implementation`. Sense is open; this document does
-not bind an Output Contract or freeze a new acceptance trace.
+The previous Sense at `984f16d` prematurely specified an external human authority
+and recommended Levi as the root. That recommendation is withdrawn. The contract
+separates the bootstrap root from subsequent human/warrant designation. Common
+identity or a common source of legitimacy is possible but must be justified, not
+assumed. This corrects the open analysis; it does not reopen BUILD 6 or BUILD 5B.
 
-## Entry evidence and distinctions
+## Accepted entry and scope
 
-The human's “Open 6”, followed by “Continue”, closes BUILD 5B on execution-evidence
-anchor `7c89e82eaba27ecd3972bf0100a1133363b3304c`. The closure is separately recorded
-at `5af44bb` in the [BUILD 5B receipt](../build-receipts/007-build-5b.md).
-Its canonical observations are accepted historical evidence, not a new database
-inspection in this Sense: nine Artifacts, sixteen Referents, three Claims, one
-Evidence Link, one standing transition, RC1=PASS and the expected RC2=FAIL.
+BUILD 5B is accepted and human-closed at `5af44bb`, with execution evidence at
+`7c89e82` and exact executed candidate `7f37907`. The
+[receipt](../build-receipts/007-build-5b.md) and its raw evidence remain unchanged.
+Their database observations are accepted historical evidence, not fresh canonical
+contact in this pass. The current branch descends from that closed predecessor.
 
-Inspection of the selected SQL establishes two physical limits:
+The focal episode remains one bounded bootstrap and one ordinary policy succession.
+No new build, Actor ontology, credential architecture, UI, universal policy engine,
+Master-Key machinery, action envelopes, implementation or storage design is opened.
+No physical transaction boundary follows from a behavioral grouping below.
 
-- BUILD 5B's Artifact role constraint admits only source representation,
-  transformation request, transformed representation, check attempt and receipt.
-  The logical Artifact primitive includes policy representations, but the installed
-  table does not yet implement a policy lifecycle. Shape must earn any extension.
-- BUILD 5A's immutable Event implementation is specifically Claim standing history.
-  A governance activation must not be disguised as another qualification of Claim C.
-  Sharing identity/history machinery does not license shared transition semantics.
+The installed BUILD 5B Artifact roles cover only the five transformation roles;
+BUILD 5A's Event implementation is Claim standing history. Neither supplies an
+already-installed policy lifecycle or bootstrap authority. Their generic logical
+names cannot justify silently repurposing their native semantics. This is a known
+future representation constraint, not an instruction to design its resolution now.
 
-Registered identity, `basis_qualified`, a PASS receipt, a stored document, a caller's
-claimed role, and possession of a database credential each fail to establish the
-warrant for policy activation. They can contribute evidence or technical capacity;
-the governing authority basis remains a separate obligation.
+## Distinctions that must remain recoverable
 
-## Recommended focal episode — candidate, not accepted fixture
+The following labels are analytical shorthand, not persistent objects or enums.
 
-Use one declared governance scope and one initial policy succession. P0/P1/H below
-are symbolic labels; no identities, persistent enums or schemas are allocated.
+| Label / responsibility | Meaning in this inquiry | What it cannot establish alone |
+|---|---|---|
+| R — bootstrap trust root | The independently trusted basis and bounded competence relied upon before initial governance exists. Its establishment and scope must be identifiable independently of P0 and caller prose. | Merely naming R, possessing a credential, or recording an assertion does not make it legitimate. |
+| Human source of authorization | A human decision supplying authorization where the chosen construction requires one. | This does not automatically identify the executable trust boundary or the later authority H. |
+| Custody boundary | The boundary relied upon to execute only the independently authorized bootstrap act. | Custody or technical control cannot create the mandate it is meant to enforce. |
+| Technical executor | The participant that performs an act. | Performance confers neither root authority nor designation as H. |
+| P0 / P1 | Initial and successor policy candidates; each becomes operative only through a lawful activation. | Content, quality, persistence, recency or a check result cannot authorize its own birth. |
+| H — subsequently designated authority | Whoever or whatever is designated to bear the relevant human/warrant authority for ordinary succession, with an explicit remit and basis. | Login, identity, a self-description, or the designation's own desired result cannot supply its prior authority. |
 
-1. An explicitly identified external human authority authorizes a bounded bootstrap
-   act over exact proposed policy P0 and its intended scope. P0's own statements do
-   not supply permission to install P0. Preserve the human decision separately from
-   the agent's interpretation and the executor's technical identity.
-2. Activate P0 through that bounded authority. Establish a designation of the human
-   and the warrants for ordinary succession under the contract's required order.
-   An intermediate bootstrap state cannot silently enable ordinary governed effects.
-3. Exhaust the bootstrap path at an explicit, reconstructible boundary. Ordinary
-   agents cannot reuse the original grant, reset an empty-looking projection, or
-   replace missing evidence with an assertion that bootstrap never occurred.
-4. Propose P1. Activate it only through a valid succession decision under the
-   authority operative before the transition. P1 cannot retroactively validate its
-   own approval, and merely being newer cannot make P1 governing.
-5. Demonstrate refusal of an unapproved P1, a changed version using old approval,
-   a caller-asserted human identity, and replay of exhausted bootstrap authority.
-   Include a valid succession control so universal denial cannot satisfy the test.
-6. Restart and reconstruct the exact policy basis, applicable human/role/warrant,
-   bootstrap exhaustion and succession history from durable records, with no need
-   to trust the preceding conversation.
+R need not itself be a human authority under the text presently governing this
+Build. That is permission to examine alternatives, not evidence that a particular
+nonhuman root is adequate. If a technical boundary is called the executable root,
+its trusted enforcement function and the normative mandate it enforces must both
+remain recoverable. Trust is relative to an explicitly accepted starting basis;
+this Build need not prove an infinite chain of ultimate legitimacy. It must not
+hide an unsupported starting assumption inside a later policy or designation.
 
-This is a proposed minimum exercise of the entire required bootstrap sequence.
-The human may narrow or replace it before Sense closure. The initial policy should
-cover this one governance succession, not general business actions. Policy-specific
-activation is needed here; BUILD 7's first local Master Key and BUILD 8's general
-action-envelope lifecycle remain unopened.
+## Root alternatives — conditional tests, no selection
 
-## Alternatives and consequences
+| Possibility | What must be true before it can satisfy the criterion | Falsifier / unresolved discriminator |
+|---|---|---|
+| A. Levi is both R and later H | A prior, independently accepted basis gives Levi the bounded bootstrap competence; a separately licensed designation gives Levi the later remit as H. Both bases remain distinguishable even if the person is identical. | The only explanation of Levi's bootstrap power is his later H designation, or the two scopes cannot be reconstructed separately. Which prior basis supplies the first competence? |
+| B. Levi supplies human authorization; a restricted custody boundary is the executable R | The human decision independently authorizes an exact bounded act; the custody boundary is independently trusted to enforce that mandate. H is still designated through its own licensed transition. | Technical possession is treated as the mandate, or the executor can enlarge the authorization by asserting a different role. What establishes trust in that boundary, and what prior decision bounds it? |
+| C. R and durable H are genuinely distinct | An independently accepted root can authorize initialization and delegation to a distinct H. H need not have preexisting ordinary authority, but the act designating H must have prior authority. | H must approve its own first designation before it possesses that competence, or no prior basis gives R the needed delegation power. What independent basis grants that power? |
+| D. A preaccepted, bounded constitutive mandate is R, with neither a new root-person role nor identification of custody with the mandate | An already accepted decision or instrument specifies the bootstrap competence and is trusted independently of P0; execution and later H designation remain separate. | The mandate is only model-authored prose, is P0 under another name, or is accepted solely by the H it creates. What preexisting acceptance establishes it? |
 
-| Candidate | Consequence under the current contract |
+D may avoid inventing an additional root-person role, but none of the encountered
+sources establishes such a mandate for this episode. A and D may also be two
+accounts of the same construction if Levi supplies its independent acceptance.
+No option is demonstrated smaller overall: fewer labels do not mean fewer authority
+assumptions. The identity choice and the graph choice below are separate axes; the
+same person arrangement can support more than one authorization graph.
+
+## Behavioral authorization graphs
+
+For comparison, let B_R mean R's established competence, and G mean a bounded
+bootstrap authorization issued under B_R **before** its authorized act. This is
+logical notation only. A real instance of B_R/G has not been selected or supplied.
+Each graph below states its required prior basis rather than claiming that basis
+already exists. References must recover the actual basis, its scope, the exact
+policy or decision it covered, and whether its conditions held before use.
+
+### M1 — root authorizes exact P0 activation only
+
+`B_R → G_install → P0 activation → H designation → bootstrap exhaustion → P1 succession`
+
+| Authority-bearing transition | Required basis operative before the transition | Circularity or scope test |
+|---|---|---|
+| R issues G_install | Independently established B_R includes competence to authorize this exact initial policy and scope. | P0 and future H supply no part of B_R's legitimacy. |
+| P0 becomes operative | G_install authorizes exact P0 activation, including the limited competence P0 will have during initialization. | P0 cannot authorize this activation itself. A mandate to store text is not a mandate to confer governing force. |
+| H is designated | Already-operative P0 contains a designation rule and identifies who may exercise it without relying on H's yet-uncreated authority. That competence lies within what G_install lawfully activated. | If P0 says only “H may appoint H,” no authorized first designator exists and M1 fails. |
+| Bootstrap permission is exhausted | G_install already fixes the condition ending its own use; an already-operative P0 rule may govern acknowledgement of that condition and readiness for ordinary governance. | P0 or H cannot invent a power to cancel or retain R's grant that G_install never supplied. Installing P0 must not leave a reusable G_install. |
+| H issues the decision over exact P1 | Already-operative P0 authorizes that decision by the lawfully designated H within its remit, after ordinary governance is enabled. | H's identity alone cannot enlarge its decision power; P1 cannot supply the approval rule. |
+| P1 becomes operative | P0 remains the prior operative succession rule; H has already been lawfully designated with the required remit; the required decision covers exact P1; bootstrap is exhausted and ordinary succession is enabled. | P1's new rules cannot approve its own activation. A newer proposal or a stale approval does not satisfy the prior rule. |
+
+M1 is coherent only if there is **limited bootstrap-internal operativity** for P0
+before the whole sequence is complete. P0 can then authorize H designation while
+ordinary governance-dependent effects remain disabled until completion. This is a
+candidate interpretation of the Build Contract, not a silent exception to its gate.
+If all policy-authorized effects, including H designation, are forbidden before
+completion, M1 cannot perform its second step and must be rejected.
+
+G_install can be consumed on P0 activation, with later exhaustion observation
+confirming an already-ended competence. If “bootstrap exhaustion” must instead be
+a later authority-bearing withdrawal of an ongoing root permission, installation-only
+G_install is insufficient unless its original terms already authorize that result.
+That difference changes the behavioral model and cannot be delegated to Shape.
+
+### M2 — root authorizes the complete bounded initialization
+
+`B_R → G_init → {P0 activation → H designation → bootstrap exhaustion} → P1 succession`
+
+The braces mean one authorized behavioral unit with ordered internal obligations.
+They prescribe neither one database transaction nor invisible intermediate storage.
+
+| Authority-bearing transition | Required basis operative before the transition | Circularity or scope test |
+|---|---|---|
+| R issues G_init | Independently established B_R includes competence for the complete initialization scope, not merely document installation. | Neither P0 nor H can enlarge B_R after the fact. |
+| Exact P0 is activated within initialization | Prior G_init authorizes that exact policy and scope. | P0's content is a selected result, not the authority for its own activation. |
+| H is designated after P0 activation | Prior G_init independently names or determines the permitted H designation and remit. P0 may express the resulting ordinary rule, but is not required to supply authority for H's first designation. | H is not asked to authorize the act that first establishes H. |
+| Bootstrap competence is exhausted | Prior G_init binds exhaustion to the specified completion condition; no later agreement may silently retain or resurrect it. | P0/H do not first invent the permission to end or reopen bootstrap. An incomplete execution does not imply a fresh grant. |
+| H issues the decision over exact P1 | Completed initialization has made P0 operative and designated H; P0's existing rule grants H that decision competence and scope. | Bootstrap completion alone is not an approval of every successor. |
+| P1 becomes operative | Completed initialization has lawfully made P0 operative for ordinary succession and established H's remit; the P0-required decision over exact P1 exists before its activation. | Expired G_init cannot be used as a substitute for that ordinary decision. |
+
+M2 avoids needing P0 to authorize its own initialization substeps. It nevertheless
+requires R to possess the broader initialization competence and G_init to determine
+H's designation and exhaustion condition. Those powers cannot be assumed merely
+because one authorization unit looks simpler. Before completion, ordinary effects
+remain disabled; recovery can complete only what the original scope still permits.
+The governing condition for incomplete/revoked initialization remains to be chosen
+behaviorally, without selecting its mechanism.
+
+### M3 — separately licensed root steps
+
+R could issue separately scoped prior permissions for P0 activation, H designation
+and exhaustion, with each exercised in the contract's order and P1 later authorized
+by operative P0 plus H's valid decision. Every step would still derive from B_R;
+none would borrow authority from its own result. This can express distinct rights
+to revoke or resume between steps, but adds authorization scope to explain and
+possibly leaves root competence live longer.
+
+If those separate permissions cannot be independently exercised or revoked and
+have the same completion rule, M3 is behaviorally equivalent to M2's bounded unit;
+renaming the steps earns no third model. If they can differ, that difference must
+be required by the episode before paying for the extra authority surface. No such
+requirement has been demonstrated. A purported smaller model that simply declares
+P0/H operative without prior authorization or omits exhaustion fails the criterion.
+
+### What is actually required, and what remains undetermined
+
+Required across all surviving candidates: an independent prior bootstrap basis;
+an authorization whose scope really covers each initialization act; separate lawful
+H designation; a prior rule ending bootstrap permission; no ordinary succession
+before initialization completion; and exact P1 authorization under the basis operative
+before its activation. These requirements do not force R and H to be the same human.
+
+The current evidence does **not** select M1 or M2. M1 and M2 differ in who licenses
+H's designation and whether bootstrap-internal P0 authority is available; this is
+not a table or transaction choice. M2 offers a direct explanation under the stronger
+reading of the pre-ordinary-governance gate, but it is not justified unless R's wider
+competence is established. M3 has no demonstrated smaller advantage. Selecting any
+of them now would invent authority scope or intermediate permission semantics.
+
+## Falsification results — documentary reasoning, not executed tests
+
+| Pressure | Result under the candidate graphs |
 |---|---|
-| Treat service-role or owner access as the authority root | Technical ability substitutes for warrant unless an external designation explicitly binds custody, identity, scope and operation. A credential alone is insufficient. |
-| Let P0 declare who may install P0 | Circular authority: the candidate supplies the rule that purportedly authorized its own activation. Requires an independently authorized bootstrap basis. |
-| Keep the initial human override permanently reusable | Does not demonstrate bootstrap exhaustion; emergency/recovery use needs its own explicit later authority basis. |
-| Treat a transformation PASS as policy approval | Violates BUILD 5B's preserved evidence/authority separation. |
-| Bounded external root, explicit exhaustion, successor authorized under prior operative basis | Recommended episode; exposes identity, ordering, revocation, failure and reconstruction questions without selecting a universal governance engine. |
+| P0 authorizes its own birth | Rejected by all surviving graphs: activation requires G_install/G_init or the separately scoped root permission. No candidate P0 clause can backfill that basis. |
+| H requires authority that exists only after H's designation | M1 fails if P0 delegates initial appointment solely to H; it survives only with a separately empowered initial designator. M2/M3 require H designation to be covered by the prior root grant. |
+| Bootstrap replay after exhaustion | Fails every graph. Consumption or expiry must follow prior grant terms; restarting or losing a projection cannot create another grant. Actual end/resumption conditions are unresolved. |
+| Credential possession substitutes for warrant | Fails root alternative B if custody is treated as self-justifying. All alternatives must preserve independently established mandate, scope and executor/custodian distinction. |
+| Newer P1 governs without prior authority | Fails every graph. P0 and valid H designation/decision must authorize exact P1 before the transition; P1 cannot expand its own approval scope. |
+| Restart relies on conversation history | Fails unless every transition can recover its prior basis, granted scope, exact subject/version, designation/decision, ordering and exhaustion condition. A stored claim of lawfulness alone is insufficient. No storage design is selected. |
+| Executor, custody, human authorization source, H or policy silently collapse | Fails if the explanation cannot distinguish the basis held in each responsibility. Common person or machinery is allowed only with separately recoverable competences and limits. |
+| Universal denial appears safe | Not sufficient: the graph must permit the lawful bootstrap, H designation and one valid P1 succession under the stated conditions. |
+
+These results eliminate circular explanations. They do not demonstrate that an
+actual available R has the powers required by either survivor. Reconstruction
+preserves the independent trust basis and the limits of its acceptance; it cannot
+prove that every externally trusted premise is universally true.
+
+## Question Forward — updated live set
+
+| ID | Calibrated question | Why it can change the decision / closure condition |
+|---|---|---|
+| Q1 | What independently trusted authority basis permits the bounded bootstrap act, how is that basis established independently of candidate-policy content and caller prose, and must that root itself be a human authority? | Identify an actual accepted starting basis and its competence. The contract does not require a human root by itself; options A–D remain conditional until that basis is established. |
+| Q2 | Who or what becomes the designated human/warrant authority after initial policy activation, and what prior operative basis lawfully authorizes that designation? | Name the intended authority/remit and its preexisting designator: limited operative P0 under M1, or prior root grant under M2/M3. The future H cannot supply its own missing first authority. |
+| Q3 | Does R's mandate authorize only exact P0 activation or the complete initialization, and may P0 authorize bootstrap-internal H designation before ordinary governance is enabled? | This chooses M1 versus M2; choose M3 only if independently exercisable step permissions are needed. An answer must justify the actual scope, not merely prefer a layout. |
+| Q4 | Under the chosen prior grant, precisely when does bootstrap competence end, and what remains permitted if initialization is interrupted or its basis is withdrawn? | Determine whether replay is forbidden, bounded completion remains permitted, or a new independently authorized act is required. No automatic reset, emergency architecture or physical commit boundary is implied. |
+| Q5 | What prior operative rule and valid H decision authorize the first exact P1, and when do their permissions apply? | Bound the succession to this episode; ensure P1 cannot validate itself, exceed scope, or apply a withdrawn/stale decision. Distinguish validity from recording order without assuming a general bitemporal model. |
+| Q6 | For that chosen graph, what evidence lets a fresh inquiry reconstruct each prior basis and its scope/conditions independently of caller prose and conversation? | Identify necessary observable facts and the accepted external-trust limit; route their exact representation to AP-04/Shape only after the behavioral graph is settled. No new standing vocabulary is required merely to describe these facts. |
+
+Q1–Q3 are the immediate discriminators. Q4–Q6 complete the chosen episode's authority
+explanation; they must not be deferred wholesale as implementation details. Exact
+representation can remain open after the explanation is complete. No additional
+search is required just to accumulate sources that do not answer these questions.
+
+## Aperture disposition
+
+**AP-04: REACTIVATED NARROWLY FOR BUILD 6.** The first consequential governance
+transition is now the subject of this Build; its trigger has fired. The inquiry covers
+enforcement obligations for bootstrap, initial policy activation, H designation,
+exhaustion and the first ordinary succession. Exact enforcement-policy payload and
+representation remain unresolved for Shape. Reactivation is not installed policy.
+
+**AP-01: CONDITIONAL; NO FURTHER REACTIVATION.** This pass requires distinguishable
+authority bases, scopes and transitions, but demonstrates no need for a new controlled
+governance-standing vocabulary. R/H/P0/G are explanatory labels, not enum proposals.
+Prior closed values stay unchanged. Revisit only if a concrete distinction needed
+by the accepted episode cannot be expressed without a new controlled vocabulary.
+
+AP-03/AP-07 retain their existing conditional triggers. No new aperture, Actor
+ontology or universal authorization mechanism is created. The existing BUILD 5B
+leases and evidentiary limits remain unchanged.
+
+## Repository integration boundary — verified read-only
+
+At this pass, [PR #2](https://github.com/Levi-Anthony/ecb-v2/pull/2) is OPEN, draft,
+and reported MERGEABLE. Its base is `main`; head branch
+`claude/process-usage-limits-4n802e` is at
+`5af44bb1a14cc098f2f3f105d611cff406135cf9`, carrying the accepted BUILD 5B closure.
+Remote main is still `07fcb9f29c75365c07d36226043d3b17cbc769fd`.
+Local/remote BUILD 6 entry is `984f16d9267082aec2b0dce33de597aad7e46abf`, descending
+from `5af44bb`. The only BUILD 6 changes before this pass are Sense/checkout/harvest
+documentation; the unrelated collaboration draft is untracked and untouched.
+
+The clean predecessor integration path remains **PR #2 → main**. That is the
+required pre-Shape repository normalization step under this pass: after separate
+merge authorization, reverify that main includes the accepted predecessor and that
+the BUILD 6 lineage still descends from it. It does not reopen BUILD 5B, invalidate
+BUILD 6, or resolve the authority questions above. No GitHub mutation or merge is
+part of this instruction; the remote observations are point-in-time facts.
+
+## Disposition and boundary to Shape
+
+**SENSE_NOT_CLOSEABLE.** The pass establishes conditional non-circular graphs, but
+not a decision-complete authority chain for the actual episode. The independently
+accepted root and its competence are unresolved; the intended H and prior designation
+power are unbound; M1 versus M2 still changes which prior basis licenses designation;
+and grant exhaustion/recovery and the first succession decision need that selection.
+Choosing these during Shape would conceal unresolved behavioral authority decisions.
+The repository normalization step is additional and separate, not the reason the
+current authority explanation is incomplete.
+
+If those questions are resolved, the minimum decisions a later Shape must inherit
+are: the accepted root/trust assumption and bounded competence; chosen authorization
+graph with each prior basis explicit; H's identity or determining rule and remit;
+P0's required behavioral authority including the first P1 decision; the rule ending
+bootstrap and governing interrupted completion; and the independently recoverable
+facts needed to distinguish lawful use, stale/forged use, and exhausted permission.
+Those are conditional handoff obligations, **not** an Output Contract, accepted
+Shape, or mechanism selection in this pass.
+
+Sense remains open on Q1–Q3 first, then Q4–Q6 for the surviving graph. No phase
+transition, acceptance freeze, implementation, canonical contact or policy installation
+occurred. BUILD 7+ remains unopened.
 
 ## Evidence encounter and qualification limits
 
@@ -132,54 +315,6 @@ its controller will eventually need an authoritative basis for effects. It neith
 supplies that basis nor authorizes importing the controller, global skill, or full
 workflow into BUILD 6. Its untracked file remains untouched.
 
-## Question Forward
-
-| ID | Decision-changing question | Route and discriminator |
-|---|---|---|
-| Q1 | Which external human authority authorizes bootstrap, over what exact scope/policy, and how is that identity established independently of caller prose? | Sense/human authority disposition. Recommend a narrowly scoped designation by Levi for this bootstrap; no credential or identity binding is inferred from the recommendation. |
-| Q2 | What exact initial policy governs ordinary succession, and which prior operative basis authorizes P0→P1? | Sense then Shape; distinguish policy activation from policy content, approval, and executor identity. No candidate may authorize its own installation. |
-| Q3 | What commits together, when is bootstrap exhausted, and what operations are allowed in a partially initialized state? | Shape; force crashes/races at each boundary and require recovery without reopening exhausted authority. |
-| Q4 | Which role, warrant and governance-standing facts must be persisted, and can existing primitives retain them without semantic overloading? | AP-01/AP-04; use existing Referent identity, leave physical roles/enums undecided, do not create an Actor ontology by default. |
-| Q5 | Does this episode require immediate-only validity, delayed effectiveness, retroactivity or revocation? | E13 / Shape. Recommend testing immediate succession first; do not claim bitemporal coverage. A required historical-validity distinction can change the representation. |
-| Q6 | What policy/version/activation representations are actually needed beyond the installed five-role Artifact and Claim-history tables? | Shape after focal acceptance. Demonstrate integrity or reconstruction need before extending dedicated storage. |
-| Q7 | What surviving authority can repair interrupted initialization without being an unbounded bootstrap override? | Shape/human boundary; distinguish replay, recovery and deliberate future emergency authority. Missing evidence cannot create permission. |
-
-These are open decisions, not reasons to halt independent source inspection. They
-block only dependent closure/installation. No answer is supplied merely to finish
-a form. The legacy human-approval backend has now been traced below. The next decision
-is the minimum external root and policy scope; identity binding, policy bytes and
-exhaustion/recovery conditions must be explicit before dependent Shape closes.
-
-## Pressure to carry into Shape
-
-Every consequential Shape must disposition all twelve governing pressures. For
-this candidate, proposed attacks include duplicate bootstrap/succession requests;
-competing initializers/successors; stale policy and approval versions; crash and
-rollback during activation/exhaustion; reconstruction from stale projections;
-wrong human/executor/role; substituted exact bytes; revoked basis; bypass through
-ordinary credentials; retry after unknown outcome; validity versus recording order;
-and unauthorized policy writes. These are inquiry targets, not frozen tests or
-claims that a mechanism already handles them.
-
-Structural checks can bind identities, versions, state and committed transitions.
-Authority must provide the external root and scoped designation. Semantic judgment
-may be needed to accept policy content; observations establish what actually ran.
-The final enforcement surfaces belong to Shape. No statement here proves a
-non-bypassable boundary while the same actor retains an independent privileged path.
-
-## Current disposition
-
-BUILD 5B closure is recorded; BUILD 6 Sense is open with a recommended episode and
-traceable open questions. AP-01 and AP-04 are consulted at their triggered seam;
-no controlled vocabulary or enforcement payload is selected. AP-03 activates only
-if an executable transition needs semantic judgment; AP-07 only if a new asserted
-relation is needed. No new aperture is required merely to duplicate these routes.
-
-Prior-art qualification is partial, not complete. No Sense closure, Shape decision,
-Output Contract, acceptance freeze, migration, runtime or canonical state change
-has occurred. Continue the bounded root/policy-scope examination before proposing Sense closure.
-BUILD 7+ stays unopened.
-
 
 ## Follow-up — authenticated approval boundary
 
@@ -211,12 +346,3 @@ API design or ordinary human-approval path as a proof of bootstrap legitimacy.
 The trust that establishes the first designated authority remains an external
 assumption to authorize and bound, rather than something that registry proves about
 its own creation. See the [harvest record](../harvest-ledger.md#build-6--authenticated-approval-and-non-authoritative-creation).
-
-**Recommendation for Sense disposition:** root the one-scope exercise in Levi's
-explicit authorization of exact P0 and the designated human's succession power;
-require a separate technical binding of that human identity; consume the bootstrap
-grant on complete initialization; then exercise one P0-authorized P1 succession.
-This recommendation does not create the grant. Whether the technical binding is a
-restricted installer custody boundary or authenticated application flow is still
-a Shape alternative; the selected boundary must withstand its named caller-forgery
-and replay tests. A general human UI is not assumed necessary.
