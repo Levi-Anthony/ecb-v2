@@ -1,0 +1,22 @@
+{
+  "predecessor.json": {
+    "sha256": "d3929ed05ebb6a0eea8e27dce30854d833319297e781c57482a4a8c7e3988fe6",
+    "bytes": 96751
+  },
+  "qualification.json": {
+    "sha256": "08a963c956a1395fd9be83860a7417c02a0db95ff3d810c40ebadc3a133dd8a0",
+    "bytes": 238530
+  },
+  "canonical-schema-transaction.json": {
+    "sha256": "69387432fd5dcd7a973277c0c20910439ca2827c5928f5dc6259f6682e56c17c",
+    "bytes": 231
+  },
+  "canonical-schema-confirmation.json": {
+    "sha256": "fc99e947bfe2e8468b1f43c9b6affc7709312fe4ee74f240aa41babb5faf9f91",
+    "bytes": 169
+  },
+  "canonical-stages.json": {
+    "sha256": "0a6336ff3eed064246dfbf08e38b686c969416c5a9ceb0b7d04674b2ca183105",
+    "bytes": 120710
+  }
+}

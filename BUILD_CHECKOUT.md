@@ -1,146 +1,131 @@
-STATUS: BUILD 5B SENSE CLOSED; SHAPE REQUALIFIED AND CLOSED; AWAIT MOVE RELEASE
+STATUS: BUILD 5B EXECUTION PASS; AWAIT HUMAN METABOLIZE
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
-AUTHORITY: Hardened governing repo sources and explicit human BUILD 5B reconciliation/conditional closure authorization
+AUTHORITY: Hardened governing sources, anchored BUILD 5B Move release, and human continuation authorization
 CURRENT BUILD UNIT: BUILD 5B — Versioned Artifacts + First Transformation Receipt
 
 # BUILD 5B — Versioned Artifacts + First Transformation Receipt
 
 ## CURRENT MOVE
 
-`SHAPE REQUALIFIED AND CLOSED → AWAIT EXPLICIT HUMAN MOVE RELEASE`
+`PG17 QUALIFICATION PASS → CANONICAL EXECUTION PASS → AWAIT HUMAN METABOLIZE`
 
 ```text
 BUILD_0_TO_5A=CLOSED
-BUILD_5B=SHAPE_CLOSED_ON_HARDENED_LINEAGE
-SENSE=CLOSED_BY_HUMAN_DISPOSITION
-SHAPE=CLOSED_AFTER_BOUNDED_ACCEPTANCE_TIGHTENING
-PRIOR_ART_QUALIFICATION=COMPLETE_FOR_SELECTED_CANDIDATE_AND_DECLARED_SCOPE
-WORKED_TRACE_07=REFROZEN_WITH_P23_PROOF_SENSITIVITY_CONTROL; NOT_EXECUTED
+BUILD_5B=EXECUTED; NOT_ACCEPTED_OR_CLOSED
+SENSE=CLOSED; SHAPE=REQUALIFIED_AND_CLOSED
+MOVE_ANCHOR=07fcb9f29c75365c07d36226043d3b17cbc769fd
+MOVE_ANCHOR_TREE=616857ac26bbf34695bad13468cda37c67bd7e35
 HARDENING_ANCESTOR=0e969b9f72dc198976d7538748a341148edf09b2
-DELTA_REQUALIFICATION=COMPLETE
-D_H1=ACCEPTANCE_PROOF_COVERAGE_GAP; RESOLVED_AT_SPECIFICATION_LEVEL
-STANDING_PRESSURES=12_APPLICABLE; ALL_MAPPED
-DEFERRED_BROADER_MECHANISMS=4_SCOPED_LEASES_WITH_EXPIRY
-SENSE_REOPEN_REQUIRED=NO
-OUTPUT_CONTRACT=BOUND_AND_REFROZEN; ARCHITECTURE_UNCHANGED
-MOVE_PERMISSION=UNRELEASED
-IMPLEMENTATION=UNOPENED
-CANONICAL_CONTACT=NONE_IN_THIS_SENSE_OR_SHAPE
-E07=CONSIDERED; NOT_PROMOTED_AS_GENERAL_DOCTRINE
-E15=METHODOLOGICAL_EVIDENCE_ONLY; NO_SIGMA_TO_ECOS_PROOF_REQUIREMENT
-AP02=NARROWED_FOR_ARTIFACT_PAYLOAD_AND_EXACT_VERSION_RECONSTRUCTION
-AP01_AP03_AP04_AP07=NO_BROADER_ACTIVATION
-NEW_APERTURES=NONE
+SELECTED_IMPLEMENTATION_LINE=f47cbad12c34043113d273c2423ee5108317d4da; PR_2
+ALTERNATIVE_PRESERVED=60f510ce3f75c46f9caff2b96274d5fd5a170a07; NONCANONICAL; NOT_ADOPTED
+QUALIFICATION_BRANCH=build/build-5b-pg17-qualification
+PG17_QUALIFICATION=COMPLETE_PASS; WT07_39_OF_39; P01_TO_P23
+EXECUTED_CANDIDATE=7f3790786d947ac278501632a6072433db8d0c6e
+EXECUTED_TREE=f5d9d29f765c24cc72dc3c0fa3cfe4ba412ad859
+CANONICAL_PREDECESSOR=READ_ONLY_REVERIFIED_2026-09-06; IDENTICAL_TO_RETAINED_SNAPSHOT
+CANONICAL_MUTATION=SCHEMA_AND_LEDGER_COMMITTED; EXACT_7_PLUS_2_FIXTURES_COMMITTED
+PRECHECK_XID=1524; RECEIPT_XID=1525
+RC1=PASS_SIX_TRUE; RC2=EXPECTED_FAIL_OUTPUT_FORMAT
+CANONICAL_ARTIFACTS=9; REFERENTS=16; PUBLIC_TABLES=6; FUNCTIONS=8; VIEWS=0
+INHERITED_FIXTURES_CATALOG_LEDGER=PRESERVED
+FRESH_RECONSTRUCTION=PASS
+METABOLIZE=PENDING_HUMAN
 BUILD_6_PLUS=UNOPENED
 ```
 
-## AUTHORIZATION AND PREDECESSOR
+## AUTHORIZATION AND RECOVERY
 
-The human accepted the TR1→A1→transformation→A2→bounded-check→receipt focal episode, closed Sense with
-five corrections, and explicitly authorized Shape's second examination and a new acceptance trace.
-The corrections are recorded in the [Sense closure](docs/build-sense/007-build-5b.md) and
-[Shape entry](docs/build-shape/007-build-5b.md). No schema was selected in Sense.
+The reviewed Shape and Move entry release are preserved at `366c92d` and the prior
+checkout at `f47cbad`. The release established the Shape anchor above and adopted
+the [BUILD 5A entry gate](docs/build-receipts/006-build-5a.md#entry-gate).
+The historical PG16-only disposition allowed rehearsal while holding canonical
+execution until the unresolved baseline and engine gates were resolved.
 
-Original repository predecessor: `d2ee85b7fcf38192c94720977e1d51325769ddc0`, tree
-`9404280ad44d8d1f7d9532517dbc12dfe974dfba`. The recovered eight-file Sense/Shape state was preserved
-exactly on `wip/build-5b-shape-pre-hardening` at `ea549649ad9993b0f89674227a2846423ce97076`, tree
-`889be0d1062a05f16a4d2c06d4953c45f3e1cd32`, as NON-AUTHORITATIVE; DO NOT MERGE DIRECTLY.
-Its closure labels were treated as candidate claims during recovery, not automatically authoritative.
+In the Codex task **Check Status and Report** (`01a07504-9640-71a0-b835-d91557eb5c26`),
+the human subsequently said **“Go”** after the report specified reconciliation,
+exact PG17 qualification, baseline checks, then canonical activation, fixture
+stages and an execution receipt. That continuation opened the qualification
+worktree. The current human request **“Can you continue the checkout work”**
+resumes that authorized work. It does not accept BUILD 5B or open BUILD 6.
 
-The human's RECONCILIATION AUTHORIZATION permits delta requalification, bounded acceptance tightening,
-and then Shape closure if the architecture survives. The hardening commit is
-`0e969b9f72dc198976d7538748a341148edf09b2`, tree
-`d736786826dcc45d9cf277d0e5e100c7dcb383e1`, separately anchored on main. This reconciliation starts
-from that ancestor, retains K7, and refreezes WT07 with the P23 preservation sensitivity control.
-[ADR-005](docs/architecture-decisions/005-cross-cutting-integrity-and-promotion-discipline.md) records
-the governing hardening; [ADR-006](docs/architecture-decisions/006-build-5b-artifact-receipt-boundary.md)
-records the local Shape. WT07 is not renumbered.
-
-The full BUILD 5A checkout/FH-01–FH-07 remain at the original predecessor. [BUILD 5A closure](docs/build-receipts/006-build-5a.md) remains unchanged. Canonical counts and previous PASS results
-are accepted historical evidence, not newly observed state. No database contact occurred.
+The older original worktree still carried a pre-release checkout and the preserved
+failed alternative. Reentry must use this qualification line. Earlier closures,
+Shape/WT07 texts and receipts remain historical authorities/evidence in their
+original standing. Current execution facts belong here and in the new receipt.
 
 ## PURPOSE / INVARIANT SERVED
 
-Retain reconstructible historical representation payload and evidence of a bounded check on exact
-identified inputs/outputs against predeclared obligations. Preserve referent/map/mapper separation,
-identity/description, evidence/assertion, standing/warrant, current/newest, and Event/receipt.
-Artifact representation and Transformation Receipt role remain distinct; a receipt is an Artifact
-specimen in the selected physical realization. No check confers acceptance, authority, authorization,
-standing, warrant, or currentness.
-
-The discriminator remains `proven capability ≠ inherited implementation`. BUILD 5B must close before
-BUILD 6 opens. General SIGMA→ECOS correctness is not a requirement of this local transformation.
+Retain exact historical representation payload and evidence of bounded checks on
+identified inputs/outputs against predeclared obligations. Preserve identity versus
+description, evidence versus assertion, standing versus warrant, current versus
+newest, and Event versus Transformation Receipt. A passing check never supplies
+truth, acceptance, authority, authorization or currentness.
 
 ## INPUTS / OUTPUT / STANDING
 
-Inputs: accepted TR1/C/L/GT01 episode, closed BUILD 0–5A boundaries, Q1–Q6, pinned v1 implementation/test
-follow-up, E07 and methodological evidence, and narrowly reactivated AP-02.
+Inputs: accepted TR1/C/L/GT01 episode, closed BUILD 0–5A, requalified K7 Shape,
+[ADR-006](docs/architecture-decisions/006-build-5b-artifact-receipt-boundary.md),
+and frozen [WT07](docs/acceptance/build-5b-wt07.md).
 
-Closed Shape selects one immutable Artifact table with five record roles: source representation,
-transformation request, transformed representation, durable check attempt, and Transformation Receipt.
-A receipt separately checks source grounding and representation preservation. The checker obtains the
-source witness from persisted Event/Link rows and cannot accept a producer-supplied result.
-
-The durable attempt must commit in a different top-level transaction before checking can run.
-Database-derived xid8 metadata enforces this, including across savepoints. Crash/rollback therefore
-leaves an incomplete attempt; absence of a marker justifies no-check only through the bounded checker
-path as of the observer's snapshot. No private/external computation or eventual completion is inferred.
-
-Exact selected fields, privileges, two trigger functions, two triggers, one partial unique index,
-request/receipt semantics, alternatives, and the bounded work scope are in the
-[Shape Output Contract](docs/build-shape/007-build-5b.md#output-contract--bound-executable-only-after-a-separate-move-release).
-[ADR-006](docs/architecture-decisions/006-build-5b-artifact-receipt-boundary.md) records the local closure.
-This is selected design, not installed capability.
+Output is confined to the five products in the
+[Shape Output Contract](docs/build-shape/007-build-5b.md#output-contract--bound-executable-only-after-a-separate-move-release):
+one Artifact migration, local harness/runner, nine canonical Artifact fixtures,
+Layer B regression, and minimum evidence/readme/checkout wiring.
+The migration is unchanged from PR #2: `20260906014257_build_5b_versioned_artifacts.sql`,
+SHA-256 `adbcbdf627a7d60e020af74e214c976757b423ac697caefd5d88904082a95b41`.
 
 ## ENFORCEMENT / FAILURE BEHAVIOR
 
-STRUCTURAL: exact identity/participation, immutable writes, predeclared spec, caller-forgery rejection,
-committed attempt gate, and one terminal result per attempt. OBSERVATIONAL: bounded source witness and
-component check results. No semantic-truth or AUTHORITY transition is activated.
+The database enforces exact identity and participation, immutable writes, fixed
+specifications, caller-forgery rejection, a previously committed attempt gate and
+one terminal result per attempt. Grounding reads persisted Event/Link rows;
+preservation independently compares the two retained representations.
+PASS requires all six components. Observed violations are FAIL; unavailable
+checks are INCOMPLETE. An attempt without a terminal receipt stays incomplete.
+No result changes Claim standing or propagates through R.
 
-PASS requires both grounding and preservation plus all other declared components. Observed violations
-produce FAIL. Missing/incomplete evidence produces INCOMPLETE, not PASS. A committed attempt with no
-terminal receipt remains incomplete. Check results never mutate Claims or propagate through R.
+The runner checks exact candidate hashes and remote anchoring, unchanged inherited
+fixtures/catalog/ledger, the rehearsed installed schema before commit, and exact
+0/7/9 stages. Unexpected partial state or uncertain outcome stops for persisted
+state inspection; no blind replay. Fault probes run only on disposable PostgreSQL.
 
-Trust boundary: untrusted service_role producer; trusted database and DDL/release custody. The checker
-can detect the frozen producer defects but does not prove independence from every correlated
-specification/checker error or defend against an owner rewriting its own database evidence.
+## TEST / ENTRY GATE
+
+Fresh local evidence on 2026-09-06 passed the full PG17 rehearsal: 39 WT07 findings,
+P01–P23, observed P17 blocking in both outcomes, retained positive/negative P23
+controls, actual backend-loss recovery, fixture resumption, baseline and Layer B
+regressions. Rehearsal matches all inherited fixture bytes (including embeddings),
+definitions, constraints, triggers, grants, and relevant roles. The resumed
+canonical read-only snapshot equals the earlier accepted snapshot.
+
+The exact clean candidate `7f37907` was committed and remotely anchored, then passed
+the complete rehearsal and fresh predecessor checks before canonical writes. Schema
+and ledger committed atomically; seven pre-check Artifacts and two receipts committed
+in separate later transactions. Fresh reconstruction passed with no probe residue.
+The [execution receipt](docs/build-receipts/007-build-5b.md) reports all gate evidence
+and links the durable [evidence manifest](docs/build-receipts/evidence/build-5b/manifest.json).
+Detailed commands and test boundaries: [qualification procedure](tests/build-5b/README.md).
 
 ## APERTURE / REVALIDATION TRIGGER
 
-AP-02 is narrowed only for retained Artifact payload, exact versions, and required operation/attempt/
-receipt reconstruction. Frozen Thought revision and general historical evidence retention remain
-unchanged. Active Shape questions did not earn a new aperture. Q1–Q6 are dispositioned in Shape.
-
-Reopen Shape if its checker/commit/retention boundary fails a named attack; if a new checker, format,
-retention policy, or external trust root is needed; or if importing execution metadata into another
-cluster invalidates the XID assumption. Route ordinary implementation/probe/tooling defects to their
-responsible layer. Return to the human boundary for a governing invariant or accepted-episode conflict.
-
-## TEST / SHAPE PASS CONDITION
-
-[Worked Trace 07](docs/acceptance/build-5b-wt07.md) is frozen with exact payloads, fixture IDs, both
-coverage directions, twenty-three adversarial challenges including the P23 same-checker negative control, fresh-context reconstruction, and Layer B
-regression. K1–K6 have explicit falsifiers or unearned costs; refined K7 survives the documentary second
-examination. Remaining trust/observation limits are explicit. The explicit hardening delta found only D-H1, an acceptance proof-coverage gap now corrected in WT07.
-All twelve pressures and four scoped deferral leases are recorded in the Shape; no unresolved design
-blocker remains under the declared scope. Execution has not been demonstrated.
-
-Implementation must prove the trace later. Commit-dependent fault/concurrency probes use a disposable
-noncanonical database; schema activation and the two fixture stages have distinct atomic boundaries.
-Historical Layer A artifacts remain unchanged. No canonical mutation or executable implementation
-claim is made by this Shape closure.
+AP-02 remains narrowed only for exact Artifact versions and operation/attempt/receipt
+reconstruction. AP-01/03/04/07 remain unbroadened. No new aperture or wholesale E07/E15
+promotion. Reopen Shape for a named K7 falsifier, new format/checker/retention/trust
+boundary, or invalid XID provenance after import. Ordinary tooling and probe defects
+stay at their responsible layer. An invariant or accepted-episode conflict returns
+to human architectural disposition. The four scoped deferral leases in Shape remain.
 
 ## NON-GOALS
 
-No Move, migration file, code implementation, canonical mutation, runtime/MCP/deployment change,
-credentials, external checker service, new Claim kind/standing/predicate, currentness, supersession,
-propagation, Actor primitive, bitemporality, editor, generalized governance, further wholesale E07/E15 promotion, or BUILD 6.
-Documentation commits/anchoring are separately authorized for preservation, hardening, and this
-reconciliation. The hardening remains a distinct ancestor; the WIP candidate is not merged directly.
+No runtime/MCP/deployment/credential change, new Claim vocabulary/predicate, currentness,
+supersession, propagation, Actor ontology, bitemporality, general controller, editor,
+collaboration pilot, global skill installation, or BUILD 6. The agent-collaboration
+research draft is separate from this bounded Move.
 
 ## NEXT HANDLE
 
-Review the requalified Shape, corrected WT07, and bound Output Contract on the reconciliation branch. A separate human Move release must identify
-the reviewed repository anchor and entry gate before any implementation/canonical mutation. Stop here.
+Review the [BUILD 5B execution receipt](docs/build-receipts/007-build-5b.md) for human
+Metabolize/closure. The authorized implementation, qualification, canonical fixture
+sequence and evidence retention are complete. No canonical rerun is needed.
+Execution PASS does not close BUILD 5B or open BUILD 6.

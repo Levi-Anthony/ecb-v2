@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "postgres": "npm:postgres@3.4.7"
+  },
+  "tasks": {
+    "check": "deno fmt --check . && deno lint && deno check *.ts",
+    "rehearse": "deno run --allow-env --allow-net --allow-read --allow-write --allow-run qualify.ts rehearse"
+  }
+}

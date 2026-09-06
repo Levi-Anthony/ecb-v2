@@ -1,0 +1,1288 @@
+{
+  "outcomes": [
+    {
+      "stage": "precheck",
+      "outcome": "COMMITTED_CONFIRMED",
+      "ids": [
+        "8777e33d-7555-40aa-92f9-d5107395c0c7",
+        "ba27d938-c586-4c09-ac31-9c67a2d0b5e0",
+        "95b5db1d-cb79-439b-ae93-0bdaef5cfda2",
+        "661fc2b6-63f8-4cfc-8d29-697213ac2286",
+        "f64d508d-df25-47c8-8d6d-e26a6dc9a906",
+        "9c322dda-54b8-4838-bdf1-2df471f0f992",
+        "407027f9-05cf-4bc3-85dc-012d2e0aa3fe"
+      ]
+    },
+    {
+      "stage": "receipts",
+      "outcome": "COMMITTED",
+      "ids": [
+        "6d0b744b-9707-46cb-b771-9085501e93ee",
+        "1217d889-e874-4875-9c8a-d78c86156583"
+      ]
+    },
+    {
+      "stage": "fresh_verification",
+      "outcome": "PASS"
+    }
+  ],
+  "rows": [
+    {
+      "id": "1217d889-e874-4875-9c8a-d78c86156583",
+      "artifact_role": "transformation_receipt",
+      "context_id": "407027f9-05cf-4bc3-85dc-012d2e0aa3fe",
+      "target_id": null,
+      "payload_text": "{\"scope\": \"recorded_transition_only\", \"checks\": {\"grounding\": true, \"input_format\": true, \"preservation\": null, \"output_format\": false, \"participation\": true, \"checker_binding\": true}, \"result\": \"FAIL\", \"reasons\": {\"preservation\": \"not_evaluated\", \"output_format\": \"invalid_format\"}, \"coverage\": \"grounding_and_preservation\", \"input_id\": \"8777e33d-7555-40aa-92f9-d5107395c0c7\", \"output_id\": \"9c322dda-54b8-4838-bdf1-2df471f0f992\", \"attempt_id\": \"407027f9-05cf-4bc3-85dc-012d2e0aa3fe\", \"checker_id\": \"prepare_build_5b_artifact/v1\", \"input_digest\": \"8b80af401b26d8aa98ad9c4a27bb5385b8b6ac8aa40138f7736950a144ca355c\", \"operation_id\": \"f64d508d-df25-47c8-8d6d-e26a6dc9a906\", \"output_digest\": \"bc163e776d6b04a8500f7ca6c94fca34e21c44b118d4ad253ae986e271363819\", \"source_witness\": {\"link_id\": \"4c6c0f50-a936-4da6-bb09-233f93320639\", \"claim_id\": \"0f89e778-b16e-4840-9129-a2aa3eb6f697\", \"event_id\": \"a6925494-a862-441b-a361-5f5ec41dc9dc\", \"recorded_at\": \"2026-09-05T02:24:35.793609Z\", \"to_standing\": \"basis_qualified\", \"from_standing\": \"unassessed\", \"link_claim_id\": \"0f89e778-b16e-4840-9129-a2aa3eb6f697\", \"evidence_referent_id\": \"19a949ea-a8fc-4250-a386-fa64e5530180\", \"evidence_revision_digest\": \"5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55\", \"evidence_revision_scheme\": \"ecb_thought_revision_v1_sha256\", \"observed_revision_digest\": \"5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55\"}, \"receipt_version\": 1, \"operation_digest\": \"c7f66a66fab4350147d3d9f1192e42c811b35f2799ede94cbef5dd8477d7d774\", \"producer_succeeded\": true, \"checker_definition_digest\": \"310aa83181ea186b1dc5ea1ea377c99a12a09ee1d527552bb8b07c676f0f0912\", \"observed_checker_definition_digest\": \"310aa83181ea186b1dc5ea1ea377c99a12a09ee1d527552bb8b07c676f0f0912\"}",
+      "digest": "9a6444de72b440a4910ee02e7092de218255706204046414f04409dc06225a90",
+      "producer_succeeded": null,
+      "created_xid": "1525",
+      "recorded_at": "2026-09-06 11:27:46.088715+00"
+    },
+    {
+      "id": "407027f9-05cf-4bc3-85dc-012d2e0aa3fe",
+      "artifact_role": "check_attempt",
+      "context_id": "f64d508d-df25-47c8-8d6d-e26a6dc9a906",
+      "target_id": "9c322dda-54b8-4838-bdf1-2df471f0f992",
+      "payload_text": "{\"event\": \"check_requested\", \"input_id\": \"8777e33d-7555-40aa-92f9-d5107395c0c7\", \"output_id\": \"9c322dda-54b8-4838-bdf1-2df471f0f992\", \"checker_id\": \"prepare_build_5b_artifact/v1\", \"contract_id\": \"ecb_transition_relayout_v1\", \"input_digest\": \"8b80af401b26d8aa98ad9c4a27bb5385b8b6ac8aa40138f7736950a144ca355c\", \"operation_id\": \"f64d508d-df25-47c8-8d6d-e26a6dc9a906\", \"operation_digest\": \"c7f66a66fab4350147d3d9f1192e42c811b35f2799ede94cbef5dd8477d7d774\", \"checker_definition_digest\": \"310aa83181ea186b1dc5ea1ea377c99a12a09ee1d527552bb8b07c676f0f0912\"}",
+      "digest": "43f13dc32e4691585e09b6461514960191bd46c262215a37dc7a2b65cb287aeb",
+      "producer_succeeded": null,
+      "created_xid": "1524",
+      "recorded_at": "2026-09-06 11:27:43.701494+00"
+    },
+    {
+      "id": "661fc2b6-63f8-4cfc-8d29-697213ac2286",
+      "artifact_role": "check_attempt",
+      "context_id": "ba27d938-c586-4c09-ac31-9c67a2d0b5e0",
+      "target_id": "95b5db1d-cb79-439b-ae93-0bdaef5cfda2",
+      "payload_text": "{\"event\": \"check_requested\", \"input_id\": \"8777e33d-7555-40aa-92f9-d5107395c0c7\", \"output_id\": \"95b5db1d-cb79-439b-ae93-0bdaef5cfda2\", \"checker_id\": \"prepare_build_5b_artifact/v1\", \"contract_id\": \"ecb_transition_relayout_v1\", \"input_digest\": \"8b80af401b26d8aa98ad9c4a27bb5385b8b6ac8aa40138f7736950a144ca355c\", \"operation_id\": \"ba27d938-c586-4c09-ac31-9c67a2d0b5e0\", \"operation_digest\": \"c7f66a66fab4350147d3d9f1192e42c811b35f2799ede94cbef5dd8477d7d774\", \"checker_definition_digest\": \"310aa83181ea186b1dc5ea1ea377c99a12a09ee1d527552bb8b07c676f0f0912\"}",
+      "digest": "157c08d02f109d9680e3723e2b6b4da7734f89560f9525dbfd2554137da44e2d",
+      "producer_succeeded": null,
+      "created_xid": "1524",
+      "recorded_at": "2026-09-06 11:27:43.701494+00"
+    },
+    {
+      "id": "6d0b744b-9707-46cb-b771-9085501e93ee",
+      "artifact_role": "transformation_receipt",
+      "context_id": "661fc2b6-63f8-4cfc-8d29-697213ac2286",
+      "target_id": null,
+      "payload_text": "{\"scope\": \"recorded_transition_only\", \"checks\": {\"grounding\": true, \"input_format\": true, \"preservation\": true, \"output_format\": true, \"participation\": true, \"checker_binding\": true}, \"result\": \"PASS\", \"reasons\": {}, \"coverage\": \"grounding_and_preservation\", \"input_id\": \"8777e33d-7555-40aa-92f9-d5107395c0c7\", \"output_id\": \"95b5db1d-cb79-439b-ae93-0bdaef5cfda2\", \"attempt_id\": \"661fc2b6-63f8-4cfc-8d29-697213ac2286\", \"checker_id\": \"prepare_build_5b_artifact/v1\", \"input_digest\": \"8b80af401b26d8aa98ad9c4a27bb5385b8b6ac8aa40138f7736950a144ca355c\", \"operation_id\": \"ba27d938-c586-4c09-ac31-9c67a2d0b5e0\", \"output_digest\": \"1d04efad1b7663fdee99c50a05cc8a8a6a682bf9fb6783da4d0b0fa445211c6c\", \"source_witness\": {\"link_id\": \"4c6c0f50-a936-4da6-bb09-233f93320639\", \"claim_id\": \"0f89e778-b16e-4840-9129-a2aa3eb6f697\", \"event_id\": \"a6925494-a862-441b-a361-5f5ec41dc9dc\", \"recorded_at\": \"2026-09-05T02:24:35.793609Z\", \"to_standing\": \"basis_qualified\", \"from_standing\": \"unassessed\", \"link_claim_id\": \"0f89e778-b16e-4840-9129-a2aa3eb6f697\", \"evidence_referent_id\": \"19a949ea-a8fc-4250-a386-fa64e5530180\", \"evidence_revision_digest\": \"5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55\", \"evidence_revision_scheme\": \"ecb_thought_revision_v1_sha256\", \"observed_revision_digest\": \"5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55\"}, \"receipt_version\": 1, \"operation_digest\": \"c7f66a66fab4350147d3d9f1192e42c811b35f2799ede94cbef5dd8477d7d774\", \"producer_succeeded\": true, \"checker_definition_digest\": \"310aa83181ea186b1dc5ea1ea377c99a12a09ee1d527552bb8b07c676f0f0912\", \"observed_checker_definition_digest\": \"310aa83181ea186b1dc5ea1ea377c99a12a09ee1d527552bb8b07c676f0f0912\"}",
+      "digest": "e116c80a0a8dd298951efe21dd68587194e1c38b045ad03e901a007db284cc18",
+      "producer_succeeded": null,
+      "created_xid": "1525",
+      "recorded_at": "2026-09-06 11:27:46.088715+00"
+    },
+    {
+      "id": "8777e33d-7555-40aa-92f9-d5107395c0c7",
+      "artifact_role": "source_representation",
+      "context_id": "a6925494-a862-441b-a361-5f5ec41dc9dc",
+      "target_id": null,
+      "payload_text": "{\"format\":\"transition_v1\",\"event\":\"a6925494-a862-441b-a361-5f5ec41dc9dc\",\"claim\":\"0f89e778-b16e-4840-9129-a2aa3eb6f697\",\"from\":\"unassessed\",\"to\":\"basis_qualified\",\"recorded_at\":\"2026-09-05T02:24:35.793609Z\",\"basis\":{\"link\":\"4c6c0f50-a936-4da6-bb09-233f93320639\",\"evidence\":\"19a949ea-a8fc-4250-a386-fa64e5530180\",\"scheme\":\"ecb_thought_revision_v1_sha256\",\"linked_digest\":\"5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55\",\"observed_digest\":\"5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55\"},\"scope\":\"recorded_transition_only\"}",
+      "digest": "8b80af401b26d8aa98ad9c4a27bb5385b8b6ac8aa40138f7736950a144ca355c",
+      "producer_succeeded": null,
+      "created_xid": "1524",
+      "recorded_at": "2026-09-06 11:27:43.701494+00"
+    },
+    {
+      "id": "95b5db1d-cb79-439b-ae93-0bdaef5cfda2",
+      "artifact_role": "transformed_representation",
+      "context_id": "ba27d938-c586-4c09-ac31-9c67a2d0b5e0",
+      "target_id": null,
+      "payload_text": "{\"format\":\"basis_v1\",\"basis\":{\"evidence\":\"19a949ea-a8fc-4250-a386-fa64e5530180\",\"link\":\"4c6c0f50-a936-4da6-bb09-233f93320639\",\"scheme\":\"ecb_thought_revision_v1_sha256\",\"linked_digest\":\"5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55\",\"observed_digest\":\"5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55\"},\"transition\":{\"id\":\"a6925494-a862-441b-a361-5f5ec41dc9dc\",\"claim\":\"0f89e778-b16e-4840-9129-a2aa3eb6f697\",\"from\":\"unassessed\",\"to\":\"basis_qualified\",\"recorded_at\":\"2026-09-05T02:24:35.793609Z\"},\"scope\":\"recorded_transition_only\"}",
+      "digest": "1d04efad1b7663fdee99c50a05cc8a8a6a682bf9fb6783da4d0b0fa445211c6c",
+      "producer_succeeded": true,
+      "created_xid": "1524",
+      "recorded_at": "2026-09-06 11:27:43.701494+00"
+    },
+    {
+      "id": "9c322dda-54b8-4838-bdf1-2df471f0f992",
+      "artifact_role": "transformed_representation",
+      "context_id": "f64d508d-df25-47c8-8d6d-e26a6dc9a906",
+      "target_id": null,
+      "payload_text": "{\"format\":\"basis_v1\",\"basis\":{\"evidence\":\"19a949ea-a8fc-4250-a386-fa64e5530180\",\"link\":\"4c6c0f50-a936-4da6-bb09-233f93320639\",\"scheme\":\"ecb_thought_revision_v1_sha256\",\"linked_digest\":\"5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55\"},\"transition\":{\"id\":\"a6925494-a862-441b-a361-5f5ec41dc9dc\",\"claim\":\"0f89e778-b16e-4840-9129-a2aa3eb6f697\",\"from\":\"unassessed\",\"to\":\"basis_qualified\",\"recorded_at\":\"2026-09-05T02:24:35.793609Z\"},\"scope\":\"recorded_transition_only\"}",
+      "digest": "bc163e776d6b04a8500f7ca6c94fca34e21c44b118d4ad253ae986e271363819",
+      "producer_succeeded": true,
+      "created_xid": "1524",
+      "recorded_at": "2026-09-06 11:27:43.701494+00"
+    },
+    {
+      "id": "ba27d938-c586-4c09-ac31-9c67a2d0b5e0",
+      "artifact_role": "transformation_request",
+      "context_id": "8777e33d-7555-40aa-92f9-d5107395c0c7",
+      "target_id": null,
+      "payload_text": "{\"scope\": \"recorded_transition_only\", \"coverage\": \"grounding_and_preservation\", \"checker_id\": \"prepare_build_5b_artifact/v1\", \"contract_id\": \"ecb_transition_relayout_v1\", \"obligations\": [\"input_format\", \"output_format\", \"participation\", \"grounding\", \"preservation\", \"checker_binding\"], \"output_format\": \"basis_v1\", \"source_format\": \"transition_v1\", \"trust_boundary\": \"service_role_producer; trusted_database_and_ddl; no_external_trust_root\", \"contract_version\": 1, \"checker_definition\": \"CREATE OR REPLACE FUNCTION public.prepare_build_5b_artifact()\\n RETURNS trigger\\n LANGUAGE plpgsql\\n SET search_path TO ''\\nAS $function$\\ndeclare\\n  installed_definition text;\\n  installed_definition_digest text;\\n  contract_obligations text[] := array[\\n    'input_format', 'output_format', 'participation', 'grounding', 'preservation', 'checker_binding'\\n  ];\\n  checker_identity text := 'prepare_build_5b_artifact/v1';\\n  context_row public.artifacts%rowtype;\\n  operation_row public.artifacts%rowtype;\\n  input_row public.artifacts%rowtype;\\n  output_row public.artifacts%rowtype;\\n  output_found boolean := false;\\n  operation_spec jsonb;\\n  derived_payload jsonb;\\n\\n  -- receipt working state\\n  check_input_format boolean;\\n  check_output_format boolean;\\n  check_participation boolean;\\n  check_grounding boolean;\\n  check_preservation boolean;\\n  check_binding boolean;\\n  reason_map jsonb := '{}'::jsonb;\\n  witness jsonb;\\n  result_text text;\\n\\n  input_doc json;\\n  output_doc json;\\n  input_ok boolean := false;\\n  output_ok boolean := false;\\n\\n  -- witness columns\\n  w_event uuid;\\n  w_claim uuid;\\n  w_from text;\\n  w_to text;\\n  w_recorded timestamptz;\\n  w_link uuid;\\n  w_evidence uuid;\\n  w_scheme text;\\n  w_linked_digest bytea;\\n  w_observed_digest bytea;\\n  w_link_claim uuid;\\n  witness_found boolean := false;\\n\\n  uuid_pattern text := '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$';\\n  hex64_pattern text := '^[0-9a-f]{64}$';\\n  ts_pattern text := '^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\\\.[0-9]{6}Z$';\\n\\n  queue json[];\\n  cursor_node json;\\n  key_total bigint;\\n  key_distinct bigint;\\nbegin\\n  -- Derived columns are never caller-supplied. The grant boundary already withholds them from\\n  -- service_role; this rejects a forged value from any role that can reach the table at all.\\n  if new.payload_digest is not null\\n     or new.recorded_at is not null\\n     or new.created_xid is not null then\\n    raise exception 'BUILD 5B derived columns are not caller-insertable'\\n      using errcode = '42501';\\n  end if;\\n\\n  if new.id is null then\\n    new.id := pg_catalog.gen_random_uuid();\\n  end if;\\n\\n  if new.artifact_role is null then\\n    raise exception 'BUILD 5B artifact_role is required' using errcode = '23514';\\n  end if;\\n\\n  -- The installed checker definition, obtained by database introspection rather than asserted.\\n  select pg_catalog.pg_get_functiondef(p.oid)\\n    into installed_definition\\n  from pg_catalog.pg_proc p\\n  join pg_catalog.pg_namespace n on n.oid = p.pronamespace\\n  where n.nspname = 'public'\\n    and p.proname = 'prepare_build_5b_artifact';\\n\\n  if installed_definition is null then\\n    raise exception 'BUILD 5B checker definition is not introspectable' using errcode = 'P0002';\\n  end if;\\n\\n  installed_definition_digest := pg_catalog.encode(\\n    extensions.digest(pg_catalog.convert_to(installed_definition, 'UTF8'), 'sha256'), 'hex');\\n\\n  -- Native participation resolution. A representation's context is a bare Referent; every other\\n  -- role's context must be an existing Artifact of the required role.\\n  if new.artifact_role <> 'source_representation' then\\n    select * into context_row from public.artifacts where id = new.context_id;\\n    if not found then\\n      raise exception 'BUILD 5B context % is not an Artifact', new.context_id\\n        using errcode = '23503';\\n    end if;\\n  end if;\\n\\n  if new.artifact_role in ('source_representation', 'transformed_representation') then\\n    if new.payload_text is null then\\n      raise exception 'BUILD 5B % requires caller payload', new.artifact_role\\n        using errcode = '23514';\\n    end if;\\n  else\\n    if new.payload_text is not null then\\n      raise exception 'BUILD 5B % payload is database-derived', new.artifact_role\\n        using errcode = '42501';\\n    end if;\\n  end if;\\n\\n  if new.artifact_role = 'source_representation' then\\n    -- Its purported Event/source contents are checked later, so wrong or missing native evidence\\n    -- stays observable rather than being erased at write time.\\n    null;\\n\\n  elsif new.artifact_role = 'transformation_request' then\\n    if context_row.artifact_role <> 'source_representation' then\\n      raise exception 'BUILD 5B request context must be a source_representation'\\n        using errcode = '23514';\\n    end if;\\n\\n    operation_spec := pg_catalog.jsonb_build_object(\\n      'contract_id', 'ecb_transition_relayout_v1',\\n      'contract_version', 1,\\n      'source_format', 'transition_v1',\\n      'output_format', 'basis_v1',\\n      'scope', 'recorded_transition_only',\\n      'coverage', 'grounding_and_preservation',\\n      'obligations', pg_catalog.to_jsonb(contract_obligations),\\n      'checker_id', checker_identity,\\n      'checker_definition', installed_definition,\\n      'checker_definition_digest', installed_definition_digest,\\n      'trust_boundary',\\n        'service_role_producer; trusted_database_and_ddl; no_external_trust_root'\\n    );\\n    new.payload_text := operation_spec::text;\\n\\n  elsif new.artifact_role = 'transformed_representation' then\\n    if context_row.artifact_role <> 'transformation_request' then\\n      raise exception 'BUILD 5B output context must be a transformation_request'\\n        using errcode = '23514';\\n    end if;\\n    -- Payload may be malformed. Exact bytes are retained and never silently corrected.\\n\\n  elsif new.artifact_role = 'check_attempt' then\\n    if context_row.artifact_role <> 'transformation_request' then\\n      raise exception 'BUILD 5B attempt context must be a transformation_request'\\n        using errcode = '23514';\\n    end if;\\n\\n    select * into input_row from public.artifacts where id = context_row.context_id;\\n    if not found then\\n      raise exception 'BUILD 5B attempt input is unavailable' using errcode = 'P0002';\\n    end if;\\n\\n    -- The target must be registered; it need not yet have a native output row.\\n    derived_payload := pg_catalog.jsonb_build_object(\\n      'event', 'check_requested',\\n      'operation_id', context_row.id,\\n      'operation_digest', pg_catalog.encode(context_row.payload_digest, 'hex'),\\n      'input_id', input_row.id,\\n      'input_digest', pg_catalog.encode(input_row.payload_digest, 'hex'),\\n      'output_id', new.target_id,\\n      'contract_id', 'ecb_transition_relayout_v1',\\n      'checker_id', checker_identity,\\n      'checker_definition_digest', installed_definition_digest\\n    );\\n    new.payload_text := derived_payload::text;\\n\\n  elsif new.artifact_role = 'transformation_receipt' then\\n    if context_row.artifact_role <> 'check_attempt' then\\n      raise exception 'BUILD 5B receipt context must be a check_attempt'\\n        using errcode = '23514';\\n    end if;\\n\\n    -- Committed-attempt entry boundary. pg_current_xact_id() returns the top-level transaction id\\n    -- even inside a subtransaction, so a SAVEPOINT cannot bypass this.\\n    if context_row.created_xid = pg_catalog.pg_current_xact_id() then\\n      raise exception\\n        'BUILD 5B receipt requires an attempt committed in a different top-level transaction'\\n        using errcode = '55000';\\n    end if;\\n\\n    select * into operation_row from public.artifacts where id = context_row.context_id;\\n    if not found then\\n      raise exception 'BUILD 5B receipt operation is unavailable' using errcode = 'P0002';\\n    end if;\\n\\n    select * into input_row from public.artifacts where id = operation_row.context_id;\\n    if not found then\\n      raise exception 'BUILD 5B receipt input is unavailable' using errcode = 'P0002';\\n    end if;\\n\\n    select * into output_row from public.artifacts where id = context_row.target_id;\\n    output_found := found;\\n\\n    ---------------------------------------------------------------------------\\n    -- checker_binding, evaluated first. An unqualified checker is unavailable\\n    -- checking capability, never an invented result under another contract.\\n    ---------------------------------------------------------------------------\\n    if operation_row.payload_text::jsonb ->> 'checker_id' = checker_identity\\n       and operation_row.payload_text::jsonb ->> 'checker_definition_digest'\\n           = installed_definition_digest then\\n      check_binding := true;\\n    else\\n      check_binding := null;\\n      reason_map := reason_map\\n        || pg_catalog.jsonb_build_object('checker_binding', 'checker_definition_mismatch');\\n    end if;\\n\\n    if check_binding is true then\\n      -----------------------------------------------------------------------\\n      -- input_format\\n      -----------------------------------------------------------------------\\n      begin\\n        input_doc := input_row.payload_text::json;\\n        input_ok := true;\\n      exception\\n        when others then\\n          input_ok := false;\\n      end;\\n\\n      if not input_ok then\\n        check_input_format := false;\\n      else\\n        check_input_format := true;\\n        -- Duplicate keys at every depth, tested on json before jsonb can discard them.\\n        queue := array[input_doc];\\n        while pg_catalog.array_length(queue, 1) > 0 loop\\n          cursor_node := queue[1];\\n          queue := queue[2:];\\n          if pg_catalog.json_typeof(cursor_node) = 'object' then\\n            select pg_catalog.count(*), pg_catalog.count(distinct k)\\n              into key_total, key_distinct\\n            from pg_catalog.json_object_keys(cursor_node) as t(k);\\n            if key_total <> key_distinct then\\n              check_input_format := false;\\n              exit;\\n            end if;\\n            queue := queue || array(select value from pg_catalog.json_each(cursor_node));\\n          elsif pg_catalog.json_typeof(cursor_node) = 'array' then\\n            queue := queue || array(select value from pg_catalog.json_array_elements(cursor_node));\\n          end if;\\n        end loop;\\n      end if;\\n\\n      if check_input_format then\\n        check_input_format :=\\n          (select pg_catalog.count(*) from pg_catalog.json_object_keys(input_doc)) = 8\\n          and input_doc ->> 'format' = 'transition_v1'\\n          and input_doc ->> 'scope' = 'recorded_transition_only'\\n          and pg_catalog.json_typeof(input_doc -> 'basis') = 'object'\\n          and (select pg_catalog.count(*) from pg_catalog.json_object_keys(input_doc -> 'basis')) = 5\\n          and (input_doc ->> 'event') ~ uuid_pattern\\n          and (input_doc ->> 'claim') ~ uuid_pattern\\n          and pg_catalog.json_typeof(input_doc -> 'from') = 'string'\\n          and pg_catalog.json_typeof(input_doc -> 'to') = 'string'\\n          and (input_doc ->> 'recorded_at') ~ ts_pattern\\n          and (input_doc #>> '{basis,link}') ~ uuid_pattern\\n          and (input_doc #>> '{basis,evidence}') ~ uuid_pattern\\n          and pg_catalog.json_typeof(input_doc #> '{basis,scheme}') = 'string'\\n          and (input_doc #>> '{basis,linked_digest}') ~ hex64_pattern\\n          and (input_doc #>> '{basis,observed_digest}') ~ hex64_pattern;\\n      end if;\\n\\n      if check_input_format is not true then\\n        check_input_format := false;\\n        reason_map := reason_map\\n          || pg_catalog.jsonb_build_object('input_format', 'invalid_format');\\n      end if;\\n\\n      -----------------------------------------------------------------------\\n      -- output_format and participation\\n      -----------------------------------------------------------------------\\n      if not output_found then\\n        check_output_format := null;\\n        check_participation := null;\\n        reason_map := reason_map || pg_catalog.jsonb_build_object(\\n          'output_format', 'unavailable', 'participation', 'unavailable');\\n      else\\n        if output_row.artifact_role = 'transformed_representation'\\n           and output_row.context_id = operation_row.id then\\n          check_participation := true;\\n        else\\n          check_participation := false;\\n          reason_map := reason_map\\n            || pg_catalog.jsonb_build_object('participation', 'wrong_participant');\\n        end if;\\n\\n        begin\\n          output_doc := output_row.payload_text::json;\\n          output_ok := true;\\n        exception\\n          when others then\\n            output_ok := false;\\n        end;\\n\\n        if not output_ok then\\n          check_output_format := false;\\n        else\\n          check_output_format := true;\\n          queue := array[output_doc];\\n          while pg_catalog.array_length(queue, 1) > 0 loop\\n            cursor_node := queue[1];\\n            queue := queue[2:];\\n            if pg_catalog.json_typeof(cursor_node) = 'object' then\\n              select pg_catalog.count(*), pg_catalog.count(distinct k)\\n                into key_total, key_distinct\\n              from pg_catalog.json_object_keys(cursor_node) as t(k);\\n              if key_total <> key_distinct then\\n                check_output_format := false;\\n                exit;\\n              end if;\\n              queue := queue || array(select value from pg_catalog.json_each(cursor_node));\\n            elsif pg_catalog.json_typeof(cursor_node) = 'array' then\\n              queue := queue || array(select value from pg_catalog.json_array_elements(cursor_node));\\n            end if;\\n          end loop;\\n        end if;\\n\\n        if check_output_format then\\n          check_output_format :=\\n            (select pg_catalog.count(*) from pg_catalog.json_object_keys(output_doc)) = 4\\n            and output_doc ->> 'format' = 'basis_v1'\\n            and output_doc ->> 'scope' = 'recorded_transition_only'\\n            and pg_catalog.json_typeof(output_doc -> 'basis') = 'object'\\n            and pg_catalog.json_typeof(output_doc -> 'transition') = 'object'\\n            and (select pg_catalog.count(*)\\n                 from pg_catalog.json_object_keys(output_doc -> 'basis')) = 5\\n            and (select pg_catalog.count(*)\\n                 from pg_catalog.json_object_keys(output_doc -> 'transition')) = 5\\n            and (output_doc #>> '{basis,evidence}') ~ uuid_pattern\\n            and (output_doc #>> '{basis,link}') ~ uuid_pattern\\n            and pg_catalog.json_typeof(output_doc #> '{basis,scheme}') = 'string'\\n            and (output_doc #>> '{basis,linked_digest}') ~ hex64_pattern\\n            and (output_doc #>> '{basis,observed_digest}') ~ hex64_pattern\\n            and (output_doc #>> '{transition,id}') ~ uuid_pattern\\n            and (output_doc #>> '{transition,claim}') ~ uuid_pattern\\n            and pg_catalog.json_typeof(output_doc #> '{transition,from}') = 'string'\\n            and pg_catalog.json_typeof(output_doc #> '{transition,to}') = 'string'\\n            and (output_doc #>> '{transition,recorded_at}') ~ ts_pattern;\\n        end if;\\n\\n        if check_output_format is not true then\\n          check_output_format := false;\\n          reason_map := reason_map\\n            || pg_catalog.jsonb_build_object('output_format', 'invalid_format');\\n        end if;\\n      end if;\\n\\n      -----------------------------------------------------------------------\\n      -- grounding, against a separately read source witness\\n      -----------------------------------------------------------------------\\n      select t.id, t.claim_id, t.from_standing, t.to_standing, t.recorded_at,\\n             l.id, l.evidence_referent_id, l.evidence_revision_scheme,\\n             l.evidence_revision_digest, t.observed_revision_digest, l.claim_id\\n        into w_event, w_claim, w_from, w_to, w_recorded,\\n             w_link, w_evidence, w_scheme, w_linked_digest, w_observed_digest, w_link_claim\\n      from public.claim_standing_transitions t\\n      left join public.evidence_links l on l.id = t.basis_evidence_link_id\\n      where t.id = input_row.context_id;\\n      witness_found := found;\\n\\n      if witness_found and w_link is not null then\\n        witness := pg_catalog.jsonb_build_object(\\n          'event_id', w_event,\\n          'claim_id', w_claim,\\n          'from_standing', w_from,\\n          'to_standing', w_to,\\n          'recorded_at', pg_catalog.to_char(\\n            w_recorded at time zone 'UTC', 'YYYY-MM-DD\\\"T\\\"HH24:MI:SS.US\\\"Z\\\"'),\\n          'link_id', w_link,\\n          'evidence_referent_id', w_evidence,\\n          'evidence_revision_scheme', w_scheme,\\n          'evidence_revision_digest', pg_catalog.encode(w_linked_digest, 'hex'),\\n          'observed_revision_digest', pg_catalog.encode(w_observed_digest, 'hex'),\\n          'link_claim_id', w_link_claim\\n        );\\n      else\\n        witness := null;\\n      end if;\\n\\n      if not check_input_format then\\n        check_grounding := null;\\n        reason_map := reason_map\\n          || pg_catalog.jsonb_build_object('grounding', 'not_evaluated');\\n      elsif witness is null then\\n        check_grounding := null;\\n        reason_map := reason_map\\n          || pg_catalog.jsonb_build_object('grounding', 'unavailable');\\n      else\\n        check_grounding :=\\n          (input_doc ->> 'event') = w_event::text\\n          and (input_doc ->> 'claim') = w_claim::text\\n          and (input_doc ->> 'from') = w_from\\n          and (input_doc ->> 'to') = w_to\\n          and (input_doc ->> 'recorded_at') = (witness ->> 'recorded_at')\\n          and (input_doc #>> '{basis,link}') = w_link::text\\n          and (input_doc #>> '{basis,evidence}') = w_evidence::text\\n          and (input_doc #>> '{basis,scheme}') = w_scheme\\n          and (input_doc #>> '{basis,linked_digest}')\\n              = pg_catalog.encode(w_linked_digest, 'hex')\\n          and (input_doc #>> '{basis,observed_digest}')\\n              = pg_catalog.encode(w_observed_digest, 'hex')\\n          -- A present but inconsistent Link is a grounding failure, not a filtered-out row.\\n          and w_link_claim = w_claim;\\n        if not check_grounding then\\n          reason_map := reason_map\\n            || pg_catalog.jsonb_build_object('grounding', 'mismatch');\\n        end if;\\n      end if;\\n\\n      -----------------------------------------------------------------------\\n      -- preservation\\n      -----------------------------------------------------------------------\\n      if check_input_format is not true or check_output_format is not true then\\n        check_preservation := null;\\n        reason_map := reason_map\\n          || pg_catalog.jsonb_build_object('preservation', 'not_evaluated');\\n      else\\n        check_preservation :=\\n          (output_doc #>> '{transition,id}') = (input_doc ->> 'event')\\n          and (output_doc #>> '{transition,claim}') = (input_doc ->> 'claim')\\n          and (output_doc #>> '{transition,from}') = (input_doc ->> 'from')\\n          and (output_doc #>> '{transition,to}') = (input_doc ->> 'to')\\n          and (output_doc #>> '{transition,recorded_at}') = (input_doc ->> 'recorded_at')\\n          and (output_doc #>> '{basis,link}') = (input_doc #>> '{basis,link}')\\n          and (output_doc #>> '{basis,evidence}') = (input_doc #>> '{basis,evidence}')\\n          and (output_doc #>> '{basis,scheme}') = (input_doc #>> '{basis,scheme}')\\n          and (output_doc #>> '{basis,linked_digest}') = (input_doc #>> '{basis,linked_digest}')\\n          and (output_doc #>> '{basis,observed_digest}')\\n              = (input_doc #>> '{basis,observed_digest}')\\n          and (output_doc ->> 'scope') = (input_doc ->> 'scope');\\n        if not check_preservation then\\n          reason_map := reason_map\\n            || pg_catalog.jsonb_build_object('preservation', 'mismatch');\\n        end if;\\n      end if;\\n    else\\n      -- Unqualified checker: do not evaluate further under another contract.\\n      check_input_format := null;\\n      check_output_format := null;\\n      check_participation := null;\\n      check_grounding := null;\\n      check_preservation := null;\\n      witness := null;\\n      reason_map := reason_map || pg_catalog.jsonb_build_object(\\n        'input_format', 'not_evaluated',\\n        'output_format', 'not_evaluated',\\n        'participation', 'not_evaluated',\\n        'grounding', 'not_evaluated',\\n        'preservation', 'not_evaluated'\\n      );\\n    end if;\\n\\n    -- Any observed false yields FAIL even when other components are unavailable; otherwise any\\n    -- null yields INCOMPLETE; only all six true yields PASS. producer_succeeded has no weight.\\n    if check_input_format is false or check_output_format is false\\n       or check_participation is false or check_grounding is false\\n       or check_preservation is false or check_binding is false then\\n      result_text := 'FAIL';\\n    elsif check_input_format is null or check_output_format is null\\n       or check_participation is null or check_grounding is null\\n       or check_preservation is null or check_binding is null then\\n      result_text := 'INCOMPLETE';\\n    else\\n      result_text := 'PASS';\\n    end if;\\n\\n    derived_payload := pg_catalog.jsonb_build_object(\\n      'receipt_version', 1,\\n      'scope', 'recorded_transition_only',\\n      'coverage', 'grounding_and_preservation',\\n      'attempt_id', context_row.id,\\n      'operation_id', operation_row.id,\\n      'input_id', input_row.id,\\n      'output_id', context_row.target_id,\\n      'operation_digest', pg_catalog.encode(operation_row.payload_digest, 'hex'),\\n      'input_digest', pg_catalog.encode(input_row.payload_digest, 'hex'),\\n      'output_digest', case when output_found\\n        then pg_catalog.encode(output_row.payload_digest, 'hex') else null end,\\n      'checker_id', checker_identity,\\n      'checker_definition_digest',\\n        operation_row.payload_text::jsonb ->> 'checker_definition_digest',\\n      'observed_checker_definition_digest', installed_definition_digest,\\n      'producer_succeeded', case when output_found\\n        then pg_catalog.to_jsonb(output_row.producer_succeeded) else 'null'::jsonb end,\\n      'checks', pg_catalog.jsonb_build_object(\\n        'input_format', check_input_format,\\n        'output_format', check_output_format,\\n        'participation', check_participation,\\n        'grounding', check_grounding,\\n        'preservation', check_preservation,\\n        'checker_binding', check_binding\\n      ),\\n      'reasons', reason_map,\\n      'source_witness', witness,\\n      'result', result_text\\n    );\\n    new.payload_text := derived_payload::text;\\n  end if;\\n\\n  -- Fresh same-UUID Referent registration. An already-registered id is rejected, matching the\\n  -- fresh-native creation posture; this installs no general native-binding lifecycle.\\n  if exists (select 1 from public.referents where id = new.id) then\\n    raise exception 'BUILD 5B Artifact id % is already registered', new.id\\n      using errcode = '23505';\\n  end if;\\n  insert into public.referents (id) values (new.id);\\n\\n  new.payload_digest := extensions.digest(\\n    pg_catalog.convert_to(new.payload_text, 'UTF8'), 'sha256');\\n  new.recorded_at := pg_catalog.transaction_timestamp();\\n  new.created_xid := pg_catalog.pg_current_xact_id();\\n\\n  return new;\\nend;\\n$function$\\n\", \"checker_definition_digest\": \"310aa83181ea186b1dc5ea1ea377c99a12a09ee1d527552bb8b07c676f0f0912\"}",
+      "digest": "c7f66a66fab4350147d3d9f1192e42c811b35f2799ede94cbef5dd8477d7d774",
+      "producer_succeeded": null,
+      "created_xid": "1524",
+      "recorded_at": "2026-09-06 11:27:43.701494+00"
+    },
+    {
+      "id": "f64d508d-df25-47c8-8d6d-e26a6dc9a906",
+      "artifact_role": "transformation_request",
+      "context_id": "8777e33d-7555-40aa-92f9-d5107395c0c7",
+      "target_id": null,
+      "payload_text": "{\"scope\": \"recorded_transition_only\", \"coverage\": \"grounding_and_preservation\", \"checker_id\": \"prepare_build_5b_artifact/v1\", \"contract_id\": \"ecb_transition_relayout_v1\", \"obligations\": [\"input_format\", \"output_format\", \"participation\", \"grounding\", \"preservation\", \"checker_binding\"], \"output_format\": \"basis_v1\", \"source_format\": \"transition_v1\", \"trust_boundary\": \"service_role_producer; trusted_database_and_ddl; no_external_trust_root\", \"contract_version\": 1, \"checker_definition\": \"CREATE OR REPLACE FUNCTION public.prepare_build_5b_artifact()\\n RETURNS trigger\\n LANGUAGE plpgsql\\n SET search_path TO ''\\nAS $function$\\ndeclare\\n  installed_definition text;\\n  installed_definition_digest text;\\n  contract_obligations text[] := array[\\n    'input_format', 'output_format', 'participation', 'grounding', 'preservation', 'checker_binding'\\n  ];\\n  checker_identity text := 'prepare_build_5b_artifact/v1';\\n  context_row public.artifacts%rowtype;\\n  operation_row public.artifacts%rowtype;\\n  input_row public.artifacts%rowtype;\\n  output_row public.artifacts%rowtype;\\n  output_found boolean := false;\\n  operation_spec jsonb;\\n  derived_payload jsonb;\\n\\n  -- receipt working state\\n  check_input_format boolean;\\n  check_output_format boolean;\\n  check_participation boolean;\\n  check_grounding boolean;\\n  check_preservation boolean;\\n  check_binding boolean;\\n  reason_map jsonb := '{}'::jsonb;\\n  witness jsonb;\\n  result_text text;\\n\\n  input_doc json;\\n  output_doc json;\\n  input_ok boolean := false;\\n  output_ok boolean := false;\\n\\n  -- witness columns\\n  w_event uuid;\\n  w_claim uuid;\\n  w_from text;\\n  w_to text;\\n  w_recorded timestamptz;\\n  w_link uuid;\\n  w_evidence uuid;\\n  w_scheme text;\\n  w_linked_digest bytea;\\n  w_observed_digest bytea;\\n  w_link_claim uuid;\\n  witness_found boolean := false;\\n\\n  uuid_pattern text := '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$';\\n  hex64_pattern text := '^[0-9a-f]{64}$';\\n  ts_pattern text := '^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\\\.[0-9]{6}Z$';\\n\\n  queue json[];\\n  cursor_node json;\\n  key_total bigint;\\n  key_distinct bigint;\\nbegin\\n  -- Derived columns are never caller-supplied. The grant boundary already withholds them from\\n  -- service_role; this rejects a forged value from any role that can reach the table at all.\\n  if new.payload_digest is not null\\n     or new.recorded_at is not null\\n     or new.created_xid is not null then\\n    raise exception 'BUILD 5B derived columns are not caller-insertable'\\n      using errcode = '42501';\\n  end if;\\n\\n  if new.id is null then\\n    new.id := pg_catalog.gen_random_uuid();\\n  end if;\\n\\n  if new.artifact_role is null then\\n    raise exception 'BUILD 5B artifact_role is required' using errcode = '23514';\\n  end if;\\n\\n  -- The installed checker definition, obtained by database introspection rather than asserted.\\n  select pg_catalog.pg_get_functiondef(p.oid)\\n    into installed_definition\\n  from pg_catalog.pg_proc p\\n  join pg_catalog.pg_namespace n on n.oid = p.pronamespace\\n  where n.nspname = 'public'\\n    and p.proname = 'prepare_build_5b_artifact';\\n\\n  if installed_definition is null then\\n    raise exception 'BUILD 5B checker definition is not introspectable' using errcode = 'P0002';\\n  end if;\\n\\n  installed_definition_digest := pg_catalog.encode(\\n    extensions.digest(pg_catalog.convert_to(installed_definition, 'UTF8'), 'sha256'), 'hex');\\n\\n  -- Native participation resolution. A representation's context is a bare Referent; every other\\n  -- role's context must be an existing Artifact of the required role.\\n  if new.artifact_role <> 'source_representation' then\\n    select * into context_row from public.artifacts where id = new.context_id;\\n    if not found then\\n      raise exception 'BUILD 5B context % is not an Artifact', new.context_id\\n        using errcode = '23503';\\n    end if;\\n  end if;\\n\\n  if new.artifact_role in ('source_representation', 'transformed_representation') then\\n    if new.payload_text is null then\\n      raise exception 'BUILD 5B % requires caller payload', new.artifact_role\\n        using errcode = '23514';\\n    end if;\\n  else\\n    if new.payload_text is not null then\\n      raise exception 'BUILD 5B % payload is database-derived', new.artifact_role\\n        using errcode = '42501';\\n    end if;\\n  end if;\\n\\n  if new.artifact_role = 'source_representation' then\\n    -- Its purported Event/source contents are checked later, so wrong or missing native evidence\\n    -- stays observable rather than being erased at write time.\\n    null;\\n\\n  elsif new.artifact_role = 'transformation_request' then\\n    if context_row.artifact_role <> 'source_representation' then\\n      raise exception 'BUILD 5B request context must be a source_representation'\\n        using errcode = '23514';\\n    end if;\\n\\n    operation_spec := pg_catalog.jsonb_build_object(\\n      'contract_id', 'ecb_transition_relayout_v1',\\n      'contract_version', 1,\\n      'source_format', 'transition_v1',\\n      'output_format', 'basis_v1',\\n      'scope', 'recorded_transition_only',\\n      'coverage', 'grounding_and_preservation',\\n      'obligations', pg_catalog.to_jsonb(contract_obligations),\\n      'checker_id', checker_identity,\\n      'checker_definition', installed_definition,\\n      'checker_definition_digest', installed_definition_digest,\\n      'trust_boundary',\\n        'service_role_producer; trusted_database_and_ddl; no_external_trust_root'\\n    );\\n    new.payload_text := operation_spec::text;\\n\\n  elsif new.artifact_role = 'transformed_representation' then\\n    if context_row.artifact_role <> 'transformation_request' then\\n      raise exception 'BUILD 5B output context must be a transformation_request'\\n        using errcode = '23514';\\n    end if;\\n    -- Payload may be malformed. Exact bytes are retained and never silently corrected.\\n\\n  elsif new.artifact_role = 'check_attempt' then\\n    if context_row.artifact_role <> 'transformation_request' then\\n      raise exception 'BUILD 5B attempt context must be a transformation_request'\\n        using errcode = '23514';\\n    end if;\\n\\n    select * into input_row from public.artifacts where id = context_row.context_id;\\n    if not found then\\n      raise exception 'BUILD 5B attempt input is unavailable' using errcode = 'P0002';\\n    end if;\\n\\n    -- The target must be registered; it need not yet have a native output row.\\n    derived_payload := pg_catalog.jsonb_build_object(\\n      'event', 'check_requested',\\n      'operation_id', context_row.id,\\n      'operation_digest', pg_catalog.encode(context_row.payload_digest, 'hex'),\\n      'input_id', input_row.id,\\n      'input_digest', pg_catalog.encode(input_row.payload_digest, 'hex'),\\n      'output_id', new.target_id,\\n      'contract_id', 'ecb_transition_relayout_v1',\\n      'checker_id', checker_identity,\\n      'checker_definition_digest', installed_definition_digest\\n    );\\n    new.payload_text := derived_payload::text;\\n\\n  elsif new.artifact_role = 'transformation_receipt' then\\n    if context_row.artifact_role <> 'check_attempt' then\\n      raise exception 'BUILD 5B receipt context must be a check_attempt'\\n        using errcode = '23514';\\n    end if;\\n\\n    -- Committed-attempt entry boundary. pg_current_xact_id() returns the top-level transaction id\\n    -- even inside a subtransaction, so a SAVEPOINT cannot bypass this.\\n    if context_row.created_xid = pg_catalog.pg_current_xact_id() then\\n      raise exception\\n        'BUILD 5B receipt requires an attempt committed in a different top-level transaction'\\n        using errcode = '55000';\\n    end if;\\n\\n    select * into operation_row from public.artifacts where id = context_row.context_id;\\n    if not found then\\n      raise exception 'BUILD 5B receipt operation is unavailable' using errcode = 'P0002';\\n    end if;\\n\\n    select * into input_row from public.artifacts where id = operation_row.context_id;\\n    if not found then\\n      raise exception 'BUILD 5B receipt input is unavailable' using errcode = 'P0002';\\n    end if;\\n\\n    select * into output_row from public.artifacts where id = context_row.target_id;\\n    output_found := found;\\n\\n    ---------------------------------------------------------------------------\\n    -- checker_binding, evaluated first. An unqualified checker is unavailable\\n    -- checking capability, never an invented result under another contract.\\n    ---------------------------------------------------------------------------\\n    if operation_row.payload_text::jsonb ->> 'checker_id' = checker_identity\\n       and operation_row.payload_text::jsonb ->> 'checker_definition_digest'\\n           = installed_definition_digest then\\n      check_binding := true;\\n    else\\n      check_binding := null;\\n      reason_map := reason_map\\n        || pg_catalog.jsonb_build_object('checker_binding', 'checker_definition_mismatch');\\n    end if;\\n\\n    if check_binding is true then\\n      -----------------------------------------------------------------------\\n      -- input_format\\n      -----------------------------------------------------------------------\\n      begin\\n        input_doc := input_row.payload_text::json;\\n        input_ok := true;\\n      exception\\n        when others then\\n          input_ok := false;\\n      end;\\n\\n      if not input_ok then\\n        check_input_format := false;\\n      else\\n        check_input_format := true;\\n        -- Duplicate keys at every depth, tested on json before jsonb can discard them.\\n        queue := array[input_doc];\\n        while pg_catalog.array_length(queue, 1) > 0 loop\\n          cursor_node := queue[1];\\n          queue := queue[2:];\\n          if pg_catalog.json_typeof(cursor_node) = 'object' then\\n            select pg_catalog.count(*), pg_catalog.count(distinct k)\\n              into key_total, key_distinct\\n            from pg_catalog.json_object_keys(cursor_node) as t(k);\\n            if key_total <> key_distinct then\\n              check_input_format := false;\\n              exit;\\n            end if;\\n            queue := queue || array(select value from pg_catalog.json_each(cursor_node));\\n          elsif pg_catalog.json_typeof(cursor_node) = 'array' then\\n            queue := queue || array(select value from pg_catalog.json_array_elements(cursor_node));\\n          end if;\\n        end loop;\\n      end if;\\n\\n      if check_input_format then\\n        check_input_format :=\\n          (select pg_catalog.count(*) from pg_catalog.json_object_keys(input_doc)) = 8\\n          and input_doc ->> 'format' = 'transition_v1'\\n          and input_doc ->> 'scope' = 'recorded_transition_only'\\n          and pg_catalog.json_typeof(input_doc -> 'basis') = 'object'\\n          and (select pg_catalog.count(*) from pg_catalog.json_object_keys(input_doc -> 'basis')) = 5\\n          and (input_doc ->> 'event') ~ uuid_pattern\\n          and (input_doc ->> 'claim') ~ uuid_pattern\\n          and pg_catalog.json_typeof(input_doc -> 'from') = 'string'\\n          and pg_catalog.json_typeof(input_doc -> 'to') = 'string'\\n          and (input_doc ->> 'recorded_at') ~ ts_pattern\\n          and (input_doc #>> '{basis,link}') ~ uuid_pattern\\n          and (input_doc #>> '{basis,evidence}') ~ uuid_pattern\\n          and pg_catalog.json_typeof(input_doc #> '{basis,scheme}') = 'string'\\n          and (input_doc #>> '{basis,linked_digest}') ~ hex64_pattern\\n          and (input_doc #>> '{basis,observed_digest}') ~ hex64_pattern;\\n      end if;\\n\\n      if check_input_format is not true then\\n        check_input_format := false;\\n        reason_map := reason_map\\n          || pg_catalog.jsonb_build_object('input_format', 'invalid_format');\\n      end if;\\n\\n      -----------------------------------------------------------------------\\n      -- output_format and participation\\n      -----------------------------------------------------------------------\\n      if not output_found then\\n        check_output_format := null;\\n        check_participation := null;\\n        reason_map := reason_map || pg_catalog.jsonb_build_object(\\n          'output_format', 'unavailable', 'participation', 'unavailable');\\n      else\\n        if output_row.artifact_role = 'transformed_representation'\\n           and output_row.context_id = operation_row.id then\\n          check_participation := true;\\n        else\\n          check_participation := false;\\n          reason_map := reason_map\\n            || pg_catalog.jsonb_build_object('participation', 'wrong_participant');\\n        end if;\\n\\n        begin\\n          output_doc := output_row.payload_text::json;\\n          output_ok := true;\\n        exception\\n          when others then\\n            output_ok := false;\\n        end;\\n\\n        if not output_ok then\\n          check_output_format := false;\\n        else\\n          check_output_format := true;\\n          queue := array[output_doc];\\n          while pg_catalog.array_length(queue, 1) > 0 loop\\n            cursor_node := queue[1];\\n            queue := queue[2:];\\n            if pg_catalog.json_typeof(cursor_node) = 'object' then\\n              select pg_catalog.count(*), pg_catalog.count(distinct k)\\n                into key_total, key_distinct\\n              from pg_catalog.json_object_keys(cursor_node) as t(k);\\n              if key_total <> key_distinct then\\n                check_output_format := false;\\n                exit;\\n              end if;\\n              queue := queue || array(select value from pg_catalog.json_each(cursor_node));\\n            elsif pg_catalog.json_typeof(cursor_node) = 'array' then\\n              queue := queue || array(select value from pg_catalog.json_array_elements(cursor_node));\\n            end if;\\n          end loop;\\n        end if;\\n\\n        if check_output_format then\\n          check_output_format :=\\n            (select pg_catalog.count(*) from pg_catalog.json_object_keys(output_doc)) = 4\\n            and output_doc ->> 'format' = 'basis_v1'\\n            and output_doc ->> 'scope' = 'recorded_transition_only'\\n            and pg_catalog.json_typeof(output_doc -> 'basis') = 'object'\\n            and pg_catalog.json_typeof(output_doc -> 'transition') = 'object'\\n            and (select pg_catalog.count(*)\\n                 from pg_catalog.json_object_keys(output_doc -> 'basis')) = 5\\n            and (select pg_catalog.count(*)\\n                 from pg_catalog.json_object_keys(output_doc -> 'transition')) = 5\\n            and (output_doc #>> '{basis,evidence}') ~ uuid_pattern\\n            and (output_doc #>> '{basis,link}') ~ uuid_pattern\\n            and pg_catalog.json_typeof(output_doc #> '{basis,scheme}') = 'string'\\n            and (output_doc #>> '{basis,linked_digest}') ~ hex64_pattern\\n            and (output_doc #>> '{basis,observed_digest}') ~ hex64_pattern\\n            and (output_doc #>> '{transition,id}') ~ uuid_pattern\\n            and (output_doc #>> '{transition,claim}') ~ uuid_pattern\\n            and pg_catalog.json_typeof(output_doc #> '{transition,from}') = 'string'\\n            and pg_catalog.json_typeof(output_doc #> '{transition,to}') = 'string'\\n            and (output_doc #>> '{transition,recorded_at}') ~ ts_pattern;\\n        end if;\\n\\n        if check_output_format is not true then\\n          check_output_format := false;\\n          reason_map := reason_map\\n            || pg_catalog.jsonb_build_object('output_format', 'invalid_format');\\n        end if;\\n      end if;\\n\\n      -----------------------------------------------------------------------\\n      -- grounding, against a separately read source witness\\n      -----------------------------------------------------------------------\\n      select t.id, t.claim_id, t.from_standing, t.to_standing, t.recorded_at,\\n             l.id, l.evidence_referent_id, l.evidence_revision_scheme,\\n             l.evidence_revision_digest, t.observed_revision_digest, l.claim_id\\n        into w_event, w_claim, w_from, w_to, w_recorded,\\n             w_link, w_evidence, w_scheme, w_linked_digest, w_observed_digest, w_link_claim\\n      from public.claim_standing_transitions t\\n      left join public.evidence_links l on l.id = t.basis_evidence_link_id\\n      where t.id = input_row.context_id;\\n      witness_found := found;\\n\\n      if witness_found and w_link is not null then\\n        witness := pg_catalog.jsonb_build_object(\\n          'event_id', w_event,\\n          'claim_id', w_claim,\\n          'from_standing', w_from,\\n          'to_standing', w_to,\\n          'recorded_at', pg_catalog.to_char(\\n            w_recorded at time zone 'UTC', 'YYYY-MM-DD\\\"T\\\"HH24:MI:SS.US\\\"Z\\\"'),\\n          'link_id', w_link,\\n          'evidence_referent_id', w_evidence,\\n          'evidence_revision_scheme', w_scheme,\\n          'evidence_revision_digest', pg_catalog.encode(w_linked_digest, 'hex'),\\n          'observed_revision_digest', pg_catalog.encode(w_observed_digest, 'hex'),\\n          'link_claim_id', w_link_claim\\n        );\\n      else\\n        witness := null;\\n      end if;\\n\\n      if not check_input_format then\\n        check_grounding := null;\\n        reason_map := reason_map\\n          || pg_catalog.jsonb_build_object('grounding', 'not_evaluated');\\n      elsif witness is null then\\n        check_grounding := null;\\n        reason_map := reason_map\\n          || pg_catalog.jsonb_build_object('grounding', 'unavailable');\\n      else\\n        check_grounding :=\\n          (input_doc ->> 'event') = w_event::text\\n          and (input_doc ->> 'claim') = w_claim::text\\n          and (input_doc ->> 'from') = w_from\\n          and (input_doc ->> 'to') = w_to\\n          and (input_doc ->> 'recorded_at') = (witness ->> 'recorded_at')\\n          and (input_doc #>> '{basis,link}') = w_link::text\\n          and (input_doc #>> '{basis,evidence}') = w_evidence::text\\n          and (input_doc #>> '{basis,scheme}') = w_scheme\\n          and (input_doc #>> '{basis,linked_digest}')\\n              = pg_catalog.encode(w_linked_digest, 'hex')\\n          and (input_doc #>> '{basis,observed_digest}')\\n              = pg_catalog.encode(w_observed_digest, 'hex')\\n          -- A present but inconsistent Link is a grounding failure, not a filtered-out row.\\n          and w_link_claim = w_claim;\\n        if not check_grounding then\\n          reason_map := reason_map\\n            || pg_catalog.jsonb_build_object('grounding', 'mismatch');\\n        end if;\\n      end if;\\n\\n      -----------------------------------------------------------------------\\n      -- preservation\\n      -----------------------------------------------------------------------\\n      if check_input_format is not true or check_output_format is not true then\\n        check_preservation := null;\\n        reason_map := reason_map\\n          || pg_catalog.jsonb_build_object('preservation', 'not_evaluated');\\n      else\\n        check_preservation :=\\n          (output_doc #>> '{transition,id}') = (input_doc ->> 'event')\\n          and (output_doc #>> '{transition,claim}') = (input_doc ->> 'claim')\\n          and (output_doc #>> '{transition,from}') = (input_doc ->> 'from')\\n          and (output_doc #>> '{transition,to}') = (input_doc ->> 'to')\\n          and (output_doc #>> '{transition,recorded_at}') = (input_doc ->> 'recorded_at')\\n          and (output_doc #>> '{basis,link}') = (input_doc #>> '{basis,link}')\\n          and (output_doc #>> '{basis,evidence}') = (input_doc #>> '{basis,evidence}')\\n          and (output_doc #>> '{basis,scheme}') = (input_doc #>> '{basis,scheme}')\\n          and (output_doc #>> '{basis,linked_digest}') = (input_doc #>> '{basis,linked_digest}')\\n          and (output_doc #>> '{basis,observed_digest}')\\n              = (input_doc #>> '{basis,observed_digest}')\\n          and (output_doc ->> 'scope') = (input_doc ->> 'scope');\\n        if not check_preservation then\\n          reason_map := reason_map\\n            || pg_catalog.jsonb_build_object('preservation', 'mismatch');\\n        end if;\\n      end if;\\n    else\\n      -- Unqualified checker: do not evaluate further under another contract.\\n      check_input_format := null;\\n      check_output_format := null;\\n      check_participation := null;\\n      check_grounding := null;\\n      check_preservation := null;\\n      witness := null;\\n      reason_map := reason_map || pg_catalog.jsonb_build_object(\\n        'input_format', 'not_evaluated',\\n        'output_format', 'not_evaluated',\\n        'participation', 'not_evaluated',\\n        'grounding', 'not_evaluated',\\n        'preservation', 'not_evaluated'\\n      );\\n    end if;\\n\\n    -- Any observed false yields FAIL even when other components are unavailable; otherwise any\\n    -- null yields INCOMPLETE; only all six true yields PASS. producer_succeeded has no weight.\\n    if check_input_format is false or check_output_format is false\\n       or check_participation is false or check_grounding is false\\n       or check_preservation is false or check_binding is false then\\n      result_text := 'FAIL';\\n    elsif check_input_format is null or check_output_format is null\\n       or check_participation is null or check_grounding is null\\n       or check_preservation is null or check_binding is null then\\n      result_text := 'INCOMPLETE';\\n    else\\n      result_text := 'PASS';\\n    end if;\\n\\n    derived_payload := pg_catalog.jsonb_build_object(\\n      'receipt_version', 1,\\n      'scope', 'recorded_transition_only',\\n      'coverage', 'grounding_and_preservation',\\n      'attempt_id', context_row.id,\\n      'operation_id', operation_row.id,\\n      'input_id', input_row.id,\\n      'output_id', context_row.target_id,\\n      'operation_digest', pg_catalog.encode(operation_row.payload_digest, 'hex'),\\n      'input_digest', pg_catalog.encode(input_row.payload_digest, 'hex'),\\n      'output_digest', case when output_found\\n        then pg_catalog.encode(output_row.payload_digest, 'hex') else null end,\\n      'checker_id', checker_identity,\\n      'checker_definition_digest',\\n        operation_row.payload_text::jsonb ->> 'checker_definition_digest',\\n      'observed_checker_definition_digest', installed_definition_digest,\\n      'producer_succeeded', case when output_found\\n        then pg_catalog.to_jsonb(output_row.producer_succeeded) else 'null'::jsonb end,\\n      'checks', pg_catalog.jsonb_build_object(\\n        'input_format', check_input_format,\\n        'output_format', check_output_format,\\n        'participation', check_participation,\\n        'grounding', check_grounding,\\n        'preservation', check_preservation,\\n        'checker_binding', check_binding\\n      ),\\n      'reasons', reason_map,\\n      'source_witness', witness,\\n      'result', result_text\\n    );\\n    new.payload_text := derived_payload::text;\\n  end if;\\n\\n  -- Fresh same-UUID Referent registration. An already-registered id is rejected, matching the\\n  -- fresh-native creation posture; this installs no general native-binding lifecycle.\\n  if exists (select 1 from public.referents where id = new.id) then\\n    raise exception 'BUILD 5B Artifact id % is already registered', new.id\\n      using errcode = '23505';\\n  end if;\\n  insert into public.referents (id) values (new.id);\\n\\n  new.payload_digest := extensions.digest(\\n    pg_catalog.convert_to(new.payload_text, 'UTF8'), 'sha256');\\n  new.recorded_at := pg_catalog.transaction_timestamp();\\n  new.created_xid := pg_catalog.pg_current_xact_id();\\n\\n  return new;\\nend;\\n$function$\\n\", \"checker_definition_digest\": \"310aa83181ea186b1dc5ea1ea377c99a12a09ee1d527552bb8b07c676f0f0912\"}",
+      "digest": "c7f66a66fab4350147d3d9f1192e42c811b35f2799ede94cbef5dd8477d7d774",
+      "producer_succeeded": null,
+      "created_xid": "1524",
+      "recorded_at": "2026-09-06 11:27:43.701494+00"
+    }
+  ],
+  "catalog": {
+    "grants": [
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "artifact_role",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "artifact_role",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "context_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "context_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "created_xid",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "payload_digest",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "payload_text",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "payload_text",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "producer_succeeded",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "producer_succeeded",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "recorded_at",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "target_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "column": "target_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "basis_evidence_link_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "basis_evidence_link_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "claim_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "claim_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "from_standing",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "from_standing",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "observed_revision_digest",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "recorded_at",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "to_standing",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "to_standing",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "asserted_at",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "claim_kind",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "claim_kind",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "epistemic_standing",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "object_referent_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "object_referent_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "origin",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "predicate",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "predicate",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "proposition",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "proposition",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "scope",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "scope",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "subject_referent_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "subject_referent_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "claim_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "claim_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "evidence_referent_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "evidence_referent_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "evidence_revision_digest",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "evidence_revision_scheme",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "linked_at",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "role",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "referents",
+        "column": "id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "referents",
+        "column": "id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "referents",
+        "column": "registered_at",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "captured_at",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "captured_at",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "content",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "content",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "embedding",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "embedding",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "embedding_model",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "embedding_model",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "source",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "source",
+        "privilege": "SELECT"
+      }
+    ],
+    "tables": [
+      {
+        "rls": true,
+        "name": "artifacts",
+        "owner": "postgres"
+      },
+      {
+        "rls": true,
+        "name": "claim_standing_transitions",
+        "owner": "postgres"
+      },
+      {
+        "rls": true,
+        "name": "claims",
+        "owner": "postgres"
+      },
+      {
+        "rls": true,
+        "name": "evidence_links",
+        "owner": "postgres"
+      },
+      {
+        "rls": true,
+        "name": "referents",
+        "owner": "postgres"
+      },
+      {
+        "rls": true,
+        "name": "thoughts",
+        "owner": "postgres"
+      }
+    ],
+    "columns": [
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "artifacts",
+        "column": "id",
+        "default": "gen_random_uuid()"
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "artifacts",
+        "column": "artifact_role",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "artifacts",
+        "column": "context_id",
+        "default": null
+      },
+      {
+        "null": "YES",
+        "type": "uuid",
+        "table": "artifacts",
+        "column": "target_id",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "artifacts",
+        "column": "payload_text",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "bytea",
+        "table": "artifacts",
+        "column": "payload_digest",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "timestamptz",
+        "table": "artifacts",
+        "column": "recorded_at",
+        "default": null
+      },
+      {
+        "null": "YES",
+        "type": "bool",
+        "table": "artifacts",
+        "column": "producer_succeeded",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "xid8",
+        "table": "artifacts",
+        "column": "created_xid",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "claim_standing_transitions",
+        "column": "id",
+        "default": "gen_random_uuid()"
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "claim_standing_transitions",
+        "column": "claim_id",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "claim_standing_transitions",
+        "column": "from_standing",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "claim_standing_transitions",
+        "column": "to_standing",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "claim_standing_transitions",
+        "column": "basis_evidence_link_id",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "bytea",
+        "table": "claim_standing_transitions",
+        "column": "observed_revision_digest",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "timestamptz",
+        "table": "claim_standing_transitions",
+        "column": "recorded_at",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "claims",
+        "column": "id",
+        "default": "gen_random_uuid()"
+      },
+      {
+        "null": "YES",
+        "type": "text",
+        "table": "claims",
+        "column": "proposition",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "claims",
+        "column": "scope",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "claims",
+        "column": "claim_kind",
+        "default": "'assertion'::text"
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "claims",
+        "column": "origin",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "claims",
+        "column": "epistemic_standing",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "timestamptz",
+        "table": "claims",
+        "column": "asserted_at",
+        "default": null
+      },
+      {
+        "null": "YES",
+        "type": "uuid",
+        "table": "claims",
+        "column": "subject_referent_id",
+        "default": null
+      },
+      {
+        "null": "YES",
+        "type": "text",
+        "table": "claims",
+        "column": "predicate",
+        "default": null
+      },
+      {
+        "null": "YES",
+        "type": "uuid",
+        "table": "claims",
+        "column": "object_referent_id",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "evidence_links",
+        "column": "id",
+        "default": "gen_random_uuid()"
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "evidence_links",
+        "column": "claim_id",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "evidence_links",
+        "column": "evidence_referent_id",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "evidence_links",
+        "column": "role",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "evidence_links",
+        "column": "evidence_revision_scheme",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "bytea",
+        "table": "evidence_links",
+        "column": "evidence_revision_digest",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "timestamptz",
+        "table": "evidence_links",
+        "column": "linked_at",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "referents",
+        "column": "id",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "timestamptz",
+        "table": "referents",
+        "column": "registered_at",
+        "default": "transaction_timestamp()"
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "thoughts",
+        "column": "id",
+        "default": "gen_random_uuid()"
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "thoughts",
+        "column": "content",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "thoughts",
+        "column": "source",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "timestamptz",
+        "table": "thoughts",
+        "column": "captured_at",
+        "default": "now()"
+      },
+      {
+        "null": "NO",
+        "type": "vector",
+        "table": "thoughts",
+        "column": "embedding",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "thoughts",
+        "column": "embedding_model",
+        "default": "'gte-small'::text"
+      }
+    ],
+    "indexes": [
+      {
+        "def": "CREATE UNIQUE INDEX artifacts_one_receipt_per_attempt ON public.artifacts USING btree (context_id) WHERE (artifact_role = 'transformation_receipt'::text)",
+        "name": "artifacts_one_receipt_per_attempt",
+        "table": "artifacts"
+      },
+      {
+        "def": "CREATE UNIQUE INDEX artifacts_pkey ON public.artifacts USING btree (id)",
+        "name": "artifacts_pkey",
+        "table": "artifacts"
+      },
+      {
+        "def": "CREATE UNIQUE INDEX claim_standing_transitions_pkey ON public.claim_standing_transitions USING btree (id)",
+        "name": "claim_standing_transitions_pkey",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CREATE UNIQUE INDEX claims_pkey ON public.claims USING btree (id)",
+        "name": "claims_pkey",
+        "table": "claims"
+      },
+      {
+        "def": "CREATE UNIQUE INDEX evidence_links_pkey ON public.evidence_links USING btree (id)",
+        "name": "evidence_links_pkey",
+        "table": "evidence_links"
+      },
+      {
+        "def": "CREATE UNIQUE INDEX referents_pkey ON public.referents USING btree (id)",
+        "name": "referents_pkey",
+        "table": "referents"
+      },
+      {
+        "def": "CREATE UNIQUE INDEX thoughts_pkey ON public.thoughts USING btree (id)",
+        "name": "thoughts_pkey",
+        "table": "thoughts"
+      }
+    ],
+    "policies": [],
+    "triggers": [
+      {
+        "def": "CREATE TRIGGER prepare_build_5b_artifact BEFORE INSERT ON public.artifacts FOR EACH ROW EXECUTE FUNCTION prepare_build_5b_artifact()",
+        "name": "prepare_build_5b_artifact",
+        "table": "artifacts"
+      },
+      {
+        "def": "CREATE TRIGGER reject_build_5b_artifact_mutation BEFORE DELETE OR UPDATE OR TRUNCATE ON public.artifacts FOR EACH STATEMENT EXECUTE FUNCTION reject_build_5b_artifact_mutation()",
+        "name": "reject_build_5b_artifact_mutation",
+        "table": "artifacts"
+      },
+      {
+        "def": "CREATE TRIGGER claim_standing_transitions_prepare BEFORE INSERT ON public.claim_standing_transitions FOR EACH ROW EXECUTE FUNCTION prepare_claim_standing_transition()",
+        "name": "claim_standing_transitions_prepare",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CREATE TRIGGER claims_prepare BEFORE INSERT ON public.claims FOR EACH ROW EXECUTE FUNCTION prepare_claim()",
+        "name": "claims_prepare",
+        "table": "claims"
+      },
+      {
+        "def": "CREATE TRIGGER evidence_links_prepare BEFORE INSERT ON public.evidence_links FOR EACH ROW EXECUTE FUNCTION prepare_evidence_link()",
+        "name": "evidence_links_prepare",
+        "table": "evidence_links"
+      },
+      {
+        "def": "CREATE TRIGGER thoughts_register_referent BEFORE INSERT ON public.thoughts FOR EACH ROW EXECUTE FUNCTION register_thought_referent()",
+        "name": "thoughts_register_referent",
+        "table": "thoughts"
+      }
+    ],
+    "functions": [
+      {
+        "acl": "{postgres=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.prepare_build_5b_artifact()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare\n  installed_definition text;\n  installed_definition_digest text;\n  contract_obligations text[] := array[\n    'input_format', 'output_format', 'participation', 'grounding', 'preservation', 'checker_binding'\n  ];\n  checker_identity text := 'prepare_build_5b_artifact/v1';\n  context_row public.artifacts%rowtype;\n  operation_row public.artifacts%rowtype;\n  input_row public.artifacts%rowtype;\n  output_row public.artifacts%rowtype;\n  output_found boolean := false;\n  operation_spec jsonb;\n  derived_payload jsonb;\n\n  -- receipt working state\n  check_input_format boolean;\n  check_output_format boolean;\n  check_participation boolean;\n  check_grounding boolean;\n  check_preservation boolean;\n  check_binding boolean;\n  reason_map jsonb := '{}'::jsonb;\n  witness jsonb;\n  result_text text;\n\n  input_doc json;\n  output_doc json;\n  input_ok boolean := false;\n  output_ok boolean := false;\n\n  -- witness columns\n  w_event uuid;\n  w_claim uuid;\n  w_from text;\n  w_to text;\n  w_recorded timestamptz;\n  w_link uuid;\n  w_evidence uuid;\n  w_scheme text;\n  w_linked_digest bytea;\n  w_observed_digest bytea;\n  w_link_claim uuid;\n  witness_found boolean := false;\n\n  uuid_pattern text := '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$';\n  hex64_pattern text := '^[0-9a-f]{64}$';\n  ts_pattern text := '^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{6}Z$';\n\n  queue json[];\n  cursor_node json;\n  key_total bigint;\n  key_distinct bigint;\nbegin\n  -- Derived columns are never caller-supplied. The grant boundary already withholds them from\n  -- service_role; this rejects a forged value from any role that can reach the table at all.\n  if new.payload_digest is not null\n     or new.recorded_at is not null\n     or new.created_xid is not null then\n    raise exception 'BUILD 5B derived columns are not caller-insertable'\n      using errcode = '42501';\n  end if;\n\n  if new.id is null then\n    new.id := pg_catalog.gen_random_uuid();\n  end if;\n\n  if new.artifact_role is null then\n    raise exception 'BUILD 5B artifact_role is required' using errcode = '23514';\n  end if;\n\n  -- The installed checker definition, obtained by database introspection rather than asserted.\n  select pg_catalog.pg_get_functiondef(p.oid)\n    into installed_definition\n  from pg_catalog.pg_proc p\n  join pg_catalog.pg_namespace n on n.oid = p.pronamespace\n  where n.nspname = 'public'\n    and p.proname = 'prepare_build_5b_artifact';\n\n  if installed_definition is null then\n    raise exception 'BUILD 5B checker definition is not introspectable' using errcode = 'P0002';\n  end if;\n\n  installed_definition_digest := pg_catalog.encode(\n    extensions.digest(pg_catalog.convert_to(installed_definition, 'UTF8'), 'sha256'), 'hex');\n\n  -- Native participation resolution. A representation's context is a bare Referent; every other\n  -- role's context must be an existing Artifact of the required role.\n  if new.artifact_role <> 'source_representation' then\n    select * into context_row from public.artifacts where id = new.context_id;\n    if not found then\n      raise exception 'BUILD 5B context % is not an Artifact', new.context_id\n        using errcode = '23503';\n    end if;\n  end if;\n\n  if new.artifact_role in ('source_representation', 'transformed_representation') then\n    if new.payload_text is null then\n      raise exception 'BUILD 5B % requires caller payload', new.artifact_role\n        using errcode = '23514';\n    end if;\n  else\n    if new.payload_text is not null then\n      raise exception 'BUILD 5B % payload is database-derived', new.artifact_role\n        using errcode = '42501';\n    end if;\n  end if;\n\n  if new.artifact_role = 'source_representation' then\n    -- Its purported Event/source contents are checked later, so wrong or missing native evidence\n    -- stays observable rather than being erased at write time.\n    null;\n\n  elsif new.artifact_role = 'transformation_request' then\n    if context_row.artifact_role <> 'source_representation' then\n      raise exception 'BUILD 5B request context must be a source_representation'\n        using errcode = '23514';\n    end if;\n\n    operation_spec := pg_catalog.jsonb_build_object(\n      'contract_id', 'ecb_transition_relayout_v1',\n      'contract_version', 1,\n      'source_format', 'transition_v1',\n      'output_format', 'basis_v1',\n      'scope', 'recorded_transition_only',\n      'coverage', 'grounding_and_preservation',\n      'obligations', pg_catalog.to_jsonb(contract_obligations),\n      'checker_id', checker_identity,\n      'checker_definition', installed_definition,\n      'checker_definition_digest', installed_definition_digest,\n      'trust_boundary',\n        'service_role_producer; trusted_database_and_ddl; no_external_trust_root'\n    );\n    new.payload_text := operation_spec::text;\n\n  elsif new.artifact_role = 'transformed_representation' then\n    if context_row.artifact_role <> 'transformation_request' then\n      raise exception 'BUILD 5B output context must be a transformation_request'\n        using errcode = '23514';\n    end if;\n    -- Payload may be malformed. Exact bytes are retained and never silently corrected.\n\n  elsif new.artifact_role = 'check_attempt' then\n    if context_row.artifact_role <> 'transformation_request' then\n      raise exception 'BUILD 5B attempt context must be a transformation_request'\n        using errcode = '23514';\n    end if;\n\n    select * into input_row from public.artifacts where id = context_row.context_id;\n    if not found then\n      raise exception 'BUILD 5B attempt input is unavailable' using errcode = 'P0002';\n    end if;\n\n    -- The target must be registered; it need not yet have a native output row.\n    derived_payload := pg_catalog.jsonb_build_object(\n      'event', 'check_requested',\n      'operation_id', context_row.id,\n      'operation_digest', pg_catalog.encode(context_row.payload_digest, 'hex'),\n      'input_id', input_row.id,\n      'input_digest', pg_catalog.encode(input_row.payload_digest, 'hex'),\n      'output_id', new.target_id,\n      'contract_id', 'ecb_transition_relayout_v1',\n      'checker_id', checker_identity,\n      'checker_definition_digest', installed_definition_digest\n    );\n    new.payload_text := derived_payload::text;\n\n  elsif new.artifact_role = 'transformation_receipt' then\n    if context_row.artifact_role <> 'check_attempt' then\n      raise exception 'BUILD 5B receipt context must be a check_attempt'\n        using errcode = '23514';\n    end if;\n\n    -- Committed-attempt entry boundary. pg_current_xact_id() returns the top-level transaction id\n    -- even inside a subtransaction, so a SAVEPOINT cannot bypass this.\n    if context_row.created_xid = pg_catalog.pg_current_xact_id() then\n      raise exception\n        'BUILD 5B receipt requires an attempt committed in a different top-level transaction'\n        using errcode = '55000';\n    end if;\n\n    select * into operation_row from public.artifacts where id = context_row.context_id;\n    if not found then\n      raise exception 'BUILD 5B receipt operation is unavailable' using errcode = 'P0002';\n    end if;\n\n    select * into input_row from public.artifacts where id = operation_row.context_id;\n    if not found then\n      raise exception 'BUILD 5B receipt input is unavailable' using errcode = 'P0002';\n    end if;\n\n    select * into output_row from public.artifacts where id = context_row.target_id;\n    output_found := found;\n\n    ---------------------------------------------------------------------------\n    -- checker_binding, evaluated first. An unqualified checker is unavailable\n    -- checking capability, never an invented result under another contract.\n    ---------------------------------------------------------------------------\n    if operation_row.payload_text::jsonb ->> 'checker_id' = checker_identity\n       and operation_row.payload_text::jsonb ->> 'checker_definition_digest'\n           = installed_definition_digest then\n      check_binding := true;\n    else\n      check_binding := null;\n      reason_map := reason_map\n        || pg_catalog.jsonb_build_object('checker_binding', 'checker_definition_mismatch');\n    end if;\n\n    if check_binding is true then\n      -----------------------------------------------------------------------\n      -- input_format\n      -----------------------------------------------------------------------\n      begin\n        input_doc := input_row.payload_text::json;\n        input_ok := true;\n      exception\n        when others then\n          input_ok := false;\n      end;\n\n      if not input_ok then\n        check_input_format := false;\n      else\n        check_input_format := true;\n        -- Duplicate keys at every depth, tested on json before jsonb can discard them.\n        queue := array[input_doc];\n        while pg_catalog.array_length(queue, 1) > 0 loop\n          cursor_node := queue[1];\n          queue := queue[2:];\n          if pg_catalog.json_typeof(cursor_node) = 'object' then\n            select pg_catalog.count(*), pg_catalog.count(distinct k)\n              into key_total, key_distinct\n            from pg_catalog.json_object_keys(cursor_node) as t(k);\n            if key_total <> key_distinct then\n              check_input_format := false;\n              exit;\n            end if;\n            queue := queue || array(select value from pg_catalog.json_each(cursor_node));\n          elsif pg_catalog.json_typeof(cursor_node) = 'array' then\n            queue := queue || array(select value from pg_catalog.json_array_elements(cursor_node));\n          end if;\n        end loop;\n      end if;\n\n      if check_input_format then\n        check_input_format :=\n          (select pg_catalog.count(*) from pg_catalog.json_object_keys(input_doc)) = 8\n          and input_doc ->> 'format' = 'transition_v1'\n          and input_doc ->> 'scope' = 'recorded_transition_only'\n          and pg_catalog.json_typeof(input_doc -> 'basis') = 'object'\n          and (select pg_catalog.count(*) from pg_catalog.json_object_keys(input_doc -> 'basis')) = 5\n          and (input_doc ->> 'event') ~ uuid_pattern\n          and (input_doc ->> 'claim') ~ uuid_pattern\n          and pg_catalog.json_typeof(input_doc -> 'from') = 'string'\n          and pg_catalog.json_typeof(input_doc -> 'to') = 'string'\n          and (input_doc ->> 'recorded_at') ~ ts_pattern\n          and (input_doc #>> '{basis,link}') ~ uuid_pattern\n          and (input_doc #>> '{basis,evidence}') ~ uuid_pattern\n          and pg_catalog.json_typeof(input_doc #> '{basis,scheme}') = 'string'\n          and (input_doc #>> '{basis,linked_digest}') ~ hex64_pattern\n          and (input_doc #>> '{basis,observed_digest}') ~ hex64_pattern;\n      end if;\n\n      if check_input_format is not true then\n        check_input_format := false;\n        reason_map := reason_map\n          || pg_catalog.jsonb_build_object('input_format', 'invalid_format');\n      end if;\n\n      -----------------------------------------------------------------------\n      -- output_format and participation\n      -----------------------------------------------------------------------\n      if not output_found then\n        check_output_format := null;\n        check_participation := null;\n        reason_map := reason_map || pg_catalog.jsonb_build_object(\n          'output_format', 'unavailable', 'participation', 'unavailable');\n      else\n        if output_row.artifact_role = 'transformed_representation'\n           and output_row.context_id = operation_row.id then\n          check_participation := true;\n        else\n          check_participation := false;\n          reason_map := reason_map\n            || pg_catalog.jsonb_build_object('participation', 'wrong_participant');\n        end if;\n\n        begin\n          output_doc := output_row.payload_text::json;\n          output_ok := true;\n        exception\n          when others then\n            output_ok := false;\n        end;\n\n        if not output_ok then\n          check_output_format := false;\n        else\n          check_output_format := true;\n          queue := array[output_doc];\n          while pg_catalog.array_length(queue, 1) > 0 loop\n            cursor_node := queue[1];\n            queue := queue[2:];\n            if pg_catalog.json_typeof(cursor_node) = 'object' then\n              select pg_catalog.count(*), pg_catalog.count(distinct k)\n                into key_total, key_distinct\n              from pg_catalog.json_object_keys(cursor_node) as t(k);\n              if key_total <> key_distinct then\n                check_output_format := false;\n                exit;\n              end if;\n              queue := queue || array(select value from pg_catalog.json_each(cursor_node));\n            elsif pg_catalog.json_typeof(cursor_node) = 'array' then\n              queue := queue || array(select value from pg_catalog.json_array_elements(cursor_node));\n            end if;\n          end loop;\n        end if;\n\n        if check_output_format then\n          check_output_format :=\n            (select pg_catalog.count(*) from pg_catalog.json_object_keys(output_doc)) = 4\n            and output_doc ->> 'format' = 'basis_v1'\n            and output_doc ->> 'scope' = 'recorded_transition_only'\n            and pg_catalog.json_typeof(output_doc -> 'basis') = 'object'\n            and pg_catalog.json_typeof(output_doc -> 'transition') = 'object'\n            and (select pg_catalog.count(*)\n                 from pg_catalog.json_object_keys(output_doc -> 'basis')) = 5\n            and (select pg_catalog.count(*)\n                 from pg_catalog.json_object_keys(output_doc -> 'transition')) = 5\n            and (output_doc #>> '{basis,evidence}') ~ uuid_pattern\n            and (output_doc #>> '{basis,link}') ~ uuid_pattern\n            and pg_catalog.json_typeof(output_doc #> '{basis,scheme}') = 'string'\n            and (output_doc #>> '{basis,linked_digest}') ~ hex64_pattern\n            and (output_doc #>> '{basis,observed_digest}') ~ hex64_pattern\n            and (output_doc #>> '{transition,id}') ~ uuid_pattern\n            and (output_doc #>> '{transition,claim}') ~ uuid_pattern\n            and pg_catalog.json_typeof(output_doc #> '{transition,from}') = 'string'\n            and pg_catalog.json_typeof(output_doc #> '{transition,to}') = 'string'\n            and (output_doc #>> '{transition,recorded_at}') ~ ts_pattern;\n        end if;\n\n        if check_output_format is not true then\n          check_output_format := false;\n          reason_map := reason_map\n            || pg_catalog.jsonb_build_object('output_format', 'invalid_format');\n        end if;\n      end if;\n\n      -----------------------------------------------------------------------\n      -- grounding, against a separately read source witness\n      -----------------------------------------------------------------------\n      select t.id, t.claim_id, t.from_standing, t.to_standing, t.recorded_at,\n             l.id, l.evidence_referent_id, l.evidence_revision_scheme,\n             l.evidence_revision_digest, t.observed_revision_digest, l.claim_id\n        into w_event, w_claim, w_from, w_to, w_recorded,\n             w_link, w_evidence, w_scheme, w_linked_digest, w_observed_digest, w_link_claim\n      from public.claim_standing_transitions t\n      left join public.evidence_links l on l.id = t.basis_evidence_link_id\n      where t.id = input_row.context_id;\n      witness_found := found;\n\n      if witness_found and w_link is not null then\n        witness := pg_catalog.jsonb_build_object(\n          'event_id', w_event,\n          'claim_id', w_claim,\n          'from_standing', w_from,\n          'to_standing', w_to,\n          'recorded_at', pg_catalog.to_char(\n            w_recorded at time zone 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS.US\"Z\"'),\n          'link_id', w_link,\n          'evidence_referent_id', w_evidence,\n          'evidence_revision_scheme', w_scheme,\n          'evidence_revision_digest', pg_catalog.encode(w_linked_digest, 'hex'),\n          'observed_revision_digest', pg_catalog.encode(w_observed_digest, 'hex'),\n          'link_claim_id', w_link_claim\n        );\n      else\n        witness := null;\n      end if;\n\n      if not check_input_format then\n        check_grounding := null;\n        reason_map := reason_map\n          || pg_catalog.jsonb_build_object('grounding', 'not_evaluated');\n      elsif witness is null then\n        check_grounding := null;\n        reason_map := reason_map\n          || pg_catalog.jsonb_build_object('grounding', 'unavailable');\n      else\n        check_grounding :=\n          (input_doc ->> 'event') = w_event::text\n          and (input_doc ->> 'claim') = w_claim::text\n          and (input_doc ->> 'from') = w_from\n          and (input_doc ->> 'to') = w_to\n          and (input_doc ->> 'recorded_at') = (witness ->> 'recorded_at')\n          and (input_doc #>> '{basis,link}') = w_link::text\n          and (input_doc #>> '{basis,evidence}') = w_evidence::text\n          and (input_doc #>> '{basis,scheme}') = w_scheme\n          and (input_doc #>> '{basis,linked_digest}')\n              = pg_catalog.encode(w_linked_digest, 'hex')\n          and (input_doc #>> '{basis,observed_digest}')\n              = pg_catalog.encode(w_observed_digest, 'hex')\n          -- A present but inconsistent Link is a grounding failure, not a filtered-out row.\n          and w_link_claim = w_claim;\n        if not check_grounding then\n          reason_map := reason_map\n            || pg_catalog.jsonb_build_object('grounding', 'mismatch');\n        end if;\n      end if;\n\n      -----------------------------------------------------------------------\n      -- preservation\n      -----------------------------------------------------------------------\n      if check_input_format is not true or check_output_format is not true then\n        check_preservation := null;\n        reason_map := reason_map\n          || pg_catalog.jsonb_build_object('preservation', 'not_evaluated');\n      else\n        check_preservation :=\n          (output_doc #>> '{transition,id}') = (input_doc ->> 'event')\n          and (output_doc #>> '{transition,claim}') = (input_doc ->> 'claim')\n          and (output_doc #>> '{transition,from}') = (input_doc ->> 'from')\n          and (output_doc #>> '{transition,to}') = (input_doc ->> 'to')\n          and (output_doc #>> '{transition,recorded_at}') = (input_doc ->> 'recorded_at')\n          and (output_doc #>> '{basis,link}') = (input_doc #>> '{basis,link}')\n          and (output_doc #>> '{basis,evidence}') = (input_doc #>> '{basis,evidence}')\n          and (output_doc #>> '{basis,scheme}') = (input_doc #>> '{basis,scheme}')\n          and (output_doc #>> '{basis,linked_digest}') = (input_doc #>> '{basis,linked_digest}')\n          and (output_doc #>> '{basis,observed_digest}')\n              = (input_doc #>> '{basis,observed_digest}')\n          and (output_doc ->> 'scope') = (input_doc ->> 'scope');\n        if not check_preservation then\n          reason_map := reason_map\n            || pg_catalog.jsonb_build_object('preservation', 'mismatch');\n        end if;\n      end if;\n    else\n      -- Unqualified checker: do not evaluate further under another contract.\n      check_input_format := null;\n      check_output_format := null;\n      check_participation := null;\n      check_grounding := null;\n      check_preservation := null;\n      witness := null;\n      reason_map := reason_map || pg_catalog.jsonb_build_object(\n        'input_format', 'not_evaluated',\n        'output_format', 'not_evaluated',\n        'participation', 'not_evaluated',\n        'grounding', 'not_evaluated',\n        'preservation', 'not_evaluated'\n      );\n    end if;\n\n    -- Any observed false yields FAIL even when other components are unavailable; otherwise any\n    -- null yields INCOMPLETE; only all six true yields PASS. producer_succeeded has no weight.\n    if check_input_format is false or check_output_format is false\n       or check_participation is false or check_grounding is false\n       or check_preservation is false or check_binding is false then\n      result_text := 'FAIL';\n    elsif check_input_format is null or check_output_format is null\n       or check_participation is null or check_grounding is null\n       or check_preservation is null or check_binding is null then\n      result_text := 'INCOMPLETE';\n    else\n      result_text := 'PASS';\n    end if;\n\n    derived_payload := pg_catalog.jsonb_build_object(\n      'receipt_version', 1,\n      'scope', 'recorded_transition_only',\n      'coverage', 'grounding_and_preservation',\n      'attempt_id', context_row.id,\n      'operation_id', operation_row.id,\n      'input_id', input_row.id,\n      'output_id', context_row.target_id,\n      'operation_digest', pg_catalog.encode(operation_row.payload_digest, 'hex'),\n      'input_digest', pg_catalog.encode(input_row.payload_digest, 'hex'),\n      'output_digest', case when output_found\n        then pg_catalog.encode(output_row.payload_digest, 'hex') else null end,\n      'checker_id', checker_identity,\n      'checker_definition_digest',\n        operation_row.payload_text::jsonb ->> 'checker_definition_digest',\n      'observed_checker_definition_digest', installed_definition_digest,\n      'producer_succeeded', case when output_found\n        then pg_catalog.to_jsonb(output_row.producer_succeeded) else 'null'::jsonb end,\n      'checks', pg_catalog.jsonb_build_object(\n        'input_format', check_input_format,\n        'output_format', check_output_format,\n        'participation', check_participation,\n        'grounding', check_grounding,\n        'preservation', check_preservation,\n        'checker_binding', check_binding\n      ),\n      'reasons', reason_map,\n      'source_witness', witness,\n      'result', result_text\n    );\n    new.payload_text := derived_payload::text;\n  end if;\n\n  -- Fresh same-UUID Referent registration. An already-registered id is rejected, matching the\n  -- fresh-native creation posture; this installs no general native-binding lifecycle.\n  if exists (select 1 from public.referents where id = new.id) then\n    raise exception 'BUILD 5B Artifact id % is already registered', new.id\n      using errcode = '23505';\n  end if;\n  insert into public.referents (id) values (new.id);\n\n  new.payload_digest := extensions.digest(\n    pg_catalog.convert_to(new.payload_text, 'UTF8'), 'sha256');\n  new.recorded_at := pg_catalog.transaction_timestamp();\n  new.created_xid := pg_catalog.pg_current_xact_id();\n\n  return new;\nend;\n$function$\n",
+        "name": "prepare_build_5b_artifact",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.prepare_claim()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n  insert into public.referents (id)\n  values (new.id);\n\n  new.origin := 'ecb_inference';\n  new.epistemic_standing := 'unassessed';\n  new.asserted_at := pg_catalog.transaction_timestamp();\n\n  return new;\nend;\n$function$\n",
+        "name": "prepare_claim",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.prepare_claim_standing_transition()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare\n  basis_claim_id uuid;\n  basis_evidence_referent_id uuid;\n  applied_standing text;\nbegin\n  insert into public.referents (id)\n  values (new.id);\n\n  select link.claim_id, link.evidence_referent_id\n  into strict basis_claim_id, basis_evidence_referent_id\n  from public.evidence_links as link\n  where link.id = new.basis_evidence_link_id;\n\n  if basis_claim_id <> new.claim_id then\n    raise exception\n      'BUILD 5A basis Evidence Link % does not declare a basis for Claim %',\n      new.basis_evidence_link_id, new.claim_id\n      using errcode = '23514';\n  end if;\n\n  select claim.epistemic_standing\n  into strict applied_standing\n  from public.claims as claim\n  where claim.id = new.claim_id\n  for update;\n\n  if applied_standing <> new.from_standing then\n    raise exception\n      'BUILD 5A declared prior standing % does not match applied standing %',\n      new.from_standing, applied_standing\n      using errcode = '40001';\n  end if;\n\n  new.observed_revision_digest :=\n    public.thought_revision_digest(basis_evidence_referent_id);\n  new.recorded_at := pg_catalog.transaction_timestamp();\n\n  update public.claims\n  set epistemic_standing = new.to_standing\n  where id = new.claim_id;\n\n  return new;\nexception\n  when no_data_found then\n    raise exception\n      'BUILD 5A subject Claim or basis Evidence Link is unavailable'\n      using errcode = 'P0002';\nend;\n$function$\n",
+        "name": "prepare_claim_standing_transition",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.prepare_evidence_link()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare\n  evidence_content text;\n  evidence_source text;\n  evidence_captured_at timestamptz;\n  content_octets bytea;\n  source_octets bytea;\n  captured_at_microseconds bigint;\n  digest_input bytea;\nbegin\n  select thought.content, thought.source, thought.captured_at\n  into strict evidence_content, evidence_source, evidence_captured_at\n  from public.thoughts as thought\n  where thought.id = new.evidence_referent_id\n  for share;\n\n  if not pg_catalog.isfinite(evidence_captured_at) then\n    raise exception 'BUILD 3 evidence captured_at must be finite'\n      using errcode = '22008';\n  end if;\n\n  content_octets := pg_catalog.convert_to(evidence_content, 'UTF8');\n  source_octets := pg_catalog.convert_to(evidence_source, 'UTF8');\n  captured_at_microseconds :=\n    (extract(epoch from evidence_captured_at) * 1000000)::bigint;\n\n  digest_input :=\n    pg_catalog.convert_to('ECB-THOUGHT-REVISION-V1', 'UTF8')\n    || pg_catalog.decode('00', 'hex')\n    || pg_catalog.decode('01', 'hex')\n    || pg_catalog.int8send(pg_catalog.octet_length(content_octets)::bigint)\n    || content_octets\n    || pg_catalog.decode('02', 'hex')\n    || pg_catalog.int8send(pg_catalog.octet_length(source_octets)::bigint)\n    || source_octets\n    || pg_catalog.decode('03', 'hex')\n    || pg_catalog.int8send(8::bigint)\n    || pg_catalog.int8send(captured_at_microseconds);\n\n  insert into public.referents (id)\n  values (new.id);\n\n  new.role := 'used_as_basis';\n  new.evidence_revision_scheme := 'ecb_thought_revision_v1_sha256';\n  new.evidence_revision_digest := extensions.digest(digest_input, 'sha256');\n  new.linked_at := pg_catalog.transaction_timestamp();\n\n  return new;\nexception\n  when no_data_found then\n    raise exception 'BUILD 3 evidence Thought % is unavailable', new.evidence_referent_id\n      using errcode = 'P0002';\nend;\n$function$\n",
+        "name": "prepare_evidence_link",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.register_thought_referent()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n  insert into public.referents (id)\n  values (new.id);\n\n  return new;\nend;\n$function$\n",
+        "name": "register_thought_referent",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.reject_build_5b_artifact_mutation()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n  raise exception 'BUILD 5B Artifacts are immutable; % is not permitted', tg_op\n    using errcode = '42501';\n  return null;\nend;\n$function$\n",
+        "name": "reject_build_5b_artifact_mutation",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.search_thoughts(query_embedding vector, match_count integer DEFAULT 10)\n RETURNS TABLE(id uuid, content text, source text, captured_at timestamp with time zone, embedding_model text, similarity double precision)\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n  select\n    thought.id,\n    thought.content,\n    thought.source,\n    thought.captured_at,\n    thought.embedding_model,\n    1 - (\n      thought.embedding operator(extensions.<=>) query_embedding\n    ) as similarity\n  from public.thoughts as thought\n  order by\n    thought.embedding operator(extensions.<=>) query_embedding,\n    thought.id\n  limit least(greatest(coalesce(match_count, 10), 1), 100);\n$function$\n",
+        "name": "search_thoughts",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.thought_revision_digest(evidence_referent_id uuid)\n RETURNS bytea\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare\n  evidence_content text;\n  evidence_source text;\n  evidence_captured_at timestamptz;\n  content_octets bytea;\n  source_octets bytea;\n  captured_at_microseconds bigint;\n  digest_input bytea;\nbegin\n  select thought.content, thought.source, thought.captured_at\n  into strict evidence_content, evidence_source, evidence_captured_at\n  from public.thoughts as thought\n  where thought.id = evidence_referent_id\n  for share;\n\n  if not pg_catalog.isfinite(evidence_captured_at) then\n    raise exception 'BUILD 5A evidence captured_at must be finite'\n      using errcode = '22008';\n  end if;\n\n  content_octets := pg_catalog.convert_to(evidence_content, 'UTF8');\n  source_octets := pg_catalog.convert_to(evidence_source, 'UTF8');\n  captured_at_microseconds :=\n    (extract(epoch from evidence_captured_at) * 1000000)::bigint;\n\n  digest_input :=\n    pg_catalog.convert_to('ECB-THOUGHT-REVISION-V1', 'UTF8')\n    || pg_catalog.decode('00', 'hex')\n    || pg_catalog.decode('01', 'hex')\n    || pg_catalog.int8send(pg_catalog.octet_length(content_octets)::bigint)\n    || content_octets\n    || pg_catalog.decode('02', 'hex')\n    || pg_catalog.int8send(pg_catalog.octet_length(source_octets)::bigint)\n    || source_octets\n    || pg_catalog.decode('03', 'hex')\n    || pg_catalog.int8send(8::bigint)\n    || pg_catalog.int8send(captured_at_microseconds);\n\n  return extensions.digest(digest_input, 'sha256');\nexception\n  when no_data_found then\n    raise exception 'BUILD 5A evidence Thought % is unavailable', evidence_referent_id\n      using errcode = 'P0002';\nend;\n$function$\n",
+        "name": "thought_revision_digest",
+        "owner": "postgres"
+      }
+    ],
+    "constraints": [
+      {
+        "def": "CHECK ((context_id <> id))",
+        "name": "artifacts_context_is_not_self",
+        "table": "artifacts"
+      },
+      {
+        "def": "FOREIGN KEY (context_id) REFERENCES referents(id)",
+        "name": "artifacts_context_registered",
+        "table": "artifacts"
+      },
+      {
+        "def": "FOREIGN KEY (id) REFERENCES referents(id)",
+        "name": "artifacts_id_registered",
+        "table": "artifacts"
+      },
+      {
+        "def": "CHECK ((octet_length(payload_digest) = 32))",
+        "name": "artifacts_payload_digest_sha256",
+        "table": "artifacts"
+      },
+      {
+        "def": "PRIMARY KEY (id)",
+        "name": "artifacts_pkey",
+        "table": "artifacts"
+      },
+      {
+        "def": "CHECK ((((artifact_role = 'transformed_representation'::text) AND (producer_succeeded IS NOT NULL)) OR ((artifact_role <> 'transformed_representation'::text) AND (producer_succeeded IS NULL))))",
+        "name": "artifacts_producer_flag_only_for_output",
+        "table": "artifacts"
+      },
+      {
+        "def": "CHECK ((artifact_role = ANY (ARRAY['source_representation'::text, 'transformation_request'::text, 'transformed_representation'::text, 'check_attempt'::text, 'transformation_receipt'::text])))",
+        "name": "artifacts_role_vocabulary",
+        "table": "artifacts"
+      },
+      {
+        "def": "CHECK (((target_id IS NULL) OR (target_id <> id)))",
+        "name": "artifacts_target_is_not_self",
+        "table": "artifacts"
+      },
+      {
+        "def": "CHECK ((((artifact_role = 'check_attempt'::text) AND (target_id IS NOT NULL)) OR ((artifact_role <> 'check_attempt'::text) AND (target_id IS NULL))))",
+        "name": "artifacts_target_only_for_check_attempt",
+        "table": "artifacts"
+      },
+      {
+        "def": "FOREIGN KEY (target_id) REFERENCES referents(id)",
+        "name": "artifacts_target_registered",
+        "table": "artifacts"
+      },
+      {
+        "def": "FOREIGN KEY (basis_evidence_link_id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "claim_standing_transitions_basis_referent_fkey",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CHECK ((from_standing <> to_standing))",
+        "name": "claim_standing_transitions_changes_standing",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "FOREIGN KEY (claim_id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "claim_standing_transitions_claim_referent_fkey",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CHECK ((octet_length(observed_revision_digest) = 32))",
+        "name": "claim_standing_transitions_digest_sha256",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CHECK ((from_standing = ANY (ARRAY['unassessed'::text, 'basis_qualified'::text, 'revalidation_required'::text])))",
+        "name": "claim_standing_transitions_from_vocabulary",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "PRIMARY KEY (id)",
+        "name": "claim_standing_transitions_pkey",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "FOREIGN KEY (id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "claim_standing_transitions_referent_fkey",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CHECK ((to_standing = ANY (ARRAY['unassessed'::text, 'basis_qualified'::text, 'revalidation_required'::text])))",
+        "name": "claim_standing_transitions_to_vocabulary",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CHECK ((NOT ((predicate = 'depends_on'::text) AND (subject_referent_id = object_referent_id))))",
+        "name": "claims_depends_on_not_self",
+        "table": "claims"
+      },
+      {
+        "def": "CHECK ((((claim_kind = 'assertion'::text) AND (proposition IS NOT NULL) AND (length(btrim(proposition)) > 0) AND (subject_referent_id IS NULL) AND (predicate IS NULL) AND (object_referent_id IS NULL)) OR ((claim_kind = 'relation'::text) AND (proposition IS NULL) AND (subject_referent_id IS NOT NULL) AND (predicate IS NOT NULL) AND (object_referent_id IS NOT NULL))))",
+        "name": "claims_kind_exclusive_shape",
+        "table": "claims"
+      },
+      {
+        "def": "CHECK ((claim_kind = ANY (ARRAY['assertion'::text, 'relation'::text])))",
+        "name": "claims_kind_vocabulary",
+        "table": "claims"
+      },
+      {
+        "def": "FOREIGN KEY (object_referent_id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "claims_object_referent_fkey",
+        "table": "claims"
+      },
+      {
+        "def": "CHECK ((origin = 'ecb_inference'::text))",
+        "name": "claims_origin_ecb_inference",
+        "table": "claims"
+      },
+      {
+        "def": "PRIMARY KEY (id)",
+        "name": "claims_pkey",
+        "table": "claims"
+      },
+      {
+        "def": "CHECK (((predicate IS NULL) OR (predicate = 'depends_on'::text)))",
+        "name": "claims_predicate_vocabulary",
+        "table": "claims"
+      },
+      {
+        "def": "FOREIGN KEY (id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "claims_referent_fkey",
+        "table": "claims"
+      },
+      {
+        "def": "CHECK ((length(btrim(scope)) > 0))",
+        "name": "claims_scope_nonempty",
+        "table": "claims"
+      },
+      {
+        "def": "CHECK ((epistemic_standing = ANY (ARRAY['unassessed'::text, 'basis_qualified'::text, 'revalidation_required'::text])))",
+        "name": "claims_standing_vocabulary",
+        "table": "claims"
+      },
+      {
+        "def": "FOREIGN KEY (subject_referent_id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "claims_subject_referent_fkey",
+        "table": "claims"
+      },
+      {
+        "def": "FOREIGN KEY (claim_id) REFERENCES claims(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "evidence_links_claim_fkey",
+        "table": "evidence_links"
+      },
+      {
+        "def": "FOREIGN KEY (evidence_referent_id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "evidence_links_evidence_referent_fkey",
+        "table": "evidence_links"
+      },
+      {
+        "def": "PRIMARY KEY (id)",
+        "name": "evidence_links_pkey",
+        "table": "evidence_links"
+      },
+      {
+        "def": "FOREIGN KEY (id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "evidence_links_referent_fkey",
+        "table": "evidence_links"
+      },
+      {
+        "def": "CHECK ((octet_length(evidence_revision_digest) = 32))",
+        "name": "evidence_links_revision_digest_sha256",
+        "table": "evidence_links"
+      },
+      {
+        "def": "CHECK ((evidence_revision_scheme = 'ecb_thought_revision_v1_sha256'::text))",
+        "name": "evidence_links_revision_scheme_v1",
+        "table": "evidence_links"
+      },
+      {
+        "def": "CHECK ((role = 'used_as_basis'::text))",
+        "name": "evidence_links_role_used_as_basis",
+        "table": "evidence_links"
+      },
+      {
+        "def": "PRIMARY KEY (id)",
+        "name": "referents_pkey",
+        "table": "referents"
+      },
+      {
+        "def": "CHECK ((length(btrim(content)) > 0))",
+        "name": "thoughts_content_nonempty",
+        "table": "thoughts"
+      },
+      {
+        "def": "CHECK ((embedding_model = 'gte-small'::text))",
+        "name": "thoughts_embedding_model_gte_small",
+        "table": "thoughts"
+      },
+      {
+        "def": "PRIMARY KEY (id)",
+        "name": "thoughts_pkey",
+        "table": "thoughts"
+      },
+      {
+        "def": "FOREIGN KEY (id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "thoughts_referent_fkey",
+        "table": "thoughts"
+      },
+      {
+        "def": "CHECK ((length(btrim(source)) > 0))",
+        "name": "thoughts_source_nonempty",
+        "table": "thoughts"
+      }
+    ],
+    "table_grants": [
+      {
+        "role": "service_role",
+        "table": "artifacts",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "referents",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "privilege": "SELECT"
+      }
+    ],
+    "schema_grants": [
+      {
+        "role": "anon",
+        "usage": true,
+        "create": false,
+        "schema": "extensions"
+      },
+      {
+        "role": "anon",
+        "usage": true,
+        "create": false,
+        "schema": "public"
+      },
+      {
+        "role": "authenticated",
+        "usage": true,
+        "create": false,
+        "schema": "extensions"
+      },
+      {
+        "role": "authenticated",
+        "usage": true,
+        "create": false,
+        "schema": "public"
+      },
+      {
+        "role": "postgres",
+        "usage": true,
+        "create": true,
+        "schema": "extensions"
+      },
+      {
+        "role": "postgres",
+        "usage": true,
+        "create": true,
+        "schema": "public"
+      },
+      {
+        "role": "service_role",
+        "usage": true,
+        "create": false,
+        "schema": "extensions"
+      },
+      {
+        "role": "service_role",
+        "usage": true,
+        "create": false,
+        "schema": "public"
+      }
+    ]
+  }
+}
