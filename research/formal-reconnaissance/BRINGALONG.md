@@ -183,6 +183,9 @@ its own without disturbing the others.
 
 # PART 2 — DECODER
 
+*This repeats `GLOSSARY.md` on purpose. This package has to work when pasted somewhere with no
+file access, so it cannot point at a file the reader cannot open.*
+
 ## Codes I invented for this research
 
 They are filing labels, nothing more.
