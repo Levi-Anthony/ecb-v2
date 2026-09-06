@@ -1,129 +1,81 @@
-STATUS: REHEARSAL COMPLETE ON POSTGRESQL 16; CANONICAL CONTACT NOT MADE
-DISPOSITION: EVIDENCE ROLE: BUILD 5B disposable rehearsal harness and its
-observed results AUTHORITY: None. This is a pre-canonical rehearsal, not a WT07
-execution receipt and not a BUILD 5B closure.
+STATUS: POSTGRESQL 17 QUALIFICATION IMPLEMENTED; CANONICAL EXECUTION GATED
+DISPOSITION: EVIDENCE / PROCEDURE AUTHORITY: Frozen WT07 and BUILD 5B Output
+Contract; no independent acceptance authority
 
-# BUILD 5B rehearsal — Worked Trace 07 on a disposable database
+# BUILD 5B qualification and execution
 
-[Worked Trace 07](../../docs/acceptance/build-5b-wt07.md) requires a disposable
-PostgreSQL database for the commit-dependent, crash, savepoint and concurrency
-cases, because BUILD 5B's mechanism turns on a _committed_ attempt marker and
-those probes cannot be rolled back or cleaned up afterwards. The Artifact table
-is immutable by construction, so a rehearsal cannot tidy after itself and must
-not try. Every run starts from a new database.
+The candidate descends from PR #2 (`f47cbad`) and the reviewed Shape
+`07fcb9f29c75365c07d36226043d3b17cbc769fd`. The alternative unfinished local
+implementation is preserved at `60f510c`; its migration is not adopted here. The
+selected migration remains byte-identical to PR #2: SHA-256
+`adbcbdf627a7d60e020af74e214c976757b423ac697caefd5d88904082a95b41`.
 
-Nothing here contacts canonical state.
-
-## Running it
+Run from this directory with Deno and Docker:
 
 ```bash
-./rehearsal-setup.sh                       # rebuilds the disposable database end to end
-export REHEARSAL_DATABASE_URL=...          # superuser, disposable database
-export REHEARSAL_SERVICE_URL=...           # service_role, disposable database
-export REHEARSAL_ADMIN_URL=...             # superuser, maintenance database (for P19's copy)
-export REHEARSAL_P19_URL=...               # superuser, rehearsal_p19
-deno task check
-deno run --allow-env --allow-net --allow-read harness.ts
+# Read-only prerequisite, before BUILD 5B activation; env file supplies POSTGRES_URL.
+deno run --env-file=/absolute/path/to/.env.local --allow-env --allow-net --allow-read --allow-write qualify.ts snapshot
+# Creates the fixed loopback-only PG17 container if absent, then rebuilds scratch databases.
+bash rehearsal-setup.sh
 ```
 
-| File                 | Role                                                                                                          |
-| -------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `rehearsal-setup.sh` | Rebuilds the predecessor and applies BUILD 5B through the bound runner.                                       |
-| `runner.ts`          | The migration mechanism: one outer transaction, exact file bytes, parameterized ledger write, rollback probe. |
-| `fixtures.ts`        | The frozen WT07 values. They judge recovered content; they never supply it.                                   |
-| `harness.ts`         | The producer, the WT07 stages, P01–P23, fresh-context reconstruction and Layer B.                             |
+`B5B_EVIDENCE_DIR` selects the evidence directory; default:
+`/tmp/ecb5b-qualification-evidence`. Preserve the predecessor snapshot and
+qualification evidence outside ephemeral storage before handing work off. After
+canonical activation, reuse the retained predecessor snapshot for rehearsals;
+the snapshot command deliberately rejects a post-5B database.
 
-## Observed result — 2026-09-06
+The setup owns only container `ecb5b-qualified-pg17` on `127.0.0.1:55438` and
+its `rehearsal`, `episode`, and `rehearsal_p19` databases. These databases are
+recreated because committed immutable probes cannot be cleaned up in place.
+Never copy their Artifact rows to canonical: XID provenance is cluster-local.
 
-**39 of 39 checks passed** on a freshly rebuilt database. Every challenge is
-reported explicitly; no assertion is vacuous and no captured boolean goes
-unchecked.
+| File                  | Responsibility                                                                                                                                             |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `qualify.ts`          | Rebuilds predecessor, checks fidelity, runs baseline and Layer B regressions, WT07, stage recovery, and backend-loss checks; binds results to file hashes. |
+| `seed.ts`             | Restores exact accepted predecessor data, including embeddings and historical timestamps, only in disposable PostgreSQL.                                   |
+| `runner.ts`           | Exact migration bytes, ledger and schema checks in one transaction; forced rollback before application.                                                    |
+| `move.ts`             | Exact seven-Artifact and two-receipt transactions, stage resumption, fresh reconstruction, canonical provenance gates.                                     |
+| `verify.ts`           | Read-only exact schema, permissions, inherited bytes, payload hashes, specs, attempts, and receipts.                                                       |
+| `harness.ts`          | 39 WT07 findings covering P01–P23; retained P23 controls and observed P17 blocking.                                                                        |
+| `layer-b-standing.ts` | Existing standing/history behavior with only the permitted 5B inventory expansion.                                                                         |
+| `supplement.ts`       | Actual backend termination, incomplete-attempt recovery, independent hashes, native retrieval.                                                             |
+| `fixtures.ts`         | Frozen expected values; not generated from checker results.                                                                                                |
 
-Migration mechanism, proved before application:
+The complete qualification runs on PostgreSQL 17 with pgvector 0.8.2 and
+pgcrypto 1.3. It compares all inherited fixture bytes, definitions, constraints,
+triggers, permissions, and relevant role attributes to the canonical snapshot.
+The historical PG16 rehearsal at `f47cbad` remains evidence of that earlier
+candidate; it does not qualify the new runner.
 
-| Property                                | Evidence                                                                                                                                   |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| all-or-nothing activation               | full path run and forced to roll back; zero residue in table, functions and ledger                                                         |
-| applied bytes identical to the artifact | `20260906014257_build_5b_versioned_artifacts.sql`, 26656 bytes, SHA-256 `adbcbdf627a7d60e020af74e214c976757b423ac697caefd5d88904082a95b41` |
-| no nested transaction                   | the runner refuses a file carrying its own `BEGIN`/`COMMIT`                                                                                |
+Repairs address test/runner defects: inherited Referents are compared separately
+from explicitly permitted new identities; full fixture stages are verified
+before commit; P17 observes blocking rather than assuming it after a delay; P23
+retains both exact controls; migration ledger identity and resumption are
+verified. The resumed packaging also fixes a hardcoded evidence path and
+invalidates old PASS evidence when a new qualification starts. No migration,
+Shape, or WT07 expectation was changed.
 
-Canonical WT07 receipts, derived by the database:
+Canonical execution requires a clean committed candidate, the same candidate
+remotely anchored on `build/build-5b-pg17-qualification`, and a complete
+rehearsal on those exact bytes. With the existing human execution authorization
+and gates satisfied:
 
-| Receipt        | Result | Components                                                                                                    |
-| -------------- | ------ | ------------------------------------------------------------------------------------------------------------- |
-| RC1 `6d0b744b` | `PASS` | all six true                                                                                                  |
-| RC2 `1217d889` | `FAIL` | `output_format` false, `grounding` true, `preservation` null/`not_evaluated`, `producer_succeeded` still true |
+```bash
+deno run --env-file=/absolute/path/to/.env.local --allow-env --allow-net --allow-read --allow-write --allow-run move.ts canonical
+```
 
-Installed checker definition digest observed at receipt time:
-`310aa83181ea186b1dc5ea1ea377c99a12a09ee1d527552bb8b07c676f0f0912`.
+The runner rechecks predecessor preservation, applies only the selected
+migration and ledger atomically, then commits seven exact pre-check Artifacts
+and two receipts in separate transactions. Existing exact stages are
+reconstructed; partial or mismatched stages stop. It never blindly retries an
+uncertain effect. Canonical ends with nine Artifacts and sixteen total
+Referents, without probes.
 
-OP1 and OP2 carry distinct identities and the same derived specification digest
-`c7f66a66fab4350147d3d9f1192e42c811b35f2799ede94cbef5dd8477d7d774`, which is the
-intended reading of branching: two operations over one input, with no successor
-or currentness implication.
-
-P23, the proof-sensitivity control the hardening delta added, discriminates
-through the identical installed checker: the unchanged A2 control returns all
-six true and `PASS`, and the single mutation of `basis.observed_digest` to
-sixty-four zeros returns `preservation` false with the other five true and
-result `FAIL`. Both ran under the same observed checker definition digest. No
-malformed-format rejection or grounding failure substituted for detecting the
-preservation violation.
-
-## Defects found and classified
-
-**D-R1 — TEST_OR_PROBE_DEFECT (corrected).** The first run reported RC1w and S5
-as failures. The implementation was correct; the harness compared receipt source
-witnesses by `JSON.stringify`, and receipt payloads are serialized as PostgreSQL
-`jsonb`, which does not preserve key order. Field-wise comparison replaced
-string equality. No implementation, Shape or contract change followed, and the
-observed component outcomes were identical before and after the repair.
-
-No implementation defect and no Shape or contract defect was found in this
-rehearsal.
-
-## Declared limitations — read before treating any of this as Move evidence
-
-1. **Engine version delta.** The canonical predecessor `ecb-v2-brain` runs
-   PostgreSQL 17.6.1.166. This rehearsal ran on **PostgreSQL 16.13**, the only
-   server obtainable in the execution environment; the PostgreSQL global
-   development repository is refused by the environment's network policy and
-   Ubuntu 24.04 ships no PostgreSQL 17 package. The Output Contract asks for the
-   predecessor's major version and, where it is unavailable, for tooling to be
-   resolved before canonical state is touched. The human released the Move with
-   this delta explicitly accepted and the rehearsal bounded to PostgreSQL 16.
-   `xid8` and `pg_current_xact_id()` have existed since PostgreSQL 13 and
-   savepoint semantics are stable across 16 and 17, so the delta is expected to
-   be immaterial — but that expectation is **unmeasured here**, and P14, P15,
-   P16 and P17 are exactly the cases that depend on it. Their PostgreSQL 17
-   behaviour remains unobserved.
-
-2. **Baseline construction.** The BUILD 0–5A migrations derive their fixture
-   timestamps from their own transaction clock and hard-code the canonical
-   values in their drift checks, so replaying them at a different wall-clock
-   time cannot reproduce the bytes WT07's frozen A1 encodes. Three time-derived
-   predecessor values were therefore set explicitly from canonical facts read
-   read-only from `ecb-v2-brain`: Claim C and C2/R `asserted_at`, L `linked_at`,
-   and TR1 `recorded_at`. Every other predecessor fact is produced by the
-   migrations themselves. With that alignment the rehearsal predecessor matches
-   canonical exactly on tables, views, functions, and all fixture counts, and
-   GT01's revision digest recomputes to the frozen `5edc4782…`. The alignment is
-   rehearsal scaffolding; canonical needs none of it.
-
-3. **Synthetic embedding.** GT01's 384-dimension embedding is a deterministic
-   local vector, not the canonical one. The revision digest scheme excludes the
-   embedding, so no checked value depends on it; only similarity ranking would,
-   and no BUILD 5B obligation reads it.
-
-4. **Probe residue is expected here and forbidden canonically.** This database
-   ends with 146 Artifacts. Canonical must contain exactly the nine reserved
-   fixtures. The scratch database is discarded; nothing in it is portable to
-   canonical.
-
-5. **What a rehearsal pass does not establish.** It does not accept BUILD 5B,
-   does not open BUILD 6, and does not certify database correctness,
-   specification completeness, or independence from a defect shared by the
-   specification, checker and acceptance oracle. A database owner who rewrites
-   the checker and its evidence can falsify any self-hosted receipt; BUILD 5B
-   claims no external trust root. The canonical WT07 pass has not been observed,
-   because canonical contact has not been made.
+Limits: the local and managed PostgreSQL patch builds differ; major version,
+used extension versions, roles and relevant schema are checked. Source
+semantics, checker/specification independence, malicious DDL custody, external
+trust, automatic eventual completion and BUILD 6 authority are not proven.
+Actual backend loss is tested before commit; a lost post-commit network
+acknowledgement is not physically induced. Database receipts prove only the
+declared obligations. BUILD 5B closure remains a human Metabolize decision.

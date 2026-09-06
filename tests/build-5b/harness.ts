@@ -8,6 +8,7 @@
 
 // deno-lint-ignore-file no-explicit-any -- postgres.js is dynamically typed at the call surface.
 import postgres from "postgres";
+import { fixtures as verifyFixtures } from "./verify.ts";
 import {
   A1_ID,
   A1_TEXT,
@@ -76,7 +77,19 @@ function serviceUrl(): string {
 }
 
 function client(connection: string): Sql {
-  return postgres(connection, { max: 1, onnotice: () => {} });
+  const parsed = new URL(connection);
+  if (parsed.hostname !== "127.0.0.1" || parsed.port !== "55438") {
+    throw new Error(
+      "WT07 fault probes require the disposable local PG17 database",
+    );
+  }
+  const role = parsed.searchParams.get("role");
+  parsed.searchParams.delete("role");
+  return postgres(parsed.toString(), {
+    max: 1,
+    onnotice: () => {},
+    connection: { search_path: "public,extensions", ...(role ? { role } : {}) },
+  });
 }
 
 async function sha256Hex(text: string): Promise<string> {
@@ -305,6 +318,24 @@ async function runP19(): Promise<void> {
   }
 }
 
+async function waitForBlocking(observer: Sql, blocker: Sql) {
+  const [{ pid: blockerPid }] = await blocker`select pg_backend_pid() pid`;
+  // A query on waiter would queue behind its blocked insert, so identify it by the blocking relation.
+  for (let i = 0; i < 100; i++) {
+    const rows =
+      await observer`select pid from pg_stat_activity where ${blockerPid} = any(pg_blocking_pids(pid))`;
+    if (rows.length === 1) {
+      console.log(
+        "P17_BLOCKING " +
+          JSON.stringify({ blockerPid, waiterPid: rows[0].pid }),
+      );
+      return;
+    }
+    await new Promise((r) => setTimeout(r, 20));
+  }
+  throw new Error("P17 did not observe concurrent blocking");
+}
+
 async function main(): Promise<void> {
   const sql = client(url());
   const svc = client(serviceUrl());
@@ -341,7 +372,11 @@ async function main(): Promise<void> {
                values (${A_BAD_ID}, 'transformed_representation', ${OP2_ID}, ${A_BAD_TEXT}, true)`;
       await tx`insert into public.artifacts (id, artifact_role, context_id, target_id)
                values (${CHECK2_ID}, 'check_attempt', ${OP2_ID}, ${A_BAD_ID})`;
+      await tx.unsafe("set local role postgres");
+      await verifyFixtures(tx, 7);
+      await tx.unsafe("set role service_role");
     });
+    await verifyFixtures(sql, 7);
 
     const [stage3] = await sql`select count(*)::int as n from public.artifacts`;
     record(
@@ -355,8 +390,17 @@ async function main(): Promise<void> {
     // ---------------------------------------------------------------------
     // WT07 stage 4 — receipts in a different top-level transaction.
     // ---------------------------------------------------------------------
-    const rc1 = await publishReceipt(svc, CHECK1_ID, RC1_ID);
-    const rc2 = await publishReceipt(svc, CHECK2_ID, RC2_ID);
+    const [rc1, rc2] = await svc.begin(async (tx: Sql) => {
+      const pair = [
+        await publishReceipt(tx, CHECK1_ID, RC1_ID),
+        await publishReceipt(tx, CHECK2_ID, RC2_ID),
+      ];
+      await tx.unsafe("set local role postgres");
+      await verifyFixtures(tx, 9);
+      await tx.unsafe("set role service_role");
+      return pair;
+    });
+    await verifyFixtures(sql, 9);
 
     record(
       "RC1",
@@ -411,6 +455,18 @@ async function main(): Promise<void> {
     const p23Mutant = await buildEpisode(svc, { a1: A1_TEXT, a2: A2_P23_TEXT });
     const controlReceipt = await publishReceipt(svc, p23Control.attemptId);
     const mutantReceipt = await publishReceipt(svc, p23Mutant.attemptId);
+    const controls = [];
+    for (
+      const [episode, receipt] of [[p23Control, controlReceipt], [
+        p23Mutant,
+        mutantReceipt,
+      ]] as const
+    ) {
+      const rows =
+        await sql`select id::text,artifact_role,context_id::text,target_id::text,payload_text,encode(payload_digest,'hex') digest,producer_succeeded from artifacts where id in (${episode.srcId},${episode.opId},${episode.outId},${episode.attemptId}) order by id`;
+      controls.push({ episode, receipt, retained: rows });
+    }
+    console.log("P23_OBSERVATIONS " + JSON.stringify(controls));
 
     const p23Expected = {
       input_format: true,
@@ -949,7 +1005,7 @@ async function main(): Promise<void> {
       w2`insert into public.artifacts (id, artifact_role, context_id)
          values (${loserId}, 'transformation_receipt', ${winnerCommits.attemptId})`
     );
-    await new Promise((r) => setTimeout(r, 250));
+    await waitForBlocking(sql, w1);
     await w1.unsafe("commit");
     const loserError = await loserPromise;
     const [committedCount] = await sql`
@@ -970,7 +1026,7 @@ async function main(): Promise<void> {
       w2`insert into public.artifacts (id, artifact_role, context_id)
          values (${secondId}, 'transformation_receipt', ${winnerRollsBack.attemptId})`
     );
-    await new Promise((r) => setTimeout(r, 250));
+    await waitForBlocking(sql, w1);
     await w1.unsafe("rollback");
     const secondError = await secondPromise;
     const [rollbackCount] = await sql`
@@ -1284,6 +1340,7 @@ async function main(): Promise<void> {
 
   await runP19();
 
+  console.log("WT07_FINDINGS " + JSON.stringify(findings));
   const failed = findings.filter((f) => !f.pass);
   console.log(
     `\n${findings.length - failed.length}/${findings.length} checks passed`,
