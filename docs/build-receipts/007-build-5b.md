@@ -1,7 +1,7 @@
-STATUS: EXECUTION PASS — 2026-09-06 AMERICA/PHOENIX; AWAITING HUMAN METABOLIZE
+STATUS: ACCEPTED AND CLOSED — 2026-09-06 AMERICA/PHOENIX
 DISPOSITION: EVIDENCE
 ROLE: BUILD 5B execution receipt
-AUTHORITY: Does not accept/close BUILD 5B, amend frozen obligations, or open BUILD 6
+AUTHORITY: Execution evidence plus recorded human closure below; no independent authority to amend frozen obligations
 
 # BUILD 5B — Exact versions and checked transformation receipts
 
@@ -10,7 +10,7 @@ The selected migration and frozen nine-Artifact episode are installed in canonic
 RC1 is PASS with all six components true. RC2 is the required observed FAIL:
 its output omits `observed_digest`, its producer still claims success, grounding
 is true, and preservation is explicitly not evaluated because the format is invalid.
-No Claim standing or inherited fixture changed. Human Metabolize remains pending.
+No Claim standing or inherited fixture changed. At execution reporting, human Metabolize was pending; the subsequent human closure is recorded below.
 
 This document records execution evidence; it is distinct from the two database
 Transformation Receipts and is not itself a governance acceptance event.
@@ -144,7 +144,27 @@ qualification, schema transaction, schema confirmation and canonical stage recor
 payloads and observations. These records are checked into the repository; the
 handoff does not depend on `/tmp` surviving.
 
-Review this receipt and the exact candidate/evidence for human Metabolize.
-BUILD 5B is executed, **not yet accepted or closed**. BUILD 6 remains unopened.
+At the execution checkpoint `7c89e82`, BUILD 5B awaited human Metabolize and BUILD 6 remained unopened. The subsequent disposition below replaces that next handle.
 Do not rerun canonical writes merely to regenerate evidence. Subsequent docs-only
 commits preserve the executed code; the migration ledger correctly names `7f37907`.
+
+
+## Human Metabolize and closure — 2026-09-06 America/Phoenix
+
+After receiving the completed execution report and linked receipt, the human directed
+**“Open 6”**, then **“Continue”**. In this context that direction accepts the reported
+BUILD 5B result for advancement, closes BUILD 5B, and opens BUILD 6 Governance
+Bootstrap at Sense. This records the operative consequence of the instruction; it
+does not claim a separate exhaustive audit or silently ratify broader doctrine.
+
+Accepted evidence anchor: `7c89e82eaba27ecd3972bf0100a1133363b3304c`, tree
+`a2fc281e24a465463b95435e35aad99c0ad2f737`. Executed code remains `7f37907`;
+the canonical ledger, frozen WT07, raw evidence and declared limits are unchanged.
+The expected defective-output FAIL is a successful discrimination, not an unresolved
+implementation failure. The prior-art, tooling, replayability and trust-boundary
+limits recorded above remain visible; none is promoted to a general guarantee.
+
+BUILD 5B is accepted and closed. BUILD 6 Sense is authorized. Its specific focal
+episode, trust-root representation, policy semantics, Shape and implementation
+remain to be examined; no BUILD 6 migration or canonical activation follows merely
+from opening the Build. No database contact occurred in recording this closure.
