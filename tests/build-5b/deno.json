@@ -3,7 +3,7 @@
     "postgres": "npm:postgres@3.4.7"
   },
   "tasks": {
-    "check": "deno fmt --check runner.ts harness.ts deno.json README.md && deno lint runner.ts harness.ts && deno check runner.ts harness.ts",
+    "check": "deno fmt --check runner.ts harness.ts fixtures.ts deno.json README.md && deno lint runner.ts harness.ts fixtures.ts && deno check runner.ts harness.ts fixtures.ts",
     "rehearse": "deno run --allow-env --allow-net --allow-read runner.ts && deno run --allow-env --allow-net --allow-read harness.ts"
   }
 }
