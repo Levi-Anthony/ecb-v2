@@ -1,0 +1,1172 @@
+{
+  "meta": {
+    "version": "17.6",
+    "version_num": "170006",
+    "encoding": "UTF8"
+  },
+  "extensions": [
+    {
+      "extname": "pg_stat_statements",
+      "extversion": "1.11",
+      "nspname": "extensions"
+    },
+    {
+      "extname": "pgcrypto",
+      "extversion": "1.3",
+      "nspname": "extensions"
+    },
+    {
+      "extname": "plpgsql",
+      "extversion": "1.0",
+      "nspname": "pg_catalog"
+    },
+    {
+      "extname": "supabase_vault",
+      "extversion": "0.3.1",
+      "nspname": "vault"
+    },
+    {
+      "extname": "uuid-ossp",
+      "extversion": "1.1",
+      "nspname": "extensions"
+    },
+    {
+      "extname": "vector",
+      "extversion": "0.8.2",
+      "nspname": "extensions"
+    }
+  ],
+  "roles": [
+    {
+      "rolname": "anon",
+      "rolsuper": false,
+      "rolinherit": true,
+      "rolcreaterole": false,
+      "rolcreatedb": false,
+      "rolcanlogin": false,
+      "rolreplication": false,
+      "rolbypassrls": false
+    },
+    {
+      "rolname": "authenticated",
+      "rolsuper": false,
+      "rolinherit": true,
+      "rolcreaterole": false,
+      "rolcreatedb": false,
+      "rolcanlogin": false,
+      "rolreplication": false,
+      "rolbypassrls": false
+    },
+    {
+      "rolname": "postgres",
+      "rolsuper": false,
+      "rolinherit": true,
+      "rolcreaterole": true,
+      "rolcreatedb": true,
+      "rolcanlogin": true,
+      "rolreplication": true,
+      "rolbypassrls": true
+    },
+    {
+      "rolname": "service_role",
+      "rolsuper": false,
+      "rolinherit": true,
+      "rolcreaterole": false,
+      "rolcreatedb": false,
+      "rolcanlogin": false,
+      "rolreplication": false,
+      "rolbypassrls": true
+    }
+  ],
+  "ledger": [
+    {
+      "version": "20260903235721",
+      "statements": [
+        "-- BUILD 0 — Clean OB1 Kernel\n-- STRUCTURAL / schema constraint: one complete canonical thought record.\n\ncreate extension if not exists vector with schema extensions;\n\ncreate table public.thoughts (\n  id uuid primary key default gen_random_uuid(),\n  content text not null,\n  source text not null,\n  captured_at timestamptz not null default now(),\n  embedding extensions.vector(384) not null,\n  embedding_model text not null default 'gte-small',\n\n  constraint thoughts_content_nonempty\n    check (length(btrim(content)) > 0),\n  constraint thoughts_source_nonempty\n    check (length(btrim(source)) > 0),\n  constraint thoughts_embedding_model_gte_small\n    check (embedding_model = 'gte-small')\n);\n\ncomment on table public.thoughts is\n  'BUILD 0 atomic evidence records. Capture does not promote a thought into governance standing.';\n\nalter table public.thoughts enable row level security;\n\nrevoke all on table public.thoughts from anon, authenticated;\ngrant select, insert on table public.thoughts to service_role;\n\ncreate function public.search_thoughts(\n  query_embedding extensions.vector(384),\n  match_count integer default 10\n)\nreturns table (\n  id uuid,\n  content text,\n  source text,\n  captured_at timestamptz,\n  embedding_model text,\n  similarity double precision\n)\nlanguage sql\nstable\nsecurity invoker\nset search_path = ''\nas $$\n  select\n    thought.id,\n    thought.content,\n    thought.source,\n    thought.captured_at,\n    thought.embedding_model,\n    1 - (\n      thought.embedding operator(extensions.<=>) query_embedding\n    ) as similarity\n  from public.thoughts as thought\n  order by\n    thought.embedding operator(extensions.<=>) query_embedding,\n    thought.id\n  limit least(greatest(coalesce(match_count, 10), 1), 100);\n$$;\n\nrevoke all on function public.search_thoughts(extensions.vector, integer)\n  from public, anon, authenticated;\ngrant execute on function public.search_thoughts(extensions.vector, integer)\n  to service_role;\n"
+      ],
+      "name": "build_0_atomic_thoughts",
+      "created_by": "levisemailaddress@gmail.com",
+      "idempotency_key": null,
+      "rollback": null
+    },
+    {
+      "version": "20260904000010",
+      "statements": [
+        "-- BUILD 0 — least-privilege correction\n-- STRUCTURAL / authorization check: the runtime may capture and retrieve,\n-- but BUILD 0 exposes no update or delete behavior.\n\nrevoke all on table public.thoughts from service_role;\ngrant select, insert on table public.thoughts to service_role;\n"
+      ],
+      "name": "build_0_least_privilege",
+      "created_by": "levisemailaddress@gmail.com",
+      "idempotency_key": null,
+      "rollback": null
+    },
+    {
+      "version": "20260904093341",
+      "statements": [
+        "-- BUILD 2 — Universal Referents\n-- One atomic activation of the identity-only registry and Thought coupling.\n\nbegin",
+        "lock table public.thoughts in share row exclusive mode",
+        "create table public.referents (\n  id uuid primary key,\n  registered_at timestamptz not null default transaction_timestamp()\n)",
+        "create function public.register_thought_referent()\nreturns trigger\nlanguage plpgsql\nsecurity invoker\nset search_path = ''\nas $$\nbegin\n  insert into public.referents (id)\n  values (new.id);\n\n  return new;\nend;\n$$",
+        "revoke all on function public.register_thought_referent()\n  from public, anon, authenticated",
+        "create trigger thoughts_register_referent\nbefore insert on public.thoughts\nfor each row\nexecute function public.register_thought_referent()",
+        "insert into public.referents (id)\nselect thought.id\nfrom public.thoughts as thought",
+        "insert into public.referents (id)\nvalues ('2eede0e4-b27a-4383-850e-a448f0113c9f')",
+        "alter table public.thoughts\n  add constraint thoughts_referent_fkey\n  foreign key (id)\n  references public.referents (id)\n  on update restrict\n  on delete restrict\n  not deferrable",
+        "alter table public.referents enable row level security",
+        "revoke all on table public.referents\n  from public, anon, authenticated, service_role",
+        "grant select on table public.referents to service_role",
+        "grant insert (id) on table public.referents to service_role",
+        "do $$\ndeclare\n  referent_column_count integer;\n  referent_policy_count integer;\n  uncoupled_thought_count integer;\nbegin\n  select count(*)\n  into referent_column_count\n  from information_schema.columns\n  where table_schema = 'public'\n    and table_name = 'referents';\n\n  if referent_column_count <> 2 then\n    raise exception 'BUILD 2 activation produced % referent columns', referent_column_count;\n  end if;\n\n  select count(*)\n  into referent_policy_count\n  from pg_policies\n  where schemaname = 'public'\n    and tablename = 'referents';\n\n  if referent_policy_count <> 0 then\n    raise exception 'BUILD 2 activation produced % referent policies', referent_policy_count;\n  end if;\n\n  select count(*)\n  into uncoupled_thought_count\n  from public.thoughts as thought\n  left join public.referents as referent on referent.id = thought.id\n  where referent.id is null;\n\n  if uncoupled_thought_count <> 0 then\n    raise exception 'BUILD 2 activation left % uncoupled thoughts', uncoupled_thought_count;\n  end if;\n\n  if not has_table_privilege('service_role', 'public.referents', 'select')\n    or exists (\n      select 1\n      from information_schema.role_table_grants\n      where grantee = 'service_role'\n        and table_schema = 'public'\n        and table_name = 'referents'\n        and privilege_type = 'INSERT'\n    )\n    or has_table_privilege('service_role', 'public.referents', 'update')\n    or has_table_privilege('service_role', 'public.referents', 'delete')\n    or not has_column_privilege('service_role', 'public.referents', 'id', 'insert')\n    or has_column_privilege('service_role', 'public.referents', 'registered_at', 'insert') then\n    raise exception 'BUILD 2 activation produced an invalid service-role registry grant';\n  end if;\nend;\n$$",
+        "commit"
+      ],
+      "name": "build_2_universal_referents",
+      "created_by": null,
+      "idempotency_key": null,
+      "rollback": null
+    },
+    {
+      "version": "20260904163938",
+      "statements": [
+        "-- BUILD 3 — Claims + Standing + Evidence Links\n-- Atomic activation of assertion Claims, historical evidence lineage, and\n-- database-derived Thought revision anchors.\n\nbegin;\n\ncreate extension if not exists pgcrypto with schema extensions;\n\ncreate table public.claims (\n  id uuid primary key default gen_random_uuid(),\n  proposition text not null,\n  scope text not null,\n  claim_kind text not null,\n  origin text not null,\n  epistemic_standing text not null,\n  asserted_at timestamptz not null,\n  constraint claims_proposition_nonempty\n    check (length(btrim(proposition)) > 0),\n  constraint claims_scope_nonempty\n    check (length(btrim(scope)) > 0),\n  constraint claims_kind_assertion\n    check (claim_kind = 'assertion'),\n  constraint claims_origin_ecb_inference\n    check (origin = 'ecb_inference'),\n  constraint claims_standing_unassessed\n    check (epistemic_standing = 'unassessed'),\n  constraint claims_referent_fkey\n    foreign key (id)\n    references public.referents (id)\n    on update restrict\n    on delete restrict\n    not deferrable\n);\n\ncreate table public.evidence_links (\n  id uuid primary key default gen_random_uuid(),\n  claim_id uuid not null,\n  evidence_referent_id uuid not null,\n  role text not null,\n  evidence_revision_scheme text not null,\n  evidence_revision_digest bytea not null,\n  linked_at timestamptz not null,\n  constraint evidence_links_role_used_as_basis\n    check (role = 'used_as_basis'),\n  constraint evidence_links_revision_scheme_v1\n    check (evidence_revision_scheme = 'ecb_thought_revision_v1_sha256'),\n  constraint evidence_links_revision_digest_sha256\n    check (octet_length(evidence_revision_digest) = 32),\n  constraint evidence_links_referent_fkey\n    foreign key (id)\n    references public.referents (id)\n    on update restrict\n    on delete restrict\n    not deferrable,\n  constraint evidence_links_claim_fkey\n    foreign key (claim_id)\n    references public.claims (id)\n    on update restrict\n    on delete restrict\n    not deferrable,\n  constraint evidence_links_evidence_referent_fkey\n    foreign key (evidence_referent_id)\n    references public.referents (id)\n    on update restrict\n    on delete restrict\n    not deferrable\n);\n\ncreate function public.prepare_claim()\nreturns trigger\nlanguage plpgsql\nsecurity invoker\nset search_path = ''\nas $$\nbegin\n  insert into public.referents (id)\n  values (new.id);\n\n  new.claim_kind := 'assertion';\n  new.origin := 'ecb_inference';\n  new.epistemic_standing := 'unassessed';\n  new.asserted_at := pg_catalog.transaction_timestamp();\n\n  return new;\nend;\n$$;\n\nrevoke all on function public.prepare_claim()\n  from public, anon, authenticated, service_role;\n\ncreate trigger claims_prepare\nbefore insert on public.claims\nfor each row\nexecute function public.prepare_claim();\n\ncreate function public.prepare_evidence_link()\nreturns trigger\nlanguage plpgsql\nsecurity definer\nset search_path = ''\nas $$\ndeclare\n  evidence_content text;\n  evidence_source text;\n  evidence_captured_at timestamptz;\n  content_octets bytea;\n  source_octets bytea;\n  captured_at_microseconds bigint;\n  digest_input bytea;\nbegin\n  select thought.content, thought.source, thought.captured_at\n  into strict evidence_content, evidence_source, evidence_captured_at\n  from public.thoughts as thought\n  where thought.id = new.evidence_referent_id\n  for share;\n\n  if not pg_catalog.isfinite(evidence_captured_at) then\n    raise exception 'BUILD 3 evidence captured_at must be finite'\n      using errcode = '22008';\n  end if;\n\n  content_octets := pg_catalog.convert_to(evidence_content, 'UTF8');\n  source_octets := pg_catalog.convert_to(evidence_source, 'UTF8');\n  captured_at_microseconds :=\n    (extract(epoch from evidence_captured_at) * 1000000)::bigint;\n\n  digest_input :=\n    pg_catalog.convert_to('ECB-THOUGHT-REVISION-V1', 'UTF8')\n    || pg_catalog.decode('00', 'hex')\n    || pg_catalog.decode('01', 'hex')\n    || pg_catalog.int8send(pg_catalog.octet_length(content_octets)::bigint)\n    || content_octets\n    || pg_catalog.decode('02', 'hex')\n    || pg_catalog.int8send(pg_catalog.octet_length(source_octets)::bigint)\n    || source_octets\n    || pg_catalog.decode('03', 'hex')\n    || pg_catalog.int8send(8::bigint)\n    || pg_catalog.int8send(captured_at_microseconds);\n\n  insert into public.referents (id)\n  values (new.id);\n\n  new.role := 'used_as_basis';\n  new.evidence_revision_scheme := 'ecb_thought_revision_v1_sha256';\n  new.evidence_revision_digest := extensions.digest(digest_input, 'sha256');\n  new.linked_at := pg_catalog.transaction_timestamp();\n\n  return new;\nexception\n  when no_data_found then\n    raise exception 'BUILD 3 evidence Thought % is unavailable', new.evidence_referent_id\n      using errcode = 'P0002';\nend;\n$$;\n\nrevoke all on function public.prepare_evidence_link()\n  from public, anon, authenticated, service_role;\n\ncreate trigger evidence_links_prepare\nbefore insert on public.evidence_links\nfor each row\nexecute function public.prepare_evidence_link();\n\ninsert into public.claims (id, proposition, scope)\nvalues (\n  '0f89e778-b16e-4840-9129-a2aa3eb6f697',\n  'The described scene contains both a brass heron and a violet staircase.',\n  'worked_trace_03:gt01_interpretation'\n);\n\ninsert into public.evidence_links (id, claim_id, evidence_referent_id)\nvalues (\n  '4c6c0f50-a936-4da6-bb09-233f93320639',\n  '0f89e778-b16e-4840-9129-a2aa3eb6f697',\n  '19a949ea-a8fc-4250-a386-fa64e5530180'\n);\n\nalter table public.claims enable row level security;\nalter table public.evidence_links enable row level security;\n\nrevoke all on table public.claims\n  from public, anon, authenticated, service_role;\nrevoke all on table public.evidence_links\n  from public, anon, authenticated, service_role;\n\ngrant select on table public.claims to service_role;\ngrant insert (id, proposition, scope) on table public.claims to service_role;\ngrant select on table public.evidence_links to service_role;\ngrant insert (id, claim_id, evidence_referent_id)\n  on table public.evidence_links to service_role;\n\ndo $$\ndeclare\n  public_tables text[];\n  public_functions text[];\n  claim_columns text[];\n  link_columns text[];\n  restrictive_foreign_keys integer;\n  build_3_policies integer;\n  fixture_rows integer;\n  fixture_digest text;\n  fixture_asserted_at timestamptz;\n  fixture_linked_at timestamptz;\n  probe_residue integer;\nbegin\n  if pg_catalog.current_setting('server_encoding') <> 'UTF8' then\n    raise exception 'BUILD 3 requires UTF8 server encoding';\n  end if;\n\n  if not exists (\n    select 1\n    from pg_catalog.pg_extension as extension\n    join pg_catalog.pg_namespace as namespace\n      on namespace.oid = extension.extnamespace\n    where extension.extname = 'pgcrypto'\n      and namespace.nspname = 'extensions'\n  ) then\n    raise exception 'BUILD 3 pgcrypto dependency is absent from extensions';\n  end if;\n\n  select pg_catalog.array_agg(table_name order by table_name)\n  into public_tables\n  from information_schema.tables\n  where table_schema = 'public'\n    and table_type = 'BASE TABLE';\n\n  if public_tables is distinct from\n    array['claims', 'evidence_links', 'referents', 'thoughts'] then\n    raise exception 'BUILD 3 public table surface drifted: %', public_tables;\n  end if;\n\n  if exists (\n    select 1\n    from information_schema.views\n    where table_schema = 'public'\n  ) then\n    raise exception 'BUILD 3 produced a public view';\n  end if;\n\n  select pg_catalog.array_agg(procedure.proname order by procedure.proname, procedure.oid)\n  into public_functions\n  from pg_catalog.pg_proc as procedure\n  join pg_catalog.pg_namespace as namespace\n    on namespace.oid = procedure.pronamespace\n  where namespace.nspname = 'public';\n\n  if public_functions is distinct from array[\n      'prepare_claim', 'prepare_evidence_link',\n      'register_thought_referent', 'search_thoughts'\n    ] then\n    raise exception 'BUILD 3 public function surface drifted: %', public_functions;\n  end if;\n\n  select pg_catalog.array_agg(column_name order by ordinal_position)\n  into claim_columns\n  from information_schema.columns\n  where table_schema = 'public'\n    and table_name = 'claims';\n\n  select pg_catalog.array_agg(column_name order by ordinal_position)\n  into link_columns\n  from information_schema.columns\n  where table_schema = 'public'\n    and table_name = 'evidence_links';\n\n  if claim_columns is distinct from array[\n      'id', 'proposition', 'scope', 'claim_kind', 'origin',\n      'epistemic_standing', 'asserted_at'\n    ] then\n    raise exception 'BUILD 3 Claim columns drifted: %', claim_columns;\n  end if;\n\n  if link_columns is distinct from array[\n      'id', 'claim_id', 'evidence_referent_id', 'role',\n      'evidence_revision_scheme', 'evidence_revision_digest', 'linked_at'\n    ] then\n    raise exception 'BUILD 3 Evidence Link columns drifted: %', link_columns;\n  end if;\n\n  if exists (\n    select 1\n    from information_schema.columns\n    where table_schema = 'public'\n      and table_name in ('claims', 'evidence_links')\n      and (\n        is_nullable <> 'NO'\n        or data_type not in (\n          'uuid', 'text', 'bytea', 'timestamp with time zone'\n        )\n        or (column_name <> 'id' and column_default is not null)\n      )\n  ) or exists (\n    select 1\n    from information_schema.columns\n    where table_schema = 'public'\n      and table_name in ('claims', 'evidence_links')\n      and column_name = 'id'\n      and column_default <> 'gen_random_uuid()'\n  ) then\n    raise exception 'BUILD 3 column type, nullability, or default drifted';\n  end if;\n\n  if (\n      select count(*)\n      from pg_catalog.pg_constraint\n      where conrelid = 'public.claims'::pg_catalog.regclass\n        and contype = 'p'\n    ) <> 1\n    or (\n      select count(*)\n      from pg_catalog.pg_constraint\n      where conrelid = 'public.claims'::pg_catalog.regclass\n        and contype = 'c'\n    ) <> 5\n    or (\n      select count(*)\n      from pg_catalog.pg_constraint\n      where conrelid = 'public.claims'::pg_catalog.regclass\n        and contype = 'f'\n    ) <> 1\n    or (\n      select count(*)\n      from pg_catalog.pg_constraint\n      where conrelid = 'public.claims'::pg_catalog.regclass\n        and contype = 'u'\n    ) <> 0\n    or (\n      select count(*)\n      from pg_catalog.pg_constraint\n      where conrelid = 'public.evidence_links'::pg_catalog.regclass\n        and contype = 'p'\n    ) <> 1\n    or (\n      select count(*)\n      from pg_catalog.pg_constraint\n      where conrelid = 'public.evidence_links'::pg_catalog.regclass\n        and contype = 'c'\n    ) <> 3\n    or (\n      select count(*)\n      from pg_catalog.pg_constraint\n      where conrelid = 'public.evidence_links'::pg_catalog.regclass\n        and contype = 'f'\n    ) <> 3\n    or (\n      select count(*)\n      from pg_catalog.pg_constraint\n      where conrelid = 'public.evidence_links'::pg_catalog.regclass\n        and contype = 'u'\n    ) <> 0 then\n    raise exception 'BUILD 3 native constraint surface drifted';\n  end if;\n\n  select count(*)\n  into restrictive_foreign_keys\n  from pg_catalog.pg_constraint\n  where conrelid in (\n      'public.claims'::pg_catalog.regclass,\n      'public.evidence_links'::pg_catalog.regclass\n    )\n    and contype = 'f'\n    and not condeferrable\n    and not condeferred\n    and confupdtype = 'r'\n    and confdeltype = 'r';\n\n  if restrictive_foreign_keys <> 4 then\n    raise exception 'BUILD 3 restrictive foreign-key surface drifted';\n  end if;\n\n  if exists (\n    select 1\n    from pg_catalog.pg_constraint\n    where conrelid = 'public.evidence_links'::pg_catalog.regclass\n      and contype = 'f'\n      and confrelid = 'public.thoughts'::pg_catalog.regclass\n  ) then\n    raise exception 'BUILD 3 Evidence Link must not depend on Thought retention';\n  end if;\n\n  if (\n      select count(*)\n      from pg_catalog.pg_trigger\n      where tgrelid in (\n          'public.claims'::pg_catalog.regclass,\n          'public.evidence_links'::pg_catalog.regclass\n        )\n        and not tgisinternal\n    ) <> 2\n    or (\n      select count(*)\n      from pg_catalog.pg_proc as procedure\n      join pg_catalog.pg_namespace as namespace\n        on namespace.oid = procedure.pronamespace\n      where namespace.nspname = 'public'\n        and procedure.proname in ('prepare_claim', 'prepare_evidence_link')\n    ) <> 2 then\n    raise exception 'BUILD 3 trigger/function surface drifted';\n  end if;\n\n  if not exists (\n      select 1\n      from pg_catalog.pg_proc as procedure\n      join pg_catalog.pg_namespace as namespace\n        on namespace.oid = procedure.pronamespace\n      where namespace.nspname = 'public'\n        and procedure.proname = 'prepare_claim'\n        and not procedure.prosecdef\n        and procedure.proconfig @> array['search_path=\"\"']\n        and not pg_catalog.has_function_privilege('anon', procedure.oid, 'execute')\n        and not pg_catalog.has_function_privilege('authenticated', procedure.oid, 'execute')\n        and not pg_catalog.has_function_privilege('service_role', procedure.oid, 'execute')\n    ) or not exists (\n      select 1\n      from pg_catalog.pg_proc as procedure\n      join pg_catalog.pg_namespace as namespace\n        on namespace.oid = procedure.pronamespace\n      where namespace.nspname = 'public'\n        and procedure.proname = 'prepare_evidence_link'\n        and procedure.prosecdef\n        and procedure.proowner = pg_catalog.to_regrole(current_user)::oid\n        and procedure.proconfig @> array['search_path=\"\"']\n        and not pg_catalog.has_function_privilege('anon', procedure.oid, 'execute')\n        and not pg_catalog.has_function_privilege('authenticated', procedure.oid, 'execute')\n        and not pg_catalog.has_function_privilege('service_role', procedure.oid, 'execute')\n    ) then\n    raise exception 'BUILD 3 trigger-function security boundary drifted';\n  end if;\n\n  select count(*)\n  into build_3_policies\n  from pg_catalog.pg_policies\n  where schemaname = 'public'\n    and tablename in ('claims', 'evidence_links');\n\n  if build_3_policies <> 0\n    or not (\n      select relrowsecurity\n      from pg_catalog.pg_class\n      where oid = 'public.claims'::pg_catalog.regclass\n    )\n    or not (\n      select relrowsecurity\n      from pg_catalog.pg_class\n      where oid = 'public.evidence_links'::pg_catalog.regclass\n    ) then\n    raise exception 'BUILD 3 RLS boundary drifted';\n  end if;\n\n  if not pg_catalog.has_table_privilege('service_role', 'public.claims', 'select')\n    or pg_catalog.has_table_privilege('service_role', 'public.claims', 'insert')\n    or pg_catalog.has_table_privilege('service_role', 'public.claims', 'update')\n    or pg_catalog.has_table_privilege('service_role', 'public.claims', 'delete')\n    or not pg_catalog.has_column_privilege('service_role', 'public.claims', 'id', 'insert')\n    or not pg_catalog.has_column_privilege('service_role', 'public.claims', 'proposition', 'insert')\n    or not pg_catalog.has_column_privilege('service_role', 'public.claims', 'scope', 'insert')\n    or pg_catalog.has_column_privilege('service_role', 'public.claims', 'claim_kind', 'insert')\n    or pg_catalog.has_column_privilege('service_role', 'public.claims', 'origin', 'insert')\n    or pg_catalog.has_column_privilege('service_role', 'public.claims', 'epistemic_standing', 'insert')\n    or pg_catalog.has_column_privilege('service_role', 'public.claims', 'asserted_at', 'insert')\n    or not pg_catalog.has_table_privilege('service_role', 'public.evidence_links', 'select')\n    or pg_catalog.has_table_privilege('service_role', 'public.evidence_links', 'insert')\n    or pg_catalog.has_table_privilege('service_role', 'public.evidence_links', 'update')\n    or pg_catalog.has_table_privilege('service_role', 'public.evidence_links', 'delete')\n    or not pg_catalog.has_column_privilege('service_role', 'public.evidence_links', 'id', 'insert')\n    or not pg_catalog.has_column_privilege('service_role', 'public.evidence_links', 'claim_id', 'insert')\n    or not pg_catalog.has_column_privilege('service_role', 'public.evidence_links', 'evidence_referent_id', 'insert')\n    or pg_catalog.has_column_privilege('service_role', 'public.evidence_links', 'role', 'insert')\n    or pg_catalog.has_column_privilege('service_role', 'public.evidence_links', 'evidence_revision_scheme', 'insert')\n    or pg_catalog.has_column_privilege('service_role', 'public.evidence_links', 'evidence_revision_digest', 'insert')\n    or pg_catalog.has_column_privilege('service_role', 'public.evidence_links', 'linked_at', 'insert') then\n    raise exception 'BUILD 3 service-role grant surface drifted';\n  end if;\n\n  if exists (\n    select 1\n    from pg_catalog.pg_roles as role\n    where role.rolname in ('anon', 'authenticated')\n      and (\n        pg_catalog.has_any_column_privilege(\n          role.rolname, 'public.claims', 'select, insert, update'\n        )\n        or pg_catalog.has_table_privilege(\n          role.rolname, 'public.claims', 'delete'\n        )\n        or pg_catalog.has_any_column_privilege(\n          role.rolname, 'public.evidence_links', 'select, insert, update'\n        )\n        or pg_catalog.has_table_privilege(\n          role.rolname, 'public.evidence_links', 'delete'\n        )\n      )\n  ) then\n    raise exception 'BUILD 3 client role access drifted';\n  end if;\n\n  select count(*),\n    min(pg_catalog.encode(link.evidence_revision_digest, 'hex')),\n    min(claim.asserted_at),\n    min(link.linked_at)\n  into fixture_rows, fixture_digest, fixture_asserted_at, fixture_linked_at\n  from public.claims as claim\n  join public.evidence_links as link on link.claim_id = claim.id\n  join public.referents as claim_referent on claim_referent.id = claim.id\n  join public.referents as link_referent on link_referent.id = link.id\n  where claim.id = '0f89e778-b16e-4840-9129-a2aa3eb6f697'\n    and claim.proposition = 'The described scene contains both a brass heron and a violet staircase.'\n    and claim.scope = 'worked_trace_03:gt01_interpretation'\n    and claim.claim_kind = 'assertion'\n    and claim.origin = 'ecb_inference'\n    and claim.epistemic_standing = 'unassessed'\n    and link.id = '4c6c0f50-a936-4da6-bb09-233f93320639'\n    and link.evidence_referent_id = '19a949ea-a8fc-4250-a386-fa64e5530180'\n    and link.role = 'used_as_basis'\n    and link.evidence_revision_scheme = 'ecb_thought_revision_v1_sha256';\n\n  if fixture_rows <> 1\n    or fixture_digest <> '5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55'\n    or fixture_asserted_at is distinct from fixture_linked_at then\n    raise exception 'BUILD 3 canonical fixture drifted';\n  end if;\n\n  if not exists (\n    select 1\n    from public.thoughts\n    where id = '19a949ea-a8fc-4250-a386-fa64e5530180'\n      and content = 'GT01: The brass heron waits beneath the violet staircase.'\n      and source = 'golden_trace_01'\n      and captured_at = '2026-09-04T00:12:35.225093+00:00'::timestamptz\n      and embedding_model = 'gte-small'\n      and extensions.vector_dims(embedding) = 384\n  ) then\n    raise exception 'BUILD 3 GT01 baseline drifted';\n  end if;\n\n  if (\n      select count(*)\n      from public.referents\n    ) <> 4\n    or (\n      select count(*)\n      from public.claims\n    ) <> 1\n    or (\n      select count(*)\n      from public.evidence_links\n    ) <> 1 then\n    raise exception 'BUILD 3 canonical object count drifted';\n  end if;\n\n  select count(*)\n  into probe_residue\n  from public.referents\n  where id in (\n    'cf0ca1fc-a4f7-487b-aea5-cfb23a467919',\n    'c85a5356-0930-4c94-a30d-cfd0e53a0a42',\n    '6c7cc7be-c23f-434f-a8eb-927cbe80b99b'\n  );\n\n  if probe_residue <> 0 then\n    raise exception 'BUILD 3 probe residue exists during activation';\n  end if;\nend;\n$$;\n\ncommit;\n"
+      ],
+      "name": "build_3_claims_evidence_links",
+      "created_by": "levisemailaddress@gmail.com",
+      "idempotency_key": null,
+      "rollback": null
+    },
+    {
+      "version": "20260904215929",
+      "statements": [
+        "-- BUILD 4 — Typed Relation Claims\n-- Atomic activation of one typed referent-to-referent relation Claim inside the\n-- single Claim truth store. No new table, function, view, resolver, RPC, or index.\n\nbegin;\n\nalter table public.claims\n  add column subject_referent_id uuid,\n  add column predicate text,\n  add column object_referent_id uuid;\n\nalter table public.claims\n  drop constraint claims_kind_assertion,\n  drop constraint claims_proposition_nonempty;\n\nalter table public.claims\n  alter column proposition drop not null,\n  alter column claim_kind set default 'assertion';\n\nalter table public.claims\n  add constraint claims_kind_vocabulary\n    check (claim_kind in ('assertion', 'relation')),\n  add constraint claims_kind_exclusive_shape\n    check (\n      (\n        claim_kind = 'assertion'\n        and proposition is not null\n        and length(btrim(proposition)) > 0\n        and subject_referent_id is null\n        and predicate is null\n        and object_referent_id is null\n      )\n      or\n      (\n        claim_kind = 'relation'\n        and proposition is null\n        and subject_referent_id is not null\n        and predicate is not null\n        and object_referent_id is not null\n      )\n    ),\n  add constraint claims_predicate_vocabulary\n    check (predicate is null or predicate = 'depends_on'),\n  add constraint claims_depends_on_not_self\n    check (\n      not (\n        predicate = 'depends_on'\n        and subject_referent_id = object_referent_id\n      )\n    ),\n  add constraint claims_subject_referent_fkey\n    foreign key (subject_referent_id)\n    references public.referents (id)\n    on update restrict\n    on delete restrict\n    not deferrable,\n  add constraint claims_object_referent_fkey\n    foreign key (object_referent_id)\n    references public.referents (id)\n    on update restrict\n    on delete restrict\n    not deferrable;\n\ncreate or replace function public.prepare_claim()\nreturns trigger\nlanguage plpgsql\nsecurity invoker\nset search_path = ''\nas $$\nbegin\n  insert into public.referents (id)\n  values (new.id);\n\n  new.origin := 'ecb_inference';\n  new.epistemic_standing := 'unassessed';\n  new.asserted_at := pg_catalog.transaction_timestamp();\n\n  return new;\nend;\n$$;\n\nrevoke all on function public.prepare_claim()\n  from public, anon, authenticated, service_role;\n\ninsert into public.claims (id, proposition, scope)\nvalues (\n  'c7f7d330-e778-4ae5-be96-3a172bea1166',\n  'The described scene contains at least two distinct objects.',\n  'worked_trace_06:gt01_interpretation_dependency'\n);\n\ninsert into public.claims (\n  id, scope, claim_kind, subject_referent_id, predicate, object_referent_id\n)\nvalues (\n  'cb429206-5abd-4adb-8ff9-d6d6a885034c',\n  'worked_trace_06:claim_dependency',\n  'relation',\n  'c7f7d330-e778-4ae5-be96-3a172bea1166',\n  'depends_on',\n  '0f89e778-b16e-4840-9129-a2aa3eb6f697'\n);\n\nrevoke all on table public.claims\n  from public, anon, authenticated, service_role;\n\ngrant select on table public.claims to service_role;\ngrant insert (\n  id, proposition, scope, claim_kind,\n  subject_referent_id, predicate, object_referent_id\n) on table public.claims to service_role;\n\ndo $$\ndeclare\n  public_tables text[];\n  public_functions text[];\n  claim_columns text[];\n  relation_foreign_keys integer;\n  claim_constraints text[];\n  claim_policy_count integer;\n  relation_row public.claims%rowtype;\n  dependent_row public.claims%rowtype;\n  preserved_claim public.claims%rowtype;\n  preserved_link public.evidence_links%rowtype;\nbegin\n  select pg_catalog.array_agg(table_name order by table_name)\n  into public_tables\n  from information_schema.tables\n  where table_schema = 'public'\n    and table_type = 'BASE TABLE';\n\n  if public_tables is distinct from\n    array['claims', 'evidence_links', 'referents', 'thoughts'] then\n    raise exception 'BUILD 4 added or removed a public table: %', public_tables;\n  end if;\n\n  if exists (\n    select 1 from information_schema.views where table_schema = 'public'\n  ) then\n    raise exception 'BUILD 4 produced a public view';\n  end if;\n\n  select pg_catalog.array_agg(procedure.proname order by procedure.proname, procedure.oid)\n  into public_functions\n  from pg_catalog.pg_proc as procedure\n  join pg_catalog.pg_namespace as namespace\n    on namespace.oid = procedure.pronamespace\n  where namespace.nspname = 'public';\n\n  if public_functions is distinct from array[\n      'prepare_claim', 'prepare_evidence_link',\n      'register_thought_referent', 'search_thoughts'\n    ] then\n    raise exception 'BUILD 4 added or removed a public function: %', public_functions;\n  end if;\n\n  select pg_catalog.array_agg(column_name order by ordinal_position)\n  into claim_columns\n  from information_schema.columns\n  where table_schema = 'public'\n    and table_name = 'claims';\n\n  if claim_columns is distinct from array[\n      'id', 'proposition', 'scope', 'claim_kind', 'origin',\n      'epistemic_standing', 'asserted_at',\n      'subject_referent_id', 'predicate', 'object_referent_id'\n    ] then\n    raise exception 'BUILD 4 Claim columns drifted: %', claim_columns;\n  end if;\n\n  select pg_catalog.array_agg(conname order by conname)\n  into claim_constraints\n  from pg_catalog.pg_constraint\n  where conrelid = 'public.claims'::regclass\n    and contype in ('c', 'f');\n\n  if claim_constraints is distinct from array[\n      'claims_depends_on_not_self',\n      'claims_kind_exclusive_shape',\n      'claims_kind_vocabulary',\n      'claims_object_referent_fkey',\n      'claims_origin_ecb_inference',\n      'claims_predicate_vocabulary',\n      'claims_referent_fkey',\n      'claims_scope_nonempty',\n      'claims_standing_unassessed',\n      'claims_subject_referent_fkey'\n    ] then\n    raise exception 'BUILD 4 Claim constraint surface drifted: %', claim_constraints;\n  end if;\n\n  select count(*)\n  into relation_foreign_keys\n  from pg_catalog.pg_constraint\n  where conrelid = 'public.claims'::regclass\n    and contype = 'f'\n    and confrelid = 'public.referents'::regclass\n    and not condeferrable\n    and not condeferred\n    and confupdtype = 'r'\n    and confdeltype = 'r';\n\n  if relation_foreign_keys <> 3 then\n    raise exception 'BUILD 4 restrictive Claim foreign keys drifted: %', relation_foreign_keys;\n  end if;\n\n  if exists (\n    select 1\n    from pg_catalog.pg_constraint\n    where conrelid = 'public.claims'::regclass\n      and contype = 'f'\n      and confrelid <> 'public.referents'::regclass\n  ) then\n    raise exception 'BUILD 4 Claim endpoint depends on a native record table';\n  end if;\n\n  if exists (\n    select 1\n    from pg_catalog.pg_constraint\n    where conrelid = 'public.claims'::regclass\n      and contype = 'u'\n  ) or exists (\n    select 1\n    from pg_catalog.pg_index\n    where indrelid = 'public.claims'::regclass\n      and indisunique\n      and indexrelid <> (\n        select conindid from pg_catalog.pg_constraint\n        where conrelid = 'public.claims'::regclass and contype = 'p'\n      )\n  ) then\n    raise exception 'BUILD 4 introduced a uniqueness rule over Claims';\n  end if;\n\n  select count(*)\n  into claim_policy_count\n  from pg_catalog.pg_policies\n  where schemaname = 'public' and tablename = 'claims';\n\n  if claim_policy_count <> 0\n    or not (\n      select relrowsecurity from pg_catalog.pg_class\n      where oid = 'public.claims'::regclass\n    ) then\n    raise exception 'BUILD 4 Claim RLS or policy boundary drifted';\n  end if;\n\n  if not has_table_privilege('service_role', 'public.claims', 'select')\n    or has_table_privilege('service_role', 'public.claims', 'insert')\n    or has_table_privilege('service_role', 'public.claims', 'update')\n    or has_table_privilege('service_role', 'public.claims', 'delete')\n    or not has_column_privilege('service_role', 'public.claims', 'claim_kind', 'insert')\n    or not has_column_privilege('service_role', 'public.claims', 'subject_referent_id', 'insert')\n    or not has_column_privilege('service_role', 'public.claims', 'predicate', 'insert')\n    or not has_column_privilege('service_role', 'public.claims', 'object_referent_id', 'insert')\n    or has_column_privilege('service_role', 'public.claims', 'origin', 'insert')\n    or has_column_privilege('service_role', 'public.claims', 'epistemic_standing', 'insert')\n    or has_column_privilege('service_role', 'public.claims', 'asserted_at', 'insert')\n    or has_any_column_privilege('anon', 'public.claims', 'select, insert, update')\n    or has_any_column_privilege('authenticated', 'public.claims', 'select, insert, update') then\n    raise exception 'BUILD 4 Claim privilege boundary drifted';\n  end if;\n\n  select * into relation_row\n  from public.claims\n  where id = 'cb429206-5abd-4adb-8ff9-d6d6a885034c';\n\n  if relation_row.claim_kind <> 'relation'\n    or relation_row.proposition is not null\n    or relation_row.scope <> 'worked_trace_06:claim_dependency'\n    or relation_row.origin <> 'ecb_inference'\n    or relation_row.epistemic_standing <> 'unassessed'\n    or relation_row.subject_referent_id <> 'c7f7d330-e778-4ae5-be96-3a172bea1166'\n    or relation_row.predicate <> 'depends_on'\n    or relation_row.object_referent_id <> '0f89e778-b16e-4840-9129-a2aa3eb6f697' then\n    raise exception 'BUILD 4 relation Claim fixture drifted';\n  end if;\n\n  select * into dependent_row\n  from public.claims\n  where id = 'c7f7d330-e778-4ae5-be96-3a172bea1166';\n\n  if dependent_row.claim_kind <> 'assertion'\n    or dependent_row.proposition\n       <> 'The described scene contains at least two distinct objects.'\n    or dependent_row.scope <> 'worked_trace_06:gt01_interpretation_dependency'\n    or dependent_row.origin <> 'ecb_inference'\n    or dependent_row.epistemic_standing <> 'unassessed'\n    or dependent_row.subject_referent_id is not null\n    or dependent_row.predicate is not null\n    or dependent_row.object_referent_id is not null then\n    raise exception 'BUILD 4 dependent assertion Claim fixture drifted';\n  end if;\n\n  if not exists (\n      select 1 from public.referents\n      where id = 'c7f7d330-e778-4ae5-be96-3a172bea1166'\n    )\n    or not exists (\n      select 1 from public.referents\n      where id = 'cb429206-5abd-4adb-8ff9-d6d6a885034c'\n    ) then\n    raise exception 'BUILD 4 fixture Referent coupling is absent';\n  end if;\n\n  if dependent_row.asserted_at <> relation_row.asserted_at then\n    raise exception 'BUILD 4 activation did not assert both Claims in one transaction';\n  end if;\n\n  select * into preserved_claim\n  from public.claims\n  where id = '0f89e778-b16e-4840-9129-a2aa3eb6f697';\n\n  if preserved_claim.claim_kind <> 'assertion'\n    or preserved_claim.proposition\n       <> 'The described scene contains both a brass heron and a violet staircase.'\n    or preserved_claim.scope <> 'worked_trace_03:gt01_interpretation'\n    or preserved_claim.origin <> 'ecb_inference'\n    or preserved_claim.epistemic_standing <> 'unassessed'\n    or preserved_claim.subject_referent_id is not null\n    or preserved_claim.predicate is not null\n    or preserved_claim.object_referent_id is not null then\n    raise exception 'BUILD 4 did not preserve accepted BUILD 3 Claim C';\n  end if;\n\n  select * into preserved_link\n  from public.evidence_links\n  where id = '4c6c0f50-a936-4da6-bb09-233f93320639';\n\n  if preserved_link.claim_id <> '0f89e778-b16e-4840-9129-a2aa3eb6f697'\n    or preserved_link.evidence_referent_id <> '19a949ea-a8fc-4250-a386-fa64e5530180'\n    or preserved_link.role <> 'used_as_basis'\n    or preserved_link.evidence_revision_scheme <> 'ecb_thought_revision_v1_sha256'\n    or pg_catalog.encode(preserved_link.evidence_revision_digest, 'hex')\n       <> '5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55' then\n    raise exception 'BUILD 4 did not preserve accepted BUILD 3 Evidence Link L';\n  end if;\n\n  if (select count(*) from public.claims) <> 3\n    or (select count(*) from public.evidence_links) <> 1\n    or (select count(*) from public.referents) <> 6\n    or (select count(*) from public.thoughts) <> 1 then\n    raise exception 'BUILD 4 canonical expansion is not exactly two Claims and two Referents';\n  end if;\nend;\n$$;\n\ncommit;\n"
+      ],
+      "name": "build_4_typed_relation_claims",
+      "created_by": null,
+      "idempotency_key": null,
+      "rollback": null
+    },
+    {
+      "version": "20260905022247",
+      "statements": [
+        "-- BUILD 5A — Immutable Events + Standing Transition History\n-- Atomic activation of the immutable, Referent-backed standing transition record\n-- that is the only legal path for changing a Claim's applied epistemic standing.\n-- No view, resolver, RPC, index, Artifact, or transformation receipt.\n\nbegin;\n\ncreate table public.claim_standing_transitions (\n  id uuid primary key default gen_random_uuid(),\n  claim_id uuid not null,\n  from_standing text not null,\n  to_standing text not null,\n  basis_evidence_link_id uuid not null,\n  observed_revision_digest bytea not null,\n  recorded_at timestamptz not null,\n  constraint claim_standing_transitions_from_vocabulary\n    check (from_standing in ('unassessed', 'basis_qualified', 'revalidation_required')),\n  constraint claim_standing_transitions_to_vocabulary\n    check (to_standing in ('unassessed', 'basis_qualified', 'revalidation_required')),\n  constraint claim_standing_transitions_changes_standing\n    check (from_standing <> to_standing),\n  constraint claim_standing_transitions_digest_sha256\n    check (octet_length(observed_revision_digest) = 32),\n  constraint claim_standing_transitions_referent_fkey\n    foreign key (id)\n    references public.referents (id)\n    on update restrict\n    on delete restrict\n    not deferrable,\n  constraint claim_standing_transitions_claim_referent_fkey\n    foreign key (claim_id)\n    references public.referents (id)\n    on update restrict\n    on delete restrict\n    not deferrable,\n  constraint claim_standing_transitions_basis_referent_fkey\n    foreign key (basis_evidence_link_id)\n    references public.referents (id)\n    on update restrict\n    on delete restrict\n    not deferrable\n);\n\ncreate function public.thought_revision_digest(evidence_referent_id uuid)\nreturns bytea\nlanguage plpgsql\nsecurity definer\nset search_path = ''\nas $$\ndeclare\n  evidence_content text;\n  evidence_source text;\n  evidence_captured_at timestamptz;\n  content_octets bytea;\n  source_octets bytea;\n  captured_at_microseconds bigint;\n  digest_input bytea;\nbegin\n  select thought.content, thought.source, thought.captured_at\n  into strict evidence_content, evidence_source, evidence_captured_at\n  from public.thoughts as thought\n  where thought.id = evidence_referent_id\n  for share;\n\n  if not pg_catalog.isfinite(evidence_captured_at) then\n    raise exception 'BUILD 5A evidence captured_at must be finite'\n      using errcode = '22008';\n  end if;\n\n  content_octets := pg_catalog.convert_to(evidence_content, 'UTF8');\n  source_octets := pg_catalog.convert_to(evidence_source, 'UTF8');\n  captured_at_microseconds :=\n    (extract(epoch from evidence_captured_at) * 1000000)::bigint;\n\n  digest_input :=\n    pg_catalog.convert_to('ECB-THOUGHT-REVISION-V1', 'UTF8')\n    || pg_catalog.decode('00', 'hex')\n    || pg_catalog.decode('01', 'hex')\n    || pg_catalog.int8send(pg_catalog.octet_length(content_octets)::bigint)\n    || content_octets\n    || pg_catalog.decode('02', 'hex')\n    || pg_catalog.int8send(pg_catalog.octet_length(source_octets)::bigint)\n    || source_octets\n    || pg_catalog.decode('03', 'hex')\n    || pg_catalog.int8send(8::bigint)\n    || pg_catalog.int8send(captured_at_microseconds);\n\n  return extensions.digest(digest_input, 'sha256');\nexception\n  when no_data_found then\n    raise exception 'BUILD 5A evidence Thought % is unavailable', evidence_referent_id\n      using errcode = 'P0002';\nend;\n$$;\n\nrevoke all on function public.thought_revision_digest(uuid)\n  from public, anon, authenticated, service_role;\n\ncreate function public.prepare_claim_standing_transition()\nreturns trigger\nlanguage plpgsql\nsecurity definer\nset search_path = ''\nas $$\ndeclare\n  basis_claim_id uuid;\n  basis_evidence_referent_id uuid;\n  applied_standing text;\nbegin\n  insert into public.referents (id)\n  values (new.id);\n\n  select link.claim_id, link.evidence_referent_id\n  into strict basis_claim_id, basis_evidence_referent_id\n  from public.evidence_links as link\n  where link.id = new.basis_evidence_link_id;\n\n  if basis_claim_id <> new.claim_id then\n    raise exception\n      'BUILD 5A basis Evidence Link % does not declare a basis for Claim %',\n      new.basis_evidence_link_id, new.claim_id\n      using errcode = '23514';\n  end if;\n\n  select claim.epistemic_standing\n  into strict applied_standing\n  from public.claims as claim\n  where claim.id = new.claim_id\n  for update;\n\n  if applied_standing <> new.from_standing then\n    raise exception\n      'BUILD 5A declared prior standing % does not match applied standing %',\n      new.from_standing, applied_standing\n      using errcode = '40001';\n  end if;\n\n  new.observed_revision_digest :=\n    public.thought_revision_digest(basis_evidence_referent_id);\n  new.recorded_at := pg_catalog.transaction_timestamp();\n\n  update public.claims\n  set epistemic_standing = new.to_standing\n  where id = new.claim_id;\n\n  return new;\nexception\n  when no_data_found then\n    raise exception\n      'BUILD 5A subject Claim or basis Evidence Link is unavailable'\n      using errcode = 'P0002';\nend;\n$$;\n\nrevoke all on function public.prepare_claim_standing_transition()\n  from public, anon, authenticated, service_role;\n\ncreate trigger claim_standing_transitions_prepare\nbefore insert on public.claim_standing_transitions\nfor each row\nexecute function public.prepare_claim_standing_transition();\n\nalter table public.claims\n  drop constraint claims_standing_unassessed;\n\nalter table public.claims\n  add constraint claims_standing_vocabulary\n    check (\n      epistemic_standing in\n        ('unassessed', 'basis_qualified', 'revalidation_required')\n    );\n\ninsert into public.claim_standing_transitions (\n  id, claim_id, from_standing, to_standing, basis_evidence_link_id\n)\nvalues (\n  'a6925494-a862-441b-a361-5f5ec41dc9dc',\n  '0f89e778-b16e-4840-9129-a2aa3eb6f697',\n  'unassessed',\n  'basis_qualified',\n  '4c6c0f50-a936-4da6-bb09-233f93320639'\n);\n\nalter table public.claim_standing_transitions enable row level security;\n\nrevoke all on table public.claim_standing_transitions\n  from public, anon, authenticated, service_role;\n\ngrant select on table public.claim_standing_transitions to service_role;\ngrant insert (\n  id, claim_id, from_standing, to_standing, basis_evidence_link_id\n) on table public.claim_standing_transitions to service_role;\n\ndo $$\ndeclare\n  public_tables text[];\n  public_functions text[];\n  transition_columns text[];\n  transition_constraints text[];\n  restrictive_foreign_keys integer;\n  transition_row public.claim_standing_transitions%rowtype;\n  subject_claim public.claims%rowtype;\n  dependent_claim public.claims%rowtype;\n  relation_claim public.claims%rowtype;\n  preserved_link public.evidence_links%rowtype;\nbegin\n  select pg_catalog.array_agg(table_name order by table_name)\n  into public_tables\n  from information_schema.tables\n  where table_schema = 'public' and table_type = 'BASE TABLE';\n\n  if public_tables is distinct from array[\n      'claim_standing_transitions', 'claims', 'evidence_links', 'referents', 'thoughts'\n    ] then\n    raise exception 'BUILD 5A public table surface drifted: %', public_tables;\n  end if;\n\n  if exists (\n    select 1 from information_schema.views where table_schema = 'public'\n  ) then\n    raise exception 'BUILD 5A produced a public view';\n  end if;\n\n  select pg_catalog.array_agg(procedure.proname order by procedure.proname, procedure.oid)\n  into public_functions\n  from pg_catalog.pg_proc as procedure\n  join pg_catalog.pg_namespace as namespace\n    on namespace.oid = procedure.pronamespace\n  where namespace.nspname = 'public';\n\n  if public_functions is distinct from array[\n      'prepare_claim', 'prepare_claim_standing_transition', 'prepare_evidence_link',\n      'register_thought_referent', 'search_thoughts', 'thought_revision_digest'\n    ] then\n    raise exception 'BUILD 5A public function surface drifted: %', public_functions;\n  end if;\n\n  select pg_catalog.array_agg(column_name order by ordinal_position)\n  into transition_columns\n  from information_schema.columns\n  where table_schema = 'public' and table_name = 'claim_standing_transitions';\n\n  if transition_columns is distinct from array[\n      'id', 'claim_id', 'from_standing', 'to_standing',\n      'basis_evidence_link_id', 'observed_revision_digest', 'recorded_at'\n    ] then\n    raise exception 'BUILD 5A transition columns drifted: %', transition_columns;\n  end if;\n\n  select pg_catalog.array_agg(conname order by conname)\n  into transition_constraints\n  from pg_catalog.pg_constraint\n  where conrelid = 'public.claim_standing_transitions'::regclass\n    and contype in ('c', 'f');\n\n  if transition_constraints is distinct from array[\n      'claim_standing_transitions_basis_referent_fkey',\n      'claim_standing_transitions_changes_standing',\n      'claim_standing_transitions_claim_referent_fkey',\n      'claim_standing_transitions_digest_sha256',\n      'claim_standing_transitions_from_vocabulary',\n      'claim_standing_transitions_referent_fkey',\n      'claim_standing_transitions_to_vocabulary'\n    ] then\n    raise exception 'BUILD 5A transition constraint surface drifted: %', transition_constraints;\n  end if;\n\n  select count(*)\n  into restrictive_foreign_keys\n  from pg_catalog.pg_constraint\n  where conrelid = 'public.claim_standing_transitions'::regclass\n    and contype = 'f'\n    and confrelid = 'public.referents'::regclass\n    and not condeferrable\n    and not condeferred\n    and confupdtype = 'r'\n    and confdeltype = 'r';\n\n  if restrictive_foreign_keys <> 3 then\n    raise exception 'BUILD 5A restrictive transition foreign keys drifted: %',\n      restrictive_foreign_keys;\n  end if;\n\n  if exists (\n    select 1\n    from pg_catalog.pg_constraint\n    where conrelid = 'public.claim_standing_transitions'::regclass\n      and contype = 'f'\n      and confrelid <> 'public.referents'::regclass\n  ) then\n    raise exception 'BUILD 5A transition depends on a native record table';\n  end if;\n\n  if (\n      select count(*) from pg_catalog.pg_constraint\n      where conrelid = 'public.claims'::regclass\n        and conname = 'claims_standing_vocabulary'\n    ) <> 1\n    or exists (\n      select 1 from pg_catalog.pg_constraint\n      where conrelid = 'public.claims'::regclass\n        and conname = 'claims_standing_unassessed'\n    )\n    or (\n      select count(*) from pg_catalog.pg_constraint\n      where conrelid = 'public.claims'::regclass and contype in ('c', 'f')\n    ) <> 10 then\n    raise exception 'BUILD 5A changed the Claim constraint surface beyond the standing vocabulary';\n  end if;\n\n  if has_table_privilege('service_role', 'public.claims', 'update')\n    or has_table_privilege('service_role', 'public.claims', 'delete')\n    or has_column_privilege('service_role', 'public.claims', 'epistemic_standing', 'update') then\n    raise exception 'BUILD 5A weakened the Claim no-UPDATE posture';\n  end if;\n\n  if not (\n      select relrowsecurity from pg_catalog.pg_class\n      where oid = 'public.claim_standing_transitions'::regclass\n    )\n    or (\n      select count(*) from pg_catalog.pg_policies\n      where schemaname = 'public' and tablename = 'claim_standing_transitions'\n    ) <> 0 then\n    raise exception 'BUILD 5A transition RLS boundary drifted';\n  end if;\n\n  if not has_table_privilege('service_role', 'public.claim_standing_transitions', 'select')\n    or has_table_privilege('service_role', 'public.claim_standing_transitions', 'insert')\n    or has_table_privilege('service_role', 'public.claim_standing_transitions', 'update')\n    or has_table_privilege('service_role', 'public.claim_standing_transitions', 'delete')\n    or not has_column_privilege('service_role', 'public.claim_standing_transitions', 'claim_id', 'insert')\n    or has_column_privilege('service_role', 'public.claim_standing_transitions', 'observed_revision_digest', 'insert')\n    or has_column_privilege('service_role', 'public.claim_standing_transitions', 'recorded_at', 'insert')\n    or has_any_column_privilege('anon', 'public.claim_standing_transitions', 'select, insert, update')\n    or has_any_column_privilege('authenticated', 'public.claim_standing_transitions', 'select, insert, update') then\n    raise exception 'BUILD 5A transition privilege boundary drifted';\n  end if;\n\n  if has_function_privilege('service_role', 'public.thought_revision_digest(uuid)', 'execute')\n    or has_function_privilege('anon', 'public.thought_revision_digest(uuid)', 'execute')\n    or has_function_privilege('authenticated', 'public.thought_revision_digest(uuid)', 'execute') then\n    raise exception 'BUILD 5A left a revision-digest function callable';\n  end if;\n\n  select * into transition_row\n  from public.claim_standing_transitions\n  where id = 'a6925494-a862-441b-a361-5f5ec41dc9dc';\n\n  if transition_row.claim_id <> '0f89e778-b16e-4840-9129-a2aa3eb6f697'\n    or transition_row.from_standing <> 'unassessed'\n    or transition_row.to_standing <> 'basis_qualified'\n    or transition_row.basis_evidence_link_id <> '4c6c0f50-a936-4da6-bb09-233f93320639'\n    or pg_catalog.encode(transition_row.observed_revision_digest, 'hex')\n       <> '5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55'\n    or transition_row.recorded_at <> pg_catalog.transaction_timestamp() then\n    raise exception 'BUILD 5A canonical transition fixture drifted';\n  end if;\n\n  if not exists (\n    select 1 from public.referents where id = 'a6925494-a862-441b-a361-5f5ec41dc9dc'\n  ) then\n    raise exception 'BUILD 5A transition Referent coupling is absent';\n  end if;\n\n  select * into subject_claim\n  from public.claims where id = '0f89e778-b16e-4840-9129-a2aa3eb6f697';\n\n  if subject_claim.epistemic_standing <> 'basis_qualified'\n    or subject_claim.claim_kind <> 'assertion'\n    or subject_claim.origin <> 'ecb_inference'\n    or subject_claim.proposition\n       <> 'The described scene contains both a brass heron and a violet staircase.'\n    or subject_claim.scope <> 'worked_trace_03:gt01_interpretation'\n    or subject_claim.asserted_at <> '2026-09-04 16:39:38.624321+00'::timestamptz then\n    raise exception 'BUILD 5A did not apply the transition to Claim C exactly';\n  end if;\n\n  select * into dependent_claim\n  from public.claims where id = 'c7f7d330-e778-4ae5-be96-3a172bea1166';\n  select * into relation_claim\n  from public.claims where id = 'cb429206-5abd-4adb-8ff9-d6d6a885034c';\n\n  if dependent_claim.epistemic_standing <> 'unassessed'\n    or relation_claim.epistemic_standing <> 'unassessed'\n    or relation_claim.claim_kind <> 'relation'\n    or relation_claim.predicate <> 'depends_on'\n    or relation_claim.subject_referent_id <> 'c7f7d330-e778-4ae5-be96-3a172bea1166'\n    or relation_claim.object_referent_id <> '0f89e778-b16e-4840-9129-a2aa3eb6f697' then\n    raise exception 'BUILD 5A propagated a standing change to C2 or relation Claim R';\n  end if;\n\n  select * into preserved_link\n  from public.evidence_links where id = '4c6c0f50-a936-4da6-bb09-233f93320639';\n\n  if preserved_link.role <> 'used_as_basis'\n    or preserved_link.evidence_revision_scheme <> 'ecb_thought_revision_v1_sha256'\n    or pg_catalog.encode(preserved_link.evidence_revision_digest, 'hex')\n       <> '5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55'\n    or preserved_link.claim_id <> '0f89e778-b16e-4840-9129-a2aa3eb6f697'\n    or preserved_link.evidence_referent_id <> '19a949ea-a8fc-4250-a386-fa64e5530180' then\n    raise exception 'BUILD 5A mutated accepted Evidence Link L';\n  end if;\n\n  if (select count(*) from public.claim_standing_transitions) <> 1\n    or (select count(*) from public.claims) <> 3\n    or (select count(*) from public.evidence_links) <> 1\n    or (select count(*) from public.referents) <> 7\n    or (select count(*) from public.thoughts) <> 1 then\n    raise exception 'BUILD 5A canonical expansion is not exactly one transition and one Referent';\n  end if;\nend;\n$$;\n\ncommit;\n"
+      ],
+      "name": "build_5a_standing_transition_history",
+      "created_by": null,
+      "idempotency_key": null,
+      "rollback": null
+    }
+  ],
+  "data": {
+    "thoughts": [
+      {
+        "id": "19a949ea-a8fc-4250-a386-fa64e5530180",
+        "source": "golden_trace_01",
+        "content": "GT01: The brass heron waits beneath the violet staircase.",
+        "embedding": "[-0.037286647,-0.061366875,0.0645156,0.013530312,0.021498157,0.08291222,0.014665704,0.020124948,0.033556353,0.007915853,0.009426196,-0.0626927,0.030199442,0.05034566,0.010758748,-0.0046714996,0.019229688,0.0054569757,-0.010397084,-0.02322956,0.016962958,-0.011985975,-0.006467159,-0.07731567,0.002915596,0.028305253,-0.03218214,-0.0041579176,-0.022950837,-0.17439209,-0.021235233,-0.04450583,0.03636248,-0.027038451,-0.019694446,-0.02959832,-0.022358807,0.0646114,-0.034605533,0.008000288,0.04315926,-0.01675737,-0.060616672,-0.05874207,-0.048104987,-0.029768957,-0.010747171,-0.026388925,0.0198464,-0.09418051,-0.02509111,-0.024601027,-0.0201585,0.013538175,0.02939091,0.011273826,0.11258017,0.0096283695,0.04018105,0.040896576,0.076239645,-0.011332578,-0.197418,0.08091391,0.02890611,0.0043256814,-0.028910894,-0.062586024,0.05781188,0.028205205,-0.0040915813,0.0053491034,0.017083677,0.039792113,0.021186357,-0.03996611,0.010998413,-0.019003414,-0.020362096,0.020139147,-0.009634756,0.012444949,-0.078452244,0.0014074197,-0.022805171,-0.054457936,0.05168015,-0.049435068,0.01855859,0.013736999,-0.020632846,-0.029882519,-0.02809997,0.0034196805,-0.047245838,-0.014906259,-0.010249667,-0.014377813,-0.030622695,0.23843533,0.008640764,0.040650375,0.028571371,0.014444699,0.04589127,-0.021148285,-0.016669514,-0.0583559,0.0031496596,0.024821624,0.023251195,-0.037225492,0.09416093,-0.027987476,0.0104498565,0.04304976,0.029964939,-0.009577414,-0.0205613,0.007168093,0.004561663,0.021275075,0.026049925,-0.056497324,0.020945325,-0.09277801,0.059179407,0.09546559,0.022588722,0.039618984,0.05127444,-0.051696282,0.01724188,-0.021050299,-0.0019563532,0.04335676,0.023663769,0.019301658,-0.017190298,-0.111035876,-0.041935127,-0.10007756,-0.03953661,-0.07484439,0.03179274,0.06774293,-0.0030175894,0.040997874,-0.05607289,0.02929983,-0.034949247,-0.004286685,0.016613407,0.006823971,0.023799967,0.029478528,-0.017069764,0.1379966,0.011867442,0.04434175,-0.037045628,-0.02095643,-0.035453487,0.0160391,0.04383944,-0.08816948,-0.012330412,0.009440272,0.006476484,-0.007599975,0.009691565,0.039234154,-0.0688096,0.027712218,0.092970684,0.007241782,-0.046497066,-0.0020709157,-0.013192723,0.010322366,-0.0013213473,-0.05035029,-0.054401938,0.0641374,0.034773942,-0.029900024,-0.0030237935,-0.05420685,0.020145483,0.05046933,-0.0053053293,0.029001493,0.009022015,-0.04549097,-0.04522515,-0.08238554,-0.040350847,-0.020946324,0.02189556,-0.018475257,0.049689904,-0.053158563,-0.0063491985,0.0690736,0.032232635,0.022164823,0.031511698,-0.030136093,0.009048884,0.024195584,-0.030049091,-0.003087984,0.040185966,-0.019642174,-0.017882273,0.018266948,-0.021679752,0.022802645,0.050677583,0.048430882,0.013349623,-0.0808738,-0.056056205,-0.2265874,0.019308757,-0.0030716413,-0.03703771,0.038904287,-0.020844802,0.022157136,-0.01924935,0.057038456,0.01753342,0.1252622,-0.06855714,0.008712963,0.035688464,-0.008945748,0.08534128,-0.0069984086,0.027478382,-0.0031649086,-0.025457798,-0.013387693,0.015717626,-0.06307942,-0.04562537,0.000300016,-0.030119259,0.22461396,0.069436684,0.033059582,-0.05754635,0.03004036,0.0332727,-0.029156378,-0.06463235,0.033468813,0.039003234,0.07391659,0.009698799,-0.047910415,-0.01997836,-0.010365223,0.08569428,-0.0045800675,-0.044691402,-0.0171452,-0.015639912,-0.011590997,0.0548175,-0.021274133,0.016326379,0.037274938,0.014525348,0.07566912,0.038655408,0.049374674,-0.02680035,-0.053917363,0.04890143,-0.03444332,0.04307959,0.011848162,-0.02603826,0.0045028534,-0.04788332,0.039908767,-0.0006075197,-0.054965567,-0.01954379,0.06007647,-0.06362765,-0.000658948,0.029419586,-0.018036345,-0.024240661,0.030904736,0.01879892,0.027423652,-0.019994428,-0.026076926,-0.040903438,0.029305495,-0.0576239,0.009454908,0.024719924,0.008173054,0.024249533,0.017668331,0.016225317,0.07847132,-0.021143883,-0.0074298307,0.028458834,-0.05436423,-0.07471821,0.039151635,-0.00883565,-0.32198867,0.01631998,0.0018781798,-0.0037889834,-0.04980365,-0.0066146776,0.0070081363,0.038054362,-0.049139347,-0.009033314,-0.0019492399,0.031010384,0.035730906,0.03640437,-0.009109367,0.034860104,0.04560164,-0.066461995,0.022610858,-0.07243103,0.020599194,0.0391316,0.20078139,-0.041199744,0.019632073,-0.01247334,-0.018262675,-0.010694151,-0.0016189017,-0.015703276,0.033481386,0.023207407,0.06661484,-0.076520026,0.0938873,0.041155364,-0.05304925,0.059505004,0.04363155,-0.04471323,-0.06656472,0.036055725,-0.017394125,-0.02040019,0.09743275,-0.049693085,-0.015525342,-0.013595347,0.03239319,0.0057169814,-0.079265565,0.006872758,-0.040648427,0.039297424,0.04073545,0.05343426,-0.052028164,-0.027546974,0.013857962,-0.039289255,0.031497132,-0.08690529,0.0044111614,0.013310292,0.022859577]",
+        "captured_at": "2026-09-04T00:12:35.225093+00:00",
+        "embedding_model": "gte-small"
+      }
+    ],
+    "referents": [
+      {
+        "id": "0f89e778-b16e-4840-9129-a2aa3eb6f697",
+        "registered_at": "2026-09-04T16:39:38.624321+00:00"
+      },
+      {
+        "id": "19a949ea-a8fc-4250-a386-fa64e5530180",
+        "registered_at": "2026-09-04T09:49:34.052866+00:00"
+      },
+      {
+        "id": "2eede0e4-b27a-4383-850e-a448f0113c9f",
+        "registered_at": "2026-09-04T09:49:34.052866+00:00"
+      },
+      {
+        "id": "4c6c0f50-a936-4da6-bb09-233f93320639",
+        "registered_at": "2026-09-04T16:39:38.624321+00:00"
+      },
+      {
+        "id": "a6925494-a862-441b-a361-5f5ec41dc9dc",
+        "registered_at": "2026-09-05T02:24:35.793609+00:00"
+      },
+      {
+        "id": "c7f7d330-e778-4ae5-be96-3a172bea1166",
+        "registered_at": "2026-09-04T22:02:41.679741+00:00"
+      },
+      {
+        "id": "cb429206-5abd-4adb-8ff9-d6d6a885034c",
+        "registered_at": "2026-09-04T22:02:41.679741+00:00"
+      }
+    ],
+    "claims": [
+      {
+        "id": "0f89e778-b16e-4840-9129-a2aa3eb6f697",
+        "scope": "worked_trace_03:gt01_interpretation",
+        "origin": "ecb_inference",
+        "predicate": null,
+        "claim_kind": "assertion",
+        "asserted_at": "2026-09-04T16:39:38.624321+00:00",
+        "proposition": "The described scene contains both a brass heron and a violet staircase.",
+        "epistemic_standing": "basis_qualified",
+        "object_referent_id": null,
+        "subject_referent_id": null
+      },
+      {
+        "id": "c7f7d330-e778-4ae5-be96-3a172bea1166",
+        "scope": "worked_trace_06:gt01_interpretation_dependency",
+        "origin": "ecb_inference",
+        "predicate": null,
+        "claim_kind": "assertion",
+        "asserted_at": "2026-09-04T22:02:41.679741+00:00",
+        "proposition": "The described scene contains at least two distinct objects.",
+        "epistemic_standing": "unassessed",
+        "object_referent_id": null,
+        "subject_referent_id": null
+      },
+      {
+        "id": "cb429206-5abd-4adb-8ff9-d6d6a885034c",
+        "scope": "worked_trace_06:claim_dependency",
+        "origin": "ecb_inference",
+        "predicate": "depends_on",
+        "claim_kind": "relation",
+        "asserted_at": "2026-09-04T22:02:41.679741+00:00",
+        "proposition": null,
+        "epistemic_standing": "unassessed",
+        "object_referent_id": "0f89e778-b16e-4840-9129-a2aa3eb6f697",
+        "subject_referent_id": "c7f7d330-e778-4ae5-be96-3a172bea1166"
+      }
+    ],
+    "evidence_links": [
+      {
+        "id": "4c6c0f50-a936-4da6-bb09-233f93320639",
+        "role": "used_as_basis",
+        "claim_id": "0f89e778-b16e-4840-9129-a2aa3eb6f697",
+        "linked_at": "2026-09-04T16:39:38.624321+00:00",
+        "evidence_referent_id": "19a949ea-a8fc-4250-a386-fa64e5530180",
+        "evidence_revision_digest": "\\x5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55",
+        "evidence_revision_scheme": "ecb_thought_revision_v1_sha256"
+      }
+    ],
+    "claim_standing_transitions": [
+      {
+        "id": "a6925494-a862-441b-a361-5f5ec41dc9dc",
+        "claim_id": "0f89e778-b16e-4840-9129-a2aa3eb6f697",
+        "recorded_at": "2026-09-05T02:24:35.793609+00:00",
+        "to_standing": "basis_qualified",
+        "from_standing": "unassessed",
+        "basis_evidence_link_id": "4c6c0f50-a936-4da6-bb09-233f93320639",
+        "observed_revision_digest": "\\x5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55"
+      }
+    ]
+  },
+  "catalog": {
+    "grants": [
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "basis_evidence_link_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "basis_evidence_link_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "claim_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "claim_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "from_standing",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "from_standing",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "observed_revision_digest",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "recorded_at",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "to_standing",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "column": "to_standing",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "asserted_at",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "claim_kind",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "claim_kind",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "epistemic_standing",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "object_referent_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "object_referent_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "origin",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "predicate",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "predicate",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "proposition",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "proposition",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "scope",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "scope",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "subject_referent_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "column": "subject_referent_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "claim_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "claim_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "evidence_referent_id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "evidence_referent_id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "evidence_revision_digest",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "evidence_revision_scheme",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "linked_at",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "column": "role",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "referents",
+        "column": "id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "referents",
+        "column": "id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "referents",
+        "column": "registered_at",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "captured_at",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "captured_at",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "content",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "content",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "embedding",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "embedding",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "embedding_model",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "embedding_model",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "id",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "id",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "source",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "column": "source",
+        "privilege": "SELECT"
+      }
+    ],
+    "tables": [
+      {
+        "rls": true,
+        "name": "claim_standing_transitions",
+        "owner": "postgres"
+      },
+      {
+        "rls": true,
+        "name": "claims",
+        "owner": "postgres"
+      },
+      {
+        "rls": true,
+        "name": "evidence_links",
+        "owner": "postgres"
+      },
+      {
+        "rls": true,
+        "name": "referents",
+        "owner": "postgres"
+      },
+      {
+        "rls": true,
+        "name": "thoughts",
+        "owner": "postgres"
+      }
+    ],
+    "columns": [
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "claim_standing_transitions",
+        "column": "id",
+        "default": "gen_random_uuid()"
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "claim_standing_transitions",
+        "column": "claim_id",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "claim_standing_transitions",
+        "column": "from_standing",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "claim_standing_transitions",
+        "column": "to_standing",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "claim_standing_transitions",
+        "column": "basis_evidence_link_id",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "bytea",
+        "table": "claim_standing_transitions",
+        "column": "observed_revision_digest",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "timestamptz",
+        "table": "claim_standing_transitions",
+        "column": "recorded_at",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "claims",
+        "column": "id",
+        "default": "gen_random_uuid()"
+      },
+      {
+        "null": "YES",
+        "type": "text",
+        "table": "claims",
+        "column": "proposition",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "claims",
+        "column": "scope",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "claims",
+        "column": "claim_kind",
+        "default": "'assertion'::text"
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "claims",
+        "column": "origin",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "claims",
+        "column": "epistemic_standing",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "timestamptz",
+        "table": "claims",
+        "column": "asserted_at",
+        "default": null
+      },
+      {
+        "null": "YES",
+        "type": "uuid",
+        "table": "claims",
+        "column": "subject_referent_id",
+        "default": null
+      },
+      {
+        "null": "YES",
+        "type": "text",
+        "table": "claims",
+        "column": "predicate",
+        "default": null
+      },
+      {
+        "null": "YES",
+        "type": "uuid",
+        "table": "claims",
+        "column": "object_referent_id",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "evidence_links",
+        "column": "id",
+        "default": "gen_random_uuid()"
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "evidence_links",
+        "column": "claim_id",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "evidence_links",
+        "column": "evidence_referent_id",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "evidence_links",
+        "column": "role",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "evidence_links",
+        "column": "evidence_revision_scheme",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "bytea",
+        "table": "evidence_links",
+        "column": "evidence_revision_digest",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "timestamptz",
+        "table": "evidence_links",
+        "column": "linked_at",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "referents",
+        "column": "id",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "timestamptz",
+        "table": "referents",
+        "column": "registered_at",
+        "default": "transaction_timestamp()"
+      },
+      {
+        "null": "NO",
+        "type": "uuid",
+        "table": "thoughts",
+        "column": "id",
+        "default": "gen_random_uuid()"
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "thoughts",
+        "column": "content",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "thoughts",
+        "column": "source",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "timestamptz",
+        "table": "thoughts",
+        "column": "captured_at",
+        "default": "now()"
+      },
+      {
+        "null": "NO",
+        "type": "vector",
+        "table": "thoughts",
+        "column": "embedding",
+        "default": null
+      },
+      {
+        "null": "NO",
+        "type": "text",
+        "table": "thoughts",
+        "column": "embedding_model",
+        "default": "'gte-small'::text"
+      }
+    ],
+    "indexes": [
+      {
+        "def": "CREATE UNIQUE INDEX claim_standing_transitions_pkey ON public.claim_standing_transitions USING btree (id)",
+        "name": "claim_standing_transitions_pkey",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CREATE UNIQUE INDEX claims_pkey ON public.claims USING btree (id)",
+        "name": "claims_pkey",
+        "table": "claims"
+      },
+      {
+        "def": "CREATE UNIQUE INDEX evidence_links_pkey ON public.evidence_links USING btree (id)",
+        "name": "evidence_links_pkey",
+        "table": "evidence_links"
+      },
+      {
+        "def": "CREATE UNIQUE INDEX referents_pkey ON public.referents USING btree (id)",
+        "name": "referents_pkey",
+        "table": "referents"
+      },
+      {
+        "def": "CREATE UNIQUE INDEX thoughts_pkey ON public.thoughts USING btree (id)",
+        "name": "thoughts_pkey",
+        "table": "thoughts"
+      }
+    ],
+    "policies": [],
+    "triggers": [
+      {
+        "def": "CREATE TRIGGER claim_standing_transitions_prepare BEFORE INSERT ON public.claim_standing_transitions FOR EACH ROW EXECUTE FUNCTION prepare_claim_standing_transition()",
+        "name": "claim_standing_transitions_prepare",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CREATE TRIGGER claims_prepare BEFORE INSERT ON public.claims FOR EACH ROW EXECUTE FUNCTION prepare_claim()",
+        "name": "claims_prepare",
+        "table": "claims"
+      },
+      {
+        "def": "CREATE TRIGGER evidence_links_prepare BEFORE INSERT ON public.evidence_links FOR EACH ROW EXECUTE FUNCTION prepare_evidence_link()",
+        "name": "evidence_links_prepare",
+        "table": "evidence_links"
+      },
+      {
+        "def": "CREATE TRIGGER thoughts_register_referent BEFORE INSERT ON public.thoughts FOR EACH ROW EXECUTE FUNCTION register_thought_referent()",
+        "name": "thoughts_register_referent",
+        "table": "thoughts"
+      }
+    ],
+    "functions": [
+      {
+        "acl": "{postgres=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.prepare_claim()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n  insert into public.referents (id)\n  values (new.id);\n\n  new.origin := 'ecb_inference';\n  new.epistemic_standing := 'unassessed';\n  new.asserted_at := pg_catalog.transaction_timestamp();\n\n  return new;\nend;\n$function$\n",
+        "name": "prepare_claim",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.prepare_claim_standing_transition()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare\n  basis_claim_id uuid;\n  basis_evidence_referent_id uuid;\n  applied_standing text;\nbegin\n  insert into public.referents (id)\n  values (new.id);\n\n  select link.claim_id, link.evidence_referent_id\n  into strict basis_claim_id, basis_evidence_referent_id\n  from public.evidence_links as link\n  where link.id = new.basis_evidence_link_id;\n\n  if basis_claim_id <> new.claim_id then\n    raise exception\n      'BUILD 5A basis Evidence Link % does not declare a basis for Claim %',\n      new.basis_evidence_link_id, new.claim_id\n      using errcode = '23514';\n  end if;\n\n  select claim.epistemic_standing\n  into strict applied_standing\n  from public.claims as claim\n  where claim.id = new.claim_id\n  for update;\n\n  if applied_standing <> new.from_standing then\n    raise exception\n      'BUILD 5A declared prior standing % does not match applied standing %',\n      new.from_standing, applied_standing\n      using errcode = '40001';\n  end if;\n\n  new.observed_revision_digest :=\n    public.thought_revision_digest(basis_evidence_referent_id);\n  new.recorded_at := pg_catalog.transaction_timestamp();\n\n  update public.claims\n  set epistemic_standing = new.to_standing\n  where id = new.claim_id;\n\n  return new;\nexception\n  when no_data_found then\n    raise exception\n      'BUILD 5A subject Claim or basis Evidence Link is unavailable'\n      using errcode = 'P0002';\nend;\n$function$\n",
+        "name": "prepare_claim_standing_transition",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.prepare_evidence_link()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare\n  evidence_content text;\n  evidence_source text;\n  evidence_captured_at timestamptz;\n  content_octets bytea;\n  source_octets bytea;\n  captured_at_microseconds bigint;\n  digest_input bytea;\nbegin\n  select thought.content, thought.source, thought.captured_at\n  into strict evidence_content, evidence_source, evidence_captured_at\n  from public.thoughts as thought\n  where thought.id = new.evidence_referent_id\n  for share;\n\n  if not pg_catalog.isfinite(evidence_captured_at) then\n    raise exception 'BUILD 3 evidence captured_at must be finite'\n      using errcode = '22008';\n  end if;\n\n  content_octets := pg_catalog.convert_to(evidence_content, 'UTF8');\n  source_octets := pg_catalog.convert_to(evidence_source, 'UTF8');\n  captured_at_microseconds :=\n    (extract(epoch from evidence_captured_at) * 1000000)::bigint;\n\n  digest_input :=\n    pg_catalog.convert_to('ECB-THOUGHT-REVISION-V1', 'UTF8')\n    || pg_catalog.decode('00', 'hex')\n    || pg_catalog.decode('01', 'hex')\n    || pg_catalog.int8send(pg_catalog.octet_length(content_octets)::bigint)\n    || content_octets\n    || pg_catalog.decode('02', 'hex')\n    || pg_catalog.int8send(pg_catalog.octet_length(source_octets)::bigint)\n    || source_octets\n    || pg_catalog.decode('03', 'hex')\n    || pg_catalog.int8send(8::bigint)\n    || pg_catalog.int8send(captured_at_microseconds);\n\n  insert into public.referents (id)\n  values (new.id);\n\n  new.role := 'used_as_basis';\n  new.evidence_revision_scheme := 'ecb_thought_revision_v1_sha256';\n  new.evidence_revision_digest := extensions.digest(digest_input, 'sha256');\n  new.linked_at := pg_catalog.transaction_timestamp();\n\n  return new;\nexception\n  when no_data_found then\n    raise exception 'BUILD 3 evidence Thought % is unavailable', new.evidence_referent_id\n      using errcode = 'P0002';\nend;\n$function$\n",
+        "name": "prepare_evidence_link",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.register_thought_referent()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n  insert into public.referents (id)\n  values (new.id);\n\n  return new;\nend;\n$function$\n",
+        "name": "register_thought_referent",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=X/postgres,service_role=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.search_thoughts(query_embedding vector, match_count integer DEFAULT 10)\n RETURNS TABLE(id uuid, content text, source text, captured_at timestamp with time zone, embedding_model text, similarity double precision)\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n  select\n    thought.id,\n    thought.content,\n    thought.source,\n    thought.captured_at,\n    thought.embedding_model,\n    1 - (\n      thought.embedding operator(extensions.<=>) query_embedding\n    ) as similarity\n  from public.thoughts as thought\n  order by\n    thought.embedding operator(extensions.<=>) query_embedding,\n    thought.id\n  limit least(greatest(coalesce(match_count, 10), 1), 100);\n$function$\n",
+        "name": "search_thoughts",
+        "owner": "postgres"
+      },
+      {
+        "acl": "{postgres=X/postgres}",
+        "def": "CREATE OR REPLACE FUNCTION public.thought_revision_digest(evidence_referent_id uuid)\n RETURNS bytea\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare\n  evidence_content text;\n  evidence_source text;\n  evidence_captured_at timestamptz;\n  content_octets bytea;\n  source_octets bytea;\n  captured_at_microseconds bigint;\n  digest_input bytea;\nbegin\n  select thought.content, thought.source, thought.captured_at\n  into strict evidence_content, evidence_source, evidence_captured_at\n  from public.thoughts as thought\n  where thought.id = evidence_referent_id\n  for share;\n\n  if not pg_catalog.isfinite(evidence_captured_at) then\n    raise exception 'BUILD 5A evidence captured_at must be finite'\n      using errcode = '22008';\n  end if;\n\n  content_octets := pg_catalog.convert_to(evidence_content, 'UTF8');\n  source_octets := pg_catalog.convert_to(evidence_source, 'UTF8');\n  captured_at_microseconds :=\n    (extract(epoch from evidence_captured_at) * 1000000)::bigint;\n\n  digest_input :=\n    pg_catalog.convert_to('ECB-THOUGHT-REVISION-V1', 'UTF8')\n    || pg_catalog.decode('00', 'hex')\n    || pg_catalog.decode('01', 'hex')\n    || pg_catalog.int8send(pg_catalog.octet_length(content_octets)::bigint)\n    || content_octets\n    || pg_catalog.decode('02', 'hex')\n    || pg_catalog.int8send(pg_catalog.octet_length(source_octets)::bigint)\n    || source_octets\n    || pg_catalog.decode('03', 'hex')\n    || pg_catalog.int8send(8::bigint)\n    || pg_catalog.int8send(captured_at_microseconds);\n\n  return extensions.digest(digest_input, 'sha256');\nexception\n  when no_data_found then\n    raise exception 'BUILD 5A evidence Thought % is unavailable', evidence_referent_id\n      using errcode = 'P0002';\nend;\n$function$\n",
+        "name": "thought_revision_digest",
+        "owner": "postgres"
+      }
+    ],
+    "constraints": [
+      {
+        "def": "FOREIGN KEY (basis_evidence_link_id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "claim_standing_transitions_basis_referent_fkey",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CHECK ((from_standing <> to_standing))",
+        "name": "claim_standing_transitions_changes_standing",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "FOREIGN KEY (claim_id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "claim_standing_transitions_claim_referent_fkey",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CHECK ((octet_length(observed_revision_digest) = 32))",
+        "name": "claim_standing_transitions_digest_sha256",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CHECK ((from_standing = ANY (ARRAY['unassessed'::text, 'basis_qualified'::text, 'revalidation_required'::text])))",
+        "name": "claim_standing_transitions_from_vocabulary",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "PRIMARY KEY (id)",
+        "name": "claim_standing_transitions_pkey",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "FOREIGN KEY (id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "claim_standing_transitions_referent_fkey",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CHECK ((to_standing = ANY (ARRAY['unassessed'::text, 'basis_qualified'::text, 'revalidation_required'::text])))",
+        "name": "claim_standing_transitions_to_vocabulary",
+        "table": "claim_standing_transitions"
+      },
+      {
+        "def": "CHECK ((NOT ((predicate = 'depends_on'::text) AND (subject_referent_id = object_referent_id))))",
+        "name": "claims_depends_on_not_self",
+        "table": "claims"
+      },
+      {
+        "def": "CHECK ((((claim_kind = 'assertion'::text) AND (proposition IS NOT NULL) AND (length(btrim(proposition)) > 0) AND (subject_referent_id IS NULL) AND (predicate IS NULL) AND (object_referent_id IS NULL)) OR ((claim_kind = 'relation'::text) AND (proposition IS NULL) AND (subject_referent_id IS NOT NULL) AND (predicate IS NOT NULL) AND (object_referent_id IS NOT NULL))))",
+        "name": "claims_kind_exclusive_shape",
+        "table": "claims"
+      },
+      {
+        "def": "CHECK ((claim_kind = ANY (ARRAY['assertion'::text, 'relation'::text])))",
+        "name": "claims_kind_vocabulary",
+        "table": "claims"
+      },
+      {
+        "def": "FOREIGN KEY (object_referent_id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "claims_object_referent_fkey",
+        "table": "claims"
+      },
+      {
+        "def": "CHECK ((origin = 'ecb_inference'::text))",
+        "name": "claims_origin_ecb_inference",
+        "table": "claims"
+      },
+      {
+        "def": "PRIMARY KEY (id)",
+        "name": "claims_pkey",
+        "table": "claims"
+      },
+      {
+        "def": "CHECK (((predicate IS NULL) OR (predicate = 'depends_on'::text)))",
+        "name": "claims_predicate_vocabulary",
+        "table": "claims"
+      },
+      {
+        "def": "FOREIGN KEY (id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "claims_referent_fkey",
+        "table": "claims"
+      },
+      {
+        "def": "CHECK ((length(btrim(scope)) > 0))",
+        "name": "claims_scope_nonempty",
+        "table": "claims"
+      },
+      {
+        "def": "CHECK ((epistemic_standing = ANY (ARRAY['unassessed'::text, 'basis_qualified'::text, 'revalidation_required'::text])))",
+        "name": "claims_standing_vocabulary",
+        "table": "claims"
+      },
+      {
+        "def": "FOREIGN KEY (subject_referent_id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "claims_subject_referent_fkey",
+        "table": "claims"
+      },
+      {
+        "def": "FOREIGN KEY (claim_id) REFERENCES claims(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "evidence_links_claim_fkey",
+        "table": "evidence_links"
+      },
+      {
+        "def": "FOREIGN KEY (evidence_referent_id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "evidence_links_evidence_referent_fkey",
+        "table": "evidence_links"
+      },
+      {
+        "def": "PRIMARY KEY (id)",
+        "name": "evidence_links_pkey",
+        "table": "evidence_links"
+      },
+      {
+        "def": "FOREIGN KEY (id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "evidence_links_referent_fkey",
+        "table": "evidence_links"
+      },
+      {
+        "def": "CHECK ((octet_length(evidence_revision_digest) = 32))",
+        "name": "evidence_links_revision_digest_sha256",
+        "table": "evidence_links"
+      },
+      {
+        "def": "CHECK ((evidence_revision_scheme = 'ecb_thought_revision_v1_sha256'::text))",
+        "name": "evidence_links_revision_scheme_v1",
+        "table": "evidence_links"
+      },
+      {
+        "def": "CHECK ((role = 'used_as_basis'::text))",
+        "name": "evidence_links_role_used_as_basis",
+        "table": "evidence_links"
+      },
+      {
+        "def": "PRIMARY KEY (id)",
+        "name": "referents_pkey",
+        "table": "referents"
+      },
+      {
+        "def": "CHECK ((length(btrim(content)) > 0))",
+        "name": "thoughts_content_nonempty",
+        "table": "thoughts"
+      },
+      {
+        "def": "CHECK ((embedding_model = 'gte-small'::text))",
+        "name": "thoughts_embedding_model_gte_small",
+        "table": "thoughts"
+      },
+      {
+        "def": "PRIMARY KEY (id)",
+        "name": "thoughts_pkey",
+        "table": "thoughts"
+      },
+      {
+        "def": "FOREIGN KEY (id) REFERENCES referents(id) ON UPDATE RESTRICT ON DELETE RESTRICT",
+        "name": "thoughts_referent_fkey",
+        "table": "thoughts"
+      },
+      {
+        "def": "CHECK ((length(btrim(source)) > 0))",
+        "name": "thoughts_source_nonempty",
+        "table": "thoughts"
+      }
+    ],
+    "table_grants": [
+      {
+        "role": "service_role",
+        "table": "claim_standing_transitions",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "claims",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "evidence_links",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "referents",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "thoughts",
+        "privilege": "SELECT"
+      }
+    ],
+    "schema_grants": [
+      {
+        "role": "anon",
+        "usage": true,
+        "create": false,
+        "schema": "extensions"
+      },
+      {
+        "role": "anon",
+        "usage": true,
+        "create": false,
+        "schema": "public"
+      },
+      {
+        "role": "authenticated",
+        "usage": true,
+        "create": false,
+        "schema": "extensions"
+      },
+      {
+        "role": "authenticated",
+        "usage": true,
+        "create": false,
+        "schema": "public"
+      },
+      {
+        "role": "postgres",
+        "usage": true,
+        "create": true,
+        "schema": "extensions"
+      },
+      {
+        "role": "postgres",
+        "usage": true,
+        "create": true,
+        "schema": "public"
+      },
+      {
+        "role": "service_role",
+        "usage": true,
+        "create": false,
+        "schema": "extensions"
+      },
+      {
+        "role": "service_role",
+        "usage": true,
+        "create": false,
+        "schema": "public"
+      }
+    ]
+  }
+}

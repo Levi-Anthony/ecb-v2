@@ -31,4 +31,8 @@ BUILD 5B migration:
 
   Unlike its predecessors this file carries **no** `BEGIN`/`COMMIT`. The bound Output Contract requires the runner to wrap the exact file bytes and a parameterized migration-ledger write in one single outer transaction. `tests/build-5b/runner.ts` implements that mechanism and rollback-probes it before applying. It is not yet applied to canonical state.
 
+BUILD 5B migration (executed; human Metabolize pending):
+
+- `20260906014257_build_5b_versioned_artifacts.sql` — immutable Referent-backed Artifacts, fixed transformation requests, committed check attempts and bounded grounding/preservation receipts. Exact migration bytes and the ledger commit atomically through the qualified runner; the seven pre-check fixtures and two receipts commit in separate later transactions. See [execution evidence](../../docs/build-receipts/007-build-5b.md).
+
 Add only migrations licensed by the active Build Unit.

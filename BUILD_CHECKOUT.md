@@ -1,4 +1,4 @@
-STATUS: BUILD 5B MOVE OPEN; POSTGRESQL 17 QUALIFICATION IN PROGRESS
+STATUS: BUILD 5B EXECUTION PASS; AWAIT HUMAN METABOLIZE
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
 AUTHORITY: Hardened governing sources, anchored BUILD 5B Move release, and human continuation authorization
@@ -8,11 +8,11 @@ CURRENT BUILD UNIT: BUILD 5B — Versioned Artifacts + First Transformation Rece
 
 ## CURRENT MOVE
 
-`QUALIFY EXACT COMMITTED CANDIDATE → CANONICAL SCHEMA → SEVEN PRECHECK ARTIFACTS → TWO RECEIPTS → HUMAN METABOLIZE`
+`PG17 QUALIFICATION PASS → CANONICAL EXECUTION PASS → AWAIT HUMAN METABOLIZE`
 
 ```text
 BUILD_0_TO_5A=CLOSED
-BUILD_5B=MOVE_OPEN; NOT_ACCEPTED_OR_CLOSED
+BUILD_5B=EXECUTED; NOT_ACCEPTED_OR_CLOSED
 SENSE=CLOSED; SHAPE=REQUALIFIED_AND_CLOSED
 MOVE_ANCHOR=07fcb9f29c75365c07d36226043d3b17cbc769fd
 MOVE_ANCHOR_TREE=616857ac26bbf34695bad13468cda37c67bd7e35
@@ -20,9 +20,17 @@ HARDENING_ANCESTOR=0e969b9f72dc198976d7538748a341148edf09b2
 SELECTED_IMPLEMENTATION_LINE=f47cbad12c34043113d273c2423ee5108317d4da; PR_2
 ALTERNATIVE_PRESERVED=60f510ce3f75c46f9caff2b96274d5fd5a170a07; NONCANONICAL; NOT_ADOPTED
 QUALIFICATION_BRANCH=build/build-5b-pg17-qualification
-PG17_QUALIFICATION=WORKING_BYTES_PASS; COMMITTED_CANDIDATE_RUN_PENDING
+PG17_QUALIFICATION=COMPLETE_PASS; WT07_39_OF_39; P01_TO_P23
+EXECUTED_CANDIDATE=7f3790786d947ac278501632a6072433db8d0c6e
+EXECUTED_TREE=f5d9d29f765c24cc72dc3c0fa3cfe4ba412ad859
 CANONICAL_PREDECESSOR=READ_ONLY_REVERIFIED_2026-09-06; IDENTICAL_TO_RETAINED_SNAPSHOT
-CANONICAL_MUTATION=NONE_THIS_RESUMPTION
+CANONICAL_MUTATION=SCHEMA_AND_LEDGER_COMMITTED; EXACT_7_PLUS_2_FIXTURES_COMMITTED
+PRECHECK_XID=1524; RECEIPT_XID=1525
+RC1=PASS_SIX_TRUE; RC2=EXPECTED_FAIL_OUTPUT_FORMAT
+CANONICAL_ARTIFACTS=9; REFERENTS=16; PUBLIC_TABLES=6; FUNCTIONS=8; VIEWS=0
+INHERITED_FIXTURES_CATALOG_LEDGER=PRESERVED
+FRESH_RECONSTRUCTION=PASS
+METABOLIZE=PENDING_HUMAN
 BUILD_6_PLUS=UNOPENED
 ```
 
@@ -91,9 +99,12 @@ regressions. Rehearsal matches all inherited fixture bytes (including embeddings
 definitions, constraints, triggers, grants, and relevant roles. The resumed
 canonical read-only snapshot equals the earlier accepted snapshot.
 
-Before canonical writes, commit and remotely anchor the repaired candidate, rerun
-the complete rehearsal against those exact bytes, verify clean candidate state and
-unchanged Shape lineage, then pass the runner's fresh predecessor checks.
+The exact clean candidate `7f37907` was committed and remotely anchored, then passed
+the complete rehearsal and fresh predecessor checks before canonical writes. Schema
+and ledger committed atomically; seven pre-check Artifacts and two receipts committed
+in separate later transactions. Fresh reconstruction passed with no probe residue.
+The [execution receipt](docs/build-receipts/007-build-5b.md) reports all gate evidence
+and links the durable [evidence manifest](docs/build-receipts/evidence/build-5b/manifest.json).
 Detailed commands and test boundaries: [qualification procedure](tests/build-5b/README.md).
 
 ## APERTURE / REVALIDATION TRIGGER
@@ -114,6 +125,7 @@ research draft is separate from this bounded Move.
 
 ## NEXT HANDLE
 
-Complete the committed-candidate PG17 qualification, execute the separately verified
-schema/ledger and 7+2 fixture stages, preserve evidence in the repository, write the
-execution receipt, and stop for human Metabolize. Execution PASS is not BUILD closure.
+Review the [BUILD 5B execution receipt](docs/build-receipts/007-build-5b.md) for human
+Metabolize/closure. The authorized implementation, qualification, canonical fixture
+sequence and evidence retention are complete. No canonical rerun is needed.
+Execution PASS does not close BUILD 5B or open BUILD 6.

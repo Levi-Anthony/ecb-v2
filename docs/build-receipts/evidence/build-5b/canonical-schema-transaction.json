@@ -1,0 +1,7 @@
+{
+  "version": "20260906014257",
+  "candidate": "7f3790786d947ac278501632a6072433db8d0c6e",
+  "migration_sha256": "adbcbdf627a7d60e020af74e214c976757b423ac697caefd5d88904082a95b41",
+  "migration_bytes": 26656,
+  "committed": true
+}
