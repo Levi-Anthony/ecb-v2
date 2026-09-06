@@ -1,21 +1,23 @@
-STATUS: BUILD 6 SENSE CLOSED BY HUMAN — SHAPE HANDOFF RECORDED; PRE-SHAPE INTEGRATION PENDING
+STATUS: BUILD 6 SHAPE OPEN — PREDECESSOR NORMALIZED AND ANCESTRY VERIFIED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
-AUTHORITY: Governing sources, existing “Open 6” / “Continue”, explicit bounded Sense-sharpening instruction, subsequent human genesis authority disposition, and explicit Sense closure with instance-binding tightening
+AUTHORITY: Governing sources, existing “Open 6” / “Continue”, explicit bounded Sense-sharpening instruction, subsequent human genesis authority disposition, explicit Sense closure with instance-binding tightening, and subsequent PR #2 merge / post-verification Shape authorization
 CURRENT BUILD UNIT: BUILD 6 — Governance Bootstrap
 
 # BUILD 6 — Governance Bootstrap
 
 ## CURRENT MOVE
 
-`SENSE CLOSED: PRESERVE ACCEPTED SHAPE HANDOFF; NORMALIZE PREDECESSOR BEFORE SHAPE`
+`SHAPE: FIND THE MINIMUM DURABLE REPRESENTATION AND ENFORCEMENT OF THE ACCEPTED M2 GRAPH`
 
 ```text
 BUILD_0_TO_5B=CLOSED
 BUILD_5B_EXECUTION=7f3790786d947ac278501632a6072433db8d0c6e
 BUILD_5B_EVIDENCE=7c89e82eaba27ecd3972bf0100a1133363b3304c
 BUILD_5B_HUMAN_CLOSURE=5af44bb1a14cc098f2f3f105d611cff406135cf9
-BUILD_6=SENSE_CLOSED_BY_HUMAN; 2026-09-06; NOT_REOPENED
+BUILD_6=SHAPE_OPEN; SENSE_CLOSED_AT_72c0b79
+PREDECESSOR_MAIN=1ff284164160f74c398bcfe4d2c300b694070b7f
+LOCAL_INTEGRATION=cf1615b; MAIN_AND_SENSE_CLOSURE_ANCESTORS_VERIFIED
 ENTRY_LINEAGE=984f16d9267082aec2b0dce33de597aad7e46abf
 ROOT_BASIS=EXTERNALLY_ACCEPTED_HUMAN_ARCHITECTURE_AUTHORITY_EXERCISED_BY_LEVI
 INITIAL_H=NOT_YET_DESIGNATED; LEVI_PERMITTED; POWER_DERIVES_FROM_DESIGNATION
@@ -27,7 +29,7 @@ BINDING_DEADLINE=BEFORE_BOOTSTRAP_FIXTURE_OR_EXECUTABLE_TRANSITION_FREEZE
 AP04=REACTIVATED_NARROWLY; EXACT_PAYLOAD_UNRESOLVED
 AP01=CONDITIONAL; NO_NEW_VOCABULARY_DEMONSTRATED
 PRIOR_ART_QUALIFICATION=PARTIAL; EXISTING_PINS_PRESERVED
-SHAPE=HANDOFF_ACCEPTED; WORK_PENDING_PRE_SHAPE_INTEGRATION
+SHAPE=OPEN; MECHANISM_NOT_SELECTED
 OUTPUT_CONTRACT=UNBOUND
 MOVE_PERMISSION=UNRELEASED
 IMPLEMENTATION=UNOPENED
@@ -45,7 +47,9 @@ basis and selects M2: one initialization containing exact P0 activation, initial
 designation with bounded remit, and bootstrap exhaustion. The latest human disposition
 explicitly closes Sense with the instance-binding and failure distinctions recorded
 below. It supplies the Shape handoff, without automatically designating Levi as H
-or authorizing implementation. The earlier pre-Shape integration boundary remains.
+or authorizing implementation. The subsequent user instruction authorized PR #2
+merging and Shape opening after normalization and ancestry verification; both checks
+now pass. Shape proceeds under the [opening record](docs/build-shape/008-build-6.md).
 
 The [BUILD 5B receipt](docs/build-receipts/007-build-5b.md) and raw evidence remain
 unchanged. Their canonical observations are accepted earlier evidence, not a new
@@ -53,8 +57,9 @@ canonical read. The human's closure remains operative independently of Git integ
 
 ## PURPOSE / INVARIANT SERVED
 
-Explain the full episode as a non-circular chain: every authority-bearing transition
-must have an independently recoverable basis that existed before the act it licenses.
+Design the smallest durable, reconstructible, non-bypassable mechanism for the
+already-settled M2 episode. Every authority-bearing transition must preserve its
+independently recoverable basis that existed before the act it licenses.
 Keep bootstrap trust root, human source of authorization, technical executor, custody,
 designated human/warrant authority and operative policy distinguishable. Common
 person or machinery does not merge the competences or their bases.
@@ -93,7 +98,8 @@ No credential, claimed actor, candidate policy or future designation supplies it
 own warrant. Distinguish structural checks, authority, semantic judgments and
 observational evidence without selecting enforcement surfaces yet. Preserve actual
 prior basis, scope, conditions and transition ordering as reconstruction obligations;
-their physical representation remains undecided.
+their physical representation is the active Shape inquiry. See the opening record
+for design questions and all twelve applicable adversarial pressure constraints.
 
 If an arrow can be justified only by the result it creates, reject that explanation.
 If a needed prior basis is unavailable, preserve the corresponding forward question.
@@ -109,7 +115,7 @@ authority sources or scope must return for explicit resolution.
 
 [AP-04](docs/open-apertures.md#ap-04--enforcement-policy-payload) is now explicitly
 reactivated for BUILD 6's first consequential governance transition. Exact payload
-and representation remain unresolved for later Shape. AP-01 remains conditional:
+and representation are now under Shape inquiry. AP-01 remains conditional:
 this pass has demonstrated no need for a new controlled governance-standing value.
 No enums are invented. AP-03/AP-07 and prior BUILD 5B leases retain their conditions.
 
@@ -126,7 +132,7 @@ has a prior basis. Documentary falsification rejects self-birth, self-designatio
 bootstrap replay, credential-as-warrant, recency-as-authority and role collapse.
 No executable BUILD 6 test or canonical check was run.
 
-Future Shape must inherit the accepted external trust premise, M2's one initialization,
+Shape inherits the accepted external trust premise, M2's one initialization,
 H's designation-derived bounded power, irreversible exhaustion on success, P0/H's
 prior authorization for exact P1, and reconstruction of actual bases/scope/conditions.
 An interrupted or uncertain attempt creates no new grant; further effects require
@@ -142,27 +148,26 @@ Contract's cross-cutting adversarial pressure dispositions into that work.
 
 ## REPOSITORY INTEGRATION BOUNDARY
 
-Read-only re-verification at this Sense closure: PR #2 is OPEN, draft and MERGEABLE,
-head `5af44bb` targeting
-main; remote main remains `07fcb9f`. BUILD 6 entry `984f16d` descends from that accepted
-PR head. The clean predecessor integration path remains **PR #2 → main**, required
-as repository normalization before Shape, subject to separate merge authorization.
-This is not a reason to reopen BUILD 5B or invalidate BUILD 6. No GitHub mutation,
-merge or push is authorized for this pass.
+PR #2 was merged under explicit user authorization at `2026-09-06T22:40:23Z` as
+`1ff284164160f74c398bcfe4d2c300b694070b7f`. Its exact accepted head was `5af44bb`.
+Normalized main's tree equals accepted BUILD 5B. Local integration `cf1615b` on
+`build/build-6-sense` has normalized main and Sense closure `72c0b79` as ancestors,
+with no tree change from that closure. No BUILD 5B or Sense reopening occurred.
+The pre-Shape repository condition is satisfied. The
+[Shape entry record](docs/build-shape/008-build-6.md#verified-entry) preserves the checks.
 
 ## NON-GOALS
 
-No additional Sense cycle, Output Contract, implementation, canonical contact, policy
-installation, physical transaction boundary, table, enum, UUID, RPC, credential
-architecture, Actor ontology, UI, universal policy engine, Master Key machinery,
-action-envelope semantics or BUILD 7+. The untracked collaboration draft is untouched.
+No additional Sense cycle, frozen Output Contract or bootstrap fixture, implementation,
+canonical contact, policy installation, autonomous H/remit selection, P0 substitution,
+new recovery authority or altered M2. Representation/enforcement design is permitted
+within Shape; Actor ontology, UI, universal policy engine, Master Key machinery,
+action-envelope semantics and BUILD 7+ remain excluded. Research remains untouched.
 
 ## NEXT HANDLE
 
-The [updated Question Forward set](docs/build-sense/008-build-6.md#question-forward--updated-live-set)
-records resolved behavioral questions and bounded later specification obligations.
-Sense is closed; do not spend another cycle searching for authority theory. PR #2 →
-main is the required pre-Shape repository normalization, pending separate GitHub
-integration authorization. After that normalization is verified, proceed with the
-accepted Shape question and human-binding limits. Keep the current BUILD 6 lineage;
-no predecessor reopening or mechanism selection is required to record this handoff.
+Proceed with the [Shape mechanism inquiry](docs/build-shape/008-build-6.md#active-shape-question)
+and its adversarial constraints. Compare the smallest candidate representations and
+enforcement boundaries against the accepted graph. Develop a concrete proposal while
+preserving explicit human/root binding of H/remit and acceptance of exact P0 before
+fixture/transition freeze. Do not reopen Sense to search for more authority theory.

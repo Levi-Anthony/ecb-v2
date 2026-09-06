@@ -189,6 +189,11 @@ a second initialization and unknown outcome requiring stop without adding recove
 authority. This handoff selects no enforcement-policy payload and does not reactivate
 AP-01 further.
 
+BUILD 6 SHAPE OPEN after authorized PR #2 integration and ancestry verification on
+2026-09-06 America/Phoenix. The [Shape inquiry](build-shape/008-build-6.md) now owns
+representation/enforcement design under the closed Sense boundaries. This opening
+selects no payload and leaves AP-01 conditional.
+
 Historical BUILD 5 disposition remains: open and inactive at its Sense closure because
 that episode contained no consequential governance-policy transition. BUILD 6 activation
 is not inferred from Claim standing history or a passing transformation receipt.
@@ -200,8 +205,8 @@ a universal policy engine.
 
 **ROUTE**  
 [BUILD 6 Sense](build-sense/008-build-6.md) for the behavioral authority graph and prior
-bases, then BUILD 6 Shape for exact enforcement-policy representation after authorized
-phase transition. No Output Contract is bound during this Sense pass.
+bases; [BUILD 6 Shape](build-shape/008-build-6.md) now handles exact enforcement-policy
+representation after verified normalization. No Output Contract is bound at opening.
 
 ## AP-05 — Kernel packet physicalization
 
