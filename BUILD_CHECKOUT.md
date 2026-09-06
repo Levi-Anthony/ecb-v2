@@ -1,4 +1,4 @@
-STATUS: BUILD 5B MOVE RELEASED BY HUMAN; ENTRY GATE OPEN AND UNSATISFIED; IMPLEMENTATION NOT STARTED
+STATUS: BUILD 5B MOVE OPEN; MIGRATION AND WT07 HARNESS AUTHORED; REHEARSED ON POSTGRESQL 16; CANONICAL CONTACT NOT MADE
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
 AUTHORITY: Hardened governing repo sources, the explicit human BUILD 5B reconciliation/conditional closure authorization, and the explicit human Move release recorded below
@@ -8,7 +8,7 @@ CURRENT BUILD UNIT: BUILD 5B — Versioned Artifacts + First Transformation Rece
 
 ## CURRENT MOVE
 
-`MOVE RELEASED → ENTRY GATE UNSATISFIED ON ONE NAMED PRECONDITION → IMPLEMENTATION HELD`
+`MOVE RELEASED → MIGRATION AND HARNESS AUTHORED → PG16 REHEARSAL 39/39 → HELD BEFORE CANONICAL CONTACT`
 
 ```text
 BUILD_0_TO_5A=CLOSED
@@ -27,9 +27,14 @@ OUTPUT_CONTRACT=BOUND_AND_REFROZEN; ARCHITECTURE_UNCHANGED
 MOVE_PERMISSION=RELEASED_BY_HUMAN_2026-09-06
 MOVE_ANCHOR=07fcb9f29c75365c07d36226043d3b17cbc769fd; TREE=616857ac26bbf34695bad13468cda37c67bd7e35
 ENTRY_GATE=DEFINED_BY_BUILD_5A_PRECEDENT; NOT_YET_SATISFIED
-REHEARSAL_ENGINE=UNAVAILABLE_AT_PREDECESSOR_MAJOR_VERSION
-IMPLEMENTATION=NOT_STARTED; BLOCKED_AT_ENTRY_GATE
-CANONICAL_CONTACT=READ_ONLY_PREDECESSOR_CONFIRMATION_ONLY; NO_MUTATION
+REHEARSAL_ENGINE=POSTGRESQL_16_BY_HUMAN_DISPOSITION; PREDECESSOR_IS_17; DELTA_DECLARED
+IMPLEMENTATION=MIGRATION_AND_HARNESS_AUTHORED; NOT_APPLIED_CANONICALLY
+MIGRATION=20260906014257_build_5b_versioned_artifacts; SHA256=adbcbdf627a7d60e020af74e214c976757b423ac697caefd5d88904082a95b41
+RUNNER_MECHANISM=SINGLE_OUTER_TRANSACTION; ROLLBACK_PROBED; ZERO_RESIDUE
+REHEARSAL=39_OF_39_CHECKS_PASSED; P01_TO_P23_ALL_REPORTED
+RC1=PASS_SIX_TRUE; RC2=FAIL_OUTPUT_FORMAT; P23=PRESERVATION_SENSITIVITY_DEMONSTRATED
+DISCREPANCIES=1_TEST_OR_PROBE_DEFECT_CORRECTED; NO_IMPLEMENTATION_OR_SHAPE_DEFECT
+CANONICAL_CONTACT=READ_ONLY_PREDECESSOR_AND_FIXTURE_CONFIRMATION_ONLY; NO_MUTATION
 E07=CONSIDERED; NOT_PROMOTED_AS_GENERAL_DOCTRINE
 E15=METHODOLOGICAL_EVIDENCE_ONLY; NO_SIGMA_TO_ECOS_PROOF_REQUIREMENT
 AP02=NARROWED_FOR_ARTIFACT_PAYLOAD_AND_EXACT_VERSION_RECONSTRUCTION
@@ -68,22 +73,46 @@ Established this session, read-only:
 - harness tooling was resolved: Deno 2.9.6 and Supabase CLI 2.116.0 are installed;
 - no canonical mutation, schema activation, fixture write, or credential change occurred.
 
-### Unsatisfied precondition — rehearsal engine major version
+### Human disposition of the rehearsal engine delta
 
 The canonical predecessor runs **PostgreSQL 17** (`17.6.1.166`). The only PostgreSQL server obtainable
 in this execution environment is **PostgreSQL 16**; the PostgreSQL global development repository is
 refused by the environment's network policy, and Ubuntu 24.04 supplies no PostgreSQL 17 package.
 
-The Output Contract requires the disposable rehearsal to use the installed predecessor's PostgreSQL
-major version and, where it is unavailable, to resolve tooling before touching canonical state. This is
-not a formality here: the selected K7 boundary rests on database-derived `xid8` top-level transaction
-identity, and the frozen challenges include savepoint and subtransaction bypass. Rehearsing that
-mechanism on a different major engine and then applying to PostgreSQL 17 is the inheritance of
-unproven mechanics the contract forbids.
+The Output Contract asks for the predecessor's major version and, where it is unavailable, for tooling
+to be resolved before canonical state is touched. The human was given that choice explicitly and
+dispositioned it: author and rehearse on PostgreSQL 16 now, carry the version delta as a declared
+limitation, and still stop before canonical contact. This disposition governs the rehearsal only. It
+does not weaken the requirement itself, and it does not license canonical application.
 
-Implementation is therefore held at the gate rather than started and left unverifiable. This is a
-tooling/environment blocker classified at its own layer. It is not a Shape defect, not a K7 falsifier,
-and not a reopening condition; no aperture is earned by it.
+`xid8` and `pg_current_xact_id()` have existed since PostgreSQL 13 and savepoint semantics are stable
+across 16 and 17, so the delta is expected to be immaterial. That expectation is unmeasured here.
+P14, P15, P16 and P17 are the cases that depend on it, and their PostgreSQL 17 behaviour remains
+unobserved. This is a tooling/environment limitation classified at its own layer. It is not a Shape
+defect, not a K7 falsifier, and not a reopening condition; no aperture is earned by it.
+
+### Move work completed
+
+The migration and the WT07 harness are authored and rehearsed. See the
+[rehearsal record](tests/build-5b/README.md) for results, evidence values and the full limitation set.
+
+- Output Contract item 1 — one migration, `20260906014257_build_5b_versioned_artifacts.sql`, filename
+  generated through the project CLI, carrying no `BEGIN`/`COMMIT`. The runner wraps its exact bytes and
+  a parameterized ledger write in one outer transaction, and proved both required properties: a forced
+  rollback of the full path left zero residue, and the applied bytes hash to the committed artifact.
+- Output Contract item 2 — one local harness with the A1→A2 producer, independently fixed expected
+  mutations, the same-checker P23 controls, fresh-context reconstruction and fixture activation by
+  exact IDs. Format, lint and type checks pass. No MCP tool, API, endpoint, worker or service added.
+- Output Contract item 4 — the Layer B regression projection runs on the disposable rehearsal.
+- **39 of 39 checks passed**, P01–P23 each reported explicitly. RC1 derived `PASS` with all six
+  components true; RC2 derived `FAIL` on `output_format` with the producer still asserting success;
+  P23 discriminated a preservation violation through the identical installed checker.
+- One discrepancy, classified **TEST_OR_PROBE_DEFECT** and corrected: the harness compared receipt
+  witnesses by string, and `jsonb` does not preserve key order. No implementation, Shape or contract
+  defect was found.
+
+Output Contract item 3, the canonical fixture stages, is **not** done. Item 5's execution receipt is
+not written, because there is no execution to receipt.
 
 ## AUTHORIZATION AND PREDECESSOR
 
@@ -198,14 +227,22 @@ distinct ancestor; the WIP candidate is not merged directly.
 
 ## NEXT HANDLE
 
-The Move is released and the anchor and entry gate are named above. Implementation opens as soon as a
-disposable PostgreSQL 17 rehearsal database is reachable, and not before.
+Review the migration, the harness and the rehearsal record. The design survived every frozen
+challenge on PostgreSQL 16; nothing has touched canonical state.
 
-Resolve the rehearsal engine first, by either route: supply a PostgreSQL 17 instance to this
-environment, or provision a disposable Supabase branch of `ecb-v2-brain`, which is a PostgreSQL 17
-database seeded from the canonical migration ledger and is noncanonical by construction. A branch has
-a monetary cost and needs explicit human authorization before it is created.
+Canonical contact is the next act and it needs a separate human decision, because the nine entry-gate
+steps are not all satisfied. Two are outstanding:
 
-Then execute the Output Contract in its own order: author the migration and the WT07 harness, run
-format/lint/type checks, rollback-probe the migration mechanism, complete the rehearsal, satisfy all
-nine gate steps, and only then make canonical contact. Stop at the gate until the engine is resolved.
+1. **Layer A baseline.** The BUILD 0–5A harnesses have not been run in this session. They need
+   canonical credentials, which are absent from this environment.
+2. **Rehearsal at the predecessor's major version.** Satisfied only under the declared PostgreSQL 16
+   disposition above. A PostgreSQL 17 rehearsal — most cheaply a disposable Supabase branch of
+   `ecb-v2-brain`, which carries a monetary cost — would close it properly and re-run P14–P17 on the
+   engine that will actually run them.
+
+When those are dispositioned, execute in WT07's order: reverify the predecessor read-only, activate
+schema and ledger atomically with no fixtures in that transaction, insert the seven pre-check
+Artifacts in one later transaction, derive RC1 and RC2 in a different top-level transaction, then
+reconstruct from a fresh context. Canonical must end with exactly nine Artifacts and nine Referents
+and no probe residue. Then write the execution receipt and stop for human Metabolize. Passing WT07
+does not accept BUILD 5B or open BUILD 6.
