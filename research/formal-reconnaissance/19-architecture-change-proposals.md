@@ -1,16 +1,99 @@
 STATUS: AWAITING GOVERNANCE — NEITHER ADOPTED
 DISPOSITION: EVIDENCE
-ROLE: §19 — architecture-change proposals produced by external research
-AUTHORITY: **None.** A proposal is not a decision. Both require a separate governance act.
+ROLE: The two things that need your decision
+AUTHORITY: **None.** A proposal is not a decision.
 
-# Architecture-Change Proposals
+# Two things that need your decision
 
-Research may create an architecture-change proposal. **It may not silently install one.**
+Research can find things. It cannot install them. These two crossed the line from "interesting" to
+"this may need to change" — and stopped there, which is where they are supposed to stop.
 
-Two proposals are warranted. Both are recorded here and neither has been acted on. No
-governing surface in `/docs/` was edited by this operation.
+Plain-English version first. The structured detail follows each one.
 
 ---
+
+## In plain English
+
+### Proposal 1 — Say what *kind* of obligation each rule is, before saying where it is enforced
+
+**What you have now.** Every important step in ECB v2 has to declare how it is enforced, choosing
+from four categories, and there is a hard rule that nothing important may rest on someone
+remembering.
+
+**The problem.** The four categories say *where* enforcement happens. They never say *what a given
+place can actually enforce*. And there is a proven limit here:
+
+- A watchdog can catch "something bad happened."
+- A watchdog can **never** catch "something good never happened" — because it might still happen.
+
+Every one of your deliberately-open questions carries a promise shaped like "reopen this when X."
+That is the second kind. No watchdog can ever catch it failing. So those promises are, right now,
+resting on someone remembering — which is the exact thing your own rule forbids.
+
+There is a second, smaller version of the same confusion: what a watchdog can *stop* and what it can
+merely *notice* are two different limits, and your one "observational" category currently covers
+both as if they were the same.
+
+**The proposed change.** Before assigning a rule to an enforcement category, first say which kind it
+is: *"nothing bad happens"*, *"something good eventually happens"*, both, or *"a pattern across many
+runs"*. Anything in the second category must either get a deadline — which converts it into
+something a watchdog can catch — or be handed to a person on purpose, with the assumption you are
+making about them written down.
+
+**What it costs.** Nothing structural. One extra field, and a discipline.
+
+**What it gains.** Your enforcement table becomes something that can be checked and found wrong.
+Right now it cannot be.
+
+**What it costs you elsewhere.** Some rules will move from "the system handles it" to "a person
+handles it," which increases human load. There is a real limit on how much a person can absorb, so
+this is not free.
+
+**Cheap first step.** Check the seven enforcement rows already written for Build 0 against this
+distinction. I predict they pass. If they do, that is cheap evidence the idea works before you
+change anything.
+
+**What would prove me wrong.** Show me an ECB v2 obligation of the second kind that a watchdog
+genuinely does enforce.
+
+### Proposal 2 — One of your open questions may be resting on a reason that has expired
+
+**What you have now.** There is a note in your architecture saying, roughly: *we cannot do the more
+formal version of this yet, because we have not derived the right kind of ordering from how the
+system actually behaves.* Separately, your build contract freezes that whole area of mathematics.
+
+**The problem.** I think that ordering might already exist, for free.
+
+Here is the chain. If you define "two situations are the same for this purpose" as *they permit
+exactly the same actions*, you automatically get a proper grouping of situations — no invention
+required. Groupings like that naturally arrange themselves from coarse to fine. And the formal
+machinery your architecture is holding off on needs, at minimum, exactly that kind of arrangement.
+
+So the reason given for keeping that question open — *we have not derived a suitable ordering* —
+may no longer be true. And an open question resting on a reason that has expired is a closure you
+did not notice making.
+
+**What I am NOT proposing.** I am not proposing you unfreeze anything. Research does not unfreeze
+things. The only question I am putting to you is: *is that note's stated reason still true?*
+
+**What it costs.** Nothing to ask. Unknown for anything that might follow — which is precisely why
+I am asking rather than acting.
+
+**The risk of even engaging.** The freeze exists because doing this mathematics too early is a real
+hazard, and that hazard has not gone away. Opening the question invites exactly the drift the whole
+firewall exists to prevent.
+
+**Do the cheap test first.** This depends entirely on whether "what is permitted" is genuinely
+determined by the situation, the discriminator, and the operation — or whether it sometimes depends
+on something nobody wrote down. If it is the latter, the whole chain above collapses and the note's
+reason stands unchanged. **Do not consider this proposal before running that test.**
+
+**Also:** this rests on one of the citations I did not verify, and it is the most consequential item
+in the whole research. Check the source before acting.
+
+---
+
+## Structured detail
 
 ## ACP-01 — Add an enforceability axis to the enforcement classification
 

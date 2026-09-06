@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N13 · RECORDS R092–R093
 
 # N13 — Geometry
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Primary seam: H5 — does the architecture instantiate a metric or local geometry sufficient
 for mathematical conformality?
 

@@ -1,70 +1,93 @@
-STATUS: COMPLETE — RECONNAISSANCE CLOSED, NOTHING PROMOTED
+STATUS: COMPLETE — NOTHING INSTALLED
 DISPOSITION: EVIDENCE
-ROLE: Bounded external formal reconnaissance for the greenfield SIGMA→ECOS build
-AUTHORITY: None. No finding here amends an invariant, contract, acceptance test, or ADR.
-READ WHEN: A build seam needs a sharper invariant, a failure detector, a test, or implementation machinery
-DO NOT USE FOR: Changing architecture. Every consequential result routes through the firewall in `/docs/`.
+ROLE: Entry point for the formal reconnaissance
+AUTHORITY: None. No finding here changes any rule, contract, test, or decision record.
 
-# SIGMA → ECOS 100-Abstract Formal Reconnaissance
+# SIGMA→ECOS Formal Reconnaissance
 
-A bounded research operation run against the **live** v2 architecture, not against a
-migration target. Prior OB1/ECB implementations were inspected only where the accepted
-research Shape implicated them, and only as evidence.
+I read 100 academic papers to find out whether existing, well-tested mathematics or computer science
+already solves problems ECB v2 is working on.
 
-## The firewall
+**Nothing here has been installed or decided.** It is all proposals waiting on a human.
 
-    LITERATURE FINDING
-      → TRANSFER CONTRACT        (04-transfer-contracts.md)
-      → FORMALIZATION PROBE      (08-formalization-probes.md, only when earned)
-      → RESULT
-      → ARCHITECTURE-CHANGE PROPOSAL (19-*, only when warranted)
-      → SEPARATE GOVERNANCE DECISION
+---
 
-Nothing in this directory has crossed the last arrow. Two architecture-change proposals
-are drafted and are awaiting human governance; both are marked as such.
+## Read these — written for a person
 
-## Reading order
+| Start here | What it is |
+|---|---|
+| **[`EXECUTIVE-EXTRACTION.md`](EXECUTIVE-EXTRACTION.md)** | **The whole result, in plain English. If you read one file, read this one.** |
+| [`GLOSSARY.md`](GLOSSARY.md) | Decoder for every code, term, and symbol used anywhere in here |
+| [`BRINGALONG.md`](BRINGALONG.md) | Self-contained package to paste into an AI that has no file access |
+| [`19-architecture-change-proposals.md`](19-architecture-change-proposals.md) | **The two things that need your decision** |
+| [`10-question-forward.md`](10-question-forward.md) | What is still open, sorted by whether it blocks you |
+| [`08-formalization-probes.md`](08-formalization-probes.md) | Four experiments I specified and did not run. One is doable on paper today |
+| [`06-negative-results.md`](06-negative-results.md) | Twelve appealing ideas that did not survive, and why |
 
-| # | File | Spec output |
-|---|---|---|
-| — | `00-SENSE.md` | Sense close record |
-| — | `01-SHAPE.md` | Research Shape + bound output contract |
-| B | `02-baseline-register.md` | Phase 0 internal architecture / prior-art baseline |
-| C | `corpus/` | 100 coded source records, 14 neighborhoods |
-| D | `04-transfer-contracts.md` | Transfer Contract Registry (TC-001…TC-019) |
-| E | `05-candidate-formalisms.md` | Candidate Formalism Registry (CF-01…CF-14) |
-| F | `06-negative-results.md` | Negative Results Registry (NR-01…NR-12) |
-| G | `07-fulltext-shortlist.md` | 21 warranted full texts, grouped |
-| H | `08-formalization-probes.md` | 4 earned formalization probes (FP-001…FP-004) |
-| I | `09-evidence-ledger.md`, `corpus/ledger.jsonl` | Machine-ingestible evidence spine |
-| J | `10-question-forward.md` | Question Forward register |
-| §17 | `11-synthesis-matrix.md` | Cross-corpus synthesis by build function |
-| A | `EXECUTIVE-EXTRACTION.md` | **Start here if you only read one file** |
-| — | `BRINGALONG.md` | Self-contained portable package for agents with no filesystem access |
-| §19 | `19-architecture-change-proposals.md` | Two proposals awaiting governance |
+## Reference — dense by design, read only if you need the detail
 
-## Citation confidence
+These are working registers. They are precise rather than readable, and that is deliberate: they
+exist so a claim can be traced back to its source. Each opens with a plain-English note telling you
+whether you need it.
 
-Every record carries a `CITE` line ending in a confidence token:
+| File | What it is |
+|---|---|
+| [`02-baseline-register.md`](02-baseline-register.md) | What ECB v2 already requires and already has, per area — assembled *before* I searched |
+| [`04-transfer-contracts.md`](04-transfer-contracts.md) | The 19 proposals in full, each with what would prove it wrong |
+| [`05-candidate-formalisms.md`](05-candidate-formalisms.md) | The 14 precise statements worth keeping |
+| [`07-fulltext-shortlist.md`](07-fulltext-shortlist.md) | The 21 papers worth reading in full, and the exact question each would settle |
+| [`11-synthesis-matrix.md`](11-synthesis-matrix.md) | Coverage grid: which fields speak to which parts of the build |
+| [`00-SENSE.md`](00-SENSE.md), [`01-SHAPE.md`](01-SHAPE.md) | How I scoped the work and what I refused to touch |
 
-- `VERIFIED` — bibliographic metadata confirmed against a primary or authoritative
-  secondary source during this operation (2026-09-04).
-- `HIGH` — canonical work whose author/title/year/venue is stable and widely reproduced;
-  not independently re-checked this session.
-- `MEDIUM` — correctly attributed work whose exact venue, year, or page range was not
-  re-checked and may be off by an edition or a preprint/journal split.
+## Machine-facing — you can ignore these
 
-21 records are `VERIFIED`, and one verification produced a correction carried into the
-corpus: Abadi & Lamport, *The Existence of Refinement Mappings*, is **TCS 82(2), 1991**,
-not TOPLAS (the 1988 LICS paper is the earlier version).
+| File | What it is |
+|---|---|
+| [`corpus/`](corpus/) | The 100 papers, one structured record each, across 14 topic areas |
+| [`corpus/ledger.jsonl`](corpus/ledger.jsonl) | The whole thing as 147 machine-readable lines |
+| [`09-evidence-ledger.md`](09-evidence-ledger.md) | Traceability table: requirement → question → sources → proposal → consequence |
 
-**Unverified citation metadata is itself an aperture**, registered as QF-D-05. No claim in
-this reconnaissance depends on a `MEDIUM` citation alone.
+---
+
+## The rule this operation followed
+
+Research can find things. It cannot install them.
+
+```
+a paper says something
+  → I write a proposal, with what would prove it wrong
+  → an experiment, if one is warranted
+  → a result
+  → a change proposal, if warranted
+  → A SEPARATE HUMAN DECISION          ← nothing has crossed this line
+```
+
+Two proposals are sitting at that last line. Neither has been acted on.
+
+## How confident to be in the citations
+
+Each paper record ends with one of three words:
+
+- **VERIFIED** — I checked the author, title, year and venue against a real source during this work. **21 of 100.**
+- **HIGH** — a well-known work whose details are stable and widely reproduced, which I did not re-check. **73 of 100.**
+- **MEDIUM** — correctly attributed, but the exact venue, year or page range might be off. **6 of 100.**
+
+One check caught a real error: *The Existence of Refinement Mappings* is in **Theoretical Computer
+Science 82(2), 1991**, not TOPLAS, despite being frequently miscited that way. That correction is
+carried through. It also tells you the 73 unchecked ones probably contain more errors.
+
+**No claim in this research rests on a MEDIUM citation alone.** But two of the six headline findings
+rest on HIGH-but-unchecked anchors, and one of those two is the most consequential item here. That
+is flagged where it appears.
 
 ## What this operation did not do
 
-- It did not conduct a systematic review, and claims no completeness.
-- It did not resolve any item on the Build Contract freeze line.
-- It did not open a research loop whose answer could not change the current BUILD.
-- It did not manufacture a metric, lattice, order, probability, utility, or state space to
-  rescue an analogy. Twelve attractive analogies were recorded as failures instead.
+- It did not claim to survey the literature completely. Blank cells in the coverage grid mean
+  **"I did not search there,"** never "there is nothing there."
+- It did not touch anything your build contract deliberately froze.
+- It did not chase questions whose answers could not change what you build next.
+- It did not invent a measurement, an ordering, a probability, or a preference in order to make an
+  appealing analogy work. Twelve analogies were recorded as failures instead.
+
+The only change outside this directory: one routing line added to `START_HERE.md` so a fresh agent
+can find this work.

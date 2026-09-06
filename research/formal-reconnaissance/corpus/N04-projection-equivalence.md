@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N04 · RECORDS R031–R037
 
 # N04 — Projection, Quotient, Contextual Equivalence
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Primary seam: **S-5 — temporary collapsing of distinctions irrelevant to a current Move.**
 
 Neighborhood verdict: supplies the **cheapest strong result of the operation**. FS-0001's

@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N03 · RECORDS R023–R030
 
 # N03 — Bidirectional Transformation, Lenses, View-Update
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Primary seam: **S-1 / S-3 — SIGMA→ECOS projection versus asymmetric ECOS→SIGMA evidence return.**
 
 Neighborhood verdict: **the most valuable negative result in the operation.** The

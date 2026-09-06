@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N06 · RECORDS R046–R054
 
 # N06 — Knowledge Representation, Belief Revision, Truth Maintenance
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Primary seam: **S-3 — ECOS→SIGMA qualification without automatic overwrite.**
 
 Neighborhood verdict: produced the operation's sharpest *paired* result. Classical AGM is

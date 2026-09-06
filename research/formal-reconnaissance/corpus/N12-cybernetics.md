@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N12 · RECORDS R089–R091
 
 # N12 — Cybernetics and Second-Order Systems
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Primary seam: separating formal machinery from philosophical analogy.
 
 Neighborhood verdict: **one theorem, one over-cited result, one metaphor.** Quota was cut

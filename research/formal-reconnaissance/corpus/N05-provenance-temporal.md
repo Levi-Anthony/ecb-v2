@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N05 · RECORDS R038–R045
 
 # N05 — Provenance, Database Theory, Temporal State, Lineage
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Primary seam: **S-4 — stable identity, history, receipts, exact active-state reconstruction.**
 
 Neighborhood verdict: the most *implementable* neighborhood. Provenance semirings supply a

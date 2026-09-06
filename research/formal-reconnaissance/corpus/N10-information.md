@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N10 · RECORDS R076–R082
 
 # N10 — Information Theory and Controlled Loss
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Primary seam: **formalizing allowable loss without inventing unsupported utility functions.**
 
 Neighborhood verdict: **H7 gets a clear, two-part answer.** The probabilistic apparatus —

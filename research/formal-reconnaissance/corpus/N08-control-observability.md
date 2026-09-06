@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N08 · RECORDS R063–R070
 
 # N08 — Control, Observability, Receding Horizon
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Primary seam: **S-5 — bounded action under incomplete models and reopening under changed evidence.**
 
 Neighborhood verdict: two results of real force. Observability (R063) partitions v2's

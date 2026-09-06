@@ -5,6 +5,17 @@ AUTHORITY: None. Prior art is evidence, never authority.
 
 # Research Baseline Register
 
+> **Plain-English note.** For each of seven areas of the build, this states what ECB v2 currently
+> requires, what mechanism it already has, whether there is a test, what would prove the current
+> approach wrong, and what remains unsolved. It was assembled **before** I searched the literature,
+> so that I was measuring a real gap rather than inventing one.
+>
+> **The headline from it:** four of the seven areas have no test at all. That is the shape of the
+> whole result.
+>
+> **Worth skimming** if you want to see your own architecture laid out as obligations.
+> Terms are decoded in [`GLOSSARY.md`](GLOSSARY.md).
+
 Constructed **before** external search, per §6. Governing sequence per seam:
 
     CURRENT REQUIREMENT → CURRENT SIGMA/ECOS MECHANISM → RELEVANT OB1/ECB PRIOR ART

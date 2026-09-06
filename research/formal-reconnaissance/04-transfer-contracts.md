@@ -5,6 +5,15 @@ AUTHORITY: None. A transfer contract is a proposal with a falsifier, not a decis
 
 # Transfer Contract Registry
 
+> **Plain-English note.** These are the nineteen proposals in full. Each one says: what problem it
+> addresses, what the paper actually established, exactly what I propose moving across, what would
+> have to be true first, what must not break, and **what would prove it wrong**.
+>
+> **You do not need to read this.** The six that matter are in plain English in
+> [`EXECUTIVE-EXTRACTION.md`](EXECUTIVE-EXTRACTION.md). This file exists so a claim can be traced
+> and argued with. The first five are ordered by how much they would change what you build next.
+> Terms are decoded in [`GLOSSARY.md`](GLOSSARY.md).
+
 Nineteen transfers survived the §12 admission chain
 (NATIVE DEFINITION → NATIVE PREREQUISITES → ACTUAL SIGMA/ECOS INSTANTIATION →
 PRECISE TRANSFER PROPOSITION → TESTABLE CONSEQUENCE).

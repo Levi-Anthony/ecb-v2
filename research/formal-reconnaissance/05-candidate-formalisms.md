@@ -5,6 +5,12 @@ AUTHORITY: None
 
 # Candidate Formalism Registry
 
+> **Plain-English note.** Fourteen precise statements worth keeping, written in mathematical
+> notation because that is what makes them precise enough to be checked or disproved.
+>
+> **You do not need to read this.** It is the formal backing for claims already made in plain
+> English elsewhere. Every symbol used is decoded in [`GLOSSARY.md`](GLOSSARY.md).
+
 Formal properties worth retaining, expressed precisely enough to be argued with. Each
 carries its source, proposed interpretation, prerequisites, falsifier, standing and build
 effect. **A formalism appearing here is a candidate, not a commitment.**

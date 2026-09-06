@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N14 · RECORDS R094–R100
 
 # N14 — Wildcards: Enforceability, Tamper-Evident Logs, Convergence, Argumentation
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Quota expanded 4 → 7 by reallocation from N09, N12, N13 (see `01-SHAPE.md`). Two
 neighborhoods were **discovered during Shape** and were absent from the initial list:
 

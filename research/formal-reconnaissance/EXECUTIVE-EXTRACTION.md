@@ -1,181 +1,251 @@
 STATUS: COMPLETE
 DISPOSITION: EVIDENCE
-ROLE: Output A — build-facing executive extraction
-AUTHORITY: None. Nothing here has been installed.
+ROLE: The main summary. Written in plain English.
+AUTHORITY: None. Nothing here has been installed or decided.
 
-# Executive Extraction
+# What this research found
 
-100 abstracts coded, 21 full texts warranted, 4 formalization probes specified and **none
-executed**, 19 transfer contracts, 12 rejected analogies, 2 proposals awaiting governance.
-
-**The headline is not a new mechanism.** The corpus returns 44 SHARPEN_CONTRACT against 12
-ADD_IMPLEMENTATION_CANDIDATE. ECB v2's architecture is unusually strong on distinctions and
-unusually weak on **discharge**: four of seven build seams have no frozen test at all. The
-literature's contribution is overwhelmingly failure detectors and proof obligations for
-commitments v2 already holds — not new architecture, which is the correct outcome for a
-greenfield build that has already done its conceptual work.
+Every term, code, and symbol used anywhere in this directory is decoded in
+[`GLOSSARY.md`](GLOSSARY.md). If something here is unexplained, that is a fault in this
+document, not something you should have to look up.
 
 ---
 
-## 1. Highest immediate build leverage — five frameworks
+## What I did
 
-**1. Enforceability and monitorability** (Schneider; Alpern & Schneider; Bauer, Leucker &
-Schallhart). *The single highest-leverage finding.* v2's four enforcement modes say **where**
-enforcement happens and never **what a surface can bear**. Execution monitors enforce
-*exactly* the safety properties; every property decomposes into a safety and a liveness part;
-monitorable properties are strictly larger than safety but still bounded. Consequence: every
-Aperture REVALIDATION TRIGGER is an unbounded **liveness** commitment with no finite
-violating prefix — so no finite-trace mechanism can ever catch its violation, which makes it
-exactly the "instruction someone must remember" the enforcement invariant forbids. This
-neighborhood was **not in the initial plan**; it was discovered during Shape.
+I read 100 academic papers to find out whether existing, well-tested mathematics or computer
+science already solves problems ECB v2 is working on.
 
-**2. Translation validation and proof-carrying code** (Pnueli, Siegel & Singerman; Necula;
-Leroy). v2 will not have a stable projection compiler for many builds, so verifying one is
-unreachable. Validating each *run* is reachable now: emit a witness that the projection
-preserved its declared obligations, and gate acceptance on an independent validator. This
-converts "receipt" from documentation into a **checked artifact** — the exact gap the
-baseline register names at REQ-S1, and the exact shape of proof-carrying trust that v2 needs
-for agent-produced work.
+I was looking for four things: **tests** you could freeze, **warning signs** that tell you
+something has gone wrong, **machinery** worth building, and **appealing ideas that turn out not
+to fit** — because knowing an analogy is false is worth as much as finding a true one.
 
-**3. Non-prioritized belief revision** (Hansson; Hansson, Fermé, Cantwell & Falappa;
-Makinson). The classical theory is *incompatible*: AGM's **Success** postulate (`A ∈ K*A`)
-axiomatizes acceptance, which is precisely what `current ≠ newest` forbids. Semi-revision and
-credibility-limited revision drop Success by design, work over belief **bases** rather than
-closed theories — which is what v2 has — and supply postulates against which a qualification
-rule can be tested rather than judged case by case.
+Nothing here has been decided or installed. No rule, contract, test, or decision record in ECB v2
+was changed. It is all proposals waiting on a human.
 
-**4. Contextual equivalence and observability** (Plotkin; Kalman; van Glabbeek). Two
-independent kernel constructions at zero cost. Forward: `x ∼(M,O) y ⟺ Permitted_O(x) =
-Permitted_O(y)` makes FS-0001's equivalence rigorous with **no metric, order, or probability
-invented**. Backward: two SIGMA states indistinguishable through the return path cannot be
-told apart by any amount of returned evidence, so an invariant that is not return-observable
-**cannot be revalidated by runtime evidence at all** — it can only be re-authorized.
+## The result in one sentence
 
-**5. Provenance semirings and bitemporal state** (Green, Karvounarakis & Tannen; Jensen &
-Snodgrass; Crosby & Wallach). The composition algebra Evidence Link lacks (join multiplies,
-union adds), plus the machinery that makes rule succession testable: valid time answers
-"which rule was active when", transaction time catches backdating as a **schema constraint
-violation**, and a tamper-evident log makes immutability falsifiable from outside.
+**ECB v2 is very good at saying what must stay true, and has almost no way to check whether it
+actually stayed true.**
+
+Two numbers make the point. Of the seven areas I examined, **four have no test at all**. And the
+papers produced about **four times as many** "make this rule sharper" results as "build this new
+thing" results.
+
+That is the right shape for a system that has done its thinking and not yet done its building. The
+literature's contribution here is checks and warning signs, not architecture.
 
 ---
 
-## 2. Existing mechanisms with mature formal precedents
+## The six findings that matter
 
-Five cases where v2 independently reinvented established machinery. In each the value is not
-novelty but **named postulates and known failure modes**.
+### 1. "We'll come back to this later" can never be enforced automatically
 
-| v2 mechanism | Mature precedent | What it adds |
+ECB v2 has a hard rule: nothing important may depend on a person or an AI simply *remembering* to
+do it. It must be built into the structure.
+
+But ECB v2 is also full of promises shaped like *"reopen this when X happens."* Every deliberately
+open question has one.
+
+Here is the problem, and it is a proven result rather than an opinion:
+
+- A watchdog program **can** catch "something bad happened." The bad thing shows up, and it stops you.
+- A watchdog program **can never** catch "something good never happened," because at any moment the
+  good thing might still be coming. There is no point at which it can declare failure.
+
+So "we'll revisit this when X" cannot be caught by any watchdog. Which makes it exactly the thing
+the rule forbids — someone remembering.
+
+**Fix:** attach a deadline ("revisit by this date, or when this specific event happens"), which
+turns it into something a watchdog *can* catch — or hand it to a human on purpose and write down
+that you did. Costs nothing structural.
+
+*This came from a topic area that was not in the research plan. I added it partway through.*
+
+### 2. Receipts you can check, instead of receipts you have to trust
+
+When a commitment in SIGMA gets turned into something running in ECOS, how do you know the
+translation was faithful?
+
+Two options. Prove the translator is always correct — a multi-year research project. Or: every time
+it translates, it also produces a short note saying *"here is why this output kept what mattered,"*
+and a separate small program checks that note.
+
+The second is what compiler engineers actually do when proving the whole compiler is out of reach.
+It is available now, and it changes a receipt from *a record of what happened* into *a record you
+can verify*.
+
+It also answers a different question: how ECB v2 accepts work from an AI it cannot fully trust. The
+AI ships its reasoning in checkable form, and a small checker — not the AI's confidence or
+reputation — decides.
+
+### 3. The obvious academic theory has exactly the wrong rule built into it
+
+There is a well-developed field on how a body of belief should change when new information arrives.
+Its central theory has a rule baked in at the foundation: **new information is always accepted.**
+
+That is the precise opposite of "newest is not automatically current." So the theory cannot be
+used — not because it is too weak, but because its defining assumption is the thing ECB v2 exists
+to refuse.
+
+There is a branch of the same field where incoming information has to **earn** admission and can be
+turned away with nothing changing. That branch fits — and it describes what your Charter's intake
+lane already does: a specimen arrives, gets no privilege from being new, and may itself be the thing
+rejected.
+
+**You reinvented it.** The gain is not novelty. It is that the academic version comes with a
+checklist of properties you can test your process against, instead of judging each case by feel.
+
+### 4. One free win and one hard limit
+
+**Free.** You often need to say "these two situations count as the same for what I am doing right
+now." That can be made rigorous with no new machinery at all: *two situations are the same when they
+permit exactly the same actions.* That is automatically a well-behaved notion of sameness. Nothing
+invented, nothing imported, no cost.
+
+**Hard limit.** If two genuinely different underlying situations always produce identical evidence
+coming back from the running system, no amount of evidence will ever tell them apart. That is
+structural, not a matter of better instruments.
+
+The consequence matters: some of ECB v2's core principles probably can **never** be re-checked by
+watching the system run — only re-decided by a person. Worth knowing which ones, because attaching
+an "evidence will trigger a review" promise to a principle evidence cannot see means that review
+will never happen.
+
+### 5. The two obvious ways to keep two things in sync are both wrong here
+
+Software has two famous techniques for keeping two copies in agreement. One guarantees that edits to
+a summary view get pushed back into the source. The other lets copies drift apart and merges them
+automatically.
+
+**Both work by automatically accepting changes.** ECB v2's whole point is that changes get reviewed
+before they count. So both are out — for the *same underlying reason*, which is worth noticing.
+
+A third, less famous technique only requires *"if the two already agree, leave them alone."* That
+one fits, because it permits a partial fix, a proposed fix, or no fix at all.
+
+### 6. One of your open questions may already be answered — and I do not get to say so
+
+There is a note in your architecture saying, roughly: *we cannot do the more formal version of this
+yet, because we have not earned the right kind of ordering.*
+
+I think that ordering may already exist for free, as a side effect of finding 4.
+
+But your build contract explicitly freezes that area, and research does not overrule the build
+contract. So this goes to you as a **question** — is that note's stated reason still true? — not as
+a change. It also depends on the cheap test below, and it rests on my weakest sourcing.
+
+---
+
+## What you already do that has a mature academic precedent
+
+Five places where you independently reinvented established machinery. The value is not novelty — it
+is that each academic version comes with named properties you can test against.
+
+| What you do | What it turns out to be |
+|---|---|
+| The Charter's intake lane, where a specimen must earn its level and may be rejected | Non-prioritized belief revision |
+| "Recursive inspection is lazy — only open it when something forces you to" | The known way to make an infinitely deep self-inspecting system actually implementable |
+| The human rail, and the requirement for an external starting point of trust | A formal necessity, not a convenience: no system can certify its own soundness |
+| Frozen invariants plus the hard-stop rule | A protected core that provably survives *any* sequence of inputs |
+| Supersession stamps that surface old content with a pointer to its successor | A legitimate way of restoring consistency without asserting the new thing governs |
+
+## Rules worth making sharper before you build
+
+1. **Say what kind of obligation each rule is** before saying where it is enforced — see finding 1.
+2. **Name what you are assuming about the environment.** Every guarantee ECB v2 makes secretly
+   depends on something else behaving (the human responding, the database not losing rows). None of
+   those are written down, which makes the guarantees technically unconditional and therefore false.
+3. **Split two different meanings of "source."** Right now one field records *which door the text
+   came in through*. Governance will need *which evidence supports this claim*. A door label cannot
+   answer the second question.
+4. **Separate "we were wrong" from "the world changed."** Your evidence-return list currently mixes
+   them. They need different handling, and using the wrong one either erases a correct belief or
+   preserves an error.
+5. **Stop calling the cycle "bidirectional."** The word implies the automatic acceptance you do not
+   want, and it means four different things in four different fields.
+6. **Write down that the current door is a known, temporary exposure** — it holds full authority and
+   acts for anyone with the shared key. Fine today with one user. Not fine later.
+
+## Tests you could freeze immediately
+
+- **Rebuild test.** Throw away everything derived, recompute it from the event log, require the
+  result to match. Any mismatch points at hidden state you did not know you had.
+- **No-similarity-governs test.** Assert that no governance conclusion ever depends on a
+  search-similarity score.
+- **Reopening test.** A step that closes something must leave its own reopening condition still
+  satisfiable. An open question whose reopening its own step destroyed is broken.
+- **Three-way verdicts.** Checks return satisfied / violated / **can't tell yet** — and "can't tell
+  yet" gets recorded, never quietly counted as a pass.
+- **No backdating.** A rule governs an act only if the rule was in force at the time *and* was
+  recorded before the act.
+- **No self-authorising start.** The bootstrap must not depend on the very policy it is activating.
+
+## Worth building a small version of
+
+| What | When | Why |
 |---|---|---|
-| ECB Charter intake lane — "records re-qualify", the specimen may itself be rejected | **Semi-revision** (Hansson 1997) | An axiomatic characterization to test qualification against |
-| Build Contract's "recursive inspection is lazy" | **Lazy reflective towers** (Wand & Friedman 1988) | Laziness is not economy — it is the known way to realize an infinite tower *at all* |
-| The human rail and bootstrap trust root | **Tarski undefinability; Löb** | An external trust root is a structural necessity, not a UX affordance |
-| Frozen invariants + the hard-stop rule | **Screened revision** (Makinson 1997) | The protected core provably survives *any* input sequence, not just noticed ones |
-| ECO-46 stamp-and-surface supersession | **Constraint maintainers** (Meertens 1998) | Surfacing a superseded artifact with a successor pointer is a legitimate maintainer restoring legibility without asserting the new content governs |
+| The checkable-receipt scheme from finding 2 | Builds 5–6 | Best value for effort found |
+| Storing *why* a claim is supported, at the moment it is stored | **Build 3** | **The only thing here with a deadline** |
+| Recording both "when it was true" and "when we learned it" | Build 6 | Turns backdating from a vigilance problem into an impossible one |
+| A log where retroactive edits are mathematically detectable | Build 6 | Git may already give you most of this — check first |
+| Evidence that composes ("supported by A and B, or by C") | Build 3 | Only together with the absence rule below |
 
----
+## What I rejected, and why
 
-## 3. Contracts to sharpen before implementation
+Twelve appealing ideas did not survive. The five that matter:
 
-1. **Enforcement declarations gain a property class** — safety / liveness / conjunction /
-   outside-single-trace — assigned *before* a mode. Liveness must be bounded or given a named
-   fairness assumption. (TC-001; proposed as ACP-01.)
-2. **Name the rely conditions.** Every ECOS guarantee is implicitly conditional on the
-   environment; v2 names none, which makes its guarantees formally unconditional and
-   therefore false. (CF-12.)
-3. **Split where- from why-provenance.** BUILD 0's `source` field is where-provenance (which
-   door the text arrived through). BUILD 3 needs why-provenance (which evidence witnesses this
-   claim). A `source` string cannot answer the second. (TC-011.)
-4. **Type the return payload.** Contradiction and detected-insufficiency are *revision*
-   inputs; changed-conditions is an *update* input. They need different treatments and v2
-   currently lumps them together. (TC-008.)
-5. **Stop calling the cycle bidirectional.** It is projection + evidence-bearing return +
-   separate qualification. (NR-02.)
-6. **Record the door's confused-deputy exposure** as an explicit temporary aperture. Correct
-   at BUILD 0; must not survive into BUILD 6. (TC-019.)
+- **The two sync techniques** in finding 5 — both require automatic acceptance.
+- **The main belief-revision theory** — assumes new information always wins.
+- **Two compression theories** that sound perfect for "keep only what's relevant" — both require
+  inventing a probability distribution, and one also requires inventing a measure of how bad each
+  loss is. Inventing either would be exactly the move your own rules forbid.
+- **Geometric "angle-preserving" language** — requires a distance measure on meaning. You do not have
+  one. The *one* real distance measure you do have (search similarity) is precisely where using it
+  this way would break four frozen rules at once.
+- **A well-known cybernetics theorem** often quoted to justify systems modelling themselves — its
+  actual conditions do not hold here. There is a better argument for the same conclusion.
 
-## 4. Acceptance tests addable immediately
+Two words to avoid: **"bidirectional"** and **"capability."** The second is worse — in security
+research a capability *is* permission to act, the exact opposite of what it means in your invariants.
 
-- **Reconstruction test** — drop derived governance state, recompute from the event log,
-  require equality. Divergence localizes hidden mutable state. (TC-012/R043.)
-- **No-similarity-governs test** — assert no governance conclusion depends on an embedding
-  similarity score. v2's one real metric is on embeddings, not meaning; using it otherwise
-  violates four frozen invariants. (NR-08.)
-- **Feasible-reopening test** — a locally-closing Move must leave its own reopening trigger
-  satisfiable. An aperture whose reopening its Move destroyed is unsound. (TC-015.)
-- **Three-valued observational verdicts** — `inconclusive` persisted with scope and prefix,
-  never rendered as a pass. (TC-002.)
-- **Non-retroactivity constraint** — a policy governs an act only if its valid-time interval
-  contains the act and its transaction-time precedes the act's record. (TC-012.)
-- **No-self-authorizing-bootstrap check** — the activation derivation must not depend on the
-  policy being activated. (CF-14.)
+## What stays deliberately unsettled
 
-## 5. Implementation candidates deserving bounded prototypes
+The frozen areas stayed frozen. Several genuinely strong findings were parked because acting on them
+would have required opening something you closed on purpose. Research does not get to unfreeze
+things.
 
-| Candidate | Build | Why now |
-|---|---|---|
-| **Validation witness + independent validator** (TC-003) | 5–6 | Best cost/benefit found; links to Linear ECO-72 (D2E compiler) |
-| **Justification structure on claims** (TC-014) | **3** | **The only finding with a deadline** — retraction semantics cannot be retrofitted |
-| **Bitemporal governance activation** (TC-012) | 6 | Cheapest structural win: moves an obligation from vigilance to a constraint |
-| **Tamper-evident event log** (TC-013) | 6 | Git may already discharge most of it — check before building |
-| **Semiring provenance on Evidence Links** (TC-011) | 3 | Only with the negative-evidence half; without it, absence of provenance reads as provenance of absence |
+## What actually blocks progress
 
-## 6. Analogies to reject
+1. **Is what's permitted always determined?** Given the same situation, discriminator, and
+   operation — or does it sometimes depend on something nobody wrote down? Testable on paper today
+   against your two architecture decision records and the substrate closure. If it depends on
+   unwritten context, a good chunk of what I built collapses — and that is important to learn about
+   *the architecture*.
+2. **Are your core principles even the kind of thing a watchdog can check?** Several look like
+   statements about patterns across many runs, which sit outside what any monitor can see.
+3. **Does Build 3 need to store "why" from the start?** Yes, and it cannot be added later.
+4. **Do you need an "actor" as a basic object before Build 6?** Two unrelated areas of the
+   literature independently point at the same gap, and your own definition of warrant already
+   assumes one. But adding a new basic object because a paper suggested it is exactly what your
+   structure-is-earned rule guards against. Your call, not mine.
+5. **What exactly must survive the SIGMA-to-ECOS translation?** Three of my proposals need that list
+   closed before they can be built.
 
-Twelve failed the §12 admission chain. Five matter most:
+## What can safely stay open
 
-- **Lens laws.** PutGet requires unconditional acceptance of the update — exactly what
-  qualification forbids. BRANCH_CONFLICTING. Replaced by consistency relation + maintainer.
-- **Classical AGM.** Three independent barriers: the Success postulate, the closed-theory
-  requirement, and total entrenchment (which would collapse AP-01's dimensional separation).
-- **Information bottleneck / rate-distortion.** Both need a probability distribution, and
-  rate-distortion additionally needs a distortion measure — i.e. a utility function.
-  Constructing either is the invention §12 prohibits. The *shape* survives via non-stochastic
-  information (Nair) and kernel sufficiency, neither of which needs probability.
-- **Conformal geometry.** Requires a metric on constitutive meaning. None exists. The one
-  place a real metric does exist — 384-d `gte-small` cosine — is the one place using it as a
-  meaning metric would violate `map ≠ referent` and `confidence ≠ standing`.
-- **CRDT convergence for standing.** Convergence is purchased precisely by removing
-  adjudication. Correct *below* the standing layer for append-only evidence; never above it.
+The philosophy-of-mind questions, a universal classification scheme, automatic discovery of guiding
+discriminators, the full relationship vocabulary, the final interface, and self-inspection depth
+until Build 9. Also every blank cell in my coverage table — those mean **"I did not search there,"**
+never "there is nothing there."
 
-Two vocabulary hazards: **"capability"** means the opposite in the object-capability
-literature to what `capability ≠ warrant` means in v2; **"bidirectional"** names four
-inequivalent law sets and imports a totality commitment v2 rejects.
+## What you should not trust too far
 
-## 7. What remains intentionally informal
-
-The freeze line holds. Bounded Infinity's formal status (AP-06), full projection mathematics,
-Galois formulations, literal conformal geometry and complete FCA formalization were **not**
-resolved, and several strong findings were deliberately parked on that rule — CF-03 and CF-04
-among them. Research does not lift a freeze.
-
-## 8. Unresolved questions that materially block BUILD
-
-1. **Is `Permitted_O` a function?** If not, ∼(M,O) has no rigorous reading. Testable today
-   against existing ADRs (FP-003) and gates the largest set of downstream findings.
-2. **Are v2's invariants trace properties at all?** Several read as properties of *sets* of
-   executions, which sit outside both the safety/liveness decomposition and monitoring.
-3. **Does BUILD 3 need justification structure from the start?** The only finding with an
-   expiry date.
-4. **Is an Agent primitive required before BUILD 6?** Two neighborhoods converge on it and
-   v2's warrant definition presupposes an actor — but structure-is-earned governs, and this
-   is a governance question, not a research one.
-5. **What is the SIGMA→ECOS observation set?** TC-003, TC-009 and TC-010 all need it closed.
-
-## 9. What may safely remain apertured
-
-The metaphysics of agency, a universal altitude taxonomy, automatic Master-Key discovery, the
-complete relation ontology (AP-07), the final UI (AP-08), reflective level indexing until
-BUILD 9, and every empty cell in the synthesis matrix — which records **unsearched regions,
-not established absences**.
-
-## 10. Honest limits
-
-- **No probe was executed.** Every probe-dependent standing is provisional on exactly that.
-- **21 of 100 citations were verified this session**; 73 are canonical-but-unrechecked and 6
-  are medium-confidence. One verification produced a correction, which is direct evidence the
-  unverified remainder contains errors. No claim rests on a medium-confidence citation alone.
-- **Five of fourteen neighborhoods produced no rejected analogy.** Two of those were shaped
-  around findings already made, so their uniformly positive yield is partly a selection
-  effect and should be discounted (QF-F-03).
-- **No systematic-review completeness is claimed.** Unsearched literature remains an explicit
-  aperture.
+- **I ran none of the experiments.** Four are specified; zero executed.
+- **I properly checked 21 of the 100 citations.** The rest are well-known works I did not
+  re-verify. One check caught a real error, which tells me the unchecked ones contain more.
+- **Findings 4 and 6 rest on citations I did not check** — and finding 6 is the one with the biggest
+  consequences.
+- **Five of the fourteen topic areas produced no rejected ideas at all**, and two of those were
+  chosen after I already knew what I wanted to find. That is a bias in my own method.
+- **This is not a complete survey** and does not claim to be.

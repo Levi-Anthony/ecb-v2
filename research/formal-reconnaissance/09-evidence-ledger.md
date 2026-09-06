@@ -5,6 +5,15 @@ AUTHORITY: None
 
 # Evidence Ledger
 
+> **Plain-English note.** This is a traceability table. Each row follows one finding from
+> *"what ECB v2 requires"* through *"which papers"* and *"what they established"* to *"what it means
+> for the build."* It exists so nothing here has to be taken on trust — you can walk any claim back
+> to its source.
+>
+> **You do not need to read this.** It is for auditing and for machines. The same content in
+> machine-readable form is `corpus/ledger.jsonl`. Terms are decoded in
+> [`GLOSSARY.md`](GLOSSARY.md).
+
 Every consequential finding is traceable along the §15 spine:
 
     BASELINE REQUIREMENT → RESEARCH APERTURE → SOURCE(S) → ESTABLISHED SOURCE CLAIM

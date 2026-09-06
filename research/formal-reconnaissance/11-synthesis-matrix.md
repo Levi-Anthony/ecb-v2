@@ -5,6 +5,16 @@ AUTHORITY: None
 
 # Cross-Corpus Synthesis
 
+> **Plain-English note.** A coverage grid: twenty-one parts of the build down the side, twelve
+> fields of research across the top, and how strongly each field speaks to each part in the cells.
+>
+> **Two things to take from it.** First, the strongest column came from a topic area that was not
+> in the original plan. Second — and more important — **a blank cell means "I did not search
+> there," never "there is nothing there."**
+>
+> **Worth a glance** to see where the coverage is thin. Terms are decoded in
+> [`GLOSSARY.md`](GLOSSARY.md).
+
 Organized by **build function**, not by academic discipline. Cell standing:
 
 `STRONG` a specific mechanism, test, or theorem transfers with prerequisites met ·

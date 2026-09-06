@@ -1,19 +1,98 @@
 STATUS: COMPLETE
 DISPOSITION: APERTURE
-ROLE: Output J — Question Forward register
-AUTHORITY: None as answers; authoritative as a record that these remain open
+ROLE: What is still open, sorted by whether it blocks you
+AUTHORITY: None as answers. Authoritative only as a record that these remain open.
 
-# Question Forward Register
+# What is still open
 
-Bounded per §4: a question is recorded only where resolving it could materially change
-relevance, standing, warrant, branch selection, Shape, output contract, architecture,
-implementation, enforcement, or build safety. **Questions that could not change BUILD were
-apertured rather than pursued.**
+Twenty-five questions. **None of them has been quietly turned into an answer** — that is the point
+of writing them down as questions.
 
-Twenty-five questions — five blocking, five discriminating, five falsification, four
-validation, six deferred. Not one is converted into a prose conclusion.
+I only recorded a question where knowing the answer could actually change what you build, enforce,
+or decide. Questions that could not change anything were deliberately left alone rather than
+listed for completeness.
+
+Plain-English version first; the full register follows.
 
 ---
+
+## In plain English
+
+### Five that actually block something
+
+1. **Is what's permitted always determined?** Given the same situation, discriminator, and
+   operation — is the answer fixed, or does it sometimes depend on something nobody wrote down?
+   Nearly everything cheap in this research rests on this. **Testable on paper today.**
+
+2. **Are your core principles even the kind of thing a watchdog can check?** Several of them read
+   as statements about *patterns across many runs* rather than about any single run. Those sit
+   outside what any monitor can see, which would mean my main finding covers less than it appears
+   to.
+
+3. **Does Build 3 need to store "why" from the start?** If a claim is stored without recording what
+   supports it, you can never work out later what should happen when that support is withdrawn.
+   **This is the only thing here with an expiry date.**
+
+4. **Do you need an "actor" as a basic object before Build 6?** Two unrelated areas of the
+   literature independently point at the same gap, and your own definition of warrant already
+   assumes one. But adding a basic object because a paper suggested it is exactly what your
+   structure-is-earned rule exists to prevent. **Your call, not mine.**
+
+5. **What exactly must survive the SIGMA-to-ECOS translation?** Three of my proposals need that
+   list closed before they can be built at all.
+
+### Five that would decide between two live options
+
+- Are "state what agreement means" and "check meaning survived translation" the same idea or two
+  different obligations? Test the cheaper one first.
+- Is returned evidence usually *"we were wrong"* or *"the world changed"*? They need different
+  handling, and if most returns are the second kind, a chunk of the belief-revision machinery
+  applies to less than it looks like.
+- Does human judgement combine evidence consistently? If the order you consider things in changes
+  the answer, the evidence-combining algebra I proposed is too strong.
+- Does git already give you the tamper-detection you need? If so one proposal costs nearly nothing.
+- Does a merge technique exist whose answer is "refuse" rather than "pick one"? If so, automatic
+  syncing could safely reach further up than I claimed.
+
+### Five that would show something here is wrong
+
+- Can a translation pass its own check and still break the thing it was translating?
+- Can two situations that permit the same actions in isolation permit *different* actions once
+  they are part of something bigger? **Finding one would be a success** — it proves an obligation
+  I flagged is real rather than theoretical.
+- **Was my searching adversarial enough?** Five of fourteen topic areas produced no rejected ideas
+  at all, and two of those I chose *after* I already knew what I wanted to find. That is a bias in
+  my method, and it should reduce your confidence in anything sourced only from those areas.
+- Is "a step that destroys its own reopening condition" something that can actually happen here, or
+  is the concern theoretical?
+- Would a richer receipt move most principles back into "evidence can see this"? If so my
+  partition is an artefact of a poor receipt design rather than a real limit.
+
+### Four that would confirm something already believed
+
+Whether your Charter's intake lane really does satisfy the academic checklist; whether your
+supersession stamps really are a legitimate consistency-restoring move; whether Build 0's seven
+enforcement rows survive the new distinction (**cheap — do this first**); and whether Build 0's
+one complete example holds up under two of the experiments.
+
+### Six left open on purpose
+
+Blank cells in my coverage grid mean **"I did not search there"** — never "there is nothing there".
+Plus: the status of one deep architectural concept; whether the frozen mathematics should be
+revisited (that is proposal 2, and it is not mine to decide); how self-inspection depth gets
+tracked, which does not matter until Build 9; the citations I did not verify; and whether your
+governance operations compose at all, which becomes load-bearing at Builds 9–10.
+
+### What I deliberately did not ask
+
+Philosophy-of-mind questions, a universal classification scheme, automatic discovery of guiding
+discriminators, the complete relationship vocabulary, the final interface — and whether any of the
+rejected ideas could be rescued by inventing their missing prerequisites. That last one has no
+admissible answer, because inventing the prerequisite is the move your own rules forbid.
+
+---
+
+## Full register
 
 ## BLOCKING — materially block a build decision
 

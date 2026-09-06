@@ -5,6 +5,14 @@ AUTHORITY: None
 
 # 100-Source Evidence Table
 
+> **Plain-English note.** This directory holds the 100 papers, one structured record each, grouped
+> into fourteen topic areas. Each record captures what problem the paper solves, what it guarantees,
+> how it detects its own failure, what it would give ECB v2, and what would prove that wrong.
+>
+> **This is machine-facing. You do not need to read it.** The whole result in plain English is in
+> [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md). Every code and term is decoded in
+> [`../GLOSSARY.md`](../GLOSSARY.md).
+
 Screening funnel actually executed:
 
     internal baseline (02-baseline-register.md)

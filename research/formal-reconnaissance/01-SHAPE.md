@@ -5,6 +5,13 @@ AUTHORITY: None independently
 
 # SHAPE — Formal Reconnaissance
 
+> **Plain-English note.** This records what I was allowed to research, how much effort was
+> permitted, what the outputs had to be, and when to stop. It also records three places where I
+> moved effort away from a topic area because further reading could not have changed anything.
+>
+> **You probably do not need to read it.** Read it if you want to check the boundaries held.
+> Terms are decoded in [`GLOSSARY.md`](GLOSSARY.md).
+
 ## Authorized research seams
 
 Seven seams were authorized. Each names the live build obligation it serves. Anything

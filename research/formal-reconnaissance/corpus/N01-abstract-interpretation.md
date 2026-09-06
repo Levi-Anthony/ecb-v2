@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N01 · RECORDS R001–R011
 
 # N01 — Abstract Interpretation, Abstraction and Refinement
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Primary seam: **S-5 bounded local closure and lawful refinement.**
 
 Neighborhood verdict: the *machinery* transfers; the *lattice-theoretic presentation* is on

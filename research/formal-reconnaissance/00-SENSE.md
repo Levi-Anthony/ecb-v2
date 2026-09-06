@@ -5,6 +5,13 @@ AUTHORITY: None independently
 
 # SENSE — Formal Reconnaissance
 
+> **Plain-English note.** This records what I knew, what was already decided, and what I
+> deliberately refused to touch, *before* I searched anything. It exists so you can check I did not
+> quietly reopen a settled question or go looking for a conclusion I had already picked.
+>
+> **You probably do not need to read it.** Read it if you want to audit the scoping.
+> Terms are decoded in [`GLOSSARY.md`](GLOSSARY.md).
+
 ## Focal build seam
 
 ECB v2 is at a **metabolization hold**: BUILD 0 (Clean OB1 Kernel) passed Golden Trace 01

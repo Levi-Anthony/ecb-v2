@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N09 · RECORDS R071–R075
 
 # N09 — Category Theory and Compositional Structure
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Primary seam: **S-1 / S-7 — structure-preserving propagation and composition.**
 
 Neighborhood verdict: **one concrete transfer, four guardrails.** Institution theory (R071)

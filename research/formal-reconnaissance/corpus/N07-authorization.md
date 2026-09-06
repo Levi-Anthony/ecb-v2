@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N07 · RECORDS R055–R062
 
 # N07 — Authorization, Policy Succession, Capability, Trust
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Primary seam: **S-6 — authority, warrant, bootstrap, rule succession.**
 
 Neighborhood verdict: supplies the vocabulary v2's warrant definition already presupposes

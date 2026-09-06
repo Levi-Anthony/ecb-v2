@@ -1,16 +1,101 @@
 STATUS: COMPLETE
 DISPOSITION: EVIDENCE
-ROLE: Output F — Negative Results Registry
-AUTHORITY: None as answers; authoritative as a record that these analogies were inspected and did not survive
+ROLE: Twelve appealing ideas that did not survive inspection
+AUTHORITY: None as answers. Authoritative as a record that these were checked and rejected.
 
-# Negative Results Registry
+# What did not work, and why
 
-**Negative findings count as successful research.** Each entry records the original
-intuition, the native definition, the prerequisites that definition actually requires, the
-prerequisite v2 lacks, the falsifying evidence, and a disposition.
+**Finding out an appealing idea does not fit is a real result**, not a failure. Several of these
+were the most intuitively attractive framings available, and rejecting them is worth more than any
+of the positive findings would have been if I had forced them through.
 
-Twelve attractive analogies were inspected and rejected or deferred. Several were rejected
-*despite* being the most intuitively compelling framings available — which is the point.
+Plain-English version first; the full analysis follows.
+
+---
+
+## In plain English
+
+Every one of these was rejected the same way: I looked up what the idea **actually requires** to be
+true, then checked whether ECB v2 has it. Where it does not, the rule is that you may not invent the
+missing piece just to make the analogy work.
+
+### The two that matter most — and they fail for the same reason
+
+**Keeping a summary and its source in sync (the "lens" technique).** It comes with a guarantee: any
+edit you make to the summary gets pushed back into the source. That guarantee *is* unconditional
+acceptance of the edit — which is exactly what your review-before-it-counts rule forbids.
+
+**Letting copies drift and merge automatically (the "CRDT" technique).** It buys freedom from
+coordination by making conflict resolution automatic and meaning-blind — usually "most recent wins."
+That is a direct contradiction of "newest is not automatically current."
+
+**Both fail for one shared reason:** each guarantees *automatic, total* incorporation of a change.
+That is the single thing ECB v2 exists to refuse. Noticing that the two most natural engineering
+answers to "keep two things in sync" are both incompatible with your central commitment is worth
+more than any positive transfer in this research.
+
+The merge technique is still correct **below** the level where things acquire standing — for
+copying append-only evidence around, it is exactly right and cannot lose data.
+
+### The main belief-change theory
+
+It has a rule at its foundation saying new information is always accepted. There are two further
+problems: it assumes your beliefs form a logically closed set (yours are typed records), and its
+ranking machinery needs a single total ordering (your notion of standing is deliberately
+multi-dimensional). Any one of the three would be disqualifying.
+
+### Two compression theories that sound perfect
+
+Both are about keeping what matters and discarding what does not — which sounds exactly like what a
+guiding discriminator does. One needs a probability distribution over situations and relevance. The
+other needs that *plus* a measure of how bad each particular loss is — which is a preference
+function.
+
+You have neither, and inventing them is precisely the move your own rules forbid. The *shape* of the
+idea survives through a different route that needs no probabilities at all.
+
+### The geometry language
+
+"Angle-preserving," "shape preserved as scale changes" — this requires a genuine distance measure on
+meaning. You do not have one, and there is no honest route to building one.
+
+Worth noting carefully: you *do* have one real distance measure — the similarity score your search
+uses. That is a distance between *representations of text*, not between meanings. Using it as a
+meaning-distance would break four of your frozen rules at once. It is the one place this rejected
+idea could sneak back in, so the rejection comes with an explicit prohibition attached.
+
+### Treating your system as a mathematical "category"
+
+This needs you to have defined what a structure-preserving map between two governance objects is.
+You have plenty of objects and no such maps. By the standard of the field's own founder, it is not a
+category yet, and calling it one would be exactly the "mathematics as decoration" problem. A weaker
+and satisfiable alternative was found instead.
+
+### A cybernetics theorem often quoted to justify self-modelling
+
+The theorem is real but much narrower than its popular version: it assumes the regulator is optimal
+and deterministic. Yours is neither. There is a better argument for the same conclusion that needs
+no such assumption — use that one.
+
+### A systems framework that generates no test
+
+Recursively nested organisational levels, which resembles your self-hosting closely enough to be
+tempting. It produces no way to tell whether it is wrong. Under your own admission rule that makes
+it description, not architecture. Worth recording because your Charter already uses similar
+vocabulary, so the temptation is live rather than hypothetical.
+
+### Two words to avoid
+
+**"Bidirectional"** — imports the automatic acceptance you do not want, and names four different
+things in four different fields, so it would be uninformative even if one of them fitted.
+
+**"Capability"** — worse. In security research a capability **is** permission to act. In your
+invariants, capability explicitly is *not* warrant. Both usages are internally coherent; importing
+the first would silently invert one of your frozen rules through nothing but word choice.
+
+---
+
+## Full analysis
 
 | ID | Analogy | Disposition |
 |---|---|---|

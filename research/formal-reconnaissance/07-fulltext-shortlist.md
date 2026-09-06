@@ -5,6 +5,13 @@ AUTHORITY: None
 
 # Full-Text Shortlist
 
+> **Plain-English note.** Of the 100 papers, these 21 are worth reading in full. Each entry says
+> **the specific question its abstract could not answer** — that is the reason to read it. A paper
+> that is merely interesting is not here.
+>
+> **Useful if you or someone else is going to do the reading.** The last section names the three to
+> read if only three get read. Terms are decoded in [`GLOSSARY.md`](GLOSSARY.md).
+
 21 papers, from 100 coded abstracts. Each entry states **the specific question the abstract
 could not answer** — the warrant for reading further. A paper interesting but not
 build-decisive is not here.

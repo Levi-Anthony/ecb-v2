@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N02 · RECORDS R012–R022
 
 # N02 — Formal Semantics, Refinement, Contracts, Verification
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Primary seam: **S-2 whether constitutive obligations are actually implemented and enforced**, and **S-1 projection correctness.**
 
 Neighborhood verdict: the highest-yield neighborhood in the operation. It produced the

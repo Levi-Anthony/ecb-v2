@@ -1,23 +1,99 @@
 STATUS: SPECIFIED — NONE EXECUTED
 DISPOSITION: EVIDENCE
-ROLE: Output H — earned formalization probes
-AUTHORITY: None. A probe is a bounded experiment specification, not a result.
+ROLE: Four experiments worth running. I ran none of them.
+AUTHORITY: None. A specified experiment is not a result.
 
-# Formalization Probes
+# Four experiments worth running
 
-Four probes earned specification, against a §9 budget of 0–5. **None has been executed.**
-Each states an exact question, source formalism, prerequisites, SIGMA/ECOS instantiation,
-expected discriminator, falsifier, and possible build consequence.
+**I ran none of these.** They are specified, not executed. Anywhere this research says something
+"depends on a probe," it means one of these four — and it means that thing is unproven.
 
-A probe that could not change a build decision was not specified. Three candidate probes
-were dropped on that test (widening formalization, congruence-format derivation,
-argumentation-semantics selection) — all three are real questions whose answers cannot
-affect BUILD 1–5.
-
-Probes run through `research/formal-semantics/` (probe layout: `source.md` + `analysis.md`)
-and are subject to its promotion rule: **a probe cannot promote itself.**
+Plain-English version first; the full specification follows.
 
 ---
+
+## In plain English
+
+### Experiment 1 — Is the list of "what must survive translation" complete?
+
+When a SIGMA commitment gets turned into something ECOS runs, four things are promised to survive:
+what is permitted, what the limits are, what must be recorded about where things came from, and what
+would trigger a review.
+
+**Question:** is there a way ECOS could behave that keeps all four of those intact and *still*
+breaks the original commitment?
+
+**How:** on paper. Take one real commitment, one plausible mechanism, write the translation between
+them by hand, then try hard to break it. No code, no compiler needed.
+
+**Best commitment to use:** *"nothing important may depend on someone remembering."* It is frozen,
+it matters, and how you would translate it is genuinely unclear.
+
+**Either outcome is useful.** If you find a way to break it, the missing fifth thing is the result.
+If you cannot after real effort, that is weak encouragement — and should be reported as weak.
+
+**There is a third possible outcome:** the commitment might not be checkable from the running system
+at all. That is also a finding, and two separate lines of reasoning predict it for the
+authority-flavoured rules.
+
+### Experiment 2 — Can the two layers even describe the same thing?
+
+One of my proposals replaces the "keep two things in sync" framing with something gentler: state
+what it means for SIGMA and ECOS to *agree*, and have each side propose fixes when they do not.
+
+**Question:** can you actually write down what "agree" means for one real seam? Or do the two sides
+share no vocabulary at all, so no such statement is possible?
+
+**How:** Build 0 is the only part that exists end to end. On the SIGMA side: *evidence comes first;
+capturing something does not promote it.* On the ECOS side: the thoughts table and the three
+operations. Write the agreement condition and check that the passing Golden Trace satisfies it.
+
+**Honest limitation:** Build 0's SIGMA side is nearly trivial, so success here might not generalise.
+Say so rather than over-claiming.
+
+### Experiment 3 — Is what's permitted actually determined? ← **do this one first**
+
+Almost everything cheap in this research rests on one assumption: given the situation, the guiding
+discriminator, and the operation, **what is permitted is fixed**.
+
+**Question:** is it? Or does permission sometimes depend on something nobody wrote down?
+
+**How:** take two or three decisions you have already made and documented — the two architecture
+decision records and the substrate closure. For each, write down the situation, the discriminator,
+and the operation. Then ask: *given exactly this and nothing else, was the answer determined?*
+
+**Why this one first.** It is doable on paper today, and more of my findings depend on it than on
+anything else. If permission is determined, several things become rigorous at zero cost. If it
+depends on unwritten context, a chunk of what I built collapses — and that is a significant thing to
+learn **about your architecture**, not about the mathematics.
+
+**Honest limitation:** three past decisions is a small sample, and reconstructing your own reasoning
+after the fact invites tidying it up. Use decisions with written records made at the time.
+
+### Experiment 4 — Which of your core principles can evidence ever check?
+
+**Question:** for each of the eighteen things ECB v2 says must not collapse, could a violating run
+and a clean run ever produce *different* receipts? If not, no amount of evidence will ever detect a
+violation.
+
+**How:** sketch what a receipt would contain — it does not have to exist yet. Then go through the
+eighteen and sort each into: evidence can see this / evidence can never see this / evidence could
+see it if the receipt also recorded *this specific extra thing*.
+
+**Prediction:** the structural ones (like "no half-finished record") are visible. The ones about
+authority and relevance are not, because a violation and a non-violation look identical from
+outside.
+
+**If that prediction holds**, most of ECB v2's core commitments cannot be enforced by observation,
+and the enforcement table should say so plainly.
+
+**Important caveat:** this answer depends on what the receipt records. A richer receipt can move a
+principle across the line — which is the theory's own advice, "add the sensor." So record the answer
+against a *named* receipt design, never as if it were permanent.
+
+---
+
+## Full specification
 
 ## FP-001 — Is FS-0001's observation set sufficient?
 

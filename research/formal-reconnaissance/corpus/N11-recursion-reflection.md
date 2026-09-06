@@ -2,6 +2,9 @@ DISPOSITION: EVIDENCE · NEIGHBORHOOD N11 · RECORDS R083–R088
 
 # N11 — Recursion, Reflection, Fixed Points
 
+> Machine-facing records. Plain-English result: [`../EXECUTIVE-EXTRACTION.md`](../EXECUTIVE-EXTRACTION.md) · Decoder: [`../GLOSSARY.md`](../GLOSSARY.md)
+
+
 Primary seam: **S-7 — governors and mappings remaining inspectable referents without infinite regress.**
 
 Neighborhood verdict: strong support for two rules v2 already holds, and one hard limit it
