@@ -1,14 +1,14 @@
-STATUS: BUILD 6 SENSE OPEN — SENSE_NOT_CLOSEABLE AFTER BOUNDED SHARPENING
+STATUS: BUILD 6 SENSE OPEN — SENSE_CLOSEABLE; HUMAN M2 DISPOSITION RECORDED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
-AUTHORITY: Governing sources, existing “Open 6” / “Continue”, and explicit bounded Sense-sharpening instruction
+AUTHORITY: Governing sources, existing “Open 6” / “Continue”, explicit bounded Sense-sharpening instruction, and subsequent human genesis authority disposition
 CURRENT BUILD UNIT: BUILD 6 — Governance Bootstrap
 
 # BUILD 6 — Governance Bootstrap
 
 ## CURRENT MOVE
 
-`SENSE: RESOLVE THE PRIOR AUTHORITY BASIS FOR EVERY BOOTSTRAP-TO-SUCCESSION TRANSITION`
+`SENSE: M2 AUTHORITY GRAPH RESOLVED; CLOSEABILITY RECORDED; AWAIT HUMAN PHASE DISPOSITION`
 
 ```text
 BUILD_0_TO_5B=CLOSED
@@ -17,9 +17,10 @@ BUILD_5B_EVIDENCE=7c89e82eaba27ecd3972bf0100a1133363b3304c
 BUILD_5B_HUMAN_CLOSURE=5af44bb1a14cc098f2f3f105d611cff406135cf9
 BUILD_6=SENSE_OPEN; NOT_REOPENED
 ENTRY_LINEAGE=984f16d9267082aec2b0dce33de597aad7e46abf
-ROOT_EQUALS_LEVI_OR_H=UNESTABLISHED; PRIOR_ASSUMPTION_WITHDRAWN
-AUTHORITY_GRAPH=M1_OR_M2_CONDITIONAL; NOT_SELECTED
-SENSE_DISPOSITION=SENSE_NOT_CLOSEABLE
+ROOT_BASIS=EXTERNALLY_ACCEPTED_HUMAN_ARCHITECTURE_AUTHORITY_EXERCISED_BY_LEVI
+INITIAL_H=NOT_YET_DESIGNATED; LEVI_PERMITTED; POWER_DERIVES_FROM_DESIGNATION
+AUTHORITY_GRAPH=M2; ONE_BOUNDED_INITIALIZATION_P0_H_EXHAUSTION
+SENSE_DISPOSITION=SENSE_CLOSEABLE; NOT_CLOSED
 AP04=REACTIVATED_NARROWLY; EXACT_PAYLOAD_UNRESOLVED
 AP01=CONDITIONAL; NO_NEW_VOCABULARY_DEMONSTRATED
 PRIOR_ART_QUALIFICATION=PARTIAL; EXISTING_PINS_PRESERVED
@@ -34,10 +35,12 @@ BUILD_7_PLUS=UNOPENED
 ## AUTHORIZATION / PREDECESSOR
 
 BUILD 6 is already open on `build/build-6-sense`, descending from human-closed
-BUILD 5B. The current instruction authorizes one bounded Sense-sharpening pass,
-using Question Forward to correct the conflation of bootstrap root with external
-human authority/Levi and to examine the behavioral authorization graph.
-It does not reopen either Build, close Sense, enter Shape, or authorize implementation.
+BUILD 5B. The bounded Question Forward pass withdrew an assumed identification of
+bootstrap root with Levi. The subsequent explicit human disposition now supplies the
+externally accepted human/architecture authority exercised by Levi as the genesis
+basis and selects M2: one initialization containing exact P0 activation, initial H
+designation with bounded remit, and bootstrap exhaustion. It does not designate Levi
+as H automatically, close Sense, enter Shape, or authorize implementation.
 
 The [BUILD 5B receipt](docs/build-receipts/007-build-5b.md) and raw evidence remain
 unchanged. Their canonical observations are accepted earlier evidence, not a new
@@ -62,12 +65,13 @@ encounters and their limits; the human's correction and decision criterion. The
 separates root alternatives, gives every candidate arrow a required prior basis,
 applies falsifiers and updates Question Forward.
 
-Findings: the contract does not by itself require a human root. M1 can delegate
-H designation to already-operative P0 only if bootstrap-internal policy authority
-is lawfully available. M2 can authorize initialization under a prior root grant only
-if R has that wider competence. Neither actual scope is established. A third graph
-with independently licensed steps has no demonstrated smaller advantage.
-These are conditional behavioral findings, not installed authority or frozen tests.
+Findings: the human disposition establishes R's basis and complete-initialization
+competence. Each initialization act derives from that prior basis; H's later power
+derives from its lawful designation and bounded remit. Successful initialization
+ends exercisable bootstrap competence while retaining historical legitimacy. The
+first P1 requires authorization under already-operative P0 and lawfully designated H.
+Earlier alternatives and falsifiers remain preserved as historical analysis.
+Exact P0, initial H/remit and enforcement representation are not bound or installed.
 
 ## ENFORCEMENT / FAILURE BEHAVIOR
 
@@ -80,7 +84,8 @@ their physical representation remains undecided.
 If an arrow can be justified only by the result it creates, reject that explanation.
 If a needed prior basis is unavailable, preserve the corresponding forward question.
 An incomplete record or restart must not manufacture unused bootstrap permission.
-Do not move the unresolved behavioral graph into Shape as an implementation choice.
+Future Shape must preserve the selected behavioral graph; any proposed change to its
+authority sources or scope must return for explicit resolution.
 
 ## APERTURE / REVALIDATION TRIGGER
 
@@ -96,20 +101,24 @@ prior basis. No broader governance system or BUILD 7/8 behavior is licensed to r
 
 ## TEST / DISPOSITION
 
-**SENSE_NOT_CLOSEABLE.** Conditional graphs pass the documentary non-circularity test
-only under unestablished premises. The actual root/competence, H/designating basis,
-M1 versus M2 scope, and exhaustion/ordinary succession conditions are unresolved.
-No executable BUILD 6 test or canonical check was run. The pass checks document
-consistency, preserved evidence and repository ancestry only.
+**SENSE_CLOSEABLE for the bounded behavioral authority model; Sense remains OPEN.**
+The human disposition resolves the prior root basis, initialization scope, initial
+designation basis, success exhaustion and first succession authority. Every arrow
+has a prior basis. Documentary falsification rejects self-birth, self-designation,
+bootstrap replay, credential-as-warrant, recency-as-authority and role collapse.
+No executable BUILD 6 test or canonical check was run.
 
-When resolved, a future Shape must inherit the accepted root/trust limit, chosen
-prior-authority graph, H's designation/remit, bounded P0/P1 succession behavior,
-exhaustion/interrupted-completion rule and required reconstruction facts. This list
-is a conditional handoff criterion, not a bound Output Contract or Shape selection.
+Future Shape must inherit the accepted external trust premise, M2's one initialization,
+H's designation-derived bounded power, irreversible exhaustion on success, P0/H's
+prior authorization for exact P1, and reconstruction of actual bases/scope/conditions.
+An interrupted or uncertain attempt creates no new grant; further effects require
+establishing that they remain within the original authorization. Exact bindings and
+representation require later specification and qualification within these semantics.
+This is a handoff criterion, not a bound Output Contract or authorization to enter Shape.
 
 ## REPOSITORY INTEGRATION BOUNDARY
 
-Read-only verification: PR #2 is OPEN, draft and MERGEABLE, head `5af44bb` targeting
+Read-only verification during the preceding sharpening pass: PR #2 is OPEN, draft and MERGEABLE, head `5af44bb` targeting
 main; remote main remains `07fcb9f`. BUILD 6 entry `984f16d` descends from that accepted
 PR head. The clean predecessor integration path remains **PR #2 → main**, required
 as repository normalization before Shape, subject to separate merge authorization.
@@ -125,9 +134,8 @@ action-envelope semantics or BUILD 7+. The untracked collaboration draft is unto
 
 ## NEXT HANDLE
 
-Resolve [Q1–Q3](docs/build-sense/008-build-6.md#question-forward--updated-live-set):
-what independent basis gives R its competence; who/what becomes H under which prior
-basis; and whether R authorizes exact P0 activation alone or complete initialization.
-Then resolve Q4–Q6 for the surviving graph's exhaustion, first succession and
-reconstructibility. Keep Sense open until the actual episode, not merely a conditional
-example, satisfies the prior-authority criterion. PR integration is a separate step.
+The [updated Question Forward set](docs/build-sense/008-build-6.md#question-forward--updated-live-set)
+records resolved behavioral questions and bounded later specification obligations.
+Sense is ready for human closure disposition; no phase advance is inferred from the
+authority clarification. PR #2 → main remains the separately authorized pre-Shape
+repository normalization step, requiring fresh verification before integration.

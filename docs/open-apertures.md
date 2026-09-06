@@ -165,10 +165,11 @@ Exact representation of transition policies describing structural, semantic, aut
 and observational enforcement.
 
 **WHY OPEN**  
-The enforcement classification is ratified. BUILD 6 now examines the first consequential
-governance transition, but its behavioral authority graph is not yet decision-complete.
-Selecting the enforcement-policy payload before that graph is resolved would encode
-assumed authority. Exact representation belongs to subsequent Shape.
+The enforcement classification is ratified. BUILD 6 examines the first consequential
+governance transition. The subsequent human genesis disposition selects M2: one bounded
+initialization under the external basis, followed by P0/H-authorized succession.
+That resolves the behavioral authority graph; it does not select an enforcement-policy
+payload. Exact representation remains unresolved for subsequent Shape.
 
 **CURRENT EFFECT**  
 REACTIVATED NARROWLY FOR BUILD 6 — 2026-09-06 America/Phoenix. The trigger has fired:
