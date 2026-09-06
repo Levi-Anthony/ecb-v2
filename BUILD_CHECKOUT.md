@@ -1,30 +1,33 @@
-STATUS: BUILD 6 SENSE OPEN — SENSE_CLOSEABLE; HUMAN M2 DISPOSITION RECORDED
+STATUS: BUILD 6 SENSE CLOSED BY HUMAN — SHAPE HANDOFF RECORDED; PRE-SHAPE INTEGRATION PENDING
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
-AUTHORITY: Governing sources, existing “Open 6” / “Continue”, explicit bounded Sense-sharpening instruction, and subsequent human genesis authority disposition
+AUTHORITY: Governing sources, existing “Open 6” / “Continue”, explicit bounded Sense-sharpening instruction, subsequent human genesis authority disposition, and explicit Sense closure with instance-binding tightening
 CURRENT BUILD UNIT: BUILD 6 — Governance Bootstrap
 
 # BUILD 6 — Governance Bootstrap
 
 ## CURRENT MOVE
 
-`SENSE: M2 AUTHORITY GRAPH RESOLVED; CLOSEABILITY RECORDED; AWAIT HUMAN PHASE DISPOSITION`
+`SENSE CLOSED: PRESERVE ACCEPTED SHAPE HANDOFF; NORMALIZE PREDECESSOR BEFORE SHAPE`
 
 ```text
 BUILD_0_TO_5B=CLOSED
 BUILD_5B_EXECUTION=7f3790786d947ac278501632a6072433db8d0c6e
 BUILD_5B_EVIDENCE=7c89e82eaba27ecd3972bf0100a1133363b3304c
 BUILD_5B_HUMAN_CLOSURE=5af44bb1a14cc098f2f3f105d611cff406135cf9
-BUILD_6=SENSE_OPEN; NOT_REOPENED
+BUILD_6=SENSE_CLOSED_BY_HUMAN; 2026-09-06; NOT_REOPENED
 ENTRY_LINEAGE=984f16d9267082aec2b0dce33de597aad7e46abf
 ROOT_BASIS=EXTERNALLY_ACCEPTED_HUMAN_ARCHITECTURE_AUTHORITY_EXERCISED_BY_LEVI
 INITIAL_H=NOT_YET_DESIGNATED; LEVI_PERMITTED; POWER_DERIVES_FROM_DESIGNATION
 AUTHORITY_GRAPH=M2; ONE_BOUNDED_INITIALIZATION_P0_H_EXHAUSTION
-SENSE_DISPOSITION=SENSE_CLOSEABLE; NOT_CLOSED
+SENSE_DISPOSITION=CLOSED
+INSTANCE_BINDING=H_AND_NORMATIVE_REMIT_REQUIRE_EXPLICIT_HUMAN_ROOT_BINDING
+EXACT_P0=REQUIRES_HUMAN_ROOT_ACCEPTANCE_AS_GRANT_SUBJECT
+BINDING_DEADLINE=BEFORE_BOOTSTRAP_FIXTURE_OR_EXECUTABLE_TRANSITION_FREEZE
 AP04=REACTIVATED_NARROWLY; EXACT_PAYLOAD_UNRESOLVED
 AP01=CONDITIONAL; NO_NEW_VOCABULARY_DEMONSTRATED
 PRIOR_ART_QUALIFICATION=PARTIAL; EXISTING_PINS_PRESERVED
-SHAPE=UNOPENED
+SHAPE=HANDOFF_ACCEPTED; WORK_PENDING_PRE_SHAPE_INTEGRATION
 OUTPUT_CONTRACT=UNBOUND
 MOVE_PERMISSION=UNRELEASED
 IMPLEMENTATION=UNOPENED
@@ -39,8 +42,10 @@ BUILD 5B. The bounded Question Forward pass withdrew an assumed identification o
 bootstrap root with Levi. The subsequent explicit human disposition now supplies the
 externally accepted human/architecture authority exercised by Levi as the genesis
 basis and selects M2: one initialization containing exact P0 activation, initial H
-designation with bounded remit, and bootstrap exhaustion. It does not designate Levi
-as H automatically, close Sense, enter Shape, or authorize implementation.
+designation with bounded remit, and bootstrap exhaustion. The latest human disposition
+explicitly closes Sense with the instance-binding and failure distinctions recorded
+below. It supplies the Shape handoff, without automatically designating Levi as H
+or authorizing implementation. The earlier pre-Shape integration boundary remains.
 
 The [BUILD 5B receipt](docs/build-receipts/007-build-5b.md) and raw evidence remain
 unchanged. Their canonical observations are accepted earlier evidence, not a new
@@ -73,6 +78,15 @@ first P1 requires authorization under already-operative P0 and lawfully designat
 Earlier alternatives and falsifiers remain preserved as historical analysis.
 Exact P0, initial H/remit and enforcement representation are not bound or installed.
 
+Exact H and the normative bounds of its remit remain authority-bearing instance
+decisions. Shape may specify representation, authentication, validation, constraints
+and enforcement; it may not infer/select H or invent/enlarge the remit. Explicit
+human/root-authority binding is required before the bootstrap fixture or executable
+transition is frozen. Shape may derive the minimum P0 semantics needed by BUILD 6,
+but exact P0 must receive explicit human/root-authority acceptance before it becomes
+the grant subject and before fixture/transition freeze. The grant cannot cover
+whatever policy Shape eventually produces.
+
 ## ENFORCEMENT / FAILURE BEHAVIOR
 
 No credential, claimed actor, candidate policy or future designation supplies its
@@ -83,6 +97,10 @@ their physical representation remains undecided.
 
 If an arrow can be justified only by the result it creates, reject that explanation.
 If a needed prior basis is unavailable, preserve the corresponding forward question.
+One bounded initialization need not be one execution attempt. Technical failure does
+not automatically consume the grant irreversibly. Shape must structurally distinguish
+continuation/recovery of the same authorized initialization, a second initialization,
+and unknown outcome requiring stop. It may not invent additional recovery authority.
 An incomplete record or restart must not manufacture unused bootstrap permission.
 Future Shape must preserve the selected behavioral graph; any proposed change to its
 authority sources or scope must return for explicit resolution.
@@ -101,7 +119,7 @@ prior basis. No broader governance system or BUILD 7/8 behavior is licensed to r
 
 ## TEST / DISPOSITION
 
-**SENSE_CLOSEABLE for the bounded behavioral authority model; Sense remains OPEN.**
+**SENSE CLOSED BY HUMAN on 2026-09-06 America/Phoenix, with binding tightening.**
 The human disposition resolves the prior root basis, initialization scope, initial
 designation basis, success exhaustion and first succession authority. Every arrow
 has a prior basis. Documentary falsification rejects self-birth, self-designation,
@@ -112,13 +130,20 @@ Future Shape must inherit the accepted external trust premise, M2's one initiali
 H's designation-derived bounded power, irreversible exhaustion on success, P0/H's
 prior authorization for exact P1, and reconstruction of actual bases/scope/conditions.
 An interrupted or uncertain attempt creates no new grant; further effects require
-establishing that they remain within the original authorization. Exact bindings and
-representation require later specification and qualification within these semantics.
-This is a handoff criterion, not a bound Output Contract or authorization to enter Shape.
+establishing that they remain within the original authorization. Human/root-authority
+instance binding and acceptance must precede fixture/transition freeze; representation
+and qualification must preserve these semantics. No ordinary governance is permitted
+before initialization completes. This handoff does not bind an Output Contract.
+
+The accepted Shape question is the smallest durable, non-bypassable representation
+and enforcement mechanism that preserves this graph under success, failure,
+concurrency, restart, stale input, forged identity and replay. Carry the Build
+Contract's cross-cutting adversarial pressure dispositions into that work.
 
 ## REPOSITORY INTEGRATION BOUNDARY
 
-Read-only verification during the preceding sharpening pass: PR #2 is OPEN, draft and MERGEABLE, head `5af44bb` targeting
+Read-only re-verification at this Sense closure: PR #2 is OPEN, draft and MERGEABLE,
+head `5af44bb` targeting
 main; remote main remains `07fcb9f`. BUILD 6 entry `984f16d` descends from that accepted
 PR head. The clean predecessor integration path remains **PR #2 → main**, required
 as repository normalization before Shape, subject to separate merge authorization.
@@ -127,7 +152,7 @@ merge or push is authorized for this pass.
 
 ## NON-GOALS
 
-No phase advance, Output Contract, implementation, canonical contact, policy
+No additional Sense cycle, Output Contract, implementation, canonical contact, policy
 installation, physical transaction boundary, table, enum, UUID, RPC, credential
 architecture, Actor ontology, UI, universal policy engine, Master Key machinery,
 action-envelope semantics or BUILD 7+. The untracked collaboration draft is untouched.
@@ -136,6 +161,8 @@ action-envelope semantics or BUILD 7+. The untracked collaboration draft is unto
 
 The [updated Question Forward set](docs/build-sense/008-build-6.md#question-forward--updated-live-set)
 records resolved behavioral questions and bounded later specification obligations.
-Sense is ready for human closure disposition; no phase advance is inferred from the
-authority clarification. PR #2 → main remains the separately authorized pre-Shape
-repository normalization step, requiring fresh verification before integration.
+Sense is closed; do not spend another cycle searching for authority theory. PR #2 →
+main is the required pre-Shape repository normalization, pending separate GitHub
+integration authorization. After that normalization is verified, proceed with the
+accepted Shape question and human-binding limits. Keep the current BUILD 6 lineage;
+no predecessor reopening or mechanism selection is required to record this handoff.

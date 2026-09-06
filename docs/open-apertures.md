@@ -179,6 +179,16 @@ into their enforcement-policy obligations; no payload, mechanism or policy is se
 Sense can examine prior authority and necessary recoverable facts. Shape must later
 resolve the exact representation within the accepted behavioral scope.
 
+BUILD 6 SENSE CLOSED BY HUMAN — 2026-09-06 America/Phoenix, with an explicit binding
+boundary. Shape may specify representation, authentication, validation, constraints
+and enforcement, but may not select initial H or invent/enlarge its normative remit.
+Explicit human/root-authority H/remit binding and acceptance of exact P0 as grant
+subject must precede bootstrap fixture or executable-transition freeze. One authorized
+initialization may involve multiple attempts; distinguish authorized continuation,
+a second initialization and unknown outcome requiring stop without adding recovery
+authority. This handoff selects no enforcement-policy payload and does not reactivate
+AP-01 further.
+
 Historical BUILD 5 disposition remains: open and inactive at its Sense closure because
 that episode contained no consequential governance-policy transition. BUILD 6 activation
 is not inferred from Claim standing history or a passing transformation receipt.

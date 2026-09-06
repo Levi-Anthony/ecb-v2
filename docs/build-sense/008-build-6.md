@@ -1,9 +1,53 @@
-STATUS: SENSE_CLOSEABLE — HUMAN ROOT/INITIALIZATION DISPOSITION RECORDED; SENSE NOT CLOSED
+STATUS: SENSE CLOSED BY HUMAN — 2026-09-06 America/Phoenix; M2 AND INSTANCE-BINDING BOUNDARIES ACCEPTED
 DISPOSITION: PROJECTION
 ROLE: BUILD 6 authority-chain analysis and Question Forward
-AUTHORITY: Existing BUILD 6 opening, human Sense-sharpening instruction, and subsequent explicit genesis authority disposition; subordinate to governing sources
+AUTHORITY: Existing BUILD 6 opening, human Sense-sharpening instruction, subsequent explicit genesis authority disposition, and explicit Sense closure with tightening; subordinate to governing sources
 
 # BUILD 6 Sense — Governance Bootstrap
+
+## Human Sense closure and binding boundary
+
+After local checkpoint `da8e201`, the human directed **“SENSE_CLOSEABLE → CLOSE
+SENSE”**, accepting the decision-complete M2 authority chain with the tightening
+below. **Sense is closed on 2026-09-06 America/Phoenix.** Further authority-theory
+inquiry is not the next task. The remaining work is bounded Shape specification
+plus explicit human/root-authority instance binding, not a missing prior basis for
+an authority-bearing arrow.
+
+The human's exact H/remit boundary is:
+
+> Exact H and the normative bounds of H’s remit remain unbound instance decisions. Shape may specify their representation, validation, and enforcement requirements, but may not infer or select the initial H or enlarge the remit. Those values require explicit human/root-authority binding before the bootstrap fixture or executable transition is frozen.
+
+Shape may specify how that binding is represented, authenticated, constrained and
+enforced. It may not choose the initial H or invent the normative remit. Levi remains
+a permitted initial H, not a designation already made. Instance binding must precede
+freezing the bootstrap fixture or executable transition, not merely its execution.
+
+For P0, Shape may derive the minimum policy semantics required by the accepted
+BUILD 6 episode. **Exact P0 requires explicit human/root-authority acceptance before
+it becomes the subject of the bootstrap grant** and before that fixture or transition
+is frozen. The accepted behavioral grant is not a grant over whatever policy Shape
+eventually produces. Derivation and technical validation do not substitute for that
+acceptance; H/remit selection and policy acceptance are authority-bearing decisions.
+
+**One bounded initialization is not necessarily one execution attempt.** Successful
+initialization exhausts the bootstrap competence. The closure does not decree that
+every technical failure irreversibly consumes the grant. Shape must structurally
+distinguish continuation/recovery of the same authorized initialization, a second
+initialization, and an unknown outcome requiring stop. Continuation must remain
+within the original authorization; neither uncertainty nor a recovery mechanism
+creates additional authority. These are behavioral distinctions, not selected states,
+transaction boundaries or retry mechanisms.
+
+The accepted Shape inquiry is:
+
+> What is the smallest durable and non-bypassable representation/enforcement mechanism that makes that already-settled authority graph actually true under success, failure, concurrency, restart, stale input, forged identity, and replay?
+
+The [Build Contract's adversarial pressure obligations](../build-contract.md#standing-cross-cutting-adversarial-pressure)
+apply when Shape proceeds. The existing pre-Shape PR #2 → main normalization remains
+pending separate integration authorization. This record closes Sense and establishes
+the Shape handoff; it selects no mechanism, binds no Output Contract, releases no Move,
+and makes no canonical contact.
 
 ## Current human disposition — M2 selected
 
@@ -27,9 +71,10 @@ competence does not survive successful initialization as a reusable override.
 
 This establishes the type, scope and source of the initialization authorization.
 It does not specify exact P0 bytes, select the initial H, fix every term of H's
-remit, install policy or release Move. Those exact subjects must be bound before
-the initialization is exercised; they cannot be substituted under the cover of this
-behavioral disposition. No physical transaction boundary is selected.
+remit, install policy or release Move. Explicit human/root-authority H/remit binding
+and acceptance of exact P0 must precede freezing the bootstrap fixture or executable
+transition. Shape cannot select those instance parameters autonomously or substitute
+other subjects under this disposition. No physical transaction boundary is selected.
 
 ### Selected authority graph
 
@@ -37,8 +82,8 @@ behavioral disposition. No physical transaction boundary is selected.
 
 | Authority-bearing act | Basis existing before the act | Surviving boundary |
 |---|---|---|
-| Activate exact P0 | The externally accepted human/architecture authority exercised by Levi, authorizing this one bounded initialization. | P0 cannot authorize its own birth; exact P0 and scope must be bound before use. |
-| Designate initial H and bounded remit | The same prior initialization authorization, which expressly includes designation. | H does not authorize its own first designation. Levi's possible H role derives from this act, not merely his external identity. |
+| Activate exact P0 | The externally accepted human/architecture authority exercised by Levi, authorizing this one bounded initialization. | P0 cannot authorize its own birth; the human/root authority must accept exact P0 as the grant subject before fixture/transition freeze. |
+| Designate initial H and bounded remit | The same prior initialization authorization, which expressly includes designation. | Explicit human/root-authority binding of H and normative remit precedes fixture/transition freeze. H does not self-designate; Levi's possible H role derives from this act. |
 | Exhaust bootstrap at successful initialization | The same prior authorization expressly limits competence to one initialization and requires exhaustion on success. | Exhaustion is mandatory, not an optional later decision by H or P0. Retaining historical provenance does not retain executable permission. |
 | H authorizes the first exact P1 under the operative rule | Already-operative P0 plus H's previously lawful bootstrap designation and bounded remit. | H's identity alone or the historical bootstrap basis cannot replace the P0-governed decision. |
 | Activate P1 | The prior P0-governed authorization by lawfully designated H for that exact successor. | P1 cannot validate its own activation or become operative by recency. |
@@ -266,17 +311,17 @@ prove that every externally trusted premise is universally true.
 | ID | Current disposition | Remaining question / route |
 |---|---|---|
 | Q1 — root and competence | RESOLVED BY HUMAN DISPOSITION: externally accepted human/architecture authority exercised by Levi for this greenfield genesis. | Preserve that accepted external trust premise and its provenance; do not reopen the root-person alternatives merely to select an enforcement mechanism. |
-| Q2 — H and designation basis | BEHAVIORAL BASIS RESOLVED: initial H receives bounded in-system authority through the root-authorized bootstrap designation. Levi may be H but is not automatically H. | Exact initial H and bounded remit remain to be specified and bound before initialization. Their selection cannot transfer arbitrary external powers or self-appointment authority into H. |
+| Q2 — H and designation basis | BEHAVIORAL BASIS RESOLVED: initial H receives bounded in-system authority through the root-authorized bootstrap designation. Levi may be H but is not automatically H. | Exact H and normative remit are unbound instance decisions requiring explicit human/root-authority binding before bootstrap fixture or executable-transition freeze. Shape may specify representation, authentication, validation, constraints and enforcement; it may not infer/select H, invent the remit or enlarge it. |
 | Q3 — authorization graph | RESOLVED: M2, exactly one bounded initialization containing P0 activation, H designation and bootstrap exhaustion. | Shape must preserve this behavioral scope; it may not replace it with P0-authorized first designation or separately reusable root grants. No physical grouping is implied. |
-| Q4 — exhaustion and uncertainty | SUCCESS CONDITION RESOLVED: after successful initialization, bootstrap competence is no longer exercisable; its historical basis remains recoverable. Uncertainty cannot create another grant. | Later Shape must distinguish incomplete, completed and uncertain observations sufficiently to prevent duplicate initialization. Any proposed continuation must be justified within the original grant; extra recovery authority requires separate disposition. No general retry entitlement is inferred. |
-| Q5 — first succession | PRIOR BASIS RESOLVED: P1 requires the already-operative P0 and lawfully designated H acting within remit. | Specify the exact bounded P0 rule, H decision and successor subject before execution. This is not authorization to choose any policy or confer unlimited amendment powers. |
+| Q4 — exhaustion and uncertainty | SUCCESS CONDITION RESOLVED: after successful initialization, bootstrap competence is no longer exercisable; its historical basis remains recoverable. Uncertainty cannot create another grant. | One initialization need not mean one attempt; technical failure does not automatically consume the grant. Shape must distinguish same authorized initialization continuing/recovering, a second initialization, and unknown outcome requiring stop, without inventing recovery authority. |
+| Q5 — first succession | PRIOR BASIS RESOLVED: P1 requires the already-operative P0 and lawfully designated H acting within remit. | Shape may derive minimum required P0 semantics; exact P0 requires human/root-authority acceptance as the bootstrap grant subject before fixture/transition freeze. P1 still requires a valid prior P0/H decision over exact P1. No open-ended policy grant or unlimited amendment power is inferred. |
 | Q6 — reconstruction | REQUIRED FACTS IDENTIFIED: external root disposition, its bounded exercise, exact P0, H designation/remit, completion/exhaustion and prior P0/H authorization for P1. | Resolve how those facts remain independently recoverable in later Shape under AP-04; no fields or storage are selected here. |
 
-The remaining questions concern bounded specification, representation and enforcement
-of the now-selected authority graph, rather than a missing source of authority for
-an arrow. If a proposed exact P0/remit or recovery behavior changes that graph or
+The remaining work concerns bounded specification, representation and enforcement
+of the selected authority graph, plus explicit human/root-authority binding of its
+instance parameters, rather than a missing source of authority for an arrow. If a proposed exact P0/remit or recovery behavior changes that graph or
 needs a new competence, return for explicit authority disposition before relying
-on it. Sense closeability is not permission to silently make that change.
+on it. Sense closure is not permission to silently make that change.
 
 ## Aperture disposition
 
@@ -316,7 +361,7 @@ part of this instruction; the remote observations are point-in-time facts.
 
 ## Disposition and boundary to Shape
 
-**SENSE_CLOSEABLE for the bounded behavioral authority model.** The human disposition
+**SENSE CLOSED BY HUMAN after accepting closeability and the binding tightening.** The human disposition
 supplies the prior independent root basis, selects M2's complete-initialization scope,
 licenses initial H designation separately from H's later power, makes exhaustion
 mandatory on success, and assigns the first succession to already-operative P0/H.
@@ -325,12 +370,24 @@ an assumed prerequisite; Levi as H remains a permitted exact designation choice.
 The earlier SENSE_NOT_CLOSEABLE result at `55925aa` remains truthful historical
 analysis of the then-missing authority disposition.
 
-Minimum decisions a future Shape must inherit:
+The accepted inheritance chain is:
+
+`externally accepted Levi authority → exact one-genesis M2 grant → human-accepted exact P0 + explicitly bound H/remit → ordered P0 activation / H designation / exhaustion → no ordinary governance before completion → bootstrap authority non-exercisable after success → reconstructible historical basis remains → first P1 requires prior operative P0 + valid H decision over exact P1`
+
+Minimum decisions Shape must inherit:
 
 - the externally accepted human/architecture basis exercised by Levi, bounded to
   exactly one genesis initialization;
 - M2's authority graph, with initial P0/H/exhaustion all licensed by that prior basis;
+- explicit human/root-authority binding of H and normative remit, and acceptance of
+  exact P0 as grant subject, before freezing the bootstrap fixture or executable
+  transition; Shape cannot autonomously choose H, invent/enlarge the remit or treat
+  its eventual policy output as already accepted;
 - H's in-system power deriving from designation and bounded remit, even if H is Levi;
+- no ordinary governance-dependent action before complete initialization;
+- one initialization distinguished from one attempt, with continuation of the same
+  authorization distinguished from a second initialization and unknown outcome
+  requiring stop, without additional recovery authority;
 - successful initialization extinguishing bootstrap competence while preserving its
   historical basis, with no automatic regrant through replay, restart or uncertainty;
 - P1 requiring an exact succession authorization under already-operative P0 and
@@ -338,16 +395,21 @@ Minimum decisions a future Shape must inherit:
 - reconstruction of each actual prior basis and its scope/conditions independently
   of candidate prose and conversation summaries.
 
-Exact P0, initial H/remit, bounded succession rule, interruption discrimination and
-their representation still require later specification and qualification. They must
-preserve the selected semantics; no payload or enforcement mechanism is bound here.
-The existing prior-art qualification remains partial for any eventual representation.
+Shape may derive the minimum required P0 semantics and specify representation,
+validation and enforcement. Authority-bearing instance decisions remain with the
+human/root authority as stated above. The existing prior-art qualification remains
+partial for any eventual mechanism; this is a Shape qualification task, not a reason
+to repeat Sense's settled authority inquiry.
 
-**SENSE remains OPEN; closure has not been directed.** This closeability assessment
-does not enter Shape, bind an Output Contract or release implementation. The previously
-verified PR #2 → main normalization step remains separate and requires its own GitHub
-authorization and fresh verification. No remote mutation, canonical contact, policy
-installation or BUILD 7+ work occurred in recording this disposition.
+**Sense closure is recorded; Shape work awaits the required repository normalization.**
+Read-only re-verification at closure found PR #2 OPEN, draft and MERGEABLE, head
+`5af44bb1a14cc098f2f3f105d611cff406135cf9` against main
+`07fcb9f29c75365c07d36226043d3b17cbc769fd`. Remote BUILD 6 remains at `984f16d`;
+the local disposition lineage through `da8e201` descends from the accepted predecessor.
+PR #2 → main remains the clean pre-Shape integration path, requiring separate GitHub
+authorization and verification before action. No remote mutation, mechanism selection,
+Output Contract, implementation, canonical contact, policy installation or BUILD 7+
+work occurred in this closure.
 
 ## Evidence encounter and qualification limits
 
