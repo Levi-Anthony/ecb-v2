@@ -116,6 +116,7 @@ Route uncertainty as follows:
 | Need to know what canonical OB1 already solves | `docs/ob1-prior-art.md` |
 | Mathematical or formal-semantics probe | `research/formal-semantics/README.md` |
 | Human-door deployment choice | `docs/deployment-shapes/human-door.md` |
+| Human authenticator / H binding choice | `docs/deployment-shapes/governance-authenticator.md` |
 | Custody-transfer harness test | `prompts/harness-orientation-test.md` |
 | New architectural choice required | Create an ADR in `/docs/architecture-decisions/` |
 
