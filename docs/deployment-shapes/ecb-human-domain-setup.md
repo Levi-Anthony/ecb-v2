@@ -35,4 +35,6 @@ Before this write, Namecheap's login page reported three failed attempts and war
 
 ## Resume
 
+The routing episode has now been [Metabolized](ecb-human-domain-metabolize.md) under Levi's instruction. Continue from the [BUILD 6 release package](../build-shape/008-build-6-move-release.md); the facts below are carried obligations, not a reason to reopen this DNS write.
+
 Address routing is complete. Continue the human-service technical qualification and protected enrollment prerequisites from the runtime proposal; repeat HTTPS verification when the certificate is ready. A provider error page is not a functioning human door. No repeated hostname approval or DNS write is needed. Further service implementation and exact credential/scope binding retain their applicable BUILD 6 boundaries.

@@ -31,10 +31,12 @@ AP01=CONDITIONAL; NO_NEW_VOCABULARY_DEMONSTRATED
 PRIOR_ART_QUALIFICATION=PARTIAL; EXISTING_PINS_PRESERVED
 SHAPE=OPEN; MECHANISM_NOT_SELECTED
 OUTPUT_CONTRACT=UNBOUND
+MOVE_RELEASE_PACKAGE=PREPARED; STAGED_IMPLEMENTATION_AND_LIVE_BINDING_DISPOSITION_PENDING
 MOVE_PERMISSION=UNRELEASED
 IMPLEMENTATION=UNOPENED
 CANONICAL_CONTACT=NO_NEW_DATABASE_MUTATION
 HUMAN_HOST_SETUP=ECOS_EFFORTLESSCONNECTION_COM_ACCEPTED; ECB_HUMAN_PROJECT_AND_DOMAIN_CREATED; DNS_CONFIGURED_AND_VERCEL_VERIFIED; TLS_AND_SERVICE_PENDING
+DOMAIN_MINI_MOVE=METABOLIZED; ROUTING_COMPLETE; TLS_AND_SERVICE_OBLIGATIONS_CARRIED_TO_BUILD_6
 HUMAN_INTERACTION=LOW_FRICTION_CONTINUITY_AND_EFFECTIVE_INTERVENTION_ACCEPTED
 HUMAN_APPROVAL=PROTECTED_SESSION_EXACT_DECISION_ALLOCATION_CANDIDATE; TECHNICAL_SHAPE_UNQUALIFIED
 EMAIL_ENROLLMENT=SUPERSEDED; INVITATION_NOT_SUBMITTED
@@ -171,6 +173,8 @@ within Shape; Actor ontology, UI, universal policy engine, Master Key machinery,
 action-envelope semantics and BUILD 7+ remain excluded. Research remains untouched.
 
 ## NEXT HANDLE
+
+**Release preparation:** The [domain mini-Move is Metabolized](docs/deployment-shapes/ecb-human-domain-metabolize.md). The [BUILD 6 staged release package](docs/build-shape/008-build-6-move-release.md) specifies construction/qualification, protected enrollment, exact live binding, M2 activation and first ordinary succession. It proposes allowing disposable mechanism qualification before actual credential binding, while retaining that binding before canonical bootstrap-instance freeze and activation. This qualification-order disposition is pending; no release, test authority or live credential has been inferred. H/remit/P0/domain remain accepted. The next human input changes this implementation boundary, not those settled decisions.
 
 **Current continuation:** [Human-domain setup receipt](docs/deployment-shapes/ecb-human-domain-setup.md) records Levi's hostname acceptance, isolated `ecb-human` Vercel project and completed CNAME setup for `ecos.effortlessconnection.com`. Registrar access is resolved. Saved record persists; both authoritative nameservers and two public resolvers return it; Vercel reports configured correctly. Initial HTTPS negotiation failed, so TLS remains unverified. Exact project environment check returned zero variables. No service, credential or governance activation is installed. Continue [runtime/session qualification](docs/build-shape/008-build-6-runtime-boundary.md) and protected enrollment prerequisites without repeating domain or H/remit/P0 acceptance. Actual credential/scope binding and applicable Shape/Move closure remain.
 

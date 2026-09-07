@@ -5,6 +5,8 @@ AUTHORITY: Explicit human PR #2 merge instruction and post-verification Shape op
 
 # BUILD 6 Shape — Governance Bootstrap
 
+**Current release preparation:** The [staged Move package](008-build-6-move-release.md) follows the completed domain mini-Move's Metabolize. It proposes construction and disposable qualification before protected live credential/scope binding, with that binding retained before canonical bootstrap-instance freeze and activation. Qualification ordering requires explicit disposition; Move remains unreleased. The RP hostname is accepted and DNS verified; references below to an unresolved domain describe the earlier inquiry.
+
 **Current technical continuation:** [Runtime, session and record boundary](008-build-6-runtime-boundary.md) supplies the concrete proposal and observed hosting/credential constraints. Earlier alternatives below retain their historical scope.
 
 **Current continuation — 2026-09-07:** [Direct WebAuthn approval](008-build-6-webauthn.md) is the user-preferred mechanism under investigation. Email enrollment is superseded. Exact credentials, RP domain, protected root enrollment and governance scope remain to be resolved before executable freeze. No change to accepted H/remit/P0 or Move status follows.

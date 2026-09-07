@@ -4,6 +4,8 @@ DATE: 2026-09-07 America/Phoenix
 
 # BUILD 6 — Human session, records and installation boundary
 
+**Release preparation:** The [staged Move package](008-build-6-move-release.md) now gathers the proposed output, qualification and actual enrollment/activation route. Its proposed qualification-order disposition is not yet accepted. The domain question at the end of this earlier proposal is resolved by the accepted setup receipt below.
+
 This is the current technical continuation of the [accepted interaction direction](008-build-6-webauthn.md#human-acceptance--2026-09-07). It replaces the earlier open-ended runtime/record options with a concrete proposal. Accepted H/remit/P0 and M2 remain unchanged. It neither selects a new canonical store nor introduces general work envelopes.
 
 **Later accepted setup:** [Domain execution receipt](../deployment-shapes/ecb-human-domain-setup.md) records acceptance, Vercel project/domain creation and completed Namecheap CNAME setup. Authoritative/public DNS and Vercel verification now pass. TLS, service and credential enrollment remain pending. The recommendation and earlier DNS/tooling observations below are historical; consult the receipt for current setup state.
