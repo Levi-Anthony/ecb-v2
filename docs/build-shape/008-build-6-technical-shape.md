@@ -4,6 +4,8 @@ DATE: 2026-09-06 America/Phoenix
 
 # BUILD 6 technical boundary
 
+**Current technical continuation:** [Runtime, session and record boundary](008-build-6-runtime-boundary.md) supplies the concrete proposal and observed hosting/credential constraints. Earlier alternatives below retain their historical scope.
+
 **Currentness — 2026-09-07:** [WebAuthn revision](008-build-6-webauthn.md) now supplies the preferred human-approval candidate following Levi’s correction. The Auth/session path, its principal fields, enrollment next handle and authentication tests below are superseded alternatives. Transaction ordering, exact P0, privilege separation and recovery constraints survive subject to the explicit WebAuthn reconciliation. No mechanism is frozen or installed.
 
 The [human binding record](008-build-6-human-binding.md) supplies accepted H/remit and exact P0. This document develops the remaining mechanism under those subjects. It neither asks for their acceptance again nor claims an installed policy interpreter.

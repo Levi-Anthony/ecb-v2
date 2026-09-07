@@ -4,6 +4,8 @@ DATE: 2026-09-07 America/Phoenix
 
 # BUILD 6 — Exact human decisions through WebAuthn
 
+**Current technical continuation:** [Runtime, session and record boundary](008-build-6-runtime-boundary.md) supplies the concrete proposal and observed hosting/credential constraints. Earlier alternatives below retain their historical scope.
+
 ## Human acceptance — 2026-09-07
 
 Levi answered **“Accepted”** to the preceding recommendation: carry existing authorization forward; authenticate infrequently through a protected human session; request each actual decision once; make restriction easy; provide an alternative intervention route; tighten a particular boundary only when its failure evidence warrants it. The reviewed local state was commit `69361b9` in Codex task `01a07901-1834-7fc2-9575-07013b67ebba`.

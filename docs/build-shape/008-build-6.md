@@ -5,6 +5,8 @@ AUTHORITY: Explicit human PR #2 merge instruction and post-verification Shape op
 
 # BUILD 6 Shape — Governance Bootstrap
 
+**Current technical continuation:** [Runtime, session and record boundary](008-build-6-runtime-boundary.md) supplies the concrete proposal and observed hosting/credential constraints. Earlier alternatives below retain their historical scope.
+
 **Current continuation — 2026-09-07:** [Direct WebAuthn approval](008-build-6-webauthn.md) is the user-preferred mechanism under investigation. Email enrollment is superseded. Exact credentials, RP domain, protected root enrollment and governance scope remain to be resolved before executable freeze. No change to accepted H/remit/P0 or Move status follows.
 
 **Later accepted instance binding:** [Human binding record](008-build-6-human-binding.md) records Levi as initial H with the stated remit and acceptance of exact P0. The earlier unbound-instance language below describes Shape entry. Actual authenticated issuer/subject and scope binding remain pending; no mechanism, fixture or implementation is installed by that acceptance.

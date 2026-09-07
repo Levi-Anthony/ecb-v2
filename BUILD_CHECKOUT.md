@@ -33,7 +33,7 @@ SHAPE=OPEN; MECHANISM_NOT_SELECTED
 OUTPUT_CONTRACT=UNBOUND
 MOVE_PERMISSION=UNRELEASED
 IMPLEMENTATION=UNOPENED
-CANONICAL_CONTACT=READ_ONLY_PROJECT_AND_EXACT_EMAIL_AUTH_LOOKUP_RECHECKED_2026_09_07; NO_MUTATION
+CANONICAL_CONTACT=READ_ONLY_AUTH_LOOKUP_AND_HOSTING_CONFIGURATION_INSPECTION_2026_09_07; NO_MUTATION
 HUMAN_INTERACTION=LOW_FRICTION_CONTINUITY_AND_EFFECTIVE_INTERVENTION_ACCEPTED
 HUMAN_APPROVAL=PROTECTED_SESSION_EXACT_DECISION_ALLOCATION_CANDIDATE; TECHNICAL_SHAPE_UNQUALIFIED
 EMAIL_ENROLLMENT=SUPERSEDED; INVITATION_NOT_SUBMITTED
@@ -171,7 +171,7 @@ action-envelope semantics and BUILD 7+ remain excluded. Research remains untouch
 
 ## NEXT HANDLE
 
-**Current continuation:** Levi accepted the [fluidity and intervention direction](docs/build-shape/008-build-6-webauthn.md#latest-correction--fluid-operation-with-effective-intervention) controls the human-boundary inquiry. Do not turn WebAuthn or artifact approval into repeated ceremonies. Separate authentication, exact human decision, continuing authorization and effect execution. Develop the minimum protected session/step-up boundary and truthful restriction controls; bank domain enrollment until that interaction is resolved. H/remit/exact P0 and M2 remain accepted; general work envelopes and stop infrastructure are not installed by this candidate. The concrete BUILD 6 allocation uses qualified session decisions and existing own-pending-decision withdrawal; fresh exact-assertion proof requires a demonstrated need. Continue session ingress/custody and record mapping without repeating the interaction acceptance. Email enrollment remains superseded. Move remains unreleased.
+**Current continuation:** The [concrete runtime boundary](docs/build-shape/008-build-6-runtime-boundary.md) now proposes one isolated human service, protected sessions, exact session-attributed decisions, direct withdrawal and seven native record families. Read-only hosting/credential-name inspection found the existing Vercel project inherits broad database/signing configuration; it is not a qualified human-verifier environment. Recommend a separate minimal deployment using only a restricted role against the same canonical brain. The [accepted low-friction direction](docs/build-shape/008-build-6-webauthn.md#human-acceptance--2026-09-07) and H/remit/P0 remain settled. Domain ownership is the current user question; protected enrollment custody, exact identity/scope binding, runtime qualification and applicable Shape/Move closure remain before installation. No repeated normative approval or email enrollment.
 
 Proceed with the [Shape mechanism inquiry](docs/build-shape/008-build-6.md#active-shape-question)
 and its adversarial constraints. Compare the smallest candidate representations and
