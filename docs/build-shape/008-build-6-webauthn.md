@@ -4,6 +4,35 @@ DATE: 2026-09-07 America/Phoenix
 
 # BUILD 6 — Exact human decisions through WebAuthn
 
+## Human acceptance — 2026-09-07
+
+Levi answered **“Accepted”** to the preceding recommendation: carry existing authorization forward; authenticate infrequently through a protected human session; request each actual decision once; make restriction easy; provide an alternative intervention route; tighten a particular boundary only when its failure evidence warrants it. The reviewed local state was commit `69361b9` in Codex task `01a07901-1834-7fc2-9575-07013b67ebba`.
+
+That interaction direction is accepted and is no longer a pending preference question. Technical allocations and untested implementation details below remain candidates. This decision preserves accepted H/remit/P0 and M2. It does not supply an exact credential, domain, broader maintenance grant, frozen fixture or implementation release.
+
+## Concrete BUILD 6 allocation — candidate under the accepted direction
+
+| Operation | Proposed human proof and interaction | Effect boundary |
+|---|---|---|
+| Establish human session | Passkey authentication against an already bound credential | Authentication creates no policy acceptance or execution grant |
+| Inspect scope, policy, decisions and recovery outcome | Existing qualified human session; no new ceremony | Scope-qualified read; recovery does not replay an effect |
+| Accept or decline exact P1 | One explicit decision through that session, bound to displayed exact subjects and predecessor | Record the human input and session basis; check current P0/H/remit and commit before execution |
+| Withdraw own unconsumed P1 decision | Same session, direct withdrawal action; no additional confirmation or biometric prompt | Serialize against execution under the scope lock |
+| Execute or recover an already committed grant | Qualified executor, exact grant and request identity | No additional human interaction; enforce current eligibility and return exact prior success |
+| Initial enrollment/genesis | Protected external-root binding plus one exact initialization acceptance | Registration cannot authorize itself; M2 still completes atomically |
+| Expired/revoked session or changed credential eligibility | Establish an eligible session before a new human decision | Do not silently refresh an invalid session or extend a grant |
+| Broad pause, slowdown, resume, credential maintenance | Accepted interaction requirement; dedicated applicable authority/implementation remains to be resolved | Do not misrepresent P0's own-decision withdrawal as a global stop service |
+
+**Selection rationale:** accepted P0 requires an exact prior human decision, not a fresh public-key signature over every P1. Recommend qualifying the protected-session route for ordinary P1 acceptance first. Preserve per-decision WebAuthn proof as an available stronger mechanism when the identified failure requires it; do not make it an automatic second confirmation after an already qualified human decision. The cost is explicit: session-attributed decisions rely on the session/controller boundary and do not carry a fresh authenticator assertion over their contents. A demonstration that this boundary permits agent impersonation would reject the allocation or require stronger proof at the affected entry.
+
+The human boundary must capture the actual decision directly. The operating model may prepare the candidate but cannot possess the human session, submit a trusted human-input record on its own, or change the displayed subject behind an existing acceptance. Session identity and authorization are rechecked server-side for every human request. Duration, inactivity expiry and credential-change handling must be explicit configuration before freeze; no arbitrary timeouts are adopted as doctrine here.
+
+**Withdrawal race:** if withdrawal commits first, execution rejects the grant. If execution commits first, withdrawal reports the already completed transition; it cannot undo it. If the competing execution rolls back, withdrawal can commit after acquiring the scope lock. If acknowledgement is lost, show outcome unknown until the same authoritative recovery path resolves it. A successful withdrawal response must mean the restriction committed, not merely that a UI event was queued. Closing a browser, losing a session or disabling a worker does not itself withdraw a durable grant.
+
+This gives BUILD 6 a concrete restriction using its already accepted remit. The whole-system slow/pause behavior remains an accepted requirement to descend through the capabilities it actually controls. A separate minimal control client should be able to call the same withdrawal/recovery service without the main dashboard; it shares that service's outage limits and is not claimed as full infrastructure redundancy.
+
+Qualification delta: test an exact P1 decision through an eligible session and reject the same call from an operating-agent credential; reject substituted subject/predecessor and expired/revoked session; verify that execution/recovery needs no renewed login; exercise all withdrawal race outcomes; verify alternate-client withdrawal without the main dashboard. These are proposed acceptance observations, not executed tests. Next technical work is the protected-session ingress/custody and durable record mapping for this allocation, followed by enrollment prerequisites and the existing fixture/Move route.
+
 ## Latest correction — fluid operation with effective intervention
 
 Levi prioritizes the lowest practical friction, continuity across device loss, and an ability to slow or stop work. He reports that the earlier human-artifact approval button became security theater and a serious friction vector. Preserve that as operator experience, not a newly executed audit of the old implementation.
