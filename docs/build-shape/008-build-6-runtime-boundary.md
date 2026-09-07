@@ -6,6 +6,14 @@ DATE: 2026-09-07 America/Phoenix
 
 This is the current technical continuation of the [accepted interaction direction](008-build-6-webauthn.md#human-acceptance--2026-09-07). It replaces the earlier open-ended runtime/record options with a concrete proposal. Accepted H/remit/P0 and M2 remain unchanged. It neither selects a new canonical store nor introduces general work envelopes.
 
+## Domain recommendation and tooling update — 2026-09-07
+
+Levi supplied `effortlessconnection.com` as a domain he owns and requested a recommendation with downstream consequences. Recommend `https://ecos.effortlessconnection.com` as the stable human entrance, with exact RP ID `ecos.effortlessconnection.com` and exact allowed HTTPS origin. This is a recommendation, not an accepted/enrolled binding. It supports the existing domain, a recognizable shortcut/dashboard address and host migration without changing the passkey identity, provided credential records and verification configuration are preserved. Different future dashboards can use this common authentication entrance rather than widening the passkey scope to every website under the parent domain.
+
+Public DNS inspection returned NXDOMAIN for the proposed hostname; parent nameservers were `dns1.registrar-servers.com` and `dns2.registrar-servers.com`. No registrar-account ownership or control was independently verified. Recommend adding only the provider-specified subdomain record when the isolated deployment is ready; preserve existing apex, email and nameservers. No DNS, domain association or deployment was changed. Continued ownership/renewal of the parent domain is a dependency. Changing the passkey RP identity later can require new enrollment; moving hosting while preserving it is a different operation. If Levi intends to sell/retire this domain or keep ECOS's identity separate from it, reconsider before enrollment.
+
+Under explicit user authorization, `npm install --global vercel@latest` completed and `vercel --version` reported **59.11.7**, upgraded from 59.11.2. `vercel whoami` verified the existing signed-in account still works. The npm command reported upstream dependency deprecation warnings; no dependency-security assessment or runtime deployment qualification is claimed.
+
 ## Recommendation and newly observed constraints
 
 Use a small human web service, with its page and session endpoints on one HTTPS origin, and a restricted connection to canonical Supabase Postgres. Keep the existing three-tool MCP runtime intact. Its agent credential can later reach only specifically granted candidate/read/executor entries, never human-session or decision-issuance entries.
