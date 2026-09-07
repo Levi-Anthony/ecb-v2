@@ -1,4 +1,4 @@
-STATUS: VERCEL PROJECT AND DOMAIN ASSOCIATION CREATED — DNS / TLS / SERVICE PENDING
+STATUS: DNS CONFIGURED AND VERCEL VERIFIED — TLS / SERVICE PENDING
 DISPOSITION: DECISION_RECORD / EXECUTION EVIDENCE
 DATE: 2026-09-07 America/Phoenix
 
@@ -15,20 +15,24 @@ Levi answered **“Good. I agree. Go”** to the recommendation of `ecos.effortl
 - Existing repository `.vercel/project.json` still identifies `ecb-v2`; it was not relinked. Existing MCP, parent website, email and nameservers were not modified by this agent.
 - Public RDAP identifies NameCheap, Inc. as registrar. Public DNS and Vercel report external nameservers `dns1.registrar-servers.com` and `dns2.registrar-servers.com`.
 
-## Exact pending DNS operation
+## DNS completed — 2026-09-07
 
-Vercel's domain verification returned `invalid_configuration`, no current CNAME/A record and the following preferred record:
+Vercel initially returned `invalid_configuration`, no current CNAME/A record and the following preferred record. After Levi confirmed sign-in, the agent inspected Namecheap Advanced DNS, found no conflicting `ecos` record, and saved this exact CNAME:
 
 | Type | Host | Target | TTL |
 |---|---|---|---|
 | CNAME | `ecos` | `6a8818416e2c0b55.vercel-dns-017.com` | Provider automatic/default |
 
-Only add this host after inspecting the current Namecheap record set for conflicts. Do not change nameservers, apex records, mail records or purchase another domain. The trailing dot in Vercel's fully qualified target is equivalent DNS notation; use the registrar's accepted format.
+Reopening Advanced DNS confirmed the saved record persists, with Automatic TTL and the fully qualified target ending in a dot. Existing apex A `162.159.140.166`, `www` CNAME `sites.ludicrous.cloud.`, email-forwarding/SPF settings and nameservers remain unchanged.
 
-Namecheap is not authenticated in the available browser. Its login page reports three failed attempts and warns one further failure will lock access for 24 hours. This agent did not submit another login. Opened the site's account-recovery link for Levi and left it as a handoff; no recovery request, password change or email dispatch was submitted by the agent. The user must regain account access before this DNS write can proceed.
+Both authoritative nameservers and public resolvers `1.1.1.1` / `8.8.8.8` subsequently returned the exact CNAME. Vercel verification returned `status=ok`, `reason=configured_correctly`, `configuredBy=CNAME`, no issues, and project `ecb-human` verified. Checks completed by 18:47 UTC (11:47 America/Phoenix). Initial post-save NXDOMAIN responses were propagation delay; no duplicate record was added.
 
-`verified=true` on the project-domain association is **not** DNS/TLS or application readiness. No DNS record has been written, no TLS certificate has been verified, and no human web service is deployed. Do not report the address as working or invite passkey enrollment.
+Normal certificate-verifying HTTPS requests failed during TLS negotiation (`SSL_ERROR_SYSCALL`), including the recheck at 18:47 UTC. An independent Python TLS client likewise received EOF before completing its handshake. No TLS success or specific cause is claimed. There is still no deployment or human service, and no passkey enrollment. DNS verification is not application readiness.
+
+## Historical access handoff — resolved
+
+Before this write, Namecheap's login page reported three failed attempts and warned of a 24-hour lockout after another failure. The agent opened the account-recovery link without submitting another login, recovery request, password change or email. Levi subsequently reported “it's logged in now”; the authenticated account and domain settings were then observed. Registrar access is no longer an outstanding user-input blocker.
 
 ## Resume
 
-After Levi completes account recovery/sign-in, resume the existing Namecheap tab, inspect the domain's Advanced DNS records, add the exact CNAME, and verify persistence in the registrar plus authoritative DNS/Vercel status. Check HTTPS only when a deployment/certificate exists; a provider error page is not a functioning human door. No repeated hostname approval is needed. Further service implementation and exact credential/scope binding retain their applicable BUILD 6 boundaries.
+Address routing is complete. Continue the human-service technical qualification and protected enrollment prerequisites from the runtime proposal; repeat HTTPS verification when the certificate is ready. A provider error page is not a functioning human door. No repeated hostname approval or DNS write is needed. Further service implementation and exact credential/scope binding retain their applicable BUILD 6 boundaries.

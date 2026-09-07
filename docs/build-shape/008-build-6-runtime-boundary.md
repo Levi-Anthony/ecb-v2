@@ -6,7 +6,7 @@ DATE: 2026-09-07 America/Phoenix
 
 This is the current technical continuation of the [accepted interaction direction](008-build-6-webauthn.md#human-acceptance--2026-09-07). It replaces the earlier open-ended runtime/record options with a concrete proposal. Accepted H/remit/P0 and M2 remain unchanged. It neither selects a new canonical store nor introduces general work envelopes.
 
-**Later accepted setup:** [Domain execution receipt](../deployment-shapes/ecb-human-domain-setup.md) records acceptance and Vercel project/domain creation. The recommendation below is now accepted; DNS, TLS, service and credential enrollment remain pending.
+**Later accepted setup:** [Domain execution receipt](../deployment-shapes/ecb-human-domain-setup.md) records acceptance, Vercel project/domain creation and completed Namecheap CNAME setup. Authoritative/public DNS and Vercel verification now pass. TLS, service and credential enrollment remain pending. The recommendation and earlier DNS/tooling observations below are historical; consult the receipt for current setup state.
 
 ## Domain recommendation and tooling update — 2026-09-07
 

@@ -34,7 +34,7 @@ OUTPUT_CONTRACT=UNBOUND
 MOVE_PERMISSION=UNRELEASED
 IMPLEMENTATION=UNOPENED
 CANONICAL_CONTACT=NO_NEW_DATABASE_MUTATION
-HUMAN_HOST_SETUP=ECOS_EFFORTLESSCONNECTION_COM_ACCEPTED; ECB_HUMAN_PROJECT_AND_DOMAIN_CREATED; DNS_PENDING_NAMECHEAP_ACCESS
+HUMAN_HOST_SETUP=ECOS_EFFORTLESSCONNECTION_COM_ACCEPTED; ECB_HUMAN_PROJECT_AND_DOMAIN_CREATED; DNS_CONFIGURED_AND_VERCEL_VERIFIED; TLS_AND_SERVICE_PENDING
 HUMAN_INTERACTION=LOW_FRICTION_CONTINUITY_AND_EFFECTIVE_INTERVENTION_ACCEPTED
 HUMAN_APPROVAL=PROTECTED_SESSION_EXACT_DECISION_ALLOCATION_CANDIDATE; TECHNICAL_SHAPE_UNQUALIFIED
 EMAIL_ENROLLMENT=SUPERSEDED; INVITATION_NOT_SUBMITTED
@@ -172,7 +172,7 @@ action-envelope semantics and BUILD 7+ remain excluded. Research remains untouch
 
 ## NEXT HANDLE
 
-**Current continuation:** [Human-domain setup receipt](docs/deployment-shapes/ecb-human-domain-setup.md) records Levi's hostname acceptance, new isolated `ecb-human` Vercel project and attached `ecos.effortlessconnection.com`. Exact project environment check returned zero variables. DNS remains pending Namecheap account access; a login lockout warning prompted a user recovery handoff, with no additional login or reset submission. Resume the exact CNAME setup after sign-in, without repeating hostname acceptance. No service, credential or governance activation is installed. [Runtime/session proposal](docs/build-shape/008-build-6-runtime-boundary.md), accepted low-friction direction and H/remit/P0 remain current; actual credential/scope binding, qualification and applicable Shape/Move closure remain.
+**Current continuation:** [Human-domain setup receipt](docs/deployment-shapes/ecb-human-domain-setup.md) records Levi's hostname acceptance, isolated `ecb-human` Vercel project and completed CNAME setup for `ecos.effortlessconnection.com`. Registrar access is resolved. Saved record persists; both authoritative nameservers and two public resolvers return it; Vercel reports configured correctly. Initial HTTPS negotiation failed, so TLS remains unverified. Exact project environment check returned zero variables. No service, credential or governance activation is installed. Continue [runtime/session qualification](docs/build-shape/008-build-6-runtime-boundary.md) and protected enrollment prerequisites without repeating domain or H/remit/P0 acceptance. Actual credential/scope binding and applicable Shape/Move closure remain.
 
 Proceed with the [Shape mechanism inquiry](docs/build-shape/008-build-6.md#active-shape-question)
 and its adversarial constraints. Compare the smallest candidate representations and
