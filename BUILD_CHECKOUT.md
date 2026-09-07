@@ -33,7 +33,8 @@ SHAPE=OPEN; MECHANISM_NOT_SELECTED
 OUTPUT_CONTRACT=UNBOUND
 MOVE_PERMISSION=UNRELEASED
 IMPLEMENTATION=UNOPENED
-CANONICAL_CONTACT=READ_ONLY_AUTH_LOOKUP_AND_HOSTING_CONFIGURATION_INSPECTION_2026_09_07; NO_MUTATION
+CANONICAL_CONTACT=NO_NEW_DATABASE_MUTATION
+HUMAN_HOST_SETUP=ECOS_EFFORTLESSCONNECTION_COM_ACCEPTED; ECB_HUMAN_PROJECT_AND_DOMAIN_CREATED; DNS_PENDING_NAMECHEAP_ACCESS
 HUMAN_INTERACTION=LOW_FRICTION_CONTINUITY_AND_EFFECTIVE_INTERVENTION_ACCEPTED
 HUMAN_APPROVAL=PROTECTED_SESSION_EXACT_DECISION_ALLOCATION_CANDIDATE; TECHNICAL_SHAPE_UNQUALIFIED
 EMAIL_ENROLLMENT=SUPERSEDED; INVITATION_NOT_SUBMITTED
@@ -171,7 +172,7 @@ action-envelope semantics and BUILD 7+ remain excluded. Research remains untouch
 
 ## NEXT HANDLE
 
-**Current continuation:** The [concrete runtime boundary](docs/build-shape/008-build-6-runtime-boundary.md) now proposes one isolated human service, protected sessions, exact session-attributed decisions, direct withdrawal and seven native record families. Read-only hosting/credential-name inspection found the existing Vercel project inherits broad database/signing configuration; it is not a qualified human-verifier environment. Recommend a separate minimal deployment using only a restricted role against the same canonical brain. The [accepted low-friction direction](docs/build-shape/008-build-6-webauthn.md#human-acceptance--2026-09-07) and H/remit/P0 remain settled. Levi supplied effortlessconnection.com; the specific recommendation is ecos.effortlessconnection.com as human origin and RP ID. No hostname binding or DNS change is installed. Vercel CLI is now verified at 59.11.7. Protected enrollment custody, exact identity/scope binding, runtime qualification and applicable Shape/Move closure remain before installation. No repeated normative approval or email enrollment.
+**Current continuation:** [Human-domain setup receipt](docs/deployment-shapes/ecb-human-domain-setup.md) records Levi's hostname acceptance, new isolated `ecb-human` Vercel project and attached `ecos.effortlessconnection.com`. Exact project environment check returned zero variables. DNS remains pending Namecheap account access; a login lockout warning prompted a user recovery handoff, with no additional login or reset submission. Resume the exact CNAME setup after sign-in, without repeating hostname acceptance. No service, credential or governance activation is installed. [Runtime/session proposal](docs/build-shape/008-build-6-runtime-boundary.md), accepted low-friction direction and H/remit/P0 remain current; actual credential/scope binding, qualification and applicable Shape/Move closure remain.
 
 Proceed with the [Shape mechanism inquiry](docs/build-shape/008-build-6.md#active-shape-question)
 and its adversarial constraints. Compare the smallest candidate representations and

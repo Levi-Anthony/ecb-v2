@@ -6,6 +6,8 @@ DATE: 2026-09-07 America/Phoenix
 
 This is the current technical continuation of the [accepted interaction direction](008-build-6-webauthn.md#human-acceptance--2026-09-07). It replaces the earlier open-ended runtime/record options with a concrete proposal. Accepted H/remit/P0 and M2 remain unchanged. It neither selects a new canonical store nor introduces general work envelopes.
 
+**Later accepted setup:** [Domain execution receipt](../deployment-shapes/ecb-human-domain-setup.md) records acceptance and Vercel project/domain creation. The recommendation below is now accepted; DNS, TLS, service and credential enrollment remain pending.
+
 ## Domain recommendation and tooling update — 2026-09-07
 
 Levi supplied `effortlessconnection.com` as a domain he owns and requested a recommendation with downstream consequences. Recommend `https://ecos.effortlessconnection.com` as the stable human entrance, with exact RP ID `ecos.effortlessconnection.com` and exact allowed HTTPS origin. This is a recommendation, not an accepted/enrolled binding. It supports the existing domain, a recognizable shortcut/dashboard address and host migration without changing the passkey identity, provided credential records and verification configuration are preserved. Different future dashboards can use this common authentication entrance rather than widening the passkey scope to every website under the parent domain.
