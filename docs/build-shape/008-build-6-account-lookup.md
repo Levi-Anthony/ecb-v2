@@ -4,6 +4,8 @@ DATE: 2026-09-06 America/Phoenix
 
 # Human-account lookup
 
+**Later disposition — 2026-09-07:** Email enrollment was superseded by Levi’s [WebAuthn preference](008-build-6-webauthn.md) before the agent submitted an invitation. A fresh exact-email query selecting only ID/invitation/confirmation fields again returned zero rows. The earlier next-action recommendation below is historical, not a pending request to send email. No Auth or governance mutation occurred.
+
 Levi supplied an email in this task in response to the account-identification question. The address remains in the conversation; this receipt need not publish it in the repository.
 
 Read-only project lookup confirmed `vezxivrvhakclxuvxzso`, name `ecb-v2-brain`, status `ACTIVE_HEALTHY`, matching ADR-002. A case-insensitive exact-email query of that project's `auth.users`, selecting only ID, email, confirmation/anonymity/deletion fields, returned zero rows. No credential, password hash, token or unrelated account was requested.

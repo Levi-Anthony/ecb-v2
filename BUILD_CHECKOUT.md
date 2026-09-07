@@ -33,7 +33,9 @@ SHAPE=OPEN; MECHANISM_NOT_SELECTED
 OUTPUT_CONTRACT=UNBOUND
 MOVE_PERMISSION=UNRELEASED
 IMPLEMENTATION=UNOPENED
-CANONICAL_CONTACT=READ_ONLY_PROJECT_AND_EXACT_EMAIL_AUTH_LOOKUP; NO_MUTATION
+CANONICAL_CONTACT=READ_ONLY_PROJECT_AND_EXACT_EMAIL_AUTH_LOOKUP_RECHECKED_2026_09_07; NO_MUTATION
+HUMAN_APPROVAL=USER_PREFERS_DIRECT_WEBAUTHN; TECHNICAL_SHAPE_UNQUALIFIED
+EMAIL_ENROLLMENT=SUPERSEDED; INVITATION_NOT_SUBMITTED
 BUILD_7_PLUS=UNOPENED
 ```
 
@@ -168,7 +170,7 @@ action-envelope semantics and BUILD 7+ remain excluded. Research remains untouch
 
 ## NEXT HANDLE
 
-**Current continuation:** [Technical Shape](docs/build-shape/008-build-6-technical-shape.md) develops the mechanism under the now-accepted [H/remit and exact P0](docs/build-shape/008-build-6-human-binding.md). Levi supplied the account email; [read-only lookup](docs/build-shape/008-build-6-account-lookup.md) found no matching project-local Auth user. Verified enrollment and actual issuer/subject/scope binding remain pending. Do not repeat normative acceptance or ask for the same email again. The mechanism and executable expectations remain candidates until their applicable closure, and Move remains unreleased.
+**Current continuation:** Levi prefers [direct WebAuthn exact-decision approval](docs/build-shape/008-build-6-webauthn.md). Email enrollment is superseded; the invitation was not submitted and a fresh bounded Auth lookup found no matching row. H/remit and exact P0 remain accepted. Continue the credential-neutral technical binding under that revised candidate: stable RP domain, protected external-root enrollment, exact initial credential set, governance scope and verifier trust boundary. The domain question is pending; technical reconciliation can continue independently. No credential maintenance or recovery power is silently added to H's remit. Shape remains open and Move unreleased.
 
 Proceed with the [Shape mechanism inquiry](docs/build-shape/008-build-6.md#active-shape-question)
 and its adversarial constraints. Compare the smallest candidate representations and

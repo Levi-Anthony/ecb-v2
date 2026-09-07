@@ -5,6 +5,8 @@ AUTHORITY: Inherits accepted M2 and Shape scope; supplies no new human binding o
 
 # BUILD 6 — One committed initialization, recoverable exact decisions
 
+**Currentness — 2026-09-07:** Read with the [WebAuthn revision](008-build-6-webauthn.md). Levi prefers direct credential-bound approval over Auth enrollment. The authentication and record-count proposals below require reconciliation; the accepted M2 sequence and transaction obligations remain intact.
+
 ## Recommendation
 
 Use a narrowly privileged database transition boundary. One transaction makes initial policy activation, initial H designation and bootstrap exhaustion effective together. Retain the accepted subjects and human decisions before execution; retain the consequential transition and resulting current-state pointer atomically. After interruption, reconstruct the result before deciding whether any execution remains necessary.
