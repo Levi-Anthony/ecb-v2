@@ -5,6 +5,8 @@ AUTHORITY: Explicit human PR #2 merge instruction and post-verification Shape op
 
 # BUILD 6 Shape — Governance Bootstrap
 
+**Later accepted instance binding:** [Human binding record](008-build-6-human-binding.md) records Levi as initial H with the stated remit and acceptance of exact P0. The earlier unbound-instance language below describes Shape entry. Actual authenticated issuer/subject and scope binding remain pending; no mechanism, fixture or implementation is installed by that acceptance.
+
 ## Verified entry
 
 BUILD 5B was already human-closed at
@@ -61,6 +63,10 @@ and unknown outcome requiring stop. Neither absent observations nor credential
 possession establishes new or remaining authority.
 
 ## Active Shape question
+
+The [mechanism candidate](008-build-6-mechanism-candidate.md) compares atomic and staged initialization and specifies proposed persistence, authentication, recovery and test obligations. It is a reviewable recommendation only; this Shape remains open and no mechanism or human binding is selected by that document.
+
+The [technical Shape](008-build-6-technical-shape.md) develops caller privileges, exact-policy interpretation, commitment ordering and qualification cases under the separately accepted H/remit/P0. Actual account/scope binding remains the next unresolved instance step; no executable fixture is frozen.
 
 Find the smallest durable, reconstructible, non-bypassable mechanism that enforces
 the inherited graph under success, failure, concurrency, restart, stale input,

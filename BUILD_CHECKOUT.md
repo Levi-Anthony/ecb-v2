@@ -20,11 +20,11 @@ PREDECESSOR_MAIN=1ff284164160f74c398bcfe4d2c300b694070b7f
 LOCAL_INTEGRATION=cf1615b; MAIN_AND_SENSE_CLOSURE_ANCESTORS_VERIFIED
 ENTRY_LINEAGE=984f16d9267082aec2b0dce33de597aad7e46abf
 ROOT_BASIS=EXTERNALLY_ACCEPTED_HUMAN_ARCHITECTURE_AUTHORITY_EXERCISED_BY_LEVI
-INITIAL_H=NOT_YET_DESIGNATED; LEVI_PERMITTED; POWER_DERIVES_FROM_DESIGNATION
+INITIAL_H=LEVI_NORMATIVELY_BOUND; AUTHENTICATED_PRINCIPAL_BINDING_PENDING; NOT_INSTALLED
 AUTHORITY_GRAPH=M2; ONE_BOUNDED_INITIALIZATION_P0_H_EXHAUSTION
 SENSE_DISPOSITION=CLOSED
-INSTANCE_BINDING=H_AND_NORMATIVE_REMIT_REQUIRE_EXPLICIT_HUMAN_ROOT_BINDING
-EXACT_P0=REQUIRES_HUMAN_ROOT_ACCEPTANCE_AS_GRANT_SUBJECT
+INSTANCE_BINDING=H_AND_NORMATIVE_REMIT_ACCEPTED; AUTHENTICATED_PRINCIPAL_AND_SCOPE_BINDING_PENDING
+EXACT_P0=HUMAN_ACCEPTED_SHA256_686148f540860aca57a43d8cdf02ee15a0f6314d14b54736e6baf6f1846a7664; NOT_INSTALLED
 BINDING_DEADLINE=BEFORE_BOOTSTRAP_FIXTURE_OR_EXECUTABLE_TRANSITION_FREEZE
 AP04=REACTIVATED_NARROWLY; EXACT_PAYLOAD_UNRESOLVED
 AP01=CONDITIONAL; NO_NEW_VOCABULARY_DEMONSTRATED
@@ -38,6 +38,8 @@ BUILD_7_PLUS=UNOPENED
 ```
 
 ## AUTHORIZATION / PREDECESSOR
+
+**Later human instance decision:** Levi accepted the [H/remit and exact P0 package](docs/build-shape/008-build-6-human-binding.md) in this task with “Accepted. Go.” Continue technical Shape using those accepted subjects; do not ask for the same normative acceptance again. Actual authenticated issuer/subject and scope identity remain pending before executable fixture/transition freeze. The earlier Sense/Shape-entry account below is preserved as historical provenance, not a renewed request to choose H or accept P0. Mechanism selection, technical qualification, Shape closure and Move release remain outstanding.
 
 BUILD 6 is already open on `build/build-6-sense`, descending from human-closed
 BUILD 5B. The bounded Question Forward pass withdrew an assumed identification of
@@ -165,6 +167,8 @@ within Shape; Actor ontology, UI, universal policy engine, Master Key machinery,
 action-envelope semantics and BUILD 7+ remain excluded. Research remains untouched.
 
 ## NEXT HANDLE
+
+**Current continuation:** [Technical Shape](docs/build-shape/008-build-6-technical-shape.md) develops the mechanism under the now-accepted [H/remit and exact P0](docs/build-shape/008-build-6-human-binding.md). Resolve actual authenticated issuer/subject and governance-scope binding; the account-identification question is pending. Do not repeat normative acceptance. The mechanism and executable expectations remain candidates until their applicable closure, and Move remains unreleased.
 
 Proceed with the [Shape mechanism inquiry](docs/build-shape/008-build-6.md#active-shape-question)
 and its adversarial constraints. Compare the smallest candidate representations and
