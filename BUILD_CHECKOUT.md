@@ -33,7 +33,7 @@ SHAPE=OPEN; MECHANISM_NOT_SELECTED
 OUTPUT_CONTRACT=UNBOUND
 MOVE_PERMISSION=UNRELEASED
 IMPLEMENTATION=UNOPENED
-CANONICAL_CONTACT=NONE_IN_BUILD_6
+CANONICAL_CONTACT=READ_ONLY_PROJECT_AND_EXACT_EMAIL_AUTH_LOOKUP; NO_MUTATION
 BUILD_7_PLUS=UNOPENED
 ```
 
@@ -168,7 +168,7 @@ action-envelope semantics and BUILD 7+ remain excluded. Research remains untouch
 
 ## NEXT HANDLE
 
-**Current continuation:** [Technical Shape](docs/build-shape/008-build-6-technical-shape.md) develops the mechanism under the now-accepted [H/remit and exact P0](docs/build-shape/008-build-6-human-binding.md). Resolve actual authenticated issuer/subject and governance-scope binding; the account-identification question is pending. Do not repeat normative acceptance. The mechanism and executable expectations remain candidates until their applicable closure, and Move remains unreleased.
+**Current continuation:** [Technical Shape](docs/build-shape/008-build-6-technical-shape.md) develops the mechanism under the now-accepted [H/remit and exact P0](docs/build-shape/008-build-6-human-binding.md). Levi supplied the account email; [read-only lookup](docs/build-shape/008-build-6-account-lookup.md) found no matching project-local Auth user. Verified enrollment and actual issuer/subject/scope binding remain pending. Do not repeat normative acceptance or ask for the same email again. The mechanism and executable expectations remain candidates until their applicable closure, and Move remains unreleased.
 
 Proceed with the [Shape mechanism inquiry](docs/build-shape/008-build-6.md#active-shape-question)
 and its adversarial constraints. Compare the smallest candidate representations and
