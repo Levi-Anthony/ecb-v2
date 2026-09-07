@@ -4,7 +4,40 @@ DATE: 2026-09-07 America/Phoenix
 
 # BUILD 6 — Exact human decisions through WebAuthn
 
-## Alignment and current disposition
+## Latest correction — fluid operation with effective intervention
+
+Levi prioritizes the lowest practical friction, continuity across device loss, and an ability to slow or stop work. He reports that the earlier human-artifact approval button became security theater and a serious friction vector. Preserve that as operator experience, not a newly executed audit of the old implementation.
+
+**This corrects the ceremony-first recommendation below.** Direct WebAuthn remains a candidate authentication/proof mechanism. A fresh passkey assertion for every consequential operation is not the default collaboration contract. Separate authentication, human decision, authorization lifetime, and execution: their frequency need not match. The earlier exact-assertion proposal remains useful for specifically selected decisions; it must not become a global artifact-approval requirement.
+
+Recommend the following interaction contract:
+
+| Situation | Human interaction | Enforced behavior |
+|---|---|---|
+| Work already covered by a current authorization | None required merely to keep working or produce an artifact | Continue within its operation, resource, consequence and validity limits; preserve inspectable results |
+| A decision reserved to Levi | Present the actual choice once, in the active human interaction | Bind its exact subjects and authority basis; do not ask again through a second ceremonial button |
+| Human identity needs establishing or refreshing | Passkey when the declared authentication conditions require it | Establish a protected human session; keep its credentials out of the operating agent |
+| A boundary specifically requires fresh exact-decision proof | One readable decision and one passkey ceremony | Record a fresh assertion; do not describe ordinary session evidence as this stronger proof |
+| Levi narrows scope, slows or pauses | Immediate control through an already authenticated human surface | Persist the restriction and check it at effect admission; no fresh biometric ceremony solely to request less activity |
+| Resume or expand activity | Show the resulting scope and outstanding conditions | Revalidate authority and state; resume does not resurrect expired or withdrawn grants |
+
+A protected human session can reduce repeated authentication without importing Supabase Auth or allowing the agent to impersonate Levi. It does introduce a session-verifier trust boundary; it cannot claim that every decision has a fresh authenticator signature. NIST likewise favors session continuity over continual credential presentation because repeated prompts can provoke insecure workarounds. Its guidance is evidence, not an automatically adopted ECB assurance level or timeout policy. [NIST session management](https://pages.nist.gov/800-63-4/sp800-63b/session/)
+
+For BUILD 6, recommend evaluating fresh proof for the rare genesis/policy-succession decisions while using session continuity for inspection and the already accepted own-pending-decision withdrawal. This is a candidate allocation, not a new requirement that Levi continuously authenticate. Exact prior human acceptance remains required by accepted P0; neither that requirement nor its non-delegation meaning is removed. Ordinary work does not become policy succession because it has consequences. Broader bounded work authorizations and execution controls belong to their applicable capabilities; this inquiry does not install BUILD 8 early.
+
+A conversational decision can replace an extra approval button only where the human input is obtained through a qualified, attributable path and bound to the exact displayed subject. Agent-generated summaries, `approved=true`, or silence cannot manufacture consent. If the active interaction already supplies that evidence, adding another button must demonstrate a missing protection rather than repeat the decision.
+
+**Intervention must actually constrain effects.** Proposed slow mode reduces concurrency/rate or requires a checkpoint before the next defined effect class. Pause stops admission of new covered effects and requests cancellation of cancellable work. An in-flight operation can have passed its commit/dispatch boundary: report it as pending or completed, never claim it was recalled. Show pause requested versus enforced, the covered workers/resources and unresolved effects. Restart must preserve restrictions. A disconnected worker cannot truthfully acknowledge a remote stop; either its existing authority requires a live check or its predeclared offline limits bound further effects. Immediate global stop and unlimited disconnected execution cannot both be promised.
+
+Provide a restriction-only control path that does not depend on the main dashboard or the operating agent. It still needs a protected, scoped capability so arbitrary callers cannot halt the system. The identity/authority required to resume or widen scope is separate. Concrete transport, cancellation coverage and maximum unobserved continuation remain to be Shaped; no stop service is installed here.
+
+**Resilience has several dependencies.** Multiple enrolled credentials address authenticator loss. An alternate human control surface addresses dashboard failure. Durable grants, decisions and restrictions address conversational or worker restart. Verifier, database and domain outages require their own availability/recovery disposition. Two devices alone do not establish an absence of single points of failure. Avoid adding redundant infrastructure without an identified outage that would prevent required operation or intervention.
+
+Qualification must include a normal episode completing within existing authorization without redundant prompts, one real boundary causing one intelligible decision, prompt cancellation leaving no new grant, a pause racing an effect with an honest outcome, restriction persistence after restart, and an alternative control route when the main door fails. Count repeated approvals and authentication interruptions alongside prevented unauthorized effects. A safeguard earns its place by distinguishing the intended valid and invalid cases; a button count is not evidence of protection.
+
+The recommendation would change if a demonstrated session-compromise path requires fresh proof for a particular effect, or if measured stop latency exceeds the tolerated consequence before intervention. Tighten that boundary and test it rather than imposing the ceremony everywhere. No new user question is necessary now. The earlier domain question is banked until the human interaction and verification boundary justify enrollment.
+
+## Earlier exact-assertion candidate — read under the latest correction
 
 Levi prefers an extensible set of public-key credentials representing the already accepted H, with a fresh assertion for an exact decision, instead of making a Supabase Auth account the governance identity. This changes the preferred authentication mechanism. It does not change H=Levi, the accepted remit, exact P0, M2, or the requirement for a prior committed decision before its effect.
 
@@ -99,4 +132,4 @@ The existing OB1 recon/pin remains the lineage basis. A targeted case-insensitiv
 | Proof verifier placement | Maintained library in a narrowly privileged isolated service | Runtime incompatibility or demonstrated bypass requiring another verification boundary |
 | Maintenance and total-loss recovery | Separate bounded authority proposal; no hidden extension of accepted P0 | Explicit human authorization resolving its actors, operations, recovery basis and treatment of pending grants |
 
-Only the domain question is asked now; the other technical discriminators can be developed independently. No DNS, credential, account or deployment change follows from this document. The immediate recommendation would change if direct verification cannot be isolated from operating agents or if a supported managed service supplies the same exact-decision proof with less trusted code and no unwanted enrollment dependency.
+The earlier domain question is now banked; the latest friction/intervention correction above controls the next inquiry. No DNS, credential, account or deployment change follows from this document. The immediate recommendation would change if direct verification cannot be isolated from operating agents or if a supported managed service supplies the same exact-decision proof with less trusted code and no unwanted enrollment dependency.

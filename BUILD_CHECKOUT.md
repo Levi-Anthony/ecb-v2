@@ -34,7 +34,7 @@ OUTPUT_CONTRACT=UNBOUND
 MOVE_PERMISSION=UNRELEASED
 IMPLEMENTATION=UNOPENED
 CANONICAL_CONTACT=READ_ONLY_PROJECT_AND_EXACT_EMAIL_AUTH_LOOKUP_RECHECKED_2026_09_07; NO_MUTATION
-HUMAN_APPROVAL=USER_PREFERS_DIRECT_WEBAUTHN; TECHNICAL_SHAPE_UNQUALIFIED
+HUMAN_APPROVAL=LOW_FRICTION_SESSION_CONTINUITY_PLUS_SCOPED_STEP_UP_CANDIDATE; TECHNICAL_SHAPE_UNQUALIFIED
 EMAIL_ENROLLMENT=SUPERSEDED; INVITATION_NOT_SUBMITTED
 BUILD_7_PLUS=UNOPENED
 ```
@@ -170,7 +170,7 @@ action-envelope semantics and BUILD 7+ remain excluded. Research remains untouch
 
 ## NEXT HANDLE
 
-**Current continuation:** Levi prefers [direct WebAuthn exact-decision approval](docs/build-shape/008-build-6-webauthn.md). Email enrollment is superseded; the invitation was not submitted and a fresh bounded Auth lookup found no matching row. H/remit and exact P0 remain accepted. Continue the credential-neutral technical binding under that revised candidate: stable RP domain, protected external-root enrollment, exact initial credential set, governance scope and verifier trust boundary. The domain question is pending; technical reconciliation can continue independently. No credential maintenance or recovery power is silently added to H's remit. Shape remains open and Move unreleased.
+**Current continuation:** Levi's [fluidity and intervention correction](docs/build-shape/008-build-6-webauthn.md#latest-correction--fluid-operation-with-effective-intervention) controls the human-boundary inquiry. Do not turn WebAuthn or artifact approval into repeated ceremonies. Separate authentication, exact human decision, continuing authorization and effect execution. Develop the minimum protected session/step-up boundary and truthful restriction controls; bank domain enrollment until that interaction is resolved. H/remit/exact P0 and M2 remain accepted; general work envelopes and stop infrastructure are not installed by this candidate. No new input is required to continue technical Shape. Email enrollment remains superseded. Move remains unreleased.
 
 Proceed with the [Shape mechanism inquiry](docs/build-shape/008-build-6.md#active-shape-question)
 and its adversarial constraints. Compare the smallest candidate representations and
