@@ -15,3 +15,7 @@ psql -X -v ON_ERROR_STOP=1 "$BUILD6_DATABASE_URL" \
 # already-existing universal Referent registry; no BYPASSRLS or runtime-role mutation is granted.
 psql -X -v ON_ERROR_STOP=1 "$BUILD6_DATABASE_URL" \
   -f sql/migrations/20260908013400_build_6_referent_registry_integration.sql
+
+# Run-6 evidence exposed a local PL/pgSQL identifier collision in registration result persistence.
+psql -X -v ON_ERROR_STOP=1 "$BUILD6_DATABASE_URL" \
+  -f sql/migrations/20260908013500_build_6_registration_result_ambiguity.sql
