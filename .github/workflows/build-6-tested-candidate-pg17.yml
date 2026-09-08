@@ -29,6 +29,7 @@ jobs:
     env:
       BUILD6_DISPOSABLE: 'YES'
       BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:55439/build6
+      B5B_EVIDENCE_DIR: ${{ github.workspace }}/artifacts/build5b-predecessor
     steps:
       - name: Checkout exact candidate commit
         uses: actions/checkout@v4
@@ -37,6 +38,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '24'
+
+      - name: Use Deno for retained BUILD 5B fixture stage
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
 
       - name: Verify exact selected BUILD 6 migration bytes
         shell: bash
@@ -54,6 +60,16 @@ jobs:
       - name: Reconstruct accepted BUILD 5B predecessor
         shell: bash
         run: bash tests/build-6/ci-reconstruct-build5b.sh
+
+      - name: Restore exact qualified BUILD 5B Artifact stage
+        shell: bash
+        run: deno run --allow-all tests/build-6/ci-seed-build5b-artifacts.ts
+
+      - name: Verify predecessor Artifact stage
+        shell: bash
+        run: |
+          count="$(psql -X -At postgresql://postgres@127.0.0.1:55439/build6 -c 'select count(*) from public.artifacts')"
+          test "$count" = '9'
 
       - name: Run exact candidate qualification
         shell: bash
@@ -73,6 +89,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-6-tested-candidate-${{ github.sha }}
-          path: tests/build-6/evidence/
+          path: |
+            tests/build-6/evidence/
+            artifacts/build5b-predecessor/
           if-no-files-found: error
           retention-days: 30
