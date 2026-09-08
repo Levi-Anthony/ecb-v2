@@ -4,6 +4,7 @@ const $ = (id) => document.getElementById(id);
 const status = $('status');
 let activeScope = '';
 let csrf = '';
+let registeredRefs = [];
 
 async function api(path, options = {}) {
   const headers = new Headers(options.headers || {});
@@ -65,6 +66,8 @@ $('register').addEventListener('click', async () => {
     const result = await api('/setup/register/verify', {
       method: 'POST', body: JSON.stringify({ response }),
     });
+    if (result.credential_ref && !registeredRefs.includes(result.credential_ref)) registeredRefs.push(result.credential_ref);
+    $('credential-refs').value = registeredRefs.join(',');
     $('setup-output').textContent = JSON.stringify(result, null, 2);
   } catch (error) {
     $('setup-output').textContent = `Registration failed: ${error.message}`;
@@ -74,9 +77,30 @@ $('register').addEventListener('click', async () => {
 $('setup-refresh').addEventListener('click', async () => {
   try {
     const result = await api('/setup/status');
+    if (Array.isArray(result.candidates)) {
+      registeredRefs = result.candidates.map((item) => item.credential_ref).filter(Boolean);
+      $('credential-refs').value = registeredRefs.join(',');
+    }
     $('setup-output').textContent = JSON.stringify(result, null, 2);
   } catch (error) {
     $('setup-output').textContent = `Inspection failed: ${error.message}`;
+  }
+});
+
+$('setup-bind').addEventListener('click', async () => {
+  try {
+    const refs = $('credential-refs').value.split(',').map((v) => v.trim()).filter(Boolean);
+    const result = await api('/setup/bind', {
+      method: 'POST',
+      body: JSON.stringify({
+        credentialRefs: refs,
+        sourceRef: $('setup-source').value.trim(),
+        requestId: randomUUID(),
+      }),
+    });
+    $('setup-output').textContent = JSON.stringify(result, null, 2);
+  } catch (error) {
+    $('setup-output').textContent = `Binding failed: ${error.message}`;
   }
 });
 
@@ -137,6 +161,16 @@ $('withdraw').addEventListener('click', async () => {
     await refresh();
   } catch (error) {
     $('candidate-result').textContent = `Withdrawal failed: ${error.message}`;
+  }
+});
+
+$('recover').addEventListener('click', async () => {
+  try {
+    const requestId = $('recover-request').value.trim();
+    const result = await api(`/recover?scope=${encodeURIComponent(activeScope)}&request=${encodeURIComponent(requestId)}`);
+    $('recovery-result').textContent = JSON.stringify(result, null, 2);
+  } catch (error) {
+    $('recovery-result').textContent = `Recovery failed: ${error.message}`;
   }
 });
 
