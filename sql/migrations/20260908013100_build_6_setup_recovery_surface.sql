@@ -42,7 +42,7 @@ begin
 
   select
     pg_catalog.count(*),
-    pg_catalog.coalesce(
+    coalesce(
       pg_catalog.jsonb_agg(
         pg_catalog.jsonb_build_object(
           'credential_ref', c.id,
@@ -73,7 +73,7 @@ begin
     'expires_at', setup_row.expires_at,
     'candidates', candidates,
     'exclude_credentials', (
-      select pg_catalog.coalesce(
+      select coalesce(
         pg_catalog.jsonb_agg(
           pg_catalog.jsonb_build_object('id', item ->> 'id', 'transports', item -> 'transports')
           order by item ->> 'id'
