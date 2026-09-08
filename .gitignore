@@ -4,3 +4,4 @@
 .agents/
 supabase/.temp/
 skills-lock.json
+node_modules/

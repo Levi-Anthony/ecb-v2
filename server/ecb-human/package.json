@@ -1,0 +1,24 @@
+{
+  "name": "ecb-human",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "start": "node index.mjs",
+    "test": "node --test ../../tests/build-6/*.test.mjs"
+  },
+  "dependencies": {
+    "@simplewebauthn/browser": "14.0.0",
+    "@simplewebauthn/server": "14.0.1",
+    "postgres": "3.4.9"
+  },
+  "devDependencies": {
+    "@vercel/config": "0.7.0"
+  },
+  "overrides": {
+    "path-to-regexp": "6.3.0"
+  }
+}

@@ -5,6 +5,11 @@ AUTHORITY: Explicit human PR #2 merge instruction and post-verification Shape op
 
 # BUILD 6 Shape — Governance Bootstrap
 
+**Later human release:** The [staged Move release](008-build-6-move-release.md#human-release--recovered-2026-09-07)
+was explicitly authorized at 2026-09-07T19:09:03.887Z. Its construction and disposable
+qualification ordering supersede the pending-release statements below. Live binding
+and activation conditions remain. See `BUILD_CHECKOUT.md` for current execution.
+
 **Current release preparation:** The [staged Move package](008-build-6-move-release.md) follows the completed domain mini-Move's Metabolize. It proposes construction and disposable qualification before protected live credential/scope binding, with that binding retained before canonical bootstrap-instance freeze and activation. Qualification ordering requires explicit disposition; Move remains unreleased. The RP hostname is accepted and DNS verified; references below to an unresolved domain describe the earlier inquiry.
 
 **Current technical continuation:** [Runtime, session and record boundary](008-build-6-runtime-boundary.md) supplies the concrete proposal and observed hosting/credential constraints. Earlier alternatives below retain their historical scope.

@@ -4,6 +4,11 @@ DATE: 2026-09-07 America/Phoenix
 
 # BUILD 6 — Human session, records and installation boundary
 
+**Later human release:** The [staged Move release](008-build-6-move-release.md#human-release--recovered-2026-09-07)
+was explicitly authorized at 2026-09-07T19:09:03.887Z. Its construction and disposable
+qualification ordering supersede the pending-release statements below. Live binding
+and activation conditions remain. See `BUILD_CHECKOUT.md` for current execution.
+
 **Release preparation:** The [staged Move package](008-build-6-move-release.md) now gathers the proposed output, qualification and actual enrollment/activation route. Its proposed qualification-order disposition is not yet accepted. The domain question at the end of this earlier proposal is resolved by the accepted setup receipt below.
 
 This is the current technical continuation of the [accepted interaction direction](008-build-6-webauthn.md#human-acceptance--2026-09-07). It replaces the earlier open-ended runtime/record options with a concrete proposal. Accepted H/remit/P0 and M2 remain unchanged. It neither selects a new canonical store nor introduces general work envelopes.

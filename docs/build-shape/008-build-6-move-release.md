@@ -1,8 +1,28 @@
-STATUS: STAGED MOVE RELEASE PROPOSAL — NOT RELEASED OR EXECUTED
-DISPOSITION: PROJECTION / REVIEW PACKAGE
+STATUS: STAGED MOVE RELEASED — CONSTRUCTION AND DISPOSABLE QUALIFICATION AUTHORIZED
+DISPOSITION: DECISION_RECORD / RELEASED OUTPUT CONTRACT
 DATE: 2026-09-07 America/Phoenix
 
 # BUILD 6 — Complete authentication and activate bounded governance
+
+## Human release — recovered 2026-09-07
+
+At `2026-09-07T19:09:03.887Z`, Levi answered **“Yes authorized”** to the
+explicit staged-release question in Codex task
+`01a07901-1834-7fc2-9575-07013b67ebba` (turn
+`01a07d46-235f-74d1-b395-cb2b29504c08`). That task acknowledged the release,
+then stopped on its usage limit before persisting it or implementing code.
+The continuation task recovered the original message and verified the repository
+at `a655fc5`; no BUILD 6 implementation was present locally or on fetched branches.
+
+This release accepts the output contract, execution order and acceptance matrix
+below for construction and disposable qualification. It resolves the earlier
+qualification-order constraint: synthetic mechanism qualification may precede
+actual credential binding. The concrete runtime/session mechanism is selected
+for this bounded implementation. Exact live credential/scope binding still must
+precede canonical bootstrap-instance freeze and activation. Device observations,
+deployment qualification, exact P1 acceptance and human Metabolize remain pending.
+The proposal wording below is retained as the exact package presented for release;
+its statements that release is pending are superseded by this decision record.
 
 The domain mini-Move is [Metabolized](../deployment-shapes/ecb-human-domain-metabolize.md). The next behavior is a real protected human entrance and a reconstructible, enforced M2 initialization followed by the first lawful succession. Domain setup alone provides none of those behaviors.
 
