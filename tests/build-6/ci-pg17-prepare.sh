@@ -118,14 +118,16 @@ end;
 $gate$;
 SQL
 
-# Construction repair candidate. Run 2 exposed invalid schema qualification of SQL constructs
-# COALESCE and LEAST in the draft migration. Generate and retain the exact normalized candidate
-# instead of mutating the source invisibly. Any eventual installation freeze must consolidate and
-# re-qualify these exact bytes.
+# Construction repair candidate. Earlier runs exposed invalid qualification of SQL constructs
+# COALESCE/LEAST and an incorrect serialized comparison for SET search_path=''. Generate and retain
+# the exact candidate instead of mutating the source invisibly. Final installation must consolidate
+# and re-qualify these exact semantics as committed migration bytes.
 mkdir -p artifacts/build6
 NORMALIZED="artifacts/build6/20260908013000_build_6_governance_bootstrap.normalized.sql"
 sed -e 's/pg_catalog\.coalesce/coalesce/g' -e 's/pg_catalog\.least/least/g' \
   sql/migrations/20260908013000_build_6_governance_bootstrap.sql > "$NORMALIZED"
+# PostgreSQL stores SET search_path = '' as the proconfig element search_path="".
+sed -i 's/search_path=/search_path=""/g' "$NORMALIZED"
 sha256sum "$NORMALIZED" | tee artifacts/build6/normalized-bootstrap.sha256
 if grep -Eq 'pg_catalog\.(coalesce|least)' "$NORMALIZED"; then
   echo "Normalization failed to remove invalid SQL construct qualification" >&2
