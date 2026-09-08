@@ -14,7 +14,7 @@ on:
       - 'tests/build-6/**'
   pull_request:
     branches:
-      - main
+      - build/build-6-move-recovered
   workflow_dispatch:
 
 permissions:
