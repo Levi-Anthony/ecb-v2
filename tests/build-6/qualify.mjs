@@ -12,6 +12,11 @@ const files = {
   migration: 'sql/migrations/20260908013000_build_6_governance_bootstrap.sql',
   setupRecovery: 'sql/migrations/20260908013100_build_6_setup_recovery_surface.sql',
   decisionSurface: 'sql/migrations/20260908013200_build_6_decision_result_surface.sql',
+  nativeExtensionUsage: 'sql/migrations/20260908013300_build_6_native_extension_usage.sql',
+  referentRegistryIntegration: 'sql/migrations/20260908013400_build_6_referent_registry_integration.sql',
+  registrationResultAmbiguity: 'sql/migrations/20260908013500_build_6_registration_result_ambiguity.sql',
+  prepareRunner: 'tests/build-6/ci-pg17-prepare.sh',
+  installRunner: 'tests/build-6/ci-pg17-install-candidate.sh',
   humanApi: 'server/ecb-human/api/index.mjs',
   humanUi: 'server/ecb-human/src/app.js',
   executor: 'server/governance-executor/index.mjs',
@@ -19,6 +24,7 @@ const files = {
 };
 
 const ACCEPTED_P0_SHA = '686148f540860aca57a43d8cdf02ee15a0f6314d14b54736e6baf6f1846a7664';
+const RUN8_QUALIFIED_BOOTSTRAP_SHA = 'e2010025a6de85842c25b740ec2e0af6e15db801e8cc8da67b0f92780bd91bc6';
 const CANONICAL_REF = 'vezxivrvhakclxuvxzso';
 
 function sha(buffer) { return createHash('sha256').update(buffer).digest('hex'); }
@@ -61,10 +67,35 @@ try {
   assert.equal(receipt.artifacts.p0.sha256, ACCEPTED_P0_SHA, 'accepted P0 byte digest mismatch');
   receipt.checks.exact_p0_bytes = 'PASS';
 
+  assert.equal(
+    receipt.artifacts.migration.sha256,
+    RUN8_QUALIFIED_BOOTSTRAP_SHA,
+    'committed BUILD 6 bootstrap differs from the exact candidate qualified in run 8',
+  );
+  receipt.checks.exact_committed_bootstrap_bytes = 'PASS';
+
   const migration = (await bytes(files.migration)).toString('utf8');
+  const build6Sql = (
+    await Promise.all([
+      files.migration,
+      files.setupRecovery,
+      files.decisionSurface,
+      files.nativeExtensionUsage,
+      files.referentRegistryIntegration,
+      files.registrationResultAmbiguity,
+    ].map(async (relative) => (await bytes(relative)).toString('utf8')))
+  ).join('\n');
   const humanApi = (await bytes(files.humanApi)).toString('utf8');
   const executor = (await bytes(files.executor)).toString('utf8');
   const installer = (await bytes(files.installer)).toString('utf8');
+  const prepareRunner = (await bytes(files.prepareRunner)).toString('utf8');
+
+  assert.ok(!build6Sql.includes('pg_catalog.coalesce'), 'invalid pg_catalog.coalesce remains in committed BUILD 6 SQL');
+  assert.ok(!build6Sql.includes('pg_catalog.least'), 'invalid pg_catalog.least remains in committed BUILD 6 SQL');
+  assert.ok(migration.includes('search_path=""'), 'qualified fixed-search-path catalog representation is absent');
+  assert.ok(!prepareRunner.includes('sed -e'), 'qualification still rewrites BUILD 6 migration bytes at runtime');
+  assert.ok(!prepareRunner.includes('.normalized.sql'), 'qualification still consumes generated normalized migration bytes');
+  receipt.checks.committed_migration_path_no_runtime_rewrite = 'PASS';
 
   for (const required of [
     'ecb_governance_native', 'ecb_governance_installer', 'ecb_governance_verifier',
