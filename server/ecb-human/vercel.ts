@@ -3,7 +3,6 @@ export const config: VercelConfig = {
   framework: null,
   buildCommand: "",
   installCommand: "npm ci --ignore-scripts",
-  outputDirectory: "public",
   functions: {
     "api/index.mjs": {
       includeFiles:
