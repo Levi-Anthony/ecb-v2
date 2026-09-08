@@ -14,7 +14,7 @@ fi
 ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
 ADMIN_URL="postgresql://custodian@127.0.0.1:55439/postgres"
-DB_URL="postgresql://custodian@127.0.0.1:55439/build6"
+DB_URL="postgresql://postgres@127.0.0.1:55439/build6"
 
 psql -X -v ON_ERROR_STOP=1 "$ADMIN_URL" <<'SQL'
 create role anon nologin inherit;
@@ -38,7 +38,6 @@ create table supabase_migrations.schema_migrations (
   idempotency_key text unique,
   rollback text[]
 );
-alter table supabase_migrations.schema_migrations owner to postgres;
 SQL
 
 apply() {
