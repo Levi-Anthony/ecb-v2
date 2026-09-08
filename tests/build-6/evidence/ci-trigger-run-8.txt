@@ -1,0 +1,1 @@
+Execution-only trigger after replacing the private-snapshot-dependent BUILD 5B helper with a CI seeder that imports only the frozen fixture constants and verifies the exact nine Artifact Referents. Selected BUILD 6 migration bytes remain unchanged. Do not merge.
