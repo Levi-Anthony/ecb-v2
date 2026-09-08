@@ -1,0 +1,2 @@
+BUILD 6 disposable PG17 exact-committed-bytes qualification trigger — run 9.
+Execution-only marker. No merge, canonical mutation, deployment, enrollment, M2/P1 activation, BUILD 7 authorization, or closure follows.
