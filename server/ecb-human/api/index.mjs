@@ -218,28 +218,32 @@ function setupCookies(req) {
 
 function preauth(req, purpose) {
   const state = decodeState(parseCookies(req)['__Host-ecb-preauth']);
-  if (!isUuid(state.id) || typeof state.secret !== 'string' || state.purpose !== purpose) {
+  if (!isUuid(state.id) || typeof state.secret !== 'string' || typeof state.challenge !== 'string'
+      || state.purpose !== purpose) {
     throw publicError('invalid_browser_state', 401);
   }
   return state;
 }
 
-async function consumeFailure(state, code, response) {
+async function consumeFailure(state, reason, response) {
+  if (!state) return;
   try {
-    await dbCall(CALLS.consumeFailure, [state.id, state.secret, code, response ? JSON.stringify(response) : '']);
-  } catch { /* preserve the original public failure */ }
+    await dbCall(CALLS.consumeFailure, [state.id, state.secret, reason, response ? JSON.stringify(response) : null]);
+  } catch {
+    // A failed attempt to record a failure never licenses retry or success.
+  }
 }
 
 async function handleSetupOpen(req, res) {
   requireOrigin(req);
   const body = await readJson(req);
-  if (!isUuid(body.setupId) || typeof body.token !== 'string' || !body.token) {
+  if (!isUuid(body.setupId) || typeof body.token !== 'string' || body.token.length < 32) {
     throw publicError('setup_input_invalid');
   }
   const context = await dbCall(CALLS.registrationContext, [body.setupId, body.token]);
-  appendCookie(res, cookie('__Host-ecb-setup-id', setupId, { maxAge: 600 }));
-  appendCookie(res, cookie('__Host-ecb-setup', token, { maxAge: 600 }));
-  json(res, 200, { setup_id: setupId, scope_id: context.scope_id, rp_id: context.rp_id });
+  appendCookie(res, cookie('__Host-ecb-setup-id', body.setupId, { maxAge: 7200 }));
+  appendCookie(res, cookie('__Host-ecb-setup', body.token, { maxAge: 7200 }));
+  json(res, 200, { status: 'setup_open', ...context });
 }
 
 async function handleSetupStatus(req, res) {
@@ -252,15 +256,330 @@ async function handleRegistrationOptions(req, res) {
   requireOrigin(req);
   const { setupId, token } = setupCookies(req);
   const context = await dbCall(CALLS.registrationContext, [setupId, token]);
+  if (context.remaining <= 0) throw publicError('credential_count_satisfied', 409);
   const options = await generateRegistrationOptions({
     rpName: RP_NAME,
     rpID: RP_ID,
+    userID: Buffer.from(context.user_handle_hex, 'hex'),
     userName: 'Levi',
     userDisplayName: 'Levi',
-    userID: new Uint8Array(Buffer.from(context.user_handle_hex, 'hex')),
     attestationType: 'none',
+    timeout: 120_000,
+    supportedAlgorithmIDs: [-7, -257],
+    excludeCredentials: (context.exclude_credentials || []).map((item) => ({
+      id: item.id,
+      transports: item.transports || [],
+    })),
     authenticatorSelection: {
       residentKey: 'required',
       userVerification: 'required',
     },
-    supportedAlgorithmIDs: [-7, -257, -7, #€€€t°(€ô¤ì(€½¹ÍÐÁÉ•…ÕÑ¡M•É•Ð€ôˆØÑÕÉ° ÌÈ¤ì(€½¹ÍÐ•É•µ½¹å%€ôÉåÁÑ¼¹É…¹‘½µUU% ¤ì(€½¹ÍÐ•áÁ¥É•ÍÐ€ô¹•Ü…Ñ”¡…Ñ”¹¹½Ü ¤€¬€Ô€¨€ØÁ|ÀÀÀ¤¹Ñ½%M=MÑÉ¥¹œ ¤ì(€…Ý…¥Ð‘‰…±°¡11L¹‰•¥¹I•¥ÍÑÉ…Ñ¥½¸°l(€€€Í•ÑÕÁ%°Ñ½­•¸°½ÁÑ¥½¹Ì¹¡…±±•¹”°ÁÉ•…ÕÑ¡M•É•Ð°•áÁ¥É•ÍÐ°•É•µ½¹å%°(€t¤ì(€…ÁÁ•¹‘½½­¥”¡É•Ì°½½­¥” }}!½ÍÐµ•ˆµÁÉ•…ÕÑ œ°•¹½‘•MÑ…Ñ”¡ì(€€€¥è•É•µ½¹å%°(€€€Í•É•ÐèÁÉ•…ÕÑ¡M•É•Ð°(€€€¡…±±•¹”è½ÁÑ¥½¹Ì¹¡…±±•¹”°(€€€ÁÕÉÁ½Í”è€É•¥ÍÑÉ…Ñ¥½¸œ°(€€€Í½Á•%è½¹Ñ•áÐ¹Í½Á•}¥°(€ô¤°ìµ…á”è€ÌÀÀô¤¤ì(€©Í½¸¡É•Ì°€ÈÀÀ°ìÁÕ‰±¥-•äè½ÁÑ¥½¹Ìô¤ì)ô()…Íå¹Œ™Õ¹Ñ¥½¸¡…¹‘±•I•¥ÍÑÉ…Ñ¥½¹Y•É¥™ä¡É•Ä°É•Ì¤ì(€É•ÅÕ¥É•=É¥¥¸¡É•Ä¤ì(€½¹ÍÐÍÑ…Ñ”€ôÁÉ•…ÕÑ ¡É•Ä°€É•¥ÍÑÉ…Ñ¥½¸œ¤ì(€½¹ÍÐìÍ•ÑÕÁ%°Ñ½­•¸ô€ôÍ•ÑÕÁ½½­¥•Ì¡É•Ä¤ì(€½¹ÍÐ‰½‘ä€ô…Ý…¥ÐÉ•…‘)Í½¸¡É•Ä¤ì(€½¹ÍÐÉ•ÍÁ½¹Í”€ô‰½‘ä¹É•ÍÁ½¹Í”ì(€ÑÉäì(€€€Á…ÉÍ•±¥•¹Ñ…Ñ„¡É•ÍÁ½¹Í”°€Ý•‰…ÕÑ¡¸¹É•…Ñ”œ¤ì(€€€½¹ÍÐ½¹Ñ•áÐ€ô…Ý…¥Ð‘‰…±°¡11L¹É•¥ÍÑÉ…Ñ¥½¹½¹Ñ•áÐ°mÍ•ÑÕÁ%°Ñ½­•¹t¤ì(€€€½¹ÍÐÙ•É¥™¥…Ñ¥½¸€ô…Ý…¥ÐÙ•É¥™åI•¥ÍÑÉ…Ñ¥½¹I•ÍÁ½¹Í”¡ì(€€€€€É•ÍÁ½¹Í”°(€€€€€•áÁ•Ñ•‘¡…±±•¹”èÍÑ…Ñ”¹¡…±±•¹”°(€€€€€•áÁ•Ñ•‘=É¥¥¸è=I%%8°(€€€€€•áÁ•Ñ•‘IA%èIA}%°(€€€€€É•ÅÕ¥É•UÍ•ÉY•É¥™¥…Ñ¥½¸èÑÉÕ”°(€€€ô¤ì(€€€¥˜€ …Ù•É¥™¥…Ñ¥½¸¹Ù•É¥™¥•ñð€…Ù•É¥™¥…Ñ¥½¸¹É•¥ÍÑÉ…Ñ¥½¹%¹™¼¤ì(€€€€€Ñ¡É½ÜÁÕ‰±¥ÉÉ½È Ý•‰…ÕÑ¡¹}¹½Ñ}Ù•É¥™¥•œ°€ÐÀÌ¤ì(€€€ô(€€€½¹ÍÐ¥¹™¼€ôÙ•É¥™¥…Ñ¥½¸¹É•¥ÍÑÉ…Ñ¥½¹%¹™¼ì(€€€½¹ÍÐÉ•‘•¹Ñ¥…±%€ô¥¹™¼¹É•‘•¹Ñ¥…°¹¥ì(€€€½¹ÍÐÁÕ‰±¥-•ä€ô	Õ™™•È¹™É½´¡¥¹™¼¹É•‘•¹Ñ¥…°¹ÁÕ‰±¥-•ä¤ì(€€€½¹ÍÐ…±½É¥Ñ¡´€ô‘•½‘•É•‘•¹Ñ¥…±AÕ‰±¥-•ä¡¥¹™¼¹É•‘•¹Ñ¥…°¹ÁÕ‰±¥-•ä¤¹…±œì(€€€½¹ÍÐÉ•ÍÕ±Ð€ô…Ý…¥Ð‘‰…±°¡11L¹½µÁ±•Ñ•I•¥ÍÑÉ…Ñ¥½¸°l(€€€€€ÍÑ…Ñ”¹¥°ÍÑ…Ñ”¹Í•É•Ð°)M=8¹ÍÑÉ¥¹¥™ä¡É•ÍÁ½¹Í”¤°É•‘•¹Ñ¥…±%°ÁÕ‰±¥-•ä°…±½É¥Ñ¡´°(€€€€€¥¹™¼¹É•‘•¹Ñ¥…°¹½Õ¹Ñ•È°¥¹™¼¹É•‘•¹Ñ¥…°¹É•‘•¹Ñ¥…±•Ù¥•QåÁ”€ümt€èmt°(€€€€€¥¹™¼¹É•‘•¹Ñ¥…±•Ù¥•QåÁ”°¥¹™¼¹É•‘•¹Ñ¥…±	…­•‘UÀ°ÑÉÕ”°=I%%8°(€€€€€™…±Í”°ÑÉÕ”°ÉåÁÑ¼¹É…¹‘½µUU% ¤°(€€€t¤ì(€€€±•…É½½­¥”¡É•Ì°€}}!½ÍÐµ•ˆµÁÉ•…ÕÑ œ¤ì(€€€©Í½¸¡É•Ì°€ÈÀÀ°É•ÍÕ±Ð¤ì(€ô…Ñ €¡•ÉÉ½È¤ì(€€€…Ý…¥Ð½¹ÍÕµ•…¥±ÕÉ”¡ÍÑ…Ñ”°•ÉÉ½È¹ÁÕ‰±¥½‘”ñð€Ù•É¥™¥…Ñ¥½¹}™…¥±•œ°É•ÍÁ½¹Í”¤ì(€€€±•…É½½­¥”¡É•Ì°€}}!½ÍÐµ•ˆµÁÉ•…ÕÑ œ¤ì(€€€Ñ¡É½Ü•ÉÉ½È¹ÁÕ‰±¥½‘”€ü•ÉÉ½È€èÁÕ‰±¥ÉÉ½È Ý•‰…ÕÑ¡¹}Ù•É¥™¥…Ñ¥½¹}™…¥±•œ°€ÐÀÌ¤ì(€ô)ô()…Íå¹Œ™Õ¹Ñ¥½¸¡…¹‘±•M•ÑÕÁ	¥¹¡É•Ä°É•Ì¤ì(€É•ÅÕ¥É•=É¥¥¸¡É•Ä¤ì(€½¹ÍÐìÍ•ÑÕÁ%°Ñ½­•¸ô€ôÍ•ÑÕÁ½½­¥•Ì¡É•Ä¤ì(€½¹ÍÐ‰½‘ä€ô…Ý…¥ÐÉ•…‘)Í½¸¡É•Ä¤ì(€½¹ÍÐÉ•‘•¹Ñ¥…±%‘Ì€ôÉÉ…ä¹¥ÍÉÉ…ä¡‰½‘ä¹É•‘•¹Ñ¥…±%‘Ì¤€ü‰½‘ä¹É•‘•¹Ñ¥…±%‘Ì€èmtì(€¥˜€ …É•‘•¹Ñ¥…±%‘Ì¹±•¹Ñ ñð€…É•‘•¹Ñ¥…±%‘Ì¹•Ù•Éä¡¥ÍUÕ¥¤ñð€…¥ÍUÕ¥¡‰½‘ä¹É•ÅÕ•ÍÑ%¤¤ì(€€€Ñ¡É½ÜÁÕ‰±¥ÉÉ½È ‰¥¹‘¥¹}¥¹ÁÕÑ}¥¹Ù…±¥œ¤ì(€ô(€½¹ÍÐÉ•ÍÕ±Ð€ô…Ý…¥Ð‘‰…±°¡11L¹‰¥¹‘%¹¥Ñ¥…°°l(€€€Í•ÑÕÁ%°Ñ½­•¸°É•‘•¹Ñ¥…±%‘Ì°€¡Õµ…¹}Í•ÑÕÁ}½µÁ±•Ñ¥½¸œ°‰½‘ä¹É•ÅÕ•ÍÑ%°(€€€ÉåÁÑ¼¹É…¹‘½µUU% ¤°ÉåÁÑ¼¹É…¹‘½µUU% ¤°(€t¤ì(€±•…É½½­¥”¡É•Ì°€}}!½ÍÐµ•ˆµÍ•ÑÕÀµ¥œ¤ì(€±•…É½½¥”¡É•Ì°€}}!½ÍÐµ•ˆµÍ•ÑÕÀœ¤ì(€©Í½¸¡É•Ì°€ÈÀÀ°É•ÍÕ±Ð¤ì)ô()…Íå¹Œ™Õ¹Ñ¥½¸¡…¹‘±•ÕÑ¡=ÁÑ¥½¹Ì¡É•Ä°É•Ì¤ì(€É•ÅÕ¥É•=É¥¥¸¡É•Ä¤ì(€½¹ÍÐ‰½‘ä€ô…Ý…¥ÐÉ•…‘)Í½¸¡É•Ä¤ì(€¥˜€ …¥ÍUÕ¥¡‰½‘ä¹Í½Á•%¤¤Ñ¡É½ÜÁÕ‰±¥ÉÉ½È Í½Á•}¥¹Ù…±¥œ¤ì(€½¹ÍÐ½¹Ñ•áÐ€ô…Ý…¥Ð‘‰…±°¡11L¹…ÕÑ¡½¹Ñ•áÐ°m‰½‘ä¹Í½Á•%‘t¤ì(€½¹ÍÐ½ÁÑ¥½¹Ì€ô…Ý…¥Ð•¹•É…Ñ•ÕÑ¡•¹Ñ¥…Ñ¥½¹=ÁÑ¥½¹Ì¡ì(€€€ÉÁ%èIA}%°(€€€ÕÍ•ÉY•É¥™¥…Ñ¥½¸è€É•ÅÕ¥É•œ°(€€€…±±½ÝÉ•‘•¹Ñ¥…±Ìè½¹Ñ•áÐ¹É•‘•¹Ñ¥…±Ì¹µ…À ¡É•‘•¹Ñ¥…°¤€ôø€¡ì(€€€€€¥èÉ•‘•¹Ñ¥…°¹É•‘•¹Ñ¥…±}¥°(€€€€€ÑÉ…¹ÍÁ½ÉÑÌèÉ•‘•¹Ñ¥…°¹ÑÉ…¹ÍÁ½ÉÑÌñðmt°(€€€ô¤¤°(€ô¤ì(€½¹ÍÐÁÉ•…ÕÑ¡M•É•Ð€ôˆØÑÕÉ° ÌÈ¤ì(€½¹ÍÐ•É•µ½¹å%€ôÉåÁÑ¼¹É…¹‘½µUU% ¤ì(€½¹ÍÐ•áÁ¥É•ÍÐ€ô¹•Ü…Ñ”¡…Ñ”¹¹½Ü ¤€¬€Ô€¨€ØÁ|ÀÀÀ¤¹Ñ½%M=MÑÉ¥¹œ ¤ì(€…Ý…¥Ð‘‰…±°¡11L¹‰•¥¹ÕÑ¡•¹Ñ¥…Ñ¥½¸°l(€€€‰½‘ä¹Í½Á•%°½ÁÑ¥½¹Ì¹¡…±±•¹”°ÁÉ•…ÕÑ¡M•É•Ð°•áÁ¥É•ÍÐ°•É•µ½¹å%°(€t¤ì(€…ÁÁ•¹‘½½­¥”¡É•Ì°½½­¥” }}!½ÍÐµ•ˆµÁÉ•…ÕÑ œ°•¹½‘•MÑ…Ñ”¡ì(€€€¥è•É•µ½¹å%°(€€€Í•É•ÐèÁÉ•…ÕÑ¡M•É•Ð°(€€€¡…±±•¹”è½ÁÑ¥½¹Ì¹¡…±±•¹”°(€€€ÁÕÉÁ½Í”è€…ÕÑ¡•¹Ñ¥…Ñ¥½¸œ°(€€€Í½Á•%è‰½‘ä¹Í½Á•%°(€ô¤°ìµ…á”è€ÌÀÀô¤¤ì(€©Í½¸¡É•Ì°€ÈÀÀ°ìÁÕ‰±¥-•äè½ÁÑ¥½¹Ìô¤ì)ô()…Íå¹Œ™Õ¹Ñ¥½¸¡…¹‘±•ÕÑ¡Y•É¥™ä¡É•Ä°É•Ì¤ì(€É•ÅÕ¥É•=É¥¥¸¡É•Ä¤ì(€½¹ÍÐÍÑ…Ñ”€ôÁÉ•…ÕÑ ¡É•Ä°€…ÕÑ¡•¹Ñ¥…Ñ¥½¸œ¤ì(€½¹ÍÐ‰½‘ä€ô…Ý…¥ÐÉ•…‘)Í½¸¡É•Ä¤ì(€¥˜€ …¥ÍUÕ¥¡‰½‘ä¹Í½Á•%¤ñð‰½‘ä¹Í½Á•%€„ôôÍÑ…Ñ”¹Í½Á•%¤ì(€€€Ñ¡É½ÜÁÕ‰±¥ÉÉ½È ‰É½ÝÍ•É}ÍÑ…Ñ•}Í½Á•}µ¥Íµ…Ñ œ°€ÐÀÌ¤ì(€ô(€½¹ÍÐÉ•ÍÁ½¹Í”€ô‰½‘ä¹É•ÍÁ½¹Í”ì(€ÑÉäì(€€€Á…ÉÍ•±¥•¹Ñ…Ñ„¡É•ÍÁ½¹Í”°€Ý•‰…ÕÑ¡¸¹•Ðœ¤ì(€€€¥˜€¡ÑåÁ•½˜É•ÍÁ½¹Í”ü¹¥€„ôô€ÍÑÉ¥¹œœ¤Ñ¡É½ÜÁÕ‰±¥ÉÉ½È Ý•‰…ÕÑ¡¹}É•ÍÁ½¹Í•}¥¹Ù…±¥œ¤ì(€€€½¹ÍÐÍÑ½É•€ô…Ý…¥Ð‘‰…±°¡11L¹…ÕÑ¡É•‘•¹Ñ¥…°°m‰½‘ä¹Í½Á•%°É•ÍÁ½¹Í”¹¥‘t¤ì(€€€½¹ÍÐÙ•É¥™¥…Ñ¥½¸€ô…Ý…¥ÐÙ•É¥™åÕÑ¡•¹Ñ¥…Ñ¥½¹I•ÍÁ½¹Í”¡ì(€€€€€É•ÍÁ½¹Í”°(€€€€€•áÁ•Ñ•‘¡…±±•¹”èÍÑ…Ñ”¹¡…±±•¹”°(€€€€€•áÁ•Ñ•‘=É¥¥¸è=I%%8°(€€€€€•áÁ•Ñ•‘IA%èIA}%°(€€€€€É•ÅÕ¥É•UÍ•ÉY•É¥™¥…Ñ¥½¸èÑÉÕ”°(€€€€€É•‘•¹Ñ¥…°èì(€€€€€€€¥èÍÑ½É•¹¥°(€€€€€€€ÁÕ‰±¥-•äè¹•ÜU¥¹ÐáÉÉ…ä¡	Õ™™•È¹™É½´¡ÍÑ½É•¹ÁÕ‰±¥}­•å}¡•à°€¡•àœ¤¤°(€€€€€€€½Õ¹Ñ•Èè9Õµ‰•È¡ÍÑ½É•¹½Õ¹Ñ•È¤°(€€€€€€€ÑÉ…¹ÍÁ½ÉÑÌèÍÑ½É•¹ÑÉ…¹ÍÁ½ÉÑÌñðmt°(€€€€€ô°(€€€ô¤ì(€€€¥˜€ …Ù•É¥™¥…Ñ¥½¸¹Ù•É¥™¥•ñð€…Ù•É¥™¥…Ñ¥½¸¹…ÕÑ¡•¹Ñ¥…Ñ¥½¹%¹™¼¤ì(€€€€€Ñ¡É½ÜÁÕ‰±¥ÉÉ½È Ý•‰…ÕÑ¡¹}¹½Ñ}Ù•É¥™¥•œ°€ÐÀÌ¤ì(€€€ô(€€€½¹ÍÐ¥¹™¼€ôÙ•É¥™¥…Ñ¥½¸¹…ÕÑ¡•¹Ñ¥…Ñ¥½¹%¹™¼ì(€€€½¹ÍÐÕÍ•É!…¹‘±”€ôÉ•ÍÁ½¹Í”ü¹É•ÍÁ½¹Í”ü¹ÕÍ•É!…¹‘±”(€€€€€€ü	Õ™™•È¹™É½´¡É•ÍÁ½¹Í”¹É•ÍÁ½¹Í”¹ÕÍ•É!…¹‘±”°€‰…Í”ØÑÕÉ°œ¤€è¹Õ±°ì(€€€½¹ÍÐÍ•ÍÍ¥½¹M•É•Ð€ôˆØÑÕÉ° Ðà¤ì(€€€½¹ÍÐÍÉ™Q½­•¸€ôˆØÑÕÉ° ÌÈ¤ì(€€€½¹ÍÐÉ•ÍÕ±Ð€ô…Ý…¥Ð‘‰…±°¡11L¹½µÁ±•Ñ•ÕÑ¡•¹Ñ¥…Ñ¥½¸°l(€€€€€ÍÑ…Ñ”¹¥°(€€€€€ÍÑ…Ñ”¹Í•É•Ð°(€€€€€)M=8¹ÍÑÉ¥¹¥™ä¡É•ÍÁ½¹Í”¤°(€€€€€É•ÍÁ½¹Í”¹¥°(€€€€€ÕÍ•É!…¹‘±”°(€€€€€¥¹™¼¹¹•Ý½Õ¹Ñ•È°(€€€€€¥¹™¼¹É•‘•¹Ñ¥…±•Ù¥•QåÁ”ñðÍÑ½É•¹‘•Ù¥•}ÑåÁ”°(€€€€€¥¹™¼¹É•‘•¹Ñ¥…±	…­•‘UÀ€üüÍÑ½É•¹‰…­•‘}ÕÀ°(€€€€€ÑÉÕ”°(€€€€€=I%%8°(€€€€€™…±Í”°(€€€€€ÑÉÕ”°(€€€€€Í•ÍÍ¥½¹M•É•Ð°(€€€€€ÍÉ™Q½­•¸°(€€€€€MMM%=9}%1}M=9L°(€€€€€MMM%=9}	M=1UQ}M=9L°(€€€€€ÉåÁÑ¼¹É…¹‘½µUU% ¤°(€€€t¤ì(€€€±•…É½½­¥”¡É•Ì°€}}!½ÍÐµ•ˆµÁÉ•…ÕÑ œ¤ì(€€€…ÁÁ•¹‘½½­¥”¡É•Ì°½½­¥” }}!½ÍÐµ•ˆµÍ•ÍÍ¥½¸œ°Í•ÍÍ¥½¹M•É•Ð°ìµ…á”èMMM%=9}	M=1UQ}M=9Lô¤¤ì(€€€…ÁÁ•¹‘½½­¥”¡É•Ì°½½­¥” }}!½ÍÐµ•ˆµÍÉ˜œ°ÍÉ™Q½­•¸°ì¡ÑÑÁ=¹±äè™…±Í”°µ…á”èMMM%=9}	M=1UQ}M=9Lô¤¤ì(€€€©Í½¸¡É•Ì°€ÈÀÀ°ì€¸¸¹É•ÍÕ±Ð°ÍÉ˜èÍÉ™Q½­•¸ô¤ì(€ô…Ñ €¡•ÉÉ½È¤ì(€€€…Ý…¥Ð½¹ÍÕµ•…¥±ÕÉ”¡ÍÑ…Ñ”°•ÉÉ½È¹ÁÕ‰±¥½‘”ñð€Ù•É¥™¥…Ñ¥½¹}™…¥±•œ°É•ÍÁ½¹Í”¤ì(€€€±•…É½½­¥”¡É•Ì°€}}!½ÍÐµ•ˆµÁÉ•…ÕÑ œ¤ì(€€€Ñ¡É½Ü•ÉÉ½È¹ÁÕ‰±¥½‘”€ü•ÉÉ½È€èÁÕ‰±¥ÉÉ½È Ý•‰…ÕÑ¡¹}Ù•É¥™¥…Ñ¥½¹}™…¥±•œ°€ÐÀÌ¤ì(€ô)ô()…Íå¹Œ™Õ¹Ñ¥½¸¡…¹‘±•MÑ…Ñ”¡É•Ä°É•Ì¤ì(€½¹ÍÐÕÉ°€ô¹•ÜUI0¡É•Ä¹ÕÉ°°=I%%8¤ì(€½¹ÍÐÍ½Á•%€ôÕÉ°¹Í•…É¡A…É…µÌ¹•Ð Í½Á”œ¤ì(€¥˜€ …¥ÍUÕ¥¡Í½Á•%¤¤Ñ¡É½ÜÁÕ‰±¥ÉÉ½È Í½Á•}¥¹Ù…±¥œ¤ì(€½¹ÍÐìÍ•ÍÍ¥½¸ô€ôÍ•ÍÍ¥½¹5…Ñ•É¥…°¡É•Ä¤ì(€½¹ÍÐÉ•ÍÕ±Ð€ô…Ý…¥Ð‘‰…±°¡11L¹¡Õµ…¹M½Á”°mÍ•ÍÍ¥½¸°Í½Á•%‘t¤ì(€©Í½¸¡É•Ì°€ÈÀÀ°É•ÍÕ±Ð¤ì)ô()…Íå¹Œ™Õ¹Ñ¥½¸¡…¹‘±•I•Ñ…¥¹A½±¥ä¡É•Ä°É•Ì¤ì(€É•ÅÕ¥É•=É¥¥¸¡É•Ä¤ì(€½¹ÍÐìÍ•ÍÍ¥½¸°ÍÉ˜ô€ôÍ•ÍÍ¥½¹5…Ñ•É¥…°¡É•Ä°ìÉ•ÅÕ¥É•ÍÉ˜èÑÉÕ”ô¤ì(€½¹ÍÐ‰½‘ä€ô…Ý…¥ÐÉ•…‘)Í½¸¡É•Ä¤ì(€¥˜€ …¥ÍUÕ¥¡‰½‘ä¹Í½Á•%¤ñðÑåÁ•½˜‰½‘ä¹Á…å±½…€„ôô€ÍÑÉ¥¹œœ(€€€€€ñðÑåÁ•½˜‰½‘ä¹Í½ÕÉ•I•˜€„ôô€ÍÑÉ¥¹œœñð€…‰½‘ä¹Í½ÕÉ•I•˜¹ÑÉ¥´ ¤¤ì(€€€Ñ¡É½ÜÁÕ‰±¥ÉÉ½È Á½±¥å}¥¹ÁÕÑ}¥¹Ù…±¥œ¤ì(€ô(€€¼¼Y…±¥‘…Ñ”Ñ¡”¡Õµ…¸Í•ÍÍ¥½¸‰•™½É”É•Ñ…¥¹¥¹œ„…¹‘¥‘…Ñ”¸I•Ñ•¹Ñ¥½¸¥ÑÍ•±˜½¹™•ÉÌ¹¼…ÕÑ¡½É¥Ñä¸(€…Ý…¥Ð‘‰…±°¡11L¹¡Õµ…¹M½Á”°mÍ•ÍÍ¥½¸°‰½‘ä¹Í½Á•%‘t¤ì(€½¹ÍÐÉ•ÍÕ±Ð€ô…Ý…¥Ð‘‰…±°¡11L¹É•Ñ…¥¹A½±¥ä°m‰½‘ä¹Á…å±½…°‰½‘ä¹Í½ÕÉ•I•˜¹ÑÉ¥´ ¤°ÉåÁÑ¼¹É…¹‘½µUU% ¥t¤ì(€©Í½¸¡É•Ì°€ÈÀÀ°ì€¸¸¹É•ÍÕ±Ð°ÍÉ˜ô¤ì)ô()…Íå¹Œ™Õ¹Ñ¥½¸¡…¹‘±••¥Í¥½¸¡É•Ä°É•Ì¤ì(€É•ÅÕ¥É•=É¥¥¸¡É•Ä¤ì(€½¹ÍÐìÍ•ÍÍ¥½¸°ÍÉ˜ô€ôÍ•ÍÍ¥½¹5…Ñ•É¥…°¡É•Ä°ìÉ•ÅÕ¥É•ÍÉ˜èÑÉÕ”ô¤ì(€½¹ÍÐ‰½‘ä€ô…Ý…¥ÐÉ•…‘)Í½¸¡É•Ä¤ì(€¥˜€ …¥ÍUÕ¥¡‰½‘ä¹Í½Á•%¤ñð€…l…•ÁÐœ°€‘•±¥¹”t¹¥¹±Õ‘•Ì¡‰½‘ä¹…Ñ¥½¸¤(€€€€€ñð€…¥ÍUÕ¥¡‰½‘ä¹Ñ…É•ÑMÕ‰©•Ñ%¤ñð€…¥ÍUÕ¥¡‰½‘ä¹•áÁ•Ñ•‘ÕÉÉ•¹ÑQÉ…¹Í¥Ñ¥½¹%¤(€€€€€ñð€…¥ÍUÕ¥¡‰½‘ä¹É•ÅÕ•ÍÑ%¤¤ì(€€€Ñ¡É½ÜÁÕ‰±¥ÉÉ½È ‘•¥Í¥½¹}¥¹ÁÕÑ}¥¹Ù…±¥œ¤ì(€ô(€½¹ÍÐÉ•ÍÕ±Ð€ô…Ý…¥Ð‘‰…±°¡11L¹‘•¥Í¥½¸°l(€€€Í•ÍÍ¥½¸°(€€€ÍÉ˜°(€€€=I%%8°(€€€‰½‘ä¹Í½Á•%°(€€€‰½‘ä¹…Ñ¥½¸°(€€€‰½‘ä¹Ñ…É•ÑMÕ‰©•Ñ%°(€€€‰½‘ä¹•áÁ•Ñ•‘ÕÉÉ•¹ÑQÉ…¹Í¥Ñ¥½¹%°(€€€‰½‘ä¹É•ÅÕ•ÍÑ%°(€€€ÑåÁ•½˜‰½‘ä¹•áÁ±…¹…Ñ¥½¸€ôôô€ÍÑÉ¥¹œœ€ü‰½‘ä¹•áÁ±…¹…Ñ¥½¸€è¹Õ±°°(€€€ÉåÁÑ¼¹É…¹‘½µUU% ¤°(€t¤ì(€©Í½¸¡É•Ì°€ÈÀÀ°ì€¸¸¹É•ÍÕ±Ð°ÍÉ˜ô¤ì)ô()…Íå¹Œ™Õ¹Ñ¥½¸¡…¹‘±•]¥Ñ¡‘É…Ü¡É•Ä°É•Ì¤ì(€É•ÅÕ¥É•=É¥¥¸¡É•Ä¤ì(€½¹ÍÐìÍ•ÍÍ¥½¸°ÍÉ˜ô€ôÍ•ÍÍ¥½¹5…Ñ•É¥…°¡É•Ä°ìÉ•ÅÕ¥É•ÍÉ˜èÑÉÕ”ô¤ì(€½¹ÍÐ‰½‘ä€ô…Ý…¥ÐÉ•…‘)Í½¸¡É•Ä¤ì(€¥˜€ …¥ÍUÕ¥¡‰½‘ä¹Í½Á•%¤ñð€…¥ÍUÕ¥¡‰½‘ä¹‘•¥Í¥½¹%¤ñð€…¥ÍUÕ¥¡‰½‘ä¹É•ÅÕ•ÍÑ%¤¤ì(€€€Ñ¡É½ÜÁÕ‰±¥ÉÉ½È Ý¥Ñ¡‘É…Ý…±}¥¹ÁÕÑ}¥¹Ù…±¥œ¤ì(€ô(€½¹ÍÐÉ•ÍÕ±Ð€ô…Ý…¥Ð‘‰…±°¡11L¹Ý¥Ñ¡‘É…Ü°l(€€€Í•ÍÍ¥½¸°ÍÉ˜°=I%%8°‰½‘ä¹Í½Á•%°‰½‘ä¹‘•¥Í¥½¹%°‰½‘ä¹É•ÅÕ•ÍÑ%°ÉåÁÑ¼¹É…¹‘½µUU% ¤°(€t¤ì(€©Í½¸¡É•Ì°€ÈÀÀ°ì€¸¸¹É•ÍÕ±Ð°ÍÉ˜ô¤ì)ô()…Íå¹Œ™Õ¹Ñ¥½¸¡…¹‘±•1½½ÕÐ¡É•Ä°É•Ì¤ì(€É•ÅÕ¥É•=É¥¥¸¡É•Ä¤ì(€½¹ÍÐìÍ•ÍÍ¥½¸°ÍÉ˜ô€ôÍ•ÍÍ¥½¹5…Ñ•É¥…°¡É•Ä°ìÉ•ÅÕ¥É•ÍÉ˜èÑÉÕ”ô¤ì(€½¹ÍÐÉ•ÍÕ±Ð€ô…Ý…¥Ð‘‰…±°¡11L¹±½½ÕÐ°mÍ•ÍÍ¥½¸°ÍÉ˜°=I%%9t¤ì(€±•…É½½­¥”¡É•Ì°€}}!½ÍÐµ•ˆµÍ•ÍÍ¥½¸œ¤ì(€±•…É½½­¥”¡É•Ì°€}}!½ÍÐµ•ˆµÍÉ˜œ°™…±Í”¤ì(€±•…É½½¥”¡É•Ì°€}}!½ÍÐµ•ˆµÁÉ•…ÕÑ œ¤ì(€©Í½¸¡É•Ì°€ÈÀÀ°É•ÍÕ±Ð¤ì)ô()…Íå¹Œ™Õ¹Ñ¥½¸¡…¹‘±•I•½Ù•È¡É•Ä°É•Ì¤ì(€½¹ÍÐÕÉ°€ô¹•ÜUI0¡É•Ä¹ÕÉ°°=I%%8¤ì(€½¹ÍÐÍ½Á•%€ôÕÉ°¹Í•…É¡A…É…µÌ¹•Ð Í½Á”œ¤ì(€½¹ÍÐÉ•ÅÕ•ÍÑ%€ôÕÉ°¹Í•…É¡A…É…µÌ¹•Ð É•ÅÕ•ÍÐœ¤ì(€¥˜€ …¥ÍUÕ¥¡Í½Á•%¤ñð€…¥ÍUÕ¥¡É•ÅÕ•ÍÑ%¤¤Ñ¡É½ÜÁÕ‰±¥ÉÉ½È É•½Ù•Éå}¥¹ÁÕÑ}¥¹Ù…±¥œ¤ì(€½¹ÍÐìÍ•ÍÍ¥½¸ô€ôÍ•ÍÍ¥½¹5…Ñ•É¥…°¡É•Ä¤ì(€…Ý…¥Ð‘‰…±°¡11L¹¡Õµ…¹M½Á”°mÍ•ÍÍ¥½¸°Í½Á•%‘t¤ì(€½¹ÍÐÉ•ÍÕ±Ð€ô…Ý…¥Ð‘‰…±°¡11L¹É•½Ù•È°mÍ½Á•%°É•ÅÕ•ÍÑ%‘t¤ì(€©Í½¸¡É•Ì°€ÈÀÀ°É•ÍÕ±Ð¤ì)ô()½¹ÍÐI=UQL€ô=‰©•Ð¹™É••é”¡ì(€€A=MP€½Í•ÑÕÀ½½Á•¸œè¡…¹‘±•M•ÑÕÁ=Á•¸°(€€P€½Í•ÑÕÀ½ÍÑ…ÑÕÌœè¡…¹‘±•M•ÑÕÁMÑ…ÑÕÌ°(€€A=MP€½Í•ÑÕÀ½É•¥ÍÑ•È½½ÁÑ¥½¹Ìœè¡…¹‘±•I•¥ÍÑÉ…Ñ¥½¹=ÁÑ¥½¹Ì°(€€A=MP€½Í•ÑÕÀ½É•¥ÍÑ•È½Ù•É¥™äœè¡…¹‘±•I•¥ÍÑÉ…Ñ¥½¹Y•É¥™ä°(€€A=MP€½Í•ÑÕÀ½‰¥¹œè¡…¹‘±•M•ÑÕÁ	¥¹°(€€A=MP€½…ÕÑ ½½ÁÑ¥½¹Ìœè¡…¹‘±•ÕÑ¡=ÁÑ¥½¹Ì°(€€A=MP€½…ÕÑ ½Ù•É¥™äœè¡…¹‘±•ÕÑ¡Y•É¥™ä°(€€P€½ÍÑ…Ñ”œè¡…¹‘±•MÑ…Ñ”°(€€A=MP€½Á½±¥¥•Ìœè¡…¹‘±•I•Ñ…¥¹A½±¥ä°(€€A=MP€½‘•¥Í¥½¸œè¡…¹‘±••¥Í¥½¸°(€€A=MP€½Ý¥Ñ¡‘É…Üœè¡…¹‘±•]¥Ñ¡‘É…Ü°(€€A=MP€½±½½ÕÐœè¡…¹‘±•1½½ÕÐ°(€€P€½É•½Ù•Èœè¡…¹‘±•I•½Ù•È°)ô¤ì()•áÁ½ÉÐ‘•™…Õ±Ð…Íå¹Œ™Õ¹Ñ¥½¸¡…¹‘±•È¡É•Ä°É•Ì¤ì(€ÑÉäì(€€€½¹ÍÐÉ½ÕÑ”€ôÉ½ÕÑ•É½´¡É•Ä¤ì(€€€¥˜€¡É½ÕÑ”€ôôô€œ½¡•…±Ñ œ€˜˜É•Ä¹µ•Ñ¡½€ôôô€Pœ¤ì(€€€€€½¹ÍÐÕÉÉ•¹Ð€ô…Ý…¥ÐÁ½½°¹ÅÕ•Éä Í•±•ÐÕÉÉ•¹Ñ}ÕÍ•È…ÌÉ½±”°ÕÉÉ•¹Ñ}Í•ÑÑ¥¹œ¡pÍ•ÉÙ•É}Ù•ÉÍ¥½¹pœ¤…ÌÁ½ÍÑÉ•Í}Ù•ÉÍ¥½¸œ¤ì(€€€€€½¹ÍÐÉ½±”€ôÕÉÉ•¹Ð¹É½ÝÍlÁtü¹É½±”ì(€€€€€¥˜€¡É½±”€„ôô€•‰}½Ù•É¹…¹•}Ù•É¥™¥•Èœ¤Ñ¡É½ÜÁÕ‰±¥ÉÉ½È ‘…Ñ…‰…Í•}É½±•}É•©•Ñ•œ°€ÔÀÌ¤ì(€€€€€É•ÑÕÉ¸©Í½¸¡É•Ì°€ÈÀÀ°ìÍÑ…ÑÕÌè€½¬œ°É½±”°ÉÁ}¥èIA}%°½É¥¥¸è=I%%8ô¤ì(€€€ô(€€€½¹ÍÐ™¸€ôI=UQMm€‘íÉ•Ä¹µ•Ñ¡½‘ô€‘íÉ½ÕÑ•õtì(€€€¥˜€ …™¸¤É•ÑÕÉ¸©Í½¸¡É•Ì°€ÐÀÐ°ì•ÉÉ½Èè€¹½Ñ}™½Õ¹œô¤ì(€€€…Ý…¥Ð™¸¡É•Ä°É•Ì¤ì(€ô…Ñ €¡•ÉÉ½È¤ì(€€€½¹ÍÐÍÑ…ÑÕÌ€ô9Õµ‰•È¡•ÉÉ½È¹ÍÑ…ÑÕÌ¤ñð€¡•ÉÉ½È¹½‘”€ôôô€œÈÌÔÀÔœ€ü€ÐÀä€è€ÐÀÀ¤ì(€€€½¹ÍÐ½‘”€ô•ÉÉ½È¹ÁÕ‰±¥½‘”ñð€¡•ÉÉ½È¹½‘”€ü‘…Ñ…‰…Í•|‘í•ÉÉ½È¹½‘•õ€€è€É•ÅÕ•ÍÑ}™…¥±•œ¤ì(€€€©Í½¸¡É•Ì°ÍÑ…ÑÕÌ°ì•ÉÉ½Èè½‘”ô¤ì(€ô)ô
+  });
+  const nonce = b64url();
+  const preauthSecret = `${nonce}.${options.challenge}`;
+  const ceremonyId = crypto.randomUUID();
+  const expiresAt = new Date(Date.now() + 5 * 60_000).toISOString();
+  await dbCall(CALLS.beginRegistration, [
+    setupId, token, options.challenge, preauthSecret, expiresAt, ceremonyId,
+  ]);
+  appendCookie(res, cookie('__Host-ecb-preauth', encodeState({
+    id: ceremonyId,
+    secret: preauthSecret,
+    challenge: options.challenge,
+    purpose: 'registration',
+    setupId,
+  }), { maxAge: 300 }));
+  json(res, 200, { publicKey: options });
+}
+
+async function handleRegistrationVerify(req, res) {
+  requireOrigin(req);
+  const { setupId } = setupCookies(req);
+  const state = preauth(req, 'registration');
+  if (state.setupId !== setupId) throw publicError('browser_state_scope_mismatch', 403);
+  const body = await readJson(req);
+  const response = body.response;
+  try {
+    parseClientData(response, 'webauthn.create');
+    const verification = await verifyRegistrationResponse({
+      response,
+      expectedChallenge: state.challenge,
+      expectedOrigin: ORIGIN,
+      expectedRPID: RP_ID,
+      requireUserVerification: true,
+      supportedAlgorithmIDs: [-7, -257],
+    });
+    if (!verification.verified || !verification.registrationInfo) {
+      throw publicError('webauthn_not_verified', 403);
+    }
+    const info = verification.registrationInfo;
+    if (info.credential.id !== response.id || info.rpID !== RP_ID || info.origin !== ORIGIN || info.userVerified !== true) {
+      throw publicError('webauthn_binding_rejected', 403);
+    }
+    const decoded = decodeCredentialPublicKey(info.credential.publicKey);
+    const algorithm = decoded.get(3);
+    if (typeof algorithm !== 'number' || ![-7, -257].includes(algorithm)) {
+      throw publicError('webauthn_algorithm_rejected', 403);
+    }
+    const result = await dbCall(CALLS.completeRegistration, [
+      state.id,
+      state.secret,
+      JSON.stringify(response),
+      info.credential.id,
+      Buffer.from(info.credential.publicKey),
+      algorithm,
+      info.credential.counter,
+      info.credential.transports || response?.response?.transports || [],
+      info.credentialDeviceType,
+      info.credentialBackedUp,
+      info.userVerified,
+      info.origin,
+      false,
+      true,
+      crypto.randomUUID(),
+    ]);
+    clearCookie(res, '__Host-ecb-preauth');
+    json(res, 200, result);
+  } catch (error) {
+    await consumeFailure(state, error.publicCode || 'verification_failed', response);
+    clearCookie(res, '__Host-ecb-preauth');
+    throw error.publicCode ? error : publicError('webauthn_verification_failed', 403);
+  }
+}
+
+async function handleSetupBind(req, res) {
+  requireOrigin(req);
+  const { setupId, token } = setupCookies(req);
+  const body = await readJson(req);
+  if (!Array.isArray(body.credentialRefs) || !body.credentialRefs.length
+      || !body.credentialRefs.every(isUuid) || !isUuid(body.requestId)
+      || typeof body.sourceRef !== 'string' || !body.sourceRef.trim()) {
+    throw publicError('binding_input_invalid');
+  }
+  const result = await dbCall(CALLS.bindInitial, [
+    setupId,
+    token,
+    body.credentialRefs,
+    body.sourceRef.trim(),
+    body.requestId,
+    crypto.randomUUID(),
+    crypto.randomUUID(),
+  ]);
+  clearCookie(res, '__Host-ecb-setup-id');
+  clearCookie(res, '__Host-ecb-setup');
+  clearCookie(res, '__Host-ecb-preauth');
+  json(res, 200, result);
+}
+
+async function handleAuthOptions(req, res) {
+  requireOrigin(req);
+  const body = await readJson(req);
+  if (!isUuid(body.scopeId)) throw publicError('scope_invalid');
+  const context = await dbCall(CALLS.authContext, [body.scopeId]);
+  const options = await generateAuthenticationOptions({
+    rpID: RP_ID,
+    userVerification: 'required',
+    timeout: 120_000,
+    allowCredentials: (context.allow_credentials || []).map((item) => ({
+      id: item.id,
+      transports: item.transports || [],
+    })),
+  });
+  const nonce = b64url();
+  const preauthSecret = `${nonce}.${options.challenge}`;
+  const ceremonyId = crypto.randomUUID();
+  const expiresAt = new Date(Date.now() + 5 * 60_000).toISOString();
+  await dbCall(CALLS.beginAuthentication, [
+    body.scopeId, options.challenge, preauthSecret, expiresAt, ceremonyId,
+  ]);
+  appendCookie(res, cookie('__Host-ecb-preauth', encodeState({
+    id: ceremonyId,
+    secret: preauthSecret,
+    challenge: options.challenge,
+    purpose: 'authentication',
+    scopeId: body.scopeId,
+  }), { maxAge: 300 }));
+  json(res, 200, { publicKey: options });
+}
+
+async function handleAuthVerify(req, res) {
+  requireOrigin(req);
+  const state = preauth(req, 'authentication');
+  const body = await readJson(req);
+  if (!isUuid(body.scopeId) || body.scopeId !== state.scopeId) {
+    throw publicError('browser_state_scope_mismatch', 403);
+  }
+  const response = body.response;
+  try {
+    parseClientData(response, 'webauthn.get');
+    if (typeof response?.id !== 'string') throw publicError('webauthn_response_invalid');
+    const stored = await dbCall(CALLS.authCredential, [body.scopeId, response.id]);
+    const verification = await verifyAuthenticationResponse({
+      response,
+      expectedChallenge: state.challenge,
+      expectedOrigin: ORIGIN,
+      expectedRPID: RP_ID,
+      requireUserVerification: true,
+      credential: {
+        id: stored.id,
+        publicKey: new Uint8Array(Buffer.from(stored.public_key_hex, 'hex')),
+        counter: Number(stored.counter),
+        transports: stored.transports || [],
+      },
+    });
+    if (!verification.verified || !verification.authenticationInfo) {
+      throw publicError('webauthn_not_verified', 403);
+    }
+    const info = verification.authenticationInfo;
+    if (info.credentialID !== response.id || info.rpID !== RP_ID || info.origin !== ORIGIN || info.userVerified !== true) {
+      throw publicError('webauthn_binding_rejected', 403);
+    }
+    const userHandle = response?.response?.userHandle
+      ? Buffer.from(response.response.userHandle, 'base64url') : null;
+    const sessionSecret = b64url(48);
+    const csrfToken = b64url(32);
+    const result = await dbCall(CALLS.completeAuthentication, [
+      state.id,
+      state.secret,
+      JSON.stringify(response),
+      response.id,
+      userHandle,
+      info.newCounter,
+      info.credentialDeviceType || stored.device_type,
+      info.credentialBackedUp ?? stored.backed_up,
+      info.userVerified,
+      info.origin,
+      false,
+      true,
+      sessionSecret,
+      csrfToken,
+      SESSION_IDLE_SECONDS,
+      SESSION_ABSOLUTE_SECONDS,
+      crypto.randomUUID(),
+    ]);
+    clearCookie(res, '__Host-ecb-preauth');
+    appendCookie(res, cookie('__Host-ecb-session', sessionSecret, { maxAge: SESSION_ABSOLUTE_SECONDS }));
+    appendCookie(res, cookie('__Host-ecb-csrf', csrfToken, { httpOnly: false, maxAge: SESSION_ABSOLUTE_SECONDS }));
+    json(res, 200, { ...result, csrf: csrfToken });
+  } catch (error) {
+    await consumeFailure(state, error.publicCode || 'verification_failed', response);
+    clearCookie(res, '__Host-ecb-preauth');
+    throw error.publicCode ? error : publicError('webauthn_verification_failed', 403);
+  }
+}
+
+async function handleState(req, res) {
+  const url = new URL(req.url, ORIGIN);
+  const scopeId = url.searchParams.get('scope');
+  if (!isUuid(scopeId)) throw publicError('scope_invalid');
+  const { session } = sessionMaterial(req);
+  const result = await dbCall(CALLS.humanScope, [session, scopeId]);
+  json(res, 200, result);
+}
+
+async function handleRetainPolicy(req, res) {
+  requireOrigin(req);
+  const { session, csrf } = sessionMaterial(req, { requireCsrf: true });
+  const body = await readJson(req);
+  if (!isUuid(body.scopeId) || typeof body.payload !== 'string'
+      || typeof body.sourceRef !== 'string' || !body.sourceRef.trim()) {
+    throw publicError('policy_input_invalid');
+  }
+  // Validate the human session before retaining a candidate. Retention itself confers no authority.
+  await dbCall(CALLS.humanScope, [session, body.scopeId]);
+  const result = await dbCall(CALLS.retainPolicy, [body.payload, body.sourceRef.trim(), crypto.randomUUID()]);
+  json(res, 200, { ...result, csrf });
+}
+
+async function handleDecision(req, res) {
+  requireOrigin(req);
+  const { session, csrf } = sessionMaterial(req, { requireCsrf: true });
+  const body = await readJson(req);
+  if (!isUuid(body.scopeId) || !['accept', 'decline'].includes(body.action)
+      || !isUuid(body.targetSubjectId) || !isUuid(body.expectedCurrentTransitionId)
+      || !isUuid(body.requestId)) {
+    throw publicError('decision_input_invalid');
+  }
+  const result = await dbCall(CALLS.decision, [
+    session,
+    csrf,
+    ORIGIN,
+    body.scopeId,
+    body.action,
+    body.targetSubjectId,
+    body.expectedCurrentTransitionId,
+    body.requestId,
+    typeof body.explanation === 'string' ? body.explanation : null,
+    crypto.randomUUID(),
+  ]);
+  json(res, 200, { ...result, csrf });
+}
+
+async function handleWithdraw(req, res) {
+  requireOrigin(req);
+  const { session, csrf } = sessionMaterial(req, { requireCsrf: true });
+  const body = await readJson(req);
+  if (!isUuid(body.scopeId) || !isUuid(body.decisionId) || !isUuid(body.requestId)) {
+    throw publicError('withdrawal_input_invalid');
+  }
+  const result = await dbCall(CALLS.withdraw, [
+    session, csrf, ORIGIN, body.scopeId, body.decisionId, body.requestId, crypto.randomUUID(),
+  ]);
+  json(res, 200, { ...result, csrf });
+}
+
+async function handleLogout(req, res) {
+  requireOrigin(req);
+  const { session, csrf } = sessionMaterial(req, { requireCsrf: true });
+  const result = await dbCall(CALLS.logout, [session, csrf, ORIGIN]);
+  clearCookie(res, '__Host-ecb-session');
+  clearCookie(res, '__Host-ecb-csrf', false);
+  clearCookie(res, '__Host-ecb-preauth');
+  json(res, 200, result);
+}
+
+async function handleRecover(req, res) {
+  const url = new URL(req.url, ORIGIN);
+  const scopeId = url.searchParams.get('scope');
+  const requestId = url.searchParams.get('request');
+  if (!isUuid(scopeId) || !isUuid(requestId)) throw publicError('recovery_input_invalid');
+  const { session } = sessionMaterial(req);
+  await dbCall(CALLS.humanScope, [session, scopeId]);
+  const result = await dbCall(CALLS.recover, [scopeId, requestId]);
+  json(res, 200, result);
+}
+
+const ROUTES = Object.freeze({
+  'POST /setup/open': handleSetupOpen,
+  'GET /setup/status': handleSetupStatus,
+  'POST /setup/register/options': handleRegistrationOptions,
+  'POST /setup/register/verify': handleRegistrationVerify,
+  'POST /setup/bind': handleSetupBind,
+  'POST /auth/options': handleAuthOptions,
+  'POST /auth/verify': handleAuthVerify,
+  'GET /state': handleState,
+  'POST /policies': handleRetainPolicy,
+  'POST /decision': handleDecision,
+  'POST /withdraw': handleWithdraw,
+  'POST /logout': handleLogout,
+  'GET /recover': handleRecover,
+});
+
+export default async function handler(req, res) {
+  try {
+    const route = routeFrom(req);
+    if (route === '/health' && req.method === 'GET') {
+      const current = await pool.query('select current_user as role, current_setting(\'server_version\') as postgres_version');
+      const role = current.rows[0]?.role;
+      if (role !== 'ecb_governance_verifier') throw publicError('database_role_rejected', 503);
+      return json(res, 200, { status: 'ok', role, rp_id: RP_ID, origin: ORIGIN });
+    }
+    const fn = ROUTES[`${req.method} ${route}`];
+    if (!fn) return json(res, 404, { error: 'not_found' });
+    await fn(req, res);
+  } catch (error) {
+    const status = Number(error.status) || (error.code === '23505' ? 409 : 400);
+    const code = error.publicCode || (error.code ? `database_${error.code}` : 'request_failed');
+    json(res, status, { error: code });
+  }
+}
