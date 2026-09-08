@@ -1,0 +1,42 @@
+name: BUILD 6 one-time normalized bootstrap promotion
+
+on:
+  pull_request:
+    branches:
+      - build/build-6-move-recovered
+    types: [opened, synchronize]
+
+permissions:
+  contents: write
+
+jobs:
+  promote:
+    if: github.head_ref == 'ci/build-6-consolidate'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout guarded consolidation branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Promote exactly qualified bootstrap bytes
+        shell: bash
+        env:
+          EXPECTED_SHA256: e2010025a6de85842c25b740ec2e0af6e15db801e8cc8da67b0f92780bd91bc6
+        run: |
+          set -euo pipefail
+          file='sql/migrations/20260908013000_build_6_governance_bootstrap.sql'
+          tmp="$(mktemp)"
+          sed -e 's/pg_catalog\.coalesce/coalesce/g' -e 's/pg_catalog\.least/least/g' "$file" > "$tmp"
+          sed -i 's/search_path=/search_path=""/g' "$tmp"
+          actual="$(sha256sum "$tmp" | awk '{print $1}')"
+          test "$actual" = "$EXPECTED_SHA256"
+          cmp -s "$file" "$tmp" && exit 0
+          mv "$tmp" "$file"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$file"
+          git commit -m 'Promote exactly qualified BUILD 6 bootstrap bytes'
+          git push origin "HEAD:${GITHUB_HEAD_REF}"
