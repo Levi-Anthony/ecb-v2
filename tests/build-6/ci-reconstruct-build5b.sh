@@ -14,6 +14,7 @@ fi
 ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$ROOT"
 ADMIN_URL="postgresql://custodian@127.0.0.1:55439/postgres"
+CUSTODIAN_DB_URL="postgresql://custodian@127.0.0.1:55439/build6"
 DB_URL="postgresql://postgres@127.0.0.1:55439/build6"
 
 psql -X -v ON_ERROR_STOP=1 "$ADMIN_URL" <<'SQL'
@@ -25,11 +26,15 @@ grant anon, authenticated, service_role to postgres;
 SQL
 createdb -h 127.0.0.1 -p 55439 -U custodian -O postgres build6
 
-psql -X -v ON_ERROR_STOP=1 "$DB_URL" <<'SQL'
+# Match the closed BUILD 5B rehearsal boundary: custodian performs cluster-level
+# extension installation; the migration ledger and predecessor schema are owned by postgres.
+psql -X -v ON_ERROR_STOP=1 "$CUSTODIAN_DB_URL" <<'SQL'
 create schema extensions authorization postgres;
 create schema supabase_migrations authorization postgres;
 create extension pgcrypto with schema extensions;
 create extension vector with schema extensions;
+SQL
+psql -X -v ON_ERROR_STOP=1 "$DB_URL" <<'SQL'
 create table supabase_migrations.schema_migrations (
   version text primary key,
   statements text[],
@@ -84,8 +89,6 @@ apply sql/migrations/20260906014257_build_5b_versioned_artifacts.sql
 
 # The retained BUILD 5B episode exposes seven applied migration versions. The selected
 # BUILD 6 qualifier checks that causal boundary before attempting its own migration.
-# CI reconstructs that migration-index shape explicitly; BUILD 6 later retains its own
-# exact migration bytes atomically in the ledger and verifies them independently.
 psql -X -v ON_ERROR_STOP=1 "$DB_URL" <<'SQL'
 insert into supabase_migrations.schema_migrations(version,name) values
   ('20260903235721','build_0_atomic_thoughts'),
@@ -103,6 +106,7 @@ declare
   thought_digest text;
   last_version text;
   version_count integer;
+  referent_owner text;
 begin
   if pg_catalog.to_regnamespace('ecb_governance') is not null then
     raise exception 'BUILD 6 schema exists before candidate qualification';
@@ -125,6 +129,11 @@ begin
     from supabase_migrations.schema_migrations;
   if version_count <> 7 or last_version <> '20260906014257' then
     raise exception 'Accepted predecessor migration index drifted: count %, last %', version_count, last_version;
+  end if;
+  select pg_get_userbyid(relowner) into referent_owner
+    from pg_class where oid='public.referents'::regclass;
+  if referent_owner <> 'postgres' then
+    raise exception 'Accepted predecessor referent owner drifted: %', referent_owner;
   end if;
 end;
 $gate$;
