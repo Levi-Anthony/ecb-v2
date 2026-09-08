@@ -30,7 +30,7 @@ declare
   current_policy ecb_governance.subjects%rowtype;
   target_policy ecb_governance.subjects%rowtype;
   existing ecb_governance.decisions%rowtype;
-  decision_id uuid := pg_catalog.coalesce(p_decision_id, pg_catalog.gen_random_uuid());
+  decision_id uuid := coalesce(p_decision_id, pg_catalog.gen_random_uuid());
   decision_kind text;
   executor_class text;
   fingerprint bytea;
@@ -112,7 +112,7 @@ begin
 
   update ecb_governance.sessions
   set last_active_at = now_ts,
-      inactivity_expires_at = pg_catalog.least(absolute_expires_at, now_ts + interval '24 hours')
+      inactivity_expires_at = least(absolute_expires_at, now_ts + interval '24 hours')
   where id = s.id;
 
   return pg_catalog.jsonb_build_object(
