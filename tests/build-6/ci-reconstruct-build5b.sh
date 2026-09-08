@@ -33,6 +33,7 @@ create schema extensions authorization postgres;
 create schema supabase_migrations authorization postgres;
 create extension pgcrypto with schema extensions;
 create extension vector with schema extensions;
+grant usage on schema extensions to anon, authenticated, service_role;
 SQL
 psql -X -v ON_ERROR_STOP=1 "$DB_URL" <<'SQL'
 create table supabase_migrations.schema_migrations (
@@ -134,6 +135,9 @@ begin
     from pg_class where oid='public.referents'::regclass;
   if referent_owner <> 'postgres' then
     raise exception 'Accepted predecessor referent owner drifted: %', referent_owner;
+  end if;
+  if not has_schema_privilege('service_role','extensions','USAGE') then
+    raise exception 'Accepted predecessor service_role lacks extensions USAGE';
   end if;
 end;
 $gate$;
