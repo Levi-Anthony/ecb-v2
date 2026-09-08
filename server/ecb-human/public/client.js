@@ -1,6 +1,14 @@
 "use strict";
 const el = (id) => document.getElementById(id);
 let csrf, state, reviewed, binding;
+const requestedScope = new URLSearchParams(location.search).get("scope");
+if (
+  requestedScope &&
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(requestedScope)
+) {
+  el("scope").value = requestedScope;
+  history.replaceState(null, "", location.pathname);
+}
 const digest = async (text) =>
   Array.from(
     new Uint8Array(
