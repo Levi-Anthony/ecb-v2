@@ -10,7 +10,11 @@ export const config: VercelConfig = {
       maxDuration: 30,
     },
   },
-  rewrites: [routes.rewrite("/(.*)", "/api/index")],
+  rewrites: [
+    routes.rewrite("/", "/api/index"),
+    routes.rewrite("/intervene", "/api/index"),
+    routes.rewrite("/(.*)", "/api/index"),
+  ],
   headers: [{
     source: "/(.*)",
     headers: [

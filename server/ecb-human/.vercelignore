@@ -3,3 +3,4 @@ node_modules
 installer.mjs
 executor.mjs
 README.md
+public/index.html

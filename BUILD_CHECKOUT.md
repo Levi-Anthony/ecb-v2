@@ -1,4 +1,4 @@
-STATUS: BUILD 6 MOVE IN PROGRESS — DATABASE READINESS QUALIFIED; HOSTED INERT DEPLOYMENT OPERATOR HANDOFF READY
+STATUS: BUILD 6 MOVE IN PROGRESS — HOSTED READINESS COMPLETE; FINAL EVIDENCE PERSISTED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
 AUTHORITY: Staged Move release `docs/build-shape/008-build-6-move-release.md`; qualified deployment/pre-enrollment release `docs/build-shape/008-build-6-deployment-release.md`
@@ -37,11 +37,11 @@ CANONICAL_BUILD_6_MUTATION=NONE
 ECB_HUMAN_PROJECT=prj_EQ2Q1Ybb1VFhP5pWRbZXdArVwKw4
 ECB_HUMAN_VERCEL_PLAN=HOBBY
 ECB_HUMAN_GIT_LINK=NONE
-ECB_HUMAN_DEPLOYMENTS=0_AT_PREDEPLOY_CHECK
-ECB_HUMAN_CURRENT_DOMAIN_ATTACHMENT=UNRESOLVED_CONFLICT_WITH_PRIOR_VERIFIED_RECEIPT
-HOSTED_INERT_DEPLOYMENT=OPERATOR_HANDOFF_READY
-HOSTED_HTTPS_QUALIFICATION=PENDING
-ORDINARY_AGENT_EXCLUSION=PENDING_DEPLOYMENT_OBSERVATION
+ECB_HUMAN_DEPLOYMENTS=1_PRODUCTION_READY
+ECB_HUMAN_CURRENT_DOMAIN_ATTACHMENT=ATTACHED_TO_ECB_HUMAN_PRODUCTION
+HOSTED_INERT_DEPLOYMENT=COMPLETE
+HOSTED_HTTPS_QUALIFICATION=PASS
+ORDINARY_AGENT_EXCLUSION=PASS
 LIVE_ENROLLMENT=NOT_AUTHORIZED
 LIVE_BINDING=NOT_AUTHORIZED
 M2=NOT_AUTHORIZED
@@ -77,13 +77,13 @@ The selected migration/service semantics survived the retained local 24/24 quali
 
 ## Active bounded objective
 
-The no-cost database/readiness seam is complete. The current effect boundary is hosted packaging/HTTPS only.
+The no-cost database/readiness seam is complete. The current effect boundary is the persisted hosted-readiness evidence only.
 
 `ecb-human` is an isolated, unlinked Hobby Vercel project with zero deployments at the latest predeploy inspection. Repository commits automatically deploy the separately Git-linked `ecb-v2` project, not `ecb-human`; therefore an ambiguous “current project” deploy action must not be used.
 
-A project-explicit guarded handoff is retained at `server/ecb-human/deploy-inert-readiness.sh`. Run it only in the already authenticated human-operated Vercel CLI context. It targets exact team/project IDs and intentionally supplies no `HUMAN_DATABASE_URL` or other authority/enrollment credential. The expected result is an inert hosted service that fails closed with HTTP 503 `service_unavailable` / `outcome: unknown` while allowing packaging, custom-domain TLS, routing and security headers to be qualified.
+A project-explicit guarded handoff is retained at `server/ecb-human/deploy-inert-readiness.sh`. It targets exact team/project IDs and intentionally supplies no `HUMAN_DATABASE_URL` or other authority/enrollment credential. The deployed inert surface now fails closed with HTTP 503 `service_unavailable` / `outcome: unknown` while preserving packaging, custom-domain TLS, routing and security headers evidence.
 
-After deployment, verify exact project identity, environment-key inventory, custom-domain attachment/TLS, HTTP result and headers. Do not add a database credential or setup capability under this handoff.
+The accepted hostname `https://ecos.effortlessconnection.com` is attached to the exact `ecb-human` project and returns the required fail-closed response. Do not add a database credential or setup capability under this handoff.
 
 Actual Supabase-hosted restricted-role behavior remains explicitly UNRUN until the separately authorized inactive canonical-installation boundary if no free isolated Supabase surface exists.
 
@@ -101,4 +101,4 @@ Do not:
 
 ## Next handle
 
-Execute `server/ecb-human/deploy-inert-readiness.sh` from the authenticated Vercel CLI context, inspect the environment inventory before the script's confirmation gate, then return the deployment/project/domain/TLS/HTTP-header observations. Stop before provisioning `HUMAN_DATABASE_URL` or any enrollment capability.
+Hosted readiness is complete. Keep the branch as evidence until the next authority gate.

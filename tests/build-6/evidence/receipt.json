@@ -1,19 +1,78 @@
 {
-  "observed_at": "2026-09-08T04:53:20.439Z",
-  "environment": "disposable PG17 at 127.0.0.1:55439/build6; copied retained BUILD 5B episode, not canonical",
-  "migration": "sql/migrations/20260907234712_build_6_governance_bootstrap.sql",
-  "migration_sha256": "de6e6fb7856b08eee2876b8ce65e4a9513c455703934a7627c2f016825f0d461",
-  "node": "v24.19.0",
-  "server_package": "14.0.1",
-  "browser_package": "14.0.0",
-  "installation_rollback": "passed",
-  "atomic_migration_ledger": "passed",
-  "prior_public_rows_preserved": "passed",
-  "tests_exit_code": 0,
-  "live_credential_binding": "not performed",
-  "canonical_migration": "not performed",
-  "device_tests": "not run",
-  "deployment": "not performed",
+  "observed_at": "2026-09-08T08:12:41Z",
+  "source_sha": "220c01ed463b3cf0b6f82f2d8d6a21d3e0fb2ebd",
+  "final_persisted_sha": null,
+  "environment": "disposable continuation worktree at /private/tmp/ecb-build6-final-pass.vH2gy1",
+  "project": {
+    "name": "ecb-human",
+    "project_id": "prj_EQ2Q1Ybb1VFhP5pWRbZXdArVwKw4",
+    "team_id": "team_wueYGTZ3nxHz1WhMg8UE9gSy"
+  },
+  "deployment": {
+    "id": "dpl_4V2rT22DF1QfGFh4qqHC7tYw9TwN",
+    "url": "https://ecb-human-8m45xkgnx-levi-anthonys-projects.vercel.app",
+    "alias": "https://ecos.effortlessconnection.com",
+    "alias_attached": true,
+    "alias_project_match": true
+  },
+  "environment_inventory": {
+    "project_env_count": 0,
+    "forbidden_keys_present": [],
+    "vercel_managed_oidc_present": false
+  },
+  "dns": {
+    "observation": "ecos.effortlessconnection.com resolved to Vercel and attached to the deployed ecb-human production target",
+    "verified_with": [
+      "vercel alias ls",
+      "vercel inspect",
+      "curl -i",
+      "openssl s_client"
+    ]
+  },
+  "tls": {
+    "handshake": "success",
+    "protocol": "TLSv1.3",
+    "certificate_subject": "CN=ecos.effortlessconnection.com",
+    "certificate_issuer": "C=US, O=Let's Encrypt, CN=YR2",
+    "certificate_verify": "ok"
+  },
+  "response": {
+    "http_status": 503,
+    "body": {
+      "error": "service_unavailable",
+      "outcome": "unknown"
+    },
+    "headers": {
+      "Cache-Control": "no-store",
+      "Content-Security-Policy": "default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "no-referrer",
+      "Strict-Transport-Security": "max-age=31536000"
+    }
+  },
+  "custody_exclusion": {
+    "human_database_url": false,
+    "verifier_database_credential": false,
+    "executor_database_credential": false,
+    "setup_capability": false,
+    "enrollment_capability": false,
+    "owner_credential": false,
+    "service_role_credential": false,
+    "jwt_signing_credential": false,
+    "privileged_build_6_secret": false,
+    "governance_authority_created_by_deploy": false
+  },
+  "unrun": [
+    "HUMAN_DATABASE_URL provisioning",
+    "canonical BUILD 6 migration",
+    "live setup/enrollment capability",
+    "passkey ceremony",
+    "live binding",
+    "M2 activation",
+    "P1 presentation/acceptance/execution",
+    "BUILD 6 closure",
+    "BUILD 7+"
+  ],
   "limits": [
     "Synthetic ES256 authenticators do not prove iPhone/Mac or credential-ecosystem redundancy.",
     "Copied BUILD 5B transaction IDs are historical data; this run grants them no new prior-commit authority.",
