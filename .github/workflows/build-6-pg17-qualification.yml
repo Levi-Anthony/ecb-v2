@@ -64,7 +64,7 @@ jobs:
 
       - name: Reconstruct accepted predecessor and install BUILD 6
         shell: bash
-        run: bash tests/build-6/ci-pg17-prepare.sh
+        run: bash tests/build-6/ci-pg17-install-candidate.sh
 
       - name: Install qualification dependency
         shell: bash
