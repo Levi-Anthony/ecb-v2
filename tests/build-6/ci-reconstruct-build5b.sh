@@ -83,10 +83,27 @@ SQL
 
 apply sql/migrations/20260906014257_build_5b_versioned_artifacts.sql
 
+# The retained BUILD 5B episode exposes seven applied migration versions. The selected
+# BUILD 6 qualifier checks that causal boundary before attempting its own migration.
+# CI reconstructs that migration-index shape explicitly; BUILD 6 later retains its own
+# exact migration bytes atomically in the ledger and verifies them independently.
+psql -X -v ON_ERROR_STOP=1 "$DB_URL" <<'SQL'
+insert into supabase_migrations.schema_migrations(version,name) values
+  ('20260903235721','build_0_atomic_thoughts'),
+  ('20260904000010','build_0_least_privilege'),
+  ('20260904093341','build_2_universal_referents'),
+  ('20260904163938','build_3_claims_evidence_links'),
+  ('20260904215929','build_4_typed_relation_claims'),
+  ('20260905022247','build_5a_standing_transition_history'),
+  ('20260906014257','build_5b_versioned_artifacts');
+SQL
+
 psql -X -v ON_ERROR_STOP=1 "$DB_URL" <<'SQL'
 do $gate$
 declare
   thought_digest text;
+  last_version text;
+  version_count integer;
 begin
   if pg_catalog.to_regnamespace('ecb_governance') is not null then
     raise exception 'BUILD 6 schema exists before candidate qualification';
@@ -104,6 +121,11 @@ begin
     where id='19a949ea-a8fc-4250-a386-fa64e5530180'::uuid;
   if thought_digest <> '5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55' then
     raise exception 'Accepted GT01 predecessor digest drifted: %', thought_digest;
+  end if;
+  select count(*), max(version) into version_count, last_version
+    from supabase_migrations.schema_migrations;
+  if version_count <> 7 or last_version <> '20260906014257' then
+    raise exception 'Accepted predecessor migration index drifted: count %, last %', version_count, last_version;
   end if;
 end;
 $gate$;
