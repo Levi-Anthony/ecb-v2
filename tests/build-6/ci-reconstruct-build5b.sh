@@ -38,6 +38,7 @@ create table supabase_migrations.schema_migrations (
   idempotency_key text unique,
   rollback text[]
 );
+alter table supabase_migrations.schema_migrations owner to postgres;
 SQL
 
 apply() {
