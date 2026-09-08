@@ -1,0 +1,1 @@
+One-time guarded trigger to promote the exact BUILD 6 normalized bootstrap bytes that passed disposable PG17 run 8. This branch must not merge as a PR; it is only a CI mutation surface for the BUILD 6 construction branch.
