@@ -1,0 +1,22 @@
+{
+  "name": "ecb-human",
+  "private": true,
+  "version": "0.0.0-build6",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "vite build",
+    "check": "node --check api/index.mjs && node --check src/app.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@simplewebauthn/browser": "14.0.0",
+    "@simplewebauthn/server": "14.0.1",
+    "pg": "8.23.0"
+  },
+  "devDependencies": {
+    "vite": "8.2.2"
+  }
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>ECOS Governance</title>
+  <script type="module" src="/src/app.js"></script>
+</head>
+<body>
+  <main>
+    <h1>ECOS Governance</h1>
+    <p id="status">Not authenticated.</p>
+
+    <section id="login-section">
+      <label>Governance scope <input id="scope" autocomplete="off" /></label>
+      <button id="login">Sign in with passkey</button>
+    </section>
+
+    <section id="setup-section">
+      <details>
+        <summary>Initial protected setup</summary>
+        <label>Setup ID <input id="setup-id" autocomplete="off" /></label>
+        <label>Enrollment capability <input id="setup-token" type="password" autocomplete="off" /></label>
+        <button id="setup-open">Open setup</button>
+        <button id="register">Register passkey</button>
+        <button id="setup-refresh">Inspect candidates</button>
+        <pre id="setup-output"></pre>
+      </details>
+    </section>
+
+    <section id="governance" hidden>
+      <button id="refresh">Refresh exact state</button>
+      <button id="logout">Log out</button>
+      <pre id="state"></pre>
+
+      <h2>Candidate policy</h2>
+      <textarea id="candidate" rows="14" cols="80"></textarea>
+      <label>Source reference <input id="candidate-source" value="protected-human-service" /></label>
+      <button id="retain">Retain exact candidate</button>
+      <pre id="candidate-result"></pre>
+
+      <h2>Decision</h2>
+      <label>Target subject <input id="target-subject" /></label>
+      <label>Expected current transition <input id="expected-transition" /></label>
+      <label>Explanation <textarea id="explanation" rows="3"></textarea></label>
+      <button id="accept">Accept exact successor</button>
+      <button id="decline">Decline exact successor</button>
+
+      <h2>Withdraw pending authorization</h2>
+      <label>Decision ID <input id="withdraw-decision" /></label>
+      <button id="withdraw">Withdraw my pending authorization</button>
+    </section>
+  </main>
+</body>
+</html>
