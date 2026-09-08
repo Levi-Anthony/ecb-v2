@@ -25,6 +25,9 @@
         <button id="setup-open">Open setup</button>
         <button id="register">Register passkey</button>
         <button id="setup-refresh">Inspect candidates</button>
+        <label>Credential refs <input id="credential-refs" autocomplete="off" /></label>
+        <label>Setup source <input id="setup-source" value="human_setup_completion" autocomplete="off" /></label>
+        <button id="setup-bind">Bind exact registered set</button>
         <pre id="setup-output"></pre>
       </details>
     </section>
@@ -46,6 +49,11 @@
       <label>Explanation <textarea id="explanation" rows="3"></textarea></label>
       <button id="accept">Accept exact successor</button>
       <button id="decline">Decline exact successor</button>
+
+      <h2>Recover request outcome</h2>
+      <label>Request ID <input id="recover-request" /></label>
+      <button id="recover">Recover exact outcome</button>
+      <pre id="recovery-result"></pre>
 
       <h2>Withdraw pending authorization</h2>
       <label>Decision ID <input id="withdraw-decision" /></label>
