@@ -63,7 +63,7 @@ jobs:
 
       - name: Restore exact qualified BUILD 5B Artifact stage
         shell: bash
-        run: deno run --allow-all tests/build-6/ci-seed-build5b-artifacts.ts
+        run: deno run --config tests/build-5b/deno.json --allow-all tests/build-6/ci-seed-build5b-artifacts.ts
 
       - name: Verify predecessor Artifact stage
         shell: bash
