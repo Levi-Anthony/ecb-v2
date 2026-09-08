@@ -1,131 +1,191 @@
-STATUS: BUILD 5B EXECUTION PASS; AWAIT HUMAN METABOLIZE
+STATUS: BUILD 6 SHAPE OPEN — REMOTE RECONCILIATION CHECKPOINT; MECHANISM NOT SELECTED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
-AUTHORITY: Hardened governing sources, anchored BUILD 5B Move release, and human continuation authorization
-CURRENT BUILD UNIT: BUILD 5B — Versioned Artifacts + First Transformation Receipt
+AUTHORITY: Governing repository sources; human BUILD 5B closure and “Open 6” / “Continue”; later human-provided BUILD 6 binding/technical-Shape state as explicitly qualified below
+CURRENT BUILD UNIT: BUILD 6 — Governance Bootstrap
 
-# BUILD 5B — Versioned Artifacts + First Transformation Receipt
+# BUILD 6 — Governance Bootstrap
 
 ## CURRENT MOVE
 
-`PG17 QUALIFICATION PASS → CANONICAL EXECUTION PASS → AWAIT HUMAN METABOLIZE`
+`RECONCILE THE ACCEPTED HUMAN/BOOTSTRAP BASIS WITH THE OPEN H-BINDING DECISION SURFACE → FREEZE ONLY THE MINIMUM BUILD 6 SHAPE`
 
 ```text
-BUILD_0_TO_5A=CLOSED
-BUILD_5B=EXECUTED; NOT_ACCEPTED_OR_CLOSED
-SENSE=CLOSED; SHAPE=REQUALIFIED_AND_CLOSED
-MOVE_ANCHOR=07fcb9f29c75365c07d36226043d3b17cbc769fd
-MOVE_ANCHOR_TREE=616857ac26bbf34695bad13468cda37c67bd7e35
-HARDENING_ANCESTOR=0e969b9f72dc198976d7538748a341148edf09b2
-SELECTED_IMPLEMENTATION_LINE=f47cbad12c34043113d273c2423ee5108317d4da; PR_2
-ALTERNATIVE_PRESERVED=60f510ce3f75c46f9caff2b96274d5fd5a170a07; NONCANONICAL; NOT_ADOPTED
-QUALIFICATION_BRANCH=build/build-5b-pg17-qualification
-PG17_QUALIFICATION=COMPLETE_PASS; WT07_39_OF_39; P01_TO_P23
-EXECUTED_CANDIDATE=7f3790786d947ac278501632a6072433db8d0c6e
-EXECUTED_TREE=f5d9d29f765c24cc72dc3c0fa3cfe4ba412ad859
-CANONICAL_PREDECESSOR=READ_ONLY_REVERIFIED_2026-09-06; IDENTICAL_TO_RETAINED_SNAPSHOT
-CANONICAL_MUTATION=SCHEMA_AND_LEDGER_COMMITTED; EXACT_7_PLUS_2_FIXTURES_COMMITTED
-PRECHECK_XID=1524; RECEIPT_XID=1525
-RC1=PASS_SIX_TRUE; RC2=EXPECTED_FAIL_OUTPUT_FORMAT
-CANONICAL_ARTIFACTS=9; REFERENTS=16; PUBLIC_TABLES=6; FUNCTIONS=8; VIEWS=0
-INHERITED_FIXTURES_CATALOG_LEDGER=PRESERVED
-FRESH_RECONSTRUCTION=PASS
-METABOLIZE=PENDING_HUMAN
-BUILD_6_PLUS=UNOPENED
+BUILD_0_TO_5B=CLOSED
+BUILD_5B_MAIN_MERGE=1ff284164160f74c398bcfe4d2c300b694070b7f
+BUILD_6=SHAPE_OPEN; NOT_FROZEN
+SENSE=ORIGINAL_PUSHED_RECORD_RETAINED; ACTIVE_PHASE_SUPERSEDED_BY_LATER_SHAPE_WORK
+FOCAL_EPISODE=EXTERNAL_ROOT_TO_P0_GENESIS_TO_BOOTSTRAP_EXHAUSTION_TO_ONE_ORDINARY_SUCCESSION
+H=LEVI; HUMAN-ACCEPTED_UPSTREAM; EXACT_LOCAL_BINDING_RECORD_NOT_YET_REMOTE
+REMIT=HUMAN-ACCEPTED_UPSTREAM; EXACT_LOCAL_RECORD_NOT_YET_REMOTE
+P0=HUMAN-ACCEPTED_UPSTREAM; EXACT_BYTES/LOCAL_RECORD_NOT_YET_REMOTE
+TECHNICAL_SHAPE=CANDIDATE; NOT_FROZEN
+H_BINDING_MECHANISM=UNSELECTED
+CANDIDATE_A=SUPABASE_AUTH_SESSION_BINDING
+CANDIDATE_B=DIRECT_WEBAUTHN_DECISION-BOUND_CREDENTIAL_SET
+CANDIDATE_C=SUPABASE_PASSKEYS_FOR_AUTHENTICATION; NOT_EQUIVALENT_TO_DECISION-BOUND_B
+CANDIDATE_D=APPLE_APP_ATTEST; ANALYTICALLY_REJECTED_AS_DEVICE-BOUND_ROOT_IN_OPEN_DECISION_SURFACE; NOT_HUMAN_FROZEN
+OUTPUT_CONTRACT=UNBOUND
+MOVE_PERMISSION=UNRELEASED
+IMPLEMENTATION=UNOPENED
+CANONICAL_BUILD_6_MUTATION=NONE_ESTABLISHED_BY_THIS_CHECKPOINT
+BUILD_7_PLUS=UNOPENED
 ```
 
-## AUTHORIZATION AND RECOVERY
+## RECONCILIATION BASIS
 
-The reviewed Shape and Move entry release are preserved at `366c92d` and the prior
-checkout at `f47cbad`. The release established the Shape anchor above and adopted
-the [BUILD 5A entry gate](docs/build-receipts/006-build-5a.md#entry-gate).
-The historical PG16-only disposition allowed rehearsal while holding canonical
-execution until the unresolved baseline and engine gates were resolved.
+This checkout repairs a remote-state split without selecting architecture.
 
-In the Codex task **Check Status and Report** (`01a07504-9640-71a0-b835-d91557eb5c26`),
-the human subsequently said **“Go”** after the report specified reconciliation,
-exact PG17 qualification, baseline checks, then canonical activation, fixture
-stages and an execution receipt. That continuation opened the qualification
-worktree. The current human request **“Can you continue the checkout work”**
-resumes that authorized work. It does not accept BUILD 5B or open BUILD 6.
+Current `main` contains the accepted BUILD 5B merge but retained a stale pre-closure
+BUILD 5B checkout. The pushed `build/build-6-sense` branch contains the BUILD 6
+Sense record. The later `claude/webauthn-governance-auth-6yqpf9` branch adds the
+open governance-authenticator decision surface and is exactly one commit ahead of
+the pushed Sense branch, but both diverge from current `main` at the BUILD 5B human
+closure commit.
 
-The older original worktree still carried a pre-release checkout and the preserved
-failed alternative. Reentry must use this qualification line. Earlier closures,
-Shape/WT07 texts and receipts remain historical authorities/evidence in their
-original standing. Current execution facts belong here and in the new receipt.
+This reconciliation therefore copies the decision-relevant BUILD 6 files onto the
+current `main` ancestry rather than merging the divergent branch history.
+
+The human has also supplied a later BUILD 6 technical-boundary record stating that
+H=Levi, the stated remit and exact P0 were already accepted and that the technical
+mechanism remained a candidate, not frozen or implemented. The pushed
+governance-authenticator surface independently records that the technical Shape,
+mechanism candidate, P0 candidate and human-binding records existed only in a local
+working copy and had not been read there. Those exact local files are still not
+present on any remotely inspectable branch at this checkpoint.
+
+Therefore this checkout preserves the accepted subjects as reported human state
+without inventing their absent bytes, filenames, identifiers, or detailed terms.
+If the local records are later pushed, compare them against this projection and
+replace the qualified summaries with exact pointers. Do not reopen their acceptance
+merely because remote persistence lagged.
 
 ## PURPOSE / INVARIANT SERVED
 
-Retain exact historical representation payload and evidence of bounded checks on
-identified inputs/outputs against predeclared obligations. Preserve identity versus
-description, evidence versus assertion, standing versus warrant, current versus
-newest, and Event versus Transformation Receipt. A passing check never supplies
-truth, acceptance, authority, authorization or currentness.
+BUILD 6 must make the origin and retirement of bootstrap authority explicit and
+reconstructible so ordinary governance can succeed it without self-authorization.
+Preserve capability versus warrant/authorization, evidence versus authority,
+identity versus role, verification versus authorization, current versus newest,
+and candidate policy versus operative policy.
 
-## INPUTS / OUTPUT / STANDING
+The governing sequence remains:
 
-Inputs: accepted TR1/C/L/GT01 episode, closed BUILD 0–5A, requalified K7 Shape,
-[ADR-006](docs/architecture-decisions/006-build-5b-artifact-receipt-boundary.md),
-and frozen [WT07](docs/acceptance/build-5b-wt07.md).
+`bootstrap trust root → initial policy activation → human/warrant authority designation → bootstrap exhaustion → ordinary governed succession`
 
-Output is confined to the five products in the
-[Shape Output Contract](docs/build-shape/007-build-5b.md#output-contract--bound-executable-only-after-a-separate-move-release):
-one Artifact migration, local harness/runner, nine canonical Artifact fixtures,
-Layer B regression, and minimum evidence/readme/checkout wiring.
-The migration is unchanged from PR #2: `20260906014257_build_5b_versioned_artifacts.sql`,
-SHA-256 `adbcbdf627a7d60e020af74e214c976757b423ac697caefd5d88904082a95b41`.
+The currently proposed minimum worked episode is one governance scope, exact P0
+genesis under the bounded external root, explicit exhaustion, and one P0-authorized
+P1 succession with forged/stale/replay controls and restart reconstruction.
+
+## ACCEPTED / CARRIED FORWARD
+
+- BUILD 0–5B are closed; BUILD 5B closure and canonical evidence remain historical
+  predecessor authority/evidence and are not reopened here.
+- BUILD 6 is authorized and has progressed beyond the original pushed Sense phase.
+- H is Levi; the stated remit and exact P0 are reported human-accepted upstream.
+- P0 may not authorize its own birth; the bootstrap root is external, bounded and
+  must be exhausted.
+- Ordinary succession is authorized under the previously operative basis; newest
+  does not mean governing.
+- Caller prose, metadata, service-role/owner capability, a stored record, or a PASS
+  result cannot manufacture human authority.
+- One human authority need not collapse to one technical credential.
+
+These bullets preserve already-established state. They do not freeze a new
+technical mechanism or recreate the absent local human-binding/P0 records.
+
+## OPEN SHAPE CELLS
+
+The active mechanism decision is documented in
+`docs/deployment-shapes/governance-authenticator.md`.
+
+The genuinely open cells are:
+
+1. Select the H-binding mechanism for governance writes: Candidate A (Supabase Auth
+   session binding), Candidate B (direct WebAuthn decision-bound assertions), or B
+   for governance writes with separate Auth/passkey treatment for Door access.
+2. If B is selected, choose the stable WebAuthn relying-party ID before first
+   credential registration.
+3. If B is selected, choose bootstrap credential redundancy: one credential or two
+   independently recoverable credentials bound to the same H.
+4. Disposition the previously supplied account email: governance input, Door/access
+   input, notification-only input, or unnecessary. Under B it is not the authority
+   credential.
+5. Freeze the minimum credential enrollment/revocation/recovery boundary so
+   credential lifecycle cannot become a standing bootstrap override.
+6. Freeze the minimum qualification experiment and exact recovery outcomes needed
+   to discriminate legitimate approval from caller forgery, modified decision,
+   replay, stale predecessor and unknown outcome.
+7. Reconcile the pushed decision surface against the exact local human-binding,
+   mechanism-candidate, P0 and technical-Shape records when those bytes become
+   remotely available. Any contradiction that can change the mechanism or Output
+   Contract must be resolved before Shape closes.
+
+No other BUILD 6 question should be reopened unless it can change the implementation
+boundary, acceptance test, recovery semantics or authority meaning of this bounded
+episode.
+
+## CURRENT CANDIDATE PRESSURE
+
+The open decision surface gives direct WebAuthn a material property that session
+binding does not: a retained assertion can be independently re-verified against the
+registered public key and can commit to exact decision bytes. It also introduces a
+new verifier, relying-party dependency, challenge lifecycle and credential-set
+recovery surface. Those costs must be dispositioned rather than hidden.
+
+Selecting direct WebAuthn would require, at minimum:
+
+- decision-bound server-held single-use challenges;
+- required and checked user verification;
+- origin and RP-ID-hash checking;
+- retained canonical decision/assertion material for later re-verification;
+- no parallel weaker governance-write path that silently bypasses the assertion;
+- governed enrollment/revocation/recovery of additional credentials;
+- explicit bounded bootstrap enrollment that is consumed on completion.
+
+These are candidate constraints, not yet frozen requirements.
 
 ## ENFORCEMENT / FAILURE BEHAVIOR
 
-The database enforces exact identity and participation, immutable writes, fixed
-specifications, caller-forgery rejection, a previously committed attempt gate and
-one terminal result per attempt. Grounding reads persisted Event/Link rows;
-preservation independently compares the two retained representations.
-PASS requires all six components. Observed violations are FAIL; unavailable
-checks are INCOMPLETE. An attempt without a terminal receipt stays incomplete.
-No result changes Claim standing or propagates through R.
+No BUILD 6 enforcement surface is installed by this checkpoint. Do not infer
+non-bypassability from documentation, a valid signature, an authenticated session,
+or privileged custody alone.
 
-The runner checks exact candidate hashes and remote anchoring, unchanged inherited
-fixtures/catalog/ledger, the rehearsed installed schema before commit, and exact
-0/7/9 stages. Unexpected partial state or uncertain outcome stops for persisted
-state inspection; no blind replay. Fault probes run only on disposable PostgreSQL.
+A missing mechanism decision blocks dependent Shape closure and implementation; it
+does not authorize invention. A missing remote copy of an already accepted local
+record triggers reconciliation, not blank-slate re-elicitation or silent demotion.
 
-## TEST / ENTRY GATE
+Do not contact or mutate canonical state merely to make this projection look
+complete. Any future canonical contact must belong to an explicitly released Shape
+or Move obligation and must retain its evidence/authority limits.
 
-Fresh local evidence on 2026-09-06 passed the full PG17 rehearsal: 39 WT07 findings,
-P01–P23, observed P17 blocking in both outcomes, retained positive/negative P23
-controls, actual backend-loss recovery, fixture resumption, baseline and Layer B
-regressions. Rehearsal matches all inherited fixture bytes (including embeddings),
-definitions, constraints, triggers, grants, and relevant roles. The resumed
-canonical read-only snapshot equals the earlier accepted snapshot.
+## REENTRY / USAGE RULE
 
-The exact clean candidate `7f37907` was committed and remotely anchored, then passed
-the complete rehearsal and fresh predecessor checks before canonical writes. Schema
-and ledger committed atomically; seven pre-check Artifacts and two receipts committed
-in separate later transactions. Fresh reconstruction passed with no probe residue.
-The [execution receipt](docs/build-receipts/007-build-5b.md) reports all gate evidence
-and links the durable [evidence manifest](docs/build-receipts/evidence/build-5b/manifest.json).
-Detailed commands and test boundaries: [qualification procedure](tests/build-5b/README.md).
+Fresh sessions MUST start here and follow only the explicit pointers needed by the
+open cells.
 
-## APERTURE / REVALIDATION TRIGGER
+Do not re-run broad repository archaeology, re-read closed BUILD 0–5B material, or
+re-litigate Supabase/WebAuthn platform background unless a named open cell exposes a
+fact that can change the current decision.
 
-AP-02 remains narrowed only for exact Artifact versions and operation/attempt/receipt
-reconstruction. AP-01/03/04/07 remain unbroadened. No new aperture or wholesale E07/E15
-promotion. Reopen Shape for a named K7 falsifier, new format/checker/retention/trust
-boundary, or invalid XID provenance after import. Ordinary tooling and probe defects
-stay at their responsible layer. An invariant or accepted-episode conflict returns
-to human architectural disposition. The four scoped deferral leases in Shape remain.
+At a constrained usage boundary, persist current findings, update this checkout,
+commit/push and state the exact next handle before opening another investigation.
+Do not leave a more advanced authoritative or decision-relevant state only in chat.
 
 ## NON-GOALS
 
-No runtime/MCP/deployment/credential change, new Claim vocabulary/predicate, currentness,
-supersession, propagation, Actor ontology, bitemporality, general controller, editor,
-collaboration pilot, global skill installation, or BUILD 6. The agent-collaboration
-research draft is separate from this bounded Move.
+No mechanism selection, ADR closure, schema/role/enum design, migration, Edge
+Function, WebAuthn ceremony, credential enrollment, Supabase Auth enrollment,
+canonical policy activation, Master-Key designation, action envelope, BUILD 7 work,
+or generalized recovery/identity platform is authorized by this reconciliation.
 
 ## NEXT HANDLE
 
-Review the [BUILD 5B execution receipt](docs/build-receipts/007-build-5b.md) for human
-Metabolize/closure. The authorized implementation, qualification, canonical fixture
-sequence and evidence retention are complete. No canonical rerun is needed.
-Execution PASS does not close BUILD 5B or open BUILD 6.
+Open only:
+
+1. `docs/deployment-shapes/governance-authenticator.md` for the H-binding choice;
+2. the exact local BUILD 6 human-binding / P0 / mechanism / technical-Shape records
+   if and when they are made remotely available.
+
+Then resolve only the seven open Shape cells above and present the minimum frozen
+Shape / Output Contract for explicit human disposition. Do not begin Move or
+implementation in the same step merely because usage remains.
