@@ -1,52 +1,45 @@
-STATUS: BUILD 6 MOVE IN PROGRESS — HOSTED READINESS COMPLETE; FINAL EVIDENCE PERSISTED
+STATUS: BUILD 6 MOVE IN PROGRESS — CANONICAL INACTIVE INSTALL COMPLETE; LIVE M1 HUMAN CUSTODY READY
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
-AUTHORITY: Staged Move release `docs/build-shape/008-build-6-move-release.md`; qualified deployment/pre-enrollment release `docs/build-shape/008-build-6-deployment-release.md`
+AUTHORITY: Accepted BUILD 6 staged Move release plus Levi's current instruction to carry this Move through verified M1 completion; M2 explicitly excluded from this Move
 CURRENT BUILD UNIT: BUILD 6 — Governance Bootstrap
 
 # Current Move
 
-Continue the exact tested BUILD 6 candidate through the already released qualified deployment-preparation stage. Do not reopen Sense or Shape without a concrete falsifier.
+Carry the accepted BUILD 6 Shape through exact live M1 binding. Maintain execution custody autonomously except for genuine human secret/WebAuthn custody. Resume from durable partial state rather than replaying completed effects. Do not reopen Sense or Shape absent a concrete mechanism falsifier.
 
 ```text
 BUILD_0_TO_5B=CLOSED
-PREDECESSOR_MAIN=1ff284164160f74c398bcfe4d2c300b694070b7f
 BUILD_6=MOVE_IN_PROGRESS
 SENSE=CLOSED; HISTORICAL
 SHAPE=STAGED_IMPLEMENTATION_BOUNDARY_ACCEPTED; CLOSED_FOR_CURRENT_MOVE
-MOVE_RELEASE=CONSTRUCTION_AND_DISPOSABLE_QUALIFICATION_RELEASED
-DEPLOYMENT_PREP_RELEASE=RELEASED_AND_AUTHORIZED
 CURRENT_BRANCH=reconcile/build-6-tested-move
 SELECTED_TESTED_SOURCE_SHA=afdd7dcab90afc3ece5de43a0016c7688db96ea4
-RECONCILIATION=docs/build-receipts/009-build-6-tested-candidate-reconciliation.md
-INDEPENDENT_PG17_RECEIPT=docs/build-receipts/010-build-6-independent-pg17-requalification.md
-SUPPLEMENTAL_RACE_RECEIPT=docs/build-receipts/011-build-6-supplemental-readiness-races.md
-HOSTED_PREDEPLOY_RECEIPT=docs/build-receipts/012-build-6-hosted-predeployment-readiness.md
+SELECTED_MIGRATION=sql/migrations/20260907234712_build_6_governance_bootstrap.sql
+SELECTED_MIGRATION_SHA256=de6e6fb7856b08eee2876b8ce65e4a9513c455703934a7627c2f016825f0d461
+P0_SHA256=686148f540860aca57a43d8cdf02ee15a0f6314d14b54736e6baf6f1846a7664
 H=LEVI; NORMATIVELY_ACCEPTED; LIVE_CREDENTIAL_BINDING_PENDING
 REMIT=ACCEPTED
-P0_SHA256=686148f540860aca57a43d8cdf02ee15a0f6314d14b54736e6baf6f1846a7664
 AUTHENTICATION=DIRECT_WEBAUTHN_WITH_PROTECTED_SESSION
 RP_ID=ecos.effortlessconnection.com
 ORIGIN=https://ecos.effortlessconnection.com
-SELECTED_MIGRATION=sql/migrations/20260907234712_build_6_governance_bootstrap.sql
-SELECTED_MIGRATION_SHA256=de6e6fb7856b08eee2876b8ce65e4a9513c455703934a7627c2f016825f0d461
-LOCAL_SELECTED_CANDIDATE_QUALIFICATION=24_PASS_0_FAIL
-FREE_GITHUB_PG17_RERUN=PASS_24_OF_24; RUN_34191366522
-SUPPLEMENTAL_READINESS_RACES=PASS_7_OF_7; RUN_34191975800
-CANONICAL_BUILD_6_MUTATION=NONE
+CANONICAL_PROJECT=vezxivrvhakclxuvxzso
+CANONICAL_BUILD_6_MIGRATION=20260908083501_build_6_governance_bootstrap
+CANONICAL_GOVERNANCE_SCHEMA=INSTALLED_INACTIVE
+CANONICAL_PREFLIGHT_SCOPES=0
+CANONICAL_PREFLIGHT_CREDENTIALS=0
+CANONICAL_PREFLIGHT_SESSIONS=0
+CANONICAL_PREFLIGHT_DECISIONS=0
+CANONICAL_PREFLIGHT_TRANSITIONS=0
 ECB_HUMAN_PROJECT=prj_EQ2Q1Ybb1VFhP5pWRbZXdArVwKw4
-ECB_HUMAN_VERCEL_PLAN=HOBBY
-ECB_HUMAN_GIT_LINK=NONE
-ECB_HUMAN_DEPLOYMENTS=1_PRODUCTION_READY
-ECB_HUMAN_CURRENT_DOMAIN_ATTACHMENT=ATTACHED_TO_ECB_HUMAN_PRODUCTION
-HOSTED_INERT_DEPLOYMENT=COMPLETE
-HOSTED_HTTPS_QUALIFICATION=PASS
-ORDINARY_AGENT_EXCLUSION=PASS
-LIVE_ENROLLMENT=NOT_AUTHORIZED
-LIVE_BINDING=NOT_AUTHORIZED
-M2=NOT_AUTHORIZED
-FIRST_P1=NOT_AUTHORIZED
-BUILD_6_CLOSURE=NOT_AUTHORIZED
+ECB_HUMAN_TEAM=team_wueYGTZ3nxHz1WhMg8UE9gSy
+HOSTED_READINESS=PASS
+HUMAN_DATABASE_URL=NOT_PROVISIONED_AT_PREFLIGHT
+LIVE_BIND_HELPER=server/ecb-human/live-bind.mjs
+LIVE_BIND_HELPER_BLOB=0862b36f1fb8e9fba66389a66b37384c04697979
+LIVE_BINDING=PENDING_HUMAN_CUSTODY
+M1_COMPLETION=BINDING_NON_NULL + ONE_GENESIS_DECISION + CURRENT_TRANSITION_NULL + TRANSITIONS_0
+M2=EXPLICITLY_OUTSIDE_CURRENT_MOVE; DO_NOT_PREPARE_OR_EXECUTE
 BUILD_7_PLUS=UNOPENED
 ```
 
@@ -54,51 +47,52 @@ BUILD_7_PLUS=UNOPENED
 
 1. `docs/build-shape/008-build-6-move-release.md`
 2. `docs/build-shape/008-build-6-runtime-boundary.md`
-3. `docs/build-shape/008-build-6-technical-shape.md` only where retained by the later WebAuthn/session route
-4. `docs/build-shape/008-build-6-human-binding.md`
-5. `docs/build-shape/008-build-6-p0-candidate.json`
-6. `docs/build-shape/008-build-6-deployment-release.md`
+3. `docs/build-shape/008-build-6-human-binding.md`
+4. `docs/build-shape/008-build-6-p0-candidate.json`
+5. `docs/build-shape/008-build-6-accepted-remit.txt`
+6. `docs/build-receipts/013-build-6-live-binding-preflight.md`
 
-Implementation/evidence continuity:
-- `docs/build-receipts/008-build-6-progress.md`
-- `docs/build-receipts/009-build-6-tested-candidate-reconciliation.md`
-- `docs/build-receipts/010-build-6-independent-pg17-requalification.md`
-- `docs/build-receipts/011-build-6-supplemental-readiness-races.md`
-- `docs/build-receipts/012-build-6-hosted-predeployment-readiness.md`
-- `tests/build-6/evidence/receipt.json`
-- `tests/build-6/evidence/qualification.txt`
-- GitHub Actions artifact `10042526055` from run `34191975800`
+Earlier qualification and deployment receipts remain evidentiary continuity, including independent PG17 24/24, supplemental races 7/7, and hosted readiness. No concrete Shape falsifier is open.
 
-## Selected implementation
+## Live M1 objective
 
-The current implementation source remains the candidate tested at exact SHA `afdd7dcab90afc3ece5de43a0016c7688db96ea4`, carried forward on this reconciliation branch without merging the materially different alternate implementation line.
+The canonical governance mechanism is installed but inactive. Preflight independently observed all seven private governance tables empty and the hosted service still fail-closed because no verifier database credential exists.
 
-The selected migration/service semantics survived the retained local 24/24 qualification and an independent fresh GitHub-hosted PG17 24/24 rerun. Supplemental concurrency observations passed 7/7 without changing implementation semantics. No concrete Shape falsifier is open.
+Use only `server/ecb-human/live-bind.mjs` for the remaining live-binding custody path. It targets the exact canonical Supabase project and exact isolated Vercel project, provisions only the restricted verifier credential, invokes the existing installer, resumes an existing partial commissioned scope from private recovery rather than creating another, guides the real WebAuthn ceremony, and reconstructs the exact M1 state.
 
-## Active bounded objective
+Human custody is limited to:
 
-The no-cost database/readiness seam is complete. The current effect boundary is the persisted hosted-readiness evidence only.
+- privately supplying the canonical Supabase installer Session-pooler URI to the helper's hidden terminal prompt;
+- typing `OPEN` at the existing local installer gate after inspecting the retained package;
+- native passkey / Touch ID authorization and the protected browser binding action.
 
-`ecb-human` is an isolated, unlinked Hobby Vercel project with zero deployments at the latest predeploy inspection. Repository commits automatically deploy the separately Git-linked `ecb-v2` project, not `ecb-human`; therefore an ambiguous “current project” deploy action must not be used.
+Do not expose installer URLs, verifier passwords, setup capabilities, passkey material, or private recovery-file contents in chat, shell history, committed state, or model-visible logs.
 
-A project-explicit guarded handoff is retained at `server/ecb-human/deploy-inert-readiness.sh`. It targets exact team/project IDs and intentionally supplies no `HUMAN_DATABASE_URL` or other authority/enrollment credential. The deployed inert surface now fails closed with HTTP 503 `service_unavailable` / `outcome: unknown` while preserving packaging, custom-domain TLS, routing and security headers evidence.
+## M1 completion conditions
 
-The accepted hostname `https://ecos.effortlessconnection.com` is attached to the exact `ecb-human` project and returns the required fail-closed response. Do not add a database credential or setup capability under this handoff.
+Do not declare this Move complete until all are verified:
 
-Actual Supabase-hosted restricted-role behavior remains explicitly UNRUN until the separately authorized inactive canonical-installation boundary if no free isolated Supabase surface exists.
+```text
+binding != NULL
+exactly one committed genesis decision
+current_transition = NULL
+transitions = 0
+expected credential set retained
+private recovery material present with restrictive permissions
+consumed setup capability no longer usable
+https://ecos.effortlessconnection.com/health = healthy ecb-human verifier surface
+exact ecb-human project/team targeting retained
+HUMAN_DATABASE_URL is the only required human runtime DB credential
+no forbidden owner/service-role/JWT/installer/executor/setup credential in ecb-human runtime
+no unresolved installation/security discrepancy
+```
 
-## Still closed
+After apparent success, reconstruct canonical and hosted state independently and persist the M1 receipt before stopping.
 
-Do not:
-- perform Levi's real passkey ceremony;
-- expose a live setup/enrollment capability in agent/chat context;
-- bind the live credential/scope instance;
-- apply BUILD 6 DDL to canonical `ecb-v2-brain`;
-- activate M2 or exhaust bootstrap;
-- present/accept/execute P1;
-- Metabolize/close BUILD 6;
-- open BUILD 7+.
+## Hard boundary
+
+For this Move, do not begin, prepare, or opportunistically advance M2. Specifically do not execute the genesis decision, enable/provision the executor for activation, exhaust bootstrap, present or exercise P1, close BUILD 6, or open BUILD 7+.
 
 ## Next handle
 
-Hosted readiness is complete. Keep the branch as evidence until the next authority gate.
+Run the one-command live-bind helper in a real human-operated Mac terminal from a clean, current `reconcile/build-6-tested-move` checkout. The helper owns all routine plumbing and verification. After its human-custody actions complete, independently reconstruct M1, persist the final receipt/checkout, and stop before M2.
