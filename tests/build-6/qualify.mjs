@@ -1,0 +1,113 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readFile, writeFile } from 'node:fs/promises';
+import { spawn } from 'node:child_process';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const root = path.resolve(here, '../..');
+const files = {
+  p0: 'docs/build-shape/008-build-6-p0-candidate.json',
+  migration: 'sql/migrations/20260908013000_build_6_governance_bootstrap.sql',
+  setupRecovery: 'sql/migrations/20260908013100_build_6_setup_recovery_surface.sql',
+  decisionSurface: 'sql/migrations/20260908013200_build_6_decision_result_surface.sql',
+  humanApi: 'server/ecb-human/api/index.mjs',
+  humanUi: 'server/ecb-human/src/app.js',
+  executor: 'server/governance-executor/index.mjs',
+  installer: 'server/governance-installer/index.mjs',
+};
+
+const ACCEPTED_P0_SHA = '686148f540860aca57a43d8cdf02ee15a0f6314d14b54736e6baf6f1846a7664';
+const CANONICAL_REF = 'vezxivrvhakclxuvxzso';
+
+function sha(buffer) { return createHash('sha256').update(buffer).digest('hex'); }
+async function bytes(relative) { return readFile(path.join(root, relative)); }
+
+function run(command, args, env) {
+  return new Promise((resolve) => {
+    const child = spawn(command, args, { cwd: here, env, stdio: 'inherit' });
+    child.on('exit', (code, signal) => resolve({ code, signal }));
+    child.on('error', (error) => resolve({ code: null, signal: null, error: error.message }));
+  });
+}
+
+const startedAt = new Date().toISOString();
+const receipt = {
+  format: 'ecb.build6.qualification.v1',
+  started_at: startedAt,
+  disposition: 'qualification_observation_not_authority',
+  target: 'disposable_pg17_only',
+  artifacts: {},
+  checks: {},
+  unrun: [
+    'physical_iphone_passkey_ceremony',
+    'physical_mac_passkey_ceremony',
+    'real_backup_or_second_authenticator_loss_coverage',
+    'qualified_https_deployment_ecos_effortlessconnection_com',
+    'ordinary_operating_agent_actual_tool_and_credential_exclusion',
+    'canonical_m2_activation',
+    'canonical_restart_reconstruction',
+    'first_human_p1_decision',
+    'human_metabolize_and_build6_closure',
+  ],
+};
+
+try {
+  for (const [name, relative] of Object.entries(files)) {
+    const content = await bytes(relative);
+    receipt.artifacts[name] = { path: relative, sha256: sha(content), bytes: content.length };
+  }
+  assert.equal(receipt.artifacts.p0.sha256, ACCEPTED_P0_SHA, 'accepted P0 byte digest mismatch');
+  receipt.checks.exact_p0_bytes = 'PASS';
+
+  const migration = (await bytes(files.migration)).toString('utf8');
+  const humanApi = (await bytes(files.humanApi)).toString('utf8');
+  const executor = (await bytes(files.executor)).toString('utf8');
+  const installer = (await bytes(files.installer)).toString('utf8');
+
+  for (const required of [
+    'ecb_governance_native', 'ecb_governance_installer', 'ecb_governance_verifier',
+    'ecb_governance_executor', 'execute_governance', 'record_human_decision',
+    'bind_initial_instance', 'recover_request', 'pg_current_xact_id()',
+  ]) assert.ok(migration.includes(required), `migration missing ${required}`);
+  receipt.checks.required_governance_surface_present = 'PASS';
+
+  assert.ok(humanApi.includes("const RP_ID = 'ecos.effortlessconnection.com'"));
+  assert.ok(humanApi.includes("const ORIGIN = 'https://ecos.effortlessconnection.com'"));
+  assert.ok(humanApi.includes("dbRole !== 'ecb_governance_verifier'"));
+  assert.ok(!humanApi.includes('service_role'));
+  assert.ok(!humanApi.includes('JWT_SECRET'));
+  receipt.checks.human_service_static_custody_boundary = 'PASS';
+
+  assert.ok(executor.includes("role !== 'ecb_governance_executor'"));
+  assert.ok(!executor.includes('record_human_decision'));
+  assert.ok(!executor.includes('begin_registration'));
+  receipt.checks.executor_static_human_exclusion = 'PASS';
+
+  assert.ok(installer.includes('ACCEPTED_P0_SHA256'));
+  assert.ok(installer.includes('mode: 0o600'));
+  assert.ok(installer.includes('Deliberately never print the setup token'));
+  receipt.checks.installer_static_secret_custody = 'PASS';
+
+  const dbUrl = process.env.BUILD6_DATABASE_URL || '';
+  assert.ok(dbUrl, 'BUILD6_DATABASE_URL is required for executable qualification');
+  assert.equal(process.env.BUILD6_DISPOSABLE, 'YES', 'BUILD6_DISPOSABLE=YES is required');
+  assert.ok(!dbUrl.includes(CANONICAL_REF), 'canonical project URL is forbidden');
+  receipt.checks.canonical_target_refusal = 'PASS';
+
+  const executed = await run(process.execPath, ['--test', 'governance.test.mjs'], process.env);
+  receipt.checks.pg17_governance_suite = executed.code === 0 ? 'PASS' : 'FAIL';
+  if (executed.code !== 0) throw new Error(`governance suite exited ${executed.code ?? executed.signal ?? executed.error}`);
+
+  receipt.result = 'PASS_WITH_REQUIRED_LIVE_OBSERVATIONS_UNRUN';
+} catch (error) {
+  receipt.result = 'FAIL';
+  receipt.failure = error.message;
+  process.exitCode = 1;
+} finally {
+  receipt.completed_at = new Date().toISOString();
+  const output = process.env.BUILD6_RECEIPT_PATH || path.join(here, 'qualification-receipt.local.json');
+  await writeFile(output, `${JSON.stringify(receipt, null, 2)}\n`, 'utf8');
+  process.stdout.write(`${JSON.stringify({ result: receipt.result, receipt: output, unrun: receipt.unrun }, null, 2)}\n`);
+}
