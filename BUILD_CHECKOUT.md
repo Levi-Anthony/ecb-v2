@@ -1,4 +1,4 @@
-STATUS: BUILD 6 MOVE IN PROGRESS — TESTED CANDIDATE RECONCILED; QUALIFIED DEPLOYMENT PREPARATION RELEASED
+STATUS: BUILD 6 MOVE IN PROGRESS — SELECTED CANDIDATE INDEPENDENTLY REQUALIFIED; QUALIFIED DEPLOYMENT PREPARATION RELEASED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
 AUTHORITY: Staged Move release `docs/build-shape/008-build-6-move-release.md`; qualified deployment/pre-enrollment release `docs/build-shape/008-build-6-deployment-release.md`
@@ -19,6 +19,7 @@ DEPLOYMENT_PREP_RELEASE=RELEASED_AND_AUTHORIZED
 CURRENT_BRANCH=reconcile/build-6-tested-move
 SELECTED_TESTED_SOURCE_SHA=afdd7dcab90afc3ece5de43a0016c7688db96ea4
 RECONCILIATION=docs/build-receipts/009-build-6-tested-candidate-reconciliation.md
+INDEPENDENT_PG17_RECEIPT=docs/build-receipts/010-build-6-independent-pg17-requalification.md
 H=LEVI; NORMATIVELY_ACCEPTED; LIVE_CREDENTIAL_BINDING_PENDING
 REMIT=ACCEPTED
 P0_SHA256=686148f540860aca57a43d8cdf02ee15a0f6314d14b54736e6baf6f1846a7664
@@ -28,7 +29,7 @@ ORIGIN=https://ecos.effortlessconnection.com
 SELECTED_MIGRATION=sql/migrations/20260907234712_build_6_governance_bootstrap.sql
 SELECTED_MIGRATION_SHA256=de6e6fb7856b08eee2876b8ce65e4a9513c455703934a7627c2f016825f0d461
 LOCAL_SELECTED_CANDIDATE_QUALIFICATION=24_PASS_0_FAIL
-FREE_GITHUB_PG17_RERUN=IN_PROGRESS_OR_PENDING_EVIDENCE
+FREE_GITHUB_PG17_RERUN=PASS_24_OF_24; RUN_34191366522
 CANONICAL_BUILD_6_MUTATION=NONE
 HUMAN_SERVICE=NOT_DEPLOYED
 LIVE_ENROLLMENT=NOT_AUTHORIZED
@@ -51,6 +52,7 @@ BUILD_7_PLUS=UNOPENED
 Implementation/evidence continuity:
 - `docs/build-receipts/008-build-6-progress.md`
 - `docs/build-receipts/009-build-6-tested-candidate-reconciliation.md`
+- `docs/build-receipts/010-build-6-independent-pg17-requalification.md`
 - `tests/build-6/evidence/receipt.json`
 - `tests/build-6/evidence/qualification.txt`
 
@@ -58,16 +60,17 @@ Implementation/evidence continuity:
 
 The current implementation source is the candidate tested at exact SHA `afdd7dcab90afc3ece5de43a0016c7688db96ea4`, carried forward on this reconciliation branch without merging the materially different alternate six-migration implementation line.
 
-Its retained evidence reports one private seven-table governance migration, pinned SimpleWebAuthn 14.0.1/14.0.0, 24 passing tests, signed synthetic ES256 registration/login, forced installation rollback, atomic migration-ledger installation and predecessor-row preservation. Those observations are evidence, not authority.
+Its retained local evidence reports one private seven-table governance migration, pinned SimpleWebAuthn 14.0.1/14.0.0, 24 passing tests, signed synthetic ES256 registration/login, forced installation rollback, atomic migration-ledger installation and predecessor-row preservation.
+
+That same candidate has now been independently requalified on a fresh GitHub-hosted PostgreSQL 17 environment after repository-native reconstruction of the accepted BUILD 0→5B predecessor. GitHub Actions run `34191366522` passed the exact migration digest gate, accepted BUILD 5B 7+2 Artifact fixture episode, predecessor verification and all 24 retained BUILD 6 tests. See receipt 010. These observations are evidence, not new authority.
 
 ## Active bounded objective
 
-Use no-cost surfaces to complete readiness as far as they can truthfully discriminate:
+The independent free PG17 rerun is complete. Continue only the remaining released readiness work:
 
-1. independently rerun the selected candidate against a fresh GitHub-hosted PostgreSQL 17 predecessor reconstructed from committed BUILD 0→5B migrations and the accepted synthetic GT01 fixture;
-2. close the remaining released synthetic race cases if they are genuinely absent from the selected harness;
-3. qualify isolated `ecb-human` hosted packaging/HTTPS at the accepted origin using Vercel Hobby / existing no-cost infrastructure;
-4. verify actual ordinary-agent tool/credential exclusion before presenting any protected enrollment handoff.
+1. close the two genuinely absent supplemental race observations without changing accepted mechanism semantics: competing succession grants for one predecessor, and logout racing admission in both commit/rollback directions;
+2. qualify isolated `ecb-human` hosted packaging/HTTPS at the accepted origin using Vercel Hobby / existing no-cost infrastructure;
+3. verify actual ordinary-agent tool/credential exclusion before presenting any protected enrollment handoff.
 
 Do not create a paid Supabase development branch merely to duplicate already-discriminated PG17 behavior. If no free isolated Supabase surface exists, actual Supabase-hosted restricted-role behavior remains explicitly UNRUN until the separately authorized inactive canonical-installation boundary.
 
@@ -85,4 +88,4 @@ Do not:
 
 ## Next handle
 
-Finish the free PG17 rerun and remaining synthetic readiness checks. If they pass, qualify the isolated Vercel Hobby deployment surface. Stop before any real enrollment handoff unless the release boundary is explicitly advanced.
+Run the two supplemental concurrency observations against the independently requalified selected candidate without changing its implementation semantics. If they pass, qualify the isolated Vercel Hobby deployment surface. Stop before any real enrollment handoff unless the release boundary is explicitly advanced.
