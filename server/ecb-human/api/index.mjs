@@ -11,10 +11,6 @@ function failClosed(res) {
 }
 export default async function handler(req, res) {
   try {
-    const url = new URL(req.url, "https://ecos.effortlessconnection.com");
-    if (url.pathname === "/" || url.pathname === "/intervene") {
-      return failClosed(res);
-    }
     app ??= connectVerifier().then(createApp).catch((e) => {
       app = undefined;
       throw e;
