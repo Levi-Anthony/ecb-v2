@@ -1,0 +1,93 @@
+name: BUILD 6 disposable PG17 qualification
+
+on:
+  push:
+    branches:
+      - build/build-6-move-recovered
+    paths:
+      - '.github/workflows/build-6-pg17-qualification.yml'
+      - 'docs/build-shape/008-build-6-p0-candidate.json'
+      - 'sql/migrations/**'
+      - 'server/ecb-human/**'
+      - 'server/governance-executor/**'
+      - 'server/governance-installer/**'
+      - 'tests/build-6/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify-pg17:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.2-pg17
+        env:
+          POSTGRES_USER: custodian
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U custodian -d postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+
+    env:
+      BUILD6_DISPOSABLE: 'YES'
+      BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:5432/postgres
+      BUILD6_RECEIPT_PATH: ${{ github.workspace }}/artifacts/build6/qualification-receipt.json
+
+    steps:
+      - name: Checkout exact BUILD 6 commit
+        uses: actions/checkout@v4
+
+      - name: Use Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Ensure PostgreSQL client
+        shell: bash
+        run: |
+          if ! command -v psql >/dev/null 2>&1; then
+            sudo apt-get update -y
+            sudo apt-get install -y postgresql-client
+          fi
+          psql --version
+
+      - name: Reconstruct accepted predecessor and install BUILD 6
+        shell: bash
+        run: bash tests/build-6/ci-pg17-prepare.sh
+
+      - name: Install qualification dependency
+        shell: bash
+        run: npm install --prefix tests/build-6 --ignore-scripts --no-audit --no-fund
+
+      - name: Run BUILD 6 qualification
+        shell: bash
+        run: |
+          mkdir -p artifacts/build6
+          bash tests/build-6/setup.sh
+
+      - name: Print qualification receipt
+        if: always()
+        shell: bash
+        run: |
+          if [[ -f artifacts/build6/qualification-receipt.json ]]; then
+            cat artifacts/build6/qualification-receipt.json
+          else
+            echo 'Qualification receipt was not produced.'
+          fi
+
+      - name: Preserve qualification receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-6-pg17-qualification-${{ github.sha }}
+          path: artifacts/build6/qualification-receipt.json
+          if-no-files-found: warn
+          retention-days: 30
