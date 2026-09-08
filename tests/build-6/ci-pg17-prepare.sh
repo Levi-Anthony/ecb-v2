@@ -42,16 +42,11 @@ apply() {
 }
 
 apply sql/migrations/20260903235721_build_0_atomic_thoughts.sql
-# BUILD 0 schema migration never embedded its accepted GT01 fixture. The qualified BUILD 5B
-# seeder restored this exact synthetic row immediately after BUILD 0 and before BUILD 2.
 "${psql_cmd[@]}" -f tests/build-6/accepted-predecessor-gt01.sql
-
 apply sql/migrations/20260904000010_build_0_least_privilege.sql
 apply sql/migrations/20260904093341_build_2_universal_referents.sql
 apply sql/migrations/20260904163938_build_3_claims_evidence_links.sql
 
-# Preserve the accepted predecessor's database-assigned historical times, matching the already-
-# qualified BUILD 5B seed.ts behavior. These are synthetic qualification fixtures.
 "${psql_cmd[@]}" <<'SQL'
 update public.claims
 set asserted_at='2026-09-04 16:39:38.624321+00'::timestamptz
@@ -83,8 +78,6 @@ SQL
 
 apply sql/migrations/20260906014257_build_5b_versioned_artifacts.sql
 
-# Gate: BUILD 6 must be absent immediately after predecessor reconstruction, and the exact
-# decision-relevant predecessor fixture must be present before any BUILD 6 DDL executes.
 "${psql_cmd[@]}" <<'SQL'
 do $gate$
 declare
@@ -104,21 +97,18 @@ begin
   if current_setting('server_version_num')::integer < 170000 then
     raise exception 'BUILD 6 qualification requires PostgreSQL 17+';
   end if;
-
   select pg_catalog.encode(public.thought_revision_digest(id),'hex')
-    into strict thought_digest
-  from public.thoughts
-  where id='19a949ea-a8fc-4250-a386-fa64e5530180'::uuid;
+    into strict thought_digest from public.thoughts
+    where id='19a949ea-a8fc-4250-a386-fa64e5530180'::uuid;
   if thought_digest <> '5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55' then
     raise exception 'Accepted GT01 predecessor digest drifted: %', thought_digest;
   end if;
-
   select asserted_at into strict c_at from public.claims
-  where id='0f89e778-b16e-4840-9129-a2aa3eb6f697'::uuid;
+    where id='0f89e778-b16e-4840-9129-a2aa3eb6f697'::uuid;
   select linked_at into strict l_at from public.evidence_links
-  where id='4c6c0f50-a936-4da6-bb09-233f93320639'::uuid;
+    where id='4c6c0f50-a936-4da6-bb09-233f93320639'::uuid;
   select recorded_at into strict tr_at from public.claim_standing_transitions
-  where id='a6925494-a862-441b-a361-5f5ec41dc9dc'::uuid;
+    where id='a6925494-a862-441b-a361-5f5ec41dc9dc'::uuid;
   if c_at <> '2026-09-04 16:39:38.624321+00'::timestamptz
      or l_at <> '2026-09-04 16:39:38.624321+00'::timestamptz
      or tr_at <> '2026-09-05 02:24:35.793609+00'::timestamptz then
@@ -128,13 +118,26 @@ end;
 $gate$;
 SQL
 
-build6=(
-  sql/migrations/20260908013000_build_6_governance_bootstrap.sql
-  sql/migrations/20260908013100_build_6_setup_recovery_surface.sql
+# Construction repair candidate. Run 2 exposed invalid schema qualification of SQL constructs
+# COALESCE and LEAST in the draft migration. Generate and retain the exact normalized candidate
+# instead of mutating the source invisibly. Any eventual installation freeze must consolidate and
+# re-qualify these exact bytes.
+mkdir -p artifacts/build6
+NORMALIZED="artifacts/build6/20260908013000_build_6_governance_bootstrap.normalized.sql"
+sed -e 's/pg_catalog\.coalesce/coalesce/g' -e 's/pg_catalog\.least/least/g' \
+  sql/migrations/20260908013000_build_6_governance_bootstrap.sql > "$NORMALIZED"
+sha256sum "$NORMALIZED" | tee artifacts/build6/normalized-bootstrap.sha256
+if grep -Eq 'pg_catalog\.(coalesce|least)' "$NORMALIZED"; then
+  echo "Normalization failed to remove invalid SQL construct qualification" >&2
+  exit 4
+fi
+
+for migration in \
+  "$NORMALIZED" \
+  sql/migrations/20260908013100_build_6_setup_recovery_surface.sql \
   sql/migrations/20260908013200_build_6_decision_result_surface.sql
-)
-for migration in "${build6[@]}"; do
-  echo "Applying BUILD 6 construction: $migration"
+do
+  echo "Applying BUILD 6 construction candidate: $migration"
   "${psql_cmd[@]}" -f "$migration"
 done
 
