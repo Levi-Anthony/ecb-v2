@@ -75,6 +75,12 @@ jobs:
         shell: bash
         run: node tests/build-6/qualify.mjs
 
+      - name: Run supplemental readiness races
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test tests/build-6/readiness-races.test.mjs 2>&1 | tee tests/build-6/evidence/readiness-races.txt
+
       - name: Print retained evidence
         if: always()
         shell: bash
@@ -83,6 +89,8 @@ jobs:
           cat tests/build-6/evidence/receipt.json || true
           printf '%s\n' '--- qualification.txt ---'
           cat tests/build-6/evidence/qualification.txt || true
+          printf '%s\n' '--- readiness-races.txt ---'
+          cat tests/build-6/evidence/readiness-races.txt || true
 
       - name: Preserve qualification evidence
         if: always()
