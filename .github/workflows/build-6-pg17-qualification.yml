@@ -86,11 +86,11 @@ jobs:
             echo 'Qualification receipt was not produced.'
           fi
 
-      - name: Preserve qualification receipt
+      - name: Preserve BUILD 6 qualification evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: build-6-pg17-qualification-${{ github.sha }}
-          path: artifacts/build6/qualification-receipt.json
+          path: artifacts/build6/
           if-no-files-found: warn
           retention-days: 30
