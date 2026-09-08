@@ -489,7 +489,7 @@ begin
 
   -- Detect duplicate object keys before jsonb normalization, at every object depth.
   queue := array[doc];
-  while pg_catalog.coalesce(pg_catalog.array_length(queue, 1), 0) > 0 loop
+  while coalesce(pg_catalog.array_length(queue, 1), 0) > 0 loop
     node := queue[1];
     queue := queue[2:];
     if pg_catalog.json_typeof(node) = 'object' then
@@ -559,7 +559,7 @@ security definer
 set search_path = ''
 as $fn$
 declare
-  actual_id uuid := pg_catalog.coalesce(p_id, pg_catalog.gen_random_uuid());
+  actual_id uuid := coalesce(p_id, pg_catalog.gen_random_uuid());
   actual_digest bytea;
 begin
   if p_kind not in ('policy', 'remit', 'external_basis', 'binding') then
@@ -678,7 +678,7 @@ security definer
 set search_path = ''
 as $fn$
 declare
-  setup_id uuid := pg_catalog.coalesce(p_id, pg_catalog.gen_random_uuid());
+  setup_id uuid := coalesce(p_id, pg_catalog.gen_random_uuid());
   scope_row ecb_governance.scopes%rowtype;
   p0_row ecb_governance.subjects%rowtype;
   remit_kind text;
@@ -758,7 +758,7 @@ begin
     raise exception 'BUILD 6 setup capability is unavailable' using errcode = '42501';
   end if;
 
-  select pg_catalog.coalesce(
+  select coalesce(
     pg_catalog.jsonb_agg(pg_catalog.jsonb_build_object('id', credential_id, 'transports', transports)
       order by credential_id), '[]'::jsonb)
   into excluded
@@ -793,7 +793,7 @@ set search_path = ''
 as $fn$
 declare
   setup_row ecb_governance.setup_grants%rowtype;
-  ceremony_id uuid := pg_catalog.coalesce(p_id, pg_catalog.gen_random_uuid());
+  ceremony_id uuid := coalesce(p_id, pg_catalog.gen_random_uuid());
   current_count integer;
 begin
   select * into strict setup_row from ecb_governance.setup_grants
@@ -813,7 +813,7 @@ begin
     raise exception 'BUILD 6 registration ceremony input is invalid' using errcode = '22023';
   end if;
   if p_expires_at <= pg_catalog.clock_timestamp()
-     or p_expires_at > pg_catalog.least(setup_row.expires_at, pg_catalog.clock_timestamp() + interval '10 minutes') then
+     or p_expires_at > least(setup_row.expires_at, pg_catalog.clock_timestamp() + interval '10 minutes') then
     raise exception 'BUILD 6 registration ceremony expiry is invalid' using errcode = '22023';
   end if;
 
@@ -887,7 +887,7 @@ as $fn$
 declare
   ceremony_row ecb_governance.ceremonies%rowtype;
   setup_row ecb_governance.setup_grants%rowtype;
-  credential_ref uuid := pg_catalog.coalesce(p_credential_ref, pg_catalog.gen_random_uuid());
+  credential_ref uuid := coalesce(p_credential_ref, pg_catalog.gen_random_uuid());
 begin
   select * into strict ceremony_row from ecb_governance.ceremonies
   where id = p_ceremony_id for update;
@@ -927,7 +927,7 @@ begin
   ) values (
     credential_ref, ceremony_row.scope_id, setup_row.id, ceremony_row.id, setup_row.rp_id,
     p_credential_id, setup_row.webauthn_user_handle, p_public_key, p_algorithm, p_counter,
-    pg_catalog.coalesce(p_transports, '{}'::text[]), p_device_type, p_backed_up
+    coalesce(p_transports, '{}'::text[]), p_device_type, p_backed_up
   );
 
   update ecb_governance.ceremonies
@@ -964,8 +964,8 @@ as $fn$
 declare
   setup_row ecb_governance.setup_grants%rowtype;
   scope_row ecb_governance.scopes%rowtype;
-  binding_id uuid := pg_catalog.coalesce(p_binding_id, pg_catalog.gen_random_uuid());
-  decision_id uuid := pg_catalog.coalesce(p_decision_id, pg_catalog.gen_random_uuid());
+  binding_id uuid := coalesce(p_binding_id, pg_catalog.gen_random_uuid());
+  decision_id uuid := coalesce(p_decision_id, pg_catalog.gen_random_uuid());
   credential_count integer;
   credentials_json jsonb;
   credential_material text;
@@ -1026,7 +1026,7 @@ begin
     and c.revoked_at is null;
 
   if credential_count <> setup_row.expected_credential_count
-     or credential_count <> pg_catalog.coalesce(pg_catalog.array_length(p_credential_refs, 1), 0) then
+     or credential_count <> coalesce(pg_catalog.array_length(p_credential_refs, 1), 0) then
     raise exception 'BUILD 6 exact credential set does not match the commissioned setup count'
       using errcode = '22023';
   end if;
@@ -1112,7 +1112,7 @@ begin
     raise exception 'BUILD 6 human binding is not established for scope' using errcode = '55000';
   end if;
   select * into strict binding_row from ecb_governance.subjects where id = scope_row.binding_subject_id;
-  select pg_catalog.coalesce(
+  select coalesce(
     pg_catalog.jsonb_agg(pg_catalog.jsonb_build_object(
       'id', credential_id, 'transports', transports
     ) order by credential_id), '[]'::jsonb)
@@ -1147,7 +1147,7 @@ set search_path = ''
 as $fn$
 declare
   scope_row ecb_governance.scopes%rowtype;
-  ceremony_id uuid := pg_catalog.coalesce(p_id, pg_catalog.gen_random_uuid());
+  ceremony_id uuid := coalesce(p_id, pg_catalog.gen_random_uuid());
 begin
   select * into strict scope_row from ecb_governance.scopes where id = p_scope_id;
   if scope_row.binding_subject_id is null then
@@ -1230,7 +1230,7 @@ declare
   scope_row ecb_governance.scopes%rowtype;
   binding_row ecb_governance.subjects%rowtype;
   credential_row ecb_governance.credentials%rowtype;
-  session_id uuid := pg_catalog.coalesce(p_session_id, pg_catalog.gen_random_uuid());
+  session_id uuid := coalesce(p_session_id, pg_catalog.gen_random_uuid());
   now_ts timestamptz := pg_catalog.transaction_timestamp();
 begin
   select * into strict ceremony_row from ecb_governance.ceremonies
@@ -1341,7 +1341,7 @@ begin
     select * into strict policy_row from ecb_governance.subjects where id = current_t.policy_subject_id;
   end if;
 
-  select pg_catalog.coalesce(pg_catalog.jsonb_agg(pg_catalog.jsonb_build_object(
+  select coalesce(pg_catalog.jsonb_agg(pg_catalog.jsonb_build_object(
     'decision_id', d.id, 'target_subject_id', d.target_subject_id,
     'target_digest', pg_catalog.encode(d.target_digest, 'hex'),
     'expected_current_transition_id', d.expected_current_transition_id,
@@ -1393,7 +1393,7 @@ declare
   current_policy ecb_governance.subjects%rowtype;
   target_policy ecb_governance.subjects%rowtype;
   existing ecb_governance.decisions%rowtype;
-  decision_id uuid := pg_catalog.coalesce(p_decision_id, pg_catalog.gen_random_uuid());
+  decision_id uuid := coalesce(p_decision_id, pg_catalog.gen_random_uuid());
   decision_kind text;
   executor_class text;
   fingerprint bytea;
@@ -1472,7 +1472,7 @@ begin
 
   update ecb_governance.sessions
   set last_active_at = now_ts,
-      inactivity_expires_at = pg_catalog.least(absolute_expires_at, now_ts + interval '24 hours')
+      inactivity_expires_at = least(absolute_expires_at, now_ts + interval '24 hours')
   where id = s.id;
 
   return pg_catalog.jsonb_build_object(
@@ -1504,7 +1504,7 @@ declare
   target ecb_governance.decisions%rowtype;
   existing ecb_governance.decisions%rowtype;
   executed ecb_governance.transitions%rowtype;
-  withdrawal_id uuid := pg_catalog.coalesce(p_withdrawal_id, pg_catalog.gen_random_uuid());
+  withdrawal_id uuid := coalesce(p_withdrawal_id, pg_catalog.gen_random_uuid());
   fingerprint bytea;
 begin
   fingerprint := extensions.digest(pg_catalog.convert_to(
@@ -1626,7 +1626,7 @@ declare
   p0 ecb_governance.subjects%rowtype;
   target ecb_governance.subjects%rowtype;
   withdrawal_count integer;
-  transition_id uuid := pg_catalog.coalesce(p_transition_id, pg_catalog.gen_random_uuid());
+  transition_id uuid := coalesce(p_transition_id, pg_catalog.gen_random_uuid());
   fingerprint bytea;
   next_sequence bigint;
   remit_id uuid;
@@ -1757,7 +1757,7 @@ begin
     select * into strict current_t from ecb_governance.transitions where id = sc.current_transition_id;
     select * into strict policy_row from ecb_governance.subjects where id = current_t.policy_subject_id;
   end if;
-  select pg_catalog.coalesce(pg_catalog.jsonb_agg(pg_catalog.jsonb_build_object(
+  select coalesce(pg_catalog.jsonb_agg(pg_catalog.jsonb_build_object(
     'decision_id', d.id, 'target_subject_id', d.target_subject_id,
     'target_digest', pg_catalog.encode(d.target_digest, 'hex'),
     'expected_current_transition_id', d.expected_current_transition_id,
@@ -1926,7 +1926,7 @@ begin
   join pg_catalog.pg_namespace n on n.oid = p.pronamespace
   where n.nspname = 'ecb_governance'
     and p.prosecdef
-    and pg_catalog.coalesce(p.proconfig, '{}'::text[]) @> array['search_path=']::text[] is false;
+    and coalesce(p.proconfig, '{}'::text[]) @> array['search_path=""']::text[] is false;
   if unsafe_definers <> 0 then
     raise exception 'BUILD 6 has % SECURITY DEFINER functions without fixed empty search_path', unsafe_definers;
   end if;
