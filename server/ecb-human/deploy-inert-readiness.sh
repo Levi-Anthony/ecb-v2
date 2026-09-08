@@ -10,6 +10,7 @@ EXPECTED_TEAM_ID='team_wueYGTZ3nxHz1WhMg8UE9gSy'
 EXPECTED_PROJECT_ID='prj_EQ2Q1Ybb1VFhP5pWRbZXdArVwKw4'
 EXPECTED_PROJECT_NAME='ecb-human'
 EXPECTED_ORIGIN='https://ecos.effortlessconnection.com'
+CONFIRM_FLAG='--confirm-inert-deploy'
 
 command -v vercel >/dev/null || {
   echo 'ERROR: authenticated Vercel CLI is required' >&2
@@ -57,10 +58,19 @@ CHECK BEFORE CONTINUING:
 If any such key exists, STOP and do not deploy.
 EOF
 
-if [[ "${ECB_HUMAN_INERT_DEPLOY_CONFIRM:-}" != 'YES' ]]; then
-  echo 'STOP: after inspecting the environment inventory, rerun with ECB_HUMAN_INERT_DEPLOY_CONFIRM=YES.'
+# Deliberately require an explicit command-line token after the operator has seen
+# the inventory. Do not depend on environment propagation across task/shell layers.
+if [[ "${1:-}" != "$CONFIRM_FLAG" ]]; then
+  echo "STOP: after inspecting the environment inventory, rerun exactly:" >&2
+  echo "  bash server/ecb-human/deploy-inert-readiness.sh $CONFIRM_FLAG" >&2
   exit 10
 fi
+if [[ $# -ne 1 ]]; then
+  echo "ERROR: $CONFIRM_FLAG must be the sole argument" >&2
+  exit 11
+fi
+
+echo 'Confirmation accepted: inert deployment only.'
 
 # Explicit project IDs above prevent accidental deployment to the Git-linked ecb-v2.
 # No --env flags are supplied. The package must therefore fail closed at runtime.
