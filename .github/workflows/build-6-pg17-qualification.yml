@@ -12,6 +12,9 @@ on:
       - 'server/governance-executor/**'
       - 'server/governance-installer/**'
       - 'tests/build-6/**'
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
