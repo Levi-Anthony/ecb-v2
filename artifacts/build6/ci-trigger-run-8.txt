@@ -1,0 +1,2 @@
+BUILD 6 disposable PG17 qualification trigger — run 8.
+Execution-only marker. No merge, canonical mutation, enrollment, M2/P1 activation, BUILD 7 authorization, or closure follows.
