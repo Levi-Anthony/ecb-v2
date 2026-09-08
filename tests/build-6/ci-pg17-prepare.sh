@@ -118,28 +118,30 @@ end;
 $gate$;
 SQL
 
-# Construction repair candidate. Earlier runs exposed invalid qualification of SQL constructs
-# COALESCE/LEAST and an incorrect serialized comparison for SET search_path=''. Generate and retain
-# the exact candidate instead of mutating the source invisibly. Final installation must consolidate
-# and re-qualify these exact semantics as committed migration bytes.
-mkdir -p artifacts/build6
-NORMALIZED="artifacts/build6/20260908013000_build_6_governance_bootstrap.normalized.sql"
-sed -e 's/pg_catalog\.coalesce/coalesce/g' -e 's/pg_catalog\.least/least/g' \
-  sql/migrations/20260908013000_build_6_governance_bootstrap.sql > "$NORMALIZED"
-# PostgreSQL stores SET search_path = '' as the proconfig element search_path="".
-sed -i 's/search_path=/search_path=""/g' "$NORMALIZED"
-sha256sum "$NORMALIZED" | tee artifacts/build6/normalized-bootstrap.sha256
-if grep -Eq 'pg_catalog\.(coalesce|least)' "$NORMALIZED"; then
-  echo "Normalization failed to remove invalid SQL construct qualification" >&2
+# The base migration is now the exact normalized byte sequence that passed disposable run 8.
+# Do not regenerate or rewrite it during qualification: prove and execute the committed artifact.
+BOOTSTRAP="sql/migrations/20260908013000_build_6_governance_bootstrap.sql"
+EXPECTED_BOOTSTRAP_SHA256="e2010025a6de85842c25b740ec2e0af6e15db801e8cc8da67b0f92780bd91bc6"
+ACTUAL_BOOTSTRAP_SHA256="$(sha256sum "$BOOTSTRAP" | awk '{print $1}')"
+if [[ "$ACTUAL_BOOTSTRAP_SHA256" != "$EXPECTED_BOOTSTRAP_SHA256" ]]; then
+  echo "Committed BUILD 6 bootstrap digest drifted: $ACTUAL_BOOTSTRAP_SHA256" >&2
   exit 4
+fi
+if grep -Eq 'pg_catalog\.(coalesce|least)' "$BOOTSTRAP"; then
+  echo "Committed BUILD 6 bootstrap contains invalid SQL construct qualification" >&2
+  exit 5
+fi
+if ! grep -Fq 'search_path=""' "$BOOTSTRAP"; then
+  echo "Committed BUILD 6 bootstrap lacks the qualified fixed-search-path catalog check" >&2
+  exit 6
 fi
 
 for migration in \
-  "$NORMALIZED" \
+  "$BOOTSTRAP" \
   sql/migrations/20260908013100_build_6_setup_recovery_surface.sql \
   sql/migrations/20260908013200_build_6_decision_result_surface.sql
 do
-  echo "Applying BUILD 6 construction candidate: $migration"
+  echo "Applying committed BUILD 6 migration: $migration"
   "${psql_cmd[@]}" -f "$migration"
 done
 
