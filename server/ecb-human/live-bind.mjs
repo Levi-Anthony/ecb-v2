@@ -173,7 +173,7 @@ async function main() {
     const initial = await counts(admin);
     if (initial.transitions !== 0) throw new Error("A transition already exists; M2 boundary has been crossed. This helper will not continue.");
     let existing = await onlyScope(admin);
-    if (existing?.current_transition !== null) throw new Error("Current transition is non-null; M2 boundary has been crossed.");
+    if (existing && existing.current_transition !== null) throw new Error("Current transition is non-null; M2 boundary has been crossed.");
 
     const roles = await admin`select rolname,rolcanlogin,rolsuper,rolbypassrls,rolcreaterole,rolcreatedb from pg_roles where rolname in ('ecb_governance_owner','ecb_human_verifier','ecb_governance_executor') order by rolname`;
     if (roles.length !== 3) throw new Error("Expected BUILD 6 roles are not all installed.");

@@ -36,7 +36,7 @@ ECB_HUMAN_TEAM=team_wueYGTZ3nxHz1WhMg8UE9gSy
 HOSTED_READINESS=PASS
 HUMAN_DATABASE_URL=NOT_PROVISIONED_AT_PREFLIGHT
 LIVE_BIND_HELPER=server/ecb-human/live-bind.mjs
-LIVE_BIND_HELPER_BLOB=0862b36f1fb8e9fba66389a66b37384c04697979
+LIVE_BIND_HELPER_BLOB=bdcfe58c68cf811f786a3f55f87d1eb9fb2e92fb
 LIVE_BINDING=PENDING_HUMAN_CUSTODY
 M1_COMPLETION=BINDING_NON_NULL + ONE_GENESIS_DECISION + CURRENT_TRANSITION_NULL + TRANSITIONS_0
 M2=EXPLICITLY_OUTSIDE_CURRENT_MOVE; DO_NOT_PREPARE_OR_EXECUTE
@@ -51,6 +51,7 @@ BUILD_7_PLUS=UNOPENED
 4. `docs/build-shape/008-build-6-p0-candidate.json`
 5. `docs/build-shape/008-build-6-accepted-remit.txt`
 6. `docs/build-receipts/013-build-6-live-binding-preflight.md`
+7. `docs/build-receipts/014-build-6-local-resume-preflight.md` (execution evidence)
 
 Earlier qualification and deployment receipts remain evidentiary continuity, including independent PG17 24/24, supplemental races 7/7, and hosted readiness. No concrete Shape falsifier is open.
 
@@ -94,5 +95,10 @@ After apparent success, reconstruct canonical and hosted state independently and
 For this Move, do not begin, prepare, or opportunistically advance M2. Specifically do not execute the genesis decision, enable/provision the executor for activation, exhaust bootstrap, present or exercise P1, close BUILD 6, or open BUILD 7+.
 
 ## Next handle
+
+The repaired local branch checkout is `/private/tmp/ecb-build6-final-pass.vH2gy1`.
+It includes the empty-installation preflight correction and five passing focused
+regression cases. Use Node 24 for the custody run. The earlier detached
+`/private/tmp/ecb-build6-live-bind` checkout remains at the older helper version.
 
 Run the one-command live-bind helper in a real human-operated Mac terminal from a clean, current `reconcile/build-6-tested-move` checkout. The helper owns all routine plumbing and verification. After its human-custody actions complete, independently reconstruct M1, persist the final receipt/checkout, and stop before M2.
