@@ -112,8 +112,8 @@ export function createApp(db) {
         });
       }
       const assets = {
-        "/": "public/index.html",
-        "/intervene": "public/index.html",
+        "/": "views/index.html",
+        "/intervene": "views/index.html",
         "/client.js": "public/client.js",
         "/style.css": "public/style.css",
         "/webauthn.js":

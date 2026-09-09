@@ -6,7 +6,7 @@ export const config: VercelConfig = {
   functions: {
     "api/index.mjs": {
       includeFiles:
-        "{certs/**,public/**,node_modules/@simplewebauthn/browser/dist/bundle/index.umd.min.js}",
+        "{certs/**,views/**,public/**,node_modules/@simplewebauthn/browser/dist/bundle/index.umd.min.js}",
       maxDuration: 30,
     },
   },
