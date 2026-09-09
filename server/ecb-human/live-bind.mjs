@@ -62,7 +62,7 @@ function verifierUri(admin, password) {
   u.username = `ecb_human_verifier.${PROJECT_REF}`;
   u.password = password;
   u.port = "6543";
-  for (const k of ["sslmode", "sslrootcert", "sslcert", "sslkey"]) u.searchParams.delete(k);
+  for (const k of ["sslmode", "sslrootcert", "sslcert", "sslkey", "options"]) u.searchParams.delete(k);
   return u.toString();
 }
 
