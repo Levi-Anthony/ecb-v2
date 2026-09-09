@@ -8,7 +8,7 @@ import vm from "node:vm";
 const source = await readFile(new URL("../../server/ecb-human/live-bind.mjs", import.meta.url), "utf8");
 const main = source.slice(source.indexOf("async function main() {"), source.lastIndexOf("\nmain().catch"));
 
-async function preflight(existing, transitions = 0) {
+async function preflight(existing, transitions = 0, { checkOnly = false, loginError = null } = {}) {
   const events = [];
   const admin = Object.assign(async () => {
     events.push("role qualification");
@@ -22,16 +22,29 @@ async function preflight(existing, transitions = 0) {
     MIGRATION_SHA: "migration", P0_SHA: "policy",
     readFile: async (path) => path.endsWith(".sql") ? "migration" : "policy",
     sha: (bytes) => bytes, join: (...parts) => parts.join("/"),
-    process: { env: {} }, console: { log() {} },
+    process: { env: {}, argv: checkOnly ? ["--check-installer"] : [] }, console: { log() {} },
     secretPrompt: async () => "synthetic input",
     installerUri: () => ({ toString: () => "synthetic connection" }),
-    counts: async () => ({ transitions }), onlyScope: async () => existing,
+    counts: async () => { if (loginError) throw loginError; return { transitions }; }, onlyScope: async () => existing,
   });
   const invoke = vm.runInContext(`${main}\nmain`, context);
   let error;
   try { await invoke(); } catch (e) { error = e.message; }
   return { events, error };
 }
+
+test("read-only installer check closes connection before role inspection or password changes", async () => {
+  assert.deepEqual(await preflight(null, 0, { checkOnly: true }), {
+    events: ["connection closed"], error: undefined,
+  });
+});
+
+test("installer authentication rejection is identified without disclosing its raw message", async () => {
+  const result = await preflight(null, 0, { checkOnly: true, loginError: { code: "28P01", message: "synthetic private value" } });
+  assert.deepEqual(result.events, ["connection closed"]);
+  assert.match(result.error, /INSTALLER_AUTH=FAILED/);
+  assert.doesNotMatch(result.error, /synthetic private value/);
+});
 
 for (const [name, scope] of [["empty canonical installation", null], ["existing inactive scope", { current_transition: null }]]) {
   test(`${name} reaches role qualification`, async () => {

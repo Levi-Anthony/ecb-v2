@@ -170,10 +170,22 @@ async function main() {
   const admin = postgres(adminUrl.toString(), { max: 1, prepare: false, connect_timeout: 10, ssl: { rejectUnauthorized: true }, onnotice: () => {} });
   let verifier, recovery, capability;
   try {
-    const initial = await counts(admin);
+    let initial;
+    try { initial = await counts(admin); }
+    catch (e) {
+      if (e?.code === "28P01" || /password authentication failed/i.test(e?.message ?? "")) {
+        throw new Error("INSTALLER_AUTH=FAILED. The private installer login was rejected before any verifier password change. Check the PAT, active postgres temporary-access rule, and jit=true URI option.");
+      }
+      throw e;
+    }
     if (initial.transitions !== 0) throw new Error("A transition already exists; M2 boundary has been crossed. This helper will not continue.");
     let existing = await onlyScope(admin);
     if (existing && existing.current_transition !== null) throw new Error("Current transition is non-null; M2 boundary has been crossed.");
+
+    if (process.argv?.includes("--check-installer")) {
+      console.log("INSTALLER_AUTH=PASS\nREAD_ONLY_CHECK=PASS\nNo verifier password, deployment, setup or governance state was changed.");
+      return;
+    }
 
     const roles = await admin`select rolname,rolcanlogin,rolsuper,rolbypassrls,rolcreaterole,rolcreatedb from pg_roles where rolname in ('ecb_governance_owner','ecb_human_verifier','ecb_governance_executor') order by rolname`;
     if (roles.length !== 3) throw new Error("Expected BUILD 6 roles are not all installed.");
