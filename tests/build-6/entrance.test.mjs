@@ -3,7 +3,13 @@ import { createServer } from "node:http";
 import { readFile, access } from "node:fs/promises";
 import test from "node:test";
 import { createApp } from "../../server/ecb-human/app.mjs";
-import handler from "../../server/ecb-human/api/index.mjs";
+import handler, { initializationFailureCategory } from "../../server/ecb-human/api/index.mjs";
+
+test("initialization diagnostics expose only fixed categories", () => {
+  assert.equal(initializationFailureCategory({ code: "28P01", message: "synthetic secret" }), "database_authentication_failed");
+  assert.equal(initializationFailureCategory({ code: "SELF_SIGNED_CERT_IN_CHAIN" }), "database_tls_failed");
+  assert.equal(initializationFailureCategory({ code: "synthetic secret", message: "synthetic secret" }), "initialization_failed");
+});
 
 test("entrance HTML is served from function-only assets at both human routes", async (t) => {
   const server = createServer(createApp(() => { throw new Error("unexpected database call"); }));
