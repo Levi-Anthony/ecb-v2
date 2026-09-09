@@ -4,6 +4,30 @@ DATE: 2026-09-09
 
 # BUILD 6 runtime repair and live custody checkpoint
 
+## Subsequent installer diagnosis and retry repair
+
+The human has now run the read-only installer check and reported
+INSTALLER_AUTH=PASS and READ_ONLY_CHECK=PASS. That run changed no verifier password,
+deployment, setup or governance state. This establishes valid installer access at
+the time of the check; do not instruct the human to replace the PAT merely because
+the separate verifier login fails.
+
+Inspection found that the original helper generated a new verifier password on
+each full run and discarded it after a downstream failure. The repaired helper
+retains a generated verifier password (never the installer URI/PAT) in a private
+0600 record within the 0700 setup directory. A successful application is reused
+without rotation; an unknown application outcome can reapply only the same bytes.
+Malformed, wrong-target or insecure recovery records fail closed. A verifier
+authentication failure closes its connection and allows one retry after a two-minute
+quiet interval, with no password regeneration. Persistent rejection reports
+VERIFIER_AUTH=FAILED separately from installer authentication. Cache/lockout is a
+possible contributor, not a confirmed diagnosis of the original failure.
+
+All 13 affected preflight/custody tests pass under Node 24.20.0. The helper and its
+custody module are explicitly excluded from Vercel uploads. A full live run with
+the human's valid private URI remains required to restore fresh hosted connections
+and reach OPEN. No live success or M1 completion is claimed by these tests.
+
 Scope remains exact live M1 human binding. No canonical M2 preparation or execution
 was performed. No setup capability or live human credential was created by this
 repair. The helper remains the only live-binding path.

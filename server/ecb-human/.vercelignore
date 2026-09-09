@@ -1,5 +1,7 @@
 node_modules
 .env*
 installer.mjs
+live-bind.mjs
+verifier-custody.mjs
 executor.mjs
 README.md

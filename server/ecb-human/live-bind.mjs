@@ -5,6 +5,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createInterface } from "node:readline/promises";
 import { spawnSync } from "node:child_process";
+import { verifierCredential, qualifyVerifier } from "./verifier-custody.mjs";
 
 const PROJECT_REF = "vezxivrvhakclxuvxzso";
 const TEAM_ID = "team_wueYGTZ3nxHz1WhMg8UE9gSy";
@@ -194,12 +195,15 @@ async function main() {
       if (r.rolname !== "ecb_human_verifier" && r.rolcanlogin) throw new Error(`${r.rolname} must remain NOLOGIN.`);
     }
 
-    const verifierPassword = randomBytes(48).toString("base64url");
-    await admin.unsafe(`alter role ecb_human_verifier login password '${verifierPassword}'`);
+    console.log("INSTALLER_AUTH=PASS\nPreparing or resuming the privately retained verifier credential...");
+    const verifierPassword = await verifierCredential(PRIVATE_DIR, `${PROJECT_REF}:${adminUrl.hostname}`, async (password) => {
+      await admin.unsafe(`alter role ecb_human_verifier login password '${password}'`);
+    });
     const humanUrl = verifierUri(adminUrl, verifierPassword);
-    verifier = postgres(humanUrl, { max: 1, prepare: false, connect_timeout: 10, ssl: { rejectUnauthorized: true }, onnotice: () => {} });
-    const [id] = await verifier`select current_user role,(select rolsuper or rolbypassrls or rolcreaterole or rolcreatedb from pg_roles where rolname=current_user) elevated,pg_has_role(current_user,'ecb_governance_owner','MEMBER') owner,pg_has_role(current_user,'service_role','MEMBER') service`;
-    if (id.role !== "ecb_human_verifier" || id.elevated || id.owner || id.service) throw new Error("Restricted verifier role failed local qualification.");
+    verifier = await qualifyVerifier(
+      () => postgres(humanUrl, { max: 1, prepare: false, connect_timeout: 10, ssl: { rejectUnauthorized: true }, onnotice: () => {} }),
+      sleep, (message) => console.log(message),
+    );
 
     const envArgs = inventory.includes("HUMAN_DATABASE_URL") ? ["env","update","HUMAN_DATABASE_URL","production"] : ["env","add","HUMAN_DATABASE_URL","production","--sensitive"];
     run("vercel", envArgs, { cwd: HERE, env: venv, input: humanUrl + "\n", hide: true });
