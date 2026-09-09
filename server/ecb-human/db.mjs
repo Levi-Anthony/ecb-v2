@@ -1,4 +1,8 @@
 import postgres from "postgres";
+import { readFileSync } from "node:fs";
+
+// Explicit, database-only trust also works in Vercel without a local CA path.
+const databaseCA = readFileSync(new URL("./certs/supabase-root-2021.crt", import.meta.url), "utf8");
 export async function connectVerifier(env = process.env) {
   const forbidden = Object.keys(env).filter((k) =>
     /SERVICE_ROLE|JWT_SECRET|JWT_SIGN|POSTGRES_URL|POSTGRES_PRISMA_URL|DATABASE_OWNER|SUPABASE_SECRET|SETUP_SECRET|EXECUTOR_DATABASE_URL|INSTALLER_DATABASE_URL|VERCEL_TOKEN|ECB_BRAIN_KEY/
@@ -16,7 +20,7 @@ export async function connectVerifier(env = process.env) {
     max: 3,
     prepare: false,
     connect_timeout: 10,
-    ssl: { rejectUnauthorized: true },
+    ssl: { rejectUnauthorized: true, ca: databaseCA },
     onnotice: () => {},
   });
   const [r] =

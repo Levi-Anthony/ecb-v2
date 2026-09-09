@@ -7,8 +7,13 @@ for the exact evidence, limits and next handle.
 Use Node 24 and `npm ci --ignore-scripts`. The production verifier accepts only
 `HUMAN_DATABASE_URL` for the restricted `ecb_human_verifier` role. It rejects known
 owner, service-role, signing, installer, executor and agent-key configuration.
-Certificate and hostname validation are required; provisioning the project CA is
-still an open deployment seam. Do not source the repository's `.env.local` into
+Certificate and hostname validation are required. The runtime loads the public
+Supabase Root 2021 CA from `certs/supabase-root-2021.crt`, explicitly included in
+the Vercel function bundle. This trust is scoped to the database connection and
+does not depend on a local `NODE_EXTRA_CA_CERTS` path. The retained certificate
+expires on 2031-04-26; replace it through reviewed deployment when Supabase rotates
+the issuing CA. The human-operated installer still uses its local CA setting.
+Do not source the repository's `.env.local` into
 this service. Its Vercel project is `ecb-human`, distinct from `ecb-v2`.
 
 `app.mjs` owns HTTP/WebAuthn verification; private SQL owns session rechecks and
