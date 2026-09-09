@@ -8,6 +8,31 @@ import vm from "node:vm";
 const source = await readFile(new URL("../../server/ecb-human/live-bind.mjs", import.meta.url), "utf8");
 const main = source.slice(source.indexOf("async function main() {"), source.lastIndexOf("\nmain().catch"));
 
+test("runtime credential publication confirms the write and rejects a zero-exit cancellation", () => {
+  const start = source.indexOf('    const envArgs = inventory.includes("HUMAN_DATABASE_URL")');
+  const end = source.indexOf('    inventory = run(', start);
+  const block = source.slice(start, end);
+  for (const exists of [true, false]) {
+    for (const canceled of [true, false]) {
+      const context = vm.createContext({
+        inventory: exists ? "HUMAN_DATABASE_URL" : "", HERE: "/synthetic", venv: {}, humanUrl: "synthetic-secret",
+        run: (cmd, args, options) => {
+          assert.equal(cmd, "vercel");
+          assert.equal(args[1], exists ? "update" : "add");
+          assert(args.includes("--yes"));
+          assert(args.includes("--sensitive"));
+          assert.equal(options.hide, true);
+          assert.equal(options.input, "synthetic-secret\n");
+          assert(!args.includes("synthetic-secret"));
+          return canceled ? "Canceled" : `${exists ? "Updated" : "Added"} HUMAN_DATABASE_URL`;
+        },
+      });
+      if (canceled) assert.throws(() => vm.runInContext(block, context), /did not acknowledge/);
+      else vm.runInContext(block, context);
+    }
+  }
+});
+
 async function preflight(existing, transitions = 0, { checkOnly = false, loginError = null } = {}) {
   const events = [];
   const admin = Object.assign(async () => {

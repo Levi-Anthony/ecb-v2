@@ -205,8 +205,9 @@ async function main() {
       sleep, (message) => console.log(message),
     );
 
-    const envArgs = inventory.includes("HUMAN_DATABASE_URL") ? ["env","update","HUMAN_DATABASE_URL","production"] : ["env","add","HUMAN_DATABASE_URL","production","--sensitive"];
-    run("vercel", envArgs, { cwd: HERE, env: venv, input: humanUrl + "\n", hide: true });
+    const envArgs = inventory.includes("HUMAN_DATABASE_URL") ? ["env","update","HUMAN_DATABASE_URL","production","--sensitive","--yes"] : ["env","add","HUMAN_DATABASE_URL","production","--sensitive","--yes"];
+    const published = run("vercel", envArgs, { cwd: HERE, env: venv, input: humanUrl + "\n", hide: true });
+    if (!/\b(?:Updated|Added)\b/.test(published) || /Canceled|action_required/.test(published)) throw new Error("Vercel did not acknowledge the runtime credential update; deployment stopped.");
     inventory = run("vercel", ["env","ls","production"], { cwd: HERE, env: venv });
     if (!inventory.includes("HUMAN_DATABASE_URL") || forbidden.some((k) => inventory.includes(k))) throw new Error("Vercel environment failed restricted verifier inventory check.");
     console.log("Restricted verifier qualified. Deploying exact ecb-human production target...");
