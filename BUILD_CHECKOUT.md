@@ -1,4 +1,4 @@
-STATUS: BUILD 6 MOVE IN PROGRESS — TLS REPAIRED; PRIVATE INSTALLER AUTHENTICATION REQUIRED
+STATUS: BUILD 6 MOVE IN PROGRESS — HOSTED VERIFIER RESTORED; LIVE M1 HUMAN CUSTODY PENDING
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
 AUTHORITY: Accepted BUILD 6 staged Move release plus Levi's current instruction to carry this Move through verified M1 completion; M2 explicitly excluded from this Move
@@ -34,7 +34,7 @@ CANONICAL_PREFLIGHT_TRANSITIONS=0
 ECB_HUMAN_PROJECT=prj_EQ2Q1Ybb1VFhP5pWRbZXdArVwKw4
 ECB_HUMAN_TEAM=team_wueYGTZ3nxHz1WhMg8UE9gSy
 HOSTED_READINESS=PASS
-HUMAN_DATABASE_URL=PROVISIONED; FRESH_RUNTIME_AUTHENTICATION_CURRENTLY_REJECTED
+HUMAN_DATABASE_URL=PROVISIONED; FRESH_RUNTIME_AUTHENTICATION_QUALIFIED
 LIVE_BIND_HELPER=server/ecb-human/live-bind.mjs
 LIVE_BIND_HELPER_BLOB=bdcfe58c68cf811f786a3f55f87d1eb9fb2e92fb
 LIVE_BINDING=PENDING_HUMAN_CUSTODY; M1_NOT_COMMISSIONED
@@ -53,6 +53,7 @@ BUILD_7_PLUS=UNOPENED
 6. `docs/build-receipts/013-build-6-live-binding-preflight.md`
 7. `docs/build-receipts/014-build-6-local-resume-preflight.md` (execution evidence)
 8. `docs/build-receipts/015-build-6-runtime-tls-and-custody-checkpoint.md` (current runtime/custody state)
+9. `docs/build-receipts/016-build-6-hosted-verifier-restored.md` (superseding verified hosted readiness)
 
 Earlier qualification and deployment receipts remain evidentiary continuity, including independent PG17 24/24, supplemental races 7/7, and hosted readiness. No concrete Shape falsifier is open.
 
@@ -97,14 +98,15 @@ For this Move, do not begin, prepare, or opportunistically advance M2. Specifica
 
 ## Next handle
 
-The current branch checkout is `/private/tmp/ecb-build6-live-bind`. The runtime
-repairs are pushed through `3a0b86828c193c24c99fcd70acb302d600e9ed52`. Node 24
-tests pass. TLS repair produced the expected hosted health 200, but the newest
-deployment now reports database_authentication_failed. The separately discovered
-entrance packaging fix is deployed; its hosted success remains unverified until
-fresh verifier authentication is restored. The latest independent canonical read
-found scopes/credentials/sessions/decisions/transitions all zero. See receipt 015
-for exact deployments, evidence and limits. The next required input is the human's
-valid private installer URI/PAT, followed by OPEN and native protected binding.
+The current branch checkout is `/private/tmp/ecb-build6-live-bind`. Runtime source
+`ea8fb780be740cb244037cb998b428cfb7b0a2b1` is deployed and verified in exact ecb-human
+production deployment `dpl_8AGdzh16q2djd93mtubNpt38W5HF`. Fresh restricted-verifier
+authentication passes. Health, both entrance routes and the WebAuthn asset return
+200. The final 503 seam was a silently canceled Vercel credential update; the
+helper now requires confirmation flags and an explicit success acknowledgement.
+The private retained credential was reused without rotation. See receipt 016.
+Canonical scopes/credentials/sessions/decisions/transitions remain zero. The next
+required input is the human's valid private installer URI/PAT in the full helper,
+followed by OPEN and native protected binding. M1 is not yet complete.
 
 Run the one-command live-bind helper in a real human-operated Mac terminal from a clean, current `reconcile/build-6-tested-move` checkout. The helper owns all routine plumbing and verification. After its human-custody actions complete, independently reconstruct M1, persist the final receipt/checkout, and stop before M2.
