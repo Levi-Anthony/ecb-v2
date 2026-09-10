@@ -257,8 +257,8 @@ async function main() {
     if (!state || state.binding === null || state.current_transition !== null || state.credentials !== 1 || state.decisions !== 1 || state.genesis_decisions !== 1 || state.transitions !== 0) throw new Error("Timed out before exact M1 bound-not-activated state was observed.");
 
     let rejected = false;
-    try { await verifier.unsafe("select ecb_governance.human($1,$2::jsonb)", ["setup_view", JSON.stringify({ scope, setup_secret: capability })]); }
-    catch (e) { rejected = /setup_unavailable/.test(e.message); }
+    try { await verifier.unsafe("select ecb_governance.human($1,$2::text::jsonb)", ["setup_view", JSON.stringify({ scope, setup_secret: capability })]); }
+    catch (e) { rejected = e.code === "P0001" && e.message === "setup_unavailable"; }
     if (!rejected) throw new Error("Completed binding did not invalidate the setup capability.");
     await healthy();
     inventory = run("vercel", ["env","ls","production"], { cwd: HERE, env: venv });

@@ -191,6 +191,13 @@ await test("BUILD 6 isolated PG17, signed WebAuthn, HTTP and authority boundarie
       );
     });
     await t.test("exact binding accepts once; changed set and same-transaction effect reject", async () => {
+      const helperSource = await readFile(new URL("../../server/ecb-human/live-bind.mjs", import.meta.url), "utf8");
+      const setupProbe = helperSource.match(/verifier\.unsafe\("([^"]+)"/)[1];
+      const probeArgs = ["setup_view", JSON.stringify({ scope, setup_secret: setupSecret })];
+      // Exercise the helper's exact parameter encoding with the actual driver:
+      // the same capability succeeds before binding and fails after commit.
+      const [beforeBinding] = await verifier.unsafe(setupProbe, probeArgs);
+      assert.equal(beforeBinding.human.scope.id, scope);
       const { digest } = await browser.post("/api/setup/digest", {
         setup_secret: setupSecret,
       });
@@ -232,6 +239,7 @@ await test("BUILD 6 isolated PG17, signed WebAuthn, HTTP and authority boundarie
       });
       genesisDecision = result.decision;
       assert.equal(result.activated, false);
+      await assert.rejects(verifier.unsafe(setupProbe, probeArgs), e => e.code === "P0001" && e.message === "setup_unavailable");
       assert.equal(
         (await browser.request("/api/setup/bind", {
           setup_secret: setupSecret,
