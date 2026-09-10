@@ -19,6 +19,10 @@ const exactKeys = (value, keys) => {
   const wanted = [...keys].sort();
   return actual.length === wanted.length && actual.every((key, i) => key === wanted[i]);
 };
+async function close(db) {
+  if (!db?.end) return;
+  try { await db.end({ timeout: 2 }); } catch {}
+}
 
 export function validateRequest(request) {
   if (!request || typeof request !== "object" || Array.isArray(request) ||
@@ -104,7 +108,7 @@ export async function runSuccession({ directory, request, connect, perform } = {
     }
     verifyCommitted(committed, await perform(first, "inspect", request), request);
   } finally {
-    await first?.end?.({ timeout: 2 }).catch?.(() => {});
+    await close(first);
   }
 
   let cold;
@@ -124,7 +128,7 @@ export async function runSuccession({ directory, request, connect, perform } = {
       cold_recovery: "PASS",
     });
   } finally {
-    await cold?.end?.({ timeout: 2 }).catch?.(() => {});
+    await close(cold);
   }
 }
 
