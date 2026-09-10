@@ -1,12 +1,12 @@
-STATUS: BUILD 7 CLOSED — IMPLEMENTATION REGISTER B; NORMALIZATION AUTHORIZED
+STATUS: BUILD 7 CLOSED AND NORMALIZED — IMPLEMENTATION REGISTER B
 DISPOSITION: HUMAN CLOSURE / BOUNDED C1→C4 SUBSTRATE PROOF COMPLETE
-ROLE: Current repository reentry checkpoint
+ROLE: Canonical repository reentry checkpoint
 AUTHORITY: Explicit human acceptance after ECO-95 Human Metabolize PASS
 CURRENT BUILD UNIT: NONE — BUILD 7 closed; later Builds unopened
 
 # Current disposition
 
-BUILD 7 is human-closed at implementation Register B under [closure receipt 028](docs/build-receipts/028-build-7-closed.md). The accepted result is the bounded C1→C4 mechanism proved by [Move receipt 027](docs/build-receipts/027-build-7-move.md) under the accepted ECO-94 Shape, its five human closure patches, and ECO-95 Move commission.
+BUILD 7 is human-closed and repository-normalized to `main` at implementation Register B under [closure receipt 028](docs/build-receipts/028-build-7-closed.md). The accepted result is the bounded C1→C4 mechanism proved by [Move receipt 027](docs/build-receipts/027-build-7-move.md) under the accepted ECO-94 Shape, its five human closure patches, and ECO-95 Move commission.
 
 The accepted claim is intentionally bounded: exact structural-grammar supply/local formation, inspectable bounded semantic qualification, separately authorized scoped designation/currentness, and exact cold recovery/requalification/re-keying were proved in a disposable synthetic acceptance environment. Qualification does not establish truth, warrant, standing, authority, designation, currentness or execution permission.
 
@@ -18,10 +18,11 @@ BUILD_6=CLOSED; REGISTER_B; NORMALIZED_TO_MAIN
 BUILD_7_SENSE=CLOSED
 BUILD_7_SHAPE=CLOSED; FIVE_PATCHES_CONTROLLING
 BUILD_7_MOVE=CLOSED; METABOLIZED
-BUILD_7=CLOSED; REGISTER_B
-CURRENT_PHASE=CLOSED_BOUNDARY; REPOSITORY_NORMALIZATION_AUTHORIZED
+BUILD_7=CLOSED; REGISTER_B; NORMALIZED_TO_MAIN
+CURRENT_PHASE=CLOSED_BOUNDARY
 CURRENT_MOVE=NONE
-NORMALIZATION_CARRIER=PR_28
+NORMALIZATION_PR=28
+NORMALIZATION_MERGE_COMMIT=4cac95b8c4bddd04b116eec5a9bc017b99e29fa5
 ACCEPTED_MOVE_COMMIT=aea344aaeea20f27c12b0ce8a25f2c2ac0a5f78b
 CURRENT_METHOD_SHA256=bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670
 POST_REPAIR_PRIMARY=19/19_PASS
@@ -53,9 +54,9 @@ Semantic-method generalization beyond the declared comparison/interpretation bas
 
 # Canonical / deployment boundary
 
-No BUILD 7 migration has been applied to canonical Supabase / ECB state by closure. No real Master Key has been designated. No governance or execution effect follows.
+No BUILD 7 migration has been applied to canonical Supabase / ECB state by closure or repository normalization. No real Master Key has been designated. No governance or execution effect follows.
 
-Repository pushes are linked to Vercel. The frozen branch push produced a non-production preview whose build prepared no files. Normalization to `main` may trigger the repository's existing production-labelled Vercel Git deployment; this is an incidental integration event, not authorization to install or execute BUILD 7 against canonical state.
+Repository pushes are linked to Vercel. The BUILD 7 branch push produced a non-production preview whose build prepared no files. Normalization of `main` may produce the repository's existing production-labelled Vercel Git deployment event; this is an incidental integration event, not authorization to install or execute BUILD 7 against canonical state.
 
 # Preserved BUILD 6 closure
 
