@@ -1,25 +1,26 @@
-STATUS: BUILD 6 M2 METABOLIZED — FIRST ORDINARY-SUCCESSION SENSE OPEN
+STATUS: BUILD 6 FIRST ORDINARY SUCCESSION — SHAPE OPEN, P1 NOT AUTHORIZED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
-AUTHORITY: Accepted BUILD 6 staged Move; M2 independently verified and Metabolized; Levi explicitly opened Sense for the next action
+AUTHORITY: Human-closed P1 Sense; accepted BUILD 6 staged Move
 CURRENT BUILD UNIT: BUILD 6 — Governance Bootstrap (not closed)
 
 # Current disposition
 
-M1 is closed PASS and must not be replayed. M2 is closed PASS and Metabolized. The next released BUILD 6 behavior is one ordinary policy succession, but no P1 has been selected, accepted, or executed.
+M1 and M2 are closed PASS. M2 is Metabolized. Sense for the first ordinary succession is closed and Shape is open. Levi selected the minimal P1 candidate direction, but no P1 human authorization or canonical succession effect exists.
 
 Controlling completion evidence: `docs/build-receipts/021-build-6-m2-complete.md`.
 M2 learning record: `docs/build-receipts/022-build-6-m2-metabolize.md`.
-Current Sense: `docs/build-sense/008-build-6-p1.md`.
+Closed P1 Sense: `docs/build-sense/008-build-6-p1.md`.
+Current Shape: `docs/build-shape/008-build-6-p1.md`.
 
 ```text
 BUILD_0_TO_5B=CLOSED
 BUILD_6=OPEN
 M1=PASS; CLOSED; DO_NOT_REOPEN
 M2=PASS; CLOSED; METABOLIZED; RECOVERY_ONLY_ON_EXACT_RETRY
-CURRENT_PHASE=SENSE
-CURRENT_SENSE=docs/build-sense/008-build-6-p1.md
-SENSE_STATUS=OPEN
+CURRENT_PHASE=SHAPE
+CURRENT_SHAPE=docs/build-shape/008-build-6-p1.md
+SHAPE_STATUS=OPEN
 CURRENT_BRANCH=reconcile/build-6-tested-move
 CURRENT_CHECKOUT=/private/tmp/ecb-build6-live-bind
 CANONICAL_PROJECT=vezxivrvhakclxuvxzso
@@ -31,26 +32,22 @@ SCOPES=1; DECISIONS=1; TRANSITIONS=1; WITHDRAWALS=0
 CURRENT_POINTER_MATCH=TRUE
 BOOTSTRAP_EXHAUSTED=TRUE
 OPERATIVE_P0_SHA256=686148f540860aca57a43d8cdf02ee15a0f6314d14b54736e6baf6f1846a7664
-P1=SPECIMEN_NOT_SELECTED_OR_ACCEPTED
-P1_QUALIFIED_TEST_SPECIMEN_SHA256=2057597b340e7f324176c65847633b776e0d266407988dedbaec001359c39556
-P1_EXECUTION_PATH=NOT_YET_OPERATOR_READY
+P1_DIRECTION=SELECTED_EXPLANATION_REQUIRED_TRUE
+P1_EXPECTED_SHA256=2057597b340e7f324176c65847633b776e0d266407988dedbaec001359c39556
+P1_AUTHORIZATION=NOT_STARTED
+P1_CANONICAL_EFFECT=NONE
+P1_EXECUTION_PATH=SHAPE_PREPARATION_REQUIRED
 EXECUTOR=LOGIN; RESTRICTED_GRANTS_VERIFIED; PRIVATE_CUSTODY_RETAINED
 HOSTED_HEALTH=PASS
 BUILD_7_PLUS=UNOPENED
 ```
 
-# Sense Master Key
+# Shape outcome
 
-What is the smallest end-to-end episode that proves the now-operative P0/H governance can lawfully admit one exact successor, execute only that committed authorization, reconstruct the result after the effect, and leave enough evidence to decide whether BUILD 6 can close?
+Prepare and qualify all non-human P1 plumbing before the protected decision: materialize exact candidate bytes; define the public execution request; add the smallest repo-native local runner that reads retained executor custody privately, recovers before effect, executes at most once, cold-recovers afterward and emits no secrets.
 
-# Current discriminator
-
-The already-qualified P1 test specimen changes only `requires_human_explanation` from `false` to `true`. It is the leading candidate for the first real P1 because it is the narrowest supported semantic change and already has positive/adversarial qualification. It is still only a specimen until Levi selects the exact candidate direction and later makes the actual protected human governance decision.
-
-Sense must also resolve the minimum secret-safe ordinary-succession executor route and whether that path should be prepared before the human decision. Current recommendation: prepare and qualify all non-human plumbing first so the protected decision is the last genuine gate.
+No installer URI or new credential ceremony is required. The existing WebAuthn human service remains the sole P1 decision route.
 
 # Boundary
 
-Do not repeat M1 or M2. Do not infer P1 acceptance from test use, chat context, or the earlier P0/H/remit decision. Do not enter Shape until the material Sense questions are resolved. Do not expose or relocate private executor credentials, close BUILD 6, or open BUILD 7+.
-
-When the exact P1 candidate and minimum custody/execution responsibilities are settled, explicitly CLOSE SENSE → ENTER SHAPE for only the first ordinary-succession seam.
+Do not repeat M1/M2. Do not treat candidate selection as P1 authorization. Do not create a real P1 execution request before a protected committed decision exists. Do not expose or relocate executor credentials, close BUILD 6, or open BUILD 7+. Unqualified implementation must remain off the accepted branch until qualification passes.
