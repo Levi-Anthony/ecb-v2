@@ -55,6 +55,7 @@ try {
   const run = spawnSync(process.execPath, [
     "--test",
     "tests/build-6/governance.test.mjs",
+    "tests/build-6/succession-handoff.test.mjs",
   ], { encoding: "utf8" });
   await writeFile(`${evidence}/qualification.txt`, run.stdout + run.stderr);
   if (run.status !== 0) {
@@ -88,6 +89,7 @@ try {
     installation_rollback: "passed",
     atomic_migration_ledger: "passed",
     prior_public_rows_preserved: "passed",
+    first_p1_succession_seam: "included in qualification.txt",
     tests_exit_code: run.status,
     live_credential_binding: "not performed",
     canonical_migration: "not performed",
@@ -96,6 +98,7 @@ try {
     limits: [
       "Synthetic ES256 authenticators do not prove iPhone/Mac or credential-ecosystem redundancy.",
       "Copied BUILD 5B transaction IDs are historical data; this run grants them no new prior-commit authority.",
+      "P1 custody tests use synthetic local credential records; live retained executor custody is not read by CI.",
       "Installation/deployment custody remains trusted; this conversation is not an ordinary operating-agent profile.",
     ],
   };
