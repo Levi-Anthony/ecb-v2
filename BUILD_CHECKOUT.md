@@ -1,4 +1,4 @@
-STATUS: BUILD 6 M2 PREPARATION COMPLETE — PRIVATE EXECUTOR CUSTODY REQUIRED
+STATUS: BUILD 6 M2 PRIVATE HANDOFF READY — HUMAN INSTALLER INPUT REQUIRED
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
 AUTHORITY: Current explicit instruction to continue from verified M1 through the next bounded M2 step, stopping at human/private-custody boundaries
@@ -10,13 +10,14 @@ M1 is closed PASS. Its historical receipt is unchanged. The live M2 contract,
 canonical prior committed genesis and exact P0/H/remit are recovered. One exact
 activation/recovery request is retained. The executor client now supplies the
 retained CA with strict TLS and checks its restricted login before contact with
-the governance entry. Node 24.20.0 qualification passed 28/28 tests.
+the governance entry. The human-operated custody/activation handoff is now implemented. Node 24.20.0
+qualification passed 42/42 distinct tests. Live installer input is pending.
 
 ```text
 BUILD_0_TO_5B=CLOSED
 BUILD_6=OPEN
 M1=PASS; CLOSED; DO_NOT_REOPEN
-CURRENT_MOVE=M2_PREPARATION_COMPLETE
+CURRENT_MOVE=M2_CUSTODY_HANDOFF_READY
 M2=PREPARED_NOT_ACTIVATED
 CURRENT_BRANCH=reconcile/build-6-tested-move
 CURRENT_CHECKOUT=/private/tmp/ecb-build6-live-bind
@@ -40,6 +41,13 @@ BUILD_7_PLUS=UNOPENED
 ```
 
 # Governing evidence and next handle
+
+Start with `docs/build-receipts/019-build-6-m2-custody-handoff.md`. The delivered
+`Continue-BUILD-6-M2.command` accepts the installer URI privately and then runs
+recovery/activation in a separate restricted executor process. No credential
+is to be provided in chat. Canonical activation remains unverified until that run
+and independent reconstruction complete.
+
 
 - `docs/build-shape/008-build-6-move-release.md`, step 5 — exact M2 obligations.
 - `docs/build-shape/008-build-6-runtime-boundary.md` — authority/custody separation.
