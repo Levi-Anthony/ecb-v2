@@ -1,64 +1,56 @@
-STATUS: BUILD 6 M2 COMPLETE — P1 HUMAN GOVERNANCE GATE NEXT
+STATUS: BUILD 6 M2 METABOLIZED — FIRST ORDINARY-SUCCESSION SENSE OPEN
 DISPOSITION: PROJECTION
 ROLE: Current human/agent checkout
-AUTHORITY: Accepted BUILD 6 staged Move; M2 independently verified complete
+AUTHORITY: Accepted BUILD 6 staged Move; M2 independently verified and Metabolized; Levi explicitly opened Sense for the next action
 CURRENT BUILD UNIT: BUILD 6 — Governance Bootstrap (not closed)
 
 # Current disposition
 
-M1 is closed PASS and must not be replayed. M2 is closed PASS. The exact prior
-genesis grant was consumed once through the restricted executor, canonical history
-was independently reconstructed, and a fresh restricted connection recovered the
-same committed result.
+M1 is closed PASS and must not be replayed. M2 is closed PASS and Metabolized. The next released BUILD 6 behavior is one ordinary policy succession, but no P1 has been selected, accepted, or executed.
 
-Controlling M2 evidence: `docs/build-receipts/021-build-6-m2-complete.md`.
+Controlling completion evidence: `docs/build-receipts/021-build-6-m2-complete.md`.
+M2 learning record: `docs/build-receipts/022-build-6-m2-metabolize.md`.
+Current Sense: `docs/build-sense/008-build-6-p1.md`.
 
 ```text
 BUILD_0_TO_5B=CLOSED
 BUILD_6=OPEN
 M1=PASS; CLOSED; DO_NOT_REOPEN
-CURRENT_MOVE=M2_COMPLETE_STOP
-M2=PASS; CLOSED; RECOVERY_ONLY_ON_EXACT_RETRY
+M2=PASS; CLOSED; METABOLIZED; RECOVERY_ONLY_ON_EXACT_RETRY
+CURRENT_PHASE=SENSE
+CURRENT_SENSE=docs/build-sense/008-build-6-p1.md
+SENSE_STATUS=OPEN
 CURRENT_BRANCH=reconcile/build-6-tested-move
 CURRENT_CHECKOUT=/private/tmp/ecb-build6-live-bind
 CANONICAL_PROJECT=vezxivrvhakclxuvxzso
 SCOPE=20ad3966-8647-4a0f-9eed-2888e67e1e49
 H_REFERENT=4cfbaf81-a7e9-4786-b2ad-4f791ab7ce1d
 BINDING=7446baff-13a8-4f68-a0c3-8445933575b8
-GENESIS_DECISION=a5f6d414-85cd-4a67-b904-64fc122db362
-M2_REQUEST=e4e78a38-4f42-4f0f-b281-bd0dbdb26fda
 CURRENT_TRANSITION=63bcd3fd-55f4-49bd-976f-c2bba50e6ab1
 SCOPES=1; DECISIONS=1; TRANSITIONS=1; WITHDRAWALS=0
 CURRENT_POINTER_MATCH=TRUE
 BOOTSTRAP_EXHAUSTED=TRUE
-EXECUTOR_COLD_RECOVERY=PASS
-QUALIFIED_CODE_HEAD=2e2615ce3fd459c962c6ab892175c10f9e53597f
-M2_HANDOFF_TESTS=8/8 PASS
-BUILD6_PG17_TESTS=24/24 PASS
-READINESS_RACES=7/7 PASS
+OPERATIVE_P0_SHA256=686148f540860aca57a43d8cdf02ee15a0f6314d14b54736e6baf6f1846a7664
+P1=SPECIMEN_NOT_SELECTED_OR_ACCEPTED
+P1_QUALIFIED_TEST_SPECIMEN_SHA256=2057597b340e7f324176c65847633b776e0d266407988dedbaec001359c39556
+P1_EXECUTION_PATH=NOT_YET_OPERATOR_READY
+EXECUTOR=LOGIN; RESTRICTED_GRANTS_VERIFIED; PRIVATE_CUSTODY_RETAINED
 HOSTED_HEALTH=PASS
-P1=NOT_STARTED_OR_ACCEPTED
 BUILD_7_PLUS=UNOPENED
 ```
 
-# Governing evidence
+# Sense Master Key
 
-Start with `docs/build-receipts/021-build-6-m2-complete.md`. Supporting evidence is
-in receipts 017 through 020 and the released BUILD 6 package under
-`docs/build-shape/008-build-6-*`.
+What is the smallest end-to-end episode that proves the now-operative P0/H governance can lawfully admit one exact successor, execute only that committed authorization, reconstruct the result after the effect, and leave enough evidence to decide whether BUILD 6 can close?
 
-The sole transition is the scope current transition, has a null predecessor, and
-matches the retained decision, request, P0, H, remit and binding. Its ordered M2
-obligations are `activate_exact_p0`, `designate_initial_h_and_remit`, and
-`exhaust_bootstrap`. No second transition or withdrawal exists.
+# Current discriminator
 
-The local checkout may lag this documentation-only branch head. On reentry,
-fast-forward normally while preserving local retained recovery state and any saved
-local work.
+The already-qualified P1 test specimen changes only `requires_human_explanation` from `false` to `true`. It is the leading candidate for the first real P1 because it is the narrowest supported semantic change and already has positive/adversarial qualification. It is still only a specimen until Levi selects the exact candidate direction and later makes the actual protected human governance decision.
+
+Sense must also resolve the minimum secret-safe ordinary-succession executor route and whether that path should be prepared before the human decision. Current recommendation: prepare and qualify all non-human plumbing first so the protected decision is the last genuine gate.
 
 # Boundary
 
-Do not repeat M1 or create another M2 effect. The next released behavior is P1, which
-is a new human governance decision and is not answered by earlier H/remit/P0 or M2
-authorization. Do not make that decision on the human's behalf. BUILD 6 remains open;
-BUILD 7+ remains unopened.
+Do not repeat M1 or M2. Do not infer P1 acceptance from test use, chat context, or the earlier P0/H/remit decision. Do not enter Shape until the material Sense questions are resolved. Do not expose or relocate private executor credentials, close BUILD 6, or open BUILD 7+.
+
+When the exact P1 candidate and minimum custody/execution responsibilities are settled, explicitly CLOSE SENSE → ENTER SHAPE for only the first ordinary-succession seam.
