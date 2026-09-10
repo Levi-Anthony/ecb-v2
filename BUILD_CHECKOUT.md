@@ -1,27 +1,28 @@
-STATUS: BUILD 6 FIRST ORDINARY SUCCESSION COMPLETE — HUMAN METABOLIZE NEXT
-DISPOSITION: PROJECTION / POST-EFFECT CHECKPOINT
+STATUS: BUILD 6 CLOSURE SHAPE READY — HUMAN DISPOSITION REQUIRED
+DISPOSITION: RELEASE / HUMAN CLOSURE GATE
 ROLE: Current human/agent checkout
-AUTHORITY: Protected H P1 decision plus independently reconstructed restricted executor effect; receipt 024
+AUTHORITY: Completed M1/M2/P1 evidence, human P1 Metabolize, closed closure Sense, closure Shape 009
 CURRENT BUILD UNIT: BUILD 6 — Governance Bootstrap (not closed)
 
 # Current disposition
 
-M1 and M2 are closed PASS; M2 is Metabolized. The first ordinary succession is now complete and independently reconstructed. Exact P1 is operative. BUILD 6 remains open only for the released post-episode evidence review / human Metabolize and closure decision; no further governance effect is implied.
+M1 and M2 are closed PASS. P1 is operative and independently reconstructed. P1 human Metabolize is complete and records a material operator-UX failure: the mechanism worked, but the current proving ceremony is too opaque and friction-heavy to become the steady-state ECOS human workflow.
+
+BUILD 6 closure Sense is closed. Closure Shape is ready and recommends closing BUILD 6 at implementation register B with a bounded mechanism claim only. No production-ready human UX claim is permitted.
 
 Controlling completion evidence: `docs/build-receipts/024-build-6-p1-complete.md`.
-Supporting P1 qualification: `docs/build-receipts/023-build-6-p1-shape-ready.md`.
-Closed P1 Sense: `docs/build-sense/008-build-6-p1.md`.
-Exact candidate: `docs/build-shape/008-build-6-p1-candidate.json`.
-Exact public execution request: `docs/build-shape/008-build-6-p1-execution-request.json`.
+Human operating evidence: `docs/build-receipts/025-build-6-p1-metabolize.md`.
+Closure Sense: `docs/build-sense/009-build-6-closure.md`.
+Closure Shape: `docs/build-shape/009-build-6-closure.md`.
 
 ```text
 BUILD_0_TO_5B=CLOSED
-BUILD_6=OPEN
+BUILD_6=OPEN; CLOSURE_SHAPE_READY
 M1=PASS; CLOSED; DO_NOT_REOPEN
 M2=PASS; CLOSED; METABOLIZED; RECOVERY_ONLY_ON_EXACT_RETRY
-P1=PASS; OPERATIVE; FIRST_ORDINARY_SUCCESSION_COMPLETE
-CURRENT_PHASE=METABOLIZE
-CURRENT_MOVE=P1_HUMAN_METABOLIZE_THEN_BUILD6_CLOSURE_SENSE
+P1=PASS; OPERATIVE; FIRST_ORDINARY_SUCCESSION_COMPLETE; METABOLIZED
+CURRENT_PHASE=HUMAN_CLOSURE_GATE
+CURRENT_MOVE=BUILD6_CLOSURE_DISPOSITION
 CURRENT_BRANCH=reconcile/build-6-tested-move
 CURRENT_CHECKOUT=/private/tmp/ecb-build6-live-bind
 CANONICAL_PROJECT=vezxivrvhakclxuvxzso
@@ -37,25 +38,33 @@ OPERATIVE_P1_SHA256=2057597b340e7f324176c65847633b776e0d266407988dedbaec001359c3
 P1_DECISION=57d40c7e-4abb-49bb-ba75-c7f6f8d1e4e0
 P1_EXECUTION_REQUEST=d0508be7-0e19-4abb-aec4-12de2d95f4b0
 P1_TRANSITION=bdd481cf-41ac-47ed-acb7-26dcd346e921
-P1_EXECUTOR=ecb_governance_executor
-P1_OBLIGATIONS=install_exact_successor,preserve_h_remit_history_and_exhaustion
 P1_COLD_RECOVERY=PASS
 P1_QUALIFICATION=31/31 PASS; READINESS_RACES=7/7 PASS
-HUMAN_METABOLIZE=PENDING
-BUILD6_CLOSURE_SENSE=NOT_YET_OPEN
+HUMAN_METABOLIZE=COMPLETE; STEADY_STATE_UX_NOT_ACCEPTED
+BUILD6_CLOSURE_RECOMMENDATION=CLOSE_AT_REGISTER_B_WITH_BOUNDED_CLAIM
 BUILD_7_PLUS=UNOPENED
 ```
 
-# Verified post-P1 state
+# Closure claim boundary
 
-Canonical project `vezxivrvhakclxuvxzso` was reread independently after the local runner returned PASS. The sole scope current pointer is transition `bdd481cf-41ac-47ed-acb7-26dcd346e921`, whose predecessor is the M2 transition. It consumes the exact protected P1 decision and execution request, installs the exact P1 digest, preserves H/remit/binding, carries the ordinary-succession obligations, and reports executor `ecb_governance_executor`. No extra decision, transition or withdrawal exists.
+Supported claim: BUILD 6 establishes and live-proves the bounded governance bootstrap and first ordinary succession mechanism at implementation register B, including protected human authority, separation of decision from effect, bounded execution, immutable predecessor/history preservation and cold recovery.
 
-The now-operative P1 requires a human explanation for later succession decisions. Do not create another policy succession merely to demonstrate that behavior; its mechanism was already positively/adversarially qualified before this live effect.
+Unsupported claim: the present M1/M2/P1 proving choreography is an acceptable ordinary-human ECOS interface. It is explicitly not accepted as steady-state UX.
 
-# Next exact phase
+Mandatory feed-forward: preserve real human authority while reducing the human surface to an intelligible decision with rationale, change impact, recurrence expectation and one protected acceptance act when genuinely required. Internal digests, predecessor IDs, custody transitions and stage labels should normally remain below the operator surface.
 
-The released BUILD 6 Move explicitly left a human Metabolize pending and requires evidence review before closure. First synthesize the human-facing episode from existing evidence and obtain only any genuinely human-only experiential correction. Then CLOSE METABOLIZE → OPEN SENSE for BUILD 6 closure against the released output contract. Reuse already-earned qualification, deployment, credential/device, custody, M1, M2 and P1 evidence; do not replay checks unless closure Sense finds a real evidence gap.
+# Fresh closure state
+
+Post-P1 canonical reconstruction remains exact. Fresh role checks show governance owner, human verifier and executor remain non-superuser, NOINHERIT and without CREATEROLE, CREATEDB or BYPASSRLS. Fresh `https://ecos.effortlessconnection.com/health` returned HTTP 200 with `service=ecb-human` and `governance_activation=not_implied_by_service_health`.
+
+# Human gate
+
+The next action is an explicit human disposition on `docs/build-shape/009-build-6-closure.md`.
+
+Recommended: CLOSE BUILD 6 at register B with the bounded claim and retained UX deficit/feed-forward requirement.
+
+Do not close if the acceptance standard is intentionally changed to require production-ready human governance UX inside BUILD 6. No canonical database effect is required for Build closure.
 
 # Boundary
 
-Do not repeat M1/M2/P1, create another succession, alter P1, expose or relocate executor credentials, close BUILD 6 before the released evidence review, or open BUILD 7+.
+Do not rerun M1/M2/P1, create another succession, rotate or expose retained credentials, declare the current UX production-ready, or open BUILD 7+ merely because this closure Shape exists.
