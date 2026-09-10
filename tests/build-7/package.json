@@ -1,0 +1,7 @@
+{
+  "name": "ecb-build-7-disposable-proof",
+  "private": true,
+  "type": "module",
+  "dependencies": { "postgres": "3.4.9" },
+  "scripts": { "test": "node --test --test-concurrency=1 primary.test.mjs" }
+}

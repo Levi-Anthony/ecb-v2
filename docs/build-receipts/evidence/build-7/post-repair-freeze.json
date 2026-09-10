@@ -1,0 +1,11 @@
+{
+  "frozen_at": "2026-09-10T19:36:17.543Z",
+  "purpose": "Repaired C2 frozen after original-defect and targeted repair controls pass; new holdout not yet authored. Sole worker, no independent-review claim.",
+  "supersedes_acceptance_of": "pre-holdout-freeze.json",
+  "files": {
+    "server/build-7/qualification.mjs": "bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670",
+    "server/build-7/recover.mjs": "34ee9db4997578dfd37d4335c38945c3ed6a74d5dff51d150486e2d9dd58508e",
+    "sql/migrations/20260910090000_build_7_local_master_key.sql": "242826351b6a807b700a51d78665ff14698c1d40fa29f78edf03681a2d1795de",
+    "tests/build-7/support.mjs": "1acfc47563bbcde0720c92f8a36bab0ff08d4d6220887a05b31acaa3f54f8f20"
+  }
+}

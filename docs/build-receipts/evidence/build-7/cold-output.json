@@ -1,0 +1,1065 @@
+{
+  "status": "recovered",
+  "scope": {
+    "id": "a1b4b753-4c1f-4ae4-b4fd-04d0705bb190",
+    "focal": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+    "contract": "894ab2d0-ed0c-4009-be29-6004da5ef243",
+    "current_event": "b8e57e9b-b87e-4409-ba7f-520537585d46"
+  },
+  "event": {
+    "actor": "b7_actor",
+    "grant": "d7475cb1-576d-40f2-a521-fedc8a7e2f3a",
+    "scope": "a1b4b753-4c1f-4ae4-b4fd-04d0705bb190",
+    "temporal": {
+      "act": "until_revoked",
+      "continuing_effect": "historical_act_only"
+    },
+    "candidate": "2b848882-ec8c-4153-be86-538c568246cb",
+    "operation": "select",
+    "evaluation": "9d01b7d6-752d-448c-9403-247e12723e97",
+    "observation": "4da4def1-4779-41a9-94dd-0ca14820c9c6",
+    "occurred_at": "2026-09-10T19:40:34.17637+00:00",
+    "predecessor": "bcd58b6d-715d-48f3-b948-563db8045b01",
+    "execution_authorized": false,
+    "qualification_applicability": {
+      "gaps": [],
+      "limits": "declared inputs only; no world-complete awareness",
+      "applicable": true,
+      "observation": "4da4def1-4779-41a9-94dd-0ca14820c9c6"
+    }
+  },
+  "grant": {
+    "actor": "b7_actor",
+    "scope": "a1b4b753-4c1f-4ae4-b4fd-04d0705bb190",
+    "issuer": "G_TEST",
+    "temporal": {
+      "act": "until_revoked",
+      "continuing_effect": "historical_act_only"
+    },
+    "candidate": "2b848882-ec8c-4153-be86-538c568246cb",
+    "operation": "select",
+    "synthetic": true,
+    "evaluation": "9d01b7d6-752d-448c-9403-247e12723e97",
+    "predecessor": "bcd58b6d-715d-48f3-b948-563db8045b01"
+  },
+  "expression": {
+    "focal": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+    "identity_basis": "one explicitly seated synthetic specimen",
+    "grammar": "16e90066-2349-40b2-a614-877ebab44b64",
+    "contract": "894ab2d0-ed0c-4009-be29-6004da5ef243",
+    "snapshots": [
+      "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+      "156f48ee-1111-466f-af83-34e1680efce9"
+    ],
+    "mappings": [
+      {
+        "token": "b68c3a96-e5ba-4677-88a8-101f4f3a4788",
+        "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+        "mapper": "b2b65f1d-6655-4c21-88f3-ab6e33176a6a",
+        "access": "native",
+        "focal": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+        "frame": {
+          "focal": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+          "anchor": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+          "relation": "self_indexed"
+        },
+        "claim": "757a90fb-2150-4b62-9bd4-784f274fed0e"
+      },
+      {
+        "token": "3da21571-31ce-4078-9477-5f1ad3ef74d5",
+        "snapshot": "156f48ee-1111-466f-af83-34e1680efce9",
+        "mapper": "b2b65f1d-6655-4c21-88f3-ab6e33176a6a",
+        "access": "measurement",
+        "focal": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+        "frame": {
+          "focal": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+          "anchor": "b2b65f1d-6655-4c21-88f3-ab6e33176a6a",
+          "relation": "observes"
+        },
+        "claim": "e3851c38-6403-47f8-881f-85b6715f190d"
+      }
+    ],
+    "governing_revision": "ECO-94:74c49056",
+    "expression": "External observations distinguish these cases; native observations do not.",
+    "parent": "700b11b2-ed0e-422d-88c0-af1624951b82",
+    "conclusions": [
+      {
+        "comparison": "native",
+        "answer": false
+      },
+      {
+        "comparison": "external",
+        "answer": true
+      }
+    ],
+    "coordinates": [
+      {
+        "dimension": "altitude",
+        "subject": "c1c5f6d3-de08-4675-b96c-0c0fc38d8157",
+        "line": null,
+        "value": "constituent",
+        "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad"
+      },
+      {
+        "dimension": "altitude",
+        "subject": "c52373aa-3849-408b-a18b-341241325e64",
+        "line": null,
+        "value": "container",
+        "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad"
+      },
+      {
+        "dimension": "stage",
+        "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+        "line": "sensing",
+        "value": "installed",
+        "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad"
+      },
+      {
+        "dimension": "state",
+        "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+        "line": "switching",
+        "value": "idle",
+        "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad"
+      },
+      {
+        "dimension": "stage",
+        "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+        "line": "switching",
+        "value": "commissioned",
+        "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad"
+      },
+      {
+        "dimension": "type",
+        "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+        "line": "sensing",
+        "value": "rounded_native",
+        "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad"
+      }
+    ],
+    "dispositions": {
+      "quadrants": {
+        "status": "minimal",
+        "basis": "retained comparisons and explicit limits",
+        "discriminator": "Which quadrants alternative could change the bounded comparison?",
+        "reexpand": "exact grammar + evidence + comparison manifest",
+        "question_forward": {
+          "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+          "change": "retained native observation / attributed report changes the declared consequence",
+          "notice": "exact source revision observation or focal inquiry",
+          "reentry": "C2 requalification of affected comparison",
+          "consequence": "allow the distinction only in a newly qualified candidate"
+        }
+      },
+      "altitude": {
+        "status": "minimal",
+        "basis": "retained comparisons and explicit limits",
+        "discriminator": "Which altitude alternative could change the bounded comparison?",
+        "reexpand": "exact grammar + evidence + comparison manifest",
+        "question_forward": {
+          "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+          "change": "retained native observation / attributed report changes the declared consequence",
+          "notice": "exact source revision observation or focal inquiry",
+          "reentry": "C2 requalification of affected comparison",
+          "consequence": "allow the distinction only in a newly qualified candidate"
+        }
+      },
+      "lines": {
+        "status": "minimal",
+        "basis": "retained comparisons and explicit limits",
+        "discriminator": "Which lines alternative could change the bounded comparison?",
+        "reexpand": "exact grammar + evidence + comparison manifest",
+        "question_forward": {
+          "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+          "change": "retained native observation / attributed report changes the declared consequence",
+          "notice": "exact source revision observation or focal inquiry",
+          "reentry": "C2 requalification of affected comparison",
+          "consequence": "allow the distinction only in a newly qualified candidate"
+        }
+      },
+      "stages": {
+        "status": "minimal",
+        "basis": "retained comparisons and explicit limits",
+        "discriminator": "Which stages alternative could change the bounded comparison?",
+        "reexpand": "exact grammar + evidence + comparison manifest",
+        "question_forward": {
+          "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+          "change": "retained native observation / attributed report changes the declared consequence",
+          "notice": "exact source revision observation or focal inquiry",
+          "reentry": "C2 requalification of affected comparison",
+          "consequence": "allow the distinction only in a newly qualified candidate"
+        }
+      },
+      "states": {
+        "status": "minimal",
+        "basis": "retained comparisons and explicit limits",
+        "discriminator": "Which states alternative could change the bounded comparison?",
+        "reexpand": "exact grammar + evidence + comparison manifest",
+        "question_forward": {
+          "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+          "change": "retained native observation / attributed report changes the declared consequence",
+          "notice": "exact source revision observation or focal inquiry",
+          "reentry": "C2 requalification of affected comparison",
+          "consequence": "allow the distinction only in a newly qualified candidate"
+        }
+      },
+      "types": {
+        "status": "minimal",
+        "basis": "retained comparisons and explicit limits",
+        "discriminator": "Which types alternative could change the bounded comparison?",
+        "reexpand": "exact grammar + evidence + comparison manifest",
+        "question_forward": {
+          "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+          "change": "retained native observation / attributed report changes the declared consequence",
+          "notice": "exact source revision observation or focal inquiry",
+          "reentry": "C2 requalification of affected comparison",
+          "consequence": "allow the distinction only in a newly qualified candidate"
+        }
+      },
+      "directional_frame": {
+        "status": "minimal",
+        "basis": "retained comparisons and explicit limits",
+        "discriminator": "Which directional_frame alternative could change the bounded comparison?",
+        "reexpand": "exact grammar + evidence + comparison manifest",
+        "question_forward": {
+          "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+          "change": "retained native observation / attributed report changes the declared consequence",
+          "notice": "exact source revision observation or focal inquiry",
+          "reentry": "C2 requalification of affected comparison",
+          "consequence": "allow the distinction only in a newly qualified candidate"
+        }
+      }
+    },
+    "question_forward": {
+      "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+      "change": "retained native observation / attributed report changes the declared consequence",
+      "notice": "exact source revision observation or focal inquiry",
+      "reentry": "C2 requalification of affected comparison",
+      "consequence": "allow the distinction only in a newly qualified candidate"
+    },
+    "omission_challenges": {},
+    "evidence_dispositions": [],
+    "promotions": [],
+    "dependencies": {
+      "method": "bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670",
+      "16e90066-2349-40b2-a614-877ebab44b64": "95a81523ef252f3c1ed8ac13e48815ab34dbf2dab8f96ee9c7e8f24a6f157d0e",
+      "894ab2d0-ed0c-4009-be29-6004da5ef243": "60695e92583e21be2c0c49d57bf84f26fa8068cb5f1c4e8acb2e8d030a3bb1c8",
+      "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad": "7a23c14e1d45a2ce461ce1a9977fe3038e2ffa80178e88e226f703b187353976",
+      "156f48ee-1111-466f-af83-34e1680efce9": "e1febc2f8b188d3389e39bb02aa4b2853abbbc31496d9fde214253449ad2c5d6",
+      "f98b39a6-43ed-4726-b365-3cd26f46f5ca": "b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213"
+    },
+    "compression": {
+      "findings": "conclusions, coordinates, mappings",
+      "reexpand": "exact manifest references",
+      "trigger": "changed source or decision-required distinction"
+    }
+  },
+  "qualification": {
+    "basis": {
+      "focal": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+      "parent": "700b11b2-ed0e-422d-88c0-af1624951b82",
+      "grammar": "16e90066-2349-40b2-a614-877ebab44b64",
+      "contract": "894ab2d0-ed0c-4009-be29-6004da5ef243",
+      "mappings": [
+        {
+          "claim": "757a90fb-2150-4b62-9bd4-784f274fed0e",
+          "focal": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+          "frame": {
+            "focal": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+            "anchor": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+            "relation": "self_indexed"
+          },
+          "token": "b68c3a96-e5ba-4677-88a8-101f4f3a4788",
+          "access": "native",
+          "mapper": "b2b65f1d-6655-4c21-88f3-ab6e33176a6a",
+          "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad"
+        },
+        {
+          "claim": "e3851c38-6403-47f8-881f-85b6715f190d",
+          "focal": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+          "frame": {
+            "focal": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+            "anchor": "b2b65f1d-6655-4c21-88f3-ab6e33176a6a",
+            "relation": "observes"
+          },
+          "token": "3da21571-31ce-4078-9477-5f1ad3ef74d5",
+          "access": "measurement",
+          "mapper": "b2b65f1d-6655-4c21-88f3-ab6e33176a6a",
+          "snapshot": "156f48ee-1111-466f-af83-34e1680efce9"
+        }
+      ],
+      "snapshots": [
+        "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+        "156f48ee-1111-466f-af83-34e1680efce9"
+      ],
+      "expression": "External observations distinguish these cases; native observations do not.",
+      "promotions": [],
+      "compression": {
+        "trigger": "changed source or decision-required distinction",
+        "findings": "conclusions, coordinates, mappings",
+        "reexpand": "exact manifest references"
+      },
+      "conclusions": [
+        {
+          "answer": false,
+          "comparison": "native"
+        },
+        {
+          "answer": true,
+          "comparison": "external"
+        }
+      ],
+      "coordinates": [
+        {
+          "line": null,
+          "value": "constituent",
+          "subject": "c1c5f6d3-de08-4675-b96c-0c0fc38d8157",
+          "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+          "dimension": "altitude"
+        },
+        {
+          "line": null,
+          "value": "container",
+          "subject": "c52373aa-3849-408b-a18b-341241325e64",
+          "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+          "dimension": "altitude"
+        },
+        {
+          "line": "sensing",
+          "value": "installed",
+          "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+          "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+          "dimension": "stage"
+        },
+        {
+          "line": "switching",
+          "value": "idle",
+          "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+          "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+          "dimension": "state"
+        },
+        {
+          "line": "switching",
+          "value": "commissioned",
+          "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+          "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+          "dimension": "stage"
+        },
+        {
+          "line": "sensing",
+          "value": "rounded_native",
+          "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+          "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+          "dimension": "type"
+        }
+      ],
+      "dependencies": {
+        "method": "bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670",
+        "156f48ee-1111-466f-af83-34e1680efce9": "e1febc2f8b188d3389e39bb02aa4b2853abbbc31496d9fde214253449ad2c5d6",
+        "16e90066-2349-40b2-a614-877ebab44b64": "95a81523ef252f3c1ed8ac13e48815ab34dbf2dab8f96ee9c7e8f24a6f157d0e",
+        "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad": "7a23c14e1d45a2ce461ce1a9977fe3038e2ffa80178e88e226f703b187353976",
+        "894ab2d0-ed0c-4009-be29-6004da5ef243": "60695e92583e21be2c0c49d57bf84f26fa8068cb5f1c4e8acb2e8d030a3bb1c8",
+        "f98b39a6-43ed-4726-b365-3cd26f46f5ca": "b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213"
+      },
+      "dispositions": {
+        "lines": {
+          "basis": "retained comparisons and explicit limits",
+          "status": "minimal",
+          "reexpand": "exact grammar + evidence + comparison manifest",
+          "discriminator": "Which lines alternative could change the bounded comparison?",
+          "question_forward": {
+            "change": "retained native observation / attributed report changes the declared consequence",
+            "notice": "exact source revision observation or focal inquiry",
+            "reentry": "C2 requalification of affected comparison",
+            "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+            "consequence": "allow the distinction only in a newly qualified candidate"
+          }
+        },
+        "types": {
+          "basis": "retained comparisons and explicit limits",
+          "status": "minimal",
+          "reexpand": "exact grammar + evidence + comparison manifest",
+          "discriminator": "Which types alternative could change the bounded comparison?",
+          "question_forward": {
+            "change": "retained native observation / attributed report changes the declared consequence",
+            "notice": "exact source revision observation or focal inquiry",
+            "reentry": "C2 requalification of affected comparison",
+            "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+            "consequence": "allow the distinction only in a newly qualified candidate"
+          }
+        },
+        "stages": {
+          "basis": "retained comparisons and explicit limits",
+          "status": "minimal",
+          "reexpand": "exact grammar + evidence + comparison manifest",
+          "discriminator": "Which stages alternative could change the bounded comparison?",
+          "question_forward": {
+            "change": "retained native observation / attributed report changes the declared consequence",
+            "notice": "exact source revision observation or focal inquiry",
+            "reentry": "C2 requalification of affected comparison",
+            "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+            "consequence": "allow the distinction only in a newly qualified candidate"
+          }
+        },
+        "states": {
+          "basis": "retained comparisons and explicit limits",
+          "status": "minimal",
+          "reexpand": "exact grammar + evidence + comparison manifest",
+          "discriminator": "Which states alternative could change the bounded comparison?",
+          "question_forward": {
+            "change": "retained native observation / attributed report changes the declared consequence",
+            "notice": "exact source revision observation or focal inquiry",
+            "reentry": "C2 requalification of affected comparison",
+            "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+            "consequence": "allow the distinction only in a newly qualified candidate"
+          }
+        },
+        "altitude": {
+          "basis": "retained comparisons and explicit limits",
+          "status": "minimal",
+          "reexpand": "exact grammar + evidence + comparison manifest",
+          "discriminator": "Which altitude alternative could change the bounded comparison?",
+          "question_forward": {
+            "change": "retained native observation / attributed report changes the declared consequence",
+            "notice": "exact source revision observation or focal inquiry",
+            "reentry": "C2 requalification of affected comparison",
+            "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+            "consequence": "allow the distinction only in a newly qualified candidate"
+          }
+        },
+        "quadrants": {
+          "basis": "retained comparisons and explicit limits",
+          "status": "minimal",
+          "reexpand": "exact grammar + evidence + comparison manifest",
+          "discriminator": "Which quadrants alternative could change the bounded comparison?",
+          "question_forward": {
+            "change": "retained native observation / attributed report changes the declared consequence",
+            "notice": "exact source revision observation or focal inquiry",
+            "reentry": "C2 requalification of affected comparison",
+            "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+            "consequence": "allow the distinction only in a newly qualified candidate"
+          }
+        },
+        "directional_frame": {
+          "basis": "retained comparisons and explicit limits",
+          "status": "minimal",
+          "reexpand": "exact grammar + evidence + comparison manifest",
+          "discriminator": "Which directional_frame alternative could change the bounded comparison?",
+          "question_forward": {
+            "change": "retained native observation / attributed report changes the declared consequence",
+            "notice": "exact source revision observation or focal inquiry",
+            "reentry": "C2 requalification of affected comparison",
+            "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+            "consequence": "allow the distinction only in a newly qualified candidate"
+          }
+        }
+      },
+      "identity_basis": "one explicitly seated synthetic specimen",
+      "question_forward": {
+        "change": "retained native observation / attributed report changes the declared consequence",
+        "notice": "exact source revision observation or focal inquiry",
+        "reentry": "C2 requalification of affected comparison",
+        "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+        "consequence": "allow the distinction only in a newly qualified candidate"
+      },
+      "governing_revision": "ECO-94:74c49056",
+      "omission_challenges": {},
+      "evidence_dispositions": []
+    },
+    "scope": "a1b4b753-4c1f-4ae4-b4fd-04d0705bb190",
+    "method": "bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670",
+    "attempt": "3c4cd13c-a917-440d-b404-be0fd3673963",
+    "meaning": "bounded_comparison_only",
+    "outcome": "PASS",
+    "contract": "894ab2d0-ed0c-4009-be29-6004da5ef243",
+    "findings": [
+      {
+        "reason": "exact_capacity_closure",
+        "status": "PASS",
+        "witness": {
+          "absent": [],
+          "grammar": "16e90066-2349-40b2-a614-877ebab44b64",
+          "quadrants": [
+            "individual-interior",
+            "individual-exterior",
+            "collective-interior",
+            "collective-exterior"
+          ],
+          "bindingProblems": []
+        },
+        "obligation": "structural_supply"
+      },
+      {
+        "reason": "focal_and_artifact_identity",
+        "status": "PASS",
+        "witness": {
+          "focal": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+          "artifact": "2b848882-ec8c-4153-be86-538c568246cb",
+          "expected": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a"
+        },
+        "obligation": "focal_identity"
+      },
+      {
+        "reason": "source_mapper_frame_access_separation",
+        "status": "PASS",
+        "witness": [
+          {
+            "ok": true,
+            "claim": "757a90fb-2150-4b62-9bd4-784f274fed0e",
+            "token": "b68c3a96-e5ba-4677-88a8-101f4f3a4788",
+            "access": "native",
+            "source": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad"
+          },
+          {
+            "ok": true,
+            "claim": "e3851c38-6403-47f8-881f-85b6715f190d",
+            "token": "3da21571-31ce-4078-9477-5f1ad3ef74d5",
+            "access": "measurement",
+            "source": "156f48ee-1111-466f-af83-34e1680efce9"
+          }
+        ],
+        "obligation": "mapping_access"
+      },
+      {
+        "reason": "retained_expected_observed_contrast",
+        "status": "PASS",
+        "witness": [
+          {
+            "id": "native",
+            "kind": "observational_discrimination",
+            "token": "b68c3a96-e5ba-4677-88a8-101f4f3a4788",
+            "access": "native",
+            "actual": false,
+            "reason": "source_sensitive_comparison",
+            "source": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+            "status": "PASS",
+            "expected": false,
+            "expression": "External observations distinguish these cases; native observations do not.",
+            "consequence": "whether the declared source supports this bounded distinction",
+            "expression_answer": false,
+            "interpretation_contract": "894ab2d0-ed0c-4009-be29-6004da5ef243"
+          },
+          {
+            "id": "external",
+            "kind": "observational_discrimination",
+            "token": "3da21571-31ce-4078-9477-5f1ad3ef74d5",
+            "access": "measurement",
+            "actual": true,
+            "reason": "source_sensitive_comparison",
+            "source": "156f48ee-1111-466f-af83-34e1680efce9",
+            "status": "PASS",
+            "expected": true,
+            "expression": "External observations distinguish these cases; native observations do not.",
+            "consequence": "whether the declared source supports this bounded distinction",
+            "expression_answer": true,
+            "interpretation_contract": "894ab2d0-ed0c-4009-be29-6004da5ef243"
+          }
+        ],
+        "obligation": "comparison"
+      },
+      {
+        "reason": "level_stage_state_line_type_separation",
+        "status": "PASS",
+        "witness": [
+          {
+            "ok": true,
+            "item": {
+              "line": null,
+              "value": "constituent",
+              "subject": "c1c5f6d3-de08-4675-b96c-0c0fc38d8157",
+              "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+              "dimension": "altitude"
+            },
+            "expected": {
+              "line": null,
+              "value": "constituent",
+              "subject": "c1c5f6d3-de08-4675-b96c-0c0fc38d8157",
+              "dimension": "altitude"
+            }
+          },
+          {
+            "ok": true,
+            "item": {
+              "line": null,
+              "value": "container",
+              "subject": "c52373aa-3849-408b-a18b-341241325e64",
+              "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+              "dimension": "altitude"
+            },
+            "expected": {
+              "line": null,
+              "value": "container",
+              "subject": "c52373aa-3849-408b-a18b-341241325e64",
+              "dimension": "altitude"
+            }
+          },
+          {
+            "ok": true,
+            "item": {
+              "line": "sensing",
+              "value": "installed",
+              "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+              "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+              "dimension": "stage"
+            },
+            "expected": {
+              "line": "sensing",
+              "value": "installed",
+              "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+              "dimension": "stage"
+            }
+          },
+          {
+            "ok": true,
+            "item": {
+              "line": "switching",
+              "value": "idle",
+              "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+              "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+              "dimension": "state"
+            },
+            "expected": {
+              "line": "switching",
+              "value": "idle",
+              "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+              "dimension": "state"
+            }
+          },
+          {
+            "ok": true,
+            "item": {
+              "line": "switching",
+              "value": "commissioned",
+              "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+              "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+              "dimension": "stage"
+            },
+            "expected": {
+              "line": "switching",
+              "value": "commissioned",
+              "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+              "dimension": "stage"
+            }
+          },
+          {
+            "ok": true,
+            "item": {
+              "line": "sensing",
+              "value": "rounded_native",
+              "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+              "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+              "dimension": "type"
+            },
+            "expected": {
+              "line": "sensing",
+              "value": "rounded_native",
+              "subject": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+              "dimension": "type"
+            }
+          }
+        ],
+        "obligation": "coordinates"
+      },
+      {
+        "reason": "resolution_not_erasure",
+        "status": "PASS",
+        "witness": [
+          {
+            "ok": true,
+            "reason": "resolution_with_reentry",
+            "status": "minimal",
+            "capacity": "quadrants"
+          },
+          {
+            "ok": true,
+            "reason": "resolution_with_reentry",
+            "status": "minimal",
+            "capacity": "altitude"
+          },
+          {
+            "ok": true,
+            "reason": "resolution_with_reentry",
+            "status": "minimal",
+            "capacity": "lines"
+          },
+          {
+            "ok": true,
+            "reason": "resolution_with_reentry",
+            "status": "minimal",
+            "capacity": "stages"
+          },
+          {
+            "ok": true,
+            "reason": "resolution_with_reentry",
+            "status": "minimal",
+            "capacity": "states"
+          },
+          {
+            "ok": true,
+            "reason": "resolution_with_reentry",
+            "status": "minimal",
+            "capacity": "types"
+          },
+          {
+            "ok": true,
+            "reason": "resolution_with_reentry",
+            "status": "minimal",
+            "capacity": "directional_frame"
+          }
+        ],
+        "obligation": "resolution_question_forward"
+      },
+      {
+        "reason": "local_evidence_retained_without_constitutional_rewrite",
+        "status": "PASS",
+        "witness": {
+          "pressure": [],
+          "grammarUnchanged": true
+        },
+        "obligation": "evidence_pressure"
+      },
+      {
+        "reason": "qualification_has_no_other_dimension_effect",
+        "status": "PASS",
+        "witness": {
+          "meaning": "comparison_eligibility_only",
+          "promotions": []
+        },
+        "obligation": "non_promotion"
+      },
+      {
+        "reason": "known_defective_answer_rejected_by_same_contrast",
+        "status": "PASS",
+        "witness": [
+          {
+            "id": "native",
+            "reason": "access_or_consequence_substitution",
+            "positive": false,
+            "defective": true
+          },
+          {
+            "id": "external",
+            "reason": "access_or_consequence_substitution",
+            "positive": true,
+            "defective": false
+          }
+        ],
+        "obligation": "controls"
+      }
+    ],
+    "candidate": "2b848882-ec8c-4153-be86-538c568246cb",
+    "evaluator": "b7_evaluator",
+    "applicability": {
+      "mode": "declared_dependencies",
+      "limits": "no time-only freshness claim; explicit observed changes and grant continuing conditions"
+    },
+    "execution_authorized": false
+  },
+  "grammar": {
+    "aliases": {
+      "3da21571-31ce-4078-9477-5f1ad3ef74d5": {
+        "access": "measurement",
+        "snapshot": "156f48ee-1111-466f-af83-34e1680efce9"
+      },
+      "b68c3a96-e5ba-4677-88a8-101f4f3a4788": {
+        "access": "native",
+        "snapshot": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad"
+      }
+    },
+    "synthetic": true,
+    "capacities": {
+      "lines": {
+        "label": "lines",
+        "source": "ECO-94 accepted record §D + human closure",
+        "meaning": "Separate capacity dimensions; one Line does not characterize the whole Referent.",
+        "question": "Which lines distinction changes this comparison or requires re-entry?"
+      },
+      "types": {
+        "label": "types",
+        "source": "ECO-94 accepted record §D + human closure",
+        "meaning": "Categorical alternatives only when they alter a stated decision.",
+        "question": "Which types distinction changes this comparison or requires re-entry?"
+      },
+      "stages": {
+        "label": "stages",
+        "source": "ECO-94 accepted record §D + human closure",
+        "meaning": "Ordered trajectory position with criteria for movement; distinct from State.",
+        "question": "Which stages distinction changes this comparison or requires re-entry?"
+      },
+      "states": {
+        "label": "states",
+        "source": "ECO-94 accepted record §D + human closure",
+        "meaning": "Presently instantiated condition with observation duration limits; not Stage.",
+        "question": "Which states distinction changes this comparison or requires re-entry?"
+      },
+      "altitude": {
+        "label": "altitude",
+        "source": "ECO-94 accepted record §D + human closure",
+        "meaning": "Relative constituent, focal, peer, container position under declared projection; not developmental Stage.",
+        "question": "Which altitude distinction changes this comparison or requires re-entry?"
+      },
+      "quadrants": {
+        "label": "quadrants",
+        "source": "ECO-94 accepted record §D + human closure",
+        "meaning": "Individual/collective and interior/exterior distinctions; separate from frame, mapper and access.",
+        "question": "Which quadrants distinction changes this comparison or requires re-entry?",
+        "distinctions": [
+          "individual-interior",
+          "individual-exterior",
+          "collective-interior",
+          "collective-exterior"
+        ]
+      },
+      "directional_frame": {
+        "label": "directional_frame",
+        "source": "ECO-94 accepted record §D + human closure",
+        "meaning": "Focal Referent, anchor Referent and declared anchor-to-focal relation; mapper and access separately identified.",
+        "question": "Which directional_frame distinction changes this comparison or requires re-entry?"
+      }
+    },
+    "governing_revision": "ECO-94:74c49056",
+    "interpretation_sources": [
+      "f98b39a6-43ed-4726-b365-3cd26f46f5ca"
+    ]
+  },
+  "contract": {
+    "focal": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+    "scope": "a1b4b753-4c1f-4ae4-b4fd-04d0705bb190",
+    "method": "bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670",
+    "synthetic": true,
+    "capacities": [
+      "quadrants",
+      "altitude",
+      "lines",
+      "stages",
+      "states",
+      "types",
+      "directional_frame"
+    ],
+    "comparisons": [
+      {
+        "id": "native",
+        "kind": "observational_discrimination",
+        "token": "b68c3a96-e5ba-4677-88a8-101f4f3a4788",
+        "defeater": "a different retained observation or access basis changes the answer",
+        "consequence": "whether the declared source supports this bounded distinction",
+        "alternatives": [
+          true,
+          false
+        ],
+        "decision_interval": 60
+      },
+      {
+        "id": "external",
+        "kind": "observational_discrimination",
+        "token": "3da21571-31ce-4078-9477-5f1ad3ef74d5",
+        "defeater": "a different retained observation or access basis changes the answer",
+        "consequence": "whether the declared source supports this bounded distinction",
+        "alternatives": [
+          true,
+          false
+        ],
+        "decision_interval": 60
+      }
+    ],
+    "obligations": [
+      "structural_supply",
+      "focal_identity",
+      "mapping_access",
+      "comparison",
+      "coordinates",
+      "resolution_question_forward",
+      "evidence_pressure",
+      "non_promotion",
+      "controls"
+    ],
+    "applicability": {
+      "mode": "declared_dependencies",
+      "limits": "no time-only freshness claim; explicit observed changes and grant continuing conditions"
+    },
+    "method_source": "repo:server/build-7/qualification.mjs",
+    "negative_control": "invert_source_bound_answer",
+    "question_forward": {
+      "change": "retained native observation / attributed report changes the declared consequence",
+      "notice": "exact source revision observation or focal inquiry",
+      "reentry": "C2 requalification of affected comparison",
+      "question": "Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?",
+      "consequence": "allow the distinction only in a newly qualified candidate"
+    },
+    "method_definition": "// ECO-94 §§C2,D,E,J. Bounded source/access comparison method for BUILD 7.\n// This interprets explicit fixture evidence; no universal prose evaluator or model-internal claim.\nimport { createHash } from \"node:crypto\";\nimport { readFileSync } from \"node:fs\";\nexport const method = createHash(\"sha256\").update(\n  readFileSync(new URL(import.meta.url)),\n).digest(\"hex\");\nexport const obligations = [\n  \"structural_supply\",\n  \"focal_identity\",\n  \"mapping_access\",\n  \"comparison\",\n  \"coordinates\",\n  \"resolution_question_forward\",\n  \"evidence_pressure\",\n  \"non_promotion\",\n  \"controls\",\n];\nexport const capacities = [\n  \"quadrants\",\n  \"altitude\",\n  \"lines\",\n  \"stages\",\n  \"states\",\n  \"types\",\n  \"directional_frame\",\n];\nconst corresponds = (observed, claimed) => observed === claimed;\nconst equal = (a, b) => JSON.stringify(a) === JSON.stringify(b);\nconst text = (x) => typeof x === \"string\" && x.trim().length > 0;\nconst qf = (q, ct) =>\n  q?.question === ct.question_forward.question && q && text(q.question) &&\n  q.question.includes(\"?\") && text(q.change) && text(q.notice) &&\n  text(q.reentry) && text(q.consequence);\nexport async function doc(db, id, role = null) {\n  const [r] = await db`select ecb7.doc(${id}::uuid,${role}) as value`;\n  return r.value;\n}\nexport async function examine(db, candidate, contract) {\n  const c = await doc(db, candidate, \"b7_candidate\");\n  const ct = await doc(db, contract, \"b7_contract\");\n  const f = [];\n  const add = (obligation, status, reason, witness) =>\n    f.push({ obligation, status, reason, witness });\n  const check = (o, yes, reason, w) => add(o, yes ? \"PASS\" : \"FAIL\", reason, w);\n  let g, sources = {};\n  try {\n    g = await doc(db, c.grammar, \"b7_grammar\");\n    for (const id of [...c.snapshots, ...(g.interpretation_sources ?? [])]) {\n      sources[id] = await doc(db, id, \"b7_snapshot\");\n    }\n  } catch (e) {\n    for (const o of obligations) {\n      add(o, \"INCOMPLETE\", \"exact_payload_unavailable\", { error: e.message });\n    }\n    return f;\n  }\n  const bindingProblems = [];\n  for (\n    const id of [\n      c.grammar,\n      c.contract,\n      ...c.snapshots,\n      ...(g.interpretation_sources ?? []),\n    ]\n  ) {\n    const [r] =\n      await db`select encode(payload_digest,'hex') as digest from public.artifacts where id=${id}::uuid`;\n    if (!r || c.dependencies?.[id] !== r.digest) bindingProblems.push(id);\n  }\n  if (c.dependencies?.method !== ct.method) bindingProblems.push(\"method\");\n  const absent = capacities.filter((k) =>\n    !g.capacities?.[k] || !text(g.capacities[k].meaning) ||\n    !text(g.capacities[k].question) || !text(g.capacities[k].source)\n  );\n  const q = g.capacities?.quadrants?.distinctions;\n  const qOK = equal(q, [\n    \"individual-interior\",\n    \"individual-exterior\",\n    \"collective-interior\",\n    \"collective-exterior\",\n  ]);\n  add(\n    \"structural_supply\",\n    absent.length\n      ? \"INCOMPLETE\"\n      : qOK && bindingProblems.length === 0\n      ? \"PASS\"\n      : \"FAIL\",\n    absent.length\n      ? \"structural_support_unavailable\"\n      : qOK\n      ? \"exact_capacity_closure\"\n      : \"quadrant_collapse\",\n    { grammar: c.grammar, absent, quadrants: q ?? null, bindingProblems },\n  );\n  const [scope] =\n    await db`select focal::text,contract::text from ecb7.scopes where id=${ct.scope}::uuid`;\n  check(\n    \"focal_identity\",\n    c.focal === ct.focal && scope?.focal === c.focal &&\n      c.contract === contract && scope?.contract === contract &&\n      c.focal !== candidate,\n    \"focal_and_artifact_identity\",\n    { focal: c.focal, expected: ct.focal, artifact: candidate },\n  );\n  const mapFindings = [];\n  for (const m of c.mappings ?? []) {\n    const supplied = g.aliases?.[m.token];\n    const source = sources[supplied?.snapshot];\n    let claim;\n    const [r] =\n      await db`select proposition,scope,origin,epistemic_standing from public.claims where id=${m.claim}::uuid`;\n    try {\n      claim = JSON.parse(r?.proposition);\n    } catch {\n      claim = null;\n    }\n    const ok = source && supplied && m.snapshot === supplied.snapshot &&\n      m.mapper === source.mapper && m.access === supplied.access &&\n      m.focal === c.focal && m.frame?.focal === c.focal &&\n      m.frame?.anchor === source.anchor &&\n      m.frame?.relation === source.relation && text(source.source) &&\n      text(source.version) && text(source.limits) &&\n      equal(claim, {\n        focal: m.focal,\n        anchor: m.frame.anchor,\n        relation: m.frame.relation,\n        mapper: m.mapper,\n        source: m.snapshot,\n        access: m.access,\n      }) &&\n      r?.scope === ct.scope && r?.origin === \"ecb_inference\";\n    mapFindings.push({\n      token: m.token,\n      source: supplied?.snapshot ?? null,\n      access: supplied?.access ?? null,\n      ok: Boolean(ok),\n      claim: m.claim,\n    });\n  }\n  check(\n    \"mapping_access\",\n    mapFindings.length > 0 && mapFindings.every((x) => x.ok),\n    \"source_mapper_frame_access_separation\",\n    mapFindings,\n  );\n  // Comparison expectations are independent of candidate success claims and read from retained sources.\n  // The contract's retained interpretation is supplied independently of the producer.\n  // This bounded method cannot interpret arbitrary new prose: missing interpretation is INCOMPLETE.\n  const expressionMeaning =\n    Object.hasOwn(ct.expression_interpretations ?? {}, c.expression)\n      ? ct.expression_interpretations[c.expression]\n      : null;\n  const comparisons = [];\n  for (const cmp of ct.comparisons ?? []) {\n    const alias = g.aliases?.[cmp.token], src = sources[alias?.snapshot];\n    let expected, reason = \"source_sensitive_comparison\", status = \"PASS\";\n    if (!src || !alias) {\n      status = \"INCOMPLETE\";\n      reason = \"comparison_source_unavailable\";\n    } else if (cmp.kind === \"observational_discrimination\") {\n      // Distinct native outputs within the stipulated latency budget, not differences in external readings.\n      if (\n        !Array.isArray(src.observations) || src.observations.length !== 2 ||\n        !Number.isFinite(src.latency)\n      ) {\n        status = \"INCOMPLETE\";\n        reason = \"observation_trace_unavailable\";\n      } else {expected = src.observations[0] !== src.observations[1] &&\n          src.latency <= cmp.decision_interval;}\n    } else if (cmp.kind === \"reported_preference\") {\n      expected = alias.access === \"testimony\" && src.speaker === ct.focal &&\n        src.report === cmp.preference;\n    } else if (cmp.kind === \"collective_agreement\") {\n      if (!src.convention || !Array.isArray(src.signals)) {\n        status = \"INDETERMINATE\";\n        reason = \"collective_discriminator_unavailable\";\n      } else {expected = src.convention === \"explicit_all\" &&\n          src.participants.every((p) => src.signals.includes(p));}\n    } else {\n      status = \"INDETERMINATE\";\n      reason = \"normative_comparator_unavailable\";\n    }\n    const actual = c.conclusions?.find((x) => x.comparison === cmp.id)?.answer;\n    if (status === \"PASS\" && !corresponds(expected, actual)) {\n      status = \"FAIL\";\n      reason = \"access_or_consequence_substitution\";\n    }\n    const expressionAnswer = expressionMeaning?.[alias?.access];\n    if (status !== \"FAIL\" && typeof expressionAnswer !== \"boolean\") {\n      status = \"INCOMPLETE\";\n      reason = \"expression_interpretation_unavailable\";\n    } else if (status === \"PASS\" && !corresponds(expected, expressionAnswer)) {\n      status = \"FAIL\";\n      reason = \"expression_consequence_substitution\";\n    }\n    if (\n      !text(cmp.consequence) || !text(cmp.defeater) ||\n      !Array.isArray(cmp.alternatives) || cmp.alternatives.length < 2\n    ) {\n      status = \"INDETERMINATE\";\n      reason = \"comparison_contract_incomplete\";\n    }\n    comparisons.push({\n      id: cmp.id,\n      token: cmp.token,\n      source: alias?.snapshot ?? null,\n      access: alias?.access ?? null,\n      kind: cmp.kind,\n      expected: expected ?? null,\n      actual: actual ?? null,\n      expression: c.expression,\n      expression_answer: expressionAnswer ?? null,\n      interpretation_contract: contract,\n      status,\n      reason,\n      consequence: cmp.consequence,\n    });\n  }\n  const resultOf = (xs) =>\n    xs.some((x) => x.status === \"FAIL\")\n      ? \"FAIL\"\n      : xs.some((x) => x.status === \"INCOMPLETE\")\n      ? \"INCOMPLETE\"\n      : xs.some((x) => x.status === \"INDETERMINATE\")\n      ? \"INDETERMINATE\"\n      : \"PASS\";\n  add(\n    \"comparison\",\n    comparisons.length ? resultOf(comparisons) : \"INDETERMINATE\",\n    comparisons.length\n      ? \"retained_expected_observed_contrast\"\n      : \"normative_comparator_unavailable\",\n    comparisons,\n  );\n  const coords = [];\n  for (const item of c.coordinates ?? []) {\n    const src = sources[item.snapshot];\n    const fact = src?.coordinates?.find((x) =>\n      x.dimension === item.dimension && x.subject === item.subject &&\n      x.line === item.line\n    );\n    coords.push({\n      item,\n      expected: fact ?? null,\n      ok: Boolean(fact && equal(item.value, fact.value)),\n    });\n  }\n  check(\n    \"coordinates\",\n    coords.every((x) => x.ok),\n    \"level_stage_state_line_type_separation\",\n    coords,\n  );\n  const dispositions = [];\n  for (const k of capacities) {\n    const d = c.dispositions?.[k];\n    let ok = true, reason = \"inherited_available\";\n    if (!d) {\n      // An omitted overlay remains not_examined; a named omission challenge must cover the comparison.\n      ok = text(c.omission_challenges?.[k]);\n      reason = \"not_examined_with_omission_challenge\";\n    } else {\n      const statuses = [\n        \"rich\",\n        \"minimal\",\n        \"unresolved\",\n        \"non_live\",\n        \"unsupported\",\n      ];\n      ok = statuses.includes(d.status) && text(d.basis) &&\n        text(d.discriminator) && text(d.reexpand);\n      if (\n        [\"minimal\", \"unresolved\", \"non_live\", \"unsupported\"].includes(d.status)\n      ) ok = ok && qf(d.question_forward, ct);\n      if (d.status === \"non_live\") {\n        ok = ok && Array.isArray(d.alternative_consequences) &&\n          new Set(d.alternative_consequences).size === 1;\n      }\n      reason = ok\n        ? \"resolution_with_reentry\"\n        : \"missing_calibrated_question_or_erasure\";\n    }\n    dispositions.push({\n      capacity: k,\n      status: d?.status ?? \"not_examined\",\n      ok,\n      reason,\n    });\n  }\n  if (!qf(c.question_forward, ct)) {\n    dispositions.push({\n      capacity: \"focal_question\",\n      ok: false,\n      reason: \"missing_calibrated_question\",\n    });\n  }\n  const materialUnresolved = Object.values(c.dispositions ?? {}).some((d) =>\n    d.status === \"unresolved\" && Array.isArray(d.alternative_consequences) &&\n    new Set(d.alternative_consequences).size > 1\n  );\n  add(\n    \"resolution_question_forward\",\n    dispositions.some((x) => !x.ok)\n      ? \"FAIL\"\n      : materialUnresolved\n      ? \"INDETERMINATE\"\n      : \"PASS\",\n    \"resolution_not_erasure\",\n    dispositions,\n  );\n  const pressure = [];\n  for (const [id, src] of Object.entries(sources)) {\n    for (const ev of src.local_evidence ?? []) {\n      const retained = c.evidence_dispositions?.find((x) =>\n        x.snapshot === id && x.evidence === ev.id\n      );\n      const ok = retained && text(retained.finding) &&\n        (!ev.challenges_rule ||\n          (retained.rule === ev.challenges_rule &&\n            text(retained.governing_route) &&\n            text(retained.affected_decision)));\n      pressure.push({\n        source: id,\n        evidence: ev,\n        retained: retained ?? null,\n        ok: Boolean(ok),\n      });\n    }\n  }\n  const grammarUnchanged = c.governing_revision === g.governing_revision;\n  check(\n    \"evidence_pressure\",\n    grammarUnchanged && pressure.every((x) => x.ok),\n    \"local_evidence_retained_without_constitutional_rewrite\",\n    { grammarUnchanged, pressure },\n  );\n  const forbidden = [\n    \"truth\",\n    \"warrant\",\n    \"authority\",\n    \"designation\",\n    \"currentness\",\n    \"execution_authorization\",\n    \"first_person_access\",\n  ];\n  check(\n    \"non_promotion\",\n    !(c.promotions ?? []).some((p) => forbidden.includes(p)),\n    \"qualification_has_no_other_dimension_effect\",\n    { promotions: c.promotions ?? [], meaning: \"comparison_eligibility_only\" },\n  );\n  // Same comparison method: a known wrong answer must disagree, and alternative wording must not matter.\n  const decidable = comparisons.filter((x) => typeof x.expected === \"boolean\");\n  if (decidable.length === 0) {\n    add(\n      \"controls\",\n      resultOf(comparisons) === \"INDETERMINATE\"\n        ? \"INDETERMINATE\"\n        : \"INCOMPLETE\",\n      \"control_comparison_unavailable\",\n      comparisons,\n    );\n  } else {check(\n      \"controls\",\n      decidable.every((x) =>\n        corresponds(x.expected, x.expected) &&\n        !corresponds(x.expected, !x.expected)\n      ) && ct.negative_control === \"invert_source_bound_answer\",\n      \"known_defective_answer_rejected_by_same_contrast\",\n      decidable.map((x) => ({\n        id: x.id,\n        positive: x.expected,\n        defective: !x.expected,\n        reason: \"access_or_consequence_substitution\",\n      })),\n    );}\n  return f;\n}\nexport async function qualify(db, candidate, contract, attempt) {\n  await db`select ecb7.attempt(${attempt}::uuid,${candidate}::uuid)`;\n  const findings = await examine(db, candidate, contract);\n  const [r] = await db`select ecb7.publish(${attempt}::uuid,${\n    db.json(findings)\n  },${method}) as id`;\n  return { id: r.id, ...await doc(db, r.id, \"b7_evaluation\") };\n}\n",
+    "expression_interpretations": {
+      "The external path discriminates these cases; the native path does not.": {
+        "native": false,
+        "measurement": true
+      },
+      "External observations distinguish these cases; native observations do not.": {
+        "native": false,
+        "measurement": true
+      },
+      "The thermostat can distinguish the cases because the engineer’s readings differ.": {
+        "native": true,
+        "measurement": true
+      },
+      "Only the external observation distinguishes the stipulated cases; the native observation does not.": {
+        "native": false,
+        "measurement": true
+      }
+    },
+    "expression_interpretation_limits": "Only retained comparator-authored meanings are checked; unsupported prose requires another applicable method, not inferred success."
+  },
+  "claims": [
+    {
+      "id": "757a90fb-2150-4b62-9bd4-784f274fed0e",
+      "proposition": "{\"focal\":\"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\",\"anchor\":\"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\",\"relation\":\"self_indexed\",\"mapper\":\"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\",\"source\":\"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\",\"access\":\"native\"}",
+      "scope": "a1b4b753-4c1f-4ae4-b4fd-04d0705bb190",
+      "claim_kind": "assertion",
+      "origin": "ecb_inference",
+      "epistemic_standing": "unassessed",
+      "asserted_at": "2026-09-10T19:40:34.159Z",
+      "subject_referent_id": null,
+      "predicate": null,
+      "object_referent_id": null
+    },
+    {
+      "id": "e3851c38-6403-47f8-881f-85b6715f190d",
+      "proposition": "{\"focal\":\"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\",\"anchor\":\"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\",\"relation\":\"observes\",\"mapper\":\"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\",\"source\":\"156f48ee-1111-466f-af83-34e1680efce9\",\"access\":\"measurement\"}",
+      "scope": "a1b4b753-4c1f-4ae4-b4fd-04d0705bb190",
+      "claim_kind": "assertion",
+      "origin": "ecb_inference",
+      "epistemic_standing": "unassessed",
+      "asserted_at": "2026-09-10T19:40:34.109Z",
+      "subject_referent_id": null,
+      "predicate": null,
+      "object_referent_id": null
+    }
+  ],
+  "retained": {
+    "b8e57e9b-b87e-4409-ba7f-520537585d46": {
+      "id": "b8e57e9b-b87e-4409-ba7f-520537585d46",
+      "context_id": "acaae84f-cc2f-446c-b295-ef8f862c29bb",
+      "artifact_role": "b7_designation",
+      "payload_text": "{\"actor\": \"b7_actor\", \"grant\": \"d7475cb1-576d-40f2-a521-fedc8a7e2f3a\", \"scope\": \"a1b4b753-4c1f-4ae4-b4fd-04d0705bb190\", \"temporal\": {\"act\": \"until_revoked\", \"continuing_effect\": \"historical_act_only\"}, \"candidate\": \"2b848882-ec8c-4153-be86-538c568246cb\", \"operation\": \"select\", \"evaluation\": \"9d01b7d6-752d-448c-9403-247e12723e97\", \"observation\": \"4da4def1-4779-41a9-94dd-0ca14820c9c6\", \"occurred_at\": \"2026-09-10T19:40:34.17637+00:00\", \"predecessor\": \"bcd58b6d-715d-48f3-b948-563db8045b01\", \"execution_authorized\": false, \"qualification_applicability\": {\"gaps\": [], \"limits\": \"declared inputs only; no world-complete awareness\", \"applicable\": true, \"observation\": \"4da4def1-4779-41a9-94dd-0ca14820c9c6\"}}",
+      "digest": "28647ec40464c852300974cf1016632df4650f4188f34a8ef64d520cdc92225a"
+    },
+    "acaae84f-cc2f-446c-b295-ef8f862c29bb": {
+      "id": "acaae84f-cc2f-446c-b295-ef8f862c29bb",
+      "context_id": "a1b4b753-4c1f-4ae4-b4fd-04d0705bb190",
+      "artifact_role": "b7_attempt",
+      "payload_text": "{\"actor\": \"b7_actor\", \"grant\": \"d7475cb1-576d-40f2-a521-fedc8a7e2f3a\", \"scope\": \"a1b4b753-4c1f-4ae4-b4fd-04d0705bb190\", \"candidate\": \"2b848882-ec8c-4153-be86-538c568246cb\", \"operation\": \"select\", \"evaluation\": \"9d01b7d6-752d-448c-9403-247e12723e97\", \"observation\": \"4da4def1-4779-41a9-94dd-0ca14820c9c6\", \"predecessor\": \"bcd58b6d-715d-48f3-b948-563db8045b01\"}",
+      "digest": "41d307334eb09cdb7fa6fcd0284bf80e2e74ddde7586c8ca981adb11cdc782c0"
+    },
+    "2b848882-ec8c-4153-be86-538c568246cb": {
+      "id": "2b848882-ec8c-4153-be86-538c568246cb",
+      "context_id": "a1b4b753-4c1f-4ae4-b4fd-04d0705bb190",
+      "artifact_role": "b7_candidate",
+      "payload_text": "{\"focal\":\"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\",\"identity_basis\":\"one explicitly seated synthetic specimen\",\"grammar\":\"16e90066-2349-40b2-a614-877ebab44b64\",\"contract\":\"894ab2d0-ed0c-4009-be29-6004da5ef243\",\"snapshots\":[\"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\",\"156f48ee-1111-466f-af83-34e1680efce9\"],\"mappings\":[{\"token\":\"b68c3a96-e5ba-4677-88a8-101f4f3a4788\",\"snapshot\":\"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\",\"mapper\":\"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\",\"access\":\"native\",\"focal\":\"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\",\"frame\":{\"focal\":\"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\",\"anchor\":\"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\",\"relation\":\"self_indexed\"},\"claim\":\"757a90fb-2150-4b62-9bd4-784f274fed0e\"},{\"token\":\"3da21571-31ce-4078-9477-5f1ad3ef74d5\",\"snapshot\":\"156f48ee-1111-466f-af83-34e1680efce9\",\"mapper\":\"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\",\"access\":\"measurement\",\"focal\":\"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\",\"frame\":{\"focal\":\"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\",\"anchor\":\"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\",\"relation\":\"observes\"},\"claim\":\"e3851c38-6403-47f8-881f-85b6715f190d\"}],\"governing_revision\":\"ECO-94:74c49056\",\"expression\":\"External observations distinguish these cases; native observations do not.\",\"parent\":\"700b11b2-ed0e-422d-88c0-af1624951b82\",\"conclusions\":[{\"comparison\":\"native\",\"answer\":false},{\"comparison\":\"external\",\"answer\":true}],\"coordinates\":[{\"dimension\":\"altitude\",\"subject\":\"c1c5f6d3-de08-4675-b96c-0c0fc38d8157\",\"line\":null,\"value\":\"constituent\",\"snapshot\":\"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\"},{\"dimension\":\"altitude\",\"subject\":\"c52373aa-3849-408b-a18b-341241325e64\",\"line\":null,\"value\":\"container\",\"snapshot\":\"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\"},{\"dimension\":\"stage\",\"subject\":\"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\",\"line\":\"sensing\",\"value\":\"installed\",\"snapshot\":\"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\"},{\"dimension\":\"state\",\"subject\":\"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\",\"line\":\"switching\",\"value\":\"idle\",\"snapshot\":\"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\"},{\"dimension\":\"stage\",\"subject\":\"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\",\"line\":\"switching\",\"value\":\"commissioned\",\"snapshot\":\"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\"},{\"dimension\":\"type\",\"subject\":\"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\",\"line\":\"sensing\",\"value\":\"rounded_native\",\"snapshot\":\"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\"}],\"dispositions\":{\"quadrants\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which quadrants alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}},\"altitude\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which altitude alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}},\"lines\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which lines alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}},\"stages\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which stages alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}},\"states\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which states alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}},\"types\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which types alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}},\"directional_frame\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which directional_frame alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}}},\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"},\"omission_challenges\":{},\"evidence_dispositions\":[],\"promotions\":[],\"dependencies\":{\"method\":\"bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670\",\"16e90066-2349-40b2-a614-877ebab44b64\":\"95a81523ef252f3c1ed8ac13e48815ab34dbf2dab8f96ee9c7e8f24a6f157d0e\",\"894ab2d0-ed0c-4009-be29-6004da5ef243\":\"60695e92583e21be2c0c49d57bf84f26fa8068cb5f1c4e8acb2e8d030a3bb1c8\",\"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\":\"7a23c14e1d45a2ce461ce1a9977fe3038e2ffa80178e88e226f703b187353976\",\"156f48ee-1111-466f-af83-34e1680efce9\":\"e1febc2f8b188d3389e39bb02aa4b2853abbbc31496d9fde214253449ad2c5d6\",\"f98b39a6-43ed-4726-b365-3cd26f46f5ca\":\"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\"},\"compression\":{\"findings\":\"conclusions, coordinates, mappings\",\"reexpand\":\"exact manifest references\",\"trigger\":\"changed source or decision-required distinction\"}}",
+      "digest": "e96eeb502995d0178e7a6b736e6f92b05a0dee4eceebf571b73a29e43884da2b"
+    },
+    "9d01b7d6-752d-448c-9403-247e12723e97": {
+      "id": "9d01b7d6-752d-448c-9403-247e12723e97",
+      "context_id": "3c4cd13c-a917-440d-b404-be0fd3673963",
+      "artifact_role": "b7_evaluation",
+      "payload_text": "{\"basis\": {\"focal\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"parent\": \"700b11b2-ed0e-422d-88c0-af1624951b82\", \"grammar\": \"16e90066-2349-40b2-a614-877ebab44b64\", \"contract\": \"894ab2d0-ed0c-4009-be29-6004da5ef243\", \"mappings\": [{\"claim\": \"757a90fb-2150-4b62-9bd4-784f274fed0e\", \"focal\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"frame\": {\"focal\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"anchor\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"relation\": \"self_indexed\"}, \"token\": \"b68c3a96-e5ba-4677-88a8-101f4f3a4788\", \"access\": \"native\", \"mapper\": \"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\"}, {\"claim\": \"e3851c38-6403-47f8-881f-85b6715f190d\", \"focal\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"frame\": {\"focal\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"anchor\": \"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\", \"relation\": \"observes\"}, \"token\": \"3da21571-31ce-4078-9477-5f1ad3ef74d5\", \"access\": \"measurement\", \"mapper\": \"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\", \"snapshot\": \"156f48ee-1111-466f-af83-34e1680efce9\"}], \"snapshots\": [\"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"156f48ee-1111-466f-af83-34e1680efce9\"], \"expression\": \"External observations distinguish these cases; native observations do not.\", \"promotions\": [], \"compression\": {\"trigger\": \"changed source or decision-required distinction\", \"findings\": \"conclusions, coordinates, mappings\", \"reexpand\": \"exact manifest references\"}, \"conclusions\": [{\"answer\": false, \"comparison\": \"native\"}, {\"answer\": true, \"comparison\": \"external\"}], \"coordinates\": [{\"line\": null, \"value\": \"constituent\", \"subject\": \"c1c5f6d3-de08-4675-b96c-0c0fc38d8157\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"altitude\"}, {\"line\": null, \"value\": \"container\", \"subject\": \"c52373aa-3849-408b-a18b-341241325e64\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"altitude\"}, {\"line\": \"sensing\", \"value\": \"installed\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"stage\"}, {\"line\": \"switching\", \"value\": \"idle\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"state\"}, {\"line\": \"switching\", \"value\": \"commissioned\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"stage\"}, {\"line\": \"sensing\", \"value\": \"rounded_native\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"type\"}], \"dependencies\": {\"method\": \"bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670\", \"156f48ee-1111-466f-af83-34e1680efce9\": \"e1febc2f8b188d3389e39bb02aa4b2853abbbc31496d9fde214253449ad2c5d6\", \"16e90066-2349-40b2-a614-877ebab44b64\": \"95a81523ef252f3c1ed8ac13e48815ab34dbf2dab8f96ee9c7e8f24a6f157d0e\", \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\": \"7a23c14e1d45a2ce461ce1a9977fe3038e2ffa80178e88e226f703b187353976\", \"894ab2d0-ed0c-4009-be29-6004da5ef243\": \"60695e92583e21be2c0c49d57bf84f26fa8068cb5f1c4e8acb2e8d030a3bb1c8\", \"f98b39a6-43ed-4726-b365-3cd26f46f5ca\": \"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\"}, \"dispositions\": {\"lines\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which lines alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"types\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which types alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"stages\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which stages alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"states\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which states alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"altitude\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which altitude alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"quadrants\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which quadrants alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"directional_frame\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which directional_frame alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}}, \"identity_basis\": \"one explicitly seated synthetic specimen\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}, \"governing_revision\": \"ECO-94:74c49056\", \"omission_challenges\": {}, \"evidence_dispositions\": []}, \"scope\": \"a1b4b753-4c1f-4ae4-b4fd-04d0705bb190\", \"method\": \"bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670\", \"attempt\": \"3c4cd13c-a917-440d-b404-be0fd3673963\", \"meaning\": \"bounded_comparison_only\", \"outcome\": \"PASS\", \"contract\": \"894ab2d0-ed0c-4009-be29-6004da5ef243\", \"findings\": [{\"reason\": \"exact_capacity_closure\", \"status\": \"PASS\", \"witness\": {\"absent\": [], \"grammar\": \"16e90066-2349-40b2-a614-877ebab44b64\", \"quadrants\": [\"individual-interior\", \"individual-exterior\", \"collective-interior\", \"collective-exterior\"], \"bindingProblems\": []}, \"obligation\": \"structural_supply\"}, {\"reason\": \"focal_and_artifact_identity\", \"status\": \"PASS\", \"witness\": {\"focal\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"artifact\": \"2b848882-ec8c-4153-be86-538c568246cb\", \"expected\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\"}, \"obligation\": \"focal_identity\"}, {\"reason\": \"source_mapper_frame_access_separation\", \"status\": \"PASS\", \"witness\": [{\"ok\": true, \"claim\": \"757a90fb-2150-4b62-9bd4-784f274fed0e\", \"token\": \"b68c3a96-e5ba-4677-88a8-101f4f3a4788\", \"access\": \"native\", \"source\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\"}, {\"ok\": true, \"claim\": \"e3851c38-6403-47f8-881f-85b6715f190d\", \"token\": \"3da21571-31ce-4078-9477-5f1ad3ef74d5\", \"access\": \"measurement\", \"source\": \"156f48ee-1111-466f-af83-34e1680efce9\"}], \"obligation\": \"mapping_access\"}, {\"reason\": \"retained_expected_observed_contrast\", \"status\": \"PASS\", \"witness\": [{\"id\": \"native\", \"kind\": \"observational_discrimination\", \"token\": \"b68c3a96-e5ba-4677-88a8-101f4f3a4788\", \"access\": \"native\", \"actual\": false, \"reason\": \"source_sensitive_comparison\", \"source\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"status\": \"PASS\", \"expected\": false, \"expression\": \"External observations distinguish these cases; native observations do not.\", \"consequence\": \"whether the declared source supports this bounded distinction\", \"expression_answer\": false, \"interpretation_contract\": \"894ab2d0-ed0c-4009-be29-6004da5ef243\"}, {\"id\": \"external\", \"kind\": \"observational_discrimination\", \"token\": \"3da21571-31ce-4078-9477-5f1ad3ef74d5\", \"access\": \"measurement\", \"actual\": true, \"reason\": \"source_sensitive_comparison\", \"source\": \"156f48ee-1111-466f-af83-34e1680efce9\", \"status\": \"PASS\", \"expected\": true, \"expression\": \"External observations distinguish these cases; native observations do not.\", \"consequence\": \"whether the declared source supports this bounded distinction\", \"expression_answer\": true, \"interpretation_contract\": \"894ab2d0-ed0c-4009-be29-6004da5ef243\"}], \"obligation\": \"comparison\"}, {\"reason\": \"level_stage_state_line_type_separation\", \"status\": \"PASS\", \"witness\": [{\"ok\": true, \"item\": {\"line\": null, \"value\": \"constituent\", \"subject\": \"c1c5f6d3-de08-4675-b96c-0c0fc38d8157\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"altitude\"}, \"expected\": {\"line\": null, \"value\": \"constituent\", \"subject\": \"c1c5f6d3-de08-4675-b96c-0c0fc38d8157\", \"dimension\": \"altitude\"}}, {\"ok\": true, \"item\": {\"line\": null, \"value\": \"container\", \"subject\": \"c52373aa-3849-408b-a18b-341241325e64\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"altitude\"}, \"expected\": {\"line\": null, \"value\": \"container\", \"subject\": \"c52373aa-3849-408b-a18b-341241325e64\", \"dimension\": \"altitude\"}}, {\"ok\": true, \"item\": {\"line\": \"sensing\", \"value\": \"installed\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"stage\"}, \"expected\": {\"line\": \"sensing\", \"value\": \"installed\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"dimension\": \"stage\"}}, {\"ok\": true, \"item\": {\"line\": \"switching\", \"value\": \"idle\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"state\"}, \"expected\": {\"line\": \"switching\", \"value\": \"idle\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"dimension\": \"state\"}}, {\"ok\": true, \"item\": {\"line\": \"switching\", \"value\": \"commissioned\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"stage\"}, \"expected\": {\"line\": \"switching\", \"value\": \"commissioned\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"dimension\": \"stage\"}}, {\"ok\": true, \"item\": {\"line\": \"sensing\", \"value\": \"rounded_native\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"type\"}, \"expected\": {\"line\": \"sensing\", \"value\": \"rounded_native\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"dimension\": \"type\"}}], \"obligation\": \"coordinates\"}, {\"reason\": \"resolution_not_erasure\", \"status\": \"PASS\", \"witness\": [{\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"quadrants\"}, {\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"altitude\"}, {\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"lines\"}, {\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"stages\"}, {\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"states\"}, {\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"types\"}, {\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"directional_frame\"}], \"obligation\": \"resolution_question_forward\"}, {\"reason\": \"local_evidence_retained_without_constitutional_rewrite\", \"status\": \"PASS\", \"witness\": {\"pressure\": [], \"grammarUnchanged\": true}, \"obligation\": \"evidence_pressure\"}, {\"reason\": \"qualification_has_no_other_dimension_effect\", \"status\": \"PASS\", \"witness\": {\"meaning\": \"comparison_eligibility_only\", \"promotions\": []}, \"obligation\": \"non_promotion\"}, {\"reason\": \"known_defective_answer_rejected_by_same_contrast\", \"status\": \"PASS\", \"witness\": [{\"id\": \"native\", \"reason\": \"access_or_consequence_substitution\", \"positive\": false, \"defective\": true}, {\"id\": \"external\", \"reason\": \"access_or_consequence_substitution\", \"positive\": true, \"defective\": false}], \"obligation\": \"controls\"}], \"candidate\": \"2b848882-ec8c-4153-be86-538c568246cb\", \"evaluator\": \"b7_evaluator\", \"applicability\": {\"mode\": \"declared_dependencies\", \"limits\": \"no time-only freshness claim; explicit observed changes and grant continuing conditions\"}, \"execution_authorized\": false}",
+      "digest": "453e8a7f353e06dee70c9830556c030becfe57bc06755fe9b69c073e51b8ddde"
+    },
+    "3c4cd13c-a917-440d-b404-be0fd3673963": {
+      "id": "3c4cd13c-a917-440d-b404-be0fd3673963",
+      "context_id": "2b848882-ec8c-4153-be86-538c568246cb",
+      "artifact_role": "b7_attempt",
+      "payload_text": "{\"basis\": {\"focal\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"parent\": \"700b11b2-ed0e-422d-88c0-af1624951b82\", \"grammar\": \"16e90066-2349-40b2-a614-877ebab44b64\", \"contract\": \"894ab2d0-ed0c-4009-be29-6004da5ef243\", \"mappings\": [{\"claim\": \"757a90fb-2150-4b62-9bd4-784f274fed0e\", \"focal\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"frame\": {\"focal\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"anchor\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"relation\": \"self_indexed\"}, \"token\": \"b68c3a96-e5ba-4677-88a8-101f4f3a4788\", \"access\": \"native\", \"mapper\": \"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\"}, {\"claim\": \"e3851c38-6403-47f8-881f-85b6715f190d\", \"focal\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"frame\": {\"focal\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"anchor\": \"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\", \"relation\": \"observes\"}, \"token\": \"3da21571-31ce-4078-9477-5f1ad3ef74d5\", \"access\": \"measurement\", \"mapper\": \"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\", \"snapshot\": \"156f48ee-1111-466f-af83-34e1680efce9\"}], \"snapshots\": [\"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"156f48ee-1111-466f-af83-34e1680efce9\"], \"expression\": \"External observations distinguish these cases; native observations do not.\", \"promotions\": [], \"compression\": {\"trigger\": \"changed source or decision-required distinction\", \"findings\": \"conclusions, coordinates, mappings\", \"reexpand\": \"exact manifest references\"}, \"conclusions\": [{\"answer\": false, \"comparison\": \"native\"}, {\"answer\": true, \"comparison\": \"external\"}], \"coordinates\": [{\"line\": null, \"value\": \"constituent\", \"subject\": \"c1c5f6d3-de08-4675-b96c-0c0fc38d8157\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"altitude\"}, {\"line\": null, \"value\": \"container\", \"subject\": \"c52373aa-3849-408b-a18b-341241325e64\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"altitude\"}, {\"line\": \"sensing\", \"value\": \"installed\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"stage\"}, {\"line\": \"switching\", \"value\": \"idle\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"state\"}, {\"line\": \"switching\", \"value\": \"commissioned\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"stage\"}, {\"line\": \"sensing\", \"value\": \"rounded_native\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\", \"dimension\": \"type\"}], \"dependencies\": {\"method\": \"bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670\", \"156f48ee-1111-466f-af83-34e1680efce9\": \"e1febc2f8b188d3389e39bb02aa4b2853abbbc31496d9fde214253449ad2c5d6\", \"16e90066-2349-40b2-a614-877ebab44b64\": \"95a81523ef252f3c1ed8ac13e48815ab34dbf2dab8f96ee9c7e8f24a6f157d0e\", \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\": \"7a23c14e1d45a2ce461ce1a9977fe3038e2ffa80178e88e226f703b187353976\", \"894ab2d0-ed0c-4009-be29-6004da5ef243\": \"60695e92583e21be2c0c49d57bf84f26fa8068cb5f1c4e8acb2e8d030a3bb1c8\", \"f98b39a6-43ed-4726-b365-3cd26f46f5ca\": \"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\"}, \"dispositions\": {\"lines\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which lines alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"types\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which types alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"stages\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which stages alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"states\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which states alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"altitude\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which altitude alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"quadrants\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which quadrants alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"directional_frame\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which directional_frame alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}}, \"identity_basis\": \"one explicitly seated synthetic specimen\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}, \"governing_revision\": \"ECO-94:74c49056\", \"omission_challenges\": {}, \"evidence_dispositions\": []}, \"scope\": \"a1b4b753-4c1f-4ae4-b4fd-04d0705bb190\", \"status\": \"pending\", \"contract\": \"894ab2d0-ed0c-4009-be29-6004da5ef243\", \"candidate\": \"2b848882-ec8c-4153-be86-538c568246cb\"}",
+      "digest": "e4557226a82266701b4e8ddc9716e8721ad70c1c1d03d448547be8500be93937"
+    },
+    "d7475cb1-576d-40f2-a521-fedc8a7e2f3a": {
+      "id": "d7475cb1-576d-40f2-a521-fedc8a7e2f3a",
+      "context_id": "a1b4b753-4c1f-4ae4-b4fd-04d0705bb190",
+      "artifact_role": "b7_grant",
+      "payload_text": "{\"actor\": \"b7_actor\", \"scope\": \"a1b4b753-4c1f-4ae4-b4fd-04d0705bb190\", \"issuer\": \"G_TEST\", \"temporal\": {\"act\": \"until_revoked\", \"continuing_effect\": \"historical_act_only\"}, \"candidate\": \"2b848882-ec8c-4153-be86-538c568246cb\", \"operation\": \"select\", \"synthetic\": true, \"evaluation\": \"9d01b7d6-752d-448c-9403-247e12723e97\", \"predecessor\": \"bcd58b6d-715d-48f3-b948-563db8045b01\"}",
+      "digest": "4c3dda3e769957d388008583b978ea1363407950c8435691e6fde1a8715fe80e"
+    },
+    "4da4def1-4779-41a9-94dd-0ca14820c9c6": {
+      "id": "4da4def1-4779-41a9-94dd-0ca14820c9c6",
+      "context_id": "a1b4b753-4c1f-4ae4-b4fd-04d0705bb190",
+      "artifact_role": "b7_observation",
+      "payload_text": "{\"route\": \"synthetic exact revision probe\", \"limits\": \"declared inputs only; no world-complete awareness\", \"observer\": \"b7_evaluator\", \"dependencies\": {\"method\": \"bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670\", \"156f48ee-1111-466f-af83-34e1680efce9\": \"e1febc2f8b188d3389e39bb02aa4b2853abbbc31496d9fde214253449ad2c5d6\", \"16e90066-2349-40b2-a614-877ebab44b64\": \"95a81523ef252f3c1ed8ac13e48815ab34dbf2dab8f96ee9c7e8f24a6f157d0e\", \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\": \"7a23c14e1d45a2ce461ce1a9977fe3038e2ffa80178e88e226f703b187353976\", \"894ab2d0-ed0c-4009-be29-6004da5ef243\": \"60695e92583e21be2c0c49d57bf84f26fa8068cb5f1c4e8acb2e8d030a3bb1c8\", \"f98b39a6-43ed-4726-b365-3cd26f46f5ca\": \"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\"}, \"revoked_grants\": []}",
+      "digest": "829d0de85bf800a9c502f4cb32c5c02cb72392f6e3716011fd51d3790c425f1b"
+    },
+    "16e90066-2349-40b2-a614-877ebab44b64": {
+      "id": "16e90066-2349-40b2-a614-877ebab44b64",
+      "context_id": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+      "artifact_role": "b7_grammar",
+      "payload_text": "{\"aliases\": {\"3da21571-31ce-4078-9477-5f1ad3ef74d5\": {\"access\": \"measurement\", \"snapshot\": \"156f48ee-1111-466f-af83-34e1680efce9\"}, \"b68c3a96-e5ba-4677-88a8-101f4f3a4788\": {\"access\": \"native\", \"snapshot\": \"420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad\"}}, \"synthetic\": true, \"capacities\": {\"lines\": {\"label\": \"lines\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Separate capacity dimensions; one Line does not characterize the whole Referent.\", \"question\": \"Which lines distinction changes this comparison or requires re-entry?\"}, \"types\": {\"label\": \"types\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Categorical alternatives only when they alter a stated decision.\", \"question\": \"Which types distinction changes this comparison or requires re-entry?\"}, \"stages\": {\"label\": \"stages\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Ordered trajectory position with criteria for movement; distinct from State.\", \"question\": \"Which stages distinction changes this comparison or requires re-entry?\"}, \"states\": {\"label\": \"states\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Presently instantiated condition with observation duration limits; not Stage.\", \"question\": \"Which states distinction changes this comparison or requires re-entry?\"}, \"altitude\": {\"label\": \"altitude\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Relative constituent, focal, peer, container position under declared projection; not developmental Stage.\", \"question\": \"Which altitude distinction changes this comparison or requires re-entry?\"}, \"quadrants\": {\"label\": \"quadrants\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Individual/collective and interior/exterior distinctions; separate from frame, mapper and access.\", \"question\": \"Which quadrants distinction changes this comparison or requires re-entry?\", \"distinctions\": [\"individual-interior\", \"individual-exterior\", \"collective-interior\", \"collective-exterior\"]}, \"directional_frame\": {\"label\": \"directional_frame\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Focal Referent, anchor Referent and declared anchor-to-focal relation; mapper and access separately identified.\", \"question\": \"Which directional_frame distinction changes this comparison or requires re-entry?\"}}, \"governing_revision\": \"ECO-94:74c49056\", \"interpretation_sources\": [\"f98b39a6-43ed-4726-b365-3cd26f46f5ca\"]}",
+      "digest": "95a81523ef252f3c1ed8ac13e48815ab34dbf2dab8f96ee9c7e8f24a6f157d0e"
+    },
+    "894ab2d0-ed0c-4009-be29-6004da5ef243": {
+      "id": "894ab2d0-ed0c-4009-be29-6004da5ef243",
+      "context_id": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+      "artifact_role": "b7_contract",
+      "payload_text": "{\"focal\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"scope\": \"a1b4b753-4c1f-4ae4-b4fd-04d0705bb190\", \"method\": \"bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670\", \"synthetic\": true, \"capacities\": [\"quadrants\", \"altitude\", \"lines\", \"stages\", \"states\", \"types\", \"directional_frame\"], \"comparisons\": [{\"id\": \"native\", \"kind\": \"observational_discrimination\", \"token\": \"b68c3a96-e5ba-4677-88a8-101f4f3a4788\", \"defeater\": \"a different retained observation or access basis changes the answer\", \"consequence\": \"whether the declared source supports this bounded distinction\", \"alternatives\": [true, false], \"decision_interval\": 60}, {\"id\": \"external\", \"kind\": \"observational_discrimination\", \"token\": \"3da21571-31ce-4078-9477-5f1ad3ef74d5\", \"defeater\": \"a different retained observation or access basis changes the answer\", \"consequence\": \"whether the declared source supports this bounded distinction\", \"alternatives\": [true, false], \"decision_interval\": 60}], \"obligations\": [\"structural_supply\", \"focal_identity\", \"mapping_access\", \"comparison\", \"coordinates\", \"resolution_question_forward\", \"evidence_pressure\", \"non_promotion\", \"controls\"], \"applicability\": {\"mode\": \"declared_dependencies\", \"limits\": \"no time-only freshness claim; explicit observed changes and grant continuing conditions\"}, \"method_source\": \"repo:server/build-7/qualification.mjs\", \"negative_control\": \"invert_source_bound_answer\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}, \"method_definition\": \"// ECO-94 §§C2,D,E,J. Bounded source/access comparison method for BUILD 7.\\n// This interprets explicit fixture evidence; no universal prose evaluator or model-internal claim.\\nimport { createHash } from \\\"node:crypto\\\";\\nimport { readFileSync } from \\\"node:fs\\\";\\nexport const method = createHash(\\\"sha256\\\").update(\\n  readFileSync(new URL(import.meta.url)),\\n).digest(\\\"hex\\\");\\nexport const obligations = [\\n  \\\"structural_supply\\\",\\n  \\\"focal_identity\\\",\\n  \\\"mapping_access\\\",\\n  \\\"comparison\\\",\\n  \\\"coordinates\\\",\\n  \\\"resolution_question_forward\\\",\\n  \\\"evidence_pressure\\\",\\n  \\\"non_promotion\\\",\\n  \\\"controls\\\",\\n];\\nexport const capacities = [\\n  \\\"quadrants\\\",\\n  \\\"altitude\\\",\\n  \\\"lines\\\",\\n  \\\"stages\\\",\\n  \\\"states\\\",\\n  \\\"types\\\",\\n  \\\"directional_frame\\\",\\n];\\nconst corresponds = (observed, claimed) => observed === claimed;\\nconst equal = (a, b) => JSON.stringify(a) === JSON.stringify(b);\\nconst text = (x) => typeof x === \\\"string\\\" && x.trim().length > 0;\\nconst qf = (q, ct) =>\\n  q?.question === ct.question_forward.question && q && text(q.question) &&\\n  q.question.includes(\\\"?\\\") && text(q.change) && text(q.notice) &&\\n  text(q.reentry) && text(q.consequence);\\nexport async function doc(db, id, role = null) {\\n  const [r] = await db`select ecb7.doc(${id}::uuid,${role}) as value`;\\n  return r.value;\\n}\\nexport async function examine(db, candidate, contract) {\\n  const c = await doc(db, candidate, \\\"b7_candidate\\\");\\n  const ct = await doc(db, contract, \\\"b7_contract\\\");\\n  const f = [];\\n  const add = (obligation, status, reason, witness) =>\\n    f.push({ obligation, status, reason, witness });\\n  const check = (o, yes, reason, w) => add(o, yes ? \\\"PASS\\\" : \\\"FAIL\\\", reason, w);\\n  let g, sources = {};\\n  try {\\n    g = await doc(db, c.grammar, \\\"b7_grammar\\\");\\n    for (const id of [...c.snapshots, ...(g.interpretation_sources ?? [])]) {\\n      sources[id] = await doc(db, id, \\\"b7_snapshot\\\");\\n    }\\n  } catch (e) {\\n    for (const o of obligations) {\\n      add(o, \\\"INCOMPLETE\\\", \\\"exact_payload_unavailable\\\", { error: e.message });\\n    }\\n    return f;\\n  }\\n  const bindingProblems = [];\\n  for (\\n    const id of [\\n      c.grammar,\\n      c.contract,\\n      ...c.snapshots,\\n      ...(g.interpretation_sources ?? []),\\n    ]\\n  ) {\\n    const [r] =\\n      await db`select encode(payload_digest,'hex') as digest from public.artifacts where id=${id}::uuid`;\\n    if (!r || c.dependencies?.[id] !== r.digest) bindingProblems.push(id);\\n  }\\n  if (c.dependencies?.method !== ct.method) bindingProblems.push(\\\"method\\\");\\n  const absent = capacities.filter((k) =>\\n    !g.capacities?.[k] || !text(g.capacities[k].meaning) ||\\n    !text(g.capacities[k].question) || !text(g.capacities[k].source)\\n  );\\n  const q = g.capacities?.quadrants?.distinctions;\\n  const qOK = equal(q, [\\n    \\\"individual-interior\\\",\\n    \\\"individual-exterior\\\",\\n    \\\"collective-interior\\\",\\n    \\\"collective-exterior\\\",\\n  ]);\\n  add(\\n    \\\"structural_supply\\\",\\n    absent.length\\n      ? \\\"INCOMPLETE\\\"\\n      : qOK && bindingProblems.length === 0\\n      ? \\\"PASS\\\"\\n      : \\\"FAIL\\\",\\n    absent.length\\n      ? \\\"structural_support_unavailable\\\"\\n      : qOK\\n      ? \\\"exact_capacity_closure\\\"\\n      : \\\"quadrant_collapse\\\",\\n    { grammar: c.grammar, absent, quadrants: q ?? null, bindingProblems },\\n  );\\n  const [scope] =\\n    await db`select focal::text,contract::text from ecb7.scopes where id=${ct.scope}::uuid`;\\n  check(\\n    \\\"focal_identity\\\",\\n    c.focal === ct.focal && scope?.focal === c.focal &&\\n      c.contract === contract && scope?.contract === contract &&\\n      c.focal !== candidate,\\n    \\\"focal_and_artifact_identity\\\",\\n    { focal: c.focal, expected: ct.focal, artifact: candidate },\\n  );\\n  const mapFindings = [];\\n  for (const m of c.mappings ?? []) {\\n    const supplied = g.aliases?.[m.token];\\n    const source = sources[supplied?.snapshot];\\n    let claim;\\n    const [r] =\\n      await db`select proposition,scope,origin,epistemic_standing from public.claims where id=${m.claim}::uuid`;\\n    try {\\n      claim = JSON.parse(r?.proposition);\\n    } catch {\\n      claim = null;\\n    }\\n    const ok = source && supplied && m.snapshot === supplied.snapshot &&\\n      m.mapper === source.mapper && m.access === supplied.access &&\\n      m.focal === c.focal && m.frame?.focal === c.focal &&\\n      m.frame?.anchor === source.anchor &&\\n      m.frame?.relation === source.relation && text(source.source) &&\\n      text(source.version) && text(source.limits) &&\\n      equal(claim, {\\n        focal: m.focal,\\n        anchor: m.frame.anchor,\\n        relation: m.frame.relation,\\n        mapper: m.mapper,\\n        source: m.snapshot,\\n        access: m.access,\\n      }) &&\\n      r?.scope === ct.scope && r?.origin === \\\"ecb_inference\\\";\\n    mapFindings.push({\\n      token: m.token,\\n      source: supplied?.snapshot ?? null,\\n      access: supplied?.access ?? null,\\n      ok: Boolean(ok),\\n      claim: m.claim,\\n    });\\n  }\\n  check(\\n    \\\"mapping_access\\\",\\n    mapFindings.length > 0 && mapFindings.every((x) => x.ok),\\n    \\\"source_mapper_frame_access_separation\\\",\\n    mapFindings,\\n  );\\n  // Comparison expectations are independent of candidate success claims and read from retained sources.\\n  // The contract's retained interpretation is supplied independently of the producer.\\n  // This bounded method cannot interpret arbitrary new prose: missing interpretation is INCOMPLETE.\\n  const expressionMeaning =\\n    Object.hasOwn(ct.expression_interpretations ?? {}, c.expression)\\n      ? ct.expression_interpretations[c.expression]\\n      : null;\\n  const comparisons = [];\\n  for (const cmp of ct.comparisons ?? []) {\\n    const alias = g.aliases?.[cmp.token], src = sources[alias?.snapshot];\\n    let expected, reason = \\\"source_sensitive_comparison\\\", status = \\\"PASS\\\";\\n    if (!src || !alias) {\\n      status = \\\"INCOMPLETE\\\";\\n      reason = \\\"comparison_source_unavailable\\\";\\n    } else if (cmp.kind === \\\"observational_discrimination\\\") {\\n      // Distinct native outputs within the stipulated latency budget, not differences in external readings.\\n      if (\\n        !Array.isArray(src.observations) || src.observations.length !== 2 ||\\n        !Number.isFinite(src.latency)\\n      ) {\\n        status = \\\"INCOMPLETE\\\";\\n        reason = \\\"observation_trace_unavailable\\\";\\n      } else {expected = src.observations[0] !== src.observations[1] &&\\n          src.latency <= cmp.decision_interval;}\\n    } else if (cmp.kind === \\\"reported_preference\\\") {\\n      expected = alias.access === \\\"testimony\\\" && src.speaker === ct.focal &&\\n        src.report === cmp.preference;\\n    } else if (cmp.kind === \\\"collective_agreement\\\") {\\n      if (!src.convention || !Array.isArray(src.signals)) {\\n        status = \\\"INDETERMINATE\\\";\\n        reason = \\\"collective_discriminator_unavailable\\\";\\n      } else {expected = src.convention === \\\"explicit_all\\\" &&\\n          src.participants.every((p) => src.signals.includes(p));}\\n    } else {\\n      status = \\\"INDETERMINATE\\\";\\n      reason = \\\"normative_comparator_unavailable\\\";\\n    }\\n    const actual = c.conclusions?.find((x) => x.comparison === cmp.id)?.answer;\\n    if (status === \\\"PASS\\\" && !corresponds(expected, actual)) {\\n      status = \\\"FAIL\\\";\\n      reason = \\\"access_or_consequence_substitution\\\";\\n    }\\n    const expressionAnswer = expressionMeaning?.[alias?.access];\\n    if (status !== \\\"FAIL\\\" && typeof expressionAnswer !== \\\"boolean\\\") {\\n      status = \\\"INCOMPLETE\\\";\\n      reason = \\\"expression_interpretation_unavailable\\\";\\n    } else if (status === \\\"PASS\\\" && !corresponds(expected, expressionAnswer)) {\\n      status = \\\"FAIL\\\";\\n      reason = \\\"expression_consequence_substitution\\\";\\n    }\\n    if (\\n      !text(cmp.consequence) || !text(cmp.defeater) ||\\n      !Array.isArray(cmp.alternatives) || cmp.alternatives.length < 2\\n    ) {\\n      status = \\\"INDETERMINATE\\\";\\n      reason = \\\"comparison_contract_incomplete\\\";\\n    }\\n    comparisons.push({\\n      id: cmp.id,\\n      token: cmp.token,\\n      source: alias?.snapshot ?? null,\\n      access: alias?.access ?? null,\\n      kind: cmp.kind,\\n      expected: expected ?? null,\\n      actual: actual ?? null,\\n      expression: c.expression,\\n      expression_answer: expressionAnswer ?? null,\\n      interpretation_contract: contract,\\n      status,\\n      reason,\\n      consequence: cmp.consequence,\\n    });\\n  }\\n  const resultOf = (xs) =>\\n    xs.some((x) => x.status === \\\"FAIL\\\")\\n      ? \\\"FAIL\\\"\\n      : xs.some((x) => x.status === \\\"INCOMPLETE\\\")\\n      ? \\\"INCOMPLETE\\\"\\n      : xs.some((x) => x.status === \\\"INDETERMINATE\\\")\\n      ? \\\"INDETERMINATE\\\"\\n      : \\\"PASS\\\";\\n  add(\\n    \\\"comparison\\\",\\n    comparisons.length ? resultOf(comparisons) : \\\"INDETERMINATE\\\",\\n    comparisons.length\\n      ? \\\"retained_expected_observed_contrast\\\"\\n      : \\\"normative_comparator_unavailable\\\",\\n    comparisons,\\n  );\\n  const coords = [];\\n  for (const item of c.coordinates ?? []) {\\n    const src = sources[item.snapshot];\\n    const fact = src?.coordinates?.find((x) =>\\n      x.dimension === item.dimension && x.subject === item.subject &&\\n      x.line === item.line\\n    );\\n    coords.push({\\n      item,\\n      expected: fact ?? null,\\n      ok: Boolean(fact && equal(item.value, fact.value)),\\n    });\\n  }\\n  check(\\n    \\\"coordinates\\\",\\n    coords.every((x) => x.ok),\\n    \\\"level_stage_state_line_type_separation\\\",\\n    coords,\\n  );\\n  const dispositions = [];\\n  for (const k of capacities) {\\n    const d = c.dispositions?.[k];\\n    let ok = true, reason = \\\"inherited_available\\\";\\n    if (!d) {\\n      // An omitted overlay remains not_examined; a named omission challenge must cover the comparison.\\n      ok = text(c.omission_challenges?.[k]);\\n      reason = \\\"not_examined_with_omission_challenge\\\";\\n    } else {\\n      const statuses = [\\n        \\\"rich\\\",\\n        \\\"minimal\\\",\\n        \\\"unresolved\\\",\\n        \\\"non_live\\\",\\n        \\\"unsupported\\\",\\n      ];\\n      ok = statuses.includes(d.status) && text(d.basis) &&\\n        text(d.discriminator) && text(d.reexpand);\\n      if (\\n        [\\\"minimal\\\", \\\"unresolved\\\", \\\"non_live\\\", \\\"unsupported\\\"].includes(d.status)\\n      ) ok = ok && qf(d.question_forward, ct);\\n      if (d.status === \\\"non_live\\\") {\\n        ok = ok && Array.isArray(d.alternative_consequences) &&\\n          new Set(d.alternative_consequences).size === 1;\\n      }\\n      reason = ok\\n        ? \\\"resolution_with_reentry\\\"\\n        : \\\"missing_calibrated_question_or_erasure\\\";\\n    }\\n    dispositions.push({\\n      capacity: k,\\n      status: d?.status ?? \\\"not_examined\\\",\\n      ok,\\n      reason,\\n    });\\n  }\\n  if (!qf(c.question_forward, ct)) {\\n    dispositions.push({\\n      capacity: \\\"focal_question\\\",\\n      ok: false,\\n      reason: \\\"missing_calibrated_question\\\",\\n    });\\n  }\\n  const materialUnresolved = Object.values(c.dispositions ?? {}).some((d) =>\\n    d.status === \\\"unresolved\\\" && Array.isArray(d.alternative_consequences) &&\\n    new Set(d.alternative_consequences).size > 1\\n  );\\n  add(\\n    \\\"resolution_question_forward\\\",\\n    dispositions.some((x) => !x.ok)\\n      ? \\\"FAIL\\\"\\n      : materialUnresolved\\n      ? \\\"INDETERMINATE\\\"\\n      : \\\"PASS\\\",\\n    \\\"resolution_not_erasure\\\",\\n    dispositions,\\n  );\\n  const pressure = [];\\n  for (const [id, src] of Object.entries(sources)) {\\n    for (const ev of src.local_evidence ?? []) {\\n      const retained = c.evidence_dispositions?.find((x) =>\\n        x.snapshot === id && x.evidence === ev.id\\n      );\\n      const ok = retained && text(retained.finding) &&\\n        (!ev.challenges_rule ||\\n          (retained.rule === ev.challenges_rule &&\\n            text(retained.governing_route) &&\\n            text(retained.affected_decision)));\\n      pressure.push({\\n        source: id,\\n        evidence: ev,\\n        retained: retained ?? null,\\n        ok: Boolean(ok),\\n      });\\n    }\\n  }\\n  const grammarUnchanged = c.governing_revision === g.governing_revision;\\n  check(\\n    \\\"evidence_pressure\\\",\\n    grammarUnchanged && pressure.every((x) => x.ok),\\n    \\\"local_evidence_retained_without_constitutional_rewrite\\\",\\n    { grammarUnchanged, pressure },\\n  );\\n  const forbidden = [\\n    \\\"truth\\\",\\n    \\\"warrant\\\",\\n    \\\"authority\\\",\\n    \\\"designation\\\",\\n    \\\"currentness\\\",\\n    \\\"execution_authorization\\\",\\n    \\\"first_person_access\\\",\\n  ];\\n  check(\\n    \\\"non_promotion\\\",\\n    !(c.promotions ?? []).some((p) => forbidden.includes(p)),\\n    \\\"qualification_has_no_other_dimension_effect\\\",\\n    { promotions: c.promotions ?? [], meaning: \\\"comparison_eligibility_only\\\" },\\n  );\\n  // Same comparison method: a known wrong answer must disagree, and alternative wording must not matter.\\n  const decidable = comparisons.filter((x) => typeof x.expected === \\\"boolean\\\");\\n  if (decidable.length === 0) {\\n    add(\\n      \\\"controls\\\",\\n      resultOf(comparisons) === \\\"INDETERMINATE\\\"\\n        ? \\\"INDETERMINATE\\\"\\n        : \\\"INCOMPLETE\\\",\\n      \\\"control_comparison_unavailable\\\",\\n      comparisons,\\n    );\\n  } else {check(\\n      \\\"controls\\\",\\n      decidable.every((x) =>\\n        corresponds(x.expected, x.expected) &&\\n        !corresponds(x.expected, !x.expected)\\n      ) && ct.negative_control === \\\"invert_source_bound_answer\\\",\\n      \\\"known_defective_answer_rejected_by_same_contrast\\\",\\n      decidable.map((x) => ({\\n        id: x.id,\\n        positive: x.expected,\\n        defective: !x.expected,\\n        reason: \\\"access_or_consequence_substitution\\\",\\n      })),\\n    );}\\n  return f;\\n}\\nexport async function qualify(db, candidate, contract, attempt) {\\n  await db`select ecb7.attempt(${attempt}::uuid,${candidate}::uuid)`;\\n  const findings = await examine(db, candidate, contract);\\n  const [r] = await db`select ecb7.publish(${attempt}::uuid,${\\n    db.json(findings)\\n  },${method}) as id`;\\n  return { id: r.id, ...await doc(db, r.id, \\\"b7_evaluation\\\") };\\n}\\n\", \"expression_interpretations\": {\"The external path discriminates these cases; the native path does not.\": {\"native\": false, \"measurement\": true}, \"External observations distinguish these cases; native observations do not.\": {\"native\": false, \"measurement\": true}, \"The thermostat can distinguish the cases because the engineer’s readings differ.\": {\"native\": true, \"measurement\": true}, \"Only the external observation distinguishes the stipulated cases; the native observation does not.\": {\"native\": false, \"measurement\": true}}, \"expression_interpretation_limits\": \"Only retained comparator-authored meanings are checked; unsupported prose requires another applicable method, not inferred success.\"}",
+      "digest": "60695e92583e21be2c0c49d57bf84f26fa8068cb5f1c4e8acb2e8d030a3bb1c8"
+    },
+    "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad": {
+      "id": "420c5afc-b6d7-4f6d-89ca-ac01fe9d57ad",
+      "context_id": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+      "artifact_role": "b7_snapshot",
+      "payload_text": "{\"anchor\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"limits\": \"synthetic stipulated evidence; no real observation\", \"mapper\": \"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\", \"source\": \"fixture://thermostat/b68c3a96-e5ba-4677-88a8-101f4f3a4788\", \"latency\": 40, \"version\": \"1\", \"relation\": \"self_indexed\", \"sampling\": 30, \"synthetic\": true, \"resolution\": 0.5, \"thresholds\": [19.5, 20.5], \"calibration\": \"v2\", \"coordinates\": [{\"line\": null, \"value\": \"constituent\", \"subject\": \"c1c5f6d3-de08-4675-b96c-0c0fc38d8157\", \"dimension\": \"altitude\"}, {\"line\": null, \"value\": \"container\", \"subject\": \"c52373aa-3849-408b-a18b-341241325e64\", \"dimension\": \"altitude\"}, {\"line\": \"sensing\", \"value\": \"installed\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"dimension\": \"stage\"}, {\"line\": \"switching\", \"value\": \"idle\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"dimension\": \"state\"}, {\"line\": \"switching\", \"value\": \"commissioned\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"dimension\": \"stage\"}, {\"line\": \"sensing\", \"value\": \"rounded_native\", \"subject\": \"4f3f2b92-1c94-483a-93b1-7bbf908dab5a\", \"dimension\": \"type\"}], \"observations\": [20, 20], \"local_evidence\": []}",
+      "digest": "7a23c14e1d45a2ce461ce1a9977fe3038e2ffa80178e88e226f703b187353976"
+    },
+    "156f48ee-1111-466f-af83-34e1680efce9": {
+      "id": "156f48ee-1111-466f-af83-34e1680efce9",
+      "context_id": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+      "artifact_role": "b7_snapshot",
+      "payload_text": "{\"anchor\": \"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\", \"limits\": \"synthetic stipulated evidence; no real observation\", \"mapper\": \"b2b65f1d-6655-4c21-88f3-ab6e33176a6a\", \"source\": \"fixture://thermostat/3da21571-31ce-4078-9477-5f1ad3ef74d5\", \"latency\": 1, \"version\": \"1\", \"relation\": \"observes\", \"synthetic\": true, \"coordinates\": [], \"observations\": [20.1, 20.2], \"local_evidence\": []}",
+      "digest": "e1febc2f8b188d3389e39bb02aa4b2853abbbc31496d9fde214253449ad2c5d6"
+    },
+    "f98b39a6-43ed-4726-b365-3cd26f46f5ca": {
+      "id": "f98b39a6-43ed-4726-b365-3cd26f46f5ca",
+      "context_id": "4f3f2b92-1c94-483a-93b1-7bbf908dab5a",
+      "artifact_role": "b7_snapshot",
+      "payload_text": "{\"text\": \"## HUMAN SHAPE CLOSURE — BUILD 7\\n\\n**Disposition:** BUILD 7 Shape is CLOSED by explicit human authorization.\\n\\nThe Astra Shape proposal is accepted with the human-reviewed local patch set incorporated as the controlling closure refinement.\\n\\n### Accepted mechanism\\n\\nBUILD 7 remains one bounded vertical slice with four behavioral responsibilities:\\n\\n`C1 structural supply + local formation`\\n→ `C2 semantic qualification`\\n→ `C3 separately authorized explicit designation`\\n→ `C4 cold recovery + lawful requalification / re-keying`\\n\\nC1–C4 are responsibilities, not mandated services, tables, primitives, or physical decomposition.\\n\\n### Human-reviewed closure patches\\n\\n1. **Grammar closure, not one grammar package.** Required inherited competence is an exact, versioned, cold-recoverable structural-grammar closure. It may resolve through one Artifact, a versioned manifest over multiple governing sources, a bounded dependency closure, or another minimal representation. Co-location is not required.\\n\\n2. **Q means Quadrants.** Q is not generalized to `structural quality`. Preserve individual-interior, individual-exterior, collective-interior, and collective-exterior differentiation at decision-required resolution. Quadrant remains distinct from mapper, frame, access basis/provenance, phenomenology, standing, warrant, and populated content.\\n\\n3. **Qualification does not establish warrant.** C2 PASS means only that the exact candidate under its exact dependency basis satisfies the declared bounded semantic comparison contract strongly enough to become eligible for a separate designation decision. PASS does not establish truth, warrant, standing, authority, authorization, designation, currentness, or execution permission.\\n\\n4. **Use access basis / access provenance, not undefined `access standing`.** Preserve mapper, mapped material, frame relation, access/evidence basis, source/version and limitations separately. Direct access ≠ truth; first-person access ≠ infallibility; high-quality inference ≠ first-person access; access provenance ≠ standing.\\n\\n5. **Temporal applicability is required, not optional.** A finite wall-clock interval is not universally mandatory, but every designation grant and designation effect must explicitly disposition temporal applicability at decision-required resolution. Distinguish authorization-to-act applicability, event ordering, act expiry, revocation, continuing-effect conditions, qualification applicability over time/change, and present reliance. `authorization to designate ≠ designation event/order ≠ historical validity ≠ current selection ≠ current qualification applicability ≠ present reliance ≠ execution authorization`.\\n\\n### Additional accepted Shape conclusions\\n\\n- AP-03 remains narrowly activated for BUILD 7 semantic qualification.\\n- Resolution-not-erasure remains governing for inherited structural capacities.\\n- Reference frame remains a derived relational index and does not collapse into Q.\\n- Altitude/Level ≠ Stage ≠ State; Lines may occupy distinct Stages without promoting the whole Referent.\\n- Question Forward requires an actual calibrated discriminator question plus change evidence/condition, notice route, re-entry/requalification route and decision consequence.\\n- Top-down inherited grammar and bottom-up local evidence co-arise without silent local constitutional rewrite or rigid slot suppression.\\n- Hidden-model-substitution testing, metamorphic anti-collapse tests, literal cold recovery and two-specimen pressure remain required in Move acceptance.\\n- FCA remains a regulatory/control-placement audit, not a new primitive or sequential phase.\\n- Real BUILD 7 Master-Key designation authority is still unresolved and remains Question Forward. Synthetic positive/negative authority fixtures are sufficient only for the bounded acceptance design.\\n- No second Astra Shape pass is required.\\n\\n### Closure state\\n\\n**BUILD 7 SENSE: CLOSED**\\n\\n**BUILD 7 SHAPE: CLOSED**\\n\\n**MOVE: CLOSED / UNAUTHORIZED**\\n\\n**IMPLEMENTATION: NONE**\\n\\n**REAL MASTER-KEY DESIGNATION AUTHORITY: UNRESOLVED / QUESTION FORWARD**\\n\\nThis closure does **not** authorize Move, implementation, repository mutation, Supabase/ECB mutation, real Master-Key designation, governance succession, deployment, or final UX work.\\n\\nA separate explicit human authorization is required to open Move.\\n\", \"limits\": \"human closure exact retained text\", \"source\": \"linear:ECO-94/comment/74c49056-6b3b-42fe-944a-a5cb577a5e40\", \"version\": \"2026-09-10T08:02:40.508Z\", \"synthetic\": true}",
+      "digest": "b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213"
+    }
+  },
+  "history": [
+    {
+      "id": "b8e57e9b-b87e-4409-ba7f-520537585d46",
+      "context_id": "acaae84f-cc2f-446c-b295-ef8f862c29bb",
+      "payload_text": "{\"actor\": \"b7_actor\", \"grant\": \"d7475cb1-576d-40f2-a521-fedc8a7e2f3a\", \"scope\": \"a1b4b753-4c1f-4ae4-b4fd-04d0705bb190\", \"temporal\": {\"act\": \"until_revoked\", \"continuing_effect\": \"historical_act_only\"}, \"candidate\": \"2b848882-ec8c-4153-be86-538c568246cb\", \"operation\": \"select\", \"evaluation\": \"9d01b7d6-752d-448c-9403-247e12723e97\", \"observation\": \"4da4def1-4779-41a9-94dd-0ca14820c9c6\", \"occurred_at\": \"2026-09-10T19:40:34.17637+00:00\", \"predecessor\": \"bcd58b6d-715d-48f3-b948-563db8045b01\", \"execution_authorized\": false, \"qualification_applicability\": {\"gaps\": [], \"limits\": \"declared inputs only; no world-complete awareness\", \"applicable\": true, \"observation\": \"4da4def1-4779-41a9-94dd-0ca14820c9c6\"}}",
+      "digest": "28647ec40464c852300974cf1016632df4650f4188f34a8ef64d520cdc92225a",
+      "artifact_role": "b7_designation"
+    },
+    {
+      "id": "bcd58b6d-715d-48f3-b948-563db8045b01",
+      "context_id": "0b5b07c3-f02b-4e6f-8069-3ebfa46a5276",
+      "payload_text": "{\"actor\": \"b7_actor\", \"grant\": \"a88fa316-0381-444b-bdac-556be54d30ff\", \"scope\": \"a1b4b753-4c1f-4ae4-b4fd-04d0705bb190\", \"temporal\": {\"act\": \"until_revoked\", \"continuing_effect\": \"historical_act_only\"}, \"candidate\": \"700b11b2-ed0e-422d-88c0-af1624951b82\", \"operation\": \"select\", \"evaluation\": \"fbfd6eba-b31c-41c5-94bc-5420ff022b98\", \"observation\": \"7eccba27-46ba-4f4f-979c-6816d8ae15ec\", \"occurred_at\": \"2026-09-10T19:40:34.122053+00:00\", \"predecessor\": null, \"execution_authorized\": false, \"qualification_applicability\": {\"gaps\": [], \"limits\": \"declared inputs only; no world-complete awareness\", \"applicable\": true, \"observation\": \"7eccba27-46ba-4f4f-979c-6816d8ae15ec\"}}",
+      "digest": "1594c018adfb1a70e7df645208d43ec7a7103292fbe599e48be68c51527114ee",
+      "artifact_role": "b7_designation"
+    }
+  ],
+  "chain": [
+    "b8e57e9b-b87e-4409-ba7f-520537585d46",
+    "bcd58b6d-715d-48f3-b948-563db8045b01"
+  ],
+  "reliance": {
+    "gaps": [],
+    "limits": "declared inputs only; no world-complete awareness",
+    "applicable": true,
+    "observation": "4da4def1-4779-41a9-94dd-0ca14820c9c6",
+    "constrained_comparisons": [],
+    "unaffected_comparisons": [
+      "native",
+      "external"
+    ]
+  },
+  "current_selection": "2b848882-ec8c-4153-be86-538c568246cb",
+  "historical_designation": "b8e57e9b-b87e-4409-ba7f-520537585d46",
+  "execution_authorized": false,
+  "routes": {
+    "confirmation": "append C4 observation and C2 attempt/result",
+    "constrained_reliance": "restrict named comparisons in gaps; preserve expression",
+    "replacement": "C1 new expression/basis → C2 → separately authorized C3"
+  },
+  "limitations": [
+    "declared_observations_only",
+    "no_model_internal_claim",
+    "trusted_storage_and_method_custody"
+  ]
+}

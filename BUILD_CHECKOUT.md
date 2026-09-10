@@ -1,63 +1,64 @@
-STATUS: BUILD 6 CLOSED AND NORMALIZED — SUBSTRATE PROVING COMPLETE
-DISPOSITION: ACCEPTED / CLOSED AT IMPLEMENTATION REGISTER B
-ROLE: Canonical repository reentry checkpoint
-AUTHORITY: Explicit human closure under closure Shape 009 and receipt 026; normalized to `main`
-CURRENT BUILD UNIT: NONE — BUILD 6 closed; BUILD 7+ unopened
+STATUS: BUILD 7 CLOSED — IMPLEMENTATION REGISTER B; NORMALIZATION AUTHORIZED
+DISPOSITION: HUMAN CLOSURE / BOUNDED C1→C4 SUBSTRATE PROOF COMPLETE
+ROLE: Current repository reentry checkpoint
+AUTHORITY: Explicit human acceptance after ECO-95 Human Metabolize PASS
+CURRENT BUILD UNIT: NONE — BUILD 7 closed; later Builds unopened
 
 # Current disposition
 
-BUILD 6 — Governance Bootstrap is accepted, closed and normalized into `main` at implementation register B.
+BUILD 7 is human-closed at implementation Register B under [closure receipt 028](docs/build-receipts/028-build-7-closed.md). The accepted result is the bounded C1→C4 mechanism proved by [Move receipt 027](docs/build-receipts/027-build-7-move.md) under the accepted ECO-94 Shape, its five human closure patches, and ECO-95 Move commission.
 
-The accepted claim is deliberately bounded: BUILD 6 establishes and live-proves the governance substrate required for protected human authority, one-time bootstrap, first ordinary succession, bounded execution and recovery. It does not establish or accept a production-ready human governance UX.
+The accepted claim is intentionally bounded: exact structural-grammar supply/local formation, inspectable bounded semantic qualification, separately authorized scoped designation/currentness, and exact cold recovery/requalification/re-keying were proved in a disposable synthetic acceptance environment. Qualification does not establish truth, warrant, standing, authority, designation, currentness or execution permission.
 
-The BUILD sequence is treated as substrate installation/proving work, not UX delivery. The human-facing proving ceremony remains explicit negative operating evidence and is carried forward as a first-class usability/orchestration requirement rather than unfinished BUILD 6 substrate work.
-
-Controlling closure receipt: `docs/build-receipts/026-build-6-closed.md`.
-Human operating evidence: `docs/build-receipts/025-build-6-p1-metabolize.md`.
-Closure Sense: `docs/build-sense/009-build-6-closure.md`.
-Closure Shape: `docs/build-shape/009-build-6-closure.md`.
-BUILD 6 normalization merge: PR #27, merge commit `8b6a71452f6205dd628297c05c2b0888663543ec`.
+The original C2 false-PASS remains retained evidence. The narrow repair is the accepted method; the repaired implementation was frozen before the new untuned holdout. No universal natural-language understanding or universal semantic reliability is claimed.
 
 ```text
 BUILD_0_TO_6=CLOSED
-BUILD_6=CLOSED; REGISTER_B; SUBSTRATE_PROVING_COMPLETE; NORMALIZED_TO_MAIN
-M1=PASS; CLOSED; DO_NOT_REOPEN
-M2=PASS; CLOSED; METABOLIZED; RECOVERY_ONLY_ON_EXACT_RETRY
-P1=PASS; OPERATIVE; FIRST_ORDINARY_SUCCESSION_COMPLETE; METABOLIZED
-CURRENT_PHASE=CLOSED_BOUNDARY
+BUILD_6=CLOSED; REGISTER_B; NORMALIZED_TO_MAIN
+BUILD_7_SENSE=CLOSED
+BUILD_7_SHAPE=CLOSED; FIVE_PATCHES_CONTROLLING
+BUILD_7_MOVE=CLOSED; METABOLIZED
+BUILD_7=CLOSED; REGISTER_B
+CURRENT_PHASE=CLOSED_BOUNDARY; REPOSITORY_NORMALIZATION_AUTHORIZED
 CURRENT_MOVE=NONE
-CURRENT_BRANCH=main
-CANONICAL_REPOSITORY_HEAD_AT_NORMALIZATION=8b6a71452f6205dd628297c05c2b0888663543ec
-CANONICAL_PROJECT=vezxivrvhakclxuvxzso
-SCOPE=20ad3966-8647-4a0f-9eed-2888e67e1e49
-H_REFERENT=4cfbaf81-a7e9-4786-b2ad-4f791ab7ce1d
-BINDING=7446baff-13a8-4f68-a0c3-8445933575b8
-CURRENT_TRANSITION=bdd481cf-41ac-47ed-acb7-26dcd346e921
-PREDECESSOR_TRANSITION=63bcd3fd-55f4-49bd-976f-c2bba50e6ab1
-SCOPES=1; DECISIONS=2; TRANSITIONS=2; WITHDRAWALS=0; SUCCESSION_DECISIONS=1
-CURRENT_POINTER_MATCH=TRUE
-BOOTSTRAP_EXHAUSTED=TRUE
-OPERATIVE_P1_SHA256=2057597b340e7f324176c65847633b776e0d266407988dedbaec001359c39556
-P1_DECISION=57d40c7e-4abb-49bb-ba75-c7f6f8d1e4e0
-P1_EXECUTION_REQUEST=d0508be7-0e19-4abb-aec4-12de2d95f4b0
-P1_TRANSITION=bdd481cf-41ac-47ed-acb7-26dcd346e921
-P1_COLD_RECOVERY=PASS
-P1_QUALIFICATION=31/31 PASS; READINESS_RACES=7/7 PASS
-STEADY_STATE_HUMAN_UX=NOT_ACCEPTED; FEED_FORWARD_REQUIRED
-REPOSITORY_NORMALIZATION=COMPLETE
-BUILD_7_PLUS=UNOPENED
+NORMALIZATION_CARRIER=PR_28
+ACCEPTED_MOVE_COMMIT=aea344aaeea20f27c12b0ce8a25f2c2ac0a5f78b
+CURRENT_METHOD_SHA256=bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670
+POST_REPAIR_PRIMARY=19/19_PASS
+POST_REPAIR_TARGETED=3/3_PASS
+POST_REPAIR_UNTUNED_HOLDOUT=1/1_PASS; SOLE_WORKER; NO_INDEPENDENT_AUTHOR_CLAIM
+INHERITED_BEHAVIORAL_CHECKS=10/10_PASS; PRIOR_CLEAN_REHEARSAL_RETAINED
+REAL_MASTER_KEY_AUTHORITY=QUESTION_FORWARD
+REAL_MASTER_KEY_DESIGNATION=NONE
+CANONICAL_BUILD7_DATABASE_INSTALL=NONE
+BUILD_8_PLUS=UNOPENED
 ```
 
-# Closure claim boundary
+# Closure and recovery
 
-Supported: the bounded governance substrate is installed, live-proven, reconstructible and normalized at implementation register B.
+Read, in order when BUILD 7 becomes decision-relevant:
 
-Unsupported: the present M1/M2/P1 proving choreography is an acceptable ordinary-human ECOS interface.
+1. [Closure receipt 028](docs/build-receipts/028-build-7-closed.md).
+2. [Move receipt 027](docs/build-receipts/027-build-7-move.md) and retained evidence under `docs/build-receipts/evidence/build-7/`.
+3. `docs/build-shape/010-build-7-human-closure.md` and `010-build-7-accepted-record.md`.
+4. `docs/build-shape/010-build-7-source-map.json` and ECO-95 for exact Move provenance.
 
-Mandatory feed-forward: preserve protected human authority while moving internal policy bytes, digests, predecessor identifiers, stage labels, custody and recovery choreography below a minimal intelligible human decision surface.
+Do not reopen BUILD 7 merely to repeat the proof. Reenter only if a later dependency, falsifier, or governing change makes a retained claim decision-relevant.
 
-# Reentry rule
+# Preserved Question Forward
 
-Treat BUILD 6 as closed evidence. Do not rerun M1/M2/P1 as construction steps, create another succession for demonstration, or reopen the Build to polish UX.
+Real Master-Key designation authority remains unresolved. Synthetic G_TEST proves the C3 dependency only. A real designation requires an independently authorized source naming the actor, exact scope/operation and temporal/revocation conditions.
 
-The next Build Unit remains unopened. Opening BUILD 7+ requires a separate Sense and applicable authority; this closure supplies neither.
+Semantic-method generalization beyond the declared comparison/interpretation basis, unobservable-change detection, broader relation vocabulary, wider retention/disaster recovery and other retained QF cells remain future questions rather than unfinished BUILD 7 work.
+
+# Canonical / deployment boundary
+
+No BUILD 7 migration has been applied to canonical Supabase / ECB state by closure. No real Master Key has been designated. No governance or execution effect follows.
+
+Repository pushes are linked to Vercel. The frozen branch push produced a non-production preview whose build prepared no files. Normalization to `main` may trigger the repository's existing production-labelled Vercel Git deployment; this is an incidental integration event, not authorization to install or execute BUILD 7 against canonical state.
+
+# Preserved BUILD 6 closure
+
+[Receipt 026](docs/build-receipts/026-build-6-closed.md) remains the controlling BUILD 6 closure. BUILD 6 authority/remit does not confer Master-Key designation authority. Do not replay M1/M2/P1 as construction.
+
+Opening BUILD 8 or any later Build requires its own Sense and separate applicable authorization. BUILD 7 closure supplies neither.

@@ -1,0 +1,20 @@
+{
+  "method": "bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670",
+  "outcomes": {
+    "PASS": 51,
+    "FAIL": 26,
+    "INCOMPLETE": 8,
+    "INDETERMINATE": 2
+  },
+  "audit": {
+    "synthetic_scopes": 46,
+    "nonsynthetic_scopes": 0,
+    "nonsynthetic_grants": 0,
+    "build6_transitions": 0,
+    "synthetic_designations": 30,
+    "missing_artifact_referents": 0,
+    "missing_claim_referents": 0,
+    "new_standing_promotions": 0
+  },
+  "freeze": "unchanged"
+}

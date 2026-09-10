@@ -1,0 +1,473 @@
+[
+  {
+    "candidate": "f40d9617-ed3c-471e-afd0-dd5b64b21197",
+    "evaluation": "e4486d76-0194-4692-a381-2efcbb78d58d",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "78c89720-27d3-4724-bb16-023db860769b",
+    "evaluation": "24941a27-0d9f-4cc2-8163-7eaf0f38481f",
+    "outcome": "FAIL",
+    "obligation": "comparison"
+  },
+  {
+    "candidate": "54fe887c-ed82-4b43-91d3-5b85c5f50e6e",
+    "evaluation": "9800f4e2-5d4b-4071-9878-a92e28991e60",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "7d28d9fe-74a2-4e8b-9e8a-c1192dcaf640",
+    "evaluation": "b808febe-b6f7-49be-aff5-50622a1d72ed",
+    "outcome": "FAIL",
+    "obligation": "comparison"
+  },
+  {
+    "candidate": "fab39b9e-ae39-44d7-bb28-ff3db3259d76",
+    "evaluation": "790079b1-feba-492d-86d8-6984c7649b2f",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "0830546a-b92b-4a97-835b-cad785b89b47",
+    "evaluation": "09c63112-583e-483d-a6bf-b1e0298067b7",
+    "outcome": "FAIL",
+    "obligation": "focal_identity"
+  },
+  {
+    "candidate": "0018d68e-e49b-4552-8a83-9518ce7f3c77",
+    "evaluation": "6224b34b-bbda-4bb0-87ef-d73bd63ee10f",
+    "outcome": "FAIL",
+    "obligation": "focal_identity"
+  },
+  {
+    "candidate": "c9931e02-093d-4762-8431-1aaca6ea8be8",
+    "evaluation": "e985ab36-653c-4a21-b0cb-8526414a20ca",
+    "outcome": "FAIL",
+    "obligation": "mapping_access"
+  },
+  {
+    "candidate": "3b60491c-880f-4bce-8a17-c897474fa2e6",
+    "evaluation": "a7c2460f-42cf-4d57-9d17-af18b7d47a38",
+    "outcome": "FAIL",
+    "obligation": "mapping_access"
+  },
+  {
+    "candidate": "936a5a91-2c1f-4fbf-98a9-d420d01768fe",
+    "evaluation": "69cc1cdb-1a9d-4d65-ae07-81a450e689b2",
+    "outcome": "FAIL",
+    "obligation": "mapping_access"
+  },
+  {
+    "candidate": "fa7d2886-962e-44a1-b94e-ef52ef587b2c",
+    "evaluation": "522fc0d2-0246-49b7-a2dd-2aa0394223e7",
+    "outcome": "FAIL",
+    "obligation": "comparison"
+  },
+  {
+    "candidate": "5b93de87-68b4-40d8-9bb6-ee7f302173a4",
+    "evaluation": "f8797edb-b41a-445b-8f81-030716e9559a",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "af56347b-6266-49ae-a1e4-2f91878fe3c1",
+    "evaluation": "8276e769-14f0-4f24-a734-65de87be694c",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "41586bd1-4e60-41bb-8c18-b0ed45ceb3cb",
+    "evaluation": "246e25f0-495d-4598-a0d9-601699f06d57",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "d59f3d2e-b5fe-42da-bd5c-7552cba97df3",
+    "evaluation": "5c1a428a-e1cf-4cc8-96ee-93dc56dc3c92",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "84959bf7-1c8c-4333-99c0-233adfc025c1",
+    "evaluation": "98754b32-826c-418b-ae23-5958e5d9c4b1",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "b6bd7431-5b31-48ab-a44d-17460890119e",
+    "evaluation": "5309abdd-362c-43f6-b83f-019b134ec3df",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "f82c37ba-4281-4fc6-aa59-b4e527652171",
+    "evaluation": "03595ff9-08cf-4ae0-953c-b8e0ef509c4c",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "2309f61b-05e6-432a-9483-87c7543a9c95",
+    "evaluation": "5964437f-63f0-4329-81a0-555fbdb1caa2",
+    "outcome": "INCOMPLETE",
+    "obligation": "structural_supply"
+  },
+  {
+    "candidate": "ac24b663-7cea-4b03-9b1e-2b9ac920b3e3",
+    "evaluation": "d4c11e48-7b82-462f-af19-561499f7faa7",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "0c97e80d-e7ce-4a01-8cad-ee9d21acdcc0",
+    "evaluation": "21330ec6-5486-49d4-8df9-4eae5d72b3e2",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "1589f70d-7c7a-4fa9-9708-b65006cb2632",
+    "evaluation": "0636c5bc-174c-477f-8b29-2b94eafcfc4d",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "ef47ea77-bcd4-4b47-a4a6-5179da65e9fc",
+    "evaluation": "d26e3a03-2451-4c2f-a925-2863347bb976",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "96783672-3f19-4af9-a666-07136ab58c1b",
+    "evaluation": "24b2f04c-6ba0-4038-9cbe-fe5ca7d68bad",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "daafb011-0569-44c7-af7d-ceac8224c946",
+    "evaluation": "20712b81-4573-445d-afb4-4f2190d560d9",
+    "outcome": "INCOMPLETE",
+    "obligation": "structural_supply"
+  },
+  {
+    "candidate": "f4158ef1-07b3-4580-8f5f-7c06b7a8d292",
+    "evaluation": "d1b950b3-ef8b-4027-82a2-445f17612652",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "ac2f91eb-b959-4ef6-9b19-59149b19c96a",
+    "evaluation": "01f445eb-153b-49f2-afff-f8336815a673",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "cdf2639b-9be2-442a-94bc-a44335d3ffeb",
+    "evaluation": "6b1f4cb6-eaeb-49b9-a892-f6bb1006961c",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "6aac31ee-ee48-4cf0-860f-5c69527294b2",
+    "evaluation": "e57dc9fd-d438-47b6-bf8f-89bbca618240",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "bcc70039-d50c-41a8-b4b5-77aa351f2115",
+    "evaluation": "f368f401-c4f7-4ee1-9f0e-f589a71f9bb1",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "b7808e61-9777-4734-82ad-44922cde01c1",
+    "evaluation": "532021cc-132d-4301-bb94-8ea993d5251e",
+    "outcome": "INCOMPLETE",
+    "obligation": "structural_supply"
+  },
+  {
+    "candidate": "4a0b93bd-227c-4365-8406-62a837f5111a",
+    "evaluation": "75320090-3a12-4afd-8da0-4ee7873c8121",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "6e24a239-266f-4061-8f5b-3baef569d690",
+    "evaluation": "4d316af6-fdbf-4ca0-a13e-390e59390130",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "84c0df43-ccd8-4e49-99cd-9cbded1a0da9",
+    "evaluation": "2061354e-0cd5-4538-8ad7-512be7d77b90",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "6c0723b6-908d-43c6-9465-f208e48e04e4",
+    "evaluation": "f095165f-ee1a-4d1b-9a31-33bc99505b04",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "e336bda1-8aeb-411e-b4ab-9b0858786e6c",
+    "evaluation": "7ef89d02-6ecf-460a-812a-3b6eb6d9974f",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "0d9ed387-5ea4-4e3f-93cc-c727fe5f5171",
+    "evaluation": "84b62151-497b-41a2-b136-3658676ff774",
+    "outcome": "INCOMPLETE",
+    "obligation": "structural_supply"
+  },
+  {
+    "candidate": "e4a576c9-6154-42e7-b3cf-a30168740c7d",
+    "evaluation": "93c23efa-868d-4938-9666-3a90d5b02fc5",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "5a936d5c-af7f-4cf7-b7a9-aa30fb6e51bf",
+    "evaluation": "37bd6302-5bad-4be5-a0b5-a4d41d5f0ea9",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "35fcb544-0886-437d-94a2-32dea2886efb",
+    "evaluation": "50393574-8991-4e74-a1e9-fbd2b9cd0633",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "83531ee6-447f-4f3d-8f80-c114a275da7e",
+    "evaluation": "9b9ce510-53d6-4cd2-ab68-f2bb9c57fd56",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "c276d337-b16a-48e2-a8ba-bb0bb99253b9",
+    "evaluation": "ff191375-d068-4228-9769-7a6c87108dae",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "b20bb77e-a318-4652-af8a-cf18178249b7",
+    "evaluation": "1369cc5b-2699-461e-bb90-1e215202c59c",
+    "outcome": "INCOMPLETE",
+    "obligation": "structural_supply"
+  },
+  {
+    "candidate": "c3c74bec-7b8e-4b27-b1d0-02eea38bd403",
+    "evaluation": "93bef491-010b-4938-adf4-d20489784913",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "c8960a73-7519-4142-b8bc-82daf5feb3a0",
+    "evaluation": "c3d95c50-7c4c-4e2e-8404-1061c59edf73",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "88da70cf-258a-4738-b780-e79146291b33",
+    "evaluation": "a25f36dd-cc7e-4f69-a07e-7bb8fd374371",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "8b8c596f-b64b-46ac-8711-c3b24638e731",
+    "evaluation": "1c2cd60a-6e05-469d-9c1e-fa115ef70204",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "55af4458-3936-498a-af9a-61138832c5f1",
+    "evaluation": "982f5c88-c828-4eeb-ba97-2ee173ce6c96",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "00588b79-0708-410b-bfb7-0809f9067363",
+    "evaluation": "5f31ff17-ae9c-4b1f-ab8f-47e33b93c9e3",
+    "outcome": "INCOMPLETE",
+    "obligation": "structural_supply"
+  },
+  {
+    "candidate": "b0a23e02-027e-4046-86c7-cca288ce41a3",
+    "evaluation": "05c6f312-e9d6-484c-aa5f-d62c871b1cc5",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "7f73c0f4-9e37-4e19-a5ec-833d6c8b25ef",
+    "evaluation": "5195f6d9-9993-479d-9c15-732245e25de1",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "6813ebd6-d720-41a4-8391-b2ca63f1416f",
+    "evaluation": "a1041870-23d6-4c69-b2fb-d94f86f40ca7",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "538c7721-d0d0-4ec8-ae42-110080e8b9b8",
+    "evaluation": "a47d863d-79a3-4305-9513-eda2cd06f290",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "d266d203-48f3-4ce7-91ec-4b3fdd16928c",
+    "evaluation": "94c630e2-ba8c-4e8b-b661-2505caf46109",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "a7c0a6dd-0774-4078-8016-0e7b0d555f6e",
+    "evaluation": "a3d67c49-23a7-4f98-a0ba-c22fa665a334",
+    "outcome": "INCOMPLETE",
+    "obligation": "structural_supply"
+  },
+  {
+    "candidate": "c22238c6-b766-4ad9-892a-89012f3f8308",
+    "evaluation": "2b9e9862-2422-4d5f-9927-b173107e284b",
+    "outcome": "FAIL",
+    "obligation": "resolution_question_forward"
+  },
+  {
+    "candidate": "88b6d8eb-57e9-41b1-80b5-f144580d7101",
+    "evaluation": "dc941319-9080-486b-930b-634d84d56807",
+    "outcome": "FAIL",
+    "obligation": "resolution_question_forward"
+  },
+  {
+    "candidate": "eb77c33d-79ec-473f-9352-64fe7c9e8601",
+    "evaluation": "8ffbc11f-056a-498e-add3-33640344ca47",
+    "outcome": "INDETERMINATE",
+    "obligation": "resolution_question_forward"
+  },
+  {
+    "candidate": "605387ff-16ff-4c89-b711-513d8f7bc800",
+    "evaluation": "f80133c8-5f92-4404-839c-c227d53f1cd6",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "fa3d1bef-7e7c-4221-ab33-ddb89cf838a8",
+    "evaluation": "ada99151-c6a1-4da8-a60e-85d721ad19f9",
+    "outcome": "FAIL",
+    "obligation": "resolution_question_forward"
+  },
+  {
+    "candidate": "24afba05-132e-47a3-a41f-c512e2a258c8",
+    "evaluation": "bf74096d-3ccc-4747-821b-2b691a7f1756",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "9c5b1210-f826-41d3-8dc9-a0d485264a36",
+    "evaluation": "021fd152-831f-4f26-a68d-7813900dc777",
+    "outcome": "INCOMPLETE",
+    "obligation": "structural_supply"
+  },
+  {
+    "candidate": "059e7d62-7054-4eb1-a6fe-d563584fd6f0",
+    "evaluation": "4e74e343-7389-4096-b49d-214aee7a8b86",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "d794cfca-7dd9-44fa-963e-295835978834",
+    "evaluation": "93972925-0810-4f62-bbd5-17d01739a0ff",
+    "outcome": "FAIL",
+    "obligation": "coordinates"
+  },
+  {
+    "candidate": "1e165b23-b59e-440b-8bb7-de5ffb5974cc",
+    "evaluation": "bcadb547-1023-4e29-91c4-181dc8bdde83",
+    "outcome": "FAIL",
+    "obligation": "coordinates"
+  },
+  {
+    "candidate": "fa6bc7eb-b52d-404d-b9c2-6d109d530d63",
+    "evaluation": "6814c8ad-3773-43cb-a5f5-c7494166cba1",
+    "outcome": "FAIL",
+    "obligation": "coordinates"
+  },
+  {
+    "candidate": "1c0d367a-230e-424f-a790-b4d851240ce9",
+    "evaluation": "96581194-28a7-4aef-a39a-0e3492fc353c",
+    "outcome": "FAIL",
+    "obligation": "coordinates"
+  },
+  {
+    "candidate": "3d8f20d0-2bb1-43b9-820f-4b360bfd1423",
+    "evaluation": "d1b77e4b-ed8c-4986-b4ed-0057f5c3eb5c",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "deaee066-5b33-49aa-bfd0-89ae65fafe1a",
+    "evaluation": "314775d2-bc2a-4770-a129-8c6ed597c26c",
+    "outcome": "FAIL",
+    "obligation": "non_promotion"
+  },
+  {
+    "candidate": "e21baea6-faa7-4af5-92b0-3b07855a23c6",
+    "evaluation": "4ef6025f-8d3d-46d9-b31d-c2e413fd49c5",
+    "outcome": "FAIL",
+    "obligation": "non_promotion"
+  },
+  {
+    "candidate": "cca1bbe2-f0c9-4970-96b9-04491948cc13",
+    "evaluation": "040a29af-7ae9-4897-a562-8ed19d551b3f",
+    "outcome": "FAIL",
+    "obligation": "non_promotion"
+  },
+  {
+    "candidate": "d5905cf1-0646-4a7d-a41a-00486d9cdfa1",
+    "evaluation": "6b29343d-2a3c-4753-b3a8-7298077e8246",
+    "outcome": "FAIL",
+    "obligation": "non_promotion"
+  },
+  {
+    "candidate": "c35187c9-f978-4c08-9039-7c9d7a9089c6",
+    "evaluation": "2070cccc-49ce-4c0d-b3a0-f102446a308d",
+    "outcome": "FAIL",
+    "obligation": "non_promotion"
+  },
+  {
+    "candidate": "ba8fe769-e9d6-48ae-8d01-d35ada832b17",
+    "evaluation": "98080d8c-6bc0-47dd-9dcc-ad21b2b2c522",
+    "outcome": "FAIL",
+    "obligation": "non_promotion"
+  },
+  {
+    "candidate": "e36c7aea-1daa-450c-96cd-e97651acd9dd",
+    "evaluation": "db5a2cb3-be69-418c-80ee-a80f5eb81623",
+    "outcome": "FAIL",
+    "obligation": "non_promotion"
+  },
+  {
+    "candidate": "cbe029e2-fa20-4018-bffc-0d779b6c87cd",
+    "evaluation": "f13cec2d-843b-4051-a6bf-e832b73c14c8",
+    "outcome": "FAIL",
+    "obligation": "comparison"
+  },
+  {
+    "candidate": "df22de8f-baee-465a-80a4-2c4380461b28",
+    "evaluation": "453af06b-9848-4cc5-bf83-df8e5fd0b3d2",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "ccc7ff48-cc93-4571-9162-cd3ee0d4addf",
+    "evaluation": "1053bbce-d570-4191-b506-6e992495824a",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "71a66d82-ad56-4533-bf73-e4a46002cb0c",
+    "evaluation": "5b4e85b8-7a1d-4da6-87b6-458f5a3665c3",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "9fa7ef37-e418-4162-b7ee-a68bcb5e5f89",
+    "evaluation": "142e736c-a164-492e-983f-88cce7a16971",
+    "outcome": "FAIL",
+    "obligation": "evidence_pressure"
+  },
+  {
+    "candidate": "bed09fd3-c64c-4736-8a8f-c8f24527e6d1",
+    "evaluation": "11356cd3-85fa-40f6-bd23-9cf58d540274",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "dbd45545-3c75-4554-8168-efb89f31ab81",
+    "evaluation": "1e707f97-321a-4042-9be1-e1b44e932ead",
+    "outcome": "FAIL",
+    "obligation": "evidence_pressure"
+  },
+  {
+    "candidate": "0825c482-2cee-4e54-9e82-eff73b127a4d",
+    "evaluation": "c19e5e82-43bb-47dd-b631-57c9b9dcac98",
+    "outcome": "INDETERMINATE",
+    "obligation": "comparison"
+  },
+  {
+    "candidate": "70545baf-b766-4d0b-9308-5eddf0385562",
+    "evaluation": "07c03e88-69aa-4642-9016-72e8952e84e2",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "4336866c-c6e6-4004-91d3-d69e492d87bb",
+    "evaluation": "120ba157-84f0-4d2c-b34c-8642875d2ff5",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "2d2c1623-a2f8-46c9-9b81-fa0a92d5e437",
+    "evaluation": "f0c3fb25-77b7-4d94-924c-9a95fd868ae0",
+    "outcome": "PASS"
+  },
+  {
+    "candidate": "bec101dc-b091-4d51-8713-323c508eb22e",
+    "evaluation": "fe1e35f6-62a3-4430-9ec6-d74827fa2d79",
+    "outcome": "FAIL",
+    "obligation": "resolution_question_forward"
+  }
+]

@@ -1,0 +1,31 @@
+
+> test
+> node --test --test-concurrency=1 primary.test.mjs
+
+✔ T5 two source-sensitive specimens: correct and defective controls (142.179541ms)
+✔ T1 focal drift, representation identity and harmless rendering (39.009125ms)
+✔ T2 mapper, access and frame cannot collapse; source alias permutation follows supplied source (68.893875ms)
+✔ T3 six dispositions per capacity, actual removal and Question Forward calibration (475.861375ms)
+✔ A/B/C hidden-model-substitution: A supported; B capacity unavailable; C labels removed, capacity retained (39.647ms)
+✔ T4 Level/Stage/State and one-Line/whole-Referent substitutions fail (55.922875ms)
+✔ T5/T6 producer success and dimensional promotions supply no qualification (87.755375ms)
+✔ T7 exact synthetic designation; all invalid authority paths leave no currentness (90.756208ms)
+✔ T8/T10 exact cold episode, polished substitution, changed basis, confirmation and separate re-designation (98.265625ms)
+✔ T9 competing designations serialize, rollback permits waiter, ABA and exact retry (162.406541ms)
+✔ T9 unknown acknowledgement, exact recovery after act expiry, temporal continuing effects (960.851833ms)
+✔ T10/T11 local evidence and upward pressure retained; no rigid slots or silent rule change (185.604125ms)
+✔ T8 fresh process reconstructs exact retained surface without fixture or producer imports (102.429458ms)
+✔ T8 missing decision-bearing bytes and broken event/pointer history are explicitly unavailable (69.762292ms)
+✔ C2 committed attempts, unknown terminal, exact publication retry and wrong method (24.281958ms)
+✔ AP-03 required normative comparator absent with present inputs is INDETERMINATE (31.108333ms)
+✔ T9 backend loss preserves committed attempt and rolls back terminal publication (93.16675ms)
+✔ T4 positive State changes preserve Stage; T11 empty coordinate overlay retains source re-expansion (54.210875ms)
+✔ Reuse seam: BUILD 5B PASS and BUILD 6 executor do not supply BUILD 7 qualification or authority (28.783542ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2858.519292

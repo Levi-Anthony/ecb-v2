@@ -1,0 +1,7 @@
+{
+  "claim": "externally supplied source-sensitive architectural behavior and qualification gating only",
+  "A": "PASS",
+  "B": "INCOMPLETE structural_support_unavailable",
+  "C": "PASS retained capacity; not a capacity ablation",
+  "internal_model_visibility": false
+}
