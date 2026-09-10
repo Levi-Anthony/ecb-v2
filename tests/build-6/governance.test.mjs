@@ -6,6 +6,7 @@ import { readFile } from "node:fs/promises";
 import postgres from "../../server/ecb-human/node_modules/postgres/src/index.js";
 import { createApp, hash, ORIGIN } from "../../server/ecb-human/app.mjs";
 import { SyntheticAuthenticator } from "./fixture.mjs";
+import { execute as executorRequest } from "../../server/ecb-human/executor.mjs";
 const url = "postgres://custodian@127.0.0.1:55439/build6";
 const sql = () => postgres(url, { max: 1, prepare: false, onnotice: () => {} });
 const admin = sql();
@@ -32,7 +33,7 @@ const rpc = async (db, fn, action, a) =>
 const human = (action, a = {}) =>
   rpc(verifier, "human", action, { scope, ...a });
 const exec = (action, a = {}) =>
-  rpc(executor, "executor", action, { scope, ...a });
+  executorRequest(executor, action, { scope, ...a });
 const expectReject = async (fn, pattern) => assert.rejects(fn, pattern);
 class Browser {
   constructor() {

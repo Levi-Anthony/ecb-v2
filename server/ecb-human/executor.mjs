@@ -2,6 +2,37 @@
 import postgres from "postgres";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
+const databaseCA = await readFile(new URL("./certs/supabase-root-2021.crt", import.meta.url), "utf8");
+
+export async function connectExecutor(env = process.env) {
+  if (!env.EXECUTOR_DATABASE_URL) throw new Error("restricted executor database connection required");
+  if (Object.keys(env).some((key) =>
+    /HUMAN_DATABASE_URL|INSTALLER_DATABASE_URL|DATABASE_OWNER|SERVICE_ROLE|SUPABASE_SECRET|JWT_SECRET|JWT_SIGN|SETUP_SECRET|POSTGRES_URL|POSTGRES_PRISMA_URL|VERCEL_TOKEN|ECB_BRAIN_KEY/.test(key)
+  )) throw new Error("executor runtime contains forbidden credential configuration");
+  const db = postgres(env.EXECUTOR_DATABASE_URL, {
+    ssl: { rejectUnauthorized: true, ca: databaseCA },
+    prepare: false,
+    max: 1,
+    connect_timeout: 10,
+    onnotice: () => {},
+  });
+  try {
+    const [role] = await db`select current_user as name, session_user as login,
+      (select rolsuper or rolbypassrls or rolcreaterole or rolcreatedb from pg_roles where rolname=current_user) as elevated,
+      pg_has_role(current_user,'ecb_governance_owner','MEMBER') as owner,
+      pg_has_role(current_user,'ecb_human_verifier','MEMBER') as verifier,
+      pg_has_role(current_user,'service_role','MEMBER') as service,
+      has_function_privilege(current_user,'ecb_governance.executor(text,jsonb)','EXECUTE') as can_execute,
+      has_function_privilege(current_user,'ecb_governance.human(text,jsonb)','EXECUTE') as can_issue_decisions`;
+    if (role.name !== "ecb_governance_executor" || role.login !== role.name ||
+        role.elevated || role.owner || role.verifier || role.service ||
+        !role.can_execute || role.can_issue_decisions) throw new Error("unqualified executor connection");
+    return db;
+  } catch (error) {
+    await db.end();
+    throw error;
+  }
+}
 export const operations = Object.freeze({
   inspect:
     "Read the exact scope, subjects, binding, decisions and transition history. Creates no authorization.",
@@ -26,20 +57,13 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       "Usage: node executor.mjs inspect|execute|recover exact-request.json",
     );
   }
-  const db = postgres(process.env.EXECUTOR_DATABASE_URL, {
-    ssl: { rejectUnauthorized: true },
-    prepare: false,
-    max: 1,
-  });
+  let db;
   try {
-    const [role] =
-      await db`select current_user as name,pg_has_role(current_user,'ecb_governance_owner','MEMBER') as owner,pg_has_role(current_user,'ecb_human_verifier','MEMBER') as verifier`;
-    if (
-      role.name !== "ecb_governance_executor" || role.owner || role.verifier
-    ) throw new Error("unqualified executor connection");
+    const request = JSON.parse(await readFile(file, "utf8"));
+    db = await connectExecutor();
     console.log(
       JSON.stringify(
-        await execute(db, action, JSON.parse(await readFile(file, "utf8"))),
+        await execute(db, action, request),
         null,
         2,
       ),
@@ -54,6 +78,6 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     );
     process.exitCode = 1;
   } finally {
-    await db.end();
+    await db?.end();
   }
 }

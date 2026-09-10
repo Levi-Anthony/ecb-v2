@@ -1,7 +1,8 @@
 # ECB human service — BUILD 6 candidate
 
-Status: locally tested candidate; not deployed or ready for live enrollment.
-See the [verified progress record](../../docs/build-receipts/008-build-6-progress.md)
+Status: M1 closed PASS; M2 prepared but not activated. See the
+[current checkout](../../BUILD_CHECKOUT.md) and
+[M2 receipt](../../docs/build-receipts/018-build-6-m2-preflight.md)
 for the exact evidence, limits and next handle.
 
 Use Node 24 and `npm ci --ignore-scripts`. The production verifier accepts only
@@ -26,13 +27,16 @@ an exact installation-package JSON containing `project_ref`, `origin`, `rp_id`,
 `credential_count`, `remit_file`, `remit_sha256`, `root_basis_file`,
 `root_basis_sha256` and `source_reference`. It checks accepted P0, retains a private
 recovery record before contact, and commissions an expiring setup capability.
-It never activates governance. **A live installation package has not been bound.**
-Do not run it until the readiness conditions in the progress record pass.
+It never activates governance. **Canonical M1 binding is complete.**
+Do not rerun installation or binding for M2.
 
 `executor.mjs inspect|execute|recover exact-request.json` uses only
 `EXECUTOR_DATABASE_URL`. Its descriptions identify permissions, effects and recovery.
 Use exactly the same scope/decision/request/predecessor/digest for recovery. A transport
 failure is unknown, never proof of absence. No executor credential is provisioned.
+The executor requires its own exact restricted login, rejects mixed credential
+custody, and supplies the retained CA with strict TLS. Live connection qualification
+awaits private provisioning. Reuse the retained M2 request from the current receipt.
 
 The browser has registration, login, exact review/accept/decline, own pending-decision
 withdrawal, logout and state recovery. `/intervene` reaches the same service directly;
