@@ -74,15 +74,17 @@ test('completion rejects wrong executor, obligations, history and request identi
     assert.throws(()=>validateCompletion(f.result,f.view),/mismatch/);
   }
 });
-test('installer target is canonical and restricted child receives no installer JIT or ambient secrets',()=>{
-  const raw='postgres://postgres.vezxivrvhakclxuvxzso:SYNTHETIC@aws-0-us-west-1.pooler.supabase.com:5432/postgres?jit=true';
+test('installer target accepts documented JIT session-pooler form and restricted child receives no installer secrets',()=>{
+  const raw='postgres://postgres.vezxivrvhakclxuvxzso:SYNTHETIC@aws-0-us-west-1.pooler.supabase.com:5432/postgres?sslmode=require&options=-c%20jit%3dtrue';
+  const legacy='postgres://postgres.vezxivrvhakclxuvxzso:SYNTHETIC@aws-0-us-west-1.pooler.supabase.com:5432/postgres?jit=true';
   const admin=installerUri(raw), executor=executorUri(admin,'synthetic-executor');
+  installerUri(legacy);
   const u=new URL(executor);
   assert.equal(u.username,'ecb_governance_executor.vezxivrvhakclxuvxzso');
   assert.equal(u.port,'6543');assert.equal(u.search,'');
   assert.deepEqual(Object.keys(childEnvironment(executor)).sort(),['EXECUTOR_DATABASE_URL','PATH']);
   assert(!JSON.stringify(childEnvironment(executor)).includes('SYNTHETIC'));
-  for(const bad of [raw.replace('postgres.vezxivrvhakclxuvxzso','postgres.other'),raw.replace(':5432',':6543'),raw.replace('postgres://','https://'),raw+'&options=x',raw.replace('.pooler.supabase.com','.pooler.supabase.com.attacker')])
+  for(const bad of [raw.replace('postgres.vezxivrvhakclxuvxzso','postgres.other'),raw.replace(':5432',':6543'),raw.replace('postgres://','https://'),raw+'&options=x',raw.replace('options=-c%20jit%3dtrue','options=-c%20statement_timeout%3d0'),raw.replace('.pooler.supabase.com','.pooler.supabase.com.attacker')])
     assert.throws(()=>installerUri(bad));
 });
 
