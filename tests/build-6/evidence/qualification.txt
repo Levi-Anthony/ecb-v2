@@ -1,0 +1,36 @@
+(node:16391) ExperimentalWarning: The supports Web Crypto API method is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:16391) ExperimentalWarning: The ML-DSA-44 Web Crypto API algorithm is an experimental feature and might change at any time
+▶ BUILD 6 isolated PG17, signed WebAuthn, HTTP and authority boundaries
+  ✔ restricted installation, seven native identities, predecessor preservation (37.058541ms)
+  ✔ uncommissioned first visitor, absent session and wrong origin rejected (48.947667ms)
+  ✔ real library verifies synthetic ES256 registration; key remains inert (32.108458ms)
+  ✔ exact binding accepts once; changed set and same-transaction effect reject (35.229334ms)
+  ✔ committed M2 activation, exact recovery, replay/conflict and exhaustion (27.477334ms)
+  ✔ real signature login creates hashed cookie session and preserves proof (19.9415ms)
+  ✔ wrong key, user handle, signature, challenge, UV, origin and cross-origin reject (57.564542ms)
+  ✔ pre-auth browser binding rejects copied ceremony (6.130584ms)
+  ✔ CSRF, forged session and public/agent SQL bypass fail (28.193ms)
+  ✔ exact policy rejects duplicates, unknown fields, changed fixed fields, wrong type and digest (8.020959ms)
+  ✔ P0 authorizes exact P1 without explanation; idempotent decision conflicts on changed input (4.012667ms)
+  ✔ withdrawal via independent client prevents execution; no reauthentication of grant needed (6.700292ms)
+  ✔ real competing withdrawal/execution observes lock and commits withdrawal winner (42.702208ms)
+  ✔ rollback of withdrawal releases actually blocked execution; exact success recovers after reconnect (59.464041ms)
+  ✔ operative P1 governs next decision, candidate cannot lower its own approval requirement (4.573167ms)
+  ✔ rollback leaves no effect, authoritative absence supports recovery (8.018834ms)
+  ✔ polling does not refresh inactivity; logout blocks new admissions but leaves committed grant executable (14.967125ms)
+  ✔ dropped HTTP login acknowledgement issues no reusable bearer proof (21.197209ms)
+  ✔ expired sessions reject admission; expired ceremony cannot issue a session (20.401666ms)
+  ✔ inconsistent current pointer cannot report retry eligibility (3.844792ms)
+  ✔ genesis concurrency observes actual lock; first executor commits (62.536125ms)
+  ✔ genesis concurrency observes actual lock; first executor rolls back (69.634708ms)
+  ✔ all native records have Referents; historical mutation rejected; predecessor payloads survive (7.780541ms)
+✔ BUILD 6 isolated PG17, signed WebAuthn, HTTP and authority boundaries (645.169583ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 858.791

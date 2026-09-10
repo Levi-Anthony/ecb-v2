@@ -1,0 +1,18 @@
+{
+  "format": "ecb.build6.policy.v1",
+  "operation": "policy_succession",
+  "authorizer": "current_designated_h_in_scope",
+  "requires_prior_committed_exact_decision": true,
+  "requires_expected_current_predecessor": true,
+  "requires_unwithdrawn_decision": true,
+  "requires_human_explanation": false,
+  "preserves": [
+    "governance_scope",
+    "initial_h_designation_and_remit",
+    "prior_authority_history",
+    "bootstrap_exhaustion"
+  ],
+  "pending_decision_withdrawal": "issuing_h_only",
+  "allows_delegation": false,
+  "allows_other_operations": false
+}

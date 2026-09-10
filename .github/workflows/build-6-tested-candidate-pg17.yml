@@ -1,0 +1,104 @@
+name: BUILD 6 tested candidate disposable PG17
+
+on:
+  pull_request:
+    branches:
+      - reconcile/build-6-tested-move
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.2-pg17
+        env:
+          POSTGRES_USER: custodian
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 55439:5432
+        options: >-
+          --health-cmd "pg_isready -U custodian -d postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      BUILD6_DISPOSABLE: 'YES'
+      BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:55439/build6
+      B5B_EVIDENCE_DIR: ${{ github.workspace }}/artifacts/build5b-predecessor
+    steps:
+      - name: Checkout exact candidate commit
+        uses: actions/checkout@v4
+
+      - name: Use Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Use Deno for retained BUILD 5B fixture stage
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Verify exact selected BUILD 6 migration bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected='de6e6fb7856b08eee2876b8ce65e4a9513c455703934a7627c2f016825f0d461'
+          actual="$(sha256sum sql/migrations/20260907234712_build_6_governance_bootstrap.sql | awk '{print $1}')"
+          echo "migration_sha256=$actual"
+          test "$actual" = "$expected"
+
+      - name: Install pinned human-service dependencies
+        shell: bash
+        run: npm ci --ignore-scripts --prefix server/ecb-human
+
+      - name: Reconstruct accepted BUILD 5B predecessor
+        shell: bash
+        run: bash tests/build-6/ci-reconstruct-build5b.sh
+
+      - name: Restore exact qualified BUILD 5B Artifact stage
+        shell: bash
+        run: deno run --config tests/build-5b/deno.json --allow-all tests/build-6/ci-seed-build5b-artifacts.ts
+
+      - name: Verify predecessor Artifact stage
+        shell: bash
+        run: |
+          count="$(psql -X -At postgresql://postgres@127.0.0.1:55439/build6 -c 'select count(*) from public.artifacts')"
+          test "$count" = '9'
+
+      - name: Run exact candidate qualification
+        shell: bash
+        run: node tests/build-6/qualify.mjs
+
+      - name: Run supplemental readiness races
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test tests/build-6/readiness-races.test.mjs 2>&1 | tee tests/build-6/evidence/readiness-races.txt
+
+      - name: Print retained evidence
+        if: always()
+        shell: bash
+        run: |
+          printf '%s\n' '--- receipt.json ---'
+          cat tests/build-6/evidence/receipt.json || true
+          printf '%s\n' '--- qualification.txt ---'
+          cat tests/build-6/evidence/qualification.txt || true
+          printf '%s\n' '--- readiness-races.txt ---'
+          cat tests/build-6/evidence/readiness-races.txt || true
+
+      - name: Preserve qualification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-6-tested-candidate-${{ github.sha }}
+          path: |
+            tests/build-6/evidence/
+            artifacts/build5b-predecessor/
+          if-no-files-found: error
+          retention-days: 30

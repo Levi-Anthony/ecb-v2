@@ -48,6 +48,19 @@ Do not prescribe the v2 replacement here.
 - **SUPERSESSION / STANDING, IF KNOWN:** The frozen pre-interlock BUILD 0 checkout and ECB v1 review response are superseded evidence. The canonical OB1 source is implementation prior art. None governs ECB v2 by itself.
 - **WHAT FAILED IN THE OBSERVED OR INHERITED MECHANISM:** Qualification depended on human memory/intervention; no installed Control made the already-applicable encounter unavoidable before installation consequence, and no Awareness trace made omission or basis drift executable.
 
+
+### BUILD 6 — authenticated approval and non-authoritative creation
+
+- **CAPABILITY:** Agent-created material does not acquire governing standing at birth; authority-bearing approval uses a verified human principal and exact proposed version.
+- **PROBLEM SOLVED:** Prevents caller actor labels, metadata changes or a newly created artifact from manufacturing permission to govern.
+- **ACTUAL USE:** Source inspection at legacy ECOS commit `a5d4fb4f8fcc8162bd593090db4177adfdde0728` found the deployed-path migration definitions and their later review replacement. The draft-always migration comments report an earlier creation/promotion defect. No current deployment or runtime test was observed in this BUILD 6 Sense.
+- **WHY VALUABLE:** Separates artifact creation, authenticated identity, designated reviewer standing, approval and installation.
+- **MINIMUM SURVIVING BEHAVIOR:** Creation cannot self-promote; login or claimed actor alone cannot grant scope; an exact-version decision must be attributable to an independently established authority basis; stale approval must not silently apply.
+- **EVIDENCE / PINNED SOURCE LOCATORS:** `/Users/prodadmin/ecos` at the commit above: `supabase/migrations/20260610223000_create_artifact_draft_always.sql`; `20260605010000_artifact_v3_human_door.sql` (principal helper, human wrappers and grants); `20260709010000_eco46_a1w_supersession_write_rpcs.sql` (later review replacement). Inspected files were clean. [BUILD 6 Sense](build-sense/008-build-6.md#follow-up--authenticated-approval-boundary) records the comparison and limits.
+- **SUPERSESSION / STANDING, IF KNOWN:** Historical implementation evidence. The June creation rule supersedes the earlier sensitive-kind-only default; the July review replacement retains authenticated principal resolution. None supplies governing authority for v2.
+- **WHAT FAILED IN THE OBSERVED OR INHERITED MECHANISM:** The creation-defect account describes unintended promotion through defaults. The inspected approval mechanism presupposes an active authority registry and does not itself prove the authority that initialized it or exhaustion of bootstrap permission. That is a bounded coverage limit, not a claim that the entire legacy system lacks external authorization.
+- **VERDICT:** REBUILD the demonstrated authority separation within the accepted BUILD 6 episode if required. Do not import the tables, enums, broad API or bootstrap legitimacy by inheritance. Prior-art qualification remains open for the eventual selected representation.
+
 ## HARVEST VERDICT: ARCHIVE
 
 Historical/source value survives. Runtime obligation does not.
