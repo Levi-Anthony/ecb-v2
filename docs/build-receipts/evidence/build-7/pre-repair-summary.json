@@ -1,0 +1,42 @@
+{
+  "primary_groups": 19,
+  "primary_asserted_semantic_cases": 87,
+  "primary_asserted_outcomes": {
+    "PASS": 51,
+    "FAIL": 26,
+    "INCOMPLETE": 8,
+    "INDETERMINATE": 2
+  },
+  "holdout_groups": 1,
+  "holdout_outcomes": {
+    "PASS": 1,
+    "FAIL": 2
+  },
+  "published_evaluations": [
+    {
+      "outcome": "FAIL",
+      "count": 29
+    },
+    {
+      "outcome": "INCOMPLETE",
+      "count": 8
+    },
+    {
+      "outcome": "INDETERMINATE",
+      "count": 2
+    },
+    {
+      "outcome": "PASS",
+      "count": 64
+    }
+  ],
+  "authority_negatives": 12,
+  "layer_b_behavioral_checks": 10,
+  "audit": {
+    "synthetic_scopes": 21,
+    "nonsynthetic_scopes": 0,
+    "nonsynthetic_grants": 0,
+    "build6_transitions": 0,
+    "synthetic_designations": 15
+  }
+}

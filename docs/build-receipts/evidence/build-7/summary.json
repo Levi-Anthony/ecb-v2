@@ -1,0 +1,91 @@
+{
+  "sealed_at": "2026-09-10T19:42:00.517Z",
+  "acceptance": "repaired C2; post-repair checks only restore the bounded claim",
+  "current_method": "bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670",
+  "freeze_verified": {
+    "server/build-7/qualification.mjs": "bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670",
+    "server/build-7/recover.mjs": "34ee9db4997578dfd37d4335c38945c3ed6a74d5dff51d150486e2d9dd58508e",
+    "sql/migrations/20260910090000_build_7_local_master_key.sql": "242826351b6a807b700a51d78665ff14698c1d40fa29f78edf03681a2d1795de",
+    "tests/build-7/support.mjs": "1acfc47563bbcde0720c92f8a36bab0ff08d4d6220887a05b31acaa3f54f8f20"
+  },
+  "primary_groups": 19,
+  "primary_asserted_semantic_cases": 87,
+  "primary_asserted_outcomes": {
+    "PASS": 51,
+    "FAIL": 26,
+    "INCOMPLETE": 8,
+    "INDETERMINATE": 2
+  },
+  "expression_repair_groups": 3,
+  "expression_repair_outcomes": {
+    "PASS": 1,
+    "FAIL": 2,
+    "INCOMPLETE": 1
+  },
+  "new_untuned_holdout_groups": 1,
+  "new_untuned_holdout_outcomes": {
+    "PASS": 1,
+    "FAIL": 2
+  },
+  "independent_holdout_author": false,
+  "authority_negative_cases": 12,
+  "inherited_behavioral_checks": {
+    "count": 10,
+    "disposition": "previous clean rehearsal retained; unchanged SQL/recovery; not rerun for C2-only repair"
+  },
+  "historical_acceptance": "Pre-repair acceptance suspended after original false PASS; original defect and first holdout retained as historical evidence, not current qualification.",
+  "published_evaluations_by_method": [
+    {
+      "method": "bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670",
+      "outcome": "FAIL",
+      "count": 31
+    },
+    {
+      "method": "bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670",
+      "outcome": "INCOMPLETE",
+      "count": 9
+    },
+    {
+      "method": "bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670",
+      "outcome": "INDETERMINATE",
+      "count": 2
+    },
+    {
+      "method": "bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670",
+      "outcome": "PASS",
+      "count": 65
+    },
+    {
+      "method": "da9a102071f36fa8738de0933f979a9bd41257df9b90f77bb0727ca09628e88f",
+      "outcome": "FAIL",
+      "count": 29
+    },
+    {
+      "method": "da9a102071f36fa8738de0933f979a9bd41257df9b90f77bb0727ca09628e88f",
+      "outcome": "INCOMPLETE",
+      "count": 8
+    },
+    {
+      "method": "da9a102071f36fa8738de0933f979a9bd41257df9b90f77bb0727ca09628e88f",
+      "outcome": "INDETERMINATE",
+      "count": 2
+    },
+    {
+      "method": "da9a102071f36fa8738de0933f979a9bd41257df9b90f77bb0727ca09628e88f",
+      "outcome": "PASS",
+      "count": 65
+    }
+  ],
+  "audit": {
+    "synthetic_scopes": 46,
+    "nonsynthetic_scopes": 0,
+    "nonsynthetic_grants": 0,
+    "build6_transitions": 0,
+    "synthetic_designations": 30,
+    "missing_artifact_referents": 0,
+    "missing_claim_referents": 0,
+    "new_standing_promotions": 0
+  },
+  "canonical_effects": "NONE",
+  "status": "READY FOR HUMAN METABOLIZE"
+}

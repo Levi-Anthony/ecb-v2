@@ -1,0 +1,18 @@
+{
+  "commission": "ECO-95 updated 2026-09-10T08:25:41.675Z; authorized bounded Move, pre-mutation integrity gate, mutation limits",
+  "shape": "ECO-94 document e8eb0117-6e1a-454c-807b-cd2bbd63c034, updated 2026-09-10T08:25:29.584Z, §§A–O",
+  "patches": "ECO-94 HUMAN SHAPE CLOSURE 74c49056-6b3b-42fe-944a-a5cb577a5e40, 2026-09-10T08:02:40.508Z, patches 1–5 override proposal wording",
+  "obligations": {
+    "C1": "§C C1; §D all; §M 1–2; §N O1–O5/O8; patches 1,2,4",
+    "C2": "§C C2; §E tuple, comparison, evaluator obligations, four outcomes, P1–P10; §M 3; §N O6–O7; patch 3",
+    "C3": "§C C3; §F grant and currentness rules 1–10; §M 4; §N O9–O10; patch 5",
+    "C4": "§C C4; §G cold boundary, retained closure 1–9, three recovery answers and requalification routes; §M 5; §N O11–O12; patch 5",
+    "tests": "§J specimens A/B, ten-step episode, T1–T12, A/B/C and alias perturbation; §E P1–P10; §L component interventions; §M 6–7",
+    "enforcement": "§C per-component modes/surfaces; §H FCA; §I reuse/enforcement; §M enforcement obligations",
+    "identity": "§C C1–C4 identity/version/lineage; §F predecessor/event and retry; §G exact retained closure; §I B2/B5B",
+    "temporal": "closure patch 5; §F act expiry versus ongoing effect; §G applicability observations",
+    "question_forward": "§D Question Forward and bidirectional behavior; §G re-entry; §K Q1–Q7; §J T/H questions; closure additional conclusions",
+    "boundaries": "§I nontravelling semantics/deferral leases; §K; §M prohibitions; ECO-95 prohibited effects",
+    "classification": "§N five-way failure discriminator and P1–P10 falsifiability"
+  }
+}

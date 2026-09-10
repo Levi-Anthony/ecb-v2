@@ -1,63 +1,48 @@
-STATUS: BUILD 6 CLOSED AND NORMALIZED — SUBSTRATE PROVING COMPLETE
-DISPOSITION: ACCEPTED / CLOSED AT IMPLEMENTATION REGISTER B
-ROLE: Canonical repository reentry checkpoint
-AUTHORITY: Explicit human closure under closure Shape 009 and receipt 026; normalized to `main`
-CURRENT BUILD UNIT: NONE — BUILD 6 closed; BUILD 7+ unopened
+STATUS: BUILD 7 MOVE — READY FOR HUMAN METABOLIZE
+DISPOSITION: LOCAL WORKER PROJECTION — NOT BUILD CLOSURE
+ROLE: Current repository reentry checkpoint
+AUTHORITY: ECO-95; accepted ECO-94 Shape and human closure patches
+CURRENT BUILD UNIT: BUILD 7 — bounded synthetic C1–C4 proof
 
-# Current disposition
+# Current local disposition
 
-BUILD 6 — Governance Bootstrap is accepted, closed and normalized into `main` at implementation register B.
+BUILD 7 Sense and Shape are human-closed. The authorized Move is implemented in the isolated `build/build-7-move` worktree. Acceptance was suspended when final adversarial pressure found that C2 ignored contradictory short-expression wording despite correct typed conclusions. The narrow repair is complete: independently retained expression meanings now participate in the same bounded source comparisons; unsupported prose remains INCOMPLETE.
 
-The accepted claim is deliberately bounded: BUILD 6 establishes and live-proves the governance substrate required for protected human authority, one-time bootstrap, first ordinary succession, bounded execution and recovery. It does not establish or accept a production-ready human governance UX.
+The repaired implementation was frozen before a new untuned holdout. Latest completed step: new holdout PASS, affected primary suite 19/19 PASS, targeted repair groups 3/3 PASS, frozen-file audit and disposable archive complete. The prior clean rehearsal's ten inherited behavioral checks remain applicable; SQL and recovery were unchanged by the repair. No unrelated successful test family was restarted on resume.
 
-The BUILD sequence is treated as substrate installation/proving work, not UX delivery. The human-facing proving ceremony remains explicit negative operating evidence and is carried forward as a first-class usability/orchestration requirement rather than unfinished BUILD 6 substrate work.
-
-Controlling closure receipt: `docs/build-receipts/026-build-6-closed.md`.
-Human operating evidence: `docs/build-receipts/025-build-6-p1-metabolize.md`.
-Closure Sense: `docs/build-sense/009-build-6-closure.md`.
-Closure Shape: `docs/build-shape/009-build-6-closure.md`.
-BUILD 6 normalization merge: PR #27, merge commit `8b6a71452f6205dd628297c05c2b0888663543ec`.
+Read [Move return packet 027](docs/build-receipts/027-build-7-move.md), [source map](docs/build-shape/010-build-7-source-map.json), [proof summary](docs/build-receipts/evidence/build-7/summary.json), [repaired freeze](docs/build-receipts/evidence/build-7/post-repair-freeze.json), and [original false-PASS evidence](docs/build-receipts/evidence/build-7/expression-defect-discovery.json). Exact archive and reentry commands: [BUILD 7 proof README](tests/build-7/README.md).
 
 ```text
 BUILD_0_TO_6=CLOSED
 BUILD_6=CLOSED; REGISTER_B; SUBSTRATE_PROVING_COMPLETE; NORMALIZED_TO_MAIN
-M1=PASS; CLOSED; DO_NOT_REOPEN
-M2=PASS; CLOSED; METABOLIZED; RECOVERY_ONLY_ON_EXACT_RETRY
-P1=PASS; OPERATIVE; FIRST_ORDINARY_SUCCESSION_COMPLETE; METABOLIZED
-CURRENT_PHASE=CLOSED_BOUNDARY
-CURRENT_MOVE=NONE
-CURRENT_BRANCH=main
-CANONICAL_REPOSITORY_HEAD_AT_NORMALIZATION=8b6a71452f6205dd628297c05c2b0888663543ec
-CANONICAL_PROJECT=vezxivrvhakclxuvxzso
-SCOPE=20ad3966-8647-4a0f-9eed-2888e67e1e49
-H_REFERENT=4cfbaf81-a7e9-4786-b2ad-4f791ab7ce1d
-BINDING=7446baff-13a8-4f68-a0c3-8445933575b8
-CURRENT_TRANSITION=bdd481cf-41ac-47ed-acb7-26dcd346e921
-PREDECESSOR_TRANSITION=63bcd3fd-55f4-49bd-976f-c2bba50e6ab1
-SCOPES=1; DECISIONS=2; TRANSITIONS=2; WITHDRAWALS=0; SUCCESSION_DECISIONS=1
-CURRENT_POINTER_MATCH=TRUE
-BOOTSTRAP_EXHAUSTED=TRUE
-OPERATIVE_P1_SHA256=2057597b340e7f324176c65847633b776e0d266407988dedbaec001359c39556
-P1_DECISION=57d40c7e-4abb-49bb-ba75-c7f6f8d1e4e0
-P1_EXECUTION_REQUEST=d0508be7-0e19-4abb-aec4-12de2d95f4b0
-P1_TRANSITION=bdd481cf-41ac-47ed-acb7-26dcd346e921
-P1_COLD_RECOVERY=PASS
-P1_QUALIFICATION=31/31 PASS; READINESS_RACES=7/7 PASS
-STEADY_STATE_HUMAN_UX=NOT_ACCEPTED; FEED_FORWARD_REQUIRED
-REPOSITORY_NORMALIZATION=COMPLETE
-BUILD_7_PLUS=UNOPENED
+BUILD_7_SENSE=HUMAN_CLOSED
+BUILD_7_SHAPE=HUMAN_CLOSED; FIVE_PATCHES_CONTROLLING
+CURRENT_PHASE=MOVE_RETURN; HUMAN_METABOLIZE_PENDING
+CURRENT_MOVE=BUILD_7_BOUNDED_SYNTHETIC_C1_TO_C4
+CURRENT_BRANCH=build/build-7-move
+WORKTREE=/Users/prodadmin/ECB-build-7-move
+BASELINE_COMMIT=ef7163da220494809369c1f25832383fa6da3d85
+CURRENT_METHOD_SHA256=bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670
+POST_REPAIR_PRIMARY=19/19_PASS
+POST_REPAIR_TARGETED=3/3_PASS
+POST_REPAIR_UNTUNED_HOLDOUT=1/1_PASS; SOLE_WORKER; NO_INDEPENDENT_AUTHOR_CLAIM
+INHERITED_BEHAVIORAL_CHECKS=10/10_PASS; PRIOR_CLEAN_REHEARSAL_RETAINED
+CANONICAL_EFFECTS=NONE
+REAL_MASTER_KEY_AUTHORITY=QUESTION_FORWARD
+REAL_MASTER_KEY_DESIGNATION=NONE
+DISPOSABLE_DATABASE=ecb7-move-pg17; 127.0.0.1:55440/build7
+MOVE_RETURN=READY_FOR_HUMAN_METABOLIZE
+BUILD_7_CLOSURE=NOT_PERFORMED
 ```
 
-# Closure claim boundary
+# Controlling sources and reentry rule
 
-Supported: the bounded governance substrate is installed, live-proven, reconstructible and normalized at implementation register B.
+ECO-95 authorizes Move separately from the historical Shape closure comment. Accepted document `e8eb0117-6e1a-454c-807b-cd2bbd63c034` and human closure comment `74c49056-6b3b-42fe-944a-a5cb577a5e40` remain controlling. Retained full sources are in `docs/build-shape/010-build-7-*`. The local code, test results and this projection cannot amend that Shape.
 
-Unsupported: the present M1/M2/P1 proving choreography is an acceptable ordinary-human ECOS interface.
+Resume from the completed packet. Do not reopen Sense/Shape, reconstruct the design, rerun passed families without a changed dependency, infer real authority, install the migration canonically, deploy, or close BUILD 7. The next step is human Metabolize. Any newly observed failure must be classified before repair under receipt 027 and ECO-95.
 
-Mandatory feed-forward: preserve protected human authority while moving internal policy bytes, digests, predecessor identifiers, stage labels, custody and recovery choreography below a minimal intelligible human decision surface.
+# Preserved BUILD 6 closure
 
-# Reentry rule
+[Receipt 026](docs/build-receipts/026-build-6-closed.md) remains the controlling BUILD 6 closure. [Receipt 025](docs/build-receipts/025-build-6-p1-metabolize.md) retains the human operating evidence. Closure Sense/Shape 009 and normalization PR #27 remain unchanged. BUILD 6's policy-succession remit does not confer Master-Key designation authority.
 
-Treat BUILD 6 as closed evidence. Do not rerun M1/M2/P1 as construction steps, create another succession for demonstration, or reopen the Build to polish UX.
-
-The next Build Unit remains unopened. Opening BUILD 7+ requires a separate Sense and applicable authority; this closure supplies neither.
+The prior main checkpoint is preserved at the baseline commit. Its production governance state was not mutated or re-proved by this Move. Do not rerun M1/M2/P1 as construction, demonstrate another succession, or reopen BUILD 6 for UX. Its accepted claim remains bounded substrate installation/proving at implementation register B; ordinary human UX remains feed-forward work, not BUILD 7 scope.

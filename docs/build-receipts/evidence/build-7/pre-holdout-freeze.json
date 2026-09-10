@@ -1,0 +1,9 @@
+{
+  "frozen_at": "2026-09-10T14:49:28.976Z",
+  "purpose": "Freeze primary implementation before the same sole worker authors the untuned holdout; no independent-author claim.",
+  "files": {
+    "server/build-7/qualification.mjs": "da9a102071f36fa8738de0933f979a9bd41257df9b90f77bb0727ca09628e88f",
+    "server/build-7/recover.mjs": "34ee9db4997578dfd37d4335c38945c3ed6a74d5dff51d150486e2d9dd58508e",
+    "sql/migrations/20260910090000_build_7_local_master_key.sql": "242826351b6a807b700a51d78665ff14698c1d40fa29f78edf03681a2d1795de"
+  }
+}

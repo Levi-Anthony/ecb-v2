@@ -1,0 +1,8 @@
+{
+  "database": "postgres://b7_actor@127.0.0.1:55440/build7",
+  "scope": "443a18d3-508b-4f16-9c2d-f1ae4ebb7c10",
+  "observation": "21acef7c-91ff-440e-88f1-26e6e2cea381",
+  "interpretation_locators": [
+    "linear:ECO-94/document/e8eb0117-6e1a-454c-807b-cd2bbd63c034"
+  ]
+}
