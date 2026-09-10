@@ -57,6 +57,10 @@ jobs:
         shell: bash
         run: npm ci --ignore-scripts --prefix server/ecb-human
 
+      - name: Run M2 private-handoff regression
+        shell: bash
+        run: node --test tests/build-6/m2-handoff.test.mjs
+
       - name: Reconstruct accepted BUILD 5B predecessor
         shell: bash
         run: bash tests/build-6/ci-reconstruct-build5b.sh
