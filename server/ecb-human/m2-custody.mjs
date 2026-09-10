@@ -14,10 +14,14 @@ let stage = 'source_validation';
 
 export function installerUri(raw) {
   const u = new URL(raw);
+  const validParam = ([k, v]) =>
+    (k === 'jit' && v === 'true') ||
+    (k === 'options' && v === '-c jit=true') ||
+    (k === 'sslmode' && ['require', 'verify-full'].includes(v));
   if (!['postgres:', 'postgresql:'].includes(u.protocol) ||
       !/^[a-z0-9-]+\.pooler\.supabase\.com$/.test(u.hostname) || u.port !== '5432' ||
       decodeURIComponent(u.username) !== `postgres.${project}` || !u.password || u.pathname !== '/postgres' ||
-      [...u.searchParams].some(([k,v]) => !(['jit','sslmode'].includes(k)) || (k === 'jit' && v !== 'true'))) {
+      [...u.searchParams].some(param => !validParam(param))) {
     throw new Error('Unexpected installer target');
   }
   return u;
