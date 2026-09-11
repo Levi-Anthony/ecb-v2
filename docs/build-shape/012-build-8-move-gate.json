@@ -1,0 +1,116 @@
+{
+  "ancestry": {
+    "comparison": "identical",
+    "main": "61b4a0524fdc089cbf2b244584ba073deb05c351"
+  },
+  "controlling": "ECO-103 updated 2026-09-11T12:24:15.357Z",
+  "implementationMutationSoFar": "NONE",
+  "latitude": "Names, exhaustive subtype field encodings, finite protected comparator fixture realization, function decomposition, and disposable test orchestration only. No change to target/effect, retry, authority composition, dependency interface, or persistence topology.",
+  "patchReconciliation": "I1–I9 and E1–E6 control the candidate; later ratification replaces I9-era proposed-law standing. No episode root, qualification-start, redundant source snapshot, second closure digest, ecb7_owner custody, replay fence, doctored UNKNOWN, or isolation assumption.",
+  "proofReadiness": "NOT ESTABLISHED; local PostgreSQL/Docker absent and standard package setup failed. Existing repository GitHub Actions disposable PG17 pattern is available as potential ordinary test orchestration; runtime proof not yet executed.",
+  "sourceMap": [
+    {
+      "decision": "D1 native operation-history target and one occurrence",
+      "proof": "P01,P08–P14",
+      "sources": [
+        "Astra full record: Concrete specimen, D1, execution/recovery",
+        "I1,I2,I4",
+        "E6"
+      ],
+      "surface": "controller + transaction + runtime observer"
+    },
+    {
+      "decision": "D2 exact immutable envelope and individually pinned closure",
+      "proof": "P02–P04,P06,P13",
+      "sources": [
+        "Astra D2, R2, Temporal contract, Cold recovery",
+        "I9",
+        "E1 closure digest correction"
+      ],
+      "surface": "schema constraint + semantic evaluation + revalidation mechanism"
+    },
+    {
+      "decision": "D3 finite four-outcome qualification; no qualification-start",
+      "proof": "P03–P05",
+      "sources": [
+        "Astra D3, R2 bounded comparison behavior",
+        "I9 supersedes original start wording",
+        "BUILD7 repaired comparator and closure 028"
+      ],
+      "surface": "semantic evaluation + authorization check + schema constraint"
+    },
+    {
+      "decision": "D4 protected actor, grant, independent authorization/designation meanings",
+      "proof": "P02,P05–P07,P14",
+      "sources": [
+        "Astra D4, Authorization/designation transition",
+        "I6,I7",
+        "ECO97 closure",
+        "E4"
+      ],
+      "surface": "authorization check + controller + transaction"
+    },
+    {
+      "decision": "D5 admission/effect boundary checks",
+      "proof": "P06–P08,P10",
+      "sources": [
+        "Astra D5, Temporal contract",
+        "I2,I3,I7",
+        "E5"
+      ],
+      "surface": "transaction + controller + revalidation mechanism"
+    },
+    {
+      "decision": "D6 committed execution-start; native effect/terminal atomicity; separate ACK",
+      "proof": "P08–P12,P14",
+      "sources": [
+        "Astra D6, Execution/recovery",
+        "I4,I5",
+        "E6"
+      ],
+      "surface": "transaction + controller + runtime observer"
+    },
+    {
+      "decision": "D7 observational replay; explicit serialized no-effect fence",
+      "proof": "P09–P12,P13",
+      "sources": [
+        "Astra D7 narrowed by E2,E3",
+        "I4,I7"
+      ],
+      "surface": "transaction + controller + runtime observer"
+    },
+    {
+      "decision": "D8 four Artifact roles; complete history under inherited scope lock; separate custody",
+      "proof": "E1 historical binding and trigger partition; P10,P13,P14",
+      "sources": [
+        "Astra D8 narrowed by I1,I5,I7,I9 and E1,E4,E5",
+        "5B and 7 migrations"
+      ],
+      "surface": "schema constraint + authorization check + controller + transaction"
+    },
+    {
+      "decision": "D9 fresh-process exact-locator reconstruction; independent expectations; freeze/holdout",
+      "proof": "P01–P14 plus untuned holdout",
+      "sources": [
+        "Astra D9, Cold recovery, P01–P14, Move Output Contract",
+        "I4,I7",
+        "E2,E3,E6",
+        "invariants proof sensitivity"
+      ],
+      "surface": "runtime observer + revalidation mechanism"
+    },
+    {
+      "decision": "Structural distinctions and scope discipline",
+      "proof": "structural-leverage and boundary audit",
+      "sources": [
+        "Build Contract v0.3",
+        "invariants",
+        "I8,I9",
+        "ECO103 authorized effects and hard stops"
+      ],
+      "surface": "implementation comparison/source map; actual surfaces above"
+    }
+  ],
+  "status": "PASS",
+  "unresolvedArchitectureRequired": "NONE identified in recovered mechanism"
+}
