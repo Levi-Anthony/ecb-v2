@@ -1,6 +1,6 @@
 STATUS: BUILD-BOUNDARY READY  
 DISPOSITION: GOVERNING  
-VERSION: v0.2  
+VERSION: v0.3  
 ROLE: ECB v2 implementation boundary  
 SCOPE: Greenfield ECB v2
 
@@ -97,6 +97,27 @@ Dedicated persistence may be introduced when generic representation creates:
 - repeated reconstruction risk.
 
 Philosophical importance alone is insufficient.
+
+The complementary ratified law is also governing:
+
+> **Physicalize deterministic liability; preserve semantic freedom where interpretation remains valuable.**
+
+Do not count relocation of a stable mechanically decidable consequential obligation from protected
+structure into generic payload, model interpretation, stochastic compliance, or remembered instruction
+as architectural simplification. Genericity receives no automatic simplicity credit.
+
+A proposed physical distinction earns existence only when it is the smallest decision-relevant
+enforcement that materially lowers consequential semantic/stochastic liability without destroying
+required information, flexibility, or distinctions. Conversely, retain semantic/stochastic machinery
+where interpretation, novelty, uncertainty, or adaptation is itself decision-relevant and premature
+structuralization would destroy useful degrees of freedom.
+
+For each proposed physicalization or collapse, the decision surface must identify the obligation moved,
+its mechanical decidability at the active resolution, the liability created or removed, the useful
+freedom/information preserved or lost, and whether a strictly smaller enforcement mechanism preserves
+the same safety and semantic distinctions.
+
+This amendment adds no automatic schema, enum, workflow, service, policy engine, or runtime machinery.
 
 ## Promotion vocabulary
 
