@@ -81,6 +81,46 @@ A requirement may compose modes.
 
 No consequential transition may depend solely on an agent remembering an instruction.
 
+## Structural leverage
+
+Human-ratified governing addition, 2026-09-11 America/Phoenix.
+
+> **Physicalize deterministic liability; preserve semantic freedom where interpretation remains valuable.**
+
+When a decision-bearing obligation is sufficiently stable and mechanically decidable, and the smallest
+physical enforcement materially lowers the probability or consequence of semantic/stochastic failure
+without destroying required information, flexibility, or distinctions, implementation SHALL place
+that obligation in physical structure rather than discretionary reasoning.
+
+Conversely, semantic, stochastic, or latent machinery SHOULD retain responsibility where interpretation,
+novelty, uncertainty, or adaptation is itself decision-relevant and structuralization would prematurely
+destroy useful degrees of freedom.
+
+The governing boundary is:
+
+> **Structure what must not depend on judgment; preserve judgment where structure would destroy information.**
+
+Relocating a required deterministic distinction from mechanically protected structure into generic
+payload, model interpretation, or remembered instruction does not by itself make a candidate smaller.
+A candidate earns simplification credit only if it actually removes the obligation or satisfies the
+same obligation with less machinery without increasing consequential semantic/stochastic liability.
+
+For a proposed physicalization or de-physicalization, the active decision must be able to answer or
+traceably recover:
+
+1. what consequential obligation leaves or returns to semantic/stochastic interpretation;
+2. whether that obligation is stable and mechanically decidable at the active resolution;
+3. what liability changes if the physical enforcement is removed;
+4. what useful information or flexibility is lost if the physical enforcement is retained; and
+5. whether a strictly smaller enforcement mechanism preserves the same safety and semantic distinctions.
+
+This invariant does not authorize schema, enums, state machines, privileges, workflows, services,
+policy engines, compiler machinery, or other physical structure merely because a concept is important.
+Physicalization still must be the smallest decision-relevant enforcement earned under the active
+Master Key. Genericity likewise receives no automatic simplicity credit when equivalent privilege,
+type, order, integrity, reconstruction, or authorization obligations remain and are merely displaced
+into payload semantics or agent judgment.
+
 ## Evaluative-language discipline
 
 Governing text SHALL NOT rely on a naked evaluative such as `relevant`, `sufficient`, `appropriate`, `meaningful`, `material`, `good`, or `useful`.
