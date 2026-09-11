@@ -89,7 +89,7 @@ Human-ratified governing addition, 2026-09-11 America/Phoenix.
 
 When a decision-bearing obligation is sufficiently stable and mechanically decidable, and the smallest
 physical enforcement materially lowers the probability or consequence of semantic/stochastic failure
-without destroying required information, flexibility, or distinctions, implementation SHALL place
+without destroying required information, flexibility, or distinctions, implementation SHOULD place
 that obligation in physical structure rather than discretionary reasoning.
 
 Conversely, semantic, stochastic, or latent machinery SHOULD retain responsibility where interpretation,
