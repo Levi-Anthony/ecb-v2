@@ -1,0 +1,25 @@
+P01 PASS (1 controls)
+P02 PASS (21 controls)
+P03 PASS (10 controls)
+P04 PASS (17 controls)
+P05 PASS (10 controls)
+P06 PASS (7 controls)
+P07 PASS (7 controls)
+P08 PASS (4 controls)
+P09 PASS (4 controls)
+P10 FAIL: Error: TEST_INVALID: waiter never reached real lock
+    at lockWait (file:///Users/prodadmin/ECB-build-8-move/tests/build-8/primary.mjs:24:265)
+    at async file:///Users/prodadmin/ECB-build-8-move/tests/build-8/primary.mjs:137:2
+    at async group (file:///Users/prodadmin/ECB-build-8-move/tests/build-8/primary.mjs:15:74)
+    at async file:///Users/prodadmin/ECB-build-8-move/tests/build-8/primary.mjs:133:1
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+Error: TEST_INVALID: waiter never reached real lock
+    at lockWait (file:///Users/prodadmin/ECB-build-8-move/tests/build-8/primary.mjs:24:265)
+    at async file:///Users/prodadmin/ECB-build-8-move/tests/build-8/primary.mjs:137:2
+    at async group (file:///Users/prodadmin/ECB-build-8-move/tests/build-8/primary.mjs:15:74)
+    at async file:///Users/prodadmin/ECB-build-8-move/tests/build-8/primary.mjs:133:1
+
+Node.js v24.21.0

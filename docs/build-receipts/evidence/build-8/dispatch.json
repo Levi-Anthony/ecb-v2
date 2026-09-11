@@ -1,0 +1,15 @@
+{
+  "proof_class": "atomic-ledger synthetic target only",
+  "results": [
+    {
+      "crashed": false,
+      "first": "EFFECT_ESTABLISHED",
+      "replay_event_appends": 0
+    },
+    {
+      "crashed": true,
+      "first": "RECONCILE_REQUIRED",
+      "replay_event_appends": 0
+    }
+  ]
+}

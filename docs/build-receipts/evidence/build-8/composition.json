@@ -1,0 +1,167 @@
+{
+  "scope": "disposable atomic-ledger synthetic target class only",
+  "stage": "composition, not full P01-P14 proof",
+  "historical_binding": {
+    "request": "cbff1be4-150f-42be-aa05-aea016b5994b",
+    "output": "5201270c-8ce0-4bb5-a0fd-47237dee8991",
+    "attempt": "a3dc1674-6a74-4f75-9daf-f1ccbc67aae0",
+    "receipt": {
+      "scope": "recorded_transition_only",
+      "checks": {
+        "grounding": true,
+        "input_format": true,
+        "preservation": true,
+        "output_format": true,
+        "participation": true,
+        "checker_binding": true
+      },
+      "result": "PASS",
+      "reasons": {},
+      "coverage": "grounding_and_preservation",
+      "input_id": "8777e33d-7555-40aa-92f9-d5107395c0c7",
+      "output_id": "5201270c-8ce0-4bb5-a0fd-47237dee8991",
+      "attempt_id": "a3dc1674-6a74-4f75-9daf-f1ccbc67aae0",
+      "checker_id": "prepare_build_5b_artifact/v1",
+      "input_digest": "8b80af401b26d8aa98ad9c4a27bb5385b8b6ac8aa40138f7736950a144ca355c",
+      "operation_id": "cbff1be4-150f-42be-aa05-aea016b5994b",
+      "output_digest": "1d04efad1b7663fdee99c50a05cc8a8a6a682bf9fb6783da4d0b0fa445211c6c",
+      "source_witness": {
+        "link_id": "4c6c0f50-a936-4da6-bb09-233f93320639",
+        "claim_id": "0f89e778-b16e-4840-9129-a2aa3eb6f697",
+        "event_id": "a6925494-a862-441b-a361-5f5ec41dc9dc",
+        "recorded_at": "2026-09-05T02:24:35.793609Z",
+        "to_standing": "basis_qualified",
+        "from_standing": "unassessed",
+        "link_claim_id": "0f89e778-b16e-4840-9129-a2aa3eb6f697",
+        "evidence_referent_id": "19a949ea-a8fc-4250-a386-fa64e5530180",
+        "evidence_revision_digest": "5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55",
+        "evidence_revision_scheme": "ecb_thought_revision_v1_sha256",
+        "observed_revision_digest": "5edc4782fb18a5e559ec49364b1f763880812c7cc1c248a33488da1d24d99a55"
+      },
+      "receipt_version": 1,
+      "operation_digest": "c7f66a66fab4350147d3d9f1192e42c811b35f2799ede94cbef5dd8477d7d774",
+      "producer_succeeded": true,
+      "checker_definition_digest": "310aa83181ea186b1dc5ea1ea377c99a12a09ee1d527552bb8b07c676f0f0912",
+      "observed_checker_definition_digest": "310aa83181ea186b1dc5ea1ea377c99a12a09ee1d527552bb8b07c676f0f0912"
+    },
+    "definition_sha256": "310aa83181ea186b1dc5ea1ea377c99a12a09ee1d527552bb8b07c676f0f0912"
+  },
+  "routing": [
+    {
+      "role": "source_representation",
+      "hits": [
+        "prepare_build_5b_artifact"
+      ]
+    },
+    {
+      "role": "transformation_request",
+      "hits": [
+        "prepare_build_5b_artifact"
+      ]
+    },
+    {
+      "role": "transformed_representation",
+      "hits": [
+        "prepare_build_5b_artifact"
+      ]
+    },
+    {
+      "role": "check_attempt",
+      "hits": [
+        "prepare_build_5b_artifact"
+      ]
+    },
+    {
+      "role": "transformation_receipt",
+      "hits": [
+        "prepare_build_5b_artifact"
+      ]
+    },
+    {
+      "role": "b7_grammar",
+      "hits": [
+        "prepare_build7_artifact"
+      ]
+    },
+    {
+      "role": "b7_snapshot",
+      "hits": [
+        "prepare_build7_artifact"
+      ]
+    },
+    {
+      "role": "b7_contract",
+      "hits": [
+        "prepare_build7_artifact"
+      ]
+    },
+    {
+      "role": "b7_candidate",
+      "hits": [
+        "prepare_build7_artifact"
+      ]
+    },
+    {
+      "role": "b7_attempt",
+      "hits": [
+        "prepare_build7_artifact"
+      ]
+    },
+    {
+      "role": "b7_evaluation",
+      "hits": [
+        "prepare_build7_artifact"
+      ]
+    },
+    {
+      "role": "b7_grant",
+      "hits": [
+        "prepare_build7_artifact"
+      ]
+    },
+    {
+      "role": "b7_designation",
+      "hits": [
+        "prepare_build7_artifact"
+      ]
+    },
+    {
+      "role": "b7_observation",
+      "hits": [
+        "prepare_build7_artifact"
+      ]
+    },
+    {
+      "role": "b8_basis",
+      "hits": [
+        "prepare_build8_artifact"
+      ]
+    },
+    {
+      "role": "b8_envelope",
+      "hits": [
+        "prepare_build8_artifact"
+      ]
+    },
+    {
+      "role": "b8_evaluation",
+      "hits": [
+        "prepare_build8_artifact"
+      ]
+    },
+    {
+      "role": "b8_event",
+      "hits": [
+        "prepare_build8_artifact"
+      ]
+    }
+  ],
+  "custody": {
+    "pointer": false,
+    "general_update": false,
+    "lock_column": true,
+    "rolcanlogin": false,
+    "rolinherit": false
+  },
+  "result": "PASS"
+}

@@ -1,0 +1,31 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+PostgresError: operator is not unique: unknown - unknown
+    at ErrorResponse (file:///Users/prodadmin/ECB-build-8-move/tests/build-7/node_modules/postgres/src/connection.js:815:30)
+    at handle (file:///Users/prodadmin/ECB-build-8-move/tests/build-7/node_modules/postgres/src/connection.js:489:6)
+    at Socket.data (file:///Users/prodadmin/ECB-build-8-move/tests/build-7/node_modules/postgres/src/connection.js:324:9)
+    at Socket.emit (node:events:514:28)
+    at addChunk (node:internal/streams/readable:568:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:519:3)
+    at Readable.push (node:internal/streams/readable:399:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)
+    at cachedError (file:///Users/prodadmin/ECB-build-8-move/tests/build-7/node_modules/postgres/src/query.js:170:23)
+    at new Query (file:///Users/prodadmin/ECB-build-8-move/tests/build-7/node_modules/postgres/src/query.js:36:24)
+    at sql (file:///Users/prodadmin/ECB-build-8-move/tests/build-7/node_modules/postgres/src/index.js:112:11)
+    at authorize (file:///Users/prodadmin/ECB-build-8-move/tests/build-8/support.mjs:20:18) {
+  severity_local: 'ERROR',
+  severity: 'ERROR',
+  code: '42725',
+  hint: 'Could not choose a best candidate operator. You might need to add explicit type casts.',
+  where: 'PL/pgSQL function ecb8.authorize(uuid,uuid,uuid,uuid,uuid,uuid,uuid,uuid) line 8 at IF',
+  internal_position: '78',
+  internal_query: "prior->>'kind'<>'authorize' or prior->>'login'<>session_user or prior->'data'-'tick' is distinct from req\n" +
+    "   or prior->>'predecessor' is distinct from p::text",
+  file: 'parse_oper.c',
+  line: '627',
+  routine: 'op_error'
+}
+
+Node.js v24.21.0

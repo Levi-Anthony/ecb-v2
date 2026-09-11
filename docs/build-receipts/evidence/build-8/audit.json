@@ -1,0 +1,275 @@
+{
+  "proof_class": "disposable atomic-ledger synthetic target whose native effect and native operation record commit atomically under the accepted PostgreSQL scope lock",
+  "freeze_sha256": "7f5a3e6cf457c7731c5ac5e964e1f124eb35dd9c305141415317590550ffa079",
+  "functions": [
+    {
+      "signature": "ecb8.ack(uuid,uuid,uuid,uuid,boolean,uuid)",
+      "owner": "ecb8_owner",
+      "security_definer": true,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner,ecb8_observer=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.ack(s uuid, a uuid, start_id uuid, reported_terminal uuid, received boolean, p uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare h jsonb; begin\n perform ecb8.lock_scope(s); h:=ecb8.history(s,a); perform ecb8.expected(h,p);\n if not(h->'starts' ? start_id::text) then raise exception 'b8_ack_start_required'; end if;\n return ecb8.event(s,a,h,'ack',jsonb_build_object('start',start_id,'reported_terminal',reported_terminal,'received',received),gen_random_uuid());\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.authorize(uuid,uuid,uuid,uuid,uuid,uuid,uuid,uuid)",
+      "owner": "ecb8_owner",
+      "security_definer": true,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner,ecb8_executor=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.authorize(s uuid, a uuid, envelope uuid, evaluation uuid, grant_id uuid, selection_prior uuid, p uuid, request uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare h jsonb; c jsonb; q jsonb; g jsonb; req jsonb; prior jsonb; eid uuid; begin\n perform ecb8.lock_scope(s); h:=ecb8.history(s,a);\n req:=jsonb_build_object('authorization',jsonb_build_object('envelope',envelope,'evaluation',evaluation,'grant',grant_id),\n 'designation',jsonb_build_object('envelope',envelope,'predecessor',selection_prior));\n select x into prior from jsonb_array_elements(h->'events') x where x->>'request'=request::text;\n if prior is not null then\n  if prior->>'kind'<>'authorize' or prior->>'login'<>session_user or (prior->'data')-'tick' is distinct from req\n   or prior->>'predecessor' is distinct from p::text then raise exception 'b8_request_conflict'; end if;\n  return jsonb_build_object('event',prior->'id','replayed',true,'historical_authorization',prior->'data',\n    'present_selected',h->'selected'->>'id'=prior->>'id');\n end if;\n perform ecb8.expected(h,p);\n c:=ecb8.doc(envelope,'b8_envelope'); q:=ecb8.doc(evaluation,'b8_evaluation'); g:=ecb8.doc(grant_id,'b8_basis');\n if c->>'scope' is distinct from s::text or c->>'action' is distinct from a::text\n or c->>'actor' is distinct from h->'initial'->'principals'->>session_user\n or h->'initial'->>'actor_login' is distinct from session_user then raise exception 'b8_actor_action_binding'; end if;\n if q->>'outcome' is distinct from 'PASS' or q->>'envelope' is distinct from envelope::text\n or q->>'method' is distinct from c->>'method' or q->>'contract' is distinct from c->>'contract' then raise exception 'b8_qualification_binding'; end if;\n if g->>'kind' is distinct from 'grant' or g->>'issuer' is distinct from 'A_TEST'\n or g->>'login' is distinct from session_user or g->>'actor' is distinct from c->>'actor'\n or g->>'scope' is distinct from s::text or g->>'action' is distinct from a::text or g->>'target' is distinct from c->>'target'\n or g->>'operation' is distinct from 'advance_one' or g->>'envelope' is distinct from envelope::text\n or g->>'evaluation' is distinct from evaluation::text or g->>'predecessor' is distinct from selection_prior::text\n or g->'temporal' is distinct from c->'temporal' or g->'rights' is distinct from '[\"withdraw\",\"revoke\"]'::jsonb then raise exception 'b8_grant_tuple'; end if;\n if h->>'selection_head' is distinct from selection_prior::text then raise exception 'b8_stale_selection'; end if;\n if h->'revoked_grants' ? grant_id::text then raise exception 'b8_grant_revoked'; end if;\n if ecb8.conditions(h,envelope,'authorize')<>'[]'::jsonb then raise exception 'b8_authorization_conditions:%',ecb8.conditions(h,envelope,'authorize'); end if;\n eid:=ecb8.event(s,a,h,'authorize',req||jsonb_build_object('tick',h->'tick'),request);\n return jsonb_build_object('event',eid,'replayed',false);\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.conditions(jsonb,uuid,text)",
+      "owner": "ecb8_owner",
+      "security_definer": false,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.conditions(h jsonb, envelope uuid, stage text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare gaps jsonb:='[]'; r record; cur uuid; c jsonb; begin\n c:=ecb8.doc(envelope,'b8_envelope');\n -- Exact immutable closure and finite semantics are revalidated at every use.\n if ecb8.examine(envelope,(c->>'contract')::uuid)->>'outcome' is distinct from 'PASS' then gaps:=gaps||'\"qualification_or_integrity\"'::jsonb; end if;\n select current_event into cur from ecb7.scopes where id=(c->>'scope')::uuid;\n if cur::text is distinct from c->'orientation'->>'designation' then gaps:=gaps||'\"orientation_selection\"'::jsonb; end if;\n for r in select * from jsonb_each(c->'dependencies') loop\n  if h->'dependencies'->r.key is distinct from r.value->'revision' then gaps:=gaps||jsonb_build_array('dependency:'||r.key); end if;\n end loop;\n if stage in ('admit','effect','start') and (h->'value' is distinct from c->'from_value' or h->'revision' is distinct from c->'target_revision'\n or h->'ready' is distinct from 'true'::jsonb) then gaps:=gaps||'\"target_state\"'::jsonb; end if;\n if (stage='authorize' and ((h->>'tick')::int<10 or (h->>'tick')::int>=12))\n or (stage='admit' and ((h->>'tick')::int<10 or (h->>'tick')::int>=20))\n or (stage in ('start','effect') and (h->>'tick')::int>=30) then gaps:=gaps||jsonb_build_array('temporal:'||stage); end if;\n return gaps;\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.control(uuid,uuid,text,uuid,uuid,uuid)",
+      "owner": "ecb8_owner",
+      "security_definer": true,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner,ecb8_executor=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.control(s uuid, a uuid, operation text, subject uuid, p uuid, request uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare h jsonb; au jsonb; ad jsonb; st jsonb; c jsonb; prior jsonb; eid uuid; d jsonb; begin\n if operation not in ('admit','start','effect','reconcile') then raise exception 'b8_bounded_operation'; end if;\n perform ecb8.lock_scope(s); h:=ecb8.history(s,a);\n if h->'initial'->>'actor_login' is distinct from session_user then raise exception 'b8_authenticated_actor'; end if;\n -- Exact transport replays are observational, including expired/stale historical calls.\n select x into prior from jsonb_array_elements(h->'events') x where x->>'request'=request::text;\n if prior is not null then\n  if prior->>'login'<>session_user or prior->>'predecessor' is distinct from p::text\n  or prior->>'kind' is distinct from (case when operation='reconcile' then 'fence' else operation end)\n  or (case operation when 'admit' then prior->'data'->>'authorization' when 'start' then prior->'data'->>'admission'\n       else prior->'data'->>'start' end) is distinct from subject::text then raise exception 'b8_request_conflict'; end if;\n  return jsonb_build_object('event',prior->'id','replayed',true,'effect_count',jsonb_array_length(h->'effects'),'retry','HOLD');\n end if;\n -- Inspect committed competitor state before predecessor check: E5 waiter proof.\n if jsonb_array_length(h->'effects')>0 then raise exception 'b8_effect_allowance_consumed'; end if;\n perform ecb8.expected(h,p);\n if operation='reconcile' then\n  if not(h->'starts' ? subject::text) or h->'terminals' ? subject::text then raise exception 'b8_start_terminal_or_missing'; end if;\n  eid:=ecb8.event(s,a,h,'fence',jsonb_build_object('start',subject,'reason','complete_serialized_no_native_effect'),request);\n  return jsonb_build_object('event',eid,'effect_count',0,'disposition','FENCED_FRESH_ADMISSION_REQUIRED');\n end if;\n au:=h->'selected';\n if au is null or au='null'::jsonb then raise exception 'b8_selected_authorization_required'; end if;\n if h->'revoked_grants' ? (au->>'grant') or h->'revoked_authorizations' ? (au->>'id') then raise exception 'b8_revoked'; end if;\n c:=ecb8.doc((au->>'envelope')::uuid,'b8_envelope');\n if c->>'actor' is distinct from h->'initial'->'principals'->>session_user then raise exception 'b8_actor_binding'; end if;\n if ecb8.conditions(h,(au->>'envelope')::uuid,operation)<>'[]'::jsonb then raise exception 'b8_conditions:%',ecb8.conditions(h,(au->>'envelope')::uuid,operation); end if;\n if operation='admit' then\n  if au->>'id' is distinct from subject::text then raise exception 'b8_authorization_subject'; end if;\n  if exists(select 1 from jsonb_each(h->'starts') x where not(h->'terminals' ? x.key)) then raise exception 'b8_reconcile_required'; end if;\n  d:=au-'id'||jsonb_build_object('authorization',subject,'observation',ecb8.observation(h));\n elsif operation='start' then\n  ad:=h->'admissions'->subject::text;\n  if ad is null or ad->>'authorization' is distinct from au->>'id' then raise exception 'b8_admission_binding'; end if;\n  if ad->>'xid'=pg_current_xact_id()::text then raise exception 'b8_committed_admission_required'; end if;\n  if exists(select 1 from jsonb_each(h->'starts') x where not(h->'terminals' ? x.key) or x.value->>'admission'=subject::text) then raise exception 'b8_admission_used_or_unresolved'; end if;\n  d:=jsonb_build_object('admission',subject);\n else\n  st:=h->'starts'->subject::text; ad:=h->'admissions'->(st->>'admission');\n  if st is null or h->'terminals' ? subject::text then raise exception 'b8_start_terminal_or_missing'; end if;\n  if st->>'xid'=pg_current_xact_id()::text then raise exception 'b8_committed_start_required'; end if;\n  if ad->>'authorization' is distinct from au->>'id' then raise exception 'b8_selected_envelope_changed'; end if;\n  d:=jsonb_build_object('start',subject,'target',c->'target','operation','advance_one','delta',1,'observation',ecb8.observation(h));\n end if;\n eid:=ecb8.event(s,a,h,operation,d,request);\n return jsonb_build_object('event',eid,'replayed',false,'effect_count',case when operation='effect' then 1 else 0 end);\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.doc(uuid,text)",
+      "owner": "ecb8_owner",
+      "security_definer": false,
+      "volatility": "s",
+      "grants": "{ecb8_owner=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.doc(i uuid, expected_role text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare r public.artifacts; begin\n select * into strict r from public.artifacts where id=i;\n if expected_role is not null and r.artifact_role<>expected_role then raise exception 'b8_wrong_role:%',i; end if;\n if r.payload_text is null or r.payload_digest<>extensions.digest(convert_to(r.payload_text,'UTF8'),'sha256')\n or not(r.payload_text is json object with unique keys) then raise exception 'b8_payload_integrity:%',i; end if;\n return r.payload_text::jsonb;\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.event(uuid,uuid,jsonb,text,jsonb,uuid)",
+      "owner": "ecb8_owner",
+      "security_definer": false,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.event(s uuid, a uuid, h jsonb, k text, d jsonb, request uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$ begin\n if h->'initial'->'principals'->>session_user is null then raise exception 'b8_authenticated_participant_required'; end if;\n return ecb8.retain('b8_event',s,jsonb_build_object('scope',s,'action',a,'kind',k,'predecessor',h->'head',\n 'login',session_user,'participant',h->'initial'->'principals'->session_user,'request',request,'data',d)::text);\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.examine(uuid,uuid)",
+      "owner": "ecb8_owner",
+      "security_definer": false,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.examine(envelope uuid, contract uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare c jsonb; ct jsonb; init jsonb; deps jsonb; d jsonb; f jsonb:='[]'; failures jsonb:='[]'; gaps jsonb:='[]';\n r record; q jsonb; keydoc jsonb; designation jsonb; src jsonb; meaning jsonb; expected_meaning jsonb;\n outcome text; status text; required text[]; actual text[]; observed jsonb; begin\n c:=ecb8.doc(envelope,'b8_envelope'); ct:=ecb8.doc(contract,'b8_basis');\n init:=ecb8.initial((ct->>'scope')::uuid,(ct->>'action')::uuid);\n if ct->>'kind'<>'contract' then raise exception 'b8_comparison_contract_required'; end if;\n status:='PASS';\n if c->>'contract' is distinct from contract::text or c->>'method' is distinct from ct->>'method'\n or ct->>'method'<>encode(extensions.digest(convert_to(pg_get_functiondef('ecb8.examine(uuid,uuid)'::regprocedure),'UTF8'),'sha256'),'hex')\n or c->>'scope' is distinct from ct->>'scope' or c->>'action' is distinct from ct->>'action'\n or c->>'target' is distinct from init->>'target' or c->>'actor' is distinct from init->>'actor'\n or c->'orientation' is distinct from ct->'orientation' then status:='FAIL'; end if;\n f:=f||jsonb_build_array(jsonb_build_object('obligation','exact_binding','status',status,'witness',c-'expression'));\n deps:=c->'dependencies';\n select array_agg(x order by x) into required from (select jsonb_object_keys(ct->'required') x union select contract::text) t;\n select array_agg(x order by x) into actual from jsonb_object_keys(deps) x;\n if required is distinct from actual then gaps:=gaps||jsonb_build_array('required_manifest_members'); end if;\n for r in select * from jsonb_each(ct->'required'||jsonb_build_object(contract::text,jsonb_build_object('role','b8_basis'))) loop\n  if not(deps ? r.key) then continue; end if;\n  begin\n   d:=ecb8.doc(r.key::uuid,r.value->>'role');\n   if deps->r.key->>'role' is distinct from r.value->>'role'\n    or deps->r.key->>'digest' is distinct from (select encode(payload_digest,'hex') from public.artifacts where public.artifacts.id=r.key::uuid)\n    or deps->r.key->>'revision' is distinct from '1' then failures:=failures||jsonb_build_array(r.key); end if;\n  exception when others then gaps:=gaps||jsonb_build_array(jsonb_build_object('id',r.key,'gap',sqlerrm)); end;\n end loop;\n status:=case when jsonb_array_length(failures)>0 then 'FAIL' when jsonb_array_length(gaps)>0 then 'INCOMPLETE' else 'PASS' end;\n f:=f||jsonb_build_array(jsonb_build_object('obligation','closure','status',status,'witness',jsonb_build_object('mismatches',failures,'gaps',gaps)));\n status:='PASS';\n if c->>'operation' is distinct from 'advance_one' or c->'delta' is distinct from '1'::jsonb\n or c->'max_effects' is distinct from '1'::jsonb or c->'from_value' is distinct from '0'::jsonb\n or c->'target_revision' is distinct from '0'::jsonb or c->'ready' is distinct from 'true'::jsonb\n or c->>'observation_access' is distinct from 'external' then status:='FAIL'; end if;\n f:=f||jsonb_build_array(jsonb_build_object('obligation','action_meaning','status',status,'witness',jsonb_build_object('delta',c->'delta','maximum',c->'max_effects','access',c->'observation_access')));\n status:='PASS';\n if c->'temporal' is distinct from '{\"issue\":[10,12],\"admit\":[10,20],\"effect_before\":30,\"unrevoked_through_effect\":true}'::jsonb\n or c->>'retry' is distinct from 'observe_then_explicit_fence_before_fresh_admission' then status:='FAIL'; end if;\n f:=f||jsonb_build_array(jsonb_build_object('obligation','temporal_retry','status',status,'witness',jsonb_build_object('temporal',c->'temporal','retry',c->'retry')));\n expected_meaning:=jsonb_build_object('target',init->'target','action',ct->'action','from_value',0,'revision',0,'delta',1,'maximum',1,'access','external');\n meaning:=ct->'interpretations'->(c->>'expression');\n status:=case when meaning is null then 'INCOMPLETE' when meaning='null'::jsonb then 'INDETERMINATE'\n when meaning is distinct from expected_meaning then 'FAIL' else 'PASS' end;\n f:=f||jsonb_build_array(jsonb_build_object('obligation','expression_meaning','status',status,'witness',jsonb_build_object('expression',c->'expression','interpreted',meaning,'required',expected_meaning)));\n status:='PASS';\n begin\n  keydoc:=ecb8.doc((ct->'orientation'->>'key')::uuid,'b7_candidate');\n  q:=ecb8.doc((ct->'orientation'->>'evaluation')::uuid,'b7_evaluation');\n  designation:=ecb8.doc((ct->'orientation'->>'designation')::uuid,'b7_designation');\n  if q->>'outcome'<>'PASS' or q->'basis' is distinct from keydoc or q->>'candidate' is distinct from ct->'orientation'->>'key'\n  or designation->>'candidate' is distinct from ct->'orientation'->>'key' or designation->>'evaluation' is distinct from ct->'orientation'->>'evaluation'\n  or designation->>'operation'<>'select' or designation->>'scope' is distinct from ct->>'scope'\n  or not(keydoc->'conclusions' @> '[{\"comparison\":\"native\",\"answer\":false},{\"comparison\":\"external\",\"answer\":true}]') then status:='FAIL'; end if;\n  -- Explicit source observations and latency/access remain independently retained.\n  for r in select * from jsonb_each(ct->'required') where value ? 'access' loop\n   src:=ecb8.doc(r.key::uuid,'b7_snapshot');\n   if r.value->>'access'='native' and src->'observations' is distinct from '[20,20]'::jsonb then status:='FAIL'; end if;\n   if r.value->>'access'='external' and (src->'observations' is distinct from '[20.1,20.2]'::jsonb or (src->>'latency')::numeric>60) then status:='FAIL'; end if;\n  end loop;\n exception when others then status:='INCOMPLETE'; end;\n f:=f||jsonb_build_array(jsonb_build_object('obligation','orientation_grounding','status',status,'witness',ct->'orientation'));\n observed:=ecb8.history((ct->>'scope')::uuid,(ct->>'action')::uuid); status:='PASS';\n if (select current_event::text from ecb7.scopes where id=(ct->>'scope')::uuid) is distinct from ct->'orientation'->>'designation' then status:='FAIL'; end if;\n for r in select * from jsonb_each(deps) loop\n  if observed->'dependencies'->r.key is distinct from r.value->'revision' then status:='FAIL'; end if;\n end loop;\n f:=f||jsonb_build_array(jsonb_build_object('obligation','declared_current_basis','status',status,'witness',observed->'dependencies'));\n if exists(select 1 from jsonb_array_elements(f) x where x->>'status'='FAIL') then outcome:='FAIL';\n elsif exists(select 1 from jsonb_array_elements(f) x where x->>'status'='INCOMPLETE') then outcome:='INCOMPLETE';\n elsif exists(select 1 from jsonb_array_elements(f) x where x->>'status'='INDETERMINATE') then outcome:='INDETERMINATE'; else outcome:='PASS'; end if;\n return jsonb_build_object('outcome',outcome,'findings',f,'method',ct->'method','envelope',envelope,'contract',contract,\n 'scope',ct->'scope','action',ct->'action','meaning','eligibility_only','limits',ct->'limits');\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.expected(jsonb,uuid)",
+      "owner": "ecb8_owner",
+      "security_definer": false,
+      "volatility": "i",
+      "grants": "{ecb8_owner=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.expected(h jsonb, p uuid)\n RETURNS void\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$ begin\n if h->>'head' is distinct from p::text then raise exception 'b8_stale_predecessor'; end if;\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.fixture_event(uuid,uuid,text,jsonb,uuid)",
+      "owner": "ecb8_owner",
+      "security_definer": true,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner,postgres=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.fixture_event(s uuid, a uuid, k text, d jsonb, p uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare h jsonb; eid uuid; begin\n if k not in ('tick','ready','dependency','revoke_grant','withdraw') then raise exception 'b8_fixture_event_kind'; end if;\n perform ecb8.lock_scope(s); h:=ecb8.history(s,a); perform ecb8.expected(h,p);\n eid:=ecb8.event(s,a,h,k,d,gen_random_uuid()); perform ecb8.history(s,a); return eid;\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.fixture(uuid,uuid,jsonb,uuid)",
+      "owner": "ecb8_owner",
+      "security_definer": true,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner,postgres=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.fixture(s uuid, a uuid, j jsonb, p uuid DEFAULT NULL::uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare h jsonb; k text; ref_id uuid; c jsonb; begin\n perform ecb8.lock_scope(s); k:=j->>'kind';\n if j->>'scope' is distinct from s::text or j->>'action' is distinct from a::text or j->'synthetic' is distinct from 'true'::jsonb then raise exception 'b8_synthetic_fixture_only'; end if;\n if k='target_initial' then\n  perform ecb8.keys(j,array['kind','scope','action','synthetic','target','actor','actor_login','principals','dependencies']);\n  if exists(select 1 from public.artifacts where artifact_role='b8_basis' and context_id=s and payload_text::jsonb->>'kind'='target_initial') then raise exception 'b8_one_action_target'; end if;\n  for ref_id in select value::uuid from jsonb_each_text(j->'principals') union select a union select (j->>'target')::uuid loop\n   if not exists(select 1 from public.referents where public.referents.id=ref_id) then raise exception 'b8_referent_required'; end if;\n  end loop;\n  if j->'principals'->>(j->>'actor_login') is distinct from j->>'actor' then raise exception 'b8_authentication_basis'; end if;\n else\n  h:=ecb8.history(s,a); perform ecb8.expected(h,p);\n  if k='contract' then\n   perform ecb8.keys(j,array['kind','scope','action','synthetic','target','actor','initial','orientation','required','interpretations','method','method_definition','limits']);\n   if j->>'method'<>encode(extensions.digest(convert_to(pg_get_functiondef('ecb8.examine(uuid,uuid)'::regprocedure),'UTF8'),'sha256'),'hex')\n   or j->>'method_definition'<>pg_get_functiondef('ecb8.examine(uuid,uuid)'::regprocedure) then raise exception 'b8_method_binding'; end if;\n  elsif k='grant' then\n   perform ecb8.keys(j,array['kind','scope','action','synthetic','issuer','actor','login','target','operation','envelope','evaluation','predecessor','temporal','rights']);\n   if j->>'issuer'<>'A_TEST' then raise exception 'b8_fixture_issuer'; end if;\n  else raise exception 'b8_basis_subtype'; end if;\n end if;\n return ecb8.retain('b8_basis',s,j::text);\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.history(uuid,uuid)",
+      "owner": "ecb8_owner",
+      "security_definer": false,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.history(s uuid, a uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare init jsonb; rows jsonb; ev jsonb; data jsonb; h jsonb; nexts jsonb; eid text;\n head text; seen text[]:='{}'; n int; k text; st jsonb; ad jsonb; au jsonb; c jsonb; g jsonb;\n legal boolean; r record; begin\n init:=ecb8.initial(s,a);\n h:=jsonb_build_object('head',null,'initial',init,'value',0,'revision',0,'ready',true,'tick',10,\n 'selected',null,'selection_head',null,'revoked_grants','[]'::jsonb,'revoked_authorizations','[]'::jsonb,\n 'dependencies',init->'dependencies','admissions','{}'::jsonb,'starts','{}'::jsonb,'terminals','{}'::jsonb,\n 'effects','[]'::jsonb,'acks','[]'::jsonb,'events','[]'::jsonb,'legitimate',true);\n rows:='[]';\n -- Include context/declared-scope discrepancies so they cannot disappear from observation.\n for r in select * from public.artifacts where artifact_role='b8_event'\n and (context_id=s or payload_text::jsonb->>'scope'=s::text)\n and payload_text::jsonb->>'action'=a::text loop\n  ev:=ecb8.doc(r.id,'b8_event');\n  if r.context_id<>s or ev->>'scope' is distinct from s::text then raise exception 'b8_scope_mismatch'; end if;\n  perform ecb8.keys(ev,array['scope','action','kind','predecessor','login','participant','request','data']);\n  rows:=rows||jsonb_build_array(ev||jsonb_build_object('id',r.id,'xid',r.created_xid::text));\n end loop;\n n:=jsonb_array_length(rows);\n while cardinality(seen)<n loop\n  select coalesce(jsonb_agg(x),'[]') into nexts from jsonb_array_elements(rows) x where x->>'predecessor' is not distinct from head;\n  if jsonb_array_length(nexts)<>1 then raise exception 'b8_broken_fork_cycle_history'; end if;\n  ev:=nexts->0; eid:=ev->>'id';\n  if eid=any(seen) then raise exception 'b8_cycle'; end if;\n  seen:=array_append(seen,eid); k:=ev->>'kind'; data:=ev->'data';\n  if ev->>'participant' is distinct from init->'principals'->> (ev->>'login') then raise exception 'b8_participant_binding'; end if;\n  if exists(select 1 from jsonb_array_elements(h->'events') x where x->>'request'=ev->>'request') then raise exception 'b8_request_fork'; end if;\n  case k\n   when 'tick' then\n    perform ecb8.keys(data,array['tick']);\n    if jsonb_typeof(data->'tick') is distinct from 'number' then raise exception 'b8_integer_tick_required'; end if;\n    if (data->>'tick')::int <= (h->>'tick')::int then raise exception 'b8_tick_not_increasing'; end if;\n    h:=h||jsonb_build_object('tick',data->'tick');\n   when 'ready' then\n    perform ecb8.keys(data,array['ready']);\n    if jsonb_typeof(data->'ready')<>'boolean' or data->'ready'=h->'ready' then raise exception 'b8_native_change_required'; end if;\n    h:=h||jsonb_build_object('ready',data->'ready','revision',(h->>'revision')::int+1);\n   when 'dependency' then\n    perform ecb8.keys(data,array['source','revision']);\n    if data->>'revision' is null or data->'revision'=h->'dependencies'->(data->>'source') then raise exception 'b8_revision_change_required'; end if;\n    h:=jsonb_set(h,array['dependencies',data->>'source'],data->'revision');\n   when 'revoke_grant' then\n    perform ecb8.keys(data,array['grant']); perform ecb8.doc((data->>'grant')::uuid,'b8_basis');\n    h:=h||jsonb_build_object('revoked_grants',h->'revoked_grants'||jsonb_build_array(data->'grant'));\n   when 'withdraw' then\n    perform ecb8.keys(data,array['authorization']);\n    if data->>'authorization' is distinct from h->'selected'->>'id' then raise exception 'b8_withdraw_binding'; end if;\n    h:=h||jsonb_build_object('revoked_authorizations',h->'revoked_authorizations'||jsonb_build_array(data->'authorization'),\n       'selected',null,'selection_head',eid);\n   when 'authorize' then\n    perform ecb8.keys(data,array['authorization','designation','tick']);\n    au:=data->'authorization'; perform ecb8.keys(au,array['envelope','evaluation','grant']);\n    perform ecb8.keys(data->'designation',array['envelope','predecessor']);\n    if data->'designation'->>'predecessor' is distinct from h->>'selection_head'\n    or data->'designation'->'envelope' is distinct from au->'envelope' then raise exception 'b8_designation_binding'; end if;\n    h:=h||jsonb_build_object('selected',au||jsonb_build_object('id',eid),'selection_head',eid);\n   when 'admit' then\n    perform ecb8.keys(data,array['authorization','envelope','evaluation','grant','observation']);\n    h:=jsonb_set(h,array['admissions',eid],data||jsonb_build_object('id',eid,'xid',ev->'xid'));\n   when 'start' then\n    perform ecb8.keys(data,array['admission']);\n    if not(h->'admissions' ? (data->>'admission')) then raise exception 'b8_missing_admission'; end if;\n    if exists(select 1 from jsonb_each(h->'starts') x where x.value->>'admission'=data->>'admission'\n      or not(h->'terminals' ? x.key)) then raise exception 'b8_conflicting_start'; end if;\n    h:=jsonb_set(h,array['starts',eid],data||jsonb_build_object('id',eid,'xid',ev->'xid'));\n   when 'fence' then\n    perform ecb8.keys(data,array['start','reason']);\n    if not(h->'starts' ? (data->>'start')) or h->'terminals' ? (data->>'start') or jsonb_array_length(h->'effects')>0 then raise exception 'b8_conflicting_terminal'; end if;\n    h:=jsonb_set(h,array['terminals',data->>'start'],ev);\n   when 'effect' then\n    perform ecb8.keys(data,array['start','target','operation','delta','observation']);\n    if data->>'target' is distinct from init->>'target' or data->>'operation'<>'advance_one' or data->'delta'<>'1'::jsonb then raise exception 'b8_native_history_gap'; end if;\n    if h->'terminals' ? (data->>'start') then raise exception 'b8_conflicting_terminal'; end if;\n    st:=h->'starts'->(data->>'start'); ad:=h->'admissions'->(st->>'admission'); au:=h->'selected';\n    legal:=false;\n    if st is not null and ad is not null and au is not null then\n     c:=ecb8.doc((ad->>'envelope')::uuid,'b8_envelope'); g:=ecb8.doc((ad->>'grant')::uuid,'b8_basis');\n     legal:=ad->>'authorization'=au->>'id' and c->>'actor'=ev->>'participant'\n      and g->>'login'=ev->>'login' and not(h->'revoked_grants' ? (ad->>'grant'))\n      and not(h->'revoked_authorizations' ? (ad->>'authorization'))\n      and c->'from_value'=h->'value' and c->'target_revision'=h->'revision' and h->'ready'='true'::jsonb\n      and (h->>'tick')::int<30 and jsonb_array_length(h->'effects')=0\n      and data->'observation'->'value'=h->'value' and data->'observation'->'revision'=h->'revision'\n      and data->'observation'->'tick'=h->'tick'\n      and data->'observation'->'orientation'=c->'orientation'->'designation';\n     for r in select key,value from jsonb_each(c->'dependencies') loop\n      legal:=legal and r.value->'revision'=h->'dependencies'->r.key;\n     end loop;\n    end if;\n    h:=h||jsonb_build_object('value',(h->>'value')::int+1,'revision',(h->>'revision')::int+1,\n     'effects',h->'effects'||jsonb_build_array(ev||jsonb_build_object('legitimate',coalesce(legal,false))),\n     'legitimate',(h->>'legitimate')::boolean and coalesce(legal,false));\n    if st is not null then h:=jsonb_set(h,array['terminals',data->>'start'],ev); end if;\n   when 'ack' then\n    perform ecb8.keys(data,array['start','reported_terminal','received']);\n    h:=h||jsonb_build_object('acks',h->'acks'||jsonb_build_array(ev));\n   else raise exception 'b8_unknown_event_subtype';\n  end case;\n  h:=h||jsonb_build_object('events',h->'events'||jsonb_build_array(ev),'head',eid); head:=eid;\n end loop;\n return h;\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.initial(uuid,uuid)",
+      "owner": "ecb8_owner",
+      "security_definer": false,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.initial(s uuid, a uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare ids uuid[]; j jsonb; begin\n select array_agg(id) into ids from public.artifacts where artifact_role='b8_basis'\n and context_id=s and payload_text::jsonb->>'action'=a::text and payload_text::jsonb->>'kind'='target_initial';\n if coalesce(cardinality(ids),0)<>1 then raise exception 'b8_exact_initial_required'; end if;\n j:=ecb8.doc(ids[1],'b8_basis');\n if j->>'scope' is distinct from s::text then raise exception 'b8_scope_mismatch'; end if;\n return j||jsonb_build_object('id',ids[1]);\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.inspect(uuid,uuid)",
+      "owner": "ecb8_owner",
+      "security_definer": true,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner,ecb8_executor=X/ecb8_owner,ecb8_observer=X/ecb8_owner,ecb8_evaluator=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.inspect(s uuid, a uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare h jsonb; disposition text; retained jsonb; r record; begin\n begin perform ecb8.lock_scope(s,true);\n exception when lock_not_available then return jsonb_build_object('status','UNKNOWN / IN_FLIGHT','retry','HOLD','fence',null,'observation_bound','one NOWAIT scope-lock attempt'); end;\n begin\n  h:=ecb8.history(s,a);\n  if jsonb_array_length(h->'effects')>0 then disposition:='EFFECT_ESTABLISHED';\n  elsif exists(select 1 from jsonb_each(h->'starts') x where not(h->'terminals' ? x.key)) then disposition:='RECONCILE_REQUIRED';\n  else disposition:='NO_EFFECT_ESTABLISHED'; end if;\n  -- Return exact retained bytes over the declared bounded read surface. The\n  -- fresh-process reader independently hashes and follows the exact closure.\n  select coalesce(jsonb_agg(jsonb_build_object('id',id,'role',artifact_role,'context',context_id,'bytes',payload_text,\n    'digest',encode(payload_digest,'hex'),'xid',created_xid::text)),'[]') into retained\n    from public.artifacts where (artifact_role like 'b8_%' and context_id=s) or id in (\n     select dep.key::uuid from public.artifacts ct cross join lateral jsonb_each(ct.payload_text::jsonb->'required') dep\n     where ct.artifact_role='b8_basis' and ct.context_id=s and ct.payload_text::jsonb->>'kind'='contract');\n  return jsonb_build_object('status',disposition,'retry',case when disposition='NO_EFFECT_ESTABLISHED' then 'FRESH_ADMISSION_REQUIRED' else 'HOLD' end,\n   'history',h,'retained',retained,'current_orientation',(select current_event from ecb7.scopes where id=s),'boundary','complete bounded history under exact shared scope lock',\n   'proof_class','atomic-ledger synthetic target only');\n exception when others then return jsonb_build_object('status','UNKNOWN','retry','HOLD','reason',sqlerrm); end;\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.keys(jsonb,text[])",
+      "owner": "ecb8_owner",
+      "security_definer": false,
+      "volatility": "i",
+      "grants": "{ecb8_owner=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.keys(j jsonb, names text[])\n RETURNS void\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\ndeclare actual text[]; expected text[]; begin\n select array_agg(k order by k) into actual from jsonb_object_keys(j) k;\n select array_agg(k order by k) into expected from unnest(names) k;\n if actual is distinct from expected then raise exception 'b8_exact_fields:%',names; end if;\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.lock_scope(uuid,boolean)",
+      "owner": "ecb8_owner",
+      "security_definer": false,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.lock_scope(s uuid, observation boolean DEFAULT false)\n RETURNS void\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$ begin\n if current_setting('transaction_isolation')<>'read committed' then raise exception 'b8_read_committed_required'; end if;\n if observation then\n  perform id from ecb7.scopes where id=s and synthetic for update nowait;\n else\n  perform id from ecb7.scopes where id=s and synthetic for update;\n end if;\n if not found then raise exception 'b8_synthetic_scope_required'; end if;\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.observation(jsonb)",
+      "owner": "ecb8_owner",
+      "security_definer": false,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.observation(h jsonb)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('value',h->'value','revision',h->'revision','ready',h->'ready','tick',h->'tick',\n 'dependencies',h->'dependencies','orientation',(select current_event from ecb7.scopes where id=(h->'initial'->>'scope')::uuid));\n$function$\n"
+    },
+    {
+      "signature": "ecb8.prepare_artifact()",
+      "owner": "ecb8_owner",
+      "security_definer": false,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.prepare_artifact()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare j jsonb; begin\n if new.payload_digest is not null or new.recorded_at is not null or new.created_xid is not null then\n  raise exception 'b8_derived_columns'; end if;\n if new.payload_text is null or not(new.payload_text is json object with unique keys) then\n  raise exception 'b8_exact_unique_json_required'; end if;\n j:=new.payload_text::jsonb;\n if current_user<>'ecb8_owner' then raise exception 'b8_protected_publication'; end if;\n if j->>'scope' is null or j->>'action' is null then raise exception 'b8_exact_locator_required'; end if;\n if exists(select 1 from public.referents where id=new.id) then raise exception 'b8_identity_already_registered'; end if;\n insert into public.referents(id) values(new.id);\n new.payload_digest:=extensions.digest(convert_to(new.payload_text,'UTF8'),'sha256');\n new.recorded_at:=transaction_timestamp(); new.created_xid:=pg_current_xact_id();\n return new;\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.propose(uuid,uuid,text)",
+      "owner": "ecb8_owner",
+      "security_definer": true,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner,service_role=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.propose(s uuid, a uuid, bytes text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare h jsonb; c jsonb; begin\n perform ecb8.lock_scope(s); h:=ecb8.history(s,a);\n if not(bytes is json object with unique keys) then raise exception 'b8_exact_unique_json_required'; end if;\n c:=bytes::jsonb;\n perform ecb8.keys(c,array['scope','action','target','actor','operation','from_value','target_revision','ready','delta','max_effects',\n 'orientation','dependencies','method','contract','expression','observation_access','temporal','retry']);\n if c->>'scope' is distinct from s::text or c->>'action' is distinct from a::text then raise exception 'b8_locator_binding'; end if;\n -- Wrong meanings/values remain retainable; qualification must discriminate them.\n return ecb8.retain('b8_envelope',s,bytes);\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.qualify(uuid,uuid,uuid,uuid,uuid)",
+      "owner": "ecb8_owner",
+      "security_definer": true,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner,ecb8_evaluator=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.qualify(s uuid, a uuid, envelope uuid, contract uuid, p uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare h jsonb; q jsonb; begin\n perform ecb8.lock_scope(s); h:=ecb8.history(s,a); perform ecb8.expected(h,p);\n q:=ecb8.examine(envelope,contract);\n if q->>'scope' is distinct from s::text or q->>'action' is distinct from a::text then raise exception 'b8_qualification_locator'; end if;\n return ecb8.retain('b8_evaluation',s,(q||jsonb_build_object('evaluator',session_user))::text);\nend $function$\n"
+    },
+    {
+      "signature": "ecb8.retain(text,uuid,text,uuid)",
+      "owner": "ecb8_owner",
+      "security_definer": false,
+      "volatility": "v",
+      "grants": "{ecb8_owner=X/ecb8_owner}",
+      "definition": "CREATE OR REPLACE FUNCTION ecb8.retain(k text, c uuid, bytes text, i uuid DEFAULT gen_random_uuid())\n RETURNS uuid\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$ begin\n insert into public.artifacts(id,artifact_role,context_id,payload_text) values(i,k,c,bytes); return i;\nend $function$\n"
+    }
+  ],
+  "roles": [
+    {
+      "rolname": "ecb8_evaluator",
+      "rolcanlogin": false,
+      "rolinherit": false
+    },
+    {
+      "rolname": "ecb8_executor",
+      "rolcanlogin": false,
+      "rolinherit": false
+    },
+    {
+      "rolname": "ecb8_observer",
+      "rolcanlogin": false,
+      "rolinherit": false
+    },
+    {
+      "rolname": "ecb8_owner",
+      "rolcanlogin": false,
+      "rolinherit": false
+    }
+  ],
+  "privilege": {
+    "pointer": false,
+    "general_update": false,
+    "lock_column": true
+  },
+  "shape": {
+    "tables": 0,
+    "missing_identities": 0
+  },
+  "artifacts": [
+    {
+      "artifact_role": "b7_attempt",
+      "count": 88
+    },
+    {
+      "artifact_role": "b7_candidate",
+      "count": 42
+    },
+    {
+      "artifact_role": "b7_contract",
+      "count": 42
+    },
+    {
+      "artifact_role": "b7_designation",
+      "count": 46
+    },
+    {
+      "artifact_role": "b7_evaluation",
+      "count": 42
+    },
+    {
+      "artifact_role": "b7_grammar",
+      "count": 42
+    },
+    {
+      "artifact_role": "b7_grant",
+      "count": 46
+    },
+    {
+      "artifact_role": "b7_observation",
+      "count": 46
+    },
+    {
+      "artifact_role": "b7_snapshot",
+      "count": 126
+    },
+    {
+      "artifact_role": "b8_basis",
+      "count": 133
+    },
+    {
+      "artifact_role": "b8_envelope",
+      "count": 81
+    },
+    {
+      "artifact_role": "b8_evaluation",
+      "count": 80
+    },
+    {
+      "artifact_role": "b8_event",
+      "count": 184
+    },
+    {
+      "artifact_role": "check_attempt",
+      "count": 5
+    },
+    {
+      "artifact_role": "source_representation",
+      "count": 1
+    },
+    {
+      "artifact_role": "transformation_receipt",
+      "count": 5
+    },
+    {
+      "artifact_role": "transformation_request",
+      "count": 3
+    },
+    {
+      "artifact_role": "transformed_representation",
+      "count": 3
+    }
+  ],
+  "version": {
+    "version": "PostgreSQL 17.10 (Debian 17.10-1.pgdg12+1) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit",
+    "isolation": "read committed"
+  }
+}

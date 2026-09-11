@@ -8,22 +8,6 @@ jobs:
   proof:
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    services:
-      postgres:
-        image: pgvector/pgvector:0.8.2-pg17
-        env:
-          POSTGRES_USER: custodian
-          POSTGRES_HOST_AUTH_METHOD: trust
-        ports:
-          - 55439:5432
-        options: >-
-          --health-cmd "pg_isready -U custodian -d postgres"
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries 20
-    env:
-      BUILD6_DISPOSABLE: 'YES'
-      BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:55439/build6
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -32,15 +16,11 @@ jobs:
       - uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
-      - name: Reconstruct accepted disposable predecessor
-        run: bash tests/build-6/ci-reconstruct-build5b.sh
-      - name: Verify disposable PostgreSQL boundary
-        run: |
-          psql -X -v ON_ERROR_STOP=1 postgresql://postgres@127.0.0.1:55439/build6 -c "select version(), current_setting('transaction_isolation');"
-      - name: Run BUILD 8 proof when implementation is present
-        run: |
-          if test -f tests/build-8/verify.sh; then
-            bash tests/build-8/verify.sh
-          else
-            echo 'ENVIRONMENT CHECK ONLY — BUILD 8 IMPLEMENTATION AND P01–P14 NOT YET EXECUTED'
-          fi
+      - name: Run the bounded BUILD 8 disposable proof
+        run: bash tests/build-8/verify.sh
+      - name: Retain actual proof results even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eco-103-build-8-proof
+          path: docs/build-receipts/evidence/build-8/

@@ -1,0 +1,313 @@
+{
+  "proof_class": "atomic-ledger synthetic target only",
+  "results": [
+    {
+      "name": "P13 valid-digest fork",
+      "status": "UNKNOWN",
+      "reason": "b8_broken_fork_cycle_history"
+    },
+    {
+      "name": "P13 valid-digest cycle",
+      "status": "UNKNOWN",
+      "reason": "b8_broken_fork_cycle_history"
+    },
+    {
+      "name": "P13 valid-digest scope",
+      "status": "UNKNOWN",
+      "reason": "b8_scope_mismatch"
+    },
+    {
+      "name": "P13 valid-digest missing_predecessor",
+      "status": "UNKNOWN",
+      "reason": "b8_broken_fork_cycle_history"
+    },
+    {
+      "name": "P05 authorization without independently inspectable designation",
+      "status": "UNKNOWN",
+      "reason": "cannot call jsonb_object_keys on a scalar"
+    },
+    {
+      "name": "P06 changed Key before qualification",
+      "evaluation": {
+        "id": "ecb5b718-f5c6-4203-a5f4-b6f8633c953f",
+        "scope": "65d01aa0-39fc-4531-964e-c027c4d34f60",
+        "action": "e8ab7872-41ab-46c0-ae41-dd31782fc842",
+        "limits": "Finite supplied meanings, synthetic external-discrimination contract; eligibility only; atomic-ledger target only; same-worker implementation and tests.",
+        "method": "68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8",
+        "meaning": "eligibility_only",
+        "outcome": "FAIL",
+        "contract": "f4f38589-dd6d-4948-a118-8a05b6faa07c",
+        "envelope": "a42ea923-1b2b-4466-aeb3-0ebef1378ca3",
+        "findings": [
+          {
+            "status": "PASS",
+            "witness": {
+              "actor": "f071f7f5-71fe-4638-b570-9b5e18b1c1a2",
+              "delta": 1,
+              "ready": true,
+              "retry": "observe_then_explicit_fence_before_fresh_admission",
+              "scope": "65d01aa0-39fc-4531-964e-c027c4d34f60",
+              "action": "e8ab7872-41ab-46c0-ae41-dd31782fc842",
+              "method": "68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8",
+              "target": "c4914118-2bf0-4194-8e0d-9463f5ac257f",
+              "contract": "f4f38589-dd6d-4948-a118-8a05b6faa07c",
+              "temporal": {
+                "admit": [
+                  10,
+                  20
+                ],
+                "issue": [
+                  10,
+                  12
+                ],
+                "effect_before": 30,
+                "unrevoked_through_effect": true
+              },
+              "operation": "advance_one",
+              "from_value": 0,
+              "max_effects": 1,
+              "orientation": {
+                "key": "8cf3153b-e033-477e-9f5f-df4bdc5decca",
+                "evaluation": "69db966d-fc2f-4f9b-ae8d-2755163a5930",
+                "designation": "5751b38d-365e-474a-83f2-94d454050ba7"
+              },
+              "dependencies": {
+                "16daf70f-43f7-4ddc-ba50-da669d9b9f74": {
+                  "role": "b7_attempt",
+                  "digest": "04cb6fc78ac1a4cad1a79c947a940a14a3e5435912e07931006a3724c749e547",
+                  "revision": "1"
+                },
+                "2170cd32-3678-468f-8ec2-474bb40e7a2b": {
+                  "role": "b7_grammar",
+                  "digest": "d12fea6f1c3c0ce7e3ca32ebc793441382857e76a52646b07be371be6c7d288c",
+                  "revision": "1"
+                },
+                "4b952bac-74ce-4866-bd7c-e84078bc8910": {
+                  "role": "b7_snapshot",
+                  "digest": "b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213",
+                  "revision": "1"
+                },
+                "5401f900-5b96-4d0e-b84c-7a300413423c": {
+                  "role": "b7_observation",
+                  "digest": "30be0995ecd4e458ff1e724652afe57604499f79b82401a6266f1ab73c0c63fc",
+                  "revision": "1"
+                },
+                "5751b38d-365e-474a-83f2-94d454050ba7": {
+                  "role": "b7_designation",
+                  "digest": "d7789545560d01f5209e566384482630729dc31ce89263a114a29979229c60aa",
+                  "revision": "1"
+                },
+                "64458385-16e2-4ce3-a856-a4b1183da644": {
+                  "role": "b7_snapshot",
+                  "digest": "630ec5d5cdcfbe43498d6dd800357647c859d0df1a8f5634c44be2567a499d70",
+                  "revision": "1"
+                },
+                "69db966d-fc2f-4f9b-ae8d-2755163a5930": {
+                  "role": "b7_evaluation",
+                  "digest": "bd48166221e66e94aa1a5ecde1575ad73ea910fad642b43d5573ed0f6aa1fa14",
+                  "revision": "1"
+                },
+                "8cf3153b-e033-477e-9f5f-df4bdc5decca": {
+                  "role": "b7_candidate",
+                  "digest": "c98289bacae00d4f13a52d193177fcda1f34598a1ea58a0999a00eccf94610c6",
+                  "revision": "1"
+                },
+                "91e4b618-c810-49e2-89fa-64a9f3a985bf": {
+                  "role": "b7_snapshot",
+                  "digest": "851e384d0310e47141ca322d6a8b31e1bb2f86a5e844909b2982eb9ba0e271f4",
+                  "revision": "1"
+                },
+                "a5c3d5cb-dc56-4afe-83af-cb05b27d1bfa": {
+                  "role": "b7_contract",
+                  "digest": "95e81ec929932e2c4ee14bb1af30cdb80792988ee0ddc25f88e69b6705566c4b",
+                  "revision": "1"
+                },
+                "e2dc131f-ab1b-4b6c-93a6-e7189d492626": {
+                  "role": "b7_grant",
+                  "digest": "9593fb62c39e0dade17d9224c2b1e296bda29efe6980d6fa99cba1ebef8cbb07",
+                  "revision": "1"
+                },
+                "f0a56a71-ad13-4611-b6cf-bf587fd04dd3": {
+                  "role": "b7_attempt",
+                  "digest": "a3e7f3ecb2bdca1fa31907c931362e472bf8aa464c370a69644efa360eaad312",
+                  "revision": "1"
+                },
+                "f4f38589-dd6d-4948-a118-8a05b6faa07c": {
+                  "role": "b8_basis",
+                  "digest": "d1a11c4cc6644aa88297fd4ceacab2a153b03538fca720b5110c5c1ff673f54e",
+                  "revision": "1"
+                }
+              },
+              "target_revision": 0,
+              "observation_access": "external"
+            },
+            "obligation": "exact_binding"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "gaps": [],
+              "mismatches": []
+            },
+            "obligation": "closure"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "delta": 1,
+              "access": "external",
+              "maximum": 1
+            },
+            "obligation": "action_meaning"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "retry": "observe_then_explicit_fence_before_fresh_admission",
+              "temporal": {
+                "admit": [
+                  10,
+                  20
+                ],
+                "issue": [
+                  10,
+                  12
+                ],
+                "effect_before": 30,
+                "unrevoked_through_effect": true
+              }
+            },
+            "obligation": "temporal_retry"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "required": {
+                "delta": 1,
+                "access": "external",
+                "action": "e8ab7872-41ab-46c0-ae41-dd31782fc842",
+                "target": "c4914118-2bf0-4194-8e0d-9463f5ac257f",
+                "maximum": 1,
+                "revision": 0,
+                "from_value": 0
+              },
+              "expression": "Advance target c4914118-2bf0-4194-8e0d-9463f5ac257f by one from value 0 at revision 0; at most one effect for action e8ab7872-41ab-46c0-ae41-dd31782fc842",
+              "interpreted": {
+                "delta": 1,
+                "access": "external",
+                "action": "e8ab7872-41ab-46c0-ae41-dd31782fc842",
+                "target": "c4914118-2bf0-4194-8e0d-9463f5ac257f",
+                "maximum": 1,
+                "revision": 0,
+                "from_value": 0
+              }
+            },
+            "obligation": "expression_meaning"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "key": "8cf3153b-e033-477e-9f5f-df4bdc5decca",
+              "evaluation": "69db966d-fc2f-4f9b-ae8d-2755163a5930",
+              "designation": "5751b38d-365e-474a-83f2-94d454050ba7"
+            },
+            "obligation": "orientation_grounding"
+          },
+          {
+            "status": "FAIL",
+            "witness": {
+              "16daf70f-43f7-4ddc-ba50-da669d9b9f74": "1",
+              "2170cd32-3678-468f-8ec2-474bb40e7a2b": "1",
+              "4b952bac-74ce-4866-bd7c-e84078bc8910": "1",
+              "5401f900-5b96-4d0e-b84c-7a300413423c": "1",
+              "5751b38d-365e-474a-83f2-94d454050ba7": "1",
+              "64458385-16e2-4ce3-a856-a4b1183da644": "1",
+              "69db966d-fc2f-4f9b-ae8d-2755163a5930": "1",
+              "8cf3153b-e033-477e-9f5f-df4bdc5decca": "1",
+              "91e4b618-c810-49e2-89fa-64a9f3a985bf": "1",
+              "a5c3d5cb-dc56-4afe-83af-cb05b27d1bfa": "1",
+              "e2dc131f-ab1b-4b6c-93a6-e7189d492626": "1",
+              "f0a56a71-ad13-4611-b6cf-bf587fd04dd3": "1",
+              "f4f38589-dd6d-4948-a118-8a05b6faa07c": "1"
+            },
+            "obligation": "declared_current_basis"
+          }
+        ],
+        "evaluator": "b8_evaluator"
+      }
+    },
+    {
+      "name": "P06 changed Key before authorization",
+      "rejected": "b8_authorization_conditions:[\"qualification_or_integrity\", \"orientation_selection\"]"
+    },
+    {
+      "name": "P06 changed Key before admission",
+      "rejected": "b8_conditions:[\"qualification_or_integrity\", \"orientation_selection\"]"
+    },
+    {
+      "name": "P05 exact request changed parameters",
+      "rejected": "b8_request_conflict"
+    },
+    {
+      "name": "P07 historical authorization replay after expiry and withdrawal",
+      "again": {
+        "event": "3adb1858-eceb-49ef-a807-7a792e672ecb",
+        "replayed": true,
+        "present_selected": null,
+        "historical_authorization": {
+          "tick": 10,
+          "designation": {
+            "envelope": "d50db7af-9bbf-4928-bff7-a10c3c042962",
+            "predecessor": null
+          },
+          "authorization": {
+            "grant": "c6324b13-6af1-4b4d-8d76-25c329ee331b",
+            "envelope": "d50db7af-9bbf-4928-bff7-a10c3c042962",
+            "evaluation": "ceeb1594-7f85-4be9-97aa-3e8812b5da38"
+          }
+        }
+      },
+      "present": {
+        "applicable": false,
+        "gaps": [
+          "no_selected_authorization"
+        ]
+      }
+    },
+    {
+      "name": "P09 fresh child exits after committed start",
+      "status": "RECONCILE_REQUIRED",
+      "unfinished": [
+        "38b80dad-8796-4e08-8059-cd7bc67557d2"
+      ]
+    },
+    {
+      "name": "E1 derived payload_digest cannot be caller supplied",
+      "rejected": "b8_derived_columns"
+    },
+    {
+      "name": "E1 derived recorded_at cannot be caller supplied",
+      "rejected": "b8_derived_columns"
+    },
+    {
+      "name": "E1 derived created_xid cannot be caller supplied",
+      "rejected": "b8_derived_columns"
+    },
+    {
+      "name": "E1 duplicate JSON keys at retained-byte boundary",
+      "rejected": "b8_exact_unique_json_required"
+    },
+    {
+      "name": "E1 identity registered once",
+      "rejected": "b8_identity_already_registered"
+    },
+    {
+      "name": "I2 tick does not change native revision",
+      "revision": 0
+    },
+    {
+      "name": "I3 logical tick requires an integer, not caller text",
+      "rejected": "b8_integer_tick_required"
+    }
+  ]
+}

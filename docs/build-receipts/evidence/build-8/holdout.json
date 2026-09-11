@@ -1,0 +1,1286 @@
+{
+  "authored_after_freeze": "2026-09-11T19:00:50Z",
+  "started_at": "2026-09-11T19:01:44.877Z",
+  "proof_class": "atomic-ledger synthetic target only",
+  "authorship": "same worker; not independent-author proof",
+  "pressure": "interpreted paraphrase plus unsupported/contradictory semantic controls; lost effect transaction, explicit fence, unused admission after expiry, slow effect with mixed exact replay and status storm, lost ACK, post-effect revocation",
+  "freeze_sha256": "7f5a3e6cf457c7731c5ac5e964e1f124eb35dd9c305141415317590550ffa079",
+  "locator": {
+    "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+    "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44"
+  },
+  "semantic": [
+    {
+      "name": "paraphrase",
+      "id": "1251cc15-f474-479a-a5f6-b0fdf168cdca",
+      "q": {
+        "id": "cb1f2592-e10a-4062-a57d-82e7af0588aa",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "limits": "Finite supplied meanings, synthetic external-discrimination contract; eligibility only; atomic-ledger target only; same-worker implementation and tests.",
+        "method": "68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8",
+        "meaning": "eligibility_only",
+        "outcome": "PASS",
+        "contract": "13d69464-5477-4370-a907-76ff56efeb14",
+        "envelope": "1251cc15-f474-479a-a5f6-b0fdf168cdca",
+        "findings": [
+          {
+            "status": "PASS",
+            "witness": {
+              "actor": "d8e26665-b4ce-4f8d-afe1-6bd3a34c0274",
+              "delta": 1,
+              "ready": true,
+              "retry": "observe_then_explicit_fence_before_fresh_admission",
+              "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+              "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+              "method": "68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8",
+              "target": "aded9797-f54a-40dc-becf-f07ba73dea3b",
+              "contract": "13d69464-5477-4370-a907-76ff56efeb14",
+              "temporal": {
+                "admit": [
+                  10,
+                  20
+                ],
+                "issue": [
+                  10,
+                  12
+                ],
+                "effect_before": 30,
+                "unrevoked_through_effect": true
+              },
+              "operation": "advance_one",
+              "from_value": 0,
+              "max_effects": 1,
+              "orientation": {
+                "key": "8f3cb445-4dda-4804-881e-25b6de2b7f75",
+                "evaluation": "8d9396eb-dd6b-4415-ba60-759b5b71cbe0",
+                "designation": "ca0760ae-b185-4e25-85a7-67aaed60016f"
+              },
+              "dependencies": {
+                "04c896a9-e8e1-471e-990f-3b48f59d9b1c": {
+                  "role": "b7_contract",
+                  "digest": "a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4",
+                  "revision": "1"
+                },
+                "061e20e3-c480-47ea-b282-29f133d05784": {
+                  "role": "b7_attempt",
+                  "digest": "bfcef472696972293df6b88b742cacd2d8d26db256b2fef21b6d54d5bf539b0b",
+                  "revision": "1"
+                },
+                "133faa81-cfba-4ec3-82cf-9c954b6b4523": {
+                  "role": "b7_grammar",
+                  "digest": "1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68",
+                  "revision": "1"
+                },
+                "13d69464-5477-4370-a907-76ff56efeb14": {
+                  "role": "b8_basis",
+                  "digest": "5f3816d717c8b4d2a8d7f082fecace1cc19477f71bbcc06cf05335ee08eb25fd",
+                  "revision": "1"
+                },
+                "168d0633-145c-4102-891d-a17f81ff439a": {
+                  "role": "b7_snapshot",
+                  "digest": "145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e",
+                  "revision": "1"
+                },
+                "2152f686-0ea8-47ae-b815-ea637c2d7bdf": {
+                  "role": "b7_attempt",
+                  "digest": "45e777cfb079471f9254dc72f4ec3cdc88196500ac46f5562b3ce54fcf96cbf4",
+                  "revision": "1"
+                },
+                "5db7a344-413a-4c0b-8ce2-9ae563eb368e": {
+                  "role": "b7_grant",
+                  "digest": "589051bd5ac40c604ea6bdd868490aa996166330acf43182f63851df5d5f2ab1",
+                  "revision": "1"
+                },
+                "70e5af66-2989-4796-bcb9-8536488655f9": {
+                  "role": "b7_snapshot",
+                  "digest": "86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d",
+                  "revision": "1"
+                },
+                "82280db0-677b-46e4-9c58-ed627c8ec747": {
+                  "role": "b7_observation",
+                  "digest": "41bbebb2885db782cdebe459ef22da7ed5bda7f603625a2b6d0ade9e6eddd9e1",
+                  "revision": "1"
+                },
+                "8d9396eb-dd6b-4415-ba60-759b5b71cbe0": {
+                  "role": "b7_evaluation",
+                  "digest": "9058187ee6636d1feea2095149714f53b33dbed5245f889f865be6a5135c70fe",
+                  "revision": "1"
+                },
+                "8f3cb445-4dda-4804-881e-25b6de2b7f75": {
+                  "role": "b7_candidate",
+                  "digest": "2f6d2b5ba06a7b4ba57ce98588b6cfb79a81f7cb9aa506a702c2551437c69213",
+                  "revision": "1"
+                },
+                "ca0760ae-b185-4e25-85a7-67aaed60016f": {
+                  "role": "b7_designation",
+                  "digest": "73947a6451c64ebb8c3e5a95bbfbb36690195d5648a754c6fd1bd176e01e091a",
+                  "revision": "1"
+                },
+                "d8171edc-1855-4840-b70d-f103b1ab0a79": {
+                  "role": "b7_snapshot",
+                  "digest": "b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213",
+                  "revision": "1"
+                }
+              },
+              "target_revision": 0,
+              "observation_access": "external"
+            },
+            "obligation": "exact_binding"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "gaps": [],
+              "mismatches": []
+            },
+            "obligation": "closure"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "delta": 1,
+              "access": "external",
+              "maximum": 1
+            },
+            "obligation": "action_meaning"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "retry": "observe_then_explicit_fence_before_fresh_admission",
+              "temporal": {
+                "admit": [
+                  10,
+                  20
+                ],
+                "issue": [
+                  10,
+                  12
+                ],
+                "effect_before": 30,
+                "unrevoked_through_effect": true
+              }
+            },
+            "obligation": "temporal_retry"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "required": {
+                "delta": 1,
+                "access": "external",
+                "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+                "target": "aded9797-f54a-40dc-becf-f07ba73dea3b",
+                "maximum": 1,
+                "revision": 0,
+                "from_value": 0
+              },
+              "expression": "For action 8d6fc779-0915-4b93-9231-9d9e1d5bce44, increment aded9797-f54a-40dc-becf-f07ba73dea3b once from 0 at revision 0, using external discrimination.",
+              "interpreted": {
+                "delta": 1,
+                "access": "external",
+                "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+                "target": "aded9797-f54a-40dc-becf-f07ba73dea3b",
+                "maximum": 1,
+                "revision": 0,
+                "from_value": 0
+              }
+            },
+            "obligation": "expression_meaning"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "key": "8f3cb445-4dda-4804-881e-25b6de2b7f75",
+              "evaluation": "8d9396eb-dd6b-4415-ba60-759b5b71cbe0",
+              "designation": "ca0760ae-b185-4e25-85a7-67aaed60016f"
+            },
+            "obligation": "orientation_grounding"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "04c896a9-e8e1-471e-990f-3b48f59d9b1c": "1",
+              "061e20e3-c480-47ea-b282-29f133d05784": "1",
+              "133faa81-cfba-4ec3-82cf-9c954b6b4523": "1",
+              "13d69464-5477-4370-a907-76ff56efeb14": "1",
+              "168d0633-145c-4102-891d-a17f81ff439a": "1",
+              "2152f686-0ea8-47ae-b815-ea637c2d7bdf": "1",
+              "5db7a344-413a-4c0b-8ce2-9ae563eb368e": "1",
+              "70e5af66-2989-4796-bcb9-8536488655f9": "1",
+              "82280db0-677b-46e4-9c58-ed627c8ec747": "1",
+              "8d9396eb-dd6b-4415-ba60-759b5b71cbe0": "1",
+              "8f3cb445-4dda-4804-881e-25b6de2b7f75": "1",
+              "ca0760ae-b185-4e25-85a7-67aaed60016f": "1",
+              "d8171edc-1855-4840-b70d-f103b1ab0a79": "1"
+            },
+            "obligation": "declared_current_basis"
+          }
+        ],
+        "evaluator": "b8_evaluator"
+      },
+      "expected": "PASS"
+    },
+    {
+      "name": "paraphrase with contradictory maximum",
+      "id": "ac1d5b86-417b-4f86-a068-1e8830eebbbc",
+      "q": {
+        "id": "e8f3bd87-9733-407a-8b6a-1c6db78a372a",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "limits": "Finite supplied meanings, synthetic external-discrimination contract; eligibility only; atomic-ledger target only; same-worker implementation and tests.",
+        "method": "68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8",
+        "meaning": "eligibility_only",
+        "outcome": "FAIL",
+        "contract": "13d69464-5477-4370-a907-76ff56efeb14",
+        "envelope": "ac1d5b86-417b-4f86-a068-1e8830eebbbc",
+        "findings": [
+          {
+            "status": "PASS",
+            "witness": {
+              "actor": "d8e26665-b4ce-4f8d-afe1-6bd3a34c0274",
+              "delta": 1,
+              "ready": true,
+              "retry": "observe_then_explicit_fence_before_fresh_admission",
+              "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+              "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+              "method": "68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8",
+              "target": "aded9797-f54a-40dc-becf-f07ba73dea3b",
+              "contract": "13d69464-5477-4370-a907-76ff56efeb14",
+              "temporal": {
+                "admit": [
+                  10,
+                  20
+                ],
+                "issue": [
+                  10,
+                  12
+                ],
+                "effect_before": 30,
+                "unrevoked_through_effect": true
+              },
+              "operation": "advance_one",
+              "from_value": 0,
+              "max_effects": 2,
+              "orientation": {
+                "key": "8f3cb445-4dda-4804-881e-25b6de2b7f75",
+                "evaluation": "8d9396eb-dd6b-4415-ba60-759b5b71cbe0",
+                "designation": "ca0760ae-b185-4e25-85a7-67aaed60016f"
+              },
+              "dependencies": {
+                "04c896a9-e8e1-471e-990f-3b48f59d9b1c": {
+                  "role": "b7_contract",
+                  "digest": "a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4",
+                  "revision": "1"
+                },
+                "061e20e3-c480-47ea-b282-29f133d05784": {
+                  "role": "b7_attempt",
+                  "digest": "bfcef472696972293df6b88b742cacd2d8d26db256b2fef21b6d54d5bf539b0b",
+                  "revision": "1"
+                },
+                "133faa81-cfba-4ec3-82cf-9c954b6b4523": {
+                  "role": "b7_grammar",
+                  "digest": "1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68",
+                  "revision": "1"
+                },
+                "13d69464-5477-4370-a907-76ff56efeb14": {
+                  "role": "b8_basis",
+                  "digest": "5f3816d717c8b4d2a8d7f082fecace1cc19477f71bbcc06cf05335ee08eb25fd",
+                  "revision": "1"
+                },
+                "168d0633-145c-4102-891d-a17f81ff439a": {
+                  "role": "b7_snapshot",
+                  "digest": "145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e",
+                  "revision": "1"
+                },
+                "2152f686-0ea8-47ae-b815-ea637c2d7bdf": {
+                  "role": "b7_attempt",
+                  "digest": "45e777cfb079471f9254dc72f4ec3cdc88196500ac46f5562b3ce54fcf96cbf4",
+                  "revision": "1"
+                },
+                "5db7a344-413a-4c0b-8ce2-9ae563eb368e": {
+                  "role": "b7_grant",
+                  "digest": "589051bd5ac40c604ea6bdd868490aa996166330acf43182f63851df5d5f2ab1",
+                  "revision": "1"
+                },
+                "70e5af66-2989-4796-bcb9-8536488655f9": {
+                  "role": "b7_snapshot",
+                  "digest": "86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d",
+                  "revision": "1"
+                },
+                "82280db0-677b-46e4-9c58-ed627c8ec747": {
+                  "role": "b7_observation",
+                  "digest": "41bbebb2885db782cdebe459ef22da7ed5bda7f603625a2b6d0ade9e6eddd9e1",
+                  "revision": "1"
+                },
+                "8d9396eb-dd6b-4415-ba60-759b5b71cbe0": {
+                  "role": "b7_evaluation",
+                  "digest": "9058187ee6636d1feea2095149714f53b33dbed5245f889f865be6a5135c70fe",
+                  "revision": "1"
+                },
+                "8f3cb445-4dda-4804-881e-25b6de2b7f75": {
+                  "role": "b7_candidate",
+                  "digest": "2f6d2b5ba06a7b4ba57ce98588b6cfb79a81f7cb9aa506a702c2551437c69213",
+                  "revision": "1"
+                },
+                "ca0760ae-b185-4e25-85a7-67aaed60016f": {
+                  "role": "b7_designation",
+                  "digest": "73947a6451c64ebb8c3e5a95bbfbb36690195d5648a754c6fd1bd176e01e091a",
+                  "revision": "1"
+                },
+                "d8171edc-1855-4840-b70d-f103b1ab0a79": {
+                  "role": "b7_snapshot",
+                  "digest": "b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213",
+                  "revision": "1"
+                }
+              },
+              "target_revision": 0,
+              "observation_access": "external"
+            },
+            "obligation": "exact_binding"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "gaps": [],
+              "mismatches": []
+            },
+            "obligation": "closure"
+          },
+          {
+            "status": "FAIL",
+            "witness": {
+              "delta": 1,
+              "access": "external",
+              "maximum": 2
+            },
+            "obligation": "action_meaning"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "retry": "observe_then_explicit_fence_before_fresh_admission",
+              "temporal": {
+                "admit": [
+                  10,
+                  20
+                ],
+                "issue": [
+                  10,
+                  12
+                ],
+                "effect_before": 30,
+                "unrevoked_through_effect": true
+              }
+            },
+            "obligation": "temporal_retry"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "required": {
+                "delta": 1,
+                "access": "external",
+                "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+                "target": "aded9797-f54a-40dc-becf-f07ba73dea3b",
+                "maximum": 1,
+                "revision": 0,
+                "from_value": 0
+              },
+              "expression": "For action 8d6fc779-0915-4b93-9231-9d9e1d5bce44, increment aded9797-f54a-40dc-becf-f07ba73dea3b once from 0 at revision 0, using external discrimination.",
+              "interpreted": {
+                "delta": 1,
+                "access": "external",
+                "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+                "target": "aded9797-f54a-40dc-becf-f07ba73dea3b",
+                "maximum": 1,
+                "revision": 0,
+                "from_value": 0
+              }
+            },
+            "obligation": "expression_meaning"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "key": "8f3cb445-4dda-4804-881e-25b6de2b7f75",
+              "evaluation": "8d9396eb-dd6b-4415-ba60-759b5b71cbe0",
+              "designation": "ca0760ae-b185-4e25-85a7-67aaed60016f"
+            },
+            "obligation": "orientation_grounding"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "04c896a9-e8e1-471e-990f-3b48f59d9b1c": "1",
+              "061e20e3-c480-47ea-b282-29f133d05784": "1",
+              "133faa81-cfba-4ec3-82cf-9c954b6b4523": "1",
+              "13d69464-5477-4370-a907-76ff56efeb14": "1",
+              "168d0633-145c-4102-891d-a17f81ff439a": "1",
+              "2152f686-0ea8-47ae-b815-ea637c2d7bdf": "1",
+              "5db7a344-413a-4c0b-8ce2-9ae563eb368e": "1",
+              "70e5af66-2989-4796-bcb9-8536488655f9": "1",
+              "82280db0-677b-46e4-9c58-ed627c8ec747": "1",
+              "8d9396eb-dd6b-4415-ba60-759b5b71cbe0": "1",
+              "8f3cb445-4dda-4804-881e-25b6de2b7f75": "1",
+              "ca0760ae-b185-4e25-85a7-67aaed60016f": "1",
+              "d8171edc-1855-4840-b70d-f103b1ab0a79": "1"
+            },
+            "obligation": "declared_current_basis"
+          }
+        ],
+        "evaluator": "b8_evaluator"
+      },
+      "expected": "FAIL"
+    },
+    {
+      "name": "uninterpreted elaboration",
+      "id": "1495d72f-cf30-4489-83b4-39be556240ef",
+      "q": {
+        "id": "1cd61104-55b0-4b87-b491-f1acfe627323",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "limits": "Finite supplied meanings, synthetic external-discrimination contract; eligibility only; atomic-ledger target only; same-worker implementation and tests.",
+        "method": "68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8",
+        "meaning": "eligibility_only",
+        "outcome": "INCOMPLETE",
+        "contract": "13d69464-5477-4370-a907-76ff56efeb14",
+        "envelope": "1495d72f-cf30-4489-83b4-39be556240ef",
+        "findings": [
+          {
+            "status": "PASS",
+            "witness": {
+              "actor": "d8e26665-b4ce-4f8d-afe1-6bd3a34c0274",
+              "delta": 1,
+              "ready": true,
+              "retry": "observe_then_explicit_fence_before_fresh_admission",
+              "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+              "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+              "method": "68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8",
+              "target": "aded9797-f54a-40dc-becf-f07ba73dea3b",
+              "contract": "13d69464-5477-4370-a907-76ff56efeb14",
+              "temporal": {
+                "admit": [
+                  10,
+                  20
+                ],
+                "issue": [
+                  10,
+                  12
+                ],
+                "effect_before": 30,
+                "unrevoked_through_effect": true
+              },
+              "operation": "advance_one",
+              "from_value": 0,
+              "max_effects": 1,
+              "orientation": {
+                "key": "8f3cb445-4dda-4804-881e-25b6de2b7f75",
+                "evaluation": "8d9396eb-dd6b-4415-ba60-759b5b71cbe0",
+                "designation": "ca0760ae-b185-4e25-85a7-67aaed60016f"
+              },
+              "dependencies": {
+                "04c896a9-e8e1-471e-990f-3b48f59d9b1c": {
+                  "role": "b7_contract",
+                  "digest": "a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4",
+                  "revision": "1"
+                },
+                "061e20e3-c480-47ea-b282-29f133d05784": {
+                  "role": "b7_attempt",
+                  "digest": "bfcef472696972293df6b88b742cacd2d8d26db256b2fef21b6d54d5bf539b0b",
+                  "revision": "1"
+                },
+                "133faa81-cfba-4ec3-82cf-9c954b6b4523": {
+                  "role": "b7_grammar",
+                  "digest": "1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68",
+                  "revision": "1"
+                },
+                "13d69464-5477-4370-a907-76ff56efeb14": {
+                  "role": "b8_basis",
+                  "digest": "5f3816d717c8b4d2a8d7f082fecace1cc19477f71bbcc06cf05335ee08eb25fd",
+                  "revision": "1"
+                },
+                "168d0633-145c-4102-891d-a17f81ff439a": {
+                  "role": "b7_snapshot",
+                  "digest": "145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e",
+                  "revision": "1"
+                },
+                "2152f686-0ea8-47ae-b815-ea637c2d7bdf": {
+                  "role": "b7_attempt",
+                  "digest": "45e777cfb079471f9254dc72f4ec3cdc88196500ac46f5562b3ce54fcf96cbf4",
+                  "revision": "1"
+                },
+                "5db7a344-413a-4c0b-8ce2-9ae563eb368e": {
+                  "role": "b7_grant",
+                  "digest": "589051bd5ac40c604ea6bdd868490aa996166330acf43182f63851df5d5f2ab1",
+                  "revision": "1"
+                },
+                "70e5af66-2989-4796-bcb9-8536488655f9": {
+                  "role": "b7_snapshot",
+                  "digest": "86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d",
+                  "revision": "1"
+                },
+                "82280db0-677b-46e4-9c58-ed627c8ec747": {
+                  "role": "b7_observation",
+                  "digest": "41bbebb2885db782cdebe459ef22da7ed5bda7f603625a2b6d0ade9e6eddd9e1",
+                  "revision": "1"
+                },
+                "8d9396eb-dd6b-4415-ba60-759b5b71cbe0": {
+                  "role": "b7_evaluation",
+                  "digest": "9058187ee6636d1feea2095149714f53b33dbed5245f889f865be6a5135c70fe",
+                  "revision": "1"
+                },
+                "8f3cb445-4dda-4804-881e-25b6de2b7f75": {
+                  "role": "b7_candidate",
+                  "digest": "2f6d2b5ba06a7b4ba57ce98588b6cfb79a81f7cb9aa506a702c2551437c69213",
+                  "revision": "1"
+                },
+                "ca0760ae-b185-4e25-85a7-67aaed60016f": {
+                  "role": "b7_designation",
+                  "digest": "73947a6451c64ebb8c3e5a95bbfbb36690195d5648a754c6fd1bd176e01e091a",
+                  "revision": "1"
+                },
+                "d8171edc-1855-4840-b70d-f103b1ab0a79": {
+                  "role": "b7_snapshot",
+                  "digest": "b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213",
+                  "revision": "1"
+                }
+              },
+              "target_revision": 0,
+              "observation_access": "external"
+            },
+            "obligation": "exact_binding"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "gaps": [],
+              "mismatches": []
+            },
+            "obligation": "closure"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "delta": 1,
+              "access": "external",
+              "maximum": 1
+            },
+            "obligation": "action_meaning"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "retry": "observe_then_explicit_fence_before_fresh_admission",
+              "temporal": {
+                "admit": [
+                  10,
+                  20
+                ],
+                "issue": [
+                  10,
+                  12
+                ],
+                "effect_before": 30,
+                "unrevoked_through_effect": true
+              }
+            },
+            "obligation": "temporal_retry"
+          },
+          {
+            "status": "INCOMPLETE",
+            "witness": {
+              "required": {
+                "delta": 1,
+                "access": "external",
+                "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+                "target": "aded9797-f54a-40dc-becf-f07ba73dea3b",
+                "maximum": 1,
+                "revision": 0,
+                "from_value": 0
+              },
+              "expression": "For action 8d6fc779-0915-4b93-9231-9d9e1d5bce44, increment aded9797-f54a-40dc-becf-f07ba73dea3b once from 0 at revision 0, using external discrimination. Trust me.",
+              "interpreted": null
+            },
+            "obligation": "expression_meaning"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "key": "8f3cb445-4dda-4804-881e-25b6de2b7f75",
+              "evaluation": "8d9396eb-dd6b-4415-ba60-759b5b71cbe0",
+              "designation": "ca0760ae-b185-4e25-85a7-67aaed60016f"
+            },
+            "obligation": "orientation_grounding"
+          },
+          {
+            "status": "PASS",
+            "witness": {
+              "04c896a9-e8e1-471e-990f-3b48f59d9b1c": "1",
+              "061e20e3-c480-47ea-b282-29f133d05784": "1",
+              "133faa81-cfba-4ec3-82cf-9c954b6b4523": "1",
+              "13d69464-5477-4370-a907-76ff56efeb14": "1",
+              "168d0633-145c-4102-891d-a17f81ff439a": "1",
+              "2152f686-0ea8-47ae-b815-ea637c2d7bdf": "1",
+              "5db7a344-413a-4c0b-8ce2-9ae563eb368e": "1",
+              "70e5af66-2989-4796-bcb9-8536488655f9": "1",
+              "82280db0-677b-46e4-9c58-ed627c8ec747": "1",
+              "8d9396eb-dd6b-4415-ba60-759b5b71cbe0": "1",
+              "8f3cb445-4dda-4804-881e-25b6de2b7f75": "1",
+              "ca0760ae-b185-4e25-85a7-67aaed60016f": "1",
+              "d8171edc-1855-4840-b70d-f103b1ab0a79": "1"
+            },
+            "obligation": "declared_current_basis"
+          }
+        ],
+        "evaluator": "b8_evaluator"
+      },
+      "expected": "INCOMPLETE"
+    }
+  ],
+  "fenced": "a0a3188e-05ef-4247-8f6f-f395670ec93f",
+  "observation_unavailable": {
+    "fence": null,
+    "retry": "HOLD",
+    "status": "UNKNOWN / IN_FLIGHT",
+    "observation_bound": "one NOWAIT scope-lock attempt"
+  },
+  "mixed_storm": {
+    "exact_replays": 9,
+    "status_checks": 13,
+    "fences_added": 0,
+    "extra_starts": 0
+  },
+  "native_terminal": "dc8286e3-d44f-4343-a87a-bd59a50f8272",
+  "final": {
+    "status": "EFFECT_ESTABLISHED",
+    "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+    "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+    "target": "aded9797-f54a-40dc-becf-f07ba73dea3b",
+    "native": {
+      "value": 1,
+      "revision": 1,
+      "ready": true,
+      "effect_count": 1
+    },
+    "tick": 21,
+    "head": "834fb13c-4643-427d-be4d-3605074129c1",
+    "selected": "0962f094-2f18-465e-a345-6d11bc27ae77",
+    "authorizations": {
+      "0962f094-2f18-465e-a345-6d11bc27ae77": {
+        "grant": "81af2938-d550-4672-a037-4a4490a037bb",
+        "envelope": "1251cc15-f474-479a-a5f6-b0fdf168cdca",
+        "evaluation": "cb1f2592-e10a-4062-a57d-82e7af0588aa",
+        "eligible": true,
+        "grantValid": true,
+        "selectedValid": true,
+        "legitimate": true,
+        "issued_tick": 10
+      }
+    },
+    "admissions": {
+      "b234ca42-b201-479c-a00e-9c7f660c5b36": {
+        "grant": "81af2938-d550-4672-a037-4a4490a037bb",
+        "envelope": "1251cc15-f474-479a-a5f6-b0fdf168cdca",
+        "evaluation": "cb1f2592-e10a-4062-a57d-82e7af0588aa",
+        "observation": {
+          "tick": 10,
+          "ready": true,
+          "value": 0,
+          "revision": 0,
+          "orientation": "ca0760ae-b185-4e25-85a7-67aaed60016f",
+          "dependencies": {
+            "04c896a9-e8e1-471e-990f-3b48f59d9b1c": "1",
+            "061e20e3-c480-47ea-b282-29f133d05784": "1",
+            "133faa81-cfba-4ec3-82cf-9c954b6b4523": "1",
+            "13d69464-5477-4370-a907-76ff56efeb14": "1",
+            "168d0633-145c-4102-891d-a17f81ff439a": "1",
+            "2152f686-0ea8-47ae-b815-ea637c2d7bdf": "1",
+            "5db7a344-413a-4c0b-8ce2-9ae563eb368e": "1",
+            "70e5af66-2989-4796-bcb9-8536488655f9": "1",
+            "82280db0-677b-46e4-9c58-ed627c8ec747": "1",
+            "8d9396eb-dd6b-4415-ba60-759b5b71cbe0": "1",
+            "8f3cb445-4dda-4804-881e-25b6de2b7f75": "1",
+            "ca0760ae-b185-4e25-85a7-67aaed60016f": "1",
+            "d8171edc-1855-4840-b70d-f103b1ab0a79": "1"
+          }
+        },
+        "authorization": "0962f094-2f18-465e-a345-6d11bc27ae77",
+        "legitimate": true,
+        "xid": "3453"
+      },
+      "2a10672a-dfec-4394-9450-0c682ee4ad58": {
+        "grant": "81af2938-d550-4672-a037-4a4490a037bb",
+        "envelope": "1251cc15-f474-479a-a5f6-b0fdf168cdca",
+        "evaluation": "cb1f2592-e10a-4062-a57d-82e7af0588aa",
+        "observation": {
+          "tick": 19,
+          "ready": true,
+          "value": 0,
+          "revision": 0,
+          "orientation": "ca0760ae-b185-4e25-85a7-67aaed60016f",
+          "dependencies": {
+            "04c896a9-e8e1-471e-990f-3b48f59d9b1c": "1",
+            "061e20e3-c480-47ea-b282-29f133d05784": "1",
+            "133faa81-cfba-4ec3-82cf-9c954b6b4523": "1",
+            "13d69464-5477-4370-a907-76ff56efeb14": "1",
+            "168d0633-145c-4102-891d-a17f81ff439a": "1",
+            "2152f686-0ea8-47ae-b815-ea637c2d7bdf": "1",
+            "5db7a344-413a-4c0b-8ce2-9ae563eb368e": "1",
+            "70e5af66-2989-4796-bcb9-8536488655f9": "1",
+            "82280db0-677b-46e4-9c58-ed627c8ec747": "1",
+            "8d9396eb-dd6b-4415-ba60-759b5b71cbe0": "1",
+            "8f3cb445-4dda-4804-881e-25b6de2b7f75": "1",
+            "ca0760ae-b185-4e25-85a7-67aaed60016f": "1",
+            "d8171edc-1855-4840-b70d-f103b1ab0a79": "1"
+          }
+        },
+        "authorization": "0962f094-2f18-465e-a345-6d11bc27ae77",
+        "legitimate": true,
+        "xid": "3486"
+      }
+    },
+    "starts": {
+      "760297e2-0171-4224-9364-8f2ba95d9078": {
+        "admission": "b234ca42-b201-479c-a00e-9c7f660c5b36",
+        "xid": "3456"
+      },
+      "3df9a6bc-2016-4960-8dee-196b2cd13ac4": {
+        "admission": "2a10672a-dfec-4394-9450-0c682ee4ad58",
+        "xid": "3492"
+      }
+    },
+    "terminals": {
+      "760297e2-0171-4224-9364-8f2ba95d9078": {
+        "id": "a0a3188e-05ef-4247-8f6f-f395670ec93f",
+        "kind": "fence"
+      },
+      "3df9a6bc-2016-4960-8dee-196b2cd13ac4": {
+        "id": "dc8286e3-d44f-4343-a87a-bd59a50f8272",
+        "kind": "effect"
+      }
+    },
+    "effects": [
+      {
+        "id": "dc8286e3-d44f-4343-a87a-bd59a50f8272",
+        "start": "3df9a6bc-2016-4960-8dee-196b2cd13ac4",
+        "legitimate": true,
+        "observed_native_effect": 1
+      }
+    ],
+    "acks": [],
+    "unfinished": [],
+    "legitimate": true,
+    "present": {
+      "applicable": false,
+      "gaps": [
+        "revoked",
+        "target_state"
+      ]
+    },
+    "retry": "HOLD",
+    "entitlement": {
+      "remaining_occurrences": 0,
+      "may_dispatch_from_recovery": false,
+      "fresh_admission_possible": false
+    },
+    "retained": {
+      "e03b69da-34cc-4761-b2fd-fc380ed3c584": {
+        "id": "e03b69da-34cc-4761-b2fd-fc380ed3c584",
+        "xid": "3426",
+        "role": "b8_basis",
+        "bytes": "{\"kind\": \"target_initial\", \"actor\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"synthetic\": true, \"principals\": {\"b8_actor\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"b8_other\": \"5e86f4d8-f788-4871-a87d-1d3cdfb586a8\", \"postgres\": \"46de5324-c898-420c-ae15-9ab93308bfab\", \"b8_observer\": \"6f658d91-5930-48cf-9e5d-5545ffaddc56\", \"b8_evaluator\": \"275cd8ab-b34d-4ad5-953c-d2400006c156\"}, \"actor_login\": \"b8_actor\", \"dependencies\": {\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": \"1\", \"061e20e3-c480-47ea-b282-29f133d05784\": \"1\", \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": \"1\", \"168d0633-145c-4102-891d-a17f81ff439a\": \"1\", \"2152f686-0ea8-47ae-b815-ea637c2d7bdf\": \"1\", \"5db7a344-413a-4c0b-8ce2-9ae563eb368e\": \"1\", \"70e5af66-2989-4796-bcb9-8536488655f9\": \"1\", \"82280db0-677b-46e4-9c58-ed627c8ec747\": \"1\", \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\": \"1\", \"8f3cb445-4dda-4804-881e-25b6de2b7f75\": \"1\", \"ca0760ae-b185-4e25-85a7-67aaed60016f\": \"1\", \"d8171edc-1855-4840-b70d-f103b1ab0a79\": \"1\"}}",
+        "digest": "e47c85b20c02a8c83f4e02ec1a9ea2b92c58218771b1d1857be41a9915f0a26e",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "82280db0-677b-46e4-9c58-ed627c8ec747": {
+        "id": "82280db0-677b-46e4-9c58-ed627c8ec747",
+        "xid": "3416",
+        "role": "b7_observation",
+        "bytes": "{\"route\": \"synthetic exact revision probe\", \"limits\": \"declared inputs only; no world-complete awareness\", \"observer\": \"b7_evaluator\", \"dependencies\": {\"method\": \"bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670\", \"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": \"a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4\", \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": \"1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68\", \"168d0633-145c-4102-891d-a17f81ff439a\": \"145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e\", \"70e5af66-2989-4796-bcb9-8536488655f9\": \"86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d\", \"d8171edc-1855-4840-b70d-f103b1ab0a79\": \"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\"}, \"revoked_grants\": []}",
+        "digest": "41bbebb2885db782cdebe459ef22da7ed5bda7f603625a2b6d0ade9e6eddd9e1",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "8f3cb445-4dda-4804-881e-25b6de2b7f75": {
+        "id": "8f3cb445-4dda-4804-881e-25b6de2b7f75",
+        "xid": "3413",
+        "role": "b7_candidate",
+        "bytes": "{\"focal\":\"10ffe246-00fb-46da-9e3d-821703ce9425\",\"identity_basis\":\"one explicitly seated synthetic specimen\",\"grammar\":\"133faa81-cfba-4ec3-82cf-9c954b6b4523\",\"contract\":\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\",\"snapshots\":[\"70e5af66-2989-4796-bcb9-8536488655f9\",\"168d0633-145c-4102-891d-a17f81ff439a\"],\"mappings\":[{\"token\":\"7e127452-a9ab-4ece-bf12-4fea4f3e8a13\",\"snapshot\":\"70e5af66-2989-4796-bcb9-8536488655f9\",\"mapper\":\"46306685-5565-4f02-a0bd-9971fb1d2e24\",\"access\":\"native\",\"focal\":\"10ffe246-00fb-46da-9e3d-821703ce9425\",\"frame\":{\"focal\":\"10ffe246-00fb-46da-9e3d-821703ce9425\",\"anchor\":\"10ffe246-00fb-46da-9e3d-821703ce9425\",\"relation\":\"self_indexed\"},\"claim\":\"5716a9ee-cb2a-4b63-99f8-0b4823703dd5\"},{\"token\":\"16ae8299-a0bf-46c5-9dd6-74bb645daeb6\",\"snapshot\":\"168d0633-145c-4102-891d-a17f81ff439a\",\"mapper\":\"46306685-5565-4f02-a0bd-9971fb1d2e24\",\"access\":\"measurement\",\"focal\":\"10ffe246-00fb-46da-9e3d-821703ce9425\",\"frame\":{\"focal\":\"10ffe246-00fb-46da-9e3d-821703ce9425\",\"anchor\":\"46306685-5565-4f02-a0bd-9971fb1d2e24\",\"relation\":\"observes\"},\"claim\":\"8190f06c-858d-4a0d-8770-ab888ab13810\"}],\"governing_revision\":\"ECO-94:74c49056\",\"expression\":\"External observations distinguish these cases; native observations do not.\",\"parent\":null,\"conclusions\":[{\"comparison\":\"native\",\"answer\":false},{\"comparison\":\"external\",\"answer\":true}],\"coordinates\":[{\"dimension\":\"altitude\",\"subject\":\"af0cc125-e070-4806-a284-186d9e9a4400\",\"line\":null,\"value\":\"constituent\",\"snapshot\":\"70e5af66-2989-4796-bcb9-8536488655f9\"},{\"dimension\":\"altitude\",\"subject\":\"cfbeb0dd-f233-457b-8646-d086659f1d06\",\"line\":null,\"value\":\"container\",\"snapshot\":\"70e5af66-2989-4796-bcb9-8536488655f9\"},{\"dimension\":\"stage\",\"subject\":\"10ffe246-00fb-46da-9e3d-821703ce9425\",\"line\":\"sensing\",\"value\":\"installed\",\"snapshot\":\"70e5af66-2989-4796-bcb9-8536488655f9\"},{\"dimension\":\"state\",\"subject\":\"10ffe246-00fb-46da-9e3d-821703ce9425\",\"line\":\"switching\",\"value\":\"idle\",\"snapshot\":\"70e5af66-2989-4796-bcb9-8536488655f9\"},{\"dimension\":\"stage\",\"subject\":\"10ffe246-00fb-46da-9e3d-821703ce9425\",\"line\":\"switching\",\"value\":\"commissioned\",\"snapshot\":\"70e5af66-2989-4796-bcb9-8536488655f9\"},{\"dimension\":\"type\",\"subject\":\"10ffe246-00fb-46da-9e3d-821703ce9425\",\"line\":\"sensing\",\"value\":\"rounded_native\",\"snapshot\":\"70e5af66-2989-4796-bcb9-8536488655f9\"}],\"dispositions\":{\"quadrants\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which quadrants alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}},\"altitude\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which altitude alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}},\"lines\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which lines alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}},\"stages\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which stages alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}},\"states\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which states alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}},\"types\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which types alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}},\"directional_frame\":{\"status\":\"minimal\",\"basis\":\"retained comparisons and explicit limits\",\"discriminator\":\"Which directional_frame alternative could change the bounded comparison?\",\"reexpand\":\"exact grammar + evidence + comparison manifest\",\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"}}},\"question_forward\":{\"question\":\"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\",\"change\":\"retained native observation / attributed report changes the declared consequence\",\"notice\":\"exact source revision observation or focal inquiry\",\"reentry\":\"C2 requalification of affected comparison\",\"consequence\":\"allow the distinction only in a newly qualified candidate\"},\"omission_challenges\":{},\"evidence_dispositions\":[],\"promotions\":[],\"dependencies\":{\"method\":\"bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670\",\"133faa81-cfba-4ec3-82cf-9c954b6b4523\":\"1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68\",\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\":\"a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4\",\"70e5af66-2989-4796-bcb9-8536488655f9\":\"86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d\",\"168d0633-145c-4102-891d-a17f81ff439a\":\"145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e\",\"d8171edc-1855-4840-b70d-f103b1ab0a79\":\"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\"},\"compression\":{\"findings\":\"conclusions, coordinates, mappings\",\"reexpand\":\"exact manifest references\",\"trigger\":\"changed source or decision-required distinction\"}}",
+        "digest": "2f6d2b5ba06a7b4ba57ce98588b6cfb79a81f7cb9aa506a702c2551437c69213",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "5db7a344-413a-4c0b-8ce2-9ae563eb368e": {
+        "id": "5db7a344-413a-4c0b-8ce2-9ae563eb368e",
+        "xid": "3417",
+        "role": "b7_grant",
+        "bytes": "{\"actor\": \"b7_actor\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"issuer\": \"G_TEST\", \"temporal\": {\"act\": \"until_revoked\", \"continuing_effect\": \"historical_act_only\"}, \"candidate\": \"8f3cb445-4dda-4804-881e-25b6de2b7f75\", \"operation\": \"select\", \"synthetic\": true, \"evaluation\": \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\", \"predecessor\": null}",
+        "digest": "589051bd5ac40c604ea6bdd868490aa996166330acf43182f63851df5d5f2ab1",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "2152f686-0ea8-47ae-b815-ea637c2d7bdf": {
+        "id": "2152f686-0ea8-47ae-b815-ea637c2d7bdf",
+        "xid": "3418",
+        "role": "b7_attempt",
+        "bytes": "{\"actor\": \"b7_actor\", \"grant\": \"5db7a344-413a-4c0b-8ce2-9ae563eb368e\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"candidate\": \"8f3cb445-4dda-4804-881e-25b6de2b7f75\", \"operation\": \"select\", \"evaluation\": \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\", \"observation\": \"82280db0-677b-46e4-9c58-ed627c8ec747\", \"predecessor\": null}",
+        "digest": "45e777cfb079471f9254dc72f4ec3cdc88196500ac46f5562b3ce54fcf96cbf4",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "13d69464-5477-4370-a907-76ff56efeb14": {
+        "id": "13d69464-5477-4370-a907-76ff56efeb14",
+        "xid": "3429",
+        "role": "b8_basis",
+        "bytes": "{\"kind\": \"contract\", \"actor\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"limits\": \"Finite supplied meanings, synthetic external-discrimination contract; eligibility only; atomic-ledger target only; same-worker implementation and tests.\", \"method\": \"68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"initial\": \"e03b69da-34cc-4761-b2fd-fc380ed3c584\", \"required\": {\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": {\"role\": \"b7_contract\"}, \"061e20e3-c480-47ea-b282-29f133d05784\": {\"role\": \"b7_attempt\"}, \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": {\"role\": \"b7_grammar\"}, \"168d0633-145c-4102-891d-a17f81ff439a\": {\"role\": \"b7_snapshot\", \"access\": \"external\"}, \"2152f686-0ea8-47ae-b815-ea637c2d7bdf\": {\"role\": \"b7_attempt\"}, \"5db7a344-413a-4c0b-8ce2-9ae563eb368e\": {\"role\": \"b7_grant\"}, \"70e5af66-2989-4796-bcb9-8536488655f9\": {\"role\": \"b7_snapshot\", \"access\": \"native\"}, \"82280db0-677b-46e4-9c58-ed627c8ec747\": {\"role\": \"b7_observation\"}, \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\": {\"role\": \"b7_evaluation\"}, \"8f3cb445-4dda-4804-881e-25b6de2b7f75\": {\"role\": \"b7_candidate\"}, \"ca0760ae-b185-4e25-85a7-67aaed60016f\": {\"role\": \"b7_designation\"}, \"d8171edc-1855-4840-b70d-f103b1ab0a79\": {\"role\": \"b7_snapshot\"}}, \"synthetic\": true, \"orientation\": {\"key\": \"8f3cb445-4dda-4804-881e-25b6de2b7f75\", \"evaluation\": \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\", \"designation\": \"ca0760ae-b185-4e25-85a7-67aaed60016f\"}, \"interpretations\": {\"Advance a different target by one\": {\"delta\": 1, \"access\": \"external\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"target\": \"59fb6d12-fae5-4da0-b2bd-78ea97fc3a67\", \"maximum\": 1, \"revision\": 0, \"from_value\": 0}, \"Comparator has no resolved interpretation\": null, \"The native sensor supplies the discrimination\": {\"delta\": 1, \"access\": \"native\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"maximum\": 1, \"revision\": 0, \"from_value\": 0}, \"Advance target aded9797-f54a-40dc-becf-f07ba73dea3b twice for action 8d6fc779-0915-4b93-9231-9d9e1d5bce44\": {\"delta\": 2, \"access\": \"external\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"maximum\": 1, \"revision\": 0, \"from_value\": 0}, \"Advance target aded9797-f54a-40dc-becf-f07ba73dea3b by one from value 0 at revision 0; at most one effect for action 8d6fc779-0915-4b93-9231-9d9e1d5bce44\": {\"delta\": 1, \"access\": \"external\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"maximum\": 1, \"revision\": 0, \"from_value\": 0}, \"For action 8d6fc779-0915-4b93-9231-9d9e1d5bce44, increment aded9797-f54a-40dc-becf-f07ba73dea3b once from 0 at revision 0, using external discrimination.\": {\"delta\": 1, \"access\": \"external\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"maximum\": 1, \"revision\": 0, \"from_value\": 0}}, \"method_definition\": \"CREATE OR REPLACE FUNCTION ecb8.examine(envelope uuid, contract uuid)\\n RETURNS jsonb\\n LANGUAGE plpgsql\\n SET search_path TO ''\\nAS $function$\\ndeclare c jsonb; ct jsonb; init jsonb; deps jsonb; d jsonb; f jsonb:='[]'; failures jsonb:='[]'; gaps jsonb:='[]';\\n r record; q jsonb; keydoc jsonb; designation jsonb; src jsonb; meaning jsonb; expected_meaning jsonb;\\n outcome text; status text; required text[]; actual text[]; observed jsonb; begin\\n c:=ecb8.doc(envelope,'b8_envelope'); ct:=ecb8.doc(contract,'b8_basis');\\n init:=ecb8.initial((ct->>'scope')::uuid,(ct->>'action')::uuid);\\n if ct->>'kind'<>'contract' then raise exception 'b8_comparison_contract_required'; end if;\\n status:='PASS';\\n if c->>'contract' is distinct from contract::text or c->>'method' is distinct from ct->>'method'\\n or ct->>'method'<>encode(extensions.digest(convert_to(pg_get_functiondef('ecb8.examine(uuid,uuid)'::regprocedure),'UTF8'),'sha256'),'hex')\\n or c->>'scope' is distinct from ct->>'scope' or c->>'action' is distinct from ct->>'action'\\n or c->>'target' is distinct from init->>'target' or c->>'actor' is distinct from init->>'actor'\\n or c->'orientation' is distinct from ct->'orientation' then status:='FAIL'; end if;\\n f:=f||jsonb_build_array(jsonb_build_object('obligation','exact_binding','status',status,'witness',c-'expression'));\\n deps:=c->'dependencies';\\n select array_agg(x order by x) into required from (select jsonb_object_keys(ct->'required') x union select contract::text) t;\\n select array_agg(x order by x) into actual from jsonb_object_keys(deps) x;\\n if required is distinct from actual then gaps:=gaps||jsonb_build_array('required_manifest_members'); end if;\\n for r in select * from jsonb_each(ct->'required'||jsonb_build_object(contract::text,jsonb_build_object('role','b8_basis'))) loop\\n  if not(deps ? r.key) then continue; end if;\\n  begin\\n   d:=ecb8.doc(r.key::uuid,r.value->>'role');\\n   if deps->r.key->>'role' is distinct from r.value->>'role'\\n    or deps->r.key->>'digest' is distinct from (select encode(payload_digest,'hex') from public.artifacts where public.artifacts.id=r.key::uuid)\\n    or deps->r.key->>'revision' is distinct from '1' then failures:=failures||jsonb_build_array(r.key); end if;\\n  exception when others then gaps:=gaps||jsonb_build_array(jsonb_build_object('id',r.key,'gap',sqlerrm)); end;\\n end loop;\\n status:=case when jsonb_array_length(failures)>0 then 'FAIL' when jsonb_array_length(gaps)>0 then 'INCOMPLETE' else 'PASS' end;\\n f:=f||jsonb_build_array(jsonb_build_object('obligation','closure','status',status,'witness',jsonb_build_object('mismatches',failures,'gaps',gaps)));\\n status:='PASS';\\n if c->>'operation' is distinct from 'advance_one' or c->'delta' is distinct from '1'::jsonb\\n or c->'max_effects' is distinct from '1'::jsonb or c->'from_value' is distinct from '0'::jsonb\\n or c->'target_revision' is distinct from '0'::jsonb or c->'ready' is distinct from 'true'::jsonb\\n or c->>'observation_access' is distinct from 'external' then status:='FAIL'; end if;\\n f:=f||jsonb_build_array(jsonb_build_object('obligation','action_meaning','status',status,'witness',jsonb_build_object('delta',c->'delta','maximum',c->'max_effects','access',c->'observation_access')));\\n status:='PASS';\\n if c->'temporal' is distinct from '{\\\"issue\\\":[10,12],\\\"admit\\\":[10,20],\\\"effect_before\\\":30,\\\"unrevoked_through_effect\\\":true}'::jsonb\\n or c->>'retry' is distinct from 'observe_then_explicit_fence_before_fresh_admission' then status:='FAIL'; end if;\\n f:=f||jsonb_build_array(jsonb_build_object('obligation','temporal_retry','status',status,'witness',jsonb_build_object('temporal',c->'temporal','retry',c->'retry')));\\n expected_meaning:=jsonb_build_object('target',init->'target','action',ct->'action','from_value',0,'revision',0,'delta',1,'maximum',1,'access','external');\\n meaning:=ct->'interpretations'->(c->>'expression');\\n status:=case when meaning is null then 'INCOMPLETE' when meaning='null'::jsonb then 'INDETERMINATE'\\n when meaning is distinct from expected_meaning then 'FAIL' else 'PASS' end;\\n f:=f||jsonb_build_array(jsonb_build_object('obligation','expression_meaning','status',status,'witness',jsonb_build_object('expression',c->'expression','interpreted',meaning,'required',expected_meaning)));\\n status:='PASS';\\n begin\\n  keydoc:=ecb8.doc((ct->'orientation'->>'key')::uuid,'b7_candidate');\\n  q:=ecb8.doc((ct->'orientation'->>'evaluation')::uuid,'b7_evaluation');\\n  designation:=ecb8.doc((ct->'orientation'->>'designation')::uuid,'b7_designation');\\n  if q->>'outcome'<>'PASS' or q->'basis' is distinct from keydoc or q->>'candidate' is distinct from ct->'orientation'->>'key'\\n  or designation->>'candidate' is distinct from ct->'orientation'->>'key' or designation->>'evaluation' is distinct from ct->'orientation'->>'evaluation'\\n  or designation->>'operation'<>'select' or designation->>'scope' is distinct from ct->>'scope'\\n  or not(keydoc->'conclusions' @> '[{\\\"comparison\\\":\\\"native\\\",\\\"answer\\\":false},{\\\"comparison\\\":\\\"external\\\",\\\"answer\\\":true}]') then status:='FAIL'; end if;\\n  -- Explicit source observations and latency/access remain independently retained.\\n  for r in select * from jsonb_each(ct->'required') where value ? 'access' loop\\n   src:=ecb8.doc(r.key::uuid,'b7_snapshot');\\n   if r.value->>'access'='native' and src->'observations' is distinct from '[20,20]'::jsonb then status:='FAIL'; end if;\\n   if r.value->>'access'='external' and (src->'observations' is distinct from '[20.1,20.2]'::jsonb or (src->>'latency')::numeric>60) then status:='FAIL'; end if;\\n  end loop;\\n exception when others then status:='INCOMPLETE'; end;\\n f:=f||jsonb_build_array(jsonb_build_object('obligation','orientation_grounding','status',status,'witness',ct->'orientation'));\\n observed:=ecb8.history((ct->>'scope')::uuid,(ct->>'action')::uuid); status:='PASS';\\n if (select current_event::text from ecb7.scopes where id=(ct->>'scope')::uuid) is distinct from ct->'orientation'->>'designation' then status:='FAIL'; end if;\\n for r in select * from jsonb_each(deps) loop\\n  if observed->'dependencies'->r.key is distinct from r.value->'revision' then status:='FAIL'; end if;\\n end loop;\\n f:=f||jsonb_build_array(jsonb_build_object('obligation','declared_current_basis','status',status,'witness',observed->'dependencies'));\\n if exists(select 1 from jsonb_array_elements(f) x where x->>'status'='FAIL') then outcome:='FAIL';\\n elsif exists(select 1 from jsonb_array_elements(f) x where x->>'status'='INCOMPLETE') then outcome:='INCOMPLETE';\\n elsif exists(select 1 from jsonb_array_elements(f) x where x->>'status'='INDETERMINATE') then outcome:='INDETERMINATE'; else outcome:='PASS'; end if;\\n return jsonb_build_object('outcome',outcome,'findings',f,'method',ct->'method','envelope',envelope,'contract',contract,\\n 'scope',ct->'scope','action',ct->'action','meaning','eligibility_only','limits',ct->'limits');\\nend $function$\\n\"}",
+        "digest": "5f3816d717c8b4d2a8d7f082fecace1cc19477f71bbcc06cf05335ee08eb25fd",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "81af2938-d550-4672-a037-4a4490a037bb": {
+        "id": "81af2938-d550-4672-a037-4a4490a037bb",
+        "xid": "3447",
+        "role": "b8_basis",
+        "bytes": "{\"kind\": \"grant\", \"actor\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"login\": \"b8_actor\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"issuer\": \"A_TEST\", \"rights\": [\"withdraw\", \"revoke\"], \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"envelope\": \"1251cc15-f474-479a-a5f6-b0fdf168cdca\", \"temporal\": {\"admit\": [10, 20], \"issue\": [10, 12], \"effect_before\": 30, \"unrevoked_through_effect\": true}, \"operation\": \"advance_one\", \"synthetic\": true, \"evaluation\": \"cb1f2592-e10a-4062-a57d-82e7af0588aa\", \"predecessor\": null}",
+        "digest": "cc054c08d292d94f12df33f24120cca8a06425547d8634d61db07ab73bc13374",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "1251cc15-f474-479a-a5f6-b0fdf168cdca": {
+        "id": "1251cc15-f474-479a-a5f6-b0fdf168cdca",
+        "xid": "3433",
+        "role": "b8_envelope",
+        "bytes": "{\"scope\":\"d5770a2a-779d-41f8-8264-6fa435f12060\",\"action\":\"8d6fc779-0915-4b93-9231-9d9e1d5bce44\",\"target\":\"aded9797-f54a-40dc-becf-f07ba73dea3b\",\"actor\":\"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\",\"operation\":\"advance_one\",\"from_value\":0,\"target_revision\":0,\"ready\":true,\"delta\":1,\"max_effects\":1,\"orientation\":{\"key\":\"8f3cb445-4dda-4804-881e-25b6de2b7f75\",\"evaluation\":\"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\",\"designation\":\"ca0760ae-b185-4e25-85a7-67aaed60016f\"},\"dependencies\":{\"8f3cb445-4dda-4804-881e-25b6de2b7f75\":{\"role\":\"b7_candidate\",\"digest\":\"2f6d2b5ba06a7b4ba57ce98588b6cfb79a81f7cb9aa506a702c2551437c69213\",\"revision\":\"1\"},\"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\":{\"role\":\"b7_evaluation\",\"digest\":\"9058187ee6636d1feea2095149714f53b33dbed5245f889f865be6a5135c70fe\",\"revision\":\"1\"},\"ca0760ae-b185-4e25-85a7-67aaed60016f\":{\"role\":\"b7_designation\",\"digest\":\"73947a6451c64ebb8c3e5a95bbfbb36690195d5648a754c6fd1bd176e01e091a\",\"revision\":\"1\"},\"5db7a344-413a-4c0b-8ce2-9ae563eb368e\":{\"role\":\"b7_grant\",\"digest\":\"589051bd5ac40c604ea6bdd868490aa996166330acf43182f63851df5d5f2ab1\",\"revision\":\"1\"},\"82280db0-677b-46e4-9c58-ed627c8ec747\":{\"role\":\"b7_observation\",\"digest\":\"41bbebb2885db782cdebe459ef22da7ed5bda7f603625a2b6d0ade9e6eddd9e1\",\"revision\":\"1\"},\"133faa81-cfba-4ec3-82cf-9c954b6b4523\":{\"role\":\"b7_grammar\",\"digest\":\"1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68\",\"revision\":\"1\"},\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\":{\"role\":\"b7_contract\",\"digest\":\"a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4\",\"revision\":\"1\"},\"70e5af66-2989-4796-bcb9-8536488655f9\":{\"role\":\"b7_snapshot\",\"digest\":\"86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d\",\"revision\":\"1\"},\"168d0633-145c-4102-891d-a17f81ff439a\":{\"role\":\"b7_snapshot\",\"digest\":\"145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e\",\"revision\":\"1\"},\"d8171edc-1855-4840-b70d-f103b1ab0a79\":{\"role\":\"b7_snapshot\",\"digest\":\"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\",\"revision\":\"1\"},\"061e20e3-c480-47ea-b282-29f133d05784\":{\"role\":\"b7_attempt\",\"digest\":\"bfcef472696972293df6b88b742cacd2d8d26db256b2fef21b6d54d5bf539b0b\",\"revision\":\"1\"},\"2152f686-0ea8-47ae-b815-ea637c2d7bdf\":{\"role\":\"b7_attempt\",\"digest\":\"45e777cfb079471f9254dc72f4ec3cdc88196500ac46f5562b3ce54fcf96cbf4\",\"revision\":\"1\"},\"13d69464-5477-4370-a907-76ff56efeb14\":{\"role\":\"b8_basis\",\"digest\":\"5f3816d717c8b4d2a8d7f082fecace1cc19477f71bbcc06cf05335ee08eb25fd\",\"revision\":\"1\"}},\"method\":\"68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8\",\"contract\":\"13d69464-5477-4370-a907-76ff56efeb14\",\"expression\":\"For action 8d6fc779-0915-4b93-9231-9d9e1d5bce44, increment aded9797-f54a-40dc-becf-f07ba73dea3b once from 0 at revision 0, using external discrimination.\",\"observation_access\":\"external\",\"temporal\":{\"issue\":[10,12],\"admit\":[10,20],\"effect_before\":30,\"unrevoked_through_effect\":true},\"retry\":\"observe_then_explicit_fence_before_fresh_admission\"}",
+        "digest": "63a1a57c41060509839aa4592e76b0a62ee8c6037f4b00c30ee362118ae3aa48",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "cb1f2592-e10a-4062-a57d-82e7af0588aa": {
+        "id": "cb1f2592-e10a-4062-a57d-82e7af0588aa",
+        "xid": "3436",
+        "role": "b8_evaluation",
+        "bytes": "{\"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"limits\": \"Finite supplied meanings, synthetic external-discrimination contract; eligibility only; atomic-ledger target only; same-worker implementation and tests.\", \"method\": \"68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8\", \"meaning\": \"eligibility_only\", \"outcome\": \"PASS\", \"contract\": \"13d69464-5477-4370-a907-76ff56efeb14\", \"envelope\": \"1251cc15-f474-479a-a5f6-b0fdf168cdca\", \"findings\": [{\"status\": \"PASS\", \"witness\": {\"actor\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"delta\": 1, \"ready\": true, \"retry\": \"observe_then_explicit_fence_before_fresh_admission\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"method\": \"68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"contract\": \"13d69464-5477-4370-a907-76ff56efeb14\", \"temporal\": {\"admit\": [10, 20], \"issue\": [10, 12], \"effect_before\": 30, \"unrevoked_through_effect\": true}, \"operation\": \"advance_one\", \"from_value\": 0, \"max_effects\": 1, \"orientation\": {\"key\": \"8f3cb445-4dda-4804-881e-25b6de2b7f75\", \"evaluation\": \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\", \"designation\": \"ca0760ae-b185-4e25-85a7-67aaed60016f\"}, \"dependencies\": {\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": {\"role\": \"b7_contract\", \"digest\": \"a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4\", \"revision\": \"1\"}, \"061e20e3-c480-47ea-b282-29f133d05784\": {\"role\": \"b7_attempt\", \"digest\": \"bfcef472696972293df6b88b742cacd2d8d26db256b2fef21b6d54d5bf539b0b\", \"revision\": \"1\"}, \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": {\"role\": \"b7_grammar\", \"digest\": \"1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68\", \"revision\": \"1\"}, \"13d69464-5477-4370-a907-76ff56efeb14\": {\"role\": \"b8_basis\", \"digest\": \"5f3816d717c8b4d2a8d7f082fecace1cc19477f71bbcc06cf05335ee08eb25fd\", \"revision\": \"1\"}, \"168d0633-145c-4102-891d-a17f81ff439a\": {\"role\": \"b7_snapshot\", \"digest\": \"145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e\", \"revision\": \"1\"}, \"2152f686-0ea8-47ae-b815-ea637c2d7bdf\": {\"role\": \"b7_attempt\", \"digest\": \"45e777cfb079471f9254dc72f4ec3cdc88196500ac46f5562b3ce54fcf96cbf4\", \"revision\": \"1\"}, \"5db7a344-413a-4c0b-8ce2-9ae563eb368e\": {\"role\": \"b7_grant\", \"digest\": \"589051bd5ac40c604ea6bdd868490aa996166330acf43182f63851df5d5f2ab1\", \"revision\": \"1\"}, \"70e5af66-2989-4796-bcb9-8536488655f9\": {\"role\": \"b7_snapshot\", \"digest\": \"86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d\", \"revision\": \"1\"}, \"82280db0-677b-46e4-9c58-ed627c8ec747\": {\"role\": \"b7_observation\", \"digest\": \"41bbebb2885db782cdebe459ef22da7ed5bda7f603625a2b6d0ade9e6eddd9e1\", \"revision\": \"1\"}, \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\": {\"role\": \"b7_evaluation\", \"digest\": \"9058187ee6636d1feea2095149714f53b33dbed5245f889f865be6a5135c70fe\", \"revision\": \"1\"}, \"8f3cb445-4dda-4804-881e-25b6de2b7f75\": {\"role\": \"b7_candidate\", \"digest\": \"2f6d2b5ba06a7b4ba57ce98588b6cfb79a81f7cb9aa506a702c2551437c69213\", \"revision\": \"1\"}, \"ca0760ae-b185-4e25-85a7-67aaed60016f\": {\"role\": \"b7_designation\", \"digest\": \"73947a6451c64ebb8c3e5a95bbfbb36690195d5648a754c6fd1bd176e01e091a\", \"revision\": \"1\"}, \"d8171edc-1855-4840-b70d-f103b1ab0a79\": {\"role\": \"b7_snapshot\", \"digest\": \"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\", \"revision\": \"1\"}}, \"target_revision\": 0, \"observation_access\": \"external\"}, \"obligation\": \"exact_binding\"}, {\"status\": \"PASS\", \"witness\": {\"gaps\": [], \"mismatches\": []}, \"obligation\": \"closure\"}, {\"status\": \"PASS\", \"witness\": {\"delta\": 1, \"access\": \"external\", \"maximum\": 1}, \"obligation\": \"action_meaning\"}, {\"status\": \"PASS\", \"witness\": {\"retry\": \"observe_then_explicit_fence_before_fresh_admission\", \"temporal\": {\"admit\": [10, 20], \"issue\": [10, 12], \"effect_before\": 30, \"unrevoked_through_effect\": true}}, \"obligation\": \"temporal_retry\"}, {\"status\": \"PASS\", \"witness\": {\"required\": {\"delta\": 1, \"access\": \"external\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"maximum\": 1, \"revision\": 0, \"from_value\": 0}, \"expression\": \"For action 8d6fc779-0915-4b93-9231-9d9e1d5bce44, increment aded9797-f54a-40dc-becf-f07ba73dea3b once from 0 at revision 0, using external discrimination.\", \"interpreted\": {\"delta\": 1, \"access\": \"external\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"maximum\": 1, \"revision\": 0, \"from_value\": 0}}, \"obligation\": \"expression_meaning\"}, {\"status\": \"PASS\", \"witness\": {\"key\": \"8f3cb445-4dda-4804-881e-25b6de2b7f75\", \"evaluation\": \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\", \"designation\": \"ca0760ae-b185-4e25-85a7-67aaed60016f\"}, \"obligation\": \"orientation_grounding\"}, {\"status\": \"PASS\", \"witness\": {\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": \"1\", \"061e20e3-c480-47ea-b282-29f133d05784\": \"1\", \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": \"1\", \"13d69464-5477-4370-a907-76ff56efeb14\": \"1\", \"168d0633-145c-4102-891d-a17f81ff439a\": \"1\", \"2152f686-0ea8-47ae-b815-ea637c2d7bdf\": \"1\", \"5db7a344-413a-4c0b-8ce2-9ae563eb368e\": \"1\", \"70e5af66-2989-4796-bcb9-8536488655f9\": \"1\", \"82280db0-677b-46e4-9c58-ed627c8ec747\": \"1\", \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\": \"1\", \"8f3cb445-4dda-4804-881e-25b6de2b7f75\": \"1\", \"ca0760ae-b185-4e25-85a7-67aaed60016f\": \"1\", \"d8171edc-1855-4840-b70d-f103b1ab0a79\": \"1\"}, \"obligation\": \"declared_current_basis\"}], \"evaluator\": \"b8_evaluator\"}",
+        "digest": "54607ef83235027bffc31623e22892b6dc3e6af9f84a24883f331e59af783ed7",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "ac1d5b86-417b-4f86-a068-1e8830eebbbc": {
+        "id": "ac1d5b86-417b-4f86-a068-1e8830eebbbc",
+        "xid": "3437",
+        "role": "b8_envelope",
+        "bytes": "{\"scope\":\"d5770a2a-779d-41f8-8264-6fa435f12060\",\"action\":\"8d6fc779-0915-4b93-9231-9d9e1d5bce44\",\"target\":\"aded9797-f54a-40dc-becf-f07ba73dea3b\",\"actor\":\"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\",\"operation\":\"advance_one\",\"from_value\":0,\"target_revision\":0,\"ready\":true,\"delta\":1,\"max_effects\":2,\"orientation\":{\"key\":\"8f3cb445-4dda-4804-881e-25b6de2b7f75\",\"evaluation\":\"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\",\"designation\":\"ca0760ae-b185-4e25-85a7-67aaed60016f\"},\"dependencies\":{\"8f3cb445-4dda-4804-881e-25b6de2b7f75\":{\"role\":\"b7_candidate\",\"digest\":\"2f6d2b5ba06a7b4ba57ce98588b6cfb79a81f7cb9aa506a702c2551437c69213\",\"revision\":\"1\"},\"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\":{\"role\":\"b7_evaluation\",\"digest\":\"9058187ee6636d1feea2095149714f53b33dbed5245f889f865be6a5135c70fe\",\"revision\":\"1\"},\"ca0760ae-b185-4e25-85a7-67aaed60016f\":{\"role\":\"b7_designation\",\"digest\":\"73947a6451c64ebb8c3e5a95bbfbb36690195d5648a754c6fd1bd176e01e091a\",\"revision\":\"1\"},\"5db7a344-413a-4c0b-8ce2-9ae563eb368e\":{\"role\":\"b7_grant\",\"digest\":\"589051bd5ac40c604ea6bdd868490aa996166330acf43182f63851df5d5f2ab1\",\"revision\":\"1\"},\"82280db0-677b-46e4-9c58-ed627c8ec747\":{\"role\":\"b7_observation\",\"digest\":\"41bbebb2885db782cdebe459ef22da7ed5bda7f603625a2b6d0ade9e6eddd9e1\",\"revision\":\"1\"},\"133faa81-cfba-4ec3-82cf-9c954b6b4523\":{\"role\":\"b7_grammar\",\"digest\":\"1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68\",\"revision\":\"1\"},\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\":{\"role\":\"b7_contract\",\"digest\":\"a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4\",\"revision\":\"1\"},\"70e5af66-2989-4796-bcb9-8536488655f9\":{\"role\":\"b7_snapshot\",\"digest\":\"86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d\",\"revision\":\"1\"},\"168d0633-145c-4102-891d-a17f81ff439a\":{\"role\":\"b7_snapshot\",\"digest\":\"145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e\",\"revision\":\"1\"},\"d8171edc-1855-4840-b70d-f103b1ab0a79\":{\"role\":\"b7_snapshot\",\"digest\":\"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\",\"revision\":\"1\"},\"061e20e3-c480-47ea-b282-29f133d05784\":{\"role\":\"b7_attempt\",\"digest\":\"bfcef472696972293df6b88b742cacd2d8d26db256b2fef21b6d54d5bf539b0b\",\"revision\":\"1\"},\"2152f686-0ea8-47ae-b815-ea637c2d7bdf\":{\"role\":\"b7_attempt\",\"digest\":\"45e777cfb079471f9254dc72f4ec3cdc88196500ac46f5562b3ce54fcf96cbf4\",\"revision\":\"1\"},\"13d69464-5477-4370-a907-76ff56efeb14\":{\"role\":\"b8_basis\",\"digest\":\"5f3816d717c8b4d2a8d7f082fecace1cc19477f71bbcc06cf05335ee08eb25fd\",\"revision\":\"1\"}},\"method\":\"68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8\",\"contract\":\"13d69464-5477-4370-a907-76ff56efeb14\",\"expression\":\"For action 8d6fc779-0915-4b93-9231-9d9e1d5bce44, increment aded9797-f54a-40dc-becf-f07ba73dea3b once from 0 at revision 0, using external discrimination.\",\"observation_access\":\"external\",\"temporal\":{\"issue\":[10,12],\"admit\":[10,20],\"effect_before\":30,\"unrevoked_through_effect\":true},\"retry\":\"observe_then_explicit_fence_before_fresh_admission\"}",
+        "digest": "57324bc3fc801e98af0a1740efd8685b4dbae19348ed4bb2b76a88ed62d25904",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "e8f3bd87-9733-407a-8b6a-1c6db78a372a": {
+        "id": "e8f3bd87-9733-407a-8b6a-1c6db78a372a",
+        "xid": "3440",
+        "role": "b8_evaluation",
+        "bytes": "{\"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"limits\": \"Finite supplied meanings, synthetic external-discrimination contract; eligibility only; atomic-ledger target only; same-worker implementation and tests.\", \"method\": \"68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8\", \"meaning\": \"eligibility_only\", \"outcome\": \"FAIL\", \"contract\": \"13d69464-5477-4370-a907-76ff56efeb14\", \"envelope\": \"ac1d5b86-417b-4f86-a068-1e8830eebbbc\", \"findings\": [{\"status\": \"PASS\", \"witness\": {\"actor\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"delta\": 1, \"ready\": true, \"retry\": \"observe_then_explicit_fence_before_fresh_admission\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"method\": \"68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"contract\": \"13d69464-5477-4370-a907-76ff56efeb14\", \"temporal\": {\"admit\": [10, 20], \"issue\": [10, 12], \"effect_before\": 30, \"unrevoked_through_effect\": true}, \"operation\": \"advance_one\", \"from_value\": 0, \"max_effects\": 2, \"orientation\": {\"key\": \"8f3cb445-4dda-4804-881e-25b6de2b7f75\", \"evaluation\": \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\", \"designation\": \"ca0760ae-b185-4e25-85a7-67aaed60016f\"}, \"dependencies\": {\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": {\"role\": \"b7_contract\", \"digest\": \"a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4\", \"revision\": \"1\"}, \"061e20e3-c480-47ea-b282-29f133d05784\": {\"role\": \"b7_attempt\", \"digest\": \"bfcef472696972293df6b88b742cacd2d8d26db256b2fef21b6d54d5bf539b0b\", \"revision\": \"1\"}, \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": {\"role\": \"b7_grammar\", \"digest\": \"1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68\", \"revision\": \"1\"}, \"13d69464-5477-4370-a907-76ff56efeb14\": {\"role\": \"b8_basis\", \"digest\": \"5f3816d717c8b4d2a8d7f082fecace1cc19477f71bbcc06cf05335ee08eb25fd\", \"revision\": \"1\"}, \"168d0633-145c-4102-891d-a17f81ff439a\": {\"role\": \"b7_snapshot\", \"digest\": \"145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e\", \"revision\": \"1\"}, \"2152f686-0ea8-47ae-b815-ea637c2d7bdf\": {\"role\": \"b7_attempt\", \"digest\": \"45e777cfb079471f9254dc72f4ec3cdc88196500ac46f5562b3ce54fcf96cbf4\", \"revision\": \"1\"}, \"5db7a344-413a-4c0b-8ce2-9ae563eb368e\": {\"role\": \"b7_grant\", \"digest\": \"589051bd5ac40c604ea6bdd868490aa996166330acf43182f63851df5d5f2ab1\", \"revision\": \"1\"}, \"70e5af66-2989-4796-bcb9-8536488655f9\": {\"role\": \"b7_snapshot\", \"digest\": \"86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d\", \"revision\": \"1\"}, \"82280db0-677b-46e4-9c58-ed627c8ec747\": {\"role\": \"b7_observation\", \"digest\": \"41bbebb2885db782cdebe459ef22da7ed5bda7f603625a2b6d0ade9e6eddd9e1\", \"revision\": \"1\"}, \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\": {\"role\": \"b7_evaluation\", \"digest\": \"9058187ee6636d1feea2095149714f53b33dbed5245f889f865be6a5135c70fe\", \"revision\": \"1\"}, \"8f3cb445-4dda-4804-881e-25b6de2b7f75\": {\"role\": \"b7_candidate\", \"digest\": \"2f6d2b5ba06a7b4ba57ce98588b6cfb79a81f7cb9aa506a702c2551437c69213\", \"revision\": \"1\"}, \"ca0760ae-b185-4e25-85a7-67aaed60016f\": {\"role\": \"b7_designation\", \"digest\": \"73947a6451c64ebb8c3e5a95bbfbb36690195d5648a754c6fd1bd176e01e091a\", \"revision\": \"1\"}, \"d8171edc-1855-4840-b70d-f103b1ab0a79\": {\"role\": \"b7_snapshot\", \"digest\": \"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\", \"revision\": \"1\"}}, \"target_revision\": 0, \"observation_access\": \"external\"}, \"obligation\": \"exact_binding\"}, {\"status\": \"PASS\", \"witness\": {\"gaps\": [], \"mismatches\": []}, \"obligation\": \"closure\"}, {\"status\": \"FAIL\", \"witness\": {\"delta\": 1, \"access\": \"external\", \"maximum\": 2}, \"obligation\": \"action_meaning\"}, {\"status\": \"PASS\", \"witness\": {\"retry\": \"observe_then_explicit_fence_before_fresh_admission\", \"temporal\": {\"admit\": [10, 20], \"issue\": [10, 12], \"effect_before\": 30, \"unrevoked_through_effect\": true}}, \"obligation\": \"temporal_retry\"}, {\"status\": \"PASS\", \"witness\": {\"required\": {\"delta\": 1, \"access\": \"external\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"maximum\": 1, \"revision\": 0, \"from_value\": 0}, \"expression\": \"For action 8d6fc779-0915-4b93-9231-9d9e1d5bce44, increment aded9797-f54a-40dc-becf-f07ba73dea3b once from 0 at revision 0, using external discrimination.\", \"interpreted\": {\"delta\": 1, \"access\": \"external\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"maximum\": 1, \"revision\": 0, \"from_value\": 0}}, \"obligation\": \"expression_meaning\"}, {\"status\": \"PASS\", \"witness\": {\"key\": \"8f3cb445-4dda-4804-881e-25b6de2b7f75\", \"evaluation\": \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\", \"designation\": \"ca0760ae-b185-4e25-85a7-67aaed60016f\"}, \"obligation\": \"orientation_grounding\"}, {\"status\": \"PASS\", \"witness\": {\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": \"1\", \"061e20e3-c480-47ea-b282-29f133d05784\": \"1\", \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": \"1\", \"13d69464-5477-4370-a907-76ff56efeb14\": \"1\", \"168d0633-145c-4102-891d-a17f81ff439a\": \"1\", \"2152f686-0ea8-47ae-b815-ea637c2d7bdf\": \"1\", \"5db7a344-413a-4c0b-8ce2-9ae563eb368e\": \"1\", \"70e5af66-2989-4796-bcb9-8536488655f9\": \"1\", \"82280db0-677b-46e4-9c58-ed627c8ec747\": \"1\", \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\": \"1\", \"8f3cb445-4dda-4804-881e-25b6de2b7f75\": \"1\", \"ca0760ae-b185-4e25-85a7-67aaed60016f\": \"1\", \"d8171edc-1855-4840-b70d-f103b1ab0a79\": \"1\"}, \"obligation\": \"declared_current_basis\"}], \"evaluator\": \"b8_evaluator\"}",
+        "digest": "03193da10e890e13cb4d52d571760dee2810b2e6dc65168f6a0b095715490097",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "1495d72f-cf30-4489-83b4-39be556240ef": {
+        "id": "1495d72f-cf30-4489-83b4-39be556240ef",
+        "xid": "3441",
+        "role": "b8_envelope",
+        "bytes": "{\"scope\":\"d5770a2a-779d-41f8-8264-6fa435f12060\",\"action\":\"8d6fc779-0915-4b93-9231-9d9e1d5bce44\",\"target\":\"aded9797-f54a-40dc-becf-f07ba73dea3b\",\"actor\":\"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\",\"operation\":\"advance_one\",\"from_value\":0,\"target_revision\":0,\"ready\":true,\"delta\":1,\"max_effects\":1,\"orientation\":{\"key\":\"8f3cb445-4dda-4804-881e-25b6de2b7f75\",\"evaluation\":\"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\",\"designation\":\"ca0760ae-b185-4e25-85a7-67aaed60016f\"},\"dependencies\":{\"8f3cb445-4dda-4804-881e-25b6de2b7f75\":{\"role\":\"b7_candidate\",\"digest\":\"2f6d2b5ba06a7b4ba57ce98588b6cfb79a81f7cb9aa506a702c2551437c69213\",\"revision\":\"1\"},\"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\":{\"role\":\"b7_evaluation\",\"digest\":\"9058187ee6636d1feea2095149714f53b33dbed5245f889f865be6a5135c70fe\",\"revision\":\"1\"},\"ca0760ae-b185-4e25-85a7-67aaed60016f\":{\"role\":\"b7_designation\",\"digest\":\"73947a6451c64ebb8c3e5a95bbfbb36690195d5648a754c6fd1bd176e01e091a\",\"revision\":\"1\"},\"5db7a344-413a-4c0b-8ce2-9ae563eb368e\":{\"role\":\"b7_grant\",\"digest\":\"589051bd5ac40c604ea6bdd868490aa996166330acf43182f63851df5d5f2ab1\",\"revision\":\"1\"},\"82280db0-677b-46e4-9c58-ed627c8ec747\":{\"role\":\"b7_observation\",\"digest\":\"41bbebb2885db782cdebe459ef22da7ed5bda7f603625a2b6d0ade9e6eddd9e1\",\"revision\":\"1\"},\"133faa81-cfba-4ec3-82cf-9c954b6b4523\":{\"role\":\"b7_grammar\",\"digest\":\"1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68\",\"revision\":\"1\"},\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\":{\"role\":\"b7_contract\",\"digest\":\"a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4\",\"revision\":\"1\"},\"70e5af66-2989-4796-bcb9-8536488655f9\":{\"role\":\"b7_snapshot\",\"digest\":\"86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d\",\"revision\":\"1\"},\"168d0633-145c-4102-891d-a17f81ff439a\":{\"role\":\"b7_snapshot\",\"digest\":\"145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e\",\"revision\":\"1\"},\"d8171edc-1855-4840-b70d-f103b1ab0a79\":{\"role\":\"b7_snapshot\",\"digest\":\"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\",\"revision\":\"1\"},\"061e20e3-c480-47ea-b282-29f133d05784\":{\"role\":\"b7_attempt\",\"digest\":\"bfcef472696972293df6b88b742cacd2d8d26db256b2fef21b6d54d5bf539b0b\",\"revision\":\"1\"},\"2152f686-0ea8-47ae-b815-ea637c2d7bdf\":{\"role\":\"b7_attempt\",\"digest\":\"45e777cfb079471f9254dc72f4ec3cdc88196500ac46f5562b3ce54fcf96cbf4\",\"revision\":\"1\"},\"13d69464-5477-4370-a907-76ff56efeb14\":{\"role\":\"b8_basis\",\"digest\":\"5f3816d717c8b4d2a8d7f082fecace1cc19477f71bbcc06cf05335ee08eb25fd\",\"revision\":\"1\"}},\"method\":\"68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8\",\"contract\":\"13d69464-5477-4370-a907-76ff56efeb14\",\"expression\":\"For action 8d6fc779-0915-4b93-9231-9d9e1d5bce44, increment aded9797-f54a-40dc-becf-f07ba73dea3b once from 0 at revision 0, using external discrimination. Trust me.\",\"observation_access\":\"external\",\"temporal\":{\"issue\":[10,12],\"admit\":[10,20],\"effect_before\":30,\"unrevoked_through_effect\":true},\"retry\":\"observe_then_explicit_fence_before_fresh_admission\"}",
+        "digest": "9fca4e40edefb3a7e2c3f06b4de353ca3f08141e1182c2db5ef1ffe438f448d7",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "1cd61104-55b0-4b87-b491-f1acfe627323": {
+        "id": "1cd61104-55b0-4b87-b491-f1acfe627323",
+        "xid": "3444",
+        "role": "b8_evaluation",
+        "bytes": "{\"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"limits\": \"Finite supplied meanings, synthetic external-discrimination contract; eligibility only; atomic-ledger target only; same-worker implementation and tests.\", \"method\": \"68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8\", \"meaning\": \"eligibility_only\", \"outcome\": \"INCOMPLETE\", \"contract\": \"13d69464-5477-4370-a907-76ff56efeb14\", \"envelope\": \"1495d72f-cf30-4489-83b4-39be556240ef\", \"findings\": [{\"status\": \"PASS\", \"witness\": {\"actor\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"delta\": 1, \"ready\": true, \"retry\": \"observe_then_explicit_fence_before_fresh_admission\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"method\": \"68e4249bc13c3175b9a526c4235059b5519e2ee4bc4b8d7a50772edd2e0d0ee8\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"contract\": \"13d69464-5477-4370-a907-76ff56efeb14\", \"temporal\": {\"admit\": [10, 20], \"issue\": [10, 12], \"effect_before\": 30, \"unrevoked_through_effect\": true}, \"operation\": \"advance_one\", \"from_value\": 0, \"max_effects\": 1, \"orientation\": {\"key\": \"8f3cb445-4dda-4804-881e-25b6de2b7f75\", \"evaluation\": \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\", \"designation\": \"ca0760ae-b185-4e25-85a7-67aaed60016f\"}, \"dependencies\": {\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": {\"role\": \"b7_contract\", \"digest\": \"a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4\", \"revision\": \"1\"}, \"061e20e3-c480-47ea-b282-29f133d05784\": {\"role\": \"b7_attempt\", \"digest\": \"bfcef472696972293df6b88b742cacd2d8d26db256b2fef21b6d54d5bf539b0b\", \"revision\": \"1\"}, \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": {\"role\": \"b7_grammar\", \"digest\": \"1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68\", \"revision\": \"1\"}, \"13d69464-5477-4370-a907-76ff56efeb14\": {\"role\": \"b8_basis\", \"digest\": \"5f3816d717c8b4d2a8d7f082fecace1cc19477f71bbcc06cf05335ee08eb25fd\", \"revision\": \"1\"}, \"168d0633-145c-4102-891d-a17f81ff439a\": {\"role\": \"b7_snapshot\", \"digest\": \"145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e\", \"revision\": \"1\"}, \"2152f686-0ea8-47ae-b815-ea637c2d7bdf\": {\"role\": \"b7_attempt\", \"digest\": \"45e777cfb079471f9254dc72f4ec3cdc88196500ac46f5562b3ce54fcf96cbf4\", \"revision\": \"1\"}, \"5db7a344-413a-4c0b-8ce2-9ae563eb368e\": {\"role\": \"b7_grant\", \"digest\": \"589051bd5ac40c604ea6bdd868490aa996166330acf43182f63851df5d5f2ab1\", \"revision\": \"1\"}, \"70e5af66-2989-4796-bcb9-8536488655f9\": {\"role\": \"b7_snapshot\", \"digest\": \"86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d\", \"revision\": \"1\"}, \"82280db0-677b-46e4-9c58-ed627c8ec747\": {\"role\": \"b7_observation\", \"digest\": \"41bbebb2885db782cdebe459ef22da7ed5bda7f603625a2b6d0ade9e6eddd9e1\", \"revision\": \"1\"}, \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\": {\"role\": \"b7_evaluation\", \"digest\": \"9058187ee6636d1feea2095149714f53b33dbed5245f889f865be6a5135c70fe\", \"revision\": \"1\"}, \"8f3cb445-4dda-4804-881e-25b6de2b7f75\": {\"role\": \"b7_candidate\", \"digest\": \"2f6d2b5ba06a7b4ba57ce98588b6cfb79a81f7cb9aa506a702c2551437c69213\", \"revision\": \"1\"}, \"ca0760ae-b185-4e25-85a7-67aaed60016f\": {\"role\": \"b7_designation\", \"digest\": \"73947a6451c64ebb8c3e5a95bbfbb36690195d5648a754c6fd1bd176e01e091a\", \"revision\": \"1\"}, \"d8171edc-1855-4840-b70d-f103b1ab0a79\": {\"role\": \"b7_snapshot\", \"digest\": \"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\", \"revision\": \"1\"}}, \"target_revision\": 0, \"observation_access\": \"external\"}, \"obligation\": \"exact_binding\"}, {\"status\": \"PASS\", \"witness\": {\"gaps\": [], \"mismatches\": []}, \"obligation\": \"closure\"}, {\"status\": \"PASS\", \"witness\": {\"delta\": 1, \"access\": \"external\", \"maximum\": 1}, \"obligation\": \"action_meaning\"}, {\"status\": \"PASS\", \"witness\": {\"retry\": \"observe_then_explicit_fence_before_fresh_admission\", \"temporal\": {\"admit\": [10, 20], \"issue\": [10, 12], \"effect_before\": 30, \"unrevoked_through_effect\": true}}, \"obligation\": \"temporal_retry\"}, {\"status\": \"INCOMPLETE\", \"witness\": {\"required\": {\"delta\": 1, \"access\": \"external\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"maximum\": 1, \"revision\": 0, \"from_value\": 0}, \"expression\": \"For action 8d6fc779-0915-4b93-9231-9d9e1d5bce44, increment aded9797-f54a-40dc-becf-f07ba73dea3b once from 0 at revision 0, using external discrimination. Trust me.\", \"interpreted\": null}, \"obligation\": \"expression_meaning\"}, {\"status\": \"PASS\", \"witness\": {\"key\": \"8f3cb445-4dda-4804-881e-25b6de2b7f75\", \"evaluation\": \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\", \"designation\": \"ca0760ae-b185-4e25-85a7-67aaed60016f\"}, \"obligation\": \"orientation_grounding\"}, {\"status\": \"PASS\", \"witness\": {\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": \"1\", \"061e20e3-c480-47ea-b282-29f133d05784\": \"1\", \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": \"1\", \"13d69464-5477-4370-a907-76ff56efeb14\": \"1\", \"168d0633-145c-4102-891d-a17f81ff439a\": \"1\", \"2152f686-0ea8-47ae-b815-ea637c2d7bdf\": \"1\", \"5db7a344-413a-4c0b-8ce2-9ae563eb368e\": \"1\", \"70e5af66-2989-4796-bcb9-8536488655f9\": \"1\", \"82280db0-677b-46e4-9c58-ed627c8ec747\": \"1\", \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\": \"1\", \"8f3cb445-4dda-4804-881e-25b6de2b7f75\": \"1\", \"ca0760ae-b185-4e25-85a7-67aaed60016f\": \"1\", \"d8171edc-1855-4840-b70d-f103b1ab0a79\": \"1\"}, \"obligation\": \"declared_current_basis\"}], \"evaluator\": \"b8_evaluator\"}",
+        "digest": "b4cc377e6b3d939c169c06edfe4953ebb093b2c60f26acb15a19393364f53ae5",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "6f0f5d33-3cee-47fc-ae85-d642e3de3a1b": {
+        "id": "6f0f5d33-3cee-47fc-ae85-d642e3de3a1b",
+        "xid": "3432",
+        "role": "b8_event",
+        "bytes": "{\"data\": {\"source\": \"13d69464-5477-4370-a907-76ff56efeb14\", \"revision\": \"1\"}, \"kind\": \"dependency\", \"login\": \"postgres\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"request\": \"ff46ca22-2f74-48e5-a5de-667cb22af48b\", \"participant\": \"46de5324-c898-420c-ae15-9ab93308bfab\", \"predecessor\": null}",
+        "digest": "89c5576a181e7b99539c51f1aefd7d94073b3c5eaafbe5b6178ab874abc7052e",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "0962f094-2f18-465e-a345-6d11bc27ae77": {
+        "id": "0962f094-2f18-465e-a345-6d11bc27ae77",
+        "xid": "3450",
+        "role": "b8_event",
+        "bytes": "{\"data\": {\"tick\": 10, \"designation\": {\"envelope\": \"1251cc15-f474-479a-a5f6-b0fdf168cdca\", \"predecessor\": null}, \"authorization\": {\"grant\": \"81af2938-d550-4672-a037-4a4490a037bb\", \"envelope\": \"1251cc15-f474-479a-a5f6-b0fdf168cdca\", \"evaluation\": \"cb1f2592-e10a-4062-a57d-82e7af0588aa\"}}, \"kind\": \"authorize\", \"login\": \"b8_actor\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"request\": \"cbf72605-fc1a-47ab-b40e-0f9d89b89344\", \"participant\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"predecessor\": \"6f0f5d33-3cee-47fc-ae85-d642e3de3a1b\"}",
+        "digest": "3d747ae3507c8fe56ecd50c30567c37f9aa91284d3a9f0e0ef79a2ff852b0d23",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "04c896a9-e8e1-471e-990f-3b48f59d9b1c": {
+        "id": "04c896a9-e8e1-471e-990f-3b48f59d9b1c",
+        "xid": "3409",
+        "role": "b7_contract",
+        "bytes": "{\"focal\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"method\": \"bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670\", \"synthetic\": true, \"capacities\": [\"quadrants\", \"altitude\", \"lines\", \"stages\", \"states\", \"types\", \"directional_frame\"], \"comparisons\": [{\"id\": \"native\", \"kind\": \"observational_discrimination\", \"token\": \"7e127452-a9ab-4ece-bf12-4fea4f3e8a13\", \"defeater\": \"a different retained observation or access basis changes the answer\", \"consequence\": \"whether the declared source supports this bounded distinction\", \"alternatives\": [true, false], \"decision_interval\": 60}, {\"id\": \"external\", \"kind\": \"observational_discrimination\", \"token\": \"16ae8299-a0bf-46c5-9dd6-74bb645daeb6\", \"defeater\": \"a different retained observation or access basis changes the answer\", \"consequence\": \"whether the declared source supports this bounded distinction\", \"alternatives\": [true, false], \"decision_interval\": 60}], \"obligations\": [\"structural_supply\", \"focal_identity\", \"mapping_access\", \"comparison\", \"coordinates\", \"resolution_question_forward\", \"evidence_pressure\", \"non_promotion\", \"controls\"], \"applicability\": {\"mode\": \"declared_dependencies\", \"limits\": \"no time-only freshness claim; explicit observed changes and grant continuing conditions\"}, \"method_source\": \"repo:server/build-7/qualification.mjs\", \"negative_control\": \"invert_source_bound_answer\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}, \"method_definition\": \"// ECO-94 §§C2,D,E,J. Bounded source/access comparison method for BUILD 7.\\n// This interprets explicit fixture evidence; no universal prose evaluator or model-internal claim.\\nimport { createHash } from \\\"node:crypto\\\";\\nimport { readFileSync } from \\\"node:fs\\\";\\nexport const method = createHash(\\\"sha256\\\").update(\\n  readFileSync(new URL(import.meta.url)),\\n).digest(\\\"hex\\\");\\nexport const obligations = [\\n  \\\"structural_supply\\\",\\n  \\\"focal_identity\\\",\\n  \\\"mapping_access\\\",\\n  \\\"comparison\\\",\\n  \\\"coordinates\\\",\\n  \\\"resolution_question_forward\\\",\\n  \\\"evidence_pressure\\\",\\n  \\\"non_promotion\\\",\\n  \\\"controls\\\",\\n];\\nexport const capacities = [\\n  \\\"quadrants\\\",\\n  \\\"altitude\\\",\\n  \\\"lines\\\",\\n  \\\"stages\\\",\\n  \\\"states\\\",\\n  \\\"types\\\",\\n  \\\"directional_frame\\\",\\n];\\nconst corresponds = (observed, claimed) => observed === claimed;\\nconst equal = (a, b) => JSON.stringify(a) === JSON.stringify(b);\\nconst text = (x) => typeof x === \\\"string\\\" && x.trim().length > 0;\\nconst qf = (q, ct) =>\\n  q?.question === ct.question_forward.question && q && text(q.question) &&\\n  q.question.includes(\\\"?\\\") && text(q.change) && text(q.notice) &&\\n  text(q.reentry) && text(q.consequence);\\nexport async function doc(db, id, role = null) {\\n  const [r] = await db`select ecb7.doc(${id}::uuid,${role}) as value`;\\n  return r.value;\\n}\\nexport async function examine(db, candidate, contract) {\\n  const c = await doc(db, candidate, \\\"b7_candidate\\\");\\n  const ct = await doc(db, contract, \\\"b7_contract\\\");\\n  const f = [];\\n  const add = (obligation, status, reason, witness) =>\\n    f.push({ obligation, status, reason, witness });\\n  const check = (o, yes, reason, w) => add(o, yes ? \\\"PASS\\\" : \\\"FAIL\\\", reason, w);\\n  let g, sources = {};\\n  try {\\n    g = await doc(db, c.grammar, \\\"b7_grammar\\\");\\n    for (const id of [...c.snapshots, ...(g.interpretation_sources ?? [])]) {\\n      sources[id] = await doc(db, id, \\\"b7_snapshot\\\");\\n    }\\n  } catch (e) {\\n    for (const o of obligations) {\\n      add(o, \\\"INCOMPLETE\\\", \\\"exact_payload_unavailable\\\", { error: e.message });\\n    }\\n    return f;\\n  }\\n  const bindingProblems = [];\\n  for (\\n    const id of [\\n      c.grammar,\\n      c.contract,\\n      ...c.snapshots,\\n      ...(g.interpretation_sources ?? []),\\n    ]\\n  ) {\\n    const [r] =\\n      await db`select encode(payload_digest,'hex') as digest from public.artifacts where id=${id}::uuid`;\\n    if (!r || c.dependencies?.[id] !== r.digest) bindingProblems.push(id);\\n  }\\n  if (c.dependencies?.method !== ct.method) bindingProblems.push(\\\"method\\\");\\n  const absent = capacities.filter((k) =>\\n    !g.capacities?.[k] || !text(g.capacities[k].meaning) ||\\n    !text(g.capacities[k].question) || !text(g.capacities[k].source)\\n  );\\n  const q = g.capacities?.quadrants?.distinctions;\\n  const qOK = equal(q, [\\n    \\\"individual-interior\\\",\\n    \\\"individual-exterior\\\",\\n    \\\"collective-interior\\\",\\n    \\\"collective-exterior\\\",\\n  ]);\\n  add(\\n    \\\"structural_supply\\\",\\n    absent.length\\n      ? \\\"INCOMPLETE\\\"\\n      : qOK && bindingProblems.length === 0\\n      ? \\\"PASS\\\"\\n      : \\\"FAIL\\\",\\n    absent.length\\n      ? \\\"structural_support_unavailable\\\"\\n      : qOK\\n      ? \\\"exact_capacity_closure\\\"\\n      : \\\"quadrant_collapse\\\",\\n    { grammar: c.grammar, absent, quadrants: q ?? null, bindingProblems },\\n  );\\n  const [scope] =\\n    await db`select focal::text,contract::text from ecb7.scopes where id=${ct.scope}::uuid`;\\n  check(\\n    \\\"focal_identity\\\",\\n    c.focal === ct.focal && scope?.focal === c.focal &&\\n      c.contract === contract && scope?.contract === contract &&\\n      c.focal !== candidate,\\n    \\\"focal_and_artifact_identity\\\",\\n    { focal: c.focal, expected: ct.focal, artifact: candidate },\\n  );\\n  const mapFindings = [];\\n  for (const m of c.mappings ?? []) {\\n    const supplied = g.aliases?.[m.token];\\n    const source = sources[supplied?.snapshot];\\n    let claim;\\n    const [r] =\\n      await db`select proposition,scope,origin,epistemic_standing from public.claims where id=${m.claim}::uuid`;\\n    try {\\n      claim = JSON.parse(r?.proposition);\\n    } catch {\\n      claim = null;\\n    }\\n    const ok = source && supplied && m.snapshot === supplied.snapshot &&\\n      m.mapper === source.mapper && m.access === supplied.access &&\\n      m.focal === c.focal && m.frame?.focal === c.focal &&\\n      m.frame?.anchor === source.anchor &&\\n      m.frame?.relation === source.relation && text(source.source) &&\\n      text(source.version) && text(source.limits) &&\\n      equal(claim, {\\n        focal: m.focal,\\n        anchor: m.frame.anchor,\\n        relation: m.frame.relation,\\n        mapper: m.mapper,\\n        source: m.snapshot,\\n        access: m.access,\\n      }) &&\\n      r?.scope === ct.scope && r?.origin === \\\"ecb_inference\\\";\\n    mapFindings.push({\\n      token: m.token,\\n      source: supplied?.snapshot ?? null,\\n      access: supplied?.access ?? null,\\n      ok: Boolean(ok),\\n      claim: m.claim,\\n    });\\n  }\\n  check(\\n    \\\"mapping_access\\\",\\n    mapFindings.length > 0 && mapFindings.every((x) => x.ok),\\n    \\\"source_mapper_frame_access_separation\\\",\\n    mapFindings,\\n  );\\n  // Comparison expectations are independent of candidate success claims and read from retained sources.\\n  // The contract's retained interpretation is supplied independently of the producer.\\n  // This bounded method cannot interpret arbitrary new prose: missing interpretation is INCOMPLETE.\\n  const expressionMeaning =\\n    Object.hasOwn(ct.expression_interpretations ?? {}, c.expression)\\n      ? ct.expression_interpretations[c.expression]\\n      : null;\\n  const comparisons = [];\\n  for (const cmp of ct.comparisons ?? []) {\\n    const alias = g.aliases?.[cmp.token], src = sources[alias?.snapshot];\\n    let expected, reason = \\\"source_sensitive_comparison\\\", status = \\\"PASS\\\";\\n    if (!src || !alias) {\\n      status = \\\"INCOMPLETE\\\";\\n      reason = \\\"comparison_source_unavailable\\\";\\n    } else if (cmp.kind === \\\"observational_discrimination\\\") {\\n      // Distinct native outputs within the stipulated latency budget, not differences in external readings.\\n      if (\\n        !Array.isArray(src.observations) || src.observations.length !== 2 ||\\n        !Number.isFinite(src.latency)\\n      ) {\\n        status = \\\"INCOMPLETE\\\";\\n        reason = \\\"observation_trace_unavailable\\\";\\n      } else {expected = src.observations[0] !== src.observations[1] &&\\n          src.latency <= cmp.decision_interval;}\\n    } else if (cmp.kind === \\\"reported_preference\\\") {\\n      expected = alias.access === \\\"testimony\\\" && src.speaker === ct.focal &&\\n        src.report === cmp.preference;\\n    } else if (cmp.kind === \\\"collective_agreement\\\") {\\n      if (!src.convention || !Array.isArray(src.signals)) {\\n        status = \\\"INDETERMINATE\\\";\\n        reason = \\\"collective_discriminator_unavailable\\\";\\n      } else {expected = src.convention === \\\"explicit_all\\\" &&\\n          src.participants.every((p) => src.signals.includes(p));}\\n    } else {\\n      status = \\\"INDETERMINATE\\\";\\n      reason = \\\"normative_comparator_unavailable\\\";\\n    }\\n    const actual = c.conclusions?.find((x) => x.comparison === cmp.id)?.answer;\\n    if (status === \\\"PASS\\\" && !corresponds(expected, actual)) {\\n      status = \\\"FAIL\\\";\\n      reason = \\\"access_or_consequence_substitution\\\";\\n    }\\n    const expressionAnswer = expressionMeaning?.[alias?.access];\\n    if (status !== \\\"FAIL\\\" && typeof expressionAnswer !== \\\"boolean\\\") {\\n      status = \\\"INCOMPLETE\\\";\\n      reason = \\\"expression_interpretation_unavailable\\\";\\n    } else if (status === \\\"PASS\\\" && !corresponds(expected, expressionAnswer)) {\\n      status = \\\"FAIL\\\";\\n      reason = \\\"expression_consequence_substitution\\\";\\n    }\\n    if (\\n      !text(cmp.consequence) || !text(cmp.defeater) ||\\n      !Array.isArray(cmp.alternatives) || cmp.alternatives.length < 2\\n    ) {\\n      status = \\\"INDETERMINATE\\\";\\n      reason = \\\"comparison_contract_incomplete\\\";\\n    }\\n    comparisons.push({\\n      id: cmp.id,\\n      token: cmp.token,\\n      source: alias?.snapshot ?? null,\\n      access: alias?.access ?? null,\\n      kind: cmp.kind,\\n      expected: expected ?? null,\\n      actual: actual ?? null,\\n      expression: c.expression,\\n      expression_answer: expressionAnswer ?? null,\\n      interpretation_contract: contract,\\n      status,\\n      reason,\\n      consequence: cmp.consequence,\\n    });\\n  }\\n  const resultOf = (xs) =>\\n    xs.some((x) => x.status === \\\"FAIL\\\")\\n      ? \\\"FAIL\\\"\\n      : xs.some((x) => x.status === \\\"INCOMPLETE\\\")\\n      ? \\\"INCOMPLETE\\\"\\n      : xs.some((x) => x.status === \\\"INDETERMINATE\\\")\\n      ? \\\"INDETERMINATE\\\"\\n      : \\\"PASS\\\";\\n  add(\\n    \\\"comparison\\\",\\n    comparisons.length ? resultOf(comparisons) : \\\"INDETERMINATE\\\",\\n    comparisons.length\\n      ? \\\"retained_expected_observed_contrast\\\"\\n      : \\\"normative_comparator_unavailable\\\",\\n    comparisons,\\n  );\\n  const coords = [];\\n  for (const item of c.coordinates ?? []) {\\n    const src = sources[item.snapshot];\\n    const fact = src?.coordinates?.find((x) =>\\n      x.dimension === item.dimension && x.subject === item.subject &&\\n      x.line === item.line\\n    );\\n    coords.push({\\n      item,\\n      expected: fact ?? null,\\n      ok: Boolean(fact && equal(item.value, fact.value)),\\n    });\\n  }\\n  check(\\n    \\\"coordinates\\\",\\n    coords.every((x) => x.ok),\\n    \\\"level_stage_state_line_type_separation\\\",\\n    coords,\\n  );\\n  const dispositions = [];\\n  for (const k of capacities) {\\n    const d = c.dispositions?.[k];\\n    let ok = true, reason = \\\"inherited_available\\\";\\n    if (!d) {\\n      // An omitted overlay remains not_examined; a named omission challenge must cover the comparison.\\n      ok = text(c.omission_challenges?.[k]);\\n      reason = \\\"not_examined_with_omission_challenge\\\";\\n    } else {\\n      const statuses = [\\n        \\\"rich\\\",\\n        \\\"minimal\\\",\\n        \\\"unresolved\\\",\\n        \\\"non_live\\\",\\n        \\\"unsupported\\\",\\n      ];\\n      ok = statuses.includes(d.status) && text(d.basis) &&\\n        text(d.discriminator) && text(d.reexpand);\\n      if (\\n        [\\\"minimal\\\", \\\"unresolved\\\", \\\"non_live\\\", \\\"unsupported\\\"].includes(d.status)\\n      ) ok = ok && qf(d.question_forward, ct);\\n      if (d.status === \\\"non_live\\\") {\\n        ok = ok && Array.isArray(d.alternative_consequences) &&\\n          new Set(d.alternative_consequences).size === 1;\\n      }\\n      reason = ok\\n        ? \\\"resolution_with_reentry\\\"\\n        : \\\"missing_calibrated_question_or_erasure\\\";\\n    }\\n    dispositions.push({\\n      capacity: k,\\n      status: d?.status ?? \\\"not_examined\\\",\\n      ok,\\n      reason,\\n    });\\n  }\\n  if (!qf(c.question_forward, ct)) {\\n    dispositions.push({\\n      capacity: \\\"focal_question\\\",\\n      ok: false,\\n      reason: \\\"missing_calibrated_question\\\",\\n    });\\n  }\\n  const materialUnresolved = Object.values(c.dispositions ?? {}).some((d) =>\\n    d.status === \\\"unresolved\\\" && Array.isArray(d.alternative_consequences) &&\\n    new Set(d.alternative_consequences).size > 1\\n  );\\n  add(\\n    \\\"resolution_question_forward\\\",\\n    dispositions.some((x) => !x.ok)\\n      ? \\\"FAIL\\\"\\n      : materialUnresolved\\n      ? \\\"INDETERMINATE\\\"\\n      : \\\"PASS\\\",\\n    \\\"resolution_not_erasure\\\",\\n    dispositions,\\n  );\\n  const pressure = [];\\n  for (const [id, src] of Object.entries(sources)) {\\n    for (const ev of src.local_evidence ?? []) {\\n      const retained = c.evidence_dispositions?.find((x) =>\\n        x.snapshot === id && x.evidence === ev.id\\n      );\\n      const ok = retained && text(retained.finding) &&\\n        (!ev.challenges_rule ||\\n          (retained.rule === ev.challenges_rule &&\\n            text(retained.governing_route) &&\\n            text(retained.affected_decision)));\\n      pressure.push({\\n        source: id,\\n        evidence: ev,\\n        retained: retained ?? null,\\n        ok: Boolean(ok),\\n      });\\n    }\\n  }\\n  const grammarUnchanged = c.governing_revision === g.governing_revision;\\n  check(\\n    \\\"evidence_pressure\\\",\\n    grammarUnchanged && pressure.every((x) => x.ok),\\n    \\\"local_evidence_retained_without_constitutional_rewrite\\\",\\n    { grammarUnchanged, pressure },\\n  );\\n  const forbidden = [\\n    \\\"truth\\\",\\n    \\\"warrant\\\",\\n    \\\"authority\\\",\\n    \\\"designation\\\",\\n    \\\"currentness\\\",\\n    \\\"execution_authorization\\\",\\n    \\\"first_person_access\\\",\\n  ];\\n  check(\\n    \\\"non_promotion\\\",\\n    !(c.promotions ?? []).some((p) => forbidden.includes(p)),\\n    \\\"qualification_has_no_other_dimension_effect\\\",\\n    { promotions: c.promotions ?? [], meaning: \\\"comparison_eligibility_only\\\" },\\n  );\\n  // Same comparison method: a known wrong answer must disagree, and alternative wording must not matter.\\n  const decidable = comparisons.filter((x) => typeof x.expected === \\\"boolean\\\");\\n  if (decidable.length === 0) {\\n    add(\\n      \\\"controls\\\",\\n      resultOf(comparisons) === \\\"INDETERMINATE\\\"\\n        ? \\\"INDETERMINATE\\\"\\n        : \\\"INCOMPLETE\\\",\\n      \\\"control_comparison_unavailable\\\",\\n      comparisons,\\n    );\\n  } else {check(\\n      \\\"controls\\\",\\n      decidable.every((x) =>\\n        corresponds(x.expected, x.expected) &&\\n        !corresponds(x.expected, !x.expected)\\n      ) && ct.negative_control === \\\"invert_source_bound_answer\\\",\\n      \\\"known_defective_answer_rejected_by_same_contrast\\\",\\n      decidable.map((x) => ({\\n        id: x.id,\\n        positive: x.expected,\\n        defective: !x.expected,\\n        reason: \\\"access_or_consequence_substitution\\\",\\n      })),\\n    );}\\n  return f;\\n}\\nexport async function qualify(db, candidate, contract, attempt) {\\n  await db`select ecb7.attempt(${attempt}::uuid,${candidate}::uuid)`;\\n  const findings = await examine(db, candidate, contract);\\n  const [r] = await db`select ecb7.publish(${attempt}::uuid,${\\n    db.json(findings)\\n  },${method}) as id`;\\n  return { id: r.id, ...await doc(db, r.id, \\\"b7_evaluation\\\") };\\n}\\n\", \"expression_interpretations\": {\"The external path discriminates these cases; the native path does not.\": {\"native\": false, \"measurement\": true}, \"External observations distinguish these cases; native observations do not.\": {\"native\": false, \"measurement\": true}, \"The thermostat can distinguish the cases because the engineer’s readings differ.\": {\"native\": true, \"measurement\": true}, \"Only the external observation distinguishes the stipulated cases; the native observation does not.\": {\"native\": false, \"measurement\": true}}, \"expression_interpretation_limits\": \"Only retained comparator-authored meanings are checked; unsupported prose requires another applicable method, not inferred success.\"}",
+        "digest": "a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4",
+        "context": "10ffe246-00fb-46da-9e3d-821703ce9425"
+      },
+      "061e20e3-c480-47ea-b282-29f133d05784": {
+        "id": "061e20e3-c480-47ea-b282-29f133d05784",
+        "xid": "3414",
+        "role": "b7_attempt",
+        "bytes": "{\"basis\": {\"focal\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"parent\": null, \"grammar\": \"133faa81-cfba-4ec3-82cf-9c954b6b4523\", \"contract\": \"04c896a9-e8e1-471e-990f-3b48f59d9b1c\", \"mappings\": [{\"claim\": \"5716a9ee-cb2a-4b63-99f8-0b4823703dd5\", \"focal\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"frame\": {\"focal\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"anchor\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"relation\": \"self_indexed\"}, \"token\": \"7e127452-a9ab-4ece-bf12-4fea4f3e8a13\", \"access\": \"native\", \"mapper\": \"46306685-5565-4f02-a0bd-9971fb1d2e24\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\"}, {\"claim\": \"8190f06c-858d-4a0d-8770-ab888ab13810\", \"focal\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"frame\": {\"focal\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"anchor\": \"46306685-5565-4f02-a0bd-9971fb1d2e24\", \"relation\": \"observes\"}, \"token\": \"16ae8299-a0bf-46c5-9dd6-74bb645daeb6\", \"access\": \"measurement\", \"mapper\": \"46306685-5565-4f02-a0bd-9971fb1d2e24\", \"snapshot\": \"168d0633-145c-4102-891d-a17f81ff439a\"}], \"snapshots\": [\"70e5af66-2989-4796-bcb9-8536488655f9\", \"168d0633-145c-4102-891d-a17f81ff439a\"], \"expression\": \"External observations distinguish these cases; native observations do not.\", \"promotions\": [], \"compression\": {\"trigger\": \"changed source or decision-required distinction\", \"findings\": \"conclusions, coordinates, mappings\", \"reexpand\": \"exact manifest references\"}, \"conclusions\": [{\"answer\": false, \"comparison\": \"native\"}, {\"answer\": true, \"comparison\": \"external\"}], \"coordinates\": [{\"line\": null, \"value\": \"constituent\", \"subject\": \"af0cc125-e070-4806-a284-186d9e9a4400\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"altitude\"}, {\"line\": null, \"value\": \"container\", \"subject\": \"cfbeb0dd-f233-457b-8646-d086659f1d06\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"altitude\"}, {\"line\": \"sensing\", \"value\": \"installed\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"stage\"}, {\"line\": \"switching\", \"value\": \"idle\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"state\"}, {\"line\": \"switching\", \"value\": \"commissioned\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"stage\"}, {\"line\": \"sensing\", \"value\": \"rounded_native\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"type\"}], \"dependencies\": {\"method\": \"bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670\", \"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": \"a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4\", \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": \"1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68\", \"168d0633-145c-4102-891d-a17f81ff439a\": \"145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e\", \"70e5af66-2989-4796-bcb9-8536488655f9\": \"86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d\", \"d8171edc-1855-4840-b70d-f103b1ab0a79\": \"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\"}, \"dispositions\": {\"lines\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which lines alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"types\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which types alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"stages\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which stages alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"states\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which states alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"altitude\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which altitude alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"quadrants\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which quadrants alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"directional_frame\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which directional_frame alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}}, \"identity_basis\": \"one explicitly seated synthetic specimen\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}, \"governing_revision\": \"ECO-94:74c49056\", \"omission_challenges\": {}, \"evidence_dispositions\": []}, \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"status\": \"pending\", \"contract\": \"04c896a9-e8e1-471e-990f-3b48f59d9b1c\", \"candidate\": \"8f3cb445-4dda-4804-881e-25b6de2b7f75\"}",
+        "digest": "bfcef472696972293df6b88b742cacd2d8d26db256b2fef21b6d54d5bf539b0b",
+        "context": "8f3cb445-4dda-4804-881e-25b6de2b7f75"
+      },
+      "133faa81-cfba-4ec3-82cf-9c954b6b4523": {
+        "id": "133faa81-cfba-4ec3-82cf-9c954b6b4523",
+        "xid": "3408",
+        "role": "b7_grammar",
+        "bytes": "{\"aliases\": {\"16ae8299-a0bf-46c5-9dd6-74bb645daeb6\": {\"access\": \"measurement\", \"snapshot\": \"168d0633-145c-4102-891d-a17f81ff439a\"}, \"7e127452-a9ab-4ece-bf12-4fea4f3e8a13\": {\"access\": \"native\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\"}}, \"synthetic\": true, \"capacities\": {\"lines\": {\"label\": \"lines\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Separate capacity dimensions; one Line does not characterize the whole Referent.\", \"question\": \"Which lines distinction changes this comparison or requires re-entry?\"}, \"types\": {\"label\": \"types\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Categorical alternatives only when they alter a stated decision.\", \"question\": \"Which types distinction changes this comparison or requires re-entry?\"}, \"stages\": {\"label\": \"stages\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Ordered trajectory position with criteria for movement; distinct from State.\", \"question\": \"Which stages distinction changes this comparison or requires re-entry?\"}, \"states\": {\"label\": \"states\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Presently instantiated condition with observation duration limits; not Stage.\", \"question\": \"Which states distinction changes this comparison or requires re-entry?\"}, \"altitude\": {\"label\": \"altitude\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Relative constituent, focal, peer, container position under declared projection; not developmental Stage.\", \"question\": \"Which altitude distinction changes this comparison or requires re-entry?\"}, \"quadrants\": {\"label\": \"quadrants\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Individual/collective and interior/exterior distinctions; separate from frame, mapper and access.\", \"question\": \"Which quadrants distinction changes this comparison or requires re-entry?\", \"distinctions\": [\"individual-interior\", \"individual-exterior\", \"collective-interior\", \"collective-exterior\"]}, \"directional_frame\": {\"label\": \"directional_frame\", \"source\": \"ECO-94 accepted record §D + human closure\", \"meaning\": \"Focal Referent, anchor Referent and declared anchor-to-focal relation; mapper and access separately identified.\", \"question\": \"Which directional_frame distinction changes this comparison or requires re-entry?\"}}, \"governing_revision\": \"ECO-94:74c49056\", \"interpretation_sources\": [\"d8171edc-1855-4840-b70d-f103b1ab0a79\"]}",
+        "digest": "1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68",
+        "context": "10ffe246-00fb-46da-9e3d-821703ce9425"
+      },
+      "168d0633-145c-4102-891d-a17f81ff439a": {
+        "id": "168d0633-145c-4102-891d-a17f81ff439a",
+        "xid": "3406",
+        "role": "b7_snapshot",
+        "bytes": "{\"anchor\": \"46306685-5565-4f02-a0bd-9971fb1d2e24\", \"limits\": \"synthetic stipulated evidence; no real observation\", \"mapper\": \"46306685-5565-4f02-a0bd-9971fb1d2e24\", \"source\": \"fixture://thermostat/16ae8299-a0bf-46c5-9dd6-74bb645daeb6\", \"latency\": 1, \"version\": \"1\", \"relation\": \"observes\", \"synthetic\": true, \"coordinates\": [], \"observations\": [20.1, 20.2], \"local_evidence\": []}",
+        "digest": "145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e",
+        "context": "10ffe246-00fb-46da-9e3d-821703ce9425"
+      },
+      "70e5af66-2989-4796-bcb9-8536488655f9": {
+        "id": "70e5af66-2989-4796-bcb9-8536488655f9",
+        "xid": "3405",
+        "role": "b7_snapshot",
+        "bytes": "{\"anchor\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"limits\": \"synthetic stipulated evidence; no real observation\", \"mapper\": \"46306685-5565-4f02-a0bd-9971fb1d2e24\", \"source\": \"fixture://thermostat/7e127452-a9ab-4ece-bf12-4fea4f3e8a13\", \"latency\": 40, \"version\": \"1\", \"relation\": \"self_indexed\", \"sampling\": 30, \"synthetic\": true, \"resolution\": 0.5, \"thresholds\": [19.5, 20.5], \"calibration\": \"v1\", \"coordinates\": [{\"line\": null, \"value\": \"constituent\", \"subject\": \"af0cc125-e070-4806-a284-186d9e9a4400\", \"dimension\": \"altitude\"}, {\"line\": null, \"value\": \"container\", \"subject\": \"cfbeb0dd-f233-457b-8646-d086659f1d06\", \"dimension\": \"altitude\"}, {\"line\": \"sensing\", \"value\": \"installed\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"dimension\": \"stage\"}, {\"line\": \"switching\", \"value\": \"idle\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"dimension\": \"state\"}, {\"line\": \"switching\", \"value\": \"commissioned\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"dimension\": \"stage\"}, {\"line\": \"sensing\", \"value\": \"rounded_native\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"dimension\": \"type\"}], \"observations\": [20, 20], \"local_evidence\": []}",
+        "digest": "86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d",
+        "context": "10ffe246-00fb-46da-9e3d-821703ce9425"
+      },
+      "8d9396eb-dd6b-4415-ba60-759b5b71cbe0": {
+        "id": "8d9396eb-dd6b-4415-ba60-759b5b71cbe0",
+        "xid": "3415",
+        "role": "b7_evaluation",
+        "bytes": "{\"basis\": {\"focal\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"parent\": null, \"grammar\": \"133faa81-cfba-4ec3-82cf-9c954b6b4523\", \"contract\": \"04c896a9-e8e1-471e-990f-3b48f59d9b1c\", \"mappings\": [{\"claim\": \"5716a9ee-cb2a-4b63-99f8-0b4823703dd5\", \"focal\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"frame\": {\"focal\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"anchor\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"relation\": \"self_indexed\"}, \"token\": \"7e127452-a9ab-4ece-bf12-4fea4f3e8a13\", \"access\": \"native\", \"mapper\": \"46306685-5565-4f02-a0bd-9971fb1d2e24\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\"}, {\"claim\": \"8190f06c-858d-4a0d-8770-ab888ab13810\", \"focal\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"frame\": {\"focal\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"anchor\": \"46306685-5565-4f02-a0bd-9971fb1d2e24\", \"relation\": \"observes\"}, \"token\": \"16ae8299-a0bf-46c5-9dd6-74bb645daeb6\", \"access\": \"measurement\", \"mapper\": \"46306685-5565-4f02-a0bd-9971fb1d2e24\", \"snapshot\": \"168d0633-145c-4102-891d-a17f81ff439a\"}], \"snapshots\": [\"70e5af66-2989-4796-bcb9-8536488655f9\", \"168d0633-145c-4102-891d-a17f81ff439a\"], \"expression\": \"External observations distinguish these cases; native observations do not.\", \"promotions\": [], \"compression\": {\"trigger\": \"changed source or decision-required distinction\", \"findings\": \"conclusions, coordinates, mappings\", \"reexpand\": \"exact manifest references\"}, \"conclusions\": [{\"answer\": false, \"comparison\": \"native\"}, {\"answer\": true, \"comparison\": \"external\"}], \"coordinates\": [{\"line\": null, \"value\": \"constituent\", \"subject\": \"af0cc125-e070-4806-a284-186d9e9a4400\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"altitude\"}, {\"line\": null, \"value\": \"container\", \"subject\": \"cfbeb0dd-f233-457b-8646-d086659f1d06\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"altitude\"}, {\"line\": \"sensing\", \"value\": \"installed\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"stage\"}, {\"line\": \"switching\", \"value\": \"idle\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"state\"}, {\"line\": \"switching\", \"value\": \"commissioned\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"stage\"}, {\"line\": \"sensing\", \"value\": \"rounded_native\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"type\"}], \"dependencies\": {\"method\": \"bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670\", \"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": \"a5564fa853c8a4c7c1549d732bdbef8f46e83a78e5e83ea9ac9fe850a35e49a4\", \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": \"1a65eb4bd85126b010ae8bb7f5044af3ac03d692b614c8019402142f4605fb68\", \"168d0633-145c-4102-891d-a17f81ff439a\": \"145bafab101539bf625967da401ef2bfe60faefb4d43263199f22e1660bf6f4e\", \"70e5af66-2989-4796-bcb9-8536488655f9\": \"86eb8749d2ebc65d6fffee74f5766dfc5fa034abdda025750ee7023db517ba5d\", \"d8171edc-1855-4840-b70d-f103b1ab0a79\": \"b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213\"}, \"dispositions\": {\"lines\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which lines alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"types\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which types alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"stages\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which stages alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"states\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which states alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"altitude\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which altitude alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"quadrants\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which quadrants alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}, \"directional_frame\": {\"basis\": \"retained comparisons and explicit limits\", \"status\": \"minimal\", \"reexpand\": \"exact grammar + evidence + comparison manifest\", \"discriminator\": \"Which directional_frame alternative could change the bounded comparison?\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}}}, \"identity_basis\": \"one explicitly seated synthetic specimen\", \"question_forward\": {\"change\": \"retained native observation / attributed report changes the declared consequence\", \"notice\": \"exact source revision observation or focal inquiry\", \"reentry\": \"C2 requalification of affected comparison\", \"question\": \"Under the declared placement, calibration, sampling and latency, which environmental differences produce distinct native observations soon enough to change the required control branch?\", \"consequence\": \"allow the distinction only in a newly qualified candidate\"}, \"governing_revision\": \"ECO-94:74c49056\", \"omission_challenges\": {}, \"evidence_dispositions\": []}, \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"method\": \"bc69f19c97d78394f827cad1002a7c96db3da94bfcaf778c8e03cfae746e6670\", \"attempt\": \"061e20e3-c480-47ea-b282-29f133d05784\", \"meaning\": \"bounded_comparison_only\", \"outcome\": \"PASS\", \"contract\": \"04c896a9-e8e1-471e-990f-3b48f59d9b1c\", \"findings\": [{\"reason\": \"exact_capacity_closure\", \"status\": \"PASS\", \"witness\": {\"absent\": [], \"grammar\": \"133faa81-cfba-4ec3-82cf-9c954b6b4523\", \"quadrants\": [\"individual-interior\", \"individual-exterior\", \"collective-interior\", \"collective-exterior\"], \"bindingProblems\": []}, \"obligation\": \"structural_supply\"}, {\"reason\": \"focal_and_artifact_identity\", \"status\": \"PASS\", \"witness\": {\"focal\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"artifact\": \"8f3cb445-4dda-4804-881e-25b6de2b7f75\", \"expected\": \"10ffe246-00fb-46da-9e3d-821703ce9425\"}, \"obligation\": \"focal_identity\"}, {\"reason\": \"source_mapper_frame_access_separation\", \"status\": \"PASS\", \"witness\": [{\"ok\": true, \"claim\": \"5716a9ee-cb2a-4b63-99f8-0b4823703dd5\", \"token\": \"7e127452-a9ab-4ece-bf12-4fea4f3e8a13\", \"access\": \"native\", \"source\": \"70e5af66-2989-4796-bcb9-8536488655f9\"}, {\"ok\": true, \"claim\": \"8190f06c-858d-4a0d-8770-ab888ab13810\", \"token\": \"16ae8299-a0bf-46c5-9dd6-74bb645daeb6\", \"access\": \"measurement\", \"source\": \"168d0633-145c-4102-891d-a17f81ff439a\"}], \"obligation\": \"mapping_access\"}, {\"reason\": \"retained_expected_observed_contrast\", \"status\": \"PASS\", \"witness\": [{\"id\": \"native\", \"kind\": \"observational_discrimination\", \"token\": \"7e127452-a9ab-4ece-bf12-4fea4f3e8a13\", \"access\": \"native\", \"actual\": false, \"reason\": \"source_sensitive_comparison\", \"source\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"status\": \"PASS\", \"expected\": false, \"expression\": \"External observations distinguish these cases; native observations do not.\", \"consequence\": \"whether the declared source supports this bounded distinction\", \"expression_answer\": false, \"interpretation_contract\": \"04c896a9-e8e1-471e-990f-3b48f59d9b1c\"}, {\"id\": \"external\", \"kind\": \"observational_discrimination\", \"token\": \"16ae8299-a0bf-46c5-9dd6-74bb645daeb6\", \"access\": \"measurement\", \"actual\": true, \"reason\": \"source_sensitive_comparison\", \"source\": \"168d0633-145c-4102-891d-a17f81ff439a\", \"status\": \"PASS\", \"expected\": true, \"expression\": \"External observations distinguish these cases; native observations do not.\", \"consequence\": \"whether the declared source supports this bounded distinction\", \"expression_answer\": true, \"interpretation_contract\": \"04c896a9-e8e1-471e-990f-3b48f59d9b1c\"}], \"obligation\": \"comparison\"}, {\"reason\": \"level_stage_state_line_type_separation\", \"status\": \"PASS\", \"witness\": [{\"ok\": true, \"item\": {\"line\": null, \"value\": \"constituent\", \"subject\": \"af0cc125-e070-4806-a284-186d9e9a4400\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"altitude\"}, \"expected\": {\"line\": null, \"value\": \"constituent\", \"subject\": \"af0cc125-e070-4806-a284-186d9e9a4400\", \"dimension\": \"altitude\"}}, {\"ok\": true, \"item\": {\"line\": null, \"value\": \"container\", \"subject\": \"cfbeb0dd-f233-457b-8646-d086659f1d06\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"altitude\"}, \"expected\": {\"line\": null, \"value\": \"container\", \"subject\": \"cfbeb0dd-f233-457b-8646-d086659f1d06\", \"dimension\": \"altitude\"}}, {\"ok\": true, \"item\": {\"line\": \"sensing\", \"value\": \"installed\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"stage\"}, \"expected\": {\"line\": \"sensing\", \"value\": \"installed\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"dimension\": \"stage\"}}, {\"ok\": true, \"item\": {\"line\": \"switching\", \"value\": \"idle\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"state\"}, \"expected\": {\"line\": \"switching\", \"value\": \"idle\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"dimension\": \"state\"}}, {\"ok\": true, \"item\": {\"line\": \"switching\", \"value\": \"commissioned\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"stage\"}, \"expected\": {\"line\": \"switching\", \"value\": \"commissioned\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"dimension\": \"stage\"}}, {\"ok\": true, \"item\": {\"line\": \"sensing\", \"value\": \"rounded_native\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"snapshot\": \"70e5af66-2989-4796-bcb9-8536488655f9\", \"dimension\": \"type\"}, \"expected\": {\"line\": \"sensing\", \"value\": \"rounded_native\", \"subject\": \"10ffe246-00fb-46da-9e3d-821703ce9425\", \"dimension\": \"type\"}}], \"obligation\": \"coordinates\"}, {\"reason\": \"resolution_not_erasure\", \"status\": \"PASS\", \"witness\": [{\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"quadrants\"}, {\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"altitude\"}, {\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"lines\"}, {\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"stages\"}, {\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"states\"}, {\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"types\"}, {\"ok\": true, \"reason\": \"resolution_with_reentry\", \"status\": \"minimal\", \"capacity\": \"directional_frame\"}], \"obligation\": \"resolution_question_forward\"}, {\"reason\": \"local_evidence_retained_without_constitutional_rewrite\", \"status\": \"PASS\", \"witness\": {\"pressure\": [], \"grammarUnchanged\": true}, \"obligation\": \"evidence_pressure\"}, {\"reason\": \"qualification_has_no_other_dimension_effect\", \"status\": \"PASS\", \"witness\": {\"meaning\": \"comparison_eligibility_only\", \"promotions\": []}, \"obligation\": \"non_promotion\"}, {\"reason\": \"known_defective_answer_rejected_by_same_contrast\", \"status\": \"PASS\", \"witness\": [{\"id\": \"native\", \"reason\": \"access_or_consequence_substitution\", \"positive\": false, \"defective\": true}, {\"id\": \"external\", \"reason\": \"access_or_consequence_substitution\", \"positive\": true, \"defective\": false}], \"obligation\": \"controls\"}], \"candidate\": \"8f3cb445-4dda-4804-881e-25b6de2b7f75\", \"evaluator\": \"b7_evaluator\", \"applicability\": {\"mode\": \"declared_dependencies\", \"limits\": \"no time-only freshness claim; explicit observed changes and grant continuing conditions\"}, \"execution_authorized\": false}",
+        "digest": "9058187ee6636d1feea2095149714f53b33dbed5245f889f865be6a5135c70fe",
+        "context": "061e20e3-c480-47ea-b282-29f133d05784"
+      },
+      "ca0760ae-b185-4e25-85a7-67aaed60016f": {
+        "id": "ca0760ae-b185-4e25-85a7-67aaed60016f",
+        "xid": "3418",
+        "role": "b7_designation",
+        "bytes": "{\"actor\": \"b7_actor\", \"grant\": \"5db7a344-413a-4c0b-8ce2-9ae563eb368e\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"temporal\": {\"act\": \"until_revoked\", \"continuing_effect\": \"historical_act_only\"}, \"candidate\": \"8f3cb445-4dda-4804-881e-25b6de2b7f75\", \"operation\": \"select\", \"evaluation\": \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\", \"observation\": \"82280db0-677b-46e4-9c58-ed627c8ec747\", \"occurred_at\": \"2026-09-11T19:01:45.300175+00:00\", \"predecessor\": null, \"execution_authorized\": false, \"qualification_applicability\": {\"gaps\": [], \"limits\": \"declared inputs only; no world-complete awareness\", \"applicable\": true, \"observation\": \"82280db0-677b-46e4-9c58-ed627c8ec747\"}}",
+        "digest": "73947a6451c64ebb8c3e5a95bbfbb36690195d5648a754c6fd1bd176e01e091a",
+        "context": "2152f686-0ea8-47ae-b815-ea637c2d7bdf"
+      },
+      "d8171edc-1855-4840-b70d-f103b1ab0a79": {
+        "id": "d8171edc-1855-4840-b70d-f103b1ab0a79",
+        "xid": "3407",
+        "role": "b7_snapshot",
+        "bytes": "{\"text\": \"## HUMAN SHAPE CLOSURE — BUILD 7\\n\\n**Disposition:** BUILD 7 Shape is CLOSED by explicit human authorization.\\n\\nThe Astra Shape proposal is accepted with the human-reviewed local patch set incorporated as the controlling closure refinement.\\n\\n### Accepted mechanism\\n\\nBUILD 7 remains one bounded vertical slice with four behavioral responsibilities:\\n\\n`C1 structural supply + local formation`\\n→ `C2 semantic qualification`\\n→ `C3 separately authorized explicit designation`\\n→ `C4 cold recovery + lawful requalification / re-keying`\\n\\nC1–C4 are responsibilities, not mandated services, tables, primitives, or physical decomposition.\\n\\n### Human-reviewed closure patches\\n\\n1. **Grammar closure, not one grammar package.** Required inherited competence is an exact, versioned, cold-recoverable structural-grammar closure. It may resolve through one Artifact, a versioned manifest over multiple governing sources, a bounded dependency closure, or another minimal representation. Co-location is not required.\\n\\n2. **Q means Quadrants.** Q is not generalized to `structural quality`. Preserve individual-interior, individual-exterior, collective-interior, and collective-exterior differentiation at decision-required resolution. Quadrant remains distinct from mapper, frame, access basis/provenance, phenomenology, standing, warrant, and populated content.\\n\\n3. **Qualification does not establish warrant.** C2 PASS means only that the exact candidate under its exact dependency basis satisfies the declared bounded semantic comparison contract strongly enough to become eligible for a separate designation decision. PASS does not establish truth, warrant, standing, authority, authorization, designation, currentness, or execution permission.\\n\\n4. **Use access basis / access provenance, not undefined `access standing`.** Preserve mapper, mapped material, frame relation, access/evidence basis, source/version and limitations separately. Direct access ≠ truth; first-person access ≠ infallibility; high-quality inference ≠ first-person access; access provenance ≠ standing.\\n\\n5. **Temporal applicability is required, not optional.** A finite wall-clock interval is not universally mandatory, but every designation grant and designation effect must explicitly disposition temporal applicability at decision-required resolution. Distinguish authorization-to-act applicability, event ordering, act expiry, revocation, continuing-effect conditions, qualification applicability over time/change, and present reliance. `authorization to designate ≠ designation event/order ≠ historical validity ≠ current selection ≠ current qualification applicability ≠ present reliance ≠ execution authorization`.\\n\\n### Additional accepted Shape conclusions\\n\\n- AP-03 remains narrowly activated for BUILD 7 semantic qualification.\\n- Resolution-not-erasure remains governing for inherited structural capacities.\\n- Reference frame remains a derived relational index and does not collapse into Q.\\n- Altitude/Level ≠ Stage ≠ State; Lines may occupy distinct Stages without promoting the whole Referent.\\n- Question Forward requires an actual calibrated discriminator question plus change evidence/condition, notice route, re-entry/requalification route and decision consequence.\\n- Top-down inherited grammar and bottom-up local evidence co-arise without silent local constitutional rewrite or rigid slot suppression.\\n- Hidden-model-substitution testing, metamorphic anti-collapse tests, literal cold recovery and two-specimen pressure remain required in Move acceptance.\\n- FCA remains a regulatory/control-placement audit, not a new primitive or sequential phase.\\n- Real BUILD 7 Master-Key designation authority is still unresolved and remains Question Forward. Synthetic positive/negative authority fixtures are sufficient only for the bounded acceptance design.\\n- No second Astra Shape pass is required.\\n\\n### Closure state\\n\\n**BUILD 7 SENSE: CLOSED**\\n\\n**BUILD 7 SHAPE: CLOSED**\\n\\n**MOVE: CLOSED / UNAUTHORIZED**\\n\\n**IMPLEMENTATION: NONE**\\n\\n**REAL MASTER-KEY DESIGNATION AUTHORITY: UNRESOLVED / QUESTION FORWARD**\\n\\nThis closure does **not** authorize Move, implementation, repository mutation, Supabase/ECB mutation, real Master-Key designation, governance succession, deployment, or final UX work.\\n\\nA separate explicit human authorization is required to open Move.\\n\", \"limits\": \"human closure exact retained text\", \"source\": \"linear:ECO-94/comment/74c49056-6b3b-42fe-944a-a5cb577a5e40\", \"version\": \"2026-09-10T08:02:40.508Z\", \"synthetic\": true}",
+        "digest": "b779ce63ad2c0a39bf5222d308131ddd21ff8e80d7fcb7dccb76bc13c52c3213",
+        "context": "10ffe246-00fb-46da-9e3d-821703ce9425"
+      },
+      "b234ca42-b201-479c-a00e-9c7f660c5b36": {
+        "id": "b234ca42-b201-479c-a00e-9c7f660c5b36",
+        "xid": "3453",
+        "role": "b8_event",
+        "bytes": "{\"data\": {\"grant\": \"81af2938-d550-4672-a037-4a4490a037bb\", \"envelope\": \"1251cc15-f474-479a-a5f6-b0fdf168cdca\", \"evaluation\": \"cb1f2592-e10a-4062-a57d-82e7af0588aa\", \"observation\": {\"tick\": 10, \"ready\": true, \"value\": 0, \"revision\": 0, \"orientation\": \"ca0760ae-b185-4e25-85a7-67aaed60016f\", \"dependencies\": {\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": \"1\", \"061e20e3-c480-47ea-b282-29f133d05784\": \"1\", \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": \"1\", \"13d69464-5477-4370-a907-76ff56efeb14\": \"1\", \"168d0633-145c-4102-891d-a17f81ff439a\": \"1\", \"2152f686-0ea8-47ae-b815-ea637c2d7bdf\": \"1\", \"5db7a344-413a-4c0b-8ce2-9ae563eb368e\": \"1\", \"70e5af66-2989-4796-bcb9-8536488655f9\": \"1\", \"82280db0-677b-46e4-9c58-ed627c8ec747\": \"1\", \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\": \"1\", \"8f3cb445-4dda-4804-881e-25b6de2b7f75\": \"1\", \"ca0760ae-b185-4e25-85a7-67aaed60016f\": \"1\", \"d8171edc-1855-4840-b70d-f103b1ab0a79\": \"1\"}}, \"authorization\": \"0962f094-2f18-465e-a345-6d11bc27ae77\"}, \"kind\": \"admit\", \"login\": \"b8_actor\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"request\": \"54b90dfc-3c38-4dc6-83c4-7b3b0d0e67a9\", \"participant\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"predecessor\": \"0962f094-2f18-465e-a345-6d11bc27ae77\"}",
+        "digest": "8373b7dc7ff4fbe20ae011bbff162d909c5f741d53fb0af2da0de324d1c4a453",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "760297e2-0171-4224-9364-8f2ba95d9078": {
+        "id": "760297e2-0171-4224-9364-8f2ba95d9078",
+        "xid": "3456",
+        "role": "b8_event",
+        "bytes": "{\"data\": {\"admission\": \"b234ca42-b201-479c-a00e-9c7f660c5b36\"}, \"kind\": \"start\", \"login\": \"b8_actor\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"request\": \"d06ef9d2-a04d-4c0e-9bac-ff313388fa26\", \"participant\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"predecessor\": \"b234ca42-b201-479c-a00e-9c7f660c5b36\"}",
+        "digest": "e79d566ba79c7a38e171fe63409f8efd165036eec0a78ca22e87c6cbdb217ecb",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "a0a3188e-05ef-4247-8f6f-f395670ec93f": {
+        "id": "a0a3188e-05ef-4247-8f6f-f395670ec93f",
+        "xid": "3480",
+        "role": "b8_event",
+        "bytes": "{\"data\": {\"start\": \"760297e2-0171-4224-9364-8f2ba95d9078\", \"reason\": \"complete_serialized_no_native_effect\"}, \"kind\": \"fence\", \"login\": \"b8_actor\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"request\": \"ba6162ba-acce-456a-9ac5-2e81a10d454e\", \"participant\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"predecessor\": \"760297e2-0171-4224-9364-8f2ba95d9078\"}",
+        "digest": "52a63f22089cc1dd3e91d7412309de77db4de38fd946c4051d05cd475a139f6d",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "aacd2183-4556-4259-a6ff-ded9c8cdcb6f": {
+        "id": "aacd2183-4556-4259-a6ff-ded9c8cdcb6f",
+        "xid": "3483",
+        "role": "b8_event",
+        "bytes": "{\"data\": {\"tick\": 19}, \"kind\": \"tick\", \"login\": \"postgres\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"request\": \"f50d74a1-7b10-4fc1-b62b-b0fa901e9830\", \"participant\": \"46de5324-c898-420c-ae15-9ab93308bfab\", \"predecessor\": \"a0a3188e-05ef-4247-8f6f-f395670ec93f\"}",
+        "digest": "2efdac7ad5faffea1ed9f544cf2279026874775218a26f179885f4c779f10fa5",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "2a10672a-dfec-4394-9450-0c682ee4ad58": {
+        "id": "2a10672a-dfec-4394-9450-0c682ee4ad58",
+        "xid": "3486",
+        "role": "b8_event",
+        "bytes": "{\"data\": {\"grant\": \"81af2938-d550-4672-a037-4a4490a037bb\", \"envelope\": \"1251cc15-f474-479a-a5f6-b0fdf168cdca\", \"evaluation\": \"cb1f2592-e10a-4062-a57d-82e7af0588aa\", \"observation\": {\"tick\": 19, \"ready\": true, \"value\": 0, \"revision\": 0, \"orientation\": \"ca0760ae-b185-4e25-85a7-67aaed60016f\", \"dependencies\": {\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": \"1\", \"061e20e3-c480-47ea-b282-29f133d05784\": \"1\", \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": \"1\", \"13d69464-5477-4370-a907-76ff56efeb14\": \"1\", \"168d0633-145c-4102-891d-a17f81ff439a\": \"1\", \"2152f686-0ea8-47ae-b815-ea637c2d7bdf\": \"1\", \"5db7a344-413a-4c0b-8ce2-9ae563eb368e\": \"1\", \"70e5af66-2989-4796-bcb9-8536488655f9\": \"1\", \"82280db0-677b-46e4-9c58-ed627c8ec747\": \"1\", \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\": \"1\", \"8f3cb445-4dda-4804-881e-25b6de2b7f75\": \"1\", \"ca0760ae-b185-4e25-85a7-67aaed60016f\": \"1\", \"d8171edc-1855-4840-b70d-f103b1ab0a79\": \"1\"}}, \"authorization\": \"0962f094-2f18-465e-a345-6d11bc27ae77\"}, \"kind\": \"admit\", \"login\": \"b8_actor\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"request\": \"8e2e25e1-61e4-4e5a-b62d-3a01a43c1adb\", \"participant\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"predecessor\": \"aacd2183-4556-4259-a6ff-ded9c8cdcb6f\"}",
+        "digest": "a076c8bb251fc720e7a1cdf8c49e39c624665392f91b78d5135f013f7fc36597",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "d069c4df-5551-44d7-ab66-0247965f5433": {
+        "id": "d069c4df-5551-44d7-ab66-0247965f5433",
+        "xid": "3489",
+        "role": "b8_event",
+        "bytes": "{\"data\": {\"tick\": 21}, \"kind\": \"tick\", \"login\": \"postgres\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"request\": \"6860ac5c-d6b2-4843-8f0f-a96532c6d244\", \"participant\": \"46de5324-c898-420c-ae15-9ab93308bfab\", \"predecessor\": \"2a10672a-dfec-4394-9450-0c682ee4ad58\"}",
+        "digest": "4223203bed2c18be0435917c885804abc8d4397bdd16eb3a14cb934d5c389a63",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "3df9a6bc-2016-4960-8dee-196b2cd13ac4": {
+        "id": "3df9a6bc-2016-4960-8dee-196b2cd13ac4",
+        "xid": "3492",
+        "role": "b8_event",
+        "bytes": "{\"data\": {\"admission\": \"2a10672a-dfec-4394-9450-0c682ee4ad58\"}, \"kind\": \"start\", \"login\": \"b8_actor\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"request\": \"1f5e3d1c-4c64-41a5-8621-d0f94e747062\", \"participant\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"predecessor\": \"d069c4df-5551-44d7-ab66-0247965f5433\"}",
+        "digest": "27e998e2a52f6495d1fbbcd6a25db84d9fafe4d22dd84bbb801285c13447536e",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "dc8286e3-d44f-4343-a87a-bd59a50f8272": {
+        "id": "dc8286e3-d44f-4343-a87a-bd59a50f8272",
+        "xid": "3493",
+        "role": "b8_event",
+        "bytes": "{\"data\": {\"delta\": 1, \"start\": \"3df9a6bc-2016-4960-8dee-196b2cd13ac4\", \"target\": \"aded9797-f54a-40dc-becf-f07ba73dea3b\", \"operation\": \"advance_one\", \"observation\": {\"tick\": 21, \"ready\": true, \"value\": 0, \"revision\": 0, \"orientation\": \"ca0760ae-b185-4e25-85a7-67aaed60016f\", \"dependencies\": {\"04c896a9-e8e1-471e-990f-3b48f59d9b1c\": \"1\", \"061e20e3-c480-47ea-b282-29f133d05784\": \"1\", \"133faa81-cfba-4ec3-82cf-9c954b6b4523\": \"1\", \"13d69464-5477-4370-a907-76ff56efeb14\": \"1\", \"168d0633-145c-4102-891d-a17f81ff439a\": \"1\", \"2152f686-0ea8-47ae-b815-ea637c2d7bdf\": \"1\", \"5db7a344-413a-4c0b-8ce2-9ae563eb368e\": \"1\", \"70e5af66-2989-4796-bcb9-8536488655f9\": \"1\", \"82280db0-677b-46e4-9c58-ed627c8ec747\": \"1\", \"8d9396eb-dd6b-4415-ba60-759b5b71cbe0\": \"1\", \"8f3cb445-4dda-4804-881e-25b6de2b7f75\": \"1\", \"ca0760ae-b185-4e25-85a7-67aaed60016f\": \"1\", \"d8171edc-1855-4840-b70d-f103b1ab0a79\": \"1\"}}}, \"kind\": \"effect\", \"login\": \"b8_actor\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"request\": \"fb67d056-bae7-489e-962f-6a0c1b98e3df\", \"participant\": \"d8e26665-b4ce-4f8d-afe1-6bd3a34c0274\", \"predecessor\": \"3df9a6bc-2016-4960-8dee-196b2cd13ac4\"}",
+        "digest": "a3326085d7eaa36f65f60379a28b16ce793af134c4474d27d1f7551be366a4d7",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      },
+      "834fb13c-4643-427d-be4d-3605074129c1": {
+        "id": "834fb13c-4643-427d-be4d-3605074129c1",
+        "xid": "3507",
+        "role": "b8_event",
+        "bytes": "{\"data\": {\"grant\": \"81af2938-d550-4672-a037-4a4490a037bb\"}, \"kind\": \"revoke_grant\", \"login\": \"postgres\", \"scope\": \"d5770a2a-779d-41f8-8264-6fa435f12060\", \"action\": \"8d6fc779-0915-4b93-9231-9d9e1d5bce44\", \"request\": \"d84f88b0-d304-4b5d-97aa-5b2f3c765642\", \"participant\": \"46de5324-c898-420c-ae15-9ab93308bfab\", \"predecessor\": \"dc8286e3-d44f-4343-a87a-bd59a50f8272\"}",
+        "digest": "c05e2bdfb06b416d325a6385a265b003f55b677619cfddbb0d86f979a5a1c7dd",
+        "context": "d5770a2a-779d-41f8-8264-6fa435f12060"
+      }
+    },
+    "ordered": [
+      {
+        "id": "6f0f5d33-3cee-47fc-ae85-d642e3de3a1b",
+        "data": {
+          "source": "13d69464-5477-4370-a907-76ff56efeb14",
+          "revision": "1"
+        },
+        "kind": "dependency",
+        "login": "postgres",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "request": "ff46ca22-2f74-48e5-a5de-667cb22af48b",
+        "participant": "46de5324-c898-420c-ae15-9ab93308bfab",
+        "predecessor": null
+      },
+      {
+        "id": "0962f094-2f18-465e-a345-6d11bc27ae77",
+        "data": {
+          "tick": 10,
+          "designation": {
+            "envelope": "1251cc15-f474-479a-a5f6-b0fdf168cdca",
+            "predecessor": null
+          },
+          "authorization": {
+            "grant": "81af2938-d550-4672-a037-4a4490a037bb",
+            "envelope": "1251cc15-f474-479a-a5f6-b0fdf168cdca",
+            "evaluation": "cb1f2592-e10a-4062-a57d-82e7af0588aa"
+          }
+        },
+        "kind": "authorize",
+        "login": "b8_actor",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "request": "cbf72605-fc1a-47ab-b40e-0f9d89b89344",
+        "participant": "d8e26665-b4ce-4f8d-afe1-6bd3a34c0274",
+        "predecessor": "6f0f5d33-3cee-47fc-ae85-d642e3de3a1b"
+      },
+      {
+        "id": "b234ca42-b201-479c-a00e-9c7f660c5b36",
+        "data": {
+          "grant": "81af2938-d550-4672-a037-4a4490a037bb",
+          "envelope": "1251cc15-f474-479a-a5f6-b0fdf168cdca",
+          "evaluation": "cb1f2592-e10a-4062-a57d-82e7af0588aa",
+          "observation": {
+            "tick": 10,
+            "ready": true,
+            "value": 0,
+            "revision": 0,
+            "orientation": "ca0760ae-b185-4e25-85a7-67aaed60016f",
+            "dependencies": {
+              "04c896a9-e8e1-471e-990f-3b48f59d9b1c": "1",
+              "061e20e3-c480-47ea-b282-29f133d05784": "1",
+              "133faa81-cfba-4ec3-82cf-9c954b6b4523": "1",
+              "13d69464-5477-4370-a907-76ff56efeb14": "1",
+              "168d0633-145c-4102-891d-a17f81ff439a": "1",
+              "2152f686-0ea8-47ae-b815-ea637c2d7bdf": "1",
+              "5db7a344-413a-4c0b-8ce2-9ae563eb368e": "1",
+              "70e5af66-2989-4796-bcb9-8536488655f9": "1",
+              "82280db0-677b-46e4-9c58-ed627c8ec747": "1",
+              "8d9396eb-dd6b-4415-ba60-759b5b71cbe0": "1",
+              "8f3cb445-4dda-4804-881e-25b6de2b7f75": "1",
+              "ca0760ae-b185-4e25-85a7-67aaed60016f": "1",
+              "d8171edc-1855-4840-b70d-f103b1ab0a79": "1"
+            }
+          },
+          "authorization": "0962f094-2f18-465e-a345-6d11bc27ae77"
+        },
+        "kind": "admit",
+        "login": "b8_actor",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "request": "54b90dfc-3c38-4dc6-83c4-7b3b0d0e67a9",
+        "participant": "d8e26665-b4ce-4f8d-afe1-6bd3a34c0274",
+        "predecessor": "0962f094-2f18-465e-a345-6d11bc27ae77"
+      },
+      {
+        "id": "760297e2-0171-4224-9364-8f2ba95d9078",
+        "data": {
+          "admission": "b234ca42-b201-479c-a00e-9c7f660c5b36"
+        },
+        "kind": "start",
+        "login": "b8_actor",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "request": "d06ef9d2-a04d-4c0e-9bac-ff313388fa26",
+        "participant": "d8e26665-b4ce-4f8d-afe1-6bd3a34c0274",
+        "predecessor": "b234ca42-b201-479c-a00e-9c7f660c5b36"
+      },
+      {
+        "id": "a0a3188e-05ef-4247-8f6f-f395670ec93f",
+        "data": {
+          "start": "760297e2-0171-4224-9364-8f2ba95d9078",
+          "reason": "complete_serialized_no_native_effect"
+        },
+        "kind": "fence",
+        "login": "b8_actor",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "request": "ba6162ba-acce-456a-9ac5-2e81a10d454e",
+        "participant": "d8e26665-b4ce-4f8d-afe1-6bd3a34c0274",
+        "predecessor": "760297e2-0171-4224-9364-8f2ba95d9078"
+      },
+      {
+        "id": "aacd2183-4556-4259-a6ff-ded9c8cdcb6f",
+        "data": {
+          "tick": 19
+        },
+        "kind": "tick",
+        "login": "postgres",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "request": "f50d74a1-7b10-4fc1-b62b-b0fa901e9830",
+        "participant": "46de5324-c898-420c-ae15-9ab93308bfab",
+        "predecessor": "a0a3188e-05ef-4247-8f6f-f395670ec93f"
+      },
+      {
+        "id": "2a10672a-dfec-4394-9450-0c682ee4ad58",
+        "data": {
+          "grant": "81af2938-d550-4672-a037-4a4490a037bb",
+          "envelope": "1251cc15-f474-479a-a5f6-b0fdf168cdca",
+          "evaluation": "cb1f2592-e10a-4062-a57d-82e7af0588aa",
+          "observation": {
+            "tick": 19,
+            "ready": true,
+            "value": 0,
+            "revision": 0,
+            "orientation": "ca0760ae-b185-4e25-85a7-67aaed60016f",
+            "dependencies": {
+              "04c896a9-e8e1-471e-990f-3b48f59d9b1c": "1",
+              "061e20e3-c480-47ea-b282-29f133d05784": "1",
+              "133faa81-cfba-4ec3-82cf-9c954b6b4523": "1",
+              "13d69464-5477-4370-a907-76ff56efeb14": "1",
+              "168d0633-145c-4102-891d-a17f81ff439a": "1",
+              "2152f686-0ea8-47ae-b815-ea637c2d7bdf": "1",
+              "5db7a344-413a-4c0b-8ce2-9ae563eb368e": "1",
+              "70e5af66-2989-4796-bcb9-8536488655f9": "1",
+              "82280db0-677b-46e4-9c58-ed627c8ec747": "1",
+              "8d9396eb-dd6b-4415-ba60-759b5b71cbe0": "1",
+              "8f3cb445-4dda-4804-881e-25b6de2b7f75": "1",
+              "ca0760ae-b185-4e25-85a7-67aaed60016f": "1",
+              "d8171edc-1855-4840-b70d-f103b1ab0a79": "1"
+            }
+          },
+          "authorization": "0962f094-2f18-465e-a345-6d11bc27ae77"
+        },
+        "kind": "admit",
+        "login": "b8_actor",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "request": "8e2e25e1-61e4-4e5a-b62d-3a01a43c1adb",
+        "participant": "d8e26665-b4ce-4f8d-afe1-6bd3a34c0274",
+        "predecessor": "aacd2183-4556-4259-a6ff-ded9c8cdcb6f"
+      },
+      {
+        "id": "d069c4df-5551-44d7-ab66-0247965f5433",
+        "data": {
+          "tick": 21
+        },
+        "kind": "tick",
+        "login": "postgres",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "request": "6860ac5c-d6b2-4843-8f0f-a96532c6d244",
+        "participant": "46de5324-c898-420c-ae15-9ab93308bfab",
+        "predecessor": "2a10672a-dfec-4394-9450-0c682ee4ad58"
+      },
+      {
+        "id": "3df9a6bc-2016-4960-8dee-196b2cd13ac4",
+        "data": {
+          "admission": "2a10672a-dfec-4394-9450-0c682ee4ad58"
+        },
+        "kind": "start",
+        "login": "b8_actor",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "request": "1f5e3d1c-4c64-41a5-8621-d0f94e747062",
+        "participant": "d8e26665-b4ce-4f8d-afe1-6bd3a34c0274",
+        "predecessor": "d069c4df-5551-44d7-ab66-0247965f5433"
+      },
+      {
+        "id": "dc8286e3-d44f-4343-a87a-bd59a50f8272",
+        "data": {
+          "delta": 1,
+          "start": "3df9a6bc-2016-4960-8dee-196b2cd13ac4",
+          "target": "aded9797-f54a-40dc-becf-f07ba73dea3b",
+          "operation": "advance_one",
+          "observation": {
+            "tick": 21,
+            "ready": true,
+            "value": 0,
+            "revision": 0,
+            "orientation": "ca0760ae-b185-4e25-85a7-67aaed60016f",
+            "dependencies": {
+              "04c896a9-e8e1-471e-990f-3b48f59d9b1c": "1",
+              "061e20e3-c480-47ea-b282-29f133d05784": "1",
+              "133faa81-cfba-4ec3-82cf-9c954b6b4523": "1",
+              "13d69464-5477-4370-a907-76ff56efeb14": "1",
+              "168d0633-145c-4102-891d-a17f81ff439a": "1",
+              "2152f686-0ea8-47ae-b815-ea637c2d7bdf": "1",
+              "5db7a344-413a-4c0b-8ce2-9ae563eb368e": "1",
+              "70e5af66-2989-4796-bcb9-8536488655f9": "1",
+              "82280db0-677b-46e4-9c58-ed627c8ec747": "1",
+              "8d9396eb-dd6b-4415-ba60-759b5b71cbe0": "1",
+              "8f3cb445-4dda-4804-881e-25b6de2b7f75": "1",
+              "ca0760ae-b185-4e25-85a7-67aaed60016f": "1",
+              "d8171edc-1855-4840-b70d-f103b1ab0a79": "1"
+            }
+          }
+        },
+        "kind": "effect",
+        "login": "b8_actor",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "request": "fb67d056-bae7-489e-962f-6a0c1b98e3df",
+        "participant": "d8e26665-b4ce-4f8d-afe1-6bd3a34c0274",
+        "predecessor": "3df9a6bc-2016-4960-8dee-196b2cd13ac4"
+      },
+      {
+        "id": "834fb13c-4643-427d-be4d-3605074129c1",
+        "data": {
+          "grant": "81af2938-d550-4672-a037-4a4490a037bb"
+        },
+        "kind": "revoke_grant",
+        "login": "postgres",
+        "scope": "d5770a2a-779d-41f8-8264-6fa435f12060",
+        "action": "8d6fc779-0915-4b93-9231-9d9e1d5bce44",
+        "request": "d84f88b0-d304-4b5d-97aa-5b2f3c765642",
+        "participant": "46de5324-c898-420c-ae15-9ab93308bfab",
+        "predecessor": "dc8286e3-d44f-4343-a87a-bd59a50f8272"
+      }
+    ],
+    "boundary": "complete bounded history under exact shared scope lock",
+    "proof_class": "atomic-ledger synthetic target only",
+    "limits": [
+      "trusted custody and retained observation boundary",
+      "same-worker implementation and testing"
+    ]
+  },
+  "result": "PASS",
+  "finished_at": "2026-09-11T19:01:45.623Z"
+}
