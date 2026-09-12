@@ -176,7 +176,7 @@ declare c jsonb; st jsonb; sig jsonb; id uuid; v jsonb; begin
 end $$;
 
 create function ecb9.open_child(p uuid,binding jsonb,pred uuid,r uuid) returns jsonb language plpgsql security definer set search_path='' as $$
-declare c jsonb; st jsonb; sig jsonb; id uuid; criteria jsonb; d2 jsonb; begin
+declare c jsonb; st jsonb; sig jsonb; id uuid; criteria jsonb; d2 jsonb; d record; begin
  c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid);
  sig:=jsonb_build_object('op','open','binding',binding,'predecessor',pred);
  id:=ecb9.replay(p,r,sig); if id is not null then return jsonb_build_object('event',id,'replay',true); end if;
@@ -185,6 +185,10 @@ declare c jsonb; st jsonb; sig jsonb; id uuid; criteria jsonb; d2 jsonb; begin
  if st->'open'<>'null'::jsonb then raise exception 'b9_one_child_or_no_new_discrimination'; end if;
  if c->>'unresolved'<>'governance' or c->>'resolution' not in ('child witness examination','local witness available','display only') then raise exception 'b9_threshold_dependency'; end if;
  if c->>'resolution'<>'child witness examination' then return jsonb_build_object('opened',false,'route','local check / Question Forward','reason',c->'resolution'); end if;
+ for d in select key,value from jsonb_each(st->'observations') loop
+  if d.value->>'complete' is distinct from 'true' or d.value->>'version' is null then return jsonb_build_object('opened',false,'route','HOLD','reason','declared observation incomplete','slot',d.key); end if;
+  if d.value->>'version' is distinct from c->'dependencies'->d.key->>'version' or d.value->>'history' is not null then return jsonb_build_object('opened',false,'route','REQUALIFY','reason','basis changed before opening','slot',d.key); end if;
+ end loop;
  if st->'observations'->'governance'->>'version' is null then return jsonb_build_object('opened',false,'route','HOLD','reason','bound G1 unavailable'); end if;
  if st->'observations'->'applicability'->>'version' is null then return jsonb_build_object('opened',false,'route','HOLD','reason','independent remit unavailable'); end if;
  d2:=ecb9.doc((st->'observations'->'applicability'->>'version')::uuid,'b9_basis');
@@ -228,7 +232,7 @@ declare c jsonb; st jsonb; sig jsonb; id uuid; q uuid; j jsonb; begin
  st:=ecb9.state(p); perform ecb9.cas(st,pred);
  if st->>'attempt' is distinct from attempt::text or binding is distinct from st->'open'->'binding' then raise exception 'b9_exact_attempt_binding'; end if;
  if exists(select 1 from public.artifacts where context_id=attempt and artifact_role='b9_judgment') then raise exception 'b9_terminal_attempt'; end if;
- if exists(select 1 from public.artifacts where id=attempt and created_xid=pg_current_xact_id()) then raise exception 'b9_committed_attempt_required'; end if;
+ if exists(select 1 from public.artifacts a where a.id=attempt and a.created_xid=pg_current_xact_id()) then raise exception 'b9_committed_attempt_required'; end if;
  j:=ecb9.examine(p,attempt);
  if submission is not null and submission is distinct from j then raise exception 'b9_producer_forged_or_contradictory_judgment'; end if;
  q:=ecb9.retain('b9_judgment',attempt,j||jsonb_build_object('evaluator',session_user,'remit',c->'remit'));

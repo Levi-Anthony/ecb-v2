@@ -1,0 +1,3 @@
+Error: test did not observe real lock wait
+    at blocked (file:///Users/prodadmin/ECB-build-9-move/tests/build-9/resilience.mjs:10:256)
+    at async file:///Users/prodadmin/ECB-build-9-move/tests/build-9/resilience.mjs:17:17

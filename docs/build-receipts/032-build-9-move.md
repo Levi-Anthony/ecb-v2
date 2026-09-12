@@ -19,3 +19,15 @@ The baseline's Move-unopened checkpoint is historical and superseded for this br
 | P09/P12/P18 | Proof infrastructure touches inherited/canonical state | Dedicated loopback Docker PG17 database reconstructed from accepted migration files | Reuse BUILD 8 cluster | Only disposable BUILD 9 target; no replay of closed proofs for confidence |
 
 Every implementation/test defect and invalid test will retain its original log and M/T classification before repair. Shape/Sense returns require contrary evidence, not convenience.
+
+## Preserved failure/repair lineage (development)
+
+- T01, `smoke-01.log`, initial commit `2e2a1b0`: fixture attempted default Referent ID, but inherited schema requires explicit UUID. Fixed fixture helper; no mechanism inference.
+- M01, `smoke-02.log`: unqualified `id` collided with local publication variable. Qualified Artifact column; `smoke-03.log` completes the mechanism. Original implementation remains in `2e2a1b0`.
+- T02, `primary-01.log`, original test in `source/primary-01-invalid.mjs`: missing `async` in callbacks prevented execution; no PASS attributed.
+- T03, `primary-02.json`, original test in `source/primary-02.mjs`: depth control failed in helper before reaching SQL. Corrected to supply exact tuple/pred and invoke SQL directly; `primary-03.json` passes all 14 assigned P-obligations.
+- T04, `resilience-01.json`, original in `source/resilience-01-invalid.mjs`: monitor lacked rights to see other users' query text. Live custodian observation confirmed a real blocked reentry, but that run is inconclusive. Monitor now uses disposable installation custody for observation only; `resilience-02.json` exercises three real wait orders and nine interruption cases successfully.
+- M02 found by implementation inspection before final proof: pre-open observation drift could otherwise be folded into the opening baseline. Opening now rejects changed basis/history with REQUALIFY and incomplete coverage with HOLD. `supplemental-01.json` tests both; no change to frozen semantics.
+- Recovery display measurement: first generic compact projection was 2,718 o200k_base tokens on positive case. Trimmed redundant history/binding/evidence expansions, retaining source-linked drill-down. Not a P16 PASS; cold-worker test follows final projection.
+
+No Shape/Sense falsifier has been established by these failures.

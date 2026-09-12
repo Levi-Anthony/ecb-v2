@@ -1,0 +1,14 @@
+{
+  "implementationSha": "2c5b11289132221335155af500188024dc7e004e2cd90bb00fc6adb51c95a11a",
+  "fixtureSha": "900ec09808dd1c0f8ec8706c641def0a224fae66e11e151012d187e55c3c416b",
+  "methodSha": "50d1f74c7dda9245ef41e719d22595effed3278b77f70fe5f05974248f612c8a",
+  "results": [
+    {
+      "result": "FAIL",
+      "classification": "M/T pending diagnosis",
+      "error": "test did not observe real lock wait",
+      "stack": "Error: test did not observe real lock wait\n    at blocked (file:///Users/prodadmin/ECB-build-9-move/tests/build-9/resilience.mjs:10:256)\n    at async file:///Users/prodadmin/ECB-build-9-move/tests/build-9/resilience.mjs:17:17"
+    }
+  ],
+  "limits": "Actual PG17 loopback row-lock concurrency and crash durability only; no distributed exactly-once or permanent-loss guarantee."
+}

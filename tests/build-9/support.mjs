@@ -11,7 +11,7 @@ export const save=(name,data)=>{mkdirSync('docs/build-receipts/evidence/build-9'
 export const source=async(id,db=observer)=>(await db`select ecb9.read_source(${id}::uuid) x`)[0].x;
 export const inspect=async(f,db=observer)=>(await db`select ecb9.inspect(${typeof f==='string'?f:f.p}::uuid) x`)[0].x;
 export const head=async f=>(await inspect(f)).boundary;
-export const ref=async()=>(await admin`insert into public.referents default values returning id`)[0].id;
+export const ref=async()=>(await admin`insert into public.referents(id) values(${uuid()}::uuid) returning id`)[0].id;
 export const fixture=async(f,j)=>(await admin`select ecb9.fixture(${f.scope}::uuid,${admin.json({synthetic:true,...j})}) id`)[0].id;
 export const binding=async f=>(await inspect(f)).dependency.binding;
 export async function open(f,opts={}){const db=opts.db??parent;return(await db`select ecb9.open_child(${f.p}::uuid,${db.json(opts.binding??await binding(f))},${opts.pred===undefined?await head(f):opts.pred}::uuid,${opts.request??uuid()}::uuid) x`)[0].x;}

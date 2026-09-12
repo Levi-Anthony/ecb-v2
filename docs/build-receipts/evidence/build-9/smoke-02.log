@@ -1,0 +1,30 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+PostgresError: column reference "id" is ambiguous
+    at ErrorResponse (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:815:30)
+    at handle (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:489:6)
+    at Socket.data (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:324:9)
+    at Socket.emit (node:events:514:28)
+    at addChunk (node:internal/streams/readable:568:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:519:3)
+    at Readable.push (node:internal/streams/readable:399:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)
+    at cachedError (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/query.js:170:23)
+    at new Query (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/query.js:36:24)
+    at sql (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/index.js:112:11)
+    at publish (file:///Users/prodadmin/ECB-build-9-move/tests/build-9/support.mjs:18:103) {
+  severity_local: 'ERROR',
+  severity: 'ERROR',
+  code: '42702',
+  detail: 'It could refer to either a PL/pgSQL variable or a table column.',
+  where: 'PL/pgSQL function ecb9.publish(uuid,uuid,jsonb,jsonb,uuid,uuid) line 9 at IF',
+  internal_position: '45',
+  internal_query: 'exists(select 1 from public.artifacts where id=attempt and created_xid=pg_current_xact_id())',
+  file: 'pl_comp.c',
+  line: '1133',
+  routine: 'plpgsql_post_column_ref'
+}
+
+Node.js v24.21.0
