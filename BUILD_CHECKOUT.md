@@ -1,69 +1,183 @@
-STATUS: BUILD 8 CLOSED / HUMAN ACCEPTED — IMPLEMENTATION REGISTER B
-DISPOSITION: BOUNDED ACTION ENVELOPE LIFECYCLE PROVEN; CARRIED APERTURES PRESERVED
+STATUS: BUILD 9 SHAPE CLOSED / HUMAN ACCEPTED — MOVE UNOPENED
+DISPOSITION: BOUNDED RECURSIVE SELF-APPLICATION SHAPE FROZEN; CONSTRUCTIVE MOVE NOT AUTHORIZED
 ROLE: Canonical repository reentry checkpoint
-AUTHORITY: Explicit human BUILD 8 closure after ECO-104 Metabolize PASS WITH CARRIED APERTURES; normalization under ECO-106
-CURRENT BUILD UNIT: BUILD 8 CLOSED; BUILD 9 UNOPENED AT THIS NORMALIZATION CHECKPOINT
+AUTHORITY: Explicit human BUILD 9 Sense/Shape closure in ECO-107/ECO-108; repository propagation only
+CURRENT BUILD UNIT: BUILD 9 SHAPE CLOSED; BUILD 9 MOVE UNOPENED
 
 # Current disposition
 
-BUILD 8 is human-closed at implementation Register B on the bounded atomic-ledger PostgreSQL synthetic-target proof class. Read [closure receipt 031](docs/build-receipts/031-build-8-closed.md) first, then [Move receipt 030](docs/build-receipts/030-build-8-move.md) for the full implementation/proof lineage.
+BUILD 8 remains human-closed at implementation Register B on its bounded atomic-ledger PostgreSQL synthetic-target proof class. Its full closure remains in [receipt 031](docs/build-receipts/031-build-8-closed.md).
 
-The accepted Move implementation line is preserved through PR #31 (`build/eco-103-build-8-move`), with final accepted Move head `69ab86bf2ecb1d829560c9f18436130297e4e924` before closure bookkeeping. Human Metabolize returned `METABOLIZE PASS WITH CARRIED APERTURES — READY FOR HUMAN BUILD 8 CLOSURE`; Levi then explicitly accepted closure provided the learnings and operational consequences propagate forward.
+BUILD 9 Sense is human-closed under ECO-107. BUILD 9 Shape is human-closed under ECO-108 on the accepted bounded parent→child→reentry mechanism. Read [BUILD 9 Shape Packet 013](docs/build-shape/013-build-9-shape-packet.md) first for cold reentry, then the full Linear Shape return `a660941fd08b`, human closure comment `7f962a02-98f4-44ec-a9de-0f56f5989ebe`, and control-room review `44745cec-105a-41c0-8788-6433b07df5e8` when decision-relevant detail is needed.
 
-The proof establishes only the tested class: a disposable synthetic target whose native effect and durable native target-operation record commit atomically in PostgreSQL under the accepted scope-lock / READ COMMITTED boundary. It does not establish arbitrary external/distributed exactly-once execution.
+The repository main immediately before BUILD 9 Shape normalization was the BUILD 8 closure commit `bc3714028ca1445fa7db71cac17ac24583846b34`. Shape closure propagation adds documentation/control state only. It does not implement BUILD 9 or open Move.
 
-# Accepted BUILD 8 capability
+# Accepted BUILD 9 bounded mechanism
 
-`exact envelope → finite bounded qualification → protected authorization + separately inspectable designation → condition-specific admission/effect checks → committed execution-start → atomic synthetic native effect + terminal lifecycle record → read-only replay/recovery → explicit serialized reconcile/fence before another effectful attempt`
+The frozen behavioral seam is:
 
-The bounded mechanism preserves proposal/envelope ≠ qualification/evaluation ≠ authorization/designation ≠ admission/current applicability ≠ START/attempt ≠ physical effect ≠ legitimacy ≠ acknowledgement, and preserves recovery/reconcile/fence as distinct responsibilities.
+`retained parent inquiry + exact decision-bearing dependency`
+→ `consequence-gated bounded child opening + dependent parent suspension`
+→ `inspectable provenance-bearing child judgment`
+→ `exact return to the named dependency only`
+→ `independent predecessor/basis-sensitive parent reentry`
+→ `CONTINUE / REQUALIFY / REORIENT / HOLD + Question Forward`
+→ `read-only cold reconstruction / observational replay`
 
-Real `UNKNOWN / IN_FLIGHT` is preserved when the authoritative observation/serialization boundary cannot yet discriminate effect from no-effect. Exact replay is observational and does not mint retry entitlement or fence unfinished work. Cold reconstruction is supported from retained evidence/native observation within the tested boundary.
+Preserve:
 
-# Carried feed-forward learning
+- inquiry identity ≠ focal Referent;
+- same Referent ≠ same question;
+- child result ≠ whole parent basis;
+- judgment ≠ authority/currentness/designation;
+- PASS ≠ parent CONTINUE;
+- FAIL ≠ automatic REORIENT;
+- current ≠ newest;
+- replay ≠ new transition/permission;
+- reflection ≠ amendment authority.
 
-BUILD 8 closure does not erase its unresolved learning. The durable forward routes are ECO-105 plus the ECO-104 closure record. Treat them as evidence/feed-forward unless separately promoted through their governing route.
+One child level and one active child are admitted for the bounded proof specimen. This is a proof boundary, not a universal recursion-depth law.
 
-Carry forward in particular:
+# Structure earned / structure rejected
 
-- operational Question Forward: `UNKNOWN → HOLD → calibrated Forward Question → observable/actionable resolution condition → route` where decision-relevant;
-- future Evaluation provenance / bad-Evaluation Shape work;
-- candidate principle: derived consequential state should remain interrogable as a transformation, not merely exist as a label;
-- loss-aware evidence compression: `raw evidence → structured receipt → reentry projection` while preserving material exceptions and challenge/reconstruction lineage;
-- proof travel by differential: `proven substrate + explicit target/environment difference + minimum additional mechanism/proof`;
-- `limitation ≠ blocker` as a Register-B guardrail against silently escalating implementation work into Register-A academic proof;
-- predecessor-duplication watchpoint: distinguish bounded compatibility reuse from independent semantic forks;
-- immediate implementation questions: what minimum real authority relationship must be established for the personal installation's first real consequential action, and what first useful real action target most closely matches BUILD 8's proven guarantees.
+Earned for the bounded capability:
 
-The Temporal Fractal SSMM and Reflective Knowledge Compiler / Coordination Substrate checkpoints remain provisional feed-forward evidence for later recursive-self-application inquiry. They are not silently canonicalized by BUILD 8 closure.
+- machine-recognizable inquiry participation;
+- immutable exact binding to parent/version/dependency/component/question/method scope;
+- protected judgment publication with retained findings/witnesses/limits;
+- protected predecessor/basis-sensitive parent reentry;
+- complete retained history and declared observation closure;
+- source-linked rebuildable recovery projection.
 
-# Failure lineage retained
+Not earned:
 
-Final-head CI attempt 1 failed during disposable PostgreSQL startup (`connection refused`) before BUILD 8 installation/tests. The identical commit passed on attempt 2 without implementation/comparator/freeze repair. This remains ordinary test-plumbing/reproducibility debt and preserved historical evidence, not a mechanism falsifier.
+- universal `Evaluation` primitive/lifecycle;
+- Parent or Child logical primitive/table;
+- new general relation ontology;
+- recursion engine/meta-ECOS;
+- second truth store;
+- epoch/logical-clock/vector-clock/universal temporal ontology;
+- self-amendment path;
+- real action authority;
+- BUILD 10 propagation.
+
+# Recursion threshold
+
+A child may open only when the exact unresolved dependency is named, admissible answers produce different legitimate parent next-step consequences, parent-level evidence cannot discharge the uncertainty at required resolution, and a bounded admissible inquiry path can discriminate the branches.
+
+Do not recurse when the uncertainty cannot change the next step, another dependency already blocks that step under every answer, the needed witness can be checked locally, or the same question is repeated without new evidence/discrimination.
+
+Unresolvable required uncertainty yields HOLD + calibrated Question Forward, not fabricated success or automatic deeper recursion.
+
+# Judgment / Evaluation boundary
+
+A bounded protected provenance-bearing judgment Artifact is accepted. It must retain/reach exact participation, proposition, evidence, criteria, method/version, attribution/remit, obligation-level findings/witnesses/coverage/limits, and typed outcome semantics while explicitly preserving non-promotion to authority/currentness.
+
+A universal Evaluation ontology is not accepted. The broader ECO-105 Evaluation provenance program remains feed-forward except where this bounded Shape specifically earned the judgment contract.
+
+# Temporal / observation boundary
+
+The serial specimen relies on retained transition identity, explicit predecessor, exact version/dependency history, declared observation completeness, and a protected reentry conflict/serialization boundary.
+
+Change-and-restore does not erase an intervening decision-bearing change. Missing observation coverage yields HOLD. Wall time does not supply governance causality by itself.
+
+Independent overlapping children remain deferred under QF-9.5; causal-clock machinery is not earned before a concrete overlap specimen defeats existing history/dependency representation.
+
+# Cognitive-offload requirement
+
+A fresh worker given only a durable inquiry locator and exact drill-down access must recover without conversational memory:
+
+1. parent focal Referent/question/proposed step/governing basis;
+2. exact unresolved dependency and why descent was earned;
+3. child question/subject-version/remit/attempt state;
+4. returned judgment or unresolved state with provenance/findings/limits;
+5. relevant intervening changes and missing observation coverage;
+6. last parent disposition, present applicability, and admissible next route/constraint.
+
+The recovery card is a source-linked rebuildable projection, not independent currentness truth.
+
+P16 carries the lower-capability/context-constrained worker falsifier. Hidden-state archaeology is under-externalization; fixture-specific answer cards or duplicated mutable truth are over-materialization.
+
+# Selected specimen / load-bearing watchpoint
+
+The first specimen is a synthetic governance-reliance inquiry over its own reentry/evidence machinery.
+
+The parent relies on exact retained governance basis `G1`, with separately necessary dependencies `D1` (proof-sensitivity/provenance) and `D2` (independent continued parent basis/remit applicability). The child examines D1 only; parent reentry independently rechecks D2 and the whole retained basis.
+
+`G1` must be operative and load-bearing, not descriptive decoration. P01/P03 must include a substitution/removal control showing that changing/removing the bound G1 dependency changes the legitimate parent route through the same mechanism rather than fixture hardcoding.
+
+# Frozen proof contract
+
+Any later Move must satisfy P01–P18 from Shape Packet 013. In compressed form:
+
+- P01 end-to-end self-application + G1 load-bearing control;
+- P02 exact identity/version/question/dependency binding;
+- P03 load-bearing dependency / no whole-basis substitution;
+- P04 recursion-threshold paired cases;
+- P05 judgment provenance negatives;
+- P06 comparator sensitivity;
+- P07 current versus newest;
+- P08 drift/ABA/revocation;
+- P09 reentry race/rollback;
+- P10 all four dispositions;
+- P11 duplicate/replay/idempotency;
+- P12 partial failure/crash;
+- P13 cold reconstruction;
+- P14 unauthorized mutation/authority boundary;
+- P15 historical versus present applicability;
+- P16 lower-capability recovery test;
+- P17 depth/anti-regress;
+- P18 predecessor/checker/custody composition.
+
+Failure routing remains `M` implementation repair, `S` return to Shape, `T` inconclusive/invalid test, `Sense` return to Sense when the accepted capability premise must change.
+
+# Move entropy / worker selection
+
+Shape classifies any later BUILD 9 Move as **CONSTRUCTIVE MOVE**.
+
+Physicalization remains intentionally open for Artifact role encoding, protected participation representation, narrow constraints/indexes, transaction/lock/CAS realization, rebuildable pointers, reader layout, module placement, finite comparator/witness encoding, and disposable test plumbing.
+
+Substantial coupled derivation remains around protected participation composition, complete observation/serialization, crash-safe open/result/reentry, conflict-sensitive retries, finite source-sensitive comparator realization, and compact independently verifiable recovery.
+
+If Move is later explicitly commissioned, use **Codex** as the software execution substrate with an **Astra-class implementation lead**. This recommendation follows residual physicalization entropy, not the phase label. A lower-capability worker belongs in the recovery falsifier, not as implementation lead.
+
+# Question Forward carry
+
+Answered for this bounded Shape: QF-9.1, 9.2, 9.3, 9.4, 9.6, 9.7.
+
+Open/separate:
+
+- QF-9.5 overlapping multi-child causality;
+- QF-9.8 authority for governance-object revision;
+- QF-9.9 first real consequential-action authority;
+- QF-9.10 non-circular governed self-amendment.
+
+These remain routed questions, not generic future-work labels and not blockers to the closed bounded Shape.
 
 # Authority and installation boundary
 
 ```text
-BUILD_0_TO_7=CLOSED; PRIOR_ACCEPTED_BOUNDARIES_PRESERVED
-BUILD_8_SENSE=CLOSED
-BUILD_8_SHAPE=CLOSED; HUMAN_ACCEPTED
-BUILD_8_MOVE=CLOSED; BOUNDED_SLICE_IMPLEMENTED_AND_PROVEN
-BUILD_8_METABOLIZE=CLOSED; PASS_WITH_CARRIED_APERTURES
-BUILD_8_HUMAN_CLOSURE=CLOSED; ACCEPTED; REGISTER_B
-BUILD_8_PROOF_TRAVEL=ATOMIC_LEDGER_POSTGRESQL_SYNTHETIC_TARGET_CLASS_ONLY
+BUILD_0_TO_8=CLOSED; PRIOR_ACCEPTED_BOUNDARIES_PRESERVED
+BUILD_9_SENSE=CLOSED; HUMAN_ACCEPTED
+BUILD_9_SHAPE=CLOSED; HUMAN_ACCEPTED
+BUILD_9_MOVE=UNOPENED; UNAUTHORIZED
+BUILD_9_METABOLIZE=UNOPENED
+BUILD_10=UNOPENED
 REAL_MASTER_KEY_AUTHORITY=QUESTION_FORWARD
 REAL_MASTER_KEY_DESIGNATION=NONE
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
 CANONICAL_BUILD7_DATABASE_INSTALL=NONE
 CANONICAL_BUILD8_DATABASE_INSTALL=NONE
-BUILD_9_10=UNOPENED_AT_THIS_CHECKPOINT
+BUILD_9_IMPLEMENTATION=NONE
 ```
 
-Repository normalization is closure bookkeeping and retained substrate/evidence integration only. It does not authorize canonical database migration, real designation/currentness/action authority, external production action, BUILD 9/10, generalized runtime/policy machinery, or final UX.
+This repository normalization is documentation/control-state propagation only. It does not authorize schema/runtime changes, database installation, real designation/currentness/action authority, external action, self-amendment, BUILD 9 Move, or BUILD 10.
 
 # Next legitimate seam
 
-BUILD 8 construction should not be replayed merely for confidence. Reenter retained evidence only when a later dependency/falsifier makes it decision-relevant.
+Do not replay Sense or Shape merely for reassurance. Reenter the full Shape evidence only when a later dependency/falsifier makes it decision-relevant.
 
-Any opening of BUILD 9 Recursive Self-Application requires its own explicit human Sense commission. BUILD 9 must inherit BUILD 8's proven distinctions and carried learnings without silently treating feed-forward hypotheses as settled architecture. Canonical installation and the first real consequential action remain separate decisions from BUILD 9 recursion.
+The next legitimate phase transition, if desired, is a **separate explicit human commission opening BUILD 9 Move** against [Shape Packet 013](docs/build-shape/013-build-9-shape-packet.md) and the human-closed ECO-108 contract.
+
+Until that commission exists, BUILD 9 Move is closed to execution.
