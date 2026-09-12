@@ -137,7 +137,7 @@ proof	UNKNOWN STEP	2026-09-11T19:09:07.4811907Z ##[group]Run bash tests/build-8/
 proof	UNKNOWN STEP	2026-09-11T19:09:07.4812347Z ^[[36;1mbash tests/build-8/verify.sh^[[0m
 proof	UNKNOWN STEP	2026-09-11T19:09:07.8954396Z shell: /usr/bin/bash -e {0}
 proof	UNKNOWN STEP	2026-09-11T19:09:07.8954933Z ##[endgroup]
-proof	UNKNOWN STEP	2026-09-11T19:09:10.6020056Z 
+proof	UNKNOWN STEP	2026-09-11T19:09:10.6020056Z
 proof	UNKNOWN STEP	2026-09-11T19:09:10.6021330Z added 1 package in 2s
 proof	UNKNOWN STEP	2026-09-11T19:09:10.8099091Z Unable to find image 'pgvector/pgvector:0.8.2-pg17' locally
 proof	UNKNOWN STEP	2026-09-11T19:09:11.1198889Z 0.8.2-pg17: Pulling from pgvector/pgvector

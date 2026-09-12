@@ -14,4 +14,3 @@ fetch_failed fetch_failed
 preserves safe operation failure codes ... ok (2ms)
 
 ok | 6 passed | 0 failed (17ms)
-
