@@ -1,0 +1,535 @@
+{
+  "result": "PASS",
+  "controls": [
+    {
+      "id": "P13",
+      "control": "missing payload",
+      "card": {
+        "locator": "6f0f69db-f5a8-488e-869f-6f9d41854285",
+        "present": {
+          "reason": "b9_missing_artifact:a607a147-2e3a-430a-982d-1ae79aed7c7e",
+          "disposition": "HOLD",
+          "question_forward": "Restore the exact unavailable/corrupt source or observation; then regenerate and independently reenter."
+        },
+        "integrity": "unavailable; no positive reliance"
+      }
+    },
+    {
+      "id": "P13",
+      "control": "missing history",
+      "card": {
+        "locator": "6f0f69db-f5a8-488e-869f-6f9d41854285",
+        "present": {
+          "reason": "b9_incomplete_history",
+          "disposition": "HOLD",
+          "question_forward": "Restore the exact unavailable/corrupt source or observation; then regenerate and independently reenter."
+        },
+        "integrity": "unavailable; no positive reliance"
+      }
+    },
+    {
+      "id": "P08/P10",
+      "control": "explicit successor and fresh qualification after drift",
+      "prior": "6f0f69db-f5a8-488e-869f-6f9d41854285",
+      "p": "027af20d-ab15-494f-84d5-7bc9002b9d13",
+      "error": "b9_exact_return_binding",
+      "card": {
+        "child": {
+          "open": "4c36f53c-9797-4aae-8b43-783c230d884c",
+          "state": "returned",
+          "attempt": "4c36f53c-9797-4aae-8b43-783c230d884c",
+          "question": "Does the bound evidence comparator discriminate the declared missing-evidence and missing-method violations from correspondence?"
+        },
+        "links": [
+          {
+            "slot": "method",
+            "claim": "6c3a4503-6783-47c4-8b8c-419385092734",
+            "version": "054db15b-8318-4475-a0cc-f4cda3e9e14a",
+            "component": "b4dfa06d-4aee-432b-833a-e8f0608d8a13"
+          },
+          {
+            "slot": "criteria",
+            "claim": "7c6bd75a-2870-4952-aa4e-3718bebaaf1f",
+            "version": "a48e06e5-e0a5-45cd-8ee6-c717ae023cf2",
+            "component": "62431e22-15d1-4b2b-9e64-40f1d68ce430"
+          },
+          {
+            "slot": "witnesses",
+            "claim": "8bec6f00-0832-45f2-b3de-193ad1c0b7fe",
+            "version": "a607a147-2e3a-430a-982d-1ae79aed7c7e",
+            "component": "1a1cfda2-42fe-449f-bd62-1dd8264b7092"
+          },
+          {
+            "slot": "governance",
+            "claim": "f1272c0a-d65f-4c9f-bc96-522f486b2a64",
+            "version": "59bc984e-74c0-4fe6-a136-34e274347737",
+            "component": "022ee956-fb98-43be-a62a-43d37e03dc80"
+          },
+          {
+            "slot": "applicability",
+            "claim": "f009a330-23e4-4549-8a19-661fdf0e97b8",
+            "version": "28eb9148-8141-4a64-b12e-a9b01f0ba9d8",
+            "component": "96a807a9-334f-4cdc-a5da-d3385282b793"
+          }
+        ],
+        "parent": {
+          "step": "inspect the next retained judgment under the bound evidence rules",
+          "focal": "022ee956-fb98-43be-a62a-43d37e03dc80",
+          "remit": "synthetic inspection only; no action, designation or amendment",
+          "question": "May this exact retained inquiry judgment be relied upon for the next bounded inspection step under the bound governance basis, or must reliance be requalified/reoriented/held?",
+          "governing_basis": {
+            "claim": "f1272c0a-d65f-4c9f-bc96-522f486b2a64",
+            "version": "59bc984e-74c0-4fe6-a136-34e274347737",
+            "component": "022ee956-fb98-43be-a62a-43d37e03dc80"
+          }
+        },
+        "changes": [],
+        "history": [
+          {
+            "id": "4c36f53c-9797-4aae-8b43-783c230d884c",
+            "kind": "open",
+            "predecessor": null
+          },
+          {
+            "id": "4a09a993-fce2-4d1d-b20b-194d11ea7de1",
+            "kind": "judgment",
+            "predecessor": "4c36f53c-9797-4aae-8b43-783c230d884c"
+          },
+          {
+            "id": "c92aeea9-4201-4d8a-bb74-5146985c1b6d",
+            "kind": "return",
+            "predecessor": "4a09a993-fce2-4d1d-b20b-194d11ea7de1"
+          },
+          {
+            "id": "42c6cd76-bf6e-4527-993b-8e77ec6d25a1",
+            "kind": "reentry",
+            "predecessor": "c92aeea9-4201-4d8a-bb74-5146985c1b6d"
+          }
+        ],
+        "locator": "027af20d-ab15-494f-84d5-7bc9002b9d13",
+        "present": {
+          "step": "inspect the next retained judgment under the bound evidence rules",
+          "reason": "exact child support and independently observed parent conditions apply",
+          "disposition": "CONTINUE",
+          "g1_acceptance": {
+            "outcome": "PASS",
+            "findings": [
+              {
+                "path": [
+                  "evidence"
+                ],
+                "present": true
+              },
+              {
+                "path": [
+                  "criteria"
+                ],
+                "present": true
+              },
+              {
+                "path": [
+                  "method"
+                ],
+                "present": true
+              },
+              {
+                "path": [
+                  "findings"
+                ],
+                "present": true
+              }
+            ]
+          },
+          "non_promotion": "inquiry disposition only; no action or authority"
+        },
+        "boundary": "42c6cd76-bf6e-4527-993b-8e77ec6d25a1",
+        "judgment": {
+          "limits": "Finite supplied rules and witnesses; trusted fixture/custody; no universal correctness, authority, currentness or amendment.",
+          "source": "e7886fd7-e78b-430e-aa5b-c7c3466a5f5b",
+          "outcome": "PASS",
+          "summary": "All declared finite witness outcomes correspond.",
+          "evidence": [
+            "59bc984e-74c0-4fe6-a136-34e274347737",
+            "a48e06e5-e0a5-45cd-8ee6-c717ae023cf2",
+            "054db15b-8318-4475-a0cc-f4cda3e9e14a",
+            "a607a147-2e3a-430a-982d-1ae79aed7c7e",
+            "5ea85421-3d5a-49b9-aafa-1e086262450c"
+          ],
+          "findings": [
+            {
+              "witness": {
+                "path": [
+                  "inputs",
+                  "correspondence"
+                ],
+                "artifact": "a607a147-2e3a-430a-982d-1ae79aed7c7e"
+              },
+              "expected": "PASS",
+              "observed": {
+                "outcome": "PASS",
+                "findings": [
+                  {
+                    "path": [
+                      "evidence"
+                    ],
+                    "present": true
+                  },
+                  {
+                    "path": [
+                      "criteria"
+                    ],
+                    "present": true
+                  },
+                  {
+                    "path": [
+                      "method"
+                    ],
+                    "present": true
+                  },
+                  {
+                    "path": [
+                      "findings"
+                    ],
+                    "present": true
+                  }
+                ]
+              },
+              "obligation": "correspondence"
+            },
+            {
+              "witness": {
+                "path": [
+                  "inputs",
+                  "missing_evidence"
+                ],
+                "artifact": "a607a147-2e3a-430a-982d-1ae79aed7c7e"
+              },
+              "expected": "FAIL",
+              "observed": {
+                "outcome": "FAIL",
+                "findings": [
+                  {
+                    "path": [
+                      "evidence"
+                    ],
+                    "present": false
+                  },
+                  {
+                    "path": [
+                      "criteria"
+                    ],
+                    "present": true
+                  },
+                  {
+                    "path": [
+                      "method"
+                    ],
+                    "present": true
+                  },
+                  {
+                    "path": [
+                      "findings"
+                    ],
+                    "present": true
+                  }
+                ]
+              },
+              "obligation": "missing_evidence"
+            },
+            {
+              "witness": {
+                "path": [
+                  "inputs",
+                  "missing_method"
+                ],
+                "artifact": "a607a147-2e3a-430a-982d-1ae79aed7c7e"
+              },
+              "expected": "FAIL",
+              "observed": {
+                "outcome": "FAIL",
+                "findings": [
+                  {
+                    "path": [
+                      "evidence"
+                    ],
+                    "present": true
+                  },
+                  {
+                    "path": [
+                      "criteria"
+                    ],
+                    "present": true
+                  },
+                  {
+                    "path": [
+                      "method"
+                    ],
+                    "present": false
+                  },
+                  {
+                    "path": [
+                      "findings"
+                    ],
+                    "present": true
+                  }
+                ]
+              },
+              "obligation": "missing_method"
+            }
+          ]
+        },
+        "dependency": {
+          "why": "child witness examination",
+          "slot": "governance",
+          "binding": {
+            "slot": "governance",
+            "remit": "synthetic inspection only; no action, designation or amendment",
+            "scope": "daab079f-5f49-4a5a-af16-f625434f4ab5",
+            "method": "054db15b-8318-4475-a0cc-f4cda3e9e14a",
+            "parent": "027af20d-ab15-494f-84d5-7bc9002b9d13",
+            "version": "59bc984e-74c0-4fe6-a136-34e274347737",
+            "criteria": "a48e06e5-e0a5-45cd-8ee6-c717ae023cf2",
+            "component": "022ee956-fb98-43be-a62a-43d37e03dc80",
+            "witnesses": "a607a147-2e3a-430a-982d-1ae79aed7c7e",
+            "child_question": "Does the bound evidence comparator discriminate the declared missing-evidence and missing-method violations from correspondence?",
+            "parent_question": "May this exact retained inquiry judgment be relied upon for the next bounded inspection step under the bound governance basis, or must reliance be requalified/reoriented/held?",
+            "dependency_claim": "f1272c0a-d65f-4c9f-bc96-522f486b2a64"
+          }
+        },
+        "observations": {
+          "claims": {
+            "6c3a4503-6783-47c4-8b8c-419385092734": {
+              "history": [],
+              "standing": "unassessed"
+            },
+            "7c6bd75a-2870-4952-aa4e-3718bebaaf1f": {
+              "history": [],
+              "standing": "unassessed"
+            },
+            "8bec6f00-0832-45f2-b3de-193ad1c0b7fe": {
+              "history": [],
+              "standing": "unassessed"
+            },
+            "f009a330-23e4-4549-8a19-661fdf0e97b8": {
+              "history": [],
+              "standing": "unassessed"
+            },
+            "f1272c0a-d65f-4c9f-bc96-522f486b2a64": {
+              "history": [],
+              "standing": "unassessed"
+            },
+            "fd1bd5c3-e1c5-479f-a154-a80b50e35df7": {
+              "history": [],
+              "standing": "unassessed"
+            }
+          },
+          "method": {
+            "history": null,
+            "version": "054db15b-8318-4475-a0cc-f4cda3e9e14a",
+            "complete": true
+          },
+          "criteria": {
+            "history": null,
+            "version": "a48e06e5-e0a5-45cd-8ee6-c717ae023cf2",
+            "complete": true
+          },
+          "witnesses": {
+            "history": null,
+            "version": "a607a147-2e3a-430a-982d-1ae79aed7c7e",
+            "complete": true
+          },
+          "governance": {
+            "history": null,
+            "version": "59bc984e-74c0-4fe6-a136-34e274347737",
+            "complete": true
+          },
+          "applicability": {
+            "history": null,
+            "version": "28eb9148-8141-4a64-b12e-a9b01f0ba9d8",
+            "complete": true
+          }
+        },
+        "non_promotion": "Regenerated read projection. Historical disposition is not present permission; new reentry needs this boundary and observations.",
+        "source_contract": "027af20d-ab15-494f-84d5-7bc9002b9d13",
+        "last_disposition": {
+          "id": "42c6cd76-bf6e-4527-993b-8e77ec6d25a1",
+          "kind": "reentry",
+          "step": "inspect the next retained judgment under the bound evidence rules",
+          "parent": "027af20d-ab15-494f-84d5-7bc9002b9d13",
+          "reason": "exact child support and independently observed parent conditions apply",
+          "result": "e7886fd7-e78b-430e-aa5b-c7c3466a5f5b",
+          "attempt": "4c36f53c-9797-4aae-8b43-783c230d884c",
+          "request": "4628897a-84e7-4cd1-910f-c03f2eff31c5",
+          "signature": {
+            "op": "reentry",
+            "predecessor": "c92aeea9-4201-4d8a-bb74-5146985c1b6d",
+            "observations": {
+              "claims": {
+                "6c3a4503-6783-47c4-8b8c-419385092734": {
+                  "history": [],
+                  "standing": "unassessed"
+                },
+                "7c6bd75a-2870-4952-aa4e-3718bebaaf1f": {
+                  "history": [],
+                  "standing": "unassessed"
+                },
+                "8bec6f00-0832-45f2-b3de-193ad1c0b7fe": {
+                  "history": [],
+                  "standing": "unassessed"
+                },
+                "f009a330-23e4-4549-8a19-661fdf0e97b8": {
+                  "history": [],
+                  "standing": "unassessed"
+                },
+                "f1272c0a-d65f-4c9f-bc96-522f486b2a64": {
+                  "history": [],
+                  "standing": "unassessed"
+                },
+                "fd1bd5c3-e1c5-479f-a154-a80b50e35df7": {
+                  "history": [],
+                  "standing": "unassessed"
+                }
+              },
+              "method": {
+                "history": null,
+                "version": "054db15b-8318-4475-a0cc-f4cda3e9e14a",
+                "complete": true
+              },
+              "criteria": {
+                "history": null,
+                "version": "a48e06e5-e0a5-45cd-8ee6-c717ae023cf2",
+                "complete": true
+              },
+              "witnesses": {
+                "history": null,
+                "version": "a607a147-2e3a-430a-982d-1ae79aed7c7e",
+                "complete": true
+              },
+              "governance": {
+                "history": null,
+                "version": "59bc984e-74c0-4fe6-a136-34e274347737",
+                "complete": true
+              },
+              "applicability": {
+                "history": null,
+                "version": "28eb9148-8141-4a64-b12e-a9b01f0ba9d8",
+                "complete": true
+              }
+            }
+          },
+          "attribution": "b9_parent",
+          "disposition": "CONTINUE",
+          "predecessor": "c92aeea9-4201-4d8a-bb74-5146985c1b6d",
+          "observations": {
+            "claims": {
+              "6c3a4503-6783-47c4-8b8c-419385092734": {
+                "history": [],
+                "standing": "unassessed"
+              },
+              "7c6bd75a-2870-4952-aa4e-3718bebaaf1f": {
+                "history": [],
+                "standing": "unassessed"
+              },
+              "8bec6f00-0832-45f2-b3de-193ad1c0b7fe": {
+                "history": [],
+                "standing": "unassessed"
+              },
+              "f009a330-23e4-4549-8a19-661fdf0e97b8": {
+                "history": [],
+                "standing": "unassessed"
+              },
+              "f1272c0a-d65f-4c9f-bc96-522f486b2a64": {
+                "history": [],
+                "standing": "unassessed"
+              },
+              "fd1bd5c3-e1c5-479f-a154-a80b50e35df7": {
+                "history": [],
+                "standing": "unassessed"
+              }
+            },
+            "method": {
+              "history": null,
+              "version": "054db15b-8318-4475-a0cc-f4cda3e9e14a",
+              "complete": true
+            },
+            "criteria": {
+              "history": null,
+              "version": "a48e06e5-e0a5-45cd-8ee6-c717ae023cf2",
+              "complete": true
+            },
+            "witnesses": {
+              "history": null,
+              "version": "a607a147-2e3a-430a-982d-1ae79aed7c7e",
+              "complete": true
+            },
+            "governance": {
+              "history": null,
+              "version": "59bc984e-74c0-4fe6-a136-34e274347737",
+              "complete": true
+            },
+            "applicability": {
+              "history": null,
+              "version": "28eb9148-8141-4a64-b12e-a9b01f0ba9d8",
+              "complete": true
+            }
+          },
+          "g1_acceptance": {
+            "outcome": "PASS",
+            "findings": [
+              {
+                "path": [
+                  "evidence"
+                ],
+                "present": true
+              },
+              {
+                "path": [
+                  "criteria"
+                ],
+                "present": true
+              },
+              {
+                "path": [
+                  "method"
+                ],
+                "present": true
+              },
+              {
+                "path": [
+                  "findings"
+                ],
+                "present": true
+              }
+            ]
+          },
+          "non_promotion": "inquiry disposition only; no action or authority"
+        }
+      }
+    },
+    {
+      "id": "P08",
+      "control": "pre-open basis drift",
+      "denied": {
+        "slot": "governance",
+        "route": "REQUALIFY",
+        "opened": false,
+        "reason": "basis changed before opening"
+      }
+    },
+    {
+      "id": "P04/P05",
+      "control": "pre-open observation incomplete",
+      "no": {
+        "slot": "method",
+        "route": "HOLD",
+        "opened": false,
+        "reason": "declared observation incomplete"
+      }
+    },
+    {
+      "id": "P14",
+      "control": "undeclared writer source",
+      "error": "b9_undeclared_observation"
+    }
+  ]
+}

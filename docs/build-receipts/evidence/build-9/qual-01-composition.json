@@ -1,0 +1,367 @@
+{
+  "id": "P18",
+  "result": "PASS",
+  "controls": [
+    {
+      "name": "all predecessor function definitions/owners/ACLs unchanged",
+      "count": 49
+    },
+    {
+      "name": "no old column privileges broadened",
+      "count": 663
+    },
+    {
+      "name": "predecessor trigger routing byte-equivalent"
+    },
+    {
+      "name": "BUILD 7 selected pointers unchanged by install"
+    },
+    {
+      "name": "b9 inquiry cannot become b7 candidate",
+      "rejected": true,
+      "error": "wrong_artifact_role"
+    },
+    {
+      "name": "b9 judgment cannot become b7 attempt",
+      "rejected": true,
+      "error": "wrong_artifact_role"
+    },
+    {
+      "name": "b9 artifact cannot become old transformation input",
+      "rejected": true,
+      "error": "BUILD 5B request context must be a source_representation"
+    },
+    {
+      "name": "old producer cannot publish b9 role",
+      "rejected": true,
+      "error": "b9_protected_publication"
+    },
+    {
+      "name": "old producer cannot overwrite b9 artifact",
+      "rejected": true,
+      "error": "permission denied for table artifacts"
+    },
+    {
+      "name": "old source/request behavior remains usable",
+      "src": "144aaf36-543e-4645-a1d0-903f978baead",
+      "request": "9da0f4c6-c5de-41b3-a3f6-7ef630268667"
+    },
+    {
+      "name": "bounded roles no elevated authority",
+      "privileges": [
+        {
+          "rolname": "b9_child",
+          "rolsuper": false,
+          "rolcreaterole": false,
+          "rolcreatedb": false,
+          "rolbypassrls": false
+        },
+        {
+          "rolname": "b9_observer",
+          "rolsuper": false,
+          "rolcreaterole": false,
+          "rolcreatedb": false,
+          "rolbypassrls": false
+        },
+        {
+          "rolname": "b9_old_evaluator",
+          "rolsuper": false,
+          "rolcreaterole": false,
+          "rolcreatedb": false,
+          "rolbypassrls": false
+        },
+        {
+          "rolname": "b9_parent",
+          "rolsuper": false,
+          "rolcreaterole": false,
+          "rolcreatedb": false,
+          "rolbypassrls": false
+        },
+        {
+          "rolname": "b9_writer",
+          "rolsuper": false,
+          "rolcreaterole": false,
+          "rolcreatedb": false,
+          "rolbypassrls": false
+        },
+        {
+          "rolname": "ecb9_child",
+          "rolsuper": false,
+          "rolcreaterole": false,
+          "rolcreatedb": false,
+          "rolbypassrls": false
+        },
+        {
+          "rolname": "ecb9_observer",
+          "rolsuper": false,
+          "rolcreaterole": false,
+          "rolcreatedb": false,
+          "rolbypassrls": false
+        },
+        {
+          "rolname": "ecb9_owner",
+          "rolsuper": false,
+          "rolcreaterole": false,
+          "rolcreatedb": false,
+          "rolbypassrls": false
+        },
+        {
+          "rolname": "ecb9_parent",
+          "rolsuper": false,
+          "rolcreaterole": false,
+          "rolcreatedb": false,
+          "rolbypassrls": false
+        },
+        {
+          "rolname": "ecb9_writer",
+          "rolsuper": false,
+          "rolcreaterole": false,
+          "rolcreatedb": false,
+          "rolbypassrls": false
+        }
+      ]
+    },
+    {
+      "name": "BUILD 9 scope composition writes no designation pointer",
+      "pointers": [
+        {
+          "id": "00d88491-f6b8-4884-9a6a-0891319ff144",
+          "current_event": null
+        },
+        {
+          "id": "06810c0f-9d2c-4f19-84b0-715b7c34f705",
+          "current_event": null
+        },
+        {
+          "id": "0bf6e3da-54fe-4419-bb80-8d0031abb26d",
+          "current_event": null
+        },
+        {
+          "id": "201bc991-50fb-4d53-a9c3-df544e704b47",
+          "current_event": null
+        },
+        {
+          "id": "277b3ffb-ac14-4161-8d6e-bb2105223af5",
+          "current_event": null
+        },
+        {
+          "id": "2e9ffd2e-7fa4-4ea4-a756-60a081b94e77",
+          "current_event": null
+        },
+        {
+          "id": "36cfca44-1c35-4864-ab0c-0f5a6c4d4cbe",
+          "current_event": null
+        },
+        {
+          "id": "37d0a424-a91d-4034-8fbf-a93164936f1d",
+          "current_event": null
+        },
+        {
+          "id": "39b6fcf0-4263-49f5-8a9b-d35b3264d172",
+          "current_event": null
+        },
+        {
+          "id": "3a0a7931-59f5-43de-b450-b0072a1633f1",
+          "current_event": null
+        },
+        {
+          "id": "3dfbee5c-23bb-4f3e-aadf-60835babf405",
+          "current_event": null
+        },
+        {
+          "id": "3e3cfc3c-cc83-4461-9b95-ec466552ae81",
+          "current_event": null
+        },
+        {
+          "id": "40ff098d-0b55-4fb7-9e2c-6c6da05bb28a",
+          "current_event": null
+        },
+        {
+          "id": "439c94c3-4fa5-4e8c-acbe-22a27413b2b4",
+          "current_event": null
+        },
+        {
+          "id": "47279f8a-32d3-48e1-b111-ccab566c1785",
+          "current_event": null
+        },
+        {
+          "id": "4b4eb28e-1d42-4cbf-a132-6ba2b6d00cea",
+          "current_event": null
+        },
+        {
+          "id": "4d2c3edf-5a75-4761-894f-0fa92edf7ba2",
+          "current_event": null
+        },
+        {
+          "id": "4da5f06d-9382-4c39-be2b-b9c82a155029",
+          "current_event": null
+        },
+        {
+          "id": "529792b0-e94f-4cc2-9429-22bb79e8ba99",
+          "current_event": null
+        },
+        {
+          "id": "5955e395-1f2d-40ec-8361-20c5e9f25ff3",
+          "current_event": null
+        },
+        {
+          "id": "5c2b834d-1e63-4e55-a4cb-3c4407843fe6",
+          "current_event": null
+        },
+        {
+          "id": "5d68960c-6025-460b-a4b7-121f6e2b8956",
+          "current_event": null
+        },
+        {
+          "id": "5f6710ed-13ae-4fd8-9740-4737c23929d4",
+          "current_event": null
+        },
+        {
+          "id": "63f7ed21-dcd1-4db9-afcc-670aa5237d3e",
+          "current_event": null
+        },
+        {
+          "id": "761c2b9b-cb42-471d-8e23-1ac30fae751c",
+          "current_event": null
+        },
+        {
+          "id": "76a8c47d-1de3-4904-8cbb-ec29ec743bc4",
+          "current_event": null
+        },
+        {
+          "id": "7afb57a4-5fc6-4621-9f9f-0e14d87ab558",
+          "current_event": null
+        },
+        {
+          "id": "7bd82a7a-7163-442c-8570-2734741cc3f3",
+          "current_event": null
+        },
+        {
+          "id": "7d5a7af6-8213-4f68-9427-bde87d9e09e8",
+          "current_event": null
+        },
+        {
+          "id": "7f92d21d-12bd-4982-b52c-095f8ffd6789",
+          "current_event": null
+        },
+        {
+          "id": "84f9a248-421e-43ad-b9cc-f2c30feb670b",
+          "current_event": null
+        },
+        {
+          "id": "89569885-77ab-42b2-adea-c0fef5ad7409",
+          "current_event": null
+        },
+        {
+          "id": "895bee33-28de-4cb0-b855-757849bd8cff",
+          "current_event": null
+        },
+        {
+          "id": "8adbc228-90ab-4356-b4b4-489b6d5b0351",
+          "current_event": null
+        },
+        {
+          "id": "96d24870-95b2-47cd-9f59-74621c06d20a",
+          "current_event": null
+        },
+        {
+          "id": "97c0162e-4465-4418-aee9-0ced0c9f1d46",
+          "current_event": null
+        },
+        {
+          "id": "9e644bbc-a1e1-43d9-a3eb-f1d1661acf95",
+          "current_event": null
+        },
+        {
+          "id": "a0c4e1b5-9350-4b44-ae48-928faec86544",
+          "current_event": null
+        },
+        {
+          "id": "a8a62de9-90e0-4809-a8f7-7e6f1759fc94",
+          "current_event": null
+        },
+        {
+          "id": "aca72b1e-a325-49ec-b6d8-2d566cb7c94e",
+          "current_event": null
+        },
+        {
+          "id": "b3534a79-cb78-41a2-bf45-dfad42c650c8",
+          "current_event": null
+        },
+        {
+          "id": "b4cc6fa1-e8f4-46c5-8e41-e9510e898630",
+          "current_event": null
+        },
+        {
+          "id": "bcc6d494-1bb4-49db-a5a7-490bb01a4857",
+          "current_event": null
+        },
+        {
+          "id": "cb546c30-92b1-46b5-b501-3ae199c2f343",
+          "current_event": null
+        },
+        {
+          "id": "cd0f8f8d-2199-4a84-92e2-1ab7f3567292",
+          "current_event": null
+        },
+        {
+          "id": "ceab3acc-d41e-4178-9441-fdfd8ace00c6",
+          "current_event": null
+        },
+        {
+          "id": "d1d4d9ad-18c2-47fc-8995-9a1b32ce1017",
+          "current_event": null
+        },
+        {
+          "id": "d60c5260-37ae-4292-946b-152d7af63186",
+          "current_event": null
+        },
+        {
+          "id": "daab079f-5f49-4a5a-af16-f625434f4ab5",
+          "current_event": null
+        },
+        {
+          "id": "db4a536c-7107-4796-9d3d-f5a1170ea584",
+          "current_event": null
+        },
+        {
+          "id": "e0bf32fb-38ed-43a9-baa9-f9a894d84634",
+          "current_event": null
+        },
+        {
+          "id": "e51b2363-a0ae-4d4d-b8e7-2d1346a25f72",
+          "current_event": null
+        },
+        {
+          "id": "eb97d08d-130a-44e6-9938-dbedf6bbeaac",
+          "current_event": null
+        },
+        {
+          "id": "efaa53b1-9c8e-4337-acc1-42da6577da91",
+          "current_event": null
+        },
+        {
+          "id": "f2320c53-7001-4614-b83c-f35fc7927c7b",
+          "current_event": null
+        },
+        {
+          "id": "f5fc71f0-d2b2-4844-b660-e1acc152413e",
+          "current_event": null
+        },
+        {
+          "id": "f8e16e18-905a-4218-90cb-81c3e048bb3f",
+          "current_event": null
+        },
+        {
+          "id": "fb12badc-fbc3-462b-b62d-765a5d888d3b",
+          "current_event": null
+        },
+        {
+          "id": "fc4867b6-53e5-4778-8e24-4382d75f6202",
+          "current_event": null
+        }
+      ]
+    }
+  ],
+  "limits": "Exact inherited checker/custody seams only; no re-proving closed BUILD 7/8 capabilities."
+}
