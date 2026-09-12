@@ -1,61 +1,69 @@
-STATUS: BUILD 8 MOVE IMPLEMENTED / PROVEN — READY FOR HUMAN METABOLIZE
-DISPOSITION: BRANCH-LOCAL ECO-103 RETURN; NO BUILD CLOSURE OR MAIN MERGE
-ROLE: Repository reentry checkpoint
-AUTHORITY: ECO-103 explicit bounded Move commission; I1–I9 and E1–E6 controlling
-CURRENT BUILD UNIT: BUILD 8 — Action Envelope Lifecycle
+STATUS: BUILD 8 CLOSED / HUMAN ACCEPTED — IMPLEMENTATION REGISTER B
+DISPOSITION: BOUNDED ACTION ENVELOPE LIFECYCLE PROVEN; CARRIED APERTURES PRESERVED
+ROLE: Canonical repository reentry checkpoint
+AUTHORITY: Explicit human BUILD 8 closure after ECO-104 Metabolize PASS WITH CARRIED APERTURES; normalization under ECO-106
+CURRENT BUILD UNIT: BUILD 8 CLOSED; BUILD 9 UNOPENED AT THIS NORMALIZATION CHECKPOINT
 
 # Current disposition
 
-BUILD 8 Sense, Shape and pre-Move Metabolize remain human-closed. ECO-103 opened the bounded Move. This branch now implements and proves the accepted R1–R6 Action Envelope slice and is ready for human Metabolize. It does not close BUILD 8 or open BUILD 9/10.
+BUILD 8 is human-closed at implementation Register B on the bounded atomic-ledger PostgreSQL synthetic-target proof class. Read [closure receipt 031](docs/build-receipts/031-build-8-closed.md) first, then [Move receipt 030](docs/build-receipts/030-build-8-move.md) for the full implementation/proof lineage.
 
-Read [the complete ECO-103 Move packet](docs/build-receipts/030-build-8-move.md), then its exact evidence links. The packet contains the mandatory twelve-part return contract, source/contract maps, P01–P14 results, E1–E6 controls, structural-leverage audit, cold recovery, freeze/holdout lineage, limitations and reproduction instructions.
+The accepted Move implementation line is preserved through PR #31 (`build/eco-103-build-8-move`), with final accepted Move head `69ab86bf2ecb1d829560c9f18436130297e4e924` before closure bookkeeping. Human Metabolize returned `METABOLIZE PASS WITH CARRIED APERTURES — READY FOR HUMAN BUILD 8 CLOSURE`; Levi then explicitly accepted closure provided the learnings and operational consequences propagate forward.
 
-Review handoff: [draft PR #31](https://github.com/Levi-Anthony/ecb-v2/pull/31).
-Continuation from `c64d55dd6be00395fc39c0a845a6dcc3dd304b42` verified unchanged live
-authority, normalized-main ancestry, original proof/freeze hashes, and the successful
-PG17 CI archive for that exact implementation. Fresh local cold recovery matched
-the original result; unchanged BUILD 0/1 tests passed 6/6 and 5/5. The continuation
-section of receipt 030 links the retained CI archive and reproducible evidence
-verification. It changes review evidence/reentry only; the accepted implementation
-and frozen comparison contract remain unchanged.
+The proof establishes only the tested class: a disposable synthetic target whose native effect and durable native target-operation record commit atomically in PostgreSQL under the accepted scope-lock / READ COMMITTED boundary. It does not establish arbitrary external/distributed exactly-once execution.
 
-The proof covers only a disposable synthetic target whose native effect and native target-operation record commit atomically in PostgreSQL under the accepted shared scope lock. No general external/distributed exactly-once guarantee travels.
+# Accepted BUILD 8 capability
 
-# Durable continuation and completed work
+`exact envelope → finite bounded qualification → protected authorization + separately inspectable designation → condition-specific admission/effect checks → committed execution-start → atomic synthetic native effect + terminal lifecycle record → read-only replay/recovery → explicit serialized reconcile/fence before another effectful attempt`
 
-The continuation recovered a clean `build/eco-103-build-8-move` at `b4b813dd0779dc1f697ba42b2f7132538f18df95`, matching the remote. Current main remained `61b4a0524fdc089cbf2b244584ba073deb05c351` and is an ancestor. The original pre-mutation gate at `19064a9` and composition checkpoint at `b4b813d` were retained. Shape was not restarted.
+The bounded mechanism preserves proposal/envelope ≠ qualification/evaluation ≠ authorization/designation ≠ admission/current applicability ≠ START/attempt ≠ physical effect ≠ legitimacy ≠ acknowledgement, and preserves recovery/reconcile/fence as distinct responsibilities.
 
-The first unfinished work was lifecycle implementation and proof. A failing checkpoint trigger-inspection test was repaired without replacing the composition design. The final clean run passed P01–P14, 18 supplemental controls, dispatch replay, and inherited regressions. The implementation/comparison contract was frozen before an additional untuned holdout combining semantic and failure/recovery pressure; that holdout passed without repairs. Exact definitions, grants, hashes, inputs/results, failure lineage and the disposable database archive are retained under `docs/build-receipts/evidence/build-8`.
+Real `UNKNOWN / IN_FLIGHT` is preserved when the authoritative observation/serialization boundary cannot yet discriminate effect from no-effect. Exact replay is observational and does not mint retry entitlement or fence unfinished work. Cold reconstruction is supported from retained evidence/native observation within the tested boundary.
 
-Do not redo completed implementation/proof merely to review it. Reproduction resets only the named disposable BUILD 8 cluster and overwrites working evidence; preserve the committed archive. See [reproduction boundary](tests/build-8/README.md).
+# Carried feed-forward learning
 
-# Mechanism and authority
+BUILD 8 closure does not erase its unresolved learning. The durable forward routes are ECO-105 plus the ECO-104 closure record. Treat them as evidence/feed-forward unless separately promoted through their governing route.
 
-`exact envelope → finite bounded qualification → protected authorization + separately inspectable designation → condition-specific admission/effect checks → committed execution-start → atomic synthetic native effect + terminal lifecycle record → read-only replay/recovery → explicit serialized reconcile/fence before another attempt`
+Carry forward in particular:
 
-R1–R6 are responsibilities, not six mandated objects. Existing Artifact/Referent storage and BUILD 7 scope lock are reused. Four BUILD 8 routing roles and separate custody enforce deterministic obligations. No target table, episode root, currentness registry, second closure digest, general executor/policy engine or propagation system was added.
+- operational Question Forward: `UNKNOWN → HOLD → calibrated Forward Question → observable/actionable resolution condition → route` where decision-relevant;
+- future Evaluation provenance / bad-Evaluation Shape work;
+- candidate principle: derived consequential state should remain interrogable as a transformation, not merely exist as a label;
+- loss-aware evidence compression: `raw evidence → structured receipt → reentry projection` while preserving material exceptions and challenge/reconstruction lineage;
+- proof travel by differential: `proven substrate + explicit target/environment difference + minimum additional mechanism/proof`;
+- `limitation ≠ blocker` as a Register-B guardrail against silently escalating implementation work into Register-A academic proof;
+- predecessor-duplication watchpoint: distinguish bounded compatibility reuse from independent semantic forks;
+- immediate implementation questions: what minimum real authority relationship must be established for the personal installation's first real consequential action, and what first useful real action target most closely matches BUILD 8's proven guarantees.
 
-The ratified law remains governing: **Physicalize deterministic liability; preserve semantic freedom where interpretation remains valuable.** Its SHOULD strength in the governing invariant is unchanged.
+The Temporal Fractal SSMM and Reflective Knowledge Compiler / Coordination Substrate checkpoints remain provisional feed-forward evidence for later recursive-self-application inquiry. They are not silently canonicalized by BUILD 8 closure.
+
+# Failure lineage retained
+
+Final-head CI attempt 1 failed during disposable PostgreSQL startup (`connection refused`) before BUILD 8 installation/tests. The identical commit passed on attempt 2 without implementation/comparator/freeze repair. This remains ordinary test-plumbing/reproducibility debt and preserved historical evidence, not a mechanism falsifier.
+
+# Authority and installation boundary
 
 ```text
 BUILD_0_TO_7=CLOSED; PRIOR_ACCEPTED_BOUNDARIES_PRESERVED
 BUILD_8_SENSE=CLOSED
-BUILD_8_SHAPE=CLOSED; HUMAN_ACCEPTED; I1_I9_E1_E6_CONTROLLING
-BUILD_8_PRE_MOVE_METABOLIZE=CLOSED; PASS; NORMALIZED_MAIN@61b4a05
-BUILD_8_MOVE=READY_FOR_HUMAN_METABOLIZE
-BUILD_8_IMPLEMENTATION=BOUNDED_SLICE_PROVEN_ON_ISOLATED_BRANCH
-BUILD_8_HUMAN_CLOSURE=NOT_PERFORMED
+BUILD_8_SHAPE=CLOSED; HUMAN_ACCEPTED
+BUILD_8_MOVE=CLOSED; BOUNDED_SLICE_IMPLEMENTED_AND_PROVEN
+BUILD_8_METABOLIZE=CLOSED; PASS_WITH_CARRIED_APERTURES
+BUILD_8_HUMAN_CLOSURE=CLOSED; ACCEPTED; REGISTER_B
+BUILD_8_PROOF_TRAVEL=ATOMIC_LEDGER_POSTGRESQL_SYNTHETIC_TARGET_CLASS_ONLY
 REAL_MASTER_KEY_AUTHORITY=QUESTION_FORWARD
 REAL_MASTER_KEY_DESIGNATION=NONE
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
 CANONICAL_BUILD7_DATABASE_INSTALL=NONE
 CANONICAL_BUILD8_DATABASE_INSTALL=NONE
-BUILD_9_10=UNOPENED
+BUILD_9_10=UNOPENED_AT_THIS_CHECKPOINT
 ```
 
-# Return boundary
+Repository normalization is closure bookkeeping and retained substrate/evidence integration only. It does not authorize canonical database migration, real designation/currentness/action authority, external production action, BUILD 9/10, generalized runtime/policy machinery, or final UX.
 
-Next seam: human review/Metabolize of [receipt 030](docs/build-receipts/030-build-8-move.md) and its reviewable branch/PR. No merge or closure is automatic. No canonical Supabase/ECB data or schema was mutated. Ordinary branch push/CI/preview metadata supplies neither runtime installation authority nor proof of real action.
+# Next legitimate seam
 
-Real designation/action authority, canonical install, non-atomic external target classes, broader semantic methods, observation gaps, retention/disaster recovery, AP-10 lossy abstraction, runtime deployment, recursion/propagation and final UX retain the exact Question Forward routes in receipt 030. Encountering an indispensable dependency or a new architecture choice requires the ECO-103 stop/classification route.
+BUILD 8 construction should not be replayed merely for confidence. Reenter retained evidence only when a later dependency/falsifier makes it decision-relevant.
+
+Any opening of BUILD 9 Recursive Self-Application requires its own explicit human Sense commission. BUILD 9 must inherit BUILD 8's proven distinctions and carried learnings without silently treating feed-forward hypotheses as settled architecture. Canonical installation and the first real consequential action remain separate decisions from BUILD 9 recursion.
