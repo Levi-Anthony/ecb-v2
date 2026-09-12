@@ -15,4 +15,5 @@ node tests/build-9/catalog.mjs "$evidence/$run_name-after.json"
 node tests/build-9/primary.mjs "$run_name-primary.json" > "$evidence/$run_name-primary.log" 2>&1
 node tests/build-9/supplemental.mjs "$run_name-supplemental.json" > "$evidence/$run_name-supplemental.log" 2>&1
 node tests/build-9/resilience.mjs "$run_name-resilience.json" > "$evidence/$run_name-resilience.log" 2>&1
+node tests/build-9/standing.mjs "$run_name-standing.json" > "$evidence/$run_name-standing.log" 2>&1
 node tests/build-9/composition.mjs "$evidence/$run_name-before.json" "$evidence/$run_name-after.json" "$run_name-composition.json" > "$evidence/$run_name-composition.log" 2>&1
