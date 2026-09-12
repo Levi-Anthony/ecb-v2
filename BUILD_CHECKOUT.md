@@ -1,87 +1,69 @@
-STATUS: BUILD 8 SHAPE CLOSED / PRE-MOVE METABOLIZE COMPLETE — IMPLEMENTATION REGISTER B
-DISPOSITION: HUMAN SHAPE CLOSURE ACCEPTED / MOVE UNOPENED
+STATUS: BUILD 8 CLOSED / HUMAN ACCEPTED — IMPLEMENTATION REGISTER B
+DISPOSITION: BOUNDED ACTION ENVELOPE LIFECYCLE PROVEN; CARRIED APERTURES PRESERVED
 ROLE: Canonical repository reentry checkpoint
-AUTHORITY: Explicit human BUILD 8 Shape closure + pre-Move Metabolize normalization
-CURRENT BUILD UNIT: BUILD 8 — Shape closed; Move not yet commissioned
+AUTHORITY: Explicit human BUILD 8 closure after ECO-104 Metabolize PASS WITH CARRIED APERTURES; normalization under ECO-106
+CURRENT BUILD UNIT: BUILD 8 CLOSED; BUILD 9 UNOPENED AT THIS NORMALIZATION CHECKPOINT
 
 # Current disposition
 
-BUILD 8 Sense and Shape are human-closed. The accepted Shape is the bounded R1→R6 Action Envelope mechanism recorded in [BUILD 8 Shape closure + pre-Move Metabolize](docs/build-shape/011-build-8-shape-closure-metabolize.md), derived from ECO-97/ECO-98 and their controlling review/closure records.
+BUILD 8 is human-closed at implementation Register B on the bounded atomic-ledger PostgreSQL synthetic-target proof class. Read [closure receipt 031](docs/build-receipts/031-build-8-closed.md) first, then [Move receipt 030](docs/build-receipts/030-build-8-move.md) for the full implementation/proof lineage.
 
-The accepted core mechanism is:
+The accepted Move implementation line is preserved through PR #31 (`build/eco-103-build-8-move`), with final accepted Move head `69ab86bf2ecb1d829560c9f18436130297e4e924` before closure bookkeeping. Human Metabolize returned `METABOLIZE PASS WITH CARRIED APERTURES — READY FOR HUMAN BUILD 8 CLOSURE`; Levi then explicitly accepted closure provided the learnings and operational consequences propagate forward.
 
-`exact envelope → finite bounded qualification → protected authorization + separately inspectable designation → condition-specific admission/effect checks → committed execution-start → atomic synthetic native effect + terminal lifecycle record with independent semantics → read-only replay/recovery → explicit serialized reconcile/fence before any later effectful attempt`
+The proof establishes only the tested class: a disposable synthetic target whose native effect and durable native target-operation record commit atomically in PostgreSQL under the accepted scope-lock / READ COMMITTED boundary. It does not establish arbitrary external/distributed exactly-once execution.
 
-The proving boundary remains disposable/synthetic. No BUILD 8 implementation has been performed. No real Master-Key/action authority or external effect has been created. BUILD 8 Move remains unopened and requires its own commission.
+# Accepted BUILD 8 capability
 
-The human-ratified structural-leverage law is now normalized into the governing repository controls:
+`exact envelope → finite bounded qualification → protected authorization + separately inspectable designation → condition-specific admission/effect checks → committed execution-start → atomic synthetic native effect + terminal lifecycle record → read-only replay/recovery → explicit serialized reconcile/fence before another effectful attempt`
 
-> **Physicalize deterministic liability; preserve semantic freedom where interpretation remains valuable.**
+The bounded mechanism preserves proposal/envelope ≠ qualification/evaluation ≠ authorization/designation ≠ admission/current applicability ≠ START/attempt ≠ physical effect ≠ legitimacy ≠ acknowledgement, and preserves recovery/reconcile/fence as distinct responsibilities.
 
-See `docs/invariants.md` and `docs/build-contract.md`. This law complements `Structure is earned`; it does not authorize anticipatory schema/runtime machinery.
+Real `UNKNOWN / IN_FLIGHT` is preserved when the authoritative observation/serialization boundary cannot yet discriminate effect from no-effect. Exact replay is observational and does not mint retry entitlement or fence unfinished work. Cold reconstruction is supported from retained evidence/native observation within the tested boundary.
+
+# Carried feed-forward learning
+
+BUILD 8 closure does not erase its unresolved learning. The durable forward routes are ECO-105 plus the ECO-104 closure record. Treat them as evidence/feed-forward unless separately promoted through their governing route.
+
+Carry forward in particular:
+
+- operational Question Forward: `UNKNOWN → HOLD → calibrated Forward Question → observable/actionable resolution condition → route` where decision-relevant;
+- future Evaluation provenance / bad-Evaluation Shape work;
+- candidate principle: derived consequential state should remain interrogable as a transformation, not merely exist as a label;
+- loss-aware evidence compression: `raw evidence → structured receipt → reentry projection` while preserving material exceptions and challenge/reconstruction lineage;
+- proof travel by differential: `proven substrate + explicit target/environment difference + minimum additional mechanism/proof`;
+- `limitation ≠ blocker` as a Register-B guardrail against silently escalating implementation work into Register-A academic proof;
+- predecessor-duplication watchpoint: distinguish bounded compatibility reuse from independent semantic forks;
+- immediate implementation questions: what minimum real authority relationship must be established for the personal installation's first real consequential action, and what first useful real action target most closely matches BUILD 8's proven guarantees.
+
+The Temporal Fractal SSMM and Reflective Knowledge Compiler / Coordination Substrate checkpoints remain provisional feed-forward evidence for later recursive-self-application inquiry. They are not silently canonicalized by BUILD 8 closure.
+
+# Failure lineage retained
+
+Final-head CI attempt 1 failed during disposable PostgreSQL startup (`connection refused`) before BUILD 8 installation/tests. The identical commit passed on attempt 2 without implementation/comparator/freeze repair. This remains ordinary test-plumbing/reproducibility debt and preserved historical evidence, not a mechanism falsifier.
+
+# Authority and installation boundary
 
 ```text
-BUILD_0_TO_6=CLOSED
-BUILD_7=CLOSED; REGISTER_B; NORMALIZED_TO_MAIN
+BUILD_0_TO_7=CLOSED; PRIOR_ACCEPTED_BOUNDARIES_PRESERVED
 BUILD_8_SENSE=CLOSED
-BUILD_8_SHAPE=CLOSED; HUMAN_ACCEPTED; I1_I9_E1_E6_CONTROLLING
-BUILD_8_PRE_MOVE_METABOLIZE=COMPLETE
-BUILD_8_MOVE=UNOPENED
-BUILD_8_IMPLEMENTATION=NONE
-CURRENT_PHASE=CLOSED_SHAPE_PRE_MOVE_BOUNDARY
-CURRENT_MOVE=NONE
-STRUCTURAL_LEVERAGE_LAW=RATIFIED; GOVERNING; REPOSITORY_NORMALIZED
+BUILD_8_SHAPE=CLOSED; HUMAN_ACCEPTED
+BUILD_8_MOVE=CLOSED; BOUNDED_SLICE_IMPLEMENTED_AND_PROVEN
+BUILD_8_METABOLIZE=CLOSED; PASS_WITH_CARRIED_APERTURES
+BUILD_8_HUMAN_CLOSURE=CLOSED; ACCEPTED; REGISTER_B
+BUILD_8_PROOF_TRAVEL=ATOMIC_LEDGER_POSTGRESQL_SYNTHETIC_TARGET_CLASS_ONLY
 REAL_MASTER_KEY_AUTHORITY=QUESTION_FORWARD
 REAL_MASTER_KEY_DESIGNATION=NONE
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
 CANONICAL_BUILD7_DATABASE_INSTALL=NONE
-BUILD_9_10=UNOPENED
+CANONICAL_BUILD8_DATABASE_INSTALL=NONE
+BUILD_9_10=UNOPENED_AT_THIS_CHECKPOINT
 ```
 
-# BUILD 8 closure and recovery
+Repository normalization is closure bookkeeping and retained substrate/evidence integration only. It does not authorize canonical database migration, real designation/currentness/action authority, external production action, BUILD 9/10, generalized runtime/policy machinery, or final UX.
 
-Read, in order when commissioning BUILD 8 Move:
+# Next legitimate seam
 
-1. [BUILD 8 Shape closure + pre-Move Metabolize](docs/build-shape/011-build-8-shape-closure-metabolize.md).
-2. ECO-98 human Shape closure comment `4872ef52-488c-41bb-be4c-a99da401e27e`.
-3. ECO-98 integrated review constraints I1–I9 comment `6165616d-f60e-4726-889e-efe356b3868a`.
-4. ECO-98 external-review amendments E1–E6 comment `608c8937-40a6-4470-b1b7-d0f319e998d9`.
-5. Linear document `BUILD 8 Shape — Astra Closure Candidate (Full Record)` (`a2b6c22e-9690-439b-8dcc-8f7179f6349c`) for the full candidate and P01–P14 proof surface, subordinate to the human patches/closure.
-6. ECO-97 accepted Sense closure and patches.
-7. Current `docs/build-contract.md`, `docs/invariants.md`, `docs/open-apertures.md`, `docs/acceptance-tests.md`, `docs/glossary.md`, and `docs/build-evidence.md` only where decision-relevant.
-8. BUILD 6–7 accepted receipts and implementation only where the accepted BUILD 8 Shape explicitly reuses their guarantees or physical seams.
+BUILD 8 construction should not be replayed merely for confidence. Reenter retained evidence only when a later dependency/falsifier makes it decision-relevant.
 
-Do not reopen Shape merely to repeat the architecture review. Return to Shape/human adjudication only if Move discovers a governing conflict, named falsifier, indispensable Question Forward dependency, failed accepted mechanism assumption, or a new architecture choice not settled by the closure.
-
-# Accepted BUILD 8 proof boundary
-
-The accepted Move Output Contract uses P01–P14 as amended by E1–E6. These are acceptance obligations, not PASS claims.
-
-Particularly load-bearing Move obligations include:
-
-- partition the shared `public.artifacts` preparation triggers so BUILD 5B, BUILD 7 and BUILD 8 role families each hit exactly one preparation path while the BUILD 5B checker function text remains unchanged;
-- prove a pre-BUILD-8-migration BUILD 5B request can still obtain the expected receipt after the migration;
-- derive UNKNOWN/IN_FLIGHT from a real bounded observation/lock-availability condition, not a doctored reader;
-- keep exact replay observational; only explicit reconcile may append the no-effect fence;
-- isolate BUILD 8 custody so sharing the BUILD 7 scope lock cannot mutate BUILD 7 `current_event`;
-- fail closed unless effectful controller entry runs under READ COMMITTED and prove the blocked-waiter case at that level;
-- scope closure claims to targets whose native effect and native operation record commit atomically within the accepted PostgreSQL transaction boundary.
-
-No separate aggregate closure digest, currentness registry, general executor, policy engine, universal clock, BUILD 9 recursion, BUILD 10 propagation or final UX is earned by Shape.
-
-# Preserved BUILD 7 closure
-
-BUILD 7 remains human-closed and repository-normalized at implementation Register B under [closure receipt 028](docs/build-receipts/028-build-7-closed.md) and [Move receipt 027](docs/build-receipts/027-build-7-move.md).
-
-Its accepted bounded C1→C4 proof remains intact. The original C2 false-PASS remains retained evidence; the repaired finite method is the accepted method. No universal semantic reliability is claimed.
-
-No BUILD 7 migration has been applied canonically to Supabase / ECB state by BUILD 8 Shape closure or this Metabolize normalization. Synthetic G_TEST proves only the bounded designation dependency; real designation authority remains unresolved.
-
-# Canonical / deployment boundary
-
-This repository normalization changes governance/closure/reentry documentation only. It does not apply BUILD 7 or BUILD 8 migrations to canonical Supabase, does not create real authority, and does not perform an external action.
-
-Repository pushes may create ordinary Git/Vercel integration events. Such deployment metadata is not authorization to install or execute BUILD 8 against canonical state.
-
-Opening BUILD 8 Move requires a separate explicit commission derived from the accepted Shape closure and this normalized reentry boundary.
+Any opening of BUILD 9 Recursive Self-Application requires its own explicit human Sense commission. BUILD 9 must inherit BUILD 8's proven distinctions and carried learnings without silently treating feed-forward hypotheses as settled architecture. Canonical installation and the first real consequential action remain separate decisions from BUILD 9 recursion.

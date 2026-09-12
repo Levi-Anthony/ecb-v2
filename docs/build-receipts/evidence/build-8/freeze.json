@@ -1,0 +1,28 @@
+{
+  "frozen_at": "2026-09-11T19:00:49.452Z",
+  "base_checkpoint": "b4b813dd0779dc1f697ba42b2f7132538f18df95",
+  "branch": "build/eco-103-build-8-move",
+  "proof_class": "disposable atomic-ledger synthetic target whose native effect and native operation record commit atomically under the accepted PostgreSQL scope lock",
+  "authorship": "same worker implemented and tests; fixed expected semantics independently supplied by fixture/test contract, not producer/checker output; no independent-author proof",
+  "contract": "ECO-103 P01-P14 + I1-I9 + E1-E6; untuned additional holdout not yet authored",
+  "files": {
+    "docs/build-receipts/evidence/build-8/live-sources.json": "40b2301fe378ff89504a0740b49363f0aaf7848a9bc44f556aa521a9b700b07a",
+    "docs/build-shape/012-build-8-move-gate.json": "a3d1eb6960fae7d929194d54020b320550439c27316a45e3dd0c1aac263e3565",
+    "server/build-8/action.mjs": "bdd9c5fc6a4ef64be2350812c7efa98f106f7e7d9dde6e6e09fb5c30d6d4341b",
+    "server/build-8/recover.mjs": "14b41cce922b6327f4a943ddf08ed13f8655d238a92a771e751d1b9e8805e96c",
+    "sql/migrations/20260911130000_build_8_action_envelope.sql": "9093dd84b0b7a2f09a84c26e1639d1c512c52c4a3407734b4c758c21581f377b",
+    "sql/migrations/20260911140000_build_8_lifecycle.sql": "6e008024375a779898985f11535fee1db3720fc1ef8e1bbc52bf1103cc3e45c3",
+    "tests/build-8/cold.mjs": "ea8e63e697d1c8729211c6b837f86ce776d9ebd664ec650417220c74a4dfa680",
+    "tests/build-8/composition.mjs": "2f4b5848e14ec05e0634be768accec59c28f8afb5f75813f0b6a50a6e7d04097",
+    "tests/build-8/dispatch.mjs": "c491f0ef2d55ec3148fc014d3b8b63b97d1211277822df7c5f155b39c9fd21ab",
+    "tests/build-8/inherited-regression.mjs": "e839d41920f7d72ee6d57ecfec3ede201fba7a9aeb2dd056b6e7fa6363e42b38",
+    "tests/build-8/inherited.mjs": "4a82f71db6754e79bcdb7b0068a36f762b0073064d807e8414a9889170ba07ba",
+    "tests/build-8/primary.mjs": "e6db54d08239c6f2c0cd49830618f27c340e3dc47caad64d50147b0e2781f2cc",
+    "tests/build-8/roles.sql": "fa6198ccb6b929cfcedd7c39db79e2bab1c0e56541b98abd0957d22eaeaf2a40",
+    "tests/build-8/seal.mjs": "6ae30ac7d4ed2d919a754edb2fb20903d2d7860e4061fdf39d18c5122f4eb8cf",
+    "tests/build-8/setup.sh": "bbb7fad722ca17dfad5f0daefb9226d05840327f0050e1a9005304cf4136ede6",
+    "tests/build-8/supplemental.mjs": "f2575842112e5529513781c40f38859970ce08a8d4c18429bf756167ebbbd925",
+    "tests/build-8/support.mjs": "3a4375b9bde9781b8501f5065c63d8a80cdb83d894a3f9b338077d1727bead3b",
+    "tests/build-8/verify.sh": "6485a5b8a8093072b479d22968e0d015771f2d196e10bce859fb174993ffed34"
+  }
+}

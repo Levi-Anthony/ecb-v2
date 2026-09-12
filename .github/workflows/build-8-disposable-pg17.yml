@@ -1,0 +1,26 @@
+name: BUILD 8 disposable PG17 proof
+on:
+  push:
+    branches: [build/eco-103-build-8-move]
+permissions:
+  contents: read
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Run the bounded BUILD 8 disposable proof
+        run: bash tests/build-8/verify.sh
+      - name: Retain actual proof results even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eco-103-build-8-proof
+          path: docs/build-receipts/evidence/build-8/

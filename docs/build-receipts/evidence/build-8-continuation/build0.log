@@ -1,0 +1,16 @@
+Check server/open-brain-mcp/index.test.ts
+running 6 tests from ./server/open-brain-mcp/index.test.ts
+rejects an invalid bearer key ... ok (3ms)
+initializes statelessly ... ok (5ms)
+registers exactly the BUILD 0 tool surface ... ok (1ms)
+returns the durable capture identity through MCP ... ok (1ms)
+returns an explicit not-found result ... ok (0ms)
+preserves safe operation failure codes ...
+------- output -------
+embedding_failed embedding_failed
+search_failed search_failed
+fetch_failed fetch_failed
+----- output end -----
+preserves safe operation failure codes ... ok (2ms)
+
+ok | 6 passed | 0 failed (17ms)
