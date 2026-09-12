@@ -1,0 +1,11 @@
+Task test deno test --allow-read harness.test.ts
+Check harness.test.ts
+running 5 tests from ./harness.test.ts
+missing encounter preserves derivation and leaves qualification unfinished ... ok (3ms)
+pinned comparison completes only the fixture qualification requirement ... ok (0ms)
+prior-art pin drift routes through Awareness and Control ... ok (0ms)
+candidate must remain independent and non-authoritative ... ok (0ms)
+durable UUID implies addressability without opening Universal Referents ... ok (0ms)
+
+ok | 5 passed | 0 failed (8ms)
+

@@ -172,6 +172,75 @@ No mechanism-design, architectural-claim or source/assumption falsifier survived
 
 No main merge; no canonical mutation; no real authority/effect; no canonical BUILD 7 prerequisite; no BUILD 9/10 opening; no generic executor/policy/currentness/propagation system; no hidden target-class or retry redesign; no final UX or deployment requirement. Existing 5B/7 function sources and historical harnesses remain unchanged. Synthetic grants cannot provision another runtime action/target. Qualification, authorization, designation, admission, start, native effect, ACK, legitimacy and present applicability remain independently recoverable.
 
+## Continuation from c64d55d — live evidence and review handoff
+
+This continuation recovered `/Users/prodadmin/ECB-build-8-move`, repository
+`Levi-Anthony/ecb-v2`, clean branch `build/eco-103-build-8-move`, at
+`c64d55dd6be00395fc39c0a845a6dcc3dd304b42`. Live remote branch matched that HEAD;
+remote main and the merge base remained
+`61b4a0524fdc089cbf2b244584ba073deb05c351`. The checkpoint is descended through
+`b4b813d`, `19064a9`, and `b4939af` from that normalized baseline. No newer remote
+implementation was found. No implementation, comparison contract, original proof
+output, or original freeze was changed in this continuation.
+
+The pre-mutation recovery gate remains **PASS**. ECO-103, the full Astra Shape
+record, I1–I9, E1–E6, human Shape closure/ratification, ECO-102 close/pass, and
+accepted Sense sources were live-read and compared with the retained source
+content: all matched exactly. Current main reentry, repository law, decision-relevant
+acceptance/aperture/evidence sources and inherited implementation seams were read
+from Git/repository. [Source revalidation](evidence/build-8-continuation/source-revalidation.json)
+records exact source IDs, versions and content hashes. The original source map,
+contract map and structural-leverage audit above continue to apply.
+
+The first unfinished obligation was the durable CI/review handoff. The checkpoint
+already implemented the complete accepted lifecycle and retained the successful
+local proof. [CI run 34637253956](https://github.com/Levi-Anthony/ecb-v2/actions/runs/34637253956)
+executed `bash tests/build-8/verify.sh` on that exact implementation commit and
+passed on PostgreSQL 17.10 / READ COMMITTED. Its downloaded
+[archive](evidence/build-8-continuation/ci-proof.zip) matches GitHub's SHA-256
+`a0ba27e3302254f04faa9e364edeff476e1f0978838121eddde15f3f87582a6f`.
+The run metadata, artifact metadata and full log are retained alongside it.
+
+Both original local and CI results contain P01–P14 PASS (109 named controls),
+18 supplemental controls, two dispatch scenarios with zero replay appends,
+18 exactly-once trigger routes, historical 5B binding PASS, the frozen holdout,
+and custody/native-state audits. CI replay of the holdout is regression evidence,
+not another untuned holdout. The CI archive also contains the original committed
+`manifest.json`; that manifest describes the original local episode, not the
+regenerated CI UUIDs. The archive digest and per-member hashes in
+[verification.json](evidence/build-8-continuation/verification.json) bind the CI
+episode separately. This distinction requires no mechanism repair or refreeze.
+
+Additional local validation in this continuation:
+
+| Command | Result |
+|---|---|
+| `python3 docs/build-receipts/evidence/build-8-continuation/verify.py` | PASS: all 23 original evidence hashes, all 18 frozen files, CI archive digest, and retained local/CI acceptance outcomes. This is evidence verification, not mechanism re-execution. |
+| `node tests/build-8/cold.mjs docs/build-receipts/evidence/build-8/cold-input.json /tmp/eco103-continuation-20260911/cold-output.json` | Fresh process; parsed output exactly equals original retained cold output. Native value/revision/effects = 1/1/1, legitimacy true, HOLD, remaining allowance 0, recovery dispatch false. |
+| `deno test --config server/open-brain-mcp/deno.json server/open-brain-mcp/index.test.ts` | Unchanged BUILD 0 runtime contract: 6 passed, 0 failed. [Log](evidence/build-8-continuation/build0.log). |
+| `deno task --config harvest/build-1/build-0-ob1-qualification-seam/deno.json test` | Unchanged BUILD 1 fixture suite: 5 passed, 0 failed. [Log](evidence/build-8-continuation/build1.log). |
+
+Continuation file roles: this receipt and `BUILD_CHECKOUT.md` complete the reentry
+handoff; `evidence/build-8-continuation/source-revalidation.json` binds the live
+authority observations; `ci-proof.zip`, `ci-run.json`, `ci-artifacts.json`, and
+`ci.log` retain the CI evidence; `verify.py` and `verification.json` make its
+inspection reproducible; `build0.log` and `build1.log` retain the additional
+regressions; `implementation-files.txt` inventories all 47 original changed
+paths against normalized main. No new schema/function/role/trigger/control
+surface was introduced. Exact final branch HEAD is available from the PR head;
+this record is committed as a descendant of the implementation checkpoint.
+
+[Draft PR #31](https://github.com/Levi-Anthony/ecb-v2/pull/31) is the review surface.
+No merge, canonical mutation, real authority/effect, or BUILD 9/10 opening occurred.
+No hard stop or surviving falsifier was encountered. No bounded implementation or
+P01–P14 obligation remains unfinished. Same-worker authorship, trusted custody,
+bounded observation completeness, and the atomic-ledger synthetic-target limit
+remain; arbitrary external effects and disaster recovery remain unproven.
+
+Next legitimate transition: human review and Metabolize of this packet and PR,
+followed only by an explicit human disposition. BUILD 8 human phase closure and
+any main merge/canonical installation remain outside this worker's authority.
+
 ## 12. MOVE STATUS
 
 `READY FOR HUMAN METABOLIZE`

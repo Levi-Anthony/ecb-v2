@@ -10,6 +10,15 @@ BUILD 8 Sense, Shape and pre-Move Metabolize remain human-closed. ECO-103 opened
 
 Read [the complete ECO-103 Move packet](docs/build-receipts/030-build-8-move.md), then its exact evidence links. The packet contains the mandatory twelve-part return contract, source/contract maps, P01–P14 results, E1–E6 controls, structural-leverage audit, cold recovery, freeze/holdout lineage, limitations and reproduction instructions.
 
+Review handoff: [draft PR #31](https://github.com/Levi-Anthony/ecb-v2/pull/31).
+Continuation from `c64d55dd6be00395fc39c0a845a6dcc3dd304b42` verified unchanged live
+authority, normalized-main ancestry, original proof/freeze hashes, and the successful
+PG17 CI archive for that exact implementation. Fresh local cold recovery matched
+the original result; unchanged BUILD 0/1 tests passed 6/6 and 5/5. The continuation
+section of receipt 030 links the retained CI archive and reproducible evidence
+verification. It changes review evidence/reentry only; the accepted implementation
+and frozen comparison contract remain unchanged.
+
 The proof covers only a disposable synthetic target whose native effect and native target-operation record commit atomically in PostgreSQL under the accepted shared scope lock. No general external/distributed exactly-once guarantee travels.
 
 # Durable continuation and completed work
