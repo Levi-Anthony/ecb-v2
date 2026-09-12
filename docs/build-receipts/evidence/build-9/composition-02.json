@@ -1,0 +1,52 @@
+{
+  "id": "P18",
+  "result": "FAIL",
+  "controls": [
+    {
+      "name": "all predecessor function definitions/owners/ACLs unchanged",
+      "count": 49
+    },
+    {
+      "name": "no old column privileges broadened",
+      "count": 663
+    },
+    {
+      "name": "predecessor trigger routing byte-equivalent"
+    },
+    {
+      "name": "BUILD 7 selected pointers unchanged by install"
+    },
+    {
+      "name": "b9 inquiry cannot become b7 candidate",
+      "rejected": true,
+      "error": "wrong_artifact_role"
+    },
+    {
+      "name": "b9 judgment cannot become b7 attempt",
+      "rejected": true,
+      "error": "wrong_artifact_role"
+    },
+    {
+      "name": "b9 artifact cannot become old transformation input",
+      "rejected": true,
+      "error": "BUILD 5B request context must be a source_representation"
+    },
+    {
+      "name": "old producer cannot publish b9 role",
+      "rejected": true,
+      "error": "b9_protected_publication"
+    },
+    {
+      "name": "old producer cannot overwrite b9 artifact",
+      "rejected": true,
+      "error": "permission denied for table artifacts"
+    },
+    {
+      "result": "FAIL",
+      "classification": "M/T pending diagnosis",
+      "error": "new row violates row-level security policy for table \"referents\"",
+      "stack": "PostgresError: new row violates row-level security policy for table \"referents\"\n    at ErrorResponse (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:815:30)\n    at handle (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:489:6)\n    at Socket.data (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:324:9)\n    at Socket.emit (node:events:514:28)\n    at addChunk (node:internal/streams/readable:568:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:519:3)\n    at Readable.push (node:internal/streams/readable:399:5)\n    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)\n    at cachedError (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/query.js:170:23)\n    at new Query (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/query.js:36:24)\n    at sql (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/index.js:112:11)\n    at file:///Users/prodadmin/ECB-build-9-move/tests/build-9/composition.mjs:85:17"
+    }
+  ],
+  "limits": "Exact inherited checker/custody seams only; no re-proving closed BUILD 7/8 capabilities."
+}

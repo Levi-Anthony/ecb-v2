@@ -11,6 +11,10 @@ revoke all on schema ecb9 from public,anon,authenticated,service_role;
 grant usage on schema ecb9 to ecb9_parent,ecb9_child,ecb9_observer,ecb9_writer;
 grant usage on schema public,extensions,ecb7 to ecb9_owner;
 grant select on public.artifacts,public.referents,public.claims,ecb7.scopes to ecb9_owner;
+grant select on public.claim_standing_transitions to ecb9_owner;
+grant update(epistemic_standing) on public.claims to ecb9_owner;
+create policy build9_transition_read on public.claim_standing_transitions for select to ecb9_owner using(true);
+create policy build9_claim_lock on public.claims for update to ecb9_owner using(true) with check(true);
 grant insert(id) on public.referents to ecb9_owner;
 grant insert(id,artifact_role,context_id,payload_text) on public.artifacts to ecb9_owner;
 grant update(synthetic) on ecb7.scopes to ecb9_owner;
@@ -82,6 +86,21 @@ declare rule jsonb; path text[]; v jsonb; findings jsonb:='[]'; ok boolean:=true
  return jsonb_build_object('outcome',case when ok then 'PASS' else 'FAIL' end,'findings',findings);
 end $$;
 
+-- Compose the existing BUILD 5A Claim writer boundary. These row locks do not
+-- update standing; retained transition identities distinguish change-and-restore.
+create function ecb9.lock_claims(c jsonb) returns void language plpgsql set search_path='' as $$ begin
+ perform id from public.claims where id in (
+  select (c->>'decision_claim')::uuid union select (value->>'claim')::uuid from jsonb_each(c->'dependencies')
+ ) order by id for share;
+end $$;
+create function ecb9.claim_observations(c jsonb) returns jsonb language plpgsql set search_path='' as $$
+declare result jsonb; begin
+ select jsonb_object_agg(q.id::text,jsonb_build_object('standing',q.epistemic_standing,'history',
+  coalesce((select jsonb_agg(t.id order by t.id) from public.claim_standing_transitions t where t.claim_id=q.id),'[]'::jsonb))) into result
+ from public.claims q where q.id in (select (c->>'decision_claim')::uuid union select (value->>'claim')::uuid from jsonb_each(c->'dependencies'));
+ return result;
+end $$;
+
 create function ecb9.contract(p uuid) returns jsonb language plpgsql set search_path='' as $$
 declare c jsonb; d record; r public.claims; v jsonb; begin
  c:=ecb9.doc(p,'b9_inquiry');
@@ -109,6 +128,8 @@ declare p uuid; k text; old jsonb; begin
   old:=ecb9.contract((j->>'prior_version')::uuid);
   if j->>'prior_result_disposition' is distinct from 'retain as history; fresh inquiry and judgment required' then raise exception 'b9_successor_correspondence_required'; end if;
  end if;
+ perform ecb9.lock_claims(j);
+ j:=j||jsonb_build_object('claim_basis',ecb9.claim_observations(j));
  p:=ecb9.retain('b9_inquiry',s,j); perform ecb9.contract(p); return p;
 end $$;
 
@@ -142,6 +163,7 @@ declare c jsonb; h uuid; e record; j jsonb; n integer:=0; total integer; obs jso
  end loop;
  if n<>total then raise exception 'b9_incomplete_history'; end if;
  if judgment is not null then perform ecb9.doc(judgment,'b9_judgment'); end if;
+ obs:=obs||jsonb_build_object('claims',ecb9.claim_observations(c));
  return jsonb_build_object('head',h,'history',hist,'observations',obs,'changes',changes,'open',active,'attempt',attempt,'judgment',judgment,'returned',returned,'last_disposition',last_d,'suspended',active is not null and (last_d is null or last_d->>'disposition'<>'CONTINUE'));
 end $$;
 create function ecb9.append(p uuid,pred uuid,request uuid,kind text,args jsonb) returns uuid language plpgsql set search_path='' as $$ begin
@@ -165,7 +187,7 @@ end $$;
 
 create function ecb9.observe(p uuid,slot text,version uuid,complete boolean,pred uuid,r uuid) returns jsonb language plpgsql security definer set search_path='' as $$
 declare c jsonb; st jsonb; sig jsonb; id uuid; v jsonb; begin
- c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid);
+ c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid); perform ecb9.lock_claims(c);
  sig:=jsonb_build_object('op','observe','slot',slot,'version',version,'complete',complete,'predecessor',pred);
  id:=ecb9.replay(p,r,sig); if id is not null then return jsonb_build_object('event',id,'replay',true); end if;
  st:=ecb9.state(p); perform ecb9.cas(st,pred);
@@ -177,7 +199,7 @@ end $$;
 
 create function ecb9.open_child(p uuid,binding jsonb,pred uuid,r uuid) returns jsonb language plpgsql security definer set search_path='' as $$
 declare c jsonb; st jsonb; sig jsonb; id uuid; criteria jsonb; d2 jsonb; d record; begin
- c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid);
+ c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid); perform ecb9.lock_claims(c);
  sig:=jsonb_build_object('op','open','binding',binding,'predecessor',pred);
  id:=ecb9.replay(p,r,sig); if id is not null then return jsonb_build_object('event',id,'replay',true); end if;
  st:=ecb9.state(p); perform ecb9.cas(st,pred);
@@ -185,10 +207,11 @@ declare c jsonb; st jsonb; sig jsonb; id uuid; criteria jsonb; d2 jsonb; d recor
  if st->'open'<>'null'::jsonb then raise exception 'b9_one_child_or_no_new_discrimination'; end if;
  if c->>'unresolved'<>'governance' or c->>'resolution' not in ('child witness examination','local witness available','display only') then raise exception 'b9_threshold_dependency'; end if;
  if c->>'resolution'<>'child witness examination' then return jsonb_build_object('opened',false,'route','local check / Question Forward','reason',c->'resolution'); end if;
- for d in select key,value from jsonb_each(st->'observations') loop
+ for d in select key,value from jsonb_each((st->'observations')-'claims') loop
   if d.value->>'complete' is distinct from 'true' or d.value->>'version' is null then return jsonb_build_object('opened',false,'route','HOLD','reason','declared observation incomplete','slot',d.key); end if;
   if d.value->>'version' is distinct from c->'dependencies'->d.key->>'version' or d.value->>'history' is not null then return jsonb_build_object('opened',false,'route','REQUALIFY','reason','basis changed before opening','slot',d.key); end if;
  end loop;
+ if st->'observations'->'claims' is distinct from c->'claim_basis' then return jsonb_build_object('opened',false,'route','REQUALIFY','reason','Claim standing/history changed before opening'); end if;
  if st->'observations'->'governance'->>'version' is null then return jsonb_build_object('opened',false,'route','HOLD','reason','bound G1 unavailable'); end if;
  if st->'observations'->'applicability'->>'version' is null then return jsonb_build_object('opened',false,'route','HOLD','reason','independent remit unavailable'); end if;
  d2:=ecb9.doc((st->'observations'->'applicability'->>'version')::uuid,'b9_basis');
@@ -226,7 +249,7 @@ declare c jsonb; st jsonb; b jsonb; g jsonb; ct jsonb; m jsonb; w jsonb; x jsonb
 end $$;
 create function ecb9.publish(p uuid,attempt uuid,binding jsonb,submission jsonb,pred uuid,r uuid) returns jsonb language plpgsql security definer set search_path='' as $$
 declare c jsonb; st jsonb; sig jsonb; id uuid; q uuid; j jsonb; begin
- c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid);
+ c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid); perform ecb9.lock_claims(c);
  sig:=jsonb_build_object('op','publish','attempt',attempt,'binding',binding,'submission',submission,'predecessor',pred);
  id:=ecb9.replay(p,r,sig); if id is not null then return jsonb_build_object('event',id,'replay',true); end if;
  st:=ecb9.state(p); perform ecb9.cas(st,pred);
@@ -241,7 +264,7 @@ declare c jsonb; st jsonb; sig jsonb; id uuid; q uuid; j jsonb; begin
 end $$;
 create function ecb9.retry_attempt(p uuid,pred uuid,r uuid) returns jsonb language plpgsql security definer set search_path='' as $$
 declare c jsonb; st jsonb; sig jsonb; id uuid; begin
- c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid);
+ c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid); perform ecb9.lock_claims(c);
  sig:=jsonb_build_object('op','retry','predecessor',pred); id:=ecb9.replay(p,r,sig);
  if id is not null then return jsonb_build_object('event',id,'replay',true); end if;
  st:=ecb9.state(p); perform ecb9.cas(st,pred);
@@ -251,7 +274,7 @@ declare c jsonb; st jsonb; sig jsonb; id uuid; begin
 end $$;
 create function ecb9.return_result(p uuid,q uuid,binding jsonb,pred uuid,r uuid) returns jsonb language plpgsql security definer set search_path='' as $$
 declare c jsonb; st jsonb; sig jsonb; id uuid; j jsonb; begin
- c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid);
+ c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid); perform ecb9.lock_claims(c);
  sig:=jsonb_build_object('op','return','judgment',q,'binding',binding,'predecessor',pred); id:=ecb9.replay(p,r,sig);
  if id is not null then return jsonb_build_object('event',id,'replay',true); end if;
  st:=ecb9.state(p); perform ecb9.cas(st,pred); j:=ecb9.doc(q,'b9_judgment');
@@ -264,13 +287,14 @@ end $$;
 create function ecb9.route(p uuid,st jsonb) returns jsonb language plpgsql set search_path='' as $$
 declare c jsonb; d record; v jsonb; j jsonb; g jsonb; checked jsonb; ct jsonb; drift boolean:=false; reasons jsonb:='[]'; verdict text; begin
  c:=ecb9.contract(p);
- for d in select key,value from jsonb_each(st->'observations') loop
+ for d in select key,value from jsonb_each((st->'observations')-'claims') loop
   if d.value->>'complete' is distinct from 'true' or d.value->>'version' is null then
    return jsonb_build_object('disposition','HOLD','reason','missing observation or bound evidence','slot',d.key,'question_forward',c->'question_forward'); end if;
   v:=ecb9.doc((d.value->>'version')::uuid,'b9_basis');
   if v->>'subject' is distinct from c->'dependencies'->d.key->>'component' then raise exception 'b9_observation_binding'; end if;
   if st->'open' is not null and st->'open'<>'null'::jsonb and d.value is distinct from st->'open'->'observations'->d.key then drift:=true; reasons:=reasons||to_jsonb(d.key); end if;
  end loop;
+ if st->'observations'->'claims' is distinct from c->'claim_basis' or (st->'open'<>'null'::jsonb and st->'observations'->'claims' is distinct from st->'open'->'observations'->'claims') then drift:=true; reasons:=reasons||'"Claim standing/history"'::jsonb; end if;
  if st->>'returned' is null then return jsonb_build_object('disposition','HOLD','reason','child result unresolved or not returned','question_forward',c->'question_forward'); end if;
  j:=ecb9.doc((st->>'returned')::uuid,'b9_judgment');
  if j->'binding' is distinct from st->'open'->'binding' then raise exception 'b9_parent_result_binding'; end if;
@@ -294,7 +318,7 @@ declare c jsonb; d record; v jsonb; j jsonb; g jsonb; checked jsonb; ct jsonb; d
 end $$;
 create function ecb9.reenter(p uuid,observations jsonb,pred uuid,r uuid) returns jsonb language plpgsql security definer set search_path='' as $$
 declare c jsonb; st jsonb; sig jsonb; id uuid; result jsonb; begin
- c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid);
+ c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid); perform ecb9.lock_claims(c);
  sig:=jsonb_build_object('op','reentry','observations',observations,'predecessor',pred); id:=ecb9.replay(p,r,sig);
  if id is not null then return jsonb_build_object('event',id,'replay',true,'historical_only',true,'present',ecb9.route(p,ecb9.state(p))); end if;
  st:=ecb9.state(p); perform ecb9.cas(st,pred);
@@ -307,7 +331,7 @@ end $$;
 
 create function ecb9.inspect(p uuid) returns jsonb language plpgsql security definer set search_path='' as $$
 declare c jsonb; st jsonb; result jsonb; j jsonb; links jsonb; begin
- c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid); st:=ecb9.state(p); result:=ecb9.route(p,st);
+ c:=ecb9.contract(p); perform ecb9.lock_scope((c->>'scope')::uuid); perform ecb9.lock_claims(c); st:=ecb9.state(p); result:=ecb9.route(p,st);
  if st->>'returned' is not null then j:=ecb9.doc((st->>'returned')::uuid,'b9_judgment'); end if;
  select jsonb_agg(jsonb_build_object('slot',key,'claim',value->'claim','component',value->'component','version',value->'version')) into links from jsonb_each(c->'dependencies');
  return jsonb_build_object('locator',p,'source_contract',p,'boundary',st->'head','parent',jsonb_build_object('focal',c->'focal','question',c->'question','step',c->'step','governing_basis',c->'dependencies'->'governance','remit',c->'remit'),
@@ -318,7 +342,11 @@ declare c jsonb; st jsonb; result jsonb; j jsonb; links jsonb; begin
  'history',st->'history','non_promotion','Regenerated read projection. Historical disposition is not present permission; new reentry needs this boundary and observations.');
 exception when others then return jsonb_build_object('locator',p,'present',jsonb_build_object('disposition','HOLD','reason',SQLERRM,'question_forward','Restore the exact unavailable/corrupt source or observation; then regenerate and independently reenter.'),'integrity','unavailable; no positive reliance');
 end $$;
-create function ecb9.read_source(i uuid) returns jsonb language plpgsql security definer set search_path='' as $$ begin return ecb9.doc(i); end $$;
+create function ecb9.read_source(i uuid) returns jsonb language plpgsql security definer set search_path='' as $$ declare j jsonb; begin
+ if exists(select 1 from public.artifacts where id=i) then return ecb9.doc(i); end if;
+ select to_jsonb(c) into j from public.claims c where c.id=i; if found then return jsonb_build_object('native','Claim','record',j); end if;
+ select to_jsonb(t) into j from public.claim_standing_transitions t where t.id=i; if found then return jsonb_build_object('native','Claim standing Event','record',j); end if;
+ raise exception 'b9_missing_source:%',i; end $$;
 
 do $$ declare r record; begin
  for r in select p.oid::regprocedure as signature from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='ecb9' loop execute format('alter function %s owner to ecb9_owner',r.signature); end loop;

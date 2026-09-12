@@ -1,0 +1,5 @@
+TypeError: Cannot read properties of undefined (reading 'binding')
+    at binding (file:///Users/prodadmin/ECB-build-9-move/tests/build-9/support.mjs:41:67)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async open (file:///Users/prodadmin/ECB-build-9-move/tests/build-9/support.mjs:45:29)
+    at async file:///Users/prodadmin/ECB-build-9-move/tests/build-9/standing.mjs:34:5

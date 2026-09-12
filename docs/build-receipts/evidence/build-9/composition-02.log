@@ -1,0 +1,22 @@
+PostgresError: new row violates row-level security policy for table "referents"
+    at ErrorResponse (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:815:30)
+    at handle (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:489:6)
+    at Socket.data (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:324:9)
+    at Socket.emit (node:events:514:28)
+    at addChunk (node:internal/streams/readable:568:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:519:3)
+    at Readable.push (node:internal/streams/readable:399:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)
+    at cachedError (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/query.js:170:23)
+    at new Query (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/query.js:36:24)
+    at sql (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/index.js:112:11)
+    at file:///Users/prodadmin/ECB-build-9-move/tests/build-9/composition.mjs:85:17 {
+  severity_local: 'ERROR',
+  severity: 'ERROR',
+  code: '42501',
+  where: 'SQL statement "insert into public.referents (id) values (new.id)"\n' +
+    'PL/pgSQL function public.prepare_build_5b_artifact() line 508 at SQL statement',
+  file: 'execMain.c',
+  line: '2199',
+  routine: 'ExecWithCheckOptions'
+}

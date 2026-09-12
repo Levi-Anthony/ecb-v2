@@ -1,0 +1,17 @@
+PostgresError: permission denied to grant role "service_role"
+    at ErrorResponse (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:815:30)
+    at handle (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:489:6)
+    at Socket.data (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:324:9)
+    at Socket.emit (node:events:514:28)
+    at addChunk (node:internal/streams/readable:568:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:519:3)
+    at Readable.push (node:internal/streams/readable:399:5)
+    at TCP.onStreamRead (node:internal/stream_base_commons:189:23) {
+  severity_local: 'ERROR',
+  severity: 'ERROR',
+  code: '42501',
+  detail: 'Only roles with the ADMIN option on role "service_role" may grant this role.',
+  file: 'user.c',
+  line: '2156',
+  routine: 'check_role_membership_authorization'
+}

@@ -1,0 +1,10 @@
+{
+  step: 'inspect the next retained judgment under the bound evidence rules',
+  reason: 'exact child support and independently observed parent conditions apply',
+  disposition: 'CONTINUE',
+  g1_acceptance: {
+    outcome: 'PASS',
+    findings: [ [Object], [Object], [Object], [Object] ]
+  },
+  non_promotion: 'inquiry disposition only; no action or authority'
+}

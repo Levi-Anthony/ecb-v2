@@ -1,0 +1,12 @@
+/Users/prodadmin/ECB-build-9-move/server/build-9/recover.mjs
+[dprint-core] A file exceeded the re-evaluation count and formatting stabilized at a random condition value. Please report this as a bug.
+/Users/prodadmin/ECB-build-9-move/server/build-9/card.mjs
+/Users/prodadmin/ECB-build-9-move/tests/build-9/smoke.mjs
+/Users/prodadmin/ECB-build-9-move/tests/build-9/catalog.mjs
+/Users/prodadmin/ECB-build-9-move/tests/build-9/crash-worker.mjs
+/Users/prodadmin/ECB-build-9-move/tests/build-9/composition.mjs
+/Users/prodadmin/ECB-build-9-move/tests/build-9/supplemental.mjs
+/Users/prodadmin/ECB-build-9-move/tests/build-9/support.mjs
+/Users/prodadmin/ECB-build-9-move/tests/build-9/resilience.mjs
+/Users/prodadmin/ECB-build-9-move/tests/build-9/primary.mjs
+Checked 10 files

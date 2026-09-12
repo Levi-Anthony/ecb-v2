@@ -1,0 +1,27 @@
+{
+  "id": "P18",
+  "result": "FAIL",
+  "controls": [
+    {
+      "name": "all predecessor function definitions/owners/ACLs unchanged",
+      "count": 49
+    },
+    {
+      "name": "no old column privileges broadened",
+      "count": 663
+    },
+    {
+      "name": "predecessor trigger routing byte-equivalent"
+    },
+    {
+      "name": "BUILD 7 selected pointers unchanged by install"
+    },
+    {
+      "result": "FAIL",
+      "classification": "M/T pending diagnosis",
+      "error": "permission denied to grant role \"service_role\"",
+      "stack": "PostgresError: permission denied to grant role \"service_role\"\n    at ErrorResponse (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:815:30)\n    at handle (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:489:6)\n    at Socket.data (file:///Users/prodadmin/ECB-build-9-move/tests/build-7/node_modules/postgres/src/connection.js:324:9)\n    at Socket.emit (node:events:514:28)\n    at addChunk (node:internal/streams/readable:568:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:519:3)\n    at Readable.push (node:internal/streams/readable:399:5)\n    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)"
+    }
+  ],
+  "limits": "Exact inherited checker/custody seams only; no re-proving closed BUILD 7/8 capabilities."
+}

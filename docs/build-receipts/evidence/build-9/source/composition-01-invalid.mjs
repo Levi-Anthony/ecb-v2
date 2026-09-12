@@ -50,11 +50,9 @@ try {
   const f = await make();
   await open(f);
   const q = await publish(f);
-  const provision = connect("custodian");
-  await provision.unsafe(
+  await admin.unsafe(
     "create role b9_old_evaluator login; grant ecb7_evaluator,ecb8_evaluator,service_role to b9_old_evaluator",
   );
-  await provision.end();
   const old = connect("b9_old_evaluator");
   try {
     await reject(
@@ -81,19 +79,14 @@ try {
         old`update public.artifacts set payload_text='{}' where id=${f.p}::uuid`,
     );
     // Valid original BUILD 5B source/request control on the unchanged old checker.
-    const { src, request } = await old.begin(async (tx) => {
-      await tx.unsafe("set local role service_role");
-      const src =
-        (await tx`insert into public.artifacts(artifact_role,context_id,payload_text) values('source_representation',${f.scope}::uuid,'{"bounded":"composition positive"}') returning id`)[
-          0
-        ].id;
-      const request =
-        (await tx`insert into public.artifacts(artifact_role,context_id) values('transformation_request',${src}::uuid) returning id`)[
-          0
-        ].id;
-
-      return { src, request };
-    });
+    const src =
+      (await old`insert into public.artifacts(artifact_role,context_id,payload_text) values('source_representation',${f.scope}::uuid,'{"bounded":"composition positive"}') returning id`)[
+        0
+      ].id;
+    const request =
+      (await old`insert into public.artifacts(artifact_role,context_id) values('transformation_request',${src}::uuid) returning id`)[
+        0
+      ].id;
     controls.push({
       name: "old source/request behavior remains usable",
       src,

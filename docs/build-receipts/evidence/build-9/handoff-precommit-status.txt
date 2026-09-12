@@ -1,0 +1,40 @@
+ M docs/build-receipts/evidence/build-9/positive-locator.json
+ M server/build-9/card.mjs
+ M server/build-9/recover.mjs
+ M sql/migrations/20260912160000_build_9_recursive_inquiry.sql
+ M tests/build-9/catalog.mjs
+ M tests/build-9/composition.mjs
+ M tests/build-9/crash-worker.mjs
+ M tests/build-9/primary.mjs
+ M tests/build-9/resilience.mjs
+ M tests/build-9/smoke.mjs
+ M tests/build-9/supplemental.mjs
+ M tests/build-9/support.mjs
+?? docs/build-receipts/evidence/build-9/clean-01-after.json
+?? docs/build-receipts/evidence/build-9/clean-01-before.json
+?? docs/build-receipts/evidence/build-9/clean-01-composition.json
+?? docs/build-receipts/evidence/build-9/clean-01-composition.log
+?? docs/build-receipts/evidence/build-9/clean-01-install.log
+?? docs/build-receipts/evidence/build-9/clean-01-primary.json
+?? docs/build-receipts/evidence/build-9/clean-01-primary.log
+?? docs/build-receipts/evidence/build-9/clean-01-resilience.json
+?? docs/build-receipts/evidence/build-9/clean-01-resilience.log
+?? docs/build-receipts/evidence/build-9/clean-01-setup.log
+?? docs/build-receipts/evidence/build-9/clean-01-supplemental.json
+?? docs/build-receipts/evidence/build-9/clean-01-supplemental.log
+?? docs/build-receipts/evidence/build-9/composition-02.json
+?? docs/build-receipts/evidence/build-9/composition-02.log
+?? docs/build-receipts/evidence/build-9/format.log
+?? docs/build-receipts/evidence/build-9/handoff-precommit-status.txt
+?? docs/build-receipts/evidence/build-9/reload-03.log
+?? docs/build-receipts/evidence/build-9/reload-04.log
+?? docs/build-receipts/evidence/build-9/reload-05.log
+?? docs/build-receipts/evidence/build-9/source/composition-01-invalid.mjs
+?? docs/build-receipts/evidence/build-9/standing-01.json
+?? docs/build-receipts/evidence/build-9/standing-01.log
+?? docs/build-receipts/evidence/build-9/standing-02.json
+?? docs/build-receipts/evidence/build-9/standing-02.log
+?? docs/build-receipts/evidence/build-9/standing-defect-01.json
+?? docs/build-receipts/evidence/build-9/standing-defect-01.log
+?? tests/build-9/standing-probe.mjs
+?? tests/build-9/standing.mjs
