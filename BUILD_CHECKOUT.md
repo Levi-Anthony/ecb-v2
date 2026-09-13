@@ -1,20 +1,22 @@
-STATUS: BUILD 10 SENSE HUMAN-CLOSED — SHAPE UNOPENED
-DISPOSITION: SENSE ACCEPTED / CORRECTED SECTION 18 CONTROLS
+STATUS: BUILD 10 SHAPE OPEN / AUTHORIZED — SENSE HUMAN-CLOSED
+DISPOSITION: SHAPE COMMISSIONED FROM CORRECTED HUMAN-CLOSED SENSE
 ROLE: Canonical repository reentry checkpoint
-AUTHORITY: Explicit human BUILD 10 Sense acceptance on 2026-09-12 in the BUILD 10 harness chat; controlling Linear issue ECO-110
-CURRENT BUILD UNIT: BUILD 10 SENSE CLOSED; BUILD 10 SHAPE UNOPENED
+AUTHORITY: Explicit human BUILD 10 Sense acceptance on 2026-09-12; Shape commission ECO-113
+CURRENT BUILD UNIT: BUILD 10 SHAPE OPEN; BUILD 10 MOVE / METABOLIZE UNOPENED
 
 # Current disposition
 
 BUILD 0–9 remain closed at implementation Register B as applicable.
 
-BUILD 10 Sense is human-closed on the corrected final reconciliation from the Astra Sense return. The accepted behavioral target is:
+BUILD 10 Sense is human-closed on the corrected final reconciliation from the Astra Sense return. Corrected Section 18 controls wherever it conflicts with earlier wording.
+
+BUILD 10 Shape is separately OPEN / AUTHORIZED under Linear ECO-113. Shape may derive and select the minimum sufficient bounded mechanism and finite Move proof contract. It may not implement, deploy, canonically install, create real authority, or open Move.
+
+The accepted Sense behavioral target is:
 
 > A cold destination can inspect a genuinely transferred, bounded source representation; recover its declared meaning, provenance, basis, and limitations through retained content or explicit available references; and reach a meaning-sensitive bounded conclusion without inheriting source standing or permission. Failures preserve the distinctions and uncertainties that limit that conclusion.
 
-The corrected Section 18 reconciliation controls wherever it conflicts with earlier wording in the worker packet.
-
-# Accepted Sense boundaries
+# Accepted Sense boundaries inherited by Shape
 
 - The genuinely missing capability after BUILD 9 is bounded cross-boundary preservation and evidentiary use of a source-linked decision representation, not another same-source cold-recovery proof.
 - Generic Artifact remains the leading representation candidate; complete behavioral sufficiency remains UNKNOWN.
@@ -23,11 +25,29 @@ The corrected Section 18 reconciliation controls wherever it conflicts with earl
 - Transport, receipt, qualification, applicability, adoption, currentness, authority, and execution remain distinct.
 - Source authority/currentness/applicability do not silently transfer to the destination.
 - The minimum kernel is relative to the destination's exact question; whole-source copying is not required by default.
-- Carried versus referenced closure, exact dependency participation, provenance/source binding, comparator/checker basis, custody, durable partial-failure states, retry/replay semantics, bounded ordering, and cold entry remain Shape questions.
+- Carried versus referenced closure, exact dependency participation, provenance/source binding, comparator/checker basis, custody, durable partial-failure states, retry/replay semantics, bounded ordering, and cold entry are Shape questions.
 - BUILD 5B leases L1–L4 activate only when the selected specimen meets their actual trigger conditions.
 - Mandatory offline survival after loss of every indispensable source is NOT part of the minimum positive BUILD 10 claim. Loss must remain visible and block affected conclusions.
 - Destination qualification is bounded to preservation and declared local evidentiary use; it does not automatically repeat source-domain evaluation or mutate Claim standing.
 - Concurrency does not require semantic consensus; distinct attributed outcomes may disagree while identity, basis, and durable history remain recoverable.
+
+# Shape commission
+
+Controlling Shape issue: `ECO-113 — [BUILD 10 Shape] Propagation / Kernel Packets — derive first bounded cross-boundary mechanism`.
+
+Shape must derive and falsify:
+
+- the exact first specimen and destination question/use;
+- the smallest carried/referenced decision surface;
+- identity, lineage, version, provenance and dependency bindings;
+- semantic comparison and meaning-sensitive negative-control requirements;
+- destination custody and local-standing boundaries;
+- replay/retry/restart/partial-failure behavior at bounded strength;
+- the smallest enforcement composition satisfying accepted obligations;
+- AP-05 physicalization only if concrete residual liability survives smaller enforcement alternatives;
+- a finite Move proof contract with explicit falsifiers and failure routing.
+
+Shape must preserve a fresh-phase boundary. Start from this checkout, ECO-113, the governing contract/invariants, AP-05, and only decision-relevant closed substrate. Do not inherit the entire Sense transcript as active reasoning context.
 
 # Question Forward carry
 
@@ -48,18 +68,7 @@ Active Shape-facing questions include:
 - prior-art encounter before any affected authority-bearing installation;
 - explicit expiry routes for later temporal coordination, selective requalification, actor coordination, self-amendment, real authority/action, broader recovery, and generalization.
 
-# Shape entitlement
-
-BUILD 10 Shape may be opened only by a separate bounded commission. It may derive and falsify:
-
-- the exact first specimen and destination question/use;
-- the smallest carried/referenced decision surface;
-- identity, lineage, version and dependency bindings;
-- semantic comparison and negative-control requirements;
-- destination custody and local-standing boundaries;
-- replay/retry/restart/partial-failure behavior at bounded strength;
-- the smallest enforcement composition satisfying the accepted obligations;
-- AP-05 physicalization only if concrete residual liability survives smaller enforcement alternatives.
+# Shape non-entitlements
 
 Shape is NOT entitled to infer authorization for:
 
@@ -78,7 +87,7 @@ Shape is NOT entitled to infer authorization for:
 ```text
 BUILD_0_TO_9=CLOSED; PRIOR_ACCEPTED_BOUNDARIES_PRESERVED
 BUILD_10_SENSE=CLOSED; HUMAN_ACCEPTED
-BUILD_10_SHAPE=UNOPENED
+BUILD_10_SHAPE=OPEN; AUTHORIZED_UNDER_ECO_113
 BUILD_10_MOVE=UNOPENED
 BUILD_10_METABOLIZE=UNOPENED
 AP_05=OPEN; NO_PACKET_PHYSICALIZATION_EARNED
@@ -91,4 +100,4 @@ CANONICAL_BUILD9_DATABASE_INSTALL=NONE
 CANONICAL_BUILD10_DATABASE_INSTALL=NONE
 ```
 
-No repository normalization here installs BUILD 10 behavior or opens Shape. Shape requires its own explicit commission and fresh-phase boundary.
+Repository normalization records control state only. It does not install BUILD 10 behavior or authorize Move.
