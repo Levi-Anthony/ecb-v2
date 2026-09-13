@@ -1,0 +1,10 @@
+PASS P17 predecessor-definition-owner-ACL-preserved
+PASS P17 BUILD5B-positive-negative
+PASS P17 B5B-input-role
+PASS P17 B7-candidate-role
+PASS P17 B8-envelope-role
+PASS P17 B9-inquiry-role
+PASS P17 old-role-cannot-publish-B10
+PASS P17 B9-finite-comparator-preserved
+PASS P17 no-standing-designation-effect
+PASS P17 existing-RLS-no-packet-table

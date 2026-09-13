@@ -1,0 +1,15 @@
+{
+  "state": "FROZEN_BEFORE_HOLDOUT",
+  "checkpoint": "2f573890f0dbaa4c4f939210641d23b75be88afb",
+  "method_digest": "05719027a7b0084681c8cccd67942b42348ad2fa5064d0dc3b497a497156b13f",
+  "files": {
+    "sql/migrations/20260913070000_build_10_semantic_transfer.sql": "84aa32e526faa9b5af3b322b95201af24b96f25f962687c6b1b31c50d62210b5",
+    "server/build-10/client.mjs": "55c45ebddec0d71358e959c9ce9393665e04f18fa4bb73cf96f7f89ead365174",
+    "server/build-10/recover.mjs": "23f3e47979552bc5fd2186006aaddedd8a0959b88490a6693aeefb2ede00575f",
+    "server/build-10/resolve.mjs": "b7ce5b7dd12d09bc64fe899d201547cb1b88b22f216abbbf9a517879451a53d5",
+    "server/build-10/send.mjs": "953cefec59a3528b21c7fdb1aa8147d91489d24a2d231f8fe3f91ed9294dec88"
+  },
+  "function_count": 31,
+  "holdout": "Not yet authored/executed at freeze; no tuning against its result",
+  "source_destination_definitions_equal": true
+}

@@ -1,0 +1,1123 @@
+[
+  {
+    "p": "01/08",
+    "state": "PASS",
+    "mechanism": "server/build-10/send.mjs + actual received SQL checker",
+    "sourceObservations": [
+      {
+        "kind": "sender-report",
+        "request": "506dd7cc-f0cb-426e-a1ea-458504ccb6aa",
+        "delivery": "37138065-897a-41c7-82f1-5e4be91f8f89",
+        "question": "2067a3bc-380f-4339-988a-2353736373c3",
+        "authority": "sender testimony only",
+        "destination": "127.0.0.1:55444/build10_destination",
+        "reported_status": "ACK_OBSERVED"
+      },
+      {
+        "kind": "sender-report",
+        "request": "506dd7cc-f0cb-426e-a1ea-458504ccb6aa",
+        "delivery": null,
+        "question": "2067a3bc-380f-4339-988a-2353736373c3",
+        "authority": "sender testimony only",
+        "destination": "127.0.0.1:55444/build10_destination",
+        "reported_status": "SELECTED"
+      },
+      {
+        "kind": "sender-report",
+        "request": "506dd7cc-f0cb-426e-a1ea-458504ccb6aa",
+        "delivery": null,
+        "question": "2067a3bc-380f-4339-988a-2353736373c3",
+        "authority": "sender testimony only",
+        "destination": "127.0.0.1:55444/build10_destination",
+        "reported_status": "ATTEMPTED"
+      },
+      {
+        "kind": "sender-report",
+        "request": "506dd7cc-f0cb-426e-a1ea-458504ccb6aa",
+        "delivery": "37138065-897a-41c7-82f1-5e4be91f8f89",
+        "question": "2067a3bc-380f-4339-988a-2353736373c3",
+        "authority": "sender testimony only",
+        "destination": "127.0.0.1:55444/build10_destination",
+        "reported_status": "ACK_OBSERVED"
+      },
+      {
+        "kind": "sender-report",
+        "request": "506dd7cc-f0cb-426e-a1ea-458504ccb6aa",
+        "delivery": null,
+        "question": "2067a3bc-380f-4339-988a-2353736373c3",
+        "authority": "sender testimony only",
+        "destination": "127.0.0.1:55444/build10_destination",
+        "reported_status": "ATTEMPTED"
+      },
+      {
+        "kind": "sender-report",
+        "request": "506dd7cc-f0cb-426e-a1ea-458504ccb6aa",
+        "delivery": null,
+        "question": "2067a3bc-380f-4339-988a-2353736373c3",
+        "authority": "sender testimony only",
+        "destination": "127.0.0.1:55444/build10_destination",
+        "reported_status": "SELECTED"
+      }
+    ],
+    "card": {
+      "limits": [
+        "historical",
+        "synthetic",
+        "no cold-start",
+        "no retry",
+        "no concurrent-load",
+        "no production",
+        "no present-performance",
+        "no warranty",
+        "no action"
+      ],
+      "locator": "37138065-897a-41c7-82f1-5e4be91f8f89",
+      "records": [
+        {
+          "id": "2067a3bc-380f-4339-988a-2353736373c3",
+          "role": "b10_basis",
+          "content": {
+            "use": "historical note only",
+            "kind": "question",
+            "export": "213412a8-b36e-4802-a740-8a9f3aec4eca",
+            "limits": [
+              "historical",
+              "synthetic",
+              "no cold-start",
+              "no retry",
+              "no concurrent-load",
+              "no production",
+              "no present-performance",
+              "no warranty",
+              "no action"
+            ],
+            "method": "ccc46430-fe85-49c6-9ec5-7126bd4c2591",
+            "binding": {
+              "focal": "a9438281-c851-4f82-9a77-d20c0fa86c09",
+              "report": "70945685-e4fa-40da-bec4-3c0268bf476a",
+              "contract": "d6b57ebd-282d-43e0-b455-4a093a56f1a3",
+              "revision": "ef403ea1-616b-4732-9ea3-9afdec009a5e",
+              "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+              "report_version": "B2",
+              "contract_version": "1",
+              "projection_version": "1"
+            },
+            "version": "Q1/v1",
+            "manifest": [
+              {
+                "id": "78842983-1b97-4bc0-b59e-ef6dbbd5abfd",
+                "kind": "criterion",
+                "role": "criterion",
+                "version": "1",
+                "selector": "rule"
+              },
+              {
+                "id": "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                "kind": "value",
+                "role": "W1",
+                "version": "1",
+                "selector": "value"
+              },
+              {
+                "id": "a47cc83a-d9d6-4101-bba8-5c9ed80216cb",
+                "kind": "value",
+                "role": "W2",
+                "version": "1",
+                "selector": "value"
+              },
+              {
+                "id": "9a9dce48-ec4a-411e-9e2b-81889c74a27f",
+                "kind": "selector",
+                "role": "selector",
+                "version": "1",
+                "selector": "population"
+              },
+              {
+                "id": "f0a37fb1-638b-4dae-8a76-a1a4632a8951",
+                "kind": "unit_context",
+                "role": "unit_context",
+                "version": "1",
+                "selector": "context"
+              }
+            ],
+            "question": "Does this actual received projection support the historical note that the two declared warm-start single-request observations for the exact revision in B2 each met 100 ms?",
+            "resolver": "ecb10 exact source-read-only resolver/v1",
+            "criterion": {
+              "unit": "ms",
+              "context": "warm-start/single-request",
+              "operator": "le",
+              "threshold": 100,
+              "quantifier": "all"
+            },
+            "namespace": "309c9659-4c5f-4f47-aff1-a7c06e2b867a",
+            "population": [
+              "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+              "a47cc83a-d9d6-4101-bba8-5c9ed80216cb"
+            ]
+          },
+          "context": "d78f32ed-5396-4045-beef-d2a70d4817e4",
+          "envelope_digest": "4878d13c0f6925b1d9b6e931c6b2cc88eace095570ee583a4331f5512005941a"
+        },
+        {
+          "id": "37138065-897a-41c7-82f1-5e4be91f8f89",
+          "role": "b10_delivery",
+          "content": {
+            "frame": {
+              "length": 1427,
+              "namespace": "309c9659-4c5f-4f47-aff1-a7c06e2b867a",
+              "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+              "source_artifact": "a42a6d29-b43f-4381-b0be-f42a3ab48936",
+              "projection_version": "1"
+            },
+            "request": "506dd7cc-f0cb-426e-a1ea-458504ccb6aa",
+            "question": "2067a3bc-380f-4339-988a-2353736373c3",
+            "previous_attempt": null
+          },
+          "context": "2067a3bc-380f-4339-988a-2353736373c3",
+          "envelope_digest": "bdd8b006fba1bac43bb1b6c99ff45e0736c3531887413baba71f064b952d21a5"
+        },
+        {
+          "id": "393bd522-2bed-4f07-bf9f-c0bf88ff344f",
+          "role": "b10_check",
+          "content": {
+            "copy": "bd02d97a-4442-45b4-b2c4-aac869fa8b69",
+            "method": "ccc46430-fe85-49c6-9ec5-7126bd4c2591",
+            "request": "692982ca-8563-4abd-8f04-44526ba70758",
+            "question": "2067a3bc-380f-4339-988a-2353736373c3",
+            "question_version": "Q1/v1"
+          },
+          "context": "37138065-897a-41c7-82f1-5e4be91f8f89",
+          "envelope_digest": "1d4992d9a3d5e41117582417798923dde80aaf8aceb8b44e077904fdf3b07f34"
+        },
+        {
+          "id": "4b929527-a761-486c-a7cc-7a03b9f98333",
+          "role": "b10_observation",
+          "content": {
+            "kind": "resolver",
+            "check": "393bd522-2bed-4f07-bf9f-c0bf88ff344f",
+            "missing": [],
+            "records": {
+              "213412a8-b36e-4802-a740-8a9f3aec4eca": {
+                "kind": "export",
+                "frame": {
+                  "length": 1427,
+                  "namespace": "309c9659-4c5f-4f47-aff1-a7c06e2b867a",
+                  "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                  "source_artifact": "a42a6d29-b43f-4381-b0be-f42a3ab48936",
+                  "projection_version": "1"
+                },
+                "digest": "78ab5b3be0553e329286a6c50d9e25d6281139017fcadf58018977c6fbd85557",
+                "binding": {
+                  "focal": "a9438281-c851-4f82-9a77-d20c0fa86c09",
+                  "report": "70945685-e4fa-40da-bec4-3c0268bf476a",
+                  "contract": "d6b57ebd-282d-43e0-b455-4a093a56f1a3",
+                  "revision": "ef403ea1-616b-4732-9ea3-9afdec009a5e",
+                  "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                  "report_version": "B2",
+                  "contract_version": "1",
+                  "projection_version": "1"
+                }
+              },
+              "70945685-e4fa-40da-bec4-3c0268bf476a": {
+                "kind": "report",
+                "limits": [
+                  "historical",
+                  "synthetic",
+                  "no cold-start",
+                  "no retry",
+                  "no concurrent-load",
+                  "no production",
+                  "no present-performance",
+                  "no warranty",
+                  "no action"
+                ],
+                "binding": {
+                  "focal": "a9438281-c851-4f82-9a77-d20c0fa86c09",
+                  "report": "70945685-e4fa-40da-bec4-3c0268bf476a",
+                  "contract": "d6b57ebd-282d-43e0-b455-4a093a56f1a3",
+                  "revision": "ef403ea1-616b-4732-9ea3-9afdec009a5e",
+                  "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                  "report_version": "B2",
+                  "contract_version": "1",
+                  "projection_version": "1"
+                },
+                "version": "B2",
+                "manifest": [
+                  {
+                    "id": "78842983-1b97-4bc0-b59e-ef6dbbd5abfd",
+                    "kind": "criterion",
+                    "role": "criterion",
+                    "version": "1",
+                    "selector": "rule"
+                  },
+                  {
+                    "id": "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                    "kind": "value",
+                    "role": "W1",
+                    "version": "1",
+                    "selector": "value"
+                  },
+                  {
+                    "id": "a47cc83a-d9d6-4101-bba8-5c9ed80216cb",
+                    "kind": "value",
+                    "role": "W2",
+                    "version": "1",
+                    "selector": "value"
+                  },
+                  {
+                    "id": "9a9dce48-ec4a-411e-9e2b-81889c74a27f",
+                    "kind": "selector",
+                    "role": "selector",
+                    "version": "1",
+                    "selector": "population"
+                  },
+                  {
+                    "id": "f0a37fb1-638b-4dae-8a76-a1a4632a8951",
+                    "kind": "unit_context",
+                    "role": "unit_context",
+                    "version": "1",
+                    "selector": "context"
+                  }
+                ]
+              },
+              "78842983-1b97-4bc0-b59e-ef6dbbd5abfd": {
+                "kind": "criterion",
+                "rule": {
+                  "unit": "ms",
+                  "context": "warm-start/single-request",
+                  "operator": "le",
+                  "threshold": 100,
+                  "quantifier": "all"
+                },
+                "version": "1"
+              },
+              "89f53a32-d312-45ea-89be-2a73d1d2d9c2": {
+                "kind": "value",
+                "unit": "ms",
+                "value": 80,
+                "context": "warm-start/single-request",
+                "version": "1"
+              },
+              "9a9dce48-ec4a-411e-9e2b-81889c74a27f": {
+                "kind": "selector",
+                "version": "1",
+                "population": [
+                  "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                  "a47cc83a-d9d6-4101-bba8-5c9ed80216cb"
+                ]
+              },
+              "a47cc83a-d9d6-4101-bba8-5c9ed80216cb": {
+                "kind": "value",
+                "unit": "ms",
+                "value": 100,
+                "context": "warm-start/single-request",
+                "version": "1"
+              },
+              "f0a37fb1-638b-4dae-8a76-a1a4632a8951": {
+                "kind": "unit_context",
+                "unit": "ms",
+                "context": "warm-start/single-request",
+                "version": "1"
+              }
+            },
+            "observation": {
+              "kind": "exact_read_only_snapshot",
+              "digests": {
+                "213412a8-b36e-4802-a740-8a9f3aec4eca": "f346c1c504324237785c10f00476f10b880600869677123cfaaa9b5a7d0b8e6d",
+                "70945685-e4fa-40da-bec4-3c0268bf476a": "60bbf345797f85d29112b4db34ce8256765f4c56948fcae1ecff13bb12dae065",
+                "78842983-1b97-4bc0-b59e-ef6dbbd5abfd": "95ce36fa18291b8f20c1679732313a0c7060406f88e94694f13e12195d8640bd",
+                "89f53a32-d312-45ea-89be-2a73d1d2d9c2": "c397deab23a3a656d7edd16b3c3f3da7845e3c7668587aa3f04df58adb9aacba",
+                "9a9dce48-ec4a-411e-9e2b-81889c74a27f": "c904d4bdedb2fcaac2ac2304f7fb61a636807a766849cd0ada18a3cebdff212d",
+                "a47cc83a-d9d6-4101-bba8-5c9ed80216cb": "0a5761548b9cc684164d085cf7d045158d65fa4e1a85637a0f28413bf46ae6bd",
+                "f0a37fb1-638b-4dae-8a76-a1a4632a8951": "31b585051c5b12002704099a72ca9667211c4fd74f7e5c5ce6246f65049bb513"
+              }
+            }
+          },
+          "context": "393bd522-2bed-4f07-bf9f-c0bf88ff344f",
+          "envelope_digest": "d09bd4e62040bab6116902391e06b3db3ee6e2c76215c55a3a7c2d8d3fea23c4"
+        },
+        {
+          "id": "82c1bb63-7d1d-4f53-b0e5-667c1cafab56",
+          "role": "b10_observation",
+          "content": {
+            "copy": "bd02d97a-4442-45b4-b2c4-aac869fa8b69",
+            "kind": "integrity",
+            "parse": {
+              "valid": true,
+              "value": {
+                "focal": "a9438281-c851-4f82-9a77-d20c0fa86c09",
+                "limits": [
+                  "historical",
+                  "synthetic",
+                  "no cold-start",
+                  "no retry",
+                  "no concurrent-load",
+                  "no production",
+                  "no present-performance",
+                  "no warranty",
+                  "no action"
+                ],
+                "report": "70945685-e4fa-40da-bec4-3c0268bf476a",
+                "contract": "d6b57ebd-282d-43e0-b455-4a093a56f1a3",
+                "encoding": "UTF-8",
+                "language": "b10-comparison-json/v1",
+                "manifest": [
+                  {
+                    "id": "78842983-1b97-4bc0-b59e-ef6dbbd5abfd",
+                    "kind": "criterion",
+                    "role": "criterion",
+                    "version": "1",
+                    "selector": "rule"
+                  },
+                  {
+                    "id": "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                    "kind": "value",
+                    "role": "W1",
+                    "version": "1",
+                    "selector": "value"
+                  },
+                  {
+                    "id": "a47cc83a-d9d6-4101-bba8-5c9ed80216cb",
+                    "kind": "value",
+                    "role": "W2",
+                    "version": "1",
+                    "selector": "value"
+                  },
+                  {
+                    "id": "9a9dce48-ec4a-411e-9e2b-81889c74a27f",
+                    "kind": "selector",
+                    "role": "selector",
+                    "version": "1",
+                    "selector": "population"
+                  },
+                  {
+                    "id": "f0a37fb1-638b-4dae-8a76-a1a4632a8951",
+                    "kind": "unit_context",
+                    "role": "unit_context",
+                    "version": "1",
+                    "selector": "context"
+                  }
+                ],
+                "revision": "ef403ea1-616b-4732-9ea3-9afdec009a5e",
+                "integrity": "SHA-256",
+                "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                "expressions": [
+                  "each declared observation met the threshold"
+                ],
+                "proposition": {
+                  "unit": "ms",
+                  "context": "warm-start/single-request",
+                  "operator": "le",
+                  "threshold": 100,
+                  "population": [
+                    "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                    "a47cc83a-d9d6-4101-bba8-5c9ed80216cb"
+                  ],
+                  "quantifier": "all",
+                  "asserted_result": true
+                },
+                "report_version": "B2",
+                "contract_version": "1",
+                "projection_version": "1"
+              }
+            },
+            "digest": "78ab5b3be0553e329286a6c50d9e25d6281139017fcadf58018977c6fbd85557",
+            "length": 1427,
+            "available": true
+          },
+          "context": "393bd522-2bed-4f07-bf9f-c0bf88ff344f",
+          "envelope_digest": "84a863aa19b4e2f7b081e6cc23ec919fac4921bda2fb1ad9999868ee0c2a2329"
+        },
+        {
+          "id": "bd02d97a-4442-45b4-b2c4-aac869fa8b69",
+          "role": "b10_copy",
+          "content": {
+            "body": "eyJsYW5ndWFnZSI6ImIxMC1jb21wYXJpc29uLWpzb24vdjEiLCJmb2NhbCI6ImE5NDM4MjgxLWM4NTEtNGY4Mi05YTc3LWQyMGMwZmE4NmMwOSIsInJldmlzaW9uIjoiZWY0MDNlYTEtNjE2Yi00NzMyLTllYTMtOWFmZGVjMDA5YTVlIiwicmVwb3J0IjoiNzA5NDU2ODUtZTRmYS00MGRhLWJlYzQtM2MwMjY4YmY0NzZhIiwicmVwb3J0X3ZlcnNpb24iOiJCMiIsInByb2plY3Rpb24iOiI5NjNhNDdkMy05YTkzLTQ5ZGMtYWQ4Ni04M2U4YTk1YjkzOTQiLCJwcm9qZWN0aW9uX3ZlcnNpb24iOiIxIiwiY29udHJhY3QiOiJkNmI1N2ViZC0yODJkLTQzZTAtYjQ1NS00YTA5M2E1NmYxYTMiLCJjb250cmFjdF92ZXJzaW9uIjoiMSIsIm1hbmlmZXN0IjpbeyJyb2xlIjoiY3JpdGVyaW9uIiwia2luZCI6ImNyaXRlcmlvbiIsImlkIjoiNzg4NDI5ODMtMWI5Ny00YmMwLWI1OWUtZWY2ZGJiZDVhYmZkIiwidmVyc2lvbiI6IjEiLCJzZWxlY3RvciI6InJ1bGUifSx7InJvbGUiOiJXMSIsImtpbmQiOiJ2YWx1ZSIsImlkIjoiODlmNTNhMzItZDMxMi00NWVhLTg5YmUtMmE3M2QxZDJkOWMyIiwidmVyc2lvbiI6IjEiLCJzZWxlY3RvciI6InZhbHVlIn0seyJyb2xlIjoiVzIiLCJraW5kIjoidmFsdWUiLCJpZCI6ImE0N2NjODNhLWQ5ZDYtNDEwMS1iYmE4LTVjOWVkODAyMTZjYiIsInZlcnNpb24iOiIxIiwic2VsZWN0b3IiOiJ2YWx1ZSJ9LHsicm9sZSI6InNlbGVjdG9yIiwia2luZCI6InNlbGVjdG9yIiwiaWQiOiI5YTlkY2U0OC1lYzRhLTQxMWUtOWUyYi04MTg4OWM3NGEyN2YiLCJ2ZXJzaW9uIjoiMSIsInNlbGVjdG9yIjoicG9wdWxhdGlvbiJ9LHsicm9sZSI6InVuaXRfY29udGV4dCIsImtpbmQiOiJ1bml0X2NvbnRleHQiLCJpZCI6ImYwYTM3ZmIxLTYzOGItNGRhZS04YTc2LWExYTQ2MzJhODk1MSIsInZlcnNpb24iOiIxIiwic2VsZWN0b3IiOiJjb250ZXh0In1dLCJwcm9wb3NpdGlvbiI6eyJxdWFudGlmaWVyIjoiYWxsIiwib3BlcmF0b3IiOiJsZSIsInRocmVzaG9sZCI6MTAwLCJ1bml0IjoibXMiLCJjb250ZXh0Ijoid2FybS1zdGFydC9zaW5nbGUtcmVxdWVzdCIsInBvcHVsYXRpb24iOlsiODlmNTNhMzItZDMxMi00NWVhLTg5YmUtMmE3M2QxZDJkOWMyIiwiYTQ3Y2M4M2EtZDlkNi00MTAxLWJiYTgtNWM5ZWQ4MDIxNmNiIl0sImFzc2VydGVkX3Jlc3VsdCI6dHJ1ZX0sImV4cHJlc3Npb25zIjpbImVhY2ggZGVjbGFyZWQgb2JzZXJ2YXRpb24gbWV0IHRoZSB0aHJlc2hvbGQiXSwibGltaXRzIjpbImhpc3RvcmljYWwiLCJzeW50aGV0aWMiLCJubyBjb2xkLXN0YXJ0Iiwibm8gcmV0cnkiLCJubyBjb25jdXJyZW50LWxvYWQiLCJubyBwcm9kdWN0aW9uIiwibm8gcHJlc2VudC1wZXJmb3JtYW5jZSIsIm5vIHdhcnJhbnR5Iiwibm8gYWN0aW9uIl0sImVuY29kaW5nIjoiVVRGLTgiLCJpbnRlZ3JpdHkiOiJTSEEtMjU2In0=",
+            "frame": {
+              "length": 1427,
+              "namespace": "309c9659-4c5f-4f47-aff1-a7c06e2b867a",
+              "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+              "source_artifact": "a42a6d29-b43f-4381-b0be-f42a3ab48936",
+              "projection_version": "1"
+            },
+            "digest": "78ab5b3be0553e329286a6c50d9e25d6281139017fcadf58018977c6fbd85557",
+            "length": 1427
+          },
+          "context": "37138065-897a-41c7-82f1-5e4be91f8f89",
+          "envelope_digest": "ceea6f2c45c53e47a14e6f04cb4f944d539d1651679b1d68ca6e7db59d6b5549"
+        },
+        {
+          "id": "ccc46430-fe85-49c6-9ec5-7126bd4c2591",
+          "role": "b10_basis",
+          "content": {
+            "kind": "method",
+            "limits": "finite historical comparison only",
+            "version": "b10-sql/v1",
+            "definition_digest": "05719027a7b0084681c8cccd67942b42348ad2fa5064d0dc3b497a497156b13f"
+          },
+          "context": "d78f32ed-5396-4045-beef-d2a70d4817e4",
+          "envelope_digest": "404b7dac890f50cb8c750846a1b0d7d19ba0a287ab7212e7fc3ce0481050aa11"
+        },
+        {
+          "id": "f6ca1e96-6103-42ab-bb56-d3cd2c23faf9",
+          "role": "b10_assessment",
+          "content": {
+            "use": "historical note only; no standing/adoption/currentness/authority/permission/effect",
+            "copy": "bd02d97a-4442-45b4-b2c4-aac869fa8b69",
+            "check": "393bd522-2bed-4f07-bf9f-c0bf88ff344f",
+            "method": "ccc46430-fe85-49c6-9ec5-7126bd4c2591",
+            "outcome": "SUPPORTED_FOR_Q1",
+            "findings": [
+              {
+                "state": "PASS",
+                "observed": {
+                  "valid": true
+                },
+                "required": "unique-key UTF-8 JSON",
+                "component": "encoding"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "copy": "bd02d97a-4442-45b4-b2c4-aac869fa8b69",
+                  "kind": "integrity",
+                  "digest": "78ab5b3be0553e329286a6c50d9e25d6281139017fcadf58018977c6fbd85557",
+                  "length": 1427,
+                  "available": true
+                },
+                "required": {
+                  "frame": {
+                    "length": 1427,
+                    "namespace": "309c9659-4c5f-4f47-aff1-a7c06e2b867a",
+                    "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                    "source_artifact": "a42a6d29-b43f-4381-b0be-f42a3ab48936",
+                    "projection_version": "1"
+                  },
+                  "digest": "78ab5b3be0553e329286a6c50d9e25d6281139017fcadf58018977c6fbd85557",
+                  "length": 1427
+                },
+                "component": "integrity_observation"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "length": 1427,
+                  "namespace": "309c9659-4c5f-4f47-aff1-a7c06e2b867a",
+                  "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                  "source_artifact": "a42a6d29-b43f-4381-b0be-f42a3ab48936",
+                  "projection_version": "1"
+                },
+                "required": "309c9659-4c5f-4f47-aff1-a7c06e2b867a",
+                "component": "origin"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "length": 1427,
+                  "namespace": "309c9659-4c5f-4f47-aff1-a7c06e2b867a",
+                  "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                  "source_artifact": "a42a6d29-b43f-4381-b0be-f42a3ab48936",
+                  "projection_version": "1"
+                },
+                "required": {
+                  "focal": "a9438281-c851-4f82-9a77-d20c0fa86c09",
+                  "report": "70945685-e4fa-40da-bec4-3c0268bf476a",
+                  "contract": "d6b57ebd-282d-43e0-b455-4a093a56f1a3",
+                  "revision": "ef403ea1-616b-4732-9ea3-9afdec009a5e",
+                  "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                  "report_version": "B2",
+                  "contract_version": "1",
+                  "projection_version": "1"
+                },
+                "component": "frame_projection"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "kind": "export",
+                  "frame": {
+                    "length": 1427,
+                    "namespace": "309c9659-4c5f-4f47-aff1-a7c06e2b867a",
+                    "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                    "source_artifact": "a42a6d29-b43f-4381-b0be-f42a3ab48936",
+                    "projection_version": "1"
+                  },
+                  "digest": "78ab5b3be0553e329286a6c50d9e25d6281139017fcadf58018977c6fbd85557",
+                  "binding": {
+                    "focal": "a9438281-c851-4f82-9a77-d20c0fa86c09",
+                    "report": "70945685-e4fa-40da-bec4-3c0268bf476a",
+                    "contract": "d6b57ebd-282d-43e0-b455-4a093a56f1a3",
+                    "revision": "ef403ea1-616b-4732-9ea3-9afdec009a5e",
+                    "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                    "report_version": "B2",
+                    "contract_version": "1",
+                    "projection_version": "1"
+                  }
+                },
+                "required": {
+                  "frame": {
+                    "length": 1427,
+                    "namespace": "309c9659-4c5f-4f47-aff1-a7c06e2b867a",
+                    "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                    "source_artifact": "a42a6d29-b43f-4381-b0be-f42a3ab48936",
+                    "projection_version": "1"
+                  },
+                  "digest": "78ab5b3be0553e329286a6c50d9e25d6281139017fcadf58018977c6fbd85557",
+                  "binding": {
+                    "focal": "a9438281-c851-4f82-9a77-d20c0fa86c09",
+                    "report": "70945685-e4fa-40da-bec4-3c0268bf476a",
+                    "contract": "d6b57ebd-282d-43e0-b455-4a093a56f1a3",
+                    "revision": "ef403ea1-616b-4732-9ea3-9afdec009a5e",
+                    "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                    "report_version": "B2",
+                    "contract_version": "1",
+                    "projection_version": "1"
+                  }
+                },
+                "component": "provenance"
+              },
+              {
+                "state": "PASS",
+                "observed": "UTF-8",
+                "required": "UTF-8",
+                "component": "encoding"
+              },
+              {
+                "state": "PASS",
+                "observed": "SHA-256",
+                "required": "SHA-256",
+                "component": "integrity"
+              },
+              {
+                "state": "PASS",
+                "observed": "a9438281-c851-4f82-9a77-d20c0fa86c09",
+                "required": "a9438281-c851-4f82-9a77-d20c0fa86c09",
+                "component": "identity:focal"
+              },
+              {
+                "state": "PASS",
+                "observed": "ef403ea1-616b-4732-9ea3-9afdec009a5e",
+                "required": "ef403ea1-616b-4732-9ea3-9afdec009a5e",
+                "component": "identity:revision"
+              },
+              {
+                "state": "PASS",
+                "observed": "70945685-e4fa-40da-bec4-3c0268bf476a",
+                "required": "70945685-e4fa-40da-bec4-3c0268bf476a",
+                "component": "identity:report"
+              },
+              {
+                "state": "PASS",
+                "observed": "B2",
+                "required": "B2",
+                "component": "identity:report_version"
+              },
+              {
+                "state": "PASS",
+                "observed": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                "required": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                "component": "identity:projection"
+              },
+              {
+                "state": "PASS",
+                "observed": "1",
+                "required": "1",
+                "component": "identity:projection_version"
+              },
+              {
+                "state": "PASS",
+                "observed": "d6b57ebd-282d-43e0-b455-4a093a56f1a3",
+                "required": "d6b57ebd-282d-43e0-b455-4a093a56f1a3",
+                "component": "identity:contract"
+              },
+              {
+                "state": "PASS",
+                "observed": "1",
+                "required": "1",
+                "component": "identity:contract_version"
+              },
+              {
+                "state": "PASS",
+                "observed": [
+                  {
+                    "id": "78842983-1b97-4bc0-b59e-ef6dbbd5abfd",
+                    "kind": "criterion",
+                    "role": "criterion",
+                    "version": "1",
+                    "selector": "rule"
+                  },
+                  {
+                    "id": "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                    "kind": "value",
+                    "role": "W1",
+                    "version": "1",
+                    "selector": "value"
+                  },
+                  {
+                    "id": "a47cc83a-d9d6-4101-bba8-5c9ed80216cb",
+                    "kind": "value",
+                    "role": "W2",
+                    "version": "1",
+                    "selector": "value"
+                  },
+                  {
+                    "id": "9a9dce48-ec4a-411e-9e2b-81889c74a27f",
+                    "kind": "selector",
+                    "role": "selector",
+                    "version": "1",
+                    "selector": "population"
+                  },
+                  {
+                    "id": "f0a37fb1-638b-4dae-8a76-a1a4632a8951",
+                    "kind": "unit_context",
+                    "role": "unit_context",
+                    "version": "1",
+                    "selector": "context"
+                  }
+                ],
+                "required": [
+                  {
+                    "id": "78842983-1b97-4bc0-b59e-ef6dbbd5abfd",
+                    "kind": "criterion",
+                    "role": "criterion",
+                    "version": "1",
+                    "selector": "rule"
+                  },
+                  {
+                    "id": "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                    "kind": "value",
+                    "role": "W1",
+                    "version": "1",
+                    "selector": "value"
+                  },
+                  {
+                    "id": "a47cc83a-d9d6-4101-bba8-5c9ed80216cb",
+                    "kind": "value",
+                    "role": "W2",
+                    "version": "1",
+                    "selector": "value"
+                  },
+                  {
+                    "id": "9a9dce48-ec4a-411e-9e2b-81889c74a27f",
+                    "kind": "selector",
+                    "role": "selector",
+                    "version": "1",
+                    "selector": "population"
+                  },
+                  {
+                    "id": "f0a37fb1-638b-4dae-8a76-a1a4632a8951",
+                    "kind": "unit_context",
+                    "role": "unit_context",
+                    "version": "1",
+                    "selector": "context"
+                  }
+                ],
+                "component": "manifest"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "kind": "criterion",
+                  "rule": {
+                    "unit": "ms",
+                    "context": "warm-start/single-request",
+                    "operator": "le",
+                    "threshold": 100,
+                    "quantifier": "all"
+                  },
+                  "version": "1"
+                },
+                "required": {
+                  "id": "78842983-1b97-4bc0-b59e-ef6dbbd5abfd",
+                  "kind": "criterion",
+                  "role": "criterion",
+                  "version": "1",
+                  "selector": "rule"
+                },
+                "component": "dependency:criterion"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "kind": "value",
+                  "unit": "ms",
+                  "value": 80,
+                  "context": "warm-start/single-request",
+                  "version": "1"
+                },
+                "required": {
+                  "id": "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                  "kind": "value",
+                  "role": "W1",
+                  "version": "1",
+                  "selector": "value"
+                },
+                "component": "dependency:W1"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "kind": "value",
+                  "unit": "ms",
+                  "value": 100,
+                  "context": "warm-start/single-request",
+                  "version": "1"
+                },
+                "required": {
+                  "id": "a47cc83a-d9d6-4101-bba8-5c9ed80216cb",
+                  "kind": "value",
+                  "role": "W2",
+                  "version": "1",
+                  "selector": "value"
+                },
+                "component": "dependency:W2"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "kind": "selector",
+                  "version": "1",
+                  "population": [
+                    "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                    "a47cc83a-d9d6-4101-bba8-5c9ed80216cb"
+                  ]
+                },
+                "required": {
+                  "id": "9a9dce48-ec4a-411e-9e2b-81889c74a27f",
+                  "kind": "selector",
+                  "role": "selector",
+                  "version": "1",
+                  "selector": "population"
+                },
+                "component": "dependency:selector"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "kind": "unit_context",
+                  "unit": "ms",
+                  "context": "warm-start/single-request",
+                  "version": "1"
+                },
+                "required": {
+                  "id": "f0a37fb1-638b-4dae-8a76-a1a4632a8951",
+                  "kind": "unit_context",
+                  "role": "unit_context",
+                  "version": "1",
+                  "selector": "context"
+                },
+                "component": "dependency:unit_context"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "kind": "report",
+                  "limits": [
+                    "historical",
+                    "synthetic",
+                    "no cold-start",
+                    "no retry",
+                    "no concurrent-load",
+                    "no production",
+                    "no present-performance",
+                    "no warranty",
+                    "no action"
+                  ],
+                  "binding": {
+                    "focal": "a9438281-c851-4f82-9a77-d20c0fa86c09",
+                    "report": "70945685-e4fa-40da-bec4-3c0268bf476a",
+                    "contract": "d6b57ebd-282d-43e0-b455-4a093a56f1a3",
+                    "revision": "ef403ea1-616b-4732-9ea3-9afdec009a5e",
+                    "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                    "report_version": "B2",
+                    "contract_version": "1",
+                    "projection_version": "1"
+                  },
+                  "version": "B2",
+                  "manifest": [
+                    {
+                      "id": "78842983-1b97-4bc0-b59e-ef6dbbd5abfd",
+                      "kind": "criterion",
+                      "role": "criterion",
+                      "version": "1",
+                      "selector": "rule"
+                    },
+                    {
+                      "id": "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                      "kind": "value",
+                      "role": "W1",
+                      "version": "1",
+                      "selector": "value"
+                    },
+                    {
+                      "id": "a47cc83a-d9d6-4101-bba8-5c9ed80216cb",
+                      "kind": "value",
+                      "role": "W2",
+                      "version": "1",
+                      "selector": "value"
+                    },
+                    {
+                      "id": "9a9dce48-ec4a-411e-9e2b-81889c74a27f",
+                      "kind": "selector",
+                      "role": "selector",
+                      "version": "1",
+                      "selector": "population"
+                    },
+                    {
+                      "id": "f0a37fb1-638b-4dae-8a76-a1a4632a8951",
+                      "kind": "unit_context",
+                      "role": "unit_context",
+                      "version": "1",
+                      "selector": "context"
+                    }
+                  ]
+                },
+                "required": {
+                  "focal": "a9438281-c851-4f82-9a77-d20c0fa86c09",
+                  "report": "70945685-e4fa-40da-bec4-3c0268bf476a",
+                  "contract": "d6b57ebd-282d-43e0-b455-4a093a56f1a3",
+                  "revision": "ef403ea1-616b-4732-9ea3-9afdec009a5e",
+                  "projection": "963a47d3-9a93-49dc-ad86-83e8a95b9394",
+                  "report_version": "B2",
+                  "contract_version": "1",
+                  "projection_version": "1"
+                },
+                "component": "report"
+              },
+              {
+                "state": "PASS",
+                "observed": "all",
+                "required": "all",
+                "component": "preservation:quantifier"
+              },
+              {
+                "state": "PASS",
+                "observed": "le",
+                "required": "le",
+                "component": "preservation:operator"
+              },
+              {
+                "state": "PASS",
+                "observed": 100,
+                "required": 100,
+                "component": "preservation:threshold"
+              },
+              {
+                "state": "PASS",
+                "observed": "ms",
+                "required": "ms",
+                "component": "preservation:unit"
+              },
+              {
+                "state": "PASS",
+                "observed": "warm-start/single-request",
+                "required": "warm-start/single-request",
+                "component": "preservation:context"
+              },
+              {
+                "state": "PASS",
+                "observed": [
+                  "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                  "a47cc83a-d9d6-4101-bba8-5c9ed80216cb"
+                ],
+                "required": [
+                  "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                  "a47cc83a-d9d6-4101-bba8-5c9ed80216cb"
+                ],
+                "component": "population"
+              },
+              {
+                "state": "PASS",
+                "observed": [
+                  "historical",
+                  "synthetic",
+                  "no cold-start",
+                  "no retry",
+                  "no concurrent-load",
+                  "no production",
+                  "no present-performance",
+                  "no warranty",
+                  "no action"
+                ],
+                "required": [
+                  "historical",
+                  "synthetic",
+                  "no cold-start",
+                  "no retry",
+                  "no concurrent-load",
+                  "no production",
+                  "no present-performance",
+                  "no warranty",
+                  "no action"
+                ],
+                "component": "limits"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "kind": "criterion",
+                  "rule": {
+                    "unit": "ms",
+                    "context": "warm-start/single-request",
+                    "operator": "le",
+                    "threshold": 100,
+                    "quantifier": "all"
+                  },
+                  "version": "1"
+                },
+                "required": {
+                  "unit": "ms",
+                  "context": "warm-start/single-request",
+                  "operator": "le",
+                  "threshold": 100,
+                  "quantifier": "all"
+                },
+                "component": "source_criterion"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "kind": "selector",
+                  "version": "1",
+                  "population": [
+                    "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                    "a47cc83a-d9d6-4101-bba8-5c9ed80216cb"
+                  ]
+                },
+                "required": [
+                  "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                  "a47cc83a-d9d6-4101-bba8-5c9ed80216cb"
+                ],
+                "component": "source_selector"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "kind": "unit_context",
+                  "unit": "ms",
+                  "context": "warm-start/single-request",
+                  "version": "1"
+                },
+                "required": {
+                  "unit": "ms",
+                  "context": "warm-start/single-request",
+                  "operator": "le",
+                  "threshold": 100,
+                  "quantifier": "all"
+                },
+                "component": "source_context"
+              },
+              {
+                "state": "PASS",
+                "observed": {
+                  "values": [
+                    {
+                      "id": "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                      "value": 80
+                    },
+                    {
+                      "id": "a47cc83a-d9d6-4101-bba8-5c9ed80216cb",
+                      "value": 100
+                    }
+                  ],
+                  "asserted": true,
+                  "all_le_threshold": true
+                },
+                "required": {
+                  "unit": "ms",
+                  "context": "warm-start/single-request",
+                  "operator": "le",
+                  "threshold": 100,
+                  "quantifier": "all"
+                },
+                "component": "consequence"
+              },
+              {
+                "state": "PASS",
+                "observed": "each declared observation met the threshold",
+                "required": {
+                  "unit": "ms",
+                  "context": "warm-start/single-request",
+                  "operator": "le",
+                  "threshold": 100,
+                  "population": [
+                    "89f53a32-d312-45ea-89be-2a73d1d2d9c2",
+                    "a47cc83a-d9d6-4101-bba8-5c9ed80216cb"
+                  ],
+                  "quantifier": "all",
+                  "asserted_result": true
+                },
+                "component": "expression"
+              }
+            ],
+            "question": "2067a3bc-380f-4339-988a-2353736373c3",
+            "limitations": [
+              "historical",
+              "synthetic",
+              "no cold-start",
+              "no retry",
+              "no concurrent-load",
+              "no production",
+              "no present-performance",
+              "no warranty",
+              "no action"
+            ],
+            "method_binding": {
+              "kind": "method",
+              "limits": "finite historical comparison only",
+              "version": "b10-sql/v1",
+              "definition_digest": "05719027a7b0084681c8cccd67942b42348ad2fa5064d0dc3b497a497156b13f"
+            },
+            "question_version": "Q1/v1",
+            "resolver_observation": "4b929527-a761-486c-a7cc-7a03b9f98333",
+            "integrity_observation": "82c1bb63-7d1d-4f53-b0e5-667c1cafab56"
+          },
+          "context": "393bd522-2bed-4f07-bf9f-c0bf88ff344f",
+          "envelope_digest": "0f593cb84315e58039d3c4994b69a4fc140734ce380d0922f9b854bd998b3688"
+        }
+      ],
+      "nonclaims": "No standing, adoption, currentness, authority, permission or effect. Resolver observations are historical snapshots; new checks require fresh resolution."
+    }
+  },
+  {
+    "p": "11",
+    "state": "PASS",
+    "mechanism": "real destination stop",
+    "result": {
+      "delivery": null,
+      "request": "0de5bfc3-b55b-4d54-895a-97f1812c3bfd",
+      "observation": "UNKNOWN",
+      "reason": "ECONNREFUSED",
+      "semantic_assessment": null
+    },
+    "sourceObservations": [
+      {
+        "kind": "sender-report",
+        "request": "0de5bfc3-b55b-4d54-895a-97f1812c3bfd",
+        "delivery": null,
+        "question": "2067a3bc-380f-4339-988a-2353736373c3",
+        "authority": "sender testimony only",
+        "destination": "127.0.0.1:55444/build10_destination",
+        "reported_status": "SELECTED"
+      },
+      {
+        "kind": "sender-report",
+        "request": "0de5bfc3-b55b-4d54-895a-97f1812c3bfd",
+        "delivery": null,
+        "question": "2067a3bc-380f-4339-988a-2353736373c3",
+        "authority": "sender testimony only",
+        "destination": "127.0.0.1:55444/build10_destination",
+        "reported_status": "ATTEMPTED"
+      },
+      {
+        "kind": "sender-report",
+        "request": "0de5bfc3-b55b-4d54-895a-97f1812c3bfd",
+        "delivery": null,
+        "question": "2067a3bc-380f-4339-988a-2353736373c3",
+        "authority": "sender testimony only",
+        "destination": "127.0.0.1:55444/build10_destination",
+        "reported_status": "UNKNOWN"
+      }
+    ]
+  }
+]

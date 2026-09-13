@@ -1,0 +1,68 @@
+{
+  "p": "18",
+  "state": "PASS",
+  "controls": [
+    {
+      "component": "b10_delivery_request",
+      "obligation": "08",
+      "intact": "duplicate rejected",
+      "removed": "duplicate admitted under injected faulty internal retain call",
+      "restoration": "transaction rollback",
+      "classification": "small unique index discharges structural liability; no new packet table needed"
+    },
+    {
+      "component": "b10_copy_slot",
+      "obligation": "08/14",
+      "intact": "duplicate rejected",
+      "removed": "duplicate admitted under injected faulty internal retain call",
+      "restoration": "transaction rollback",
+      "classification": "small unique index discharges structural liability; no new packet table needed"
+    },
+    {
+      "component": "b10_check_request",
+      "obligation": "08",
+      "intact": "duplicate rejected",
+      "removed": "duplicate admitted under injected faulty internal retain call",
+      "restoration": "transaction rollback",
+      "classification": "small unique index discharges structural liability; no new packet table needed"
+    },
+    {
+      "component": "b10_terminal_slot",
+      "obligation": "10/14",
+      "intact": "duplicate rejected",
+      "removed": "duplicate admitted under injected faulty internal retain call",
+      "restoration": "transaction rollback",
+      "classification": "small unique index discharges structural liability; no new packet table needed"
+    },
+    {
+      "component": "b10_observation_slot",
+      "obligation": "09/13",
+      "intact": "duplicate rejected",
+      "removed": "duplicate admitted under injected faulty internal retain call",
+      "restoration": "transaction rollback",
+      "classification": "small unique index discharges structural liability; no new packet table needed"
+    },
+    {
+      "component": "write grant boundary",
+      "obligation": "15",
+      "removed": "predecessor immutability trigger still denies zero-row mutation",
+      "classification": "layered preservation; no redundant table-level RLS introduced"
+    },
+    {
+      "component": "b10_context lookup index",
+      "obligation": "12",
+      "removed": "same exact recovery",
+      "classification": "optional performance aid, no semantic necessity established; remove from implementation"
+    },
+    {
+      "component": "complete Artifact episode",
+      "observed": {
+        "b10_tables": 0,
+        "unregistered": 0,
+        "duplicate_terminals": 0
+      },
+      "classification": "no residual integrity/lifecycle/transaction/reconstruction/bypass liability found in exercised finite surfaces"
+    }
+  ],
+  "limits": "Finite tested composition only. Internal retain injections simulate controller defects; hostile-owner protection is not claimed. AP-05 remains open to new residual evidence."
+}

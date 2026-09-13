@@ -1,0 +1,12 @@
+PASS P10 SIGKILL-after-admission
+PASS P10 SIGKILL-after-partial
+PASS P10 SIGKILL-after-complete
+PASS P11 lost-complete-ack
+PASS P10 SIGKILL-after-check
+PASS P10 SIGKILL-after-terminal
+PASS P11 lost-terminal-ack
+PASS P10 SIGKILL-after-uncommitted-terminal
+PASS P13 checker-capability-loss
+PASS P13 snapshot-then-source-stop-new-check
+PASS P12 cold-positive
+PASS P12 cold-negative

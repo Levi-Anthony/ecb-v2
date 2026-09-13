@@ -1,0 +1,9 @@
+PASS P13 report-loss-before-first-assessment
+PASS P13 evidence-loss-before-first-assessment
+PASS P13 export-loss-before-first-assessment
+PASS P16 valid-B3-before-B2-reverse-observations-old-replay
+PASS P08 no-copy-attempt-cannot-acquire-later-copy
+PASS P07 source-basis-and-resolver-custody
+PASS P01 retained-invalid-UTF8
+PASS P01 retained-duplicate-key
+PASS P14 simultaneous-differing-content

@@ -1,0 +1,54 @@
+{
+  "freeze": "05719027a7b0084681c8cccd67942b42348ad2fa5064d0dc3b497a497156b13f",
+  "suites": [
+    {
+      "suite": "primary",
+      "exit_code": 0,
+      "state": "PASS",
+      "log": "final-primary.log",
+      "seconds": 0.7
+    },
+    {
+      "suite": "pressures",
+      "exit_code": 0,
+      "state": "PASS",
+      "log": "final-pressures.log",
+      "seconds": 2.42
+    },
+    {
+      "suite": "resilience",
+      "exit_code": 0,
+      "state": "PASS",
+      "log": "final-resilience.log",
+      "seconds": 1.34
+    },
+    {
+      "suite": "supplemental",
+      "exit_code": 0,
+      "state": "PASS",
+      "log": "final-supplemental.log",
+      "seconds": 0.65
+    },
+    {
+      "suite": "transport",
+      "exit_code": 0,
+      "state": "PASS",
+      "log": "final-transport.log",
+      "seconds": 0.42
+    },
+    {
+      "suite": "composition",
+      "exit_code": 0,
+      "state": "PASS",
+      "log": "final-composition.log",
+      "seconds": 2.71
+    },
+    {
+      "suite": "removal",
+      "exit_code": 0,
+      "state": "PASS",
+      "log": "final-removal.log",
+      "seconds": 0.64
+    }
+  ]
+}
