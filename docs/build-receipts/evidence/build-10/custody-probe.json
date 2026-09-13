@@ -1,0 +1,54 @@
+{
+  "probe": "dual-custody/v1",
+  "run": "2dc39edc-8606-4282-bb2d-b26aeecf50d2",
+  "claim": "environment and octet custody only; not P01",
+  "stages": [
+    {
+      "stage": "independent_stores",
+      "stores": [
+        {
+          "name": "ecb10-source-pg17",
+          "image_id": "sha256:feb68f4f15446397d8cac7f4fe48fe4586de83160d1fc48b46283312d1a33966",
+          "volume": [
+            "ecb10-source-pg17-data"
+          ],
+          "system_identifier": "7684904061454725163"
+        },
+        {
+          "name": "ecb10-destination-pg17",
+          "image_id": "sha256:feb68f4f15446397d8cac7f4fe48fe4586de83160d1fc48b46283312d1a33966",
+          "volume": [
+            "ecb10-destination-pg17-data"
+          ],
+          "system_identifier": "7684904065159319595"
+        }
+      ]
+    },
+    {
+      "stage": "partial_and_rollback",
+      "partial_id": "d88a33da-e084-45ef-91de-14b0276b196a",
+      "rolled_back_id": "263c9e91-b244-4d67-9eb3-26234784bc6d",
+      "completed_rows_after_rollback": 0
+    },
+    {
+      "stage": "reader_write_denied",
+      "sql_error": "permission denied"
+    },
+    {
+      "stage": "cold_destination_recovery",
+      "source_stopped": true,
+      "destination_restarted": true,
+      "locator": {
+        "container": "ecb10-destination-pg17",
+        "database": "custody_probe",
+        "id": "d07451e6-1585-4068-9e6e-1acd542218d9"
+      },
+      "source_id": "dbea352e-7040-468a-84c2-541ed9501e6f",
+      "bytes": 44,
+      "sha256": "3414b94c163538c65980f1b273df3e60266a1f889ca2b893e2885650873ad5da",
+      "equal": true
+    }
+  ],
+  "outcome": "PASS_ENVIRONMENT_ONLY",
+  "retained_resources": "Source stopped; destination running; independent labeled volumes retained. Disposable probe schema only. No BUILD 10 semantic implementation installed."
+}
