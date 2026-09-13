@@ -14,7 +14,7 @@ BUILD 10 Shape is human-closed on:
 
 - Linear ECO-113;
 - hardened Shape contract document `7e4e7494f3c0`;
-- repository closure receipt `docs/build-receipts/034-build-10-shape-closed.md`.
+- corrected repository closure receipt `docs/build-receipts/034-build-10-shape-closed.md`.
 
 BUILD 10 / Move is OPEN only as the active outer phase context under Linear ECO-114.
 
