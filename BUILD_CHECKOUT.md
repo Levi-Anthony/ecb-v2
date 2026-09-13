@@ -1,28 +1,28 @@
-STATUS: BUILD 10 / METABOLIZE / MOVE OPEN — PRE-CLOSE NORMALIZATION CANDIDATE
-DISPOSITION: BUILD 10 SENSE / SHAPE / MOVE CLOSED; OUTER METABOLIZE ACTIVE; BUILD 10 NOT YET CLOSED
-ROLE: Working-branch reentry checkpoint / pre-close normalization candidate
-AUTHORITY: Linear ECO-125 outer BUILD 10 Metabolize + ECO-128 internal Move
-CANONICAL MAIN AT PREPARATION: e88fbae7df5236d673a19d453affb7e15b360e98
+STATUS: BUILD 10 CLOSED — BOUNDED REGISTER-B SEMANTIC TRANSFER ACCEPTED
+DISPOSITION: BUILD 10 SENSE / SHAPE / MOVE / METABOLIZE CLOSED; SUCCESSOR UNOPENED
+ROLE: Canonical reentry checkpoint after BUILD 10 closure
+AUTHORITY: Human closure authorization + Linear ECO-125 / ECO-130 closure record
+CANONICAL MAIN PRE-CLOSURE: a5ad892c4b7cee9a0cea72652beedded7d80cd25
 ACCEPTED MOVE EVIDENCE BASE: build/eco-114-build-10-move@55e688a56a42ea477a748b5f072e9333d66d7143
 CANONICAL_BUILD10_DATABASE_INSTALL=NONE
 
 # Current disposition
 
-BUILD 0–9 remain closed at implementation Register B as applicable.
+BUILD 0–10 are CLOSED at implementation Register B as applicable.
 
 BUILD 10 outer Sense is CLOSED / human accepted.
 BUILD 10 outer Shape is CLOSED / human accepted.
 BUILD 10 outer Move is CLOSED / PASS WITH CARRIED APERTURES under ECO-114.
-BUILD 10 outer Metabolize is OPEN under ECO-125.
+BUILD 10 outer Metabolize is CLOSED / PASS under ECO-125 after internal Sense / Shape / Move / Metabolize completion.
 
 Within BUILD 10 / Metabolize:
 
 - Sense is CLOSED / decision-complete under ECO-126.
 - Shape is CLOSED / decision-complete under ECO-127.
-- Move is OPEN under ECO-128.
-- Metabolize is UNOPENED.
+- Move is CLOSED / PASS under ECO-128 after human-approved canonical fast-forward.
+- Metabolize is CLOSED / PASS under ECO-130 after cold canonical review.
 
-BUILD 10 itself is NOT YET CLOSED.
+BUILD 10 is CLOSED.
 
 No successor Build or successor Sense is open.
 
@@ -38,7 +38,7 @@ It does not establish the broader original propagation / ingest intention, inclu
 
 The scope compression is accepted and does not reopen BUILD 10.
 
-# Accepted Move proof lineage
+# Accepted proof lineage
 
 1. ae399a8b3ec7dc33741acb6cffbfe779bec87409
    BUILD 10 implementation plus P01–P18 proof evidence.
@@ -48,6 +48,9 @@ The scope compression is accepted and does not reopen BUILD 10.
 
 3. 55e688a56a42ea477a748b5f072e9333d66d7143
    Genuinely post-freeze semantic holdout plus PASS result.
+
+4. a5ad892c4b7cee9a0cea72652beedded7d80cd25
+   Human-approved pre-close canonical normalization on main.
 
 Checker method digest:
 05719027a7b0084681c8cccd67942b42348ad2fa5064d0dc3b497a497156b13f
@@ -59,32 +62,27 @@ P01–P18 remain accepted at the bounded tested claim. P18/AP-05 did not earn a 
 
 Same-worker holdout authorship remains an explicit limitation. Independent specification authorship is not claimed.
 
-# Metabolize findings already propagated
+# Metabolize disposition and propagated evidence
 
-Qualified non-repository findings have been routed without creating successor standing:
+The cold canonical review under ECO-130 returned:
+
+METABOLIZE PASS — READY FOR FINAL BUILD 10 HUMAN CLOSURE GATE.
+
+Human authorization then accepted final BUILD 10 closure and bounded closure normalization.
+
+Qualified non-repository findings were already routed without creating successor standing:
 
 - ECO-105 — BUILD 10 freeze / holdout provenance specimen as feed-forward Evaluation/proof evidence only.
-- ECO-123 — qualified OB1 / ECB1 Thought-Ingest prior-art evidence.
-- ECO-129 — separate NONCANONICAL continuity-family prior-art qualification.
+- ECO-123 — qualified OB1 / ECB1 Thought-Ingest prior-art evidence, NONCANONICAL.
+- ECO-129 — continuity-family prior-art qualification, NONCANONICAL.
 
-These routes do not promote their contents into BUILD 10 requirements or architecture.
-
-# Current repository normalization operation
-
-ECO-128 authorizes only a pre-close repository normalization candidate.
-
-The normalization commit may change exactly:
-
-- BUILD_CHECKOUT.md
-- docs/build-receipts/036-build-10-metabolize-preclose.md
-
-It must not change BUILD 10 SQL, runtime, checker, tests, proof evidence, or predecessor implementation.
+These routes do not promote their contents into BUILD 10 architecture and do not open a successor.
 
 # Canonicalization versus installation
 
-Repository canonicalization and runtime/database installation are separate decisions.
+Repository canonicalization and runtime/database installation remain separate decisions.
 
-A later merge of this accepted source/evidence state to main does NOT install BUILD 10 into canonical Supabase / ECB runtime and does NOT create real authority or action effect.
+BUILD 10 closure does NOT install BUILD 10 into canonical Supabase / ECB runtime and does NOT create real authority or action effect.
 
 Current installation state remains:
 
@@ -96,12 +94,25 @@ REAL_MASTER_KEY_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
 
+# Carried apertures / proof-travel limits
+
+The following remain outside the earned BUILD 10 claim and may be examined only by later authorized work:
+
+- broader discovery/admission/negotiation/routing/subscription/open-world propagation;
+- ordinary Thought ingest / map-on-contact behavior;
+- same-worker holdout independence limits;
+- finite disposable PostgreSQL proof scope;
+- AP-05 future residual evidence;
+- any future need for stronger physicalization beyond generic Artifact.
+
+These are limitations or future decision surfaces, not BUILD 10 closure blockers.
+
 # Next legitimate action
 
-Complete the bounded ECO-128 pre-close normalization candidate and verify its diff.
+BUILD 10 is closed. Successor selection/opening remains a separate human decision.
 
-If and only if the candidate differs from 55e688a5 only on the two permitted currentness/receipt surfaces, implementation/evidence remains unchanged, canonical main has not materially drifted, and no sensitive material or authority overclaim is introduced, stop at the explicit human gate for approval to merge the candidate to canonical main.
+Prepared NONCANONICAL successor evidence exists in ECO-123 and ECO-129, but neither has sequencing or architectural standing merely because BUILD 10 is closed.
 
-BUILD 10 remains OPEN until later canonical Metabolize review and explicit human closure.
+Any next successor must begin from current canonical main, recover the smallest decision-relevant predecessor evidence, preserve the Master Key, and open only through an explicit authorized Sense transition.
 
 Slash-separated phase paths remain operational recursive-location notation only.
