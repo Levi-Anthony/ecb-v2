@@ -1,7 +1,7 @@
-STATUS: BUILD 10 SHAPE HUMAN-CLOSED — MOVE SEPARATELY AUTHORIZED
+STATUS: BUILD 10 SHAPE HUMAN-CLOSED — OUTER MOVE PHASE SEPARATELY OPENED
 DISPOSITION: HUMAN ACCEPTED / BOUNDED SEMANTIC-TRANSFER SUBSTRATE SELECTED
 DATE: 2026-09-12 America/Phoenix
-AUTHORITY: Explicit human instruction: “Ok close Shape, open Move”
+AUTHORITY: Explicit human instruction: “Ok close Shape, open Move,” subsequently clarified to mean opening Move as an outer phase context whose own internal Sense → Shape → Move → Metabolize cycle must begin before implementation
 CONTROLLING SHAPE ISSUE: ECO-113
 HARDENED SHAPE CONTRACT: Linear document `7e4e7494f3c0` — BUILD 10 Shape Packet — Hardened Closure Candidate / Human Review
 
@@ -13,7 +13,21 @@ This closure selects the first implementation dependency for the broader BUILD 1
 
 > One decision-relevant representation can leave a source context, arrive in an independently recoverable destination context, and remain meaningfully checkable there without transport itself manufacturing adoption, currentness, standing, applicability, authority, authorization, or permission.
 
-Executable sufficiency is not established by this closure. BUILD 10 Move is separately authorized to implement and attempt to falsify the closed contract in a disposable bounded specimen.
+Executable sufficiency is not established by this closure.
+
+## Subsequent phase-semantics clarification
+
+The human later clarified an architectural process rule that governs how this receipt is interpreted:
+
+> Opening a major phase does not directly authorize the work product conventionally associated with that phase. Each major phase recursively proceeds through its own internal Sense → Shape → Move → Metabolize cycle.
+
+Therefore the instruction to “open Move” opened BUILD 10 / Move as the next outer phase context. It did **not** authorize immediate implementation.
+
+The first active work inside outer Move is its internal Sense phase, currently commissioned separately in Linear.
+
+Any earlier wording in this receipt or Move-opening bookkeeping that implied direct implementation authority is superseded by this clarification. The closed Shape design itself is unchanged.
+
+Until a better architecture term is earned, slash-separated notation such as `BUILD 10 / Move / Sense` may be used operationally to identify recursive phase location. It does not assert parent/child ontology, lineage, inheritance, authority, ownership, containment, or dependency semantics.
 
 ## Selected bounded specimen
 
@@ -29,7 +43,7 @@ The base remains existing persistent Referent identity and generic Artifact stor
 
 Shape earns only the smallest scoped protected BUILD 10 routing/validation/check-publication path required to preserve exact participation, prevent producer-written trusted outcomes, distinguish attempt from terminal assessment, publish findings atomically, and recover by exact identity rather than newest-row inference.
 
-No dedicated Kernel Packet table or logical primitive is earned by Shape. The existing open architecture question about whether propagation packets ever earn dedicated physical representation remains open and is tested directly during Move.
+No dedicated Kernel Packet table or logical primitive is earned by Shape. The existing open architecture question about whether propagation packets ever earn dedicated physical representation remains open and must be tested before any stronger physicalization.
 
 The destination, not the propagated representation, independently owns and pins:
 
@@ -55,7 +69,7 @@ Source standing/currentness, destination adoption/designation/currentness/action
 
 The closed contract preserves separate durable observations for selection, delivery attempt, sender transport observation, partial receipt, complete receipt, integrity checking, committed semantic-check attempt, terminal assessment, and unavailable/unresolved evidence.
 
-Duplicate/replay, lost acknowledgement, uncertain retry, changed basis, restart, out-of-order arrival, competing publication, wrong identity/version, checker bypass, unauthorized mutation, and time/order ambiguity are bounded Move proof pressures.
+Duplicate/replay, lost acknowledgement, uncertain retry, changed basis, restart, out-of-order arrival, competing publication, wrong identity/version, checker bypass, unauthorized mutation, and time/order ambiguity are bounded later proof pressures.
 
 Retry safety does not imply semantic exactly-once. Arrival time, wall time, version labels, or transaction identifiers do not establish causal or governing order.
 
@@ -86,9 +100,13 @@ It does not close or claim to solve later questions of destination discovery, de
 
 Those capabilities may build on this substrate if later work earns them.
 
-## Move proof contract
+## Outer Move proof obligations inherited from Shape
 
-Move inherits the eighteen finite proof obligations defined in the human-closed Shape contract. Together they must test:
+Outer Move inherits the eighteen finite proof obligations defined in the human-closed Shape contract. They remain acceptance obligations, not immediate implementation instructions.
+
+Before any implementation is authorized, internal Move-Sense must determine which obligations are fixed acceptance tests versus which require implementation decisions to be resolved by internal Move-Shape, and must qualify the actual available substrate/environment needed to make those tests executable.
+
+Together the inherited obligations ultimately test:
 
 - genuine positive cross-boundary propagation;
 - semantic preservation under valid transport and provenance;
@@ -109,7 +127,7 @@ Move inherits the eighteen finite proof obligations defined in the human-closed 
 - non-promotion into standing/currentness/authority/effect;
 - direct challenge of generic Artifact sufficiency versus any surviving need for stronger physical representation.
 
-Failure must be classified according to the closed Shape contract as implementation/test repair, return to Shape, earlier-build requalification, or return to Sense. A test that fails before reaching its intended discriminating surface is inconclusive for that obligation.
+Failure must eventually be classified according to the closed Shape contract as implementation/test repair, return to Shape, earlier-build requalification, or return to Sense. A test that fails before reaching its intended discriminating surface is inconclusive for that obligation.
 
 ## Threat and authority boundary
 
@@ -121,8 +139,16 @@ No real Master-Key designation/currentness, real action authority, real action e
 
 `BUILD_10_SHAPE=CLOSED; HUMAN_ACCEPTED`
 
-`BUILD_10_MOVE=AUTHORIZED_FOR_SEPARATE_COMMISSION`
+`BUILD_10_MOVE=OPEN_AS_OUTER_PHASE`
+
+`BUILD_10_MOVE_INTERNAL_SENSE=OPEN_SEPARATELY`
+
+`BUILD_10_MOVE_INTERNAL_SHAPE=UNOPENED`
+
+`BUILD_10_MOVE_INTERNAL_MOVE=UNOPENED`
+
+`BUILD_10_MOVE_INTERNAL_METABOLIZE=UNOPENED`
 
 `BUILD_10_METABOLIZE=UNOPENED`
 
-The hardened Shape contract and this receipt govern Move entry. Move may implement and test only the bounded contract; it may not silently broaden BUILD 10 into the later propagation/interlocutor capabilities explicitly preserved above.
+The hardened Shape contract and this corrected receipt govern entry into the outer Move phase. No implementation authority follows directly from Shape closure or outer Move opening.
