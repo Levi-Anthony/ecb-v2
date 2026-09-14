@@ -5,6 +5,9 @@
   "engines": {
     "node": "24.x"
   },
+  "allowScripts": {
+    "onnxruntime-node@1.21.0": true
+  },
   "dependencies": {
     "@hono/mcp": "0.3.2",
     "@huggingface/transformers": "3.8.1",
