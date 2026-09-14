@@ -49,7 +49,9 @@ const runtime: BrainRuntime = {
     };
   },
   async fetch(id) {
-    return id === thought.id ? { ...thought, representation_ready: true } : null;
+    return id === thought.id
+      ? { ...thought, representation_ready: true }
+      : null;
   },
 };
 
@@ -115,7 +117,9 @@ Deno.test("keeps the three-tool surface and makes capture structurally idempoten
   const names = tools.map((tool: { name: string }) => tool.name).sort();
   assertEquals(names, ["capture_thought", "fetch", "search"]);
 
-  const capture = tools.find((tool: { name: string }) => tool.name === "capture_thought");
+  const capture = tools.find((tool: { name: string }) =>
+    tool.name === "capture_thought"
+  );
   assertEquals(capture.annotations.idempotentHint, true);
   assert(capture.inputSchema.required.includes("operation_id"));
 });
@@ -165,7 +169,10 @@ Deno.test("preserves a safe operation-conflict failure code", async () => {
       throw new BrainOperationError("operation_conflict");
     },
   };
-  const conflictApp = createMcpApp({ accessKey: "test-key", runtime: conflictRuntime });
+  const conflictApp = createMcpApp({
+    accessKey: "test-key",
+    runtime: conflictRuntime,
+  });
   const response = await conflictApp.request("http://localhost/", {
     method: "POST",
     headers: {
