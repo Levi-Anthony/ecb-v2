@@ -70,6 +70,11 @@ type FailureCode =
   | 'search_failed'
   | 'fetch_failed';
 
+type EmbeddingModel = (
+  text: string,
+  options: { pooling: 'mean'; normalize: true },
+) => Promise<{ data: Iterable<number> }>;
+
 class BrainOperationError extends Error {
   constructor(readonly code: FailureCode) {
     super(code);
@@ -153,10 +158,13 @@ async function rpc<T>(name: string, body: Record<string, unknown>, fallback: Fai
   return JSON.parse(text) as T;
 }
 
-let embeddingPipeline: Promise<Awaited<ReturnType<typeof pipeline>>> | null = null;
+let embeddingPipeline: Promise<EmbeddingModel> | null = null;
 
-async function getEmbeddingPipeline() {
-  embeddingPipeline ??= pipeline('feature-extraction', 'Supabase/gte-small');
+async function getEmbeddingPipeline(): Promise<EmbeddingModel> {
+  embeddingPipeline ??= pipeline(
+    'feature-extraction',
+    'Supabase/gte-small',
+  ) as unknown as Promise<EmbeddingModel>;
   return embeddingPipeline;
 }
 
@@ -171,7 +179,7 @@ function validateEmbedding(vector: Iterable<number>): number[] {
 async function embed(text: string): Promise<number[]> {
   const model = await getEmbeddingPipeline();
   const output = await model(text, { pooling: 'mean', normalize: true });
-  return validateEmbedding(output.data as Iterable<number>);
+  return validateEmbedding(output.data);
 }
 
 async function fetchThought(id: string): Promise<FetchedThought | null> {
@@ -390,11 +398,12 @@ app.all('/mcp', async (context) => {
   }
 
   const server = buildServer();
-  const transport = new StreamableHTTPTransport();
+  const transport = new StreamableHTTPTransport({
+    sessionIdGenerator: undefined,
+  });
   await server.connect(transport);
   const response = await transport.handleRequest(context);
   if (!response) return context.json({ error: 'transport_failed' }, 500);
-  response.headers.delete('mcp-session-id');
   for (const [name, value] of Object.entries(corsHeaders)) response.headers.set(name, value);
   return response;
 });
