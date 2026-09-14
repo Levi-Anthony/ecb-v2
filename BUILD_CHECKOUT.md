@@ -1,159 +1,158 @@
-STATUS: BUILD 11 MOVE QUALIFIED — REPOSITORY CANONICALIZATION NEXT; PRODUCTION INSTALLATION UNPERFORMED
-DISPOSITION: BUILD 0–10 CLOSED; ECO-131 SENSE CLOSED; BUILD 11 SHAPE CLOSED BY IMPLEMENTED DESIGN; MOVE PASS AT BOUNDED REGISTER-B CANDIDATE; METABOLIZE UNOPENED
-ROLE: Canonical reentry projection for active post-BUILD-10 successor work
-AUTHORITY: BUILD 10 closure + Principal ECO-131 corrections + explicit `Lean forward. Build it.` authorization under ECO-132
-CANONICAL MAIN AT BUILD-11 OPENING: e09ead7719a929e37a0f5610764877252f7981ef
-ACTIVE BUILD-11 BRANCH: build/eco-132-build-11-ordinary-operation-kernel
-QUALIFIED BUILD-11 CODE CANDIDATE: c2054218f51c717f1d226baa0004ac737f4b2311
-QUALIFICATION WORKFLOW RUN: 34815251896
+STATUS: BUILD 11 PRODUCTION SUBSTRATE + REPLACEMENT RUNTIME QUALIFIED; CONSUMER CUTOVER PENDING
+DISPOSITION: BUILD 0–10 CLOSED; BUILD 11 SENSE CLOSED; SHAPE CLOSED; MOVE IMPLEMENTATION/DATABASE/RUNTIME QUALIFICATION PASS; METABOLIZE RECONCILED; OVERALL BUILD 11 CLOSURE WITHHELD PENDING CONSUMER ROUTING + PREDECESSOR RETIREMENT
+ROLE: Canonical reentry projection for BUILD 11 completion
+AUTHORITY: BUILD 10 closure + Principal ECO-131 correction + ECO-132 accelerated Shape/Move + ECO-133 production commission + Principal Metabolize instruction
+CANONICAL RUNTIME CODE: 1337f8f6072f6d2c31d1916cc0793a67227acd20
+CANONICAL BUILD-11 MIGRATION LEDGER: 20260914072022 / build_11_ordinary_operation_kernel
+CANONICAL BRAIN: Supabase ecb-v2-brain / vezxivrvhakclxuvxzso
+QUALIFIED REPLACEMENT RUNTIME: Vercel ecb-v2 / dpl_BdDfGRKTtF3baWhpnF7iz68Cs39H
+FINAL LIVE VERIFIER RUN: 34837576050 / job 103958672920
 CANONICAL_BUILD7_DATABASE_INSTALL=NONE
 CANONICAL_BUILD8_DATABASE_INSTALL=NONE
 CANONICAL_BUILD9_DATABASE_INSTALL=NONE
 CANONICAL_BUILD10_DATABASE_INSTALL=NONE
-CANONICAL_BUILD11_DATABASE_INSTALL=NONE
-
-# Current disposition
-
-BUILD 0–10 are CLOSED at bounded implementation Register B as applicable.
-
-ECO-131 post-BUILD-10 Sense is CLOSED by explicit Principal correction. Its Universal-Referent / QLLST map remains the accepted orientation map. The controlling correction is:
-
-> **Structural and architectural enforcement does not need to pass some evidence boundary. Lean forward. Build it.**
-
-Accordingly:
-
-- `earned` does not mean `empirically recurrent first`;
-- ratified architectural obligation + mechanical decidability + the smallest bounded enforcement may justify physicalization directly;
-- empirical specimens remain useful for discovery, falsification, sizing, qualification, and proof;
-- QLLST and Question Forward expose unresolved structure but do not manufacture a waiting gate around a settled structural requirement;
-- semantic freedom remains where interpretation, novelty, ambiguity, and adaptation are decision-relevant.
-
-# BUILD 11 designation
-
-The actual post-BUILD-10 successor is:
-
-**BUILD 11 — Ordinary Operation Structural Kernel**
-
-Linear ECO-132 controls the unit. ECO-100's earlier provisional use of the label BUILD 11 for Temporal Coordination is superseded as sequencing authority; its content remains feed-forward evidence only.
-
-BUILD 11 Sense: CLOSED.
-BUILD 11 Shape: CLOSED at the implemented bounded design.
-BUILD 11 Move: PASS at the disposable Register-B candidate boundary recorded in `docs/build-receipts/038-build-11-move-qualified.md`.
-BUILD 11 Metabolize: UNOPENED.
-Canonical production installation: NOT PERFORMED.
-
-# Qualified capability
-
-The qualified implementation compiles mechanically decidable ordinary-operation correctness into upstream structure so a weak/literal worker does not need to reconstruct or remember correctness properties the system can decide itself.
-
-It includes:
-
-1. stable pre-effect operation identity and exact replay/reconciliation for ordinary capture;
-2. same-operation/changed-input conflict and distinct-operation/same-content preservation;
-3. canonical Thought evidence preservation independent of semantic-representation success;
-4. first-class representation Referents with independently observable readiness and deterministic repair;
-5. truthful semantic-coverage/degradation reporting;
-6. a deterministic PostgreSQL lexical retrieval floor behind the same outward `search` affordance;
-7. ordinary runtime capability through anon/publishable DB access + secret-gated bounded `ecb11_*` RPCs rather than `SUPABASE_SERVICE_ROLE_KEY`;
-8. unchanged outward MCP inventory: `capture_thought`, `search`, `fetch`;
-9. governing text clarifying architecture-first structural warrant;
-10. destructive negative controls and concurrency qualification.
-
-Explicit nonclaims remain:
-
-- no mandatory classification or ontology;
-- no automatic semantic promotion;
-- no truth/currentness/applicability/standing/authority from capture or retrieval;
-- no proactive continuity/resurfacing engine;
-- no generalized policy/workflow engine;
-- no real Master-Key designation authority;
-- no BUILD 8 action authority/effect;
-- no BUILD 7–10 canonical installation by implication;
-- no production BUILD 11 installation yet.
-
-# Universal Referent / QLLST carry-forward
-
-ECO-131 differentiated the natural Referents:
-
-- R1 — Thought / preserved evidence;
-- R2 — capture operation / attempt;
-- R3 — derived representation;
-- R4 — ordinary runtime identity / capability holder;
-- R5 — commission / accepted authority;
-- R6 — retrieval / re-encounter context;
-- R7 — ordinary worker / mapper.
-
-BUILD 11 physicalizes R1/R2/R3 and the R4 ordinary capability boundary. R5 authority admission remains a separate normative seam. R6 receives only the deterministic retrieval floor and truthful coverage needed for ordinary evidence access. R7 retains semantic interpretation freedom without acquiring permission or state-transition powers through confidence alone.
-
-Persistent first-class ordinary-operation and representation subjects receive stable Referent identity. Universal Referent identity does not imply semantic promotion or a table per concept.
-
-# Proof boundary
-
-Qualified code candidate:
-
-`c2054218f51c717f1d226baa0004ac737f4b2311`
-
-Successful GitHub Actions run:
-
-`34815251896`
-
-The run passed:
-
-- accepted BUILD 0–5B predecessor reconstruction;
-- accepted BUILD 6 disposable installation;
-- BUILD 11 migration application on PostgreSQL 17 + pgvector;
-- BUILD 11 structural/negative-control qualification;
-- concurrent same-operation replay qualification;
-- source check that the ordinary runtime no longer depends on `SUPABASE_SERVICE_ROLE_KEY`;
-- Deno formatting;
-- Deno type checking;
-- MCP runtime tests.
-
-`docs/build-receipts/038-build-11-move-qualified.md` records the detailed bounded proof and nonclaims.
-
-# Installation boundary
-
-Repository implementation and disposable qualification are complete enough for repository canonicalization under the existing accelerated Move authorization.
-
-Canonical production database/runtime/credential installation remains the first significant boundary.
-
-Production cutover must preserve all of the following:
-
-- apply BUILD 11 only to the exact canonical ECB v2 database from its current BUILD 0–6 installed state;
-- do not install BUILD 7–10 by implication;
-- commission one production `ECB_ORDINARY_DB_KEY` through the admin-only seam without printing or committing it;
-- deploy the ordinary MCP with `SUPABASE_ANON_KEY`, `SUPABASE_URL`, `ECB_ORDINARY_DB_KEY`, and existing `ECB_BRAIN_KEY`;
-- remove `SUPABASE_SERVICE_ROLE_KEY` from the ordinary runtime environment if present;
-- live-verify capture/replay/search/fetch and denial of unrelated Layer-B mutation.
-
-If the available tooling cannot unambiguously identify the canonical project/runtime or cannot carry the secret through a safe non-printing path, STOP at that exact gate rather than guessing or weakening the design.
-
-# Governing installation state
-
-Repository canonicalization and runtime/database installation remain separate decisions.
-
-Current production state remains:
-
-CANONICAL_BUILD7_DATABASE_INSTALL=NONE
-CANONICAL_BUILD8_DATABASE_INSTALL=NONE
-CANONICAL_BUILD9_DATABASE_INSTALL=NONE
-CANONICAL_BUILD10_DATABASE_INSTALL=NONE
-CANONICAL_BUILD11_DATABASE_INSTALL=NONE
+CANONICAL_BUILD11_DATABASE_INSTALL=VERIFIED
 REAL_MASTER_KEY_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
 
-# Ordinary personal operation
+# Current disposition
 
-Until BUILD 11 is installed, the currently installed ordinary capture/search/fetch path remains active. Ordinary personal work continues without ceremony. If a write outcome is unknown under that current path, establish what happened before repeating it; BUILD 11 removes that burden only after installation.
+BUILD 11 — Ordinary Operation Structural Kernel — has crossed repository qualification and canonical production database installation.
 
-# Architecture-program next action
+The canonical BUILD 11 database migration is installed exactly once on `ecb-v2-brain`, and the confined replacement ordinary MCP runtime is live-qualified on Vercel.
 
-1. canonicalize the qualified BUILD 11 repository candidate by merging PR #33;
-2. record the resulting canonical main SHA in ECO-132 / currentness projection;
-3. reconcile the exact canonical production database and ordinary runtime identities;
-4. if unambiguous and safely actionable, perform the production migration + capability commissioning + runtime cutover and live verification;
-5. otherwise stop at that installation gate with exact remaining operator action;
-6. only after installation/currentness is truthfully resolved, open Metabolize/closure as appropriate.
+The final production verifier proved:
 
-Do not reopen Sense for ordinary engineering defects. Reopen architectural orientation only if installation or live verification falsifies the accepted structural boundary or makes a governing distinction unrecoverable.
+- wrong bearer rejected with HTTP 401;
+- correct MCP initialize succeeds;
+- transport is stateless with no session header;
+- outward tool inventory is exactly `capture_thought`, `fetch`, `search`;
+- live search succeeds;
+- lexical retrieval available;
+- semantic query embedding available;
+- semantic index complete;
+- degraded = false;
+- repair metadata present.
+
+Detailed production evidence and metabolized lessons are recorded in:
+
+`docs/build-receipts/039-build-11-production-runtime-qualified-metabolize.md`
+
+# Why BUILD 11 is not yet marked fully closed
+
+Deployment readiness and consumer routing are distinct states.
+
+The predecessor Supabase Edge Function `open-brain-mcp` remains ACTIVE as a deliberate rollback path because the actual active ChatGPT/custom-app/other consumer endpoint has not yet been independently established as pointing to the new Vercel `/api/mcp` route.
+
+Therefore do not claim that ordinary personal traffic is already using the confined BUILD 11 runtime merely because that runtime is healthy and production-qualified.
+
+BUILD 11 overall closure remains withheld until:
+
+1. the actual active consumer endpoint is identified;
+2. it is pointed to the production Vercel `/api/mcp` endpoint without exposing bearer material;
+3. one live ordinary operation through that consumer is verified to reach Vercel;
+4. the predecessor Supabase `open-brain-mcp` is then retired/tombstoned;
+5. currentness is reconciled one final time.
+
+Do not reopen Sense or Shape for this. It is the remaining ECO-133 Move seam.
+
+# Qualified capability
+
+BUILD 11 compiles mechanically decidable ordinary-operation correctness into upstream structure so a weak/literal worker does not need to reconstruct what the system can decide itself.
+
+It provides:
+
+1. stable pre-effect operation identity and exact replay/reconciliation for capture;
+2. same-operation/changed-input conflict;
+3. distinct-operation/same-content preservation;
+4. Thought evidence preservation independent of semantic representation success;
+5. first-class representation Referents with inspectable readiness and deterministic repair;
+6. truthful search coverage and explicit degradation state;
+7. a deterministic PostgreSQL lexical floor behind the same outward `search` affordance;
+8. hybrid semantic ranking using the qualified `Supabase/gte-small` vector space when semantic embedding is available;
+9. narrow ordinary database capability through publishable access + `ECB_ORDINARY_DB_KEY` rather than provider-admin authority;
+10. unchanged outward MCP inventory: `capture_thought`, `search`, `fetch`;
+11. executable replay/concurrency/capability negative controls;
+12. architecture-first physicalization rule encoded in governing text.
+
+# Production architecture now qualified
+
+Canonical brain remains Supabase project `vezxivrvhakclxuvxzso`.
+
+The confined replacement ordinary runtime is hosted in Vercel project `ecb-v2` (`prj_oevToBKwqj7yHjyQCHs5zevegWCM`). The qualified runtime code is `main@1337f8f6072f6d2c31d1916cc0793a67227acd20`; qualified production deployment is `dpl_BdDfGRKTtF3baWhpnF7iz68Cs39H`.
+
+This host split is intentional capability confinement: the ordinary runtime can use the canonical brain through bounded RPC capability without inheriting Supabase provider-admin/service-role authority merely because it runs beside the database.
+
+# Installation discrepancies metabolized
+
+Production installation exposed ordinary engineering facts that did not reopen the accepted architecture:
+
+- Vercel discovers ordinary functions through `/api`, so thin adapters were required.
+- Current `@hono/mcp` peer requirements required MCP SDK/Hono dependency alignment rather than forced installation.
+- Stateless MCP needed to be configured structurally with `sessionIdGenerator: undefined`, not simulated by deleting a header afterward.
+- Node semantic inference required explicit approval of the exact `onnxruntime-node@1.21.0` installer under current npm policy.
+- Transformers.js default cache location was read-only in Vercel; the runtime now configures `/tmp/transformers-cache` before model loading.
+- The lexical floor correctly kept retrieval useful and reported `degraded=true` while semantic inference was unavailable; after the fixes, the unchanged verifier proved `semantic_query_available=true`, `semantic_index_complete=true`, `degraded=false`.
+
+These are implementation/environment corrections, not new architecture.
+
+# Temporary-surface hygiene
+
+Temporary diagnostic/install surfaces are not permanent architecture.
+
+Current state:
+
+- `ecb11-commission`: inert HTTP 410 tombstone;
+- `ecb11-brain-key-digest`: inert HTTP 410 tombstone;
+- `ecb11-embed-reference`: inert HTTP 410 tombstone;
+- `ecb11-vercel-live-verify`: inert HTTP 410 tombstone.
+
+The predecessor `open-brain-mcp` is intentionally not retired yet because it is still the rollback path until consumer routing is proven.
+
+# Residual operation-ID custody
+
+BUILD 11 guarantees exact replay only when the caller supplies the same stable `operation_id` for the same logical capture.
+
+The server/database now enforce the algebra once that token is supplied, but generation and retention/reuse of the token remain caller/client-adapter custody. Do not claim that this client responsibility has already been physicalized.
+
+A later client adapter may make that invisible to weak workers; BUILD 11 does not.
+
+# Explicit nonclaims
+
+BUILD 11 still does not install or imply:
+
+- mandatory classification or ontology;
+- automatic semantic promotion;
+- truth/currentness/applicability/standing/authority from capture or retrieval;
+- proactive continuity/resurfacing;
+- generalized policy/workflow machinery;
+- real Master-Key designation authority;
+- BUILD 8 action authority/effect;
+- BUILD 7–10 canonical database installation;
+- iPhone Action Button capture.
+
+# Metabolized control lessons
+
+- Measure capability by credentials/permissions actually held by the runtime, not by its advertised tool list.
+- Treat deployment readiness and consumer routing as different state variables.
+- Treat graceful degradation as both product integrity and diagnostic leverage.
+- Make serverless filesystem/native-install assumptions explicit when they gate required behavior.
+- Encode statelessness at transport construction rather than cosmetically after execution.
+- Retire temporary verification surfaces explicitly.
+- Provider-specific execution can move while durable semantics remain stable if the semantic contract is separately qualified.
+
+# Exact legitimate reentry seam
+
+Resume ECO-133 Move at consumer cutover only.
+
+1. Identify the actual active ordinary MCP consumer/custom-app endpoint.
+2. If it is not already the production Vercel route, change it to the Vercel `/api/mcp` endpoint through the consumer's credential-safe configuration surface.
+3. Run one ordinary live probe through that consumer.
+4. Verify Vercel runtime logs prove receipt.
+5. Retire/tombstone Supabase `open-brain-mcp` only after that proof.
+6. Reconcile BUILD_CHECKOUT, ECO-133, and final closure receipt; then mark BUILD 11 CLOSED.
+
+If routing has already changed outside this session, verify actual state rather than replaying the mutation.
+
+Do not begin the iPhone capture adapter or another successor build merely because it is nearby. Select the post-BUILD-11 successor only after BUILD 11 closure or by an explicit independent commission.
