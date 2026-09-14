@@ -1,0 +1,20 @@
+name: BUILD 11 live verifier
+
+on:
+  push:
+    branches:
+      - tmp/build-11-live-verify
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Invoke one-shot verifier
+        run: |
+          set -euo pipefail
+          curl --fail-with-body --silent --show-error \
+            'https://vezxivrvhakclxuvxzso.supabase.co/functions/v1/ecb11-vercel-live-verify?trigger=b11v-6f8d9e4c-5e27-4ea3-b2f1-7491c50e88ad'
+          echo
