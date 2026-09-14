@@ -1,5 +1,5 @@
 name: BUILD 11 production commission once
-# retry-after-secret-refresh
+# retry-after-local-admin-auth
 
 on:
   push:
