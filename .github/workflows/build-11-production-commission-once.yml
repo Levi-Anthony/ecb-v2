@@ -1,5 +1,4 @@
-name: BUILD 11 production commission once
-# retry-after-secret-verified
+name: BUILD 11 production verification once
 
 on:
   push:
@@ -8,10 +7,10 @@ on:
       - '.github/workflows/build-11-production-commission-once.yml'
 
 jobs:
-  commission:
+  verify:
     runs-on: ubuntu-latest
     steps:
-      - name: Commission environment-held runtime capability
+      - name: Verify commissioned runtime and deployed MCP
         run: |
           set -euo pipefail
           body_file="$(mktemp)"
@@ -20,8 +19,6 @@ jobs:
           rm -f "$body_file"
           printf 'HTTP %s\n%s\n' "$status" "$body"
           case "$body" in
-            *'"status":"commissioned"'*|*'"status":"already_commissioned"'*) exit 0 ;;
-            *'"status":"migration_not_ready"'*) exit 2 ;;
-            *'"status":"missing_ecb_ordinary_db_key"'*) exit 3 ;;
+            *'"status":"verified"'*) exit 0 ;;
             *) exit 1 ;;
           esac
