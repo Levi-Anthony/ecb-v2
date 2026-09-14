@@ -38,6 +38,11 @@ else
   exit 3
 fi
 
+if ! "${SUPABASE[@]}" projects list >/dev/null 2>&1; then
+  printf '%s\n' "Supabase login required; opening the CLI login flow."
+  "${SUPABASE[@]}" login
+fi
+
 tmp_env="$(mktemp)"
 cleanup() {
   rm -f "$tmp_env"
