@@ -8,8 +8,8 @@
   "dependencies": {
     "@hono/mcp": "0.3.2",
     "@huggingface/transformers": "3.8.1",
-    "@modelcontextprotocol/sdk": "1.24.3",
-    "hono": "4.9.2",
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "hono": "4.13.7",
     "zod": "4.1.13"
   }
 }
