@@ -9,34 +9,23 @@ umask 077
 mkdir -p "$STATE_DIR"
 chmod 700 "$STATE_DIR"
 
-if [[ -s "$KEY_FILE" ]]; then
-  key="$(tr -d '\r\n' < "$KEY_FILE")"
-  if (( ${#key} < 32 )); then
-    echo "Existing runtime key file is invalid: $KEY_FILE" >&2
-    exit 2
-  fi
-else
-  if command -v openssl >/dev/null 2>&1; then
-    key="$(openssl rand -hex 32)"
-  else
-    key="$(python3 - <<'PY'
-import secrets
-print(secrets.token_hex(32))
-PY
-)"
-  fi
-  printf '%s\n' "$key" > "$KEY_FILE"
-  chmod 600 "$KEY_FILE"
+if [[ ! -s "$KEY_FILE" ]]; then
+  echo "Missing local BUILD 11 runtime key: $KEY_FILE" >&2
+  exit 2
 fi
 
-if command -v supabase >/dev/null 2>&1; then
-  SUPABASE=(supabase)
-elif command -v npx >/dev/null 2>&1; then
-  SUPABASE=(npx --yes supabase)
-else
-  echo "Supabase CLI not found. Install it, then rerun this script." >&2
+key="$(tr -d '\r\n' < "$KEY_FILE")"
+if (( ${#key} < 32 )); then
+  echo "Existing runtime key file is invalid: $KEY_FILE" >&2
+  exit 2
+fi
+
+if ! command -v npx >/dev/null 2>&1; then
+  echo "npx is required for this verified repair so the current Supabase CLI can be used." >&2
   exit 3
 fi
+
+SUPABASE=(npx --yes supabase@latest)
 
 if ! "${SUPABASE[@]}" projects list >/dev/null 2>&1; then
   printf '%s\n' "Supabase login required; opening the CLI login flow."
@@ -53,9 +42,15 @@ chmod 600 "$tmp_env"
 printf 'ECB_ORDINARY_DB_KEY=%s\n' "$key" > "$tmp_env"
 
 "${SUPABASE[@]}" secrets set \
-  --project-ref "$PROJECT_REF" \
-  --env-file "$tmp_env"
+  --env-file "$tmp_env" \
+  --project-ref "$PROJECT_REF"
 
-printf '%s\n' "BUILD11_RUNTIME_SECRET=INSTALLED"
+secret_list="$("${SUPABASE[@]}" secrets list --project-ref "$PROJECT_REF")"
+if ! printf '%s\n' "$secret_list" | grep -q 'ECB_ORDINARY_DB_KEY'; then
+  echo "Supabase reported success but ECB_ORDINARY_DB_KEY is not present in the remote secret list." >&2
+  exit 4
+fi
+
+printf '%s\n' "BUILD11_RUNTIME_SECRET=VERIFIED"
 printf '%s\n' "Local recovery copy: $KEY_FILE"
 printf '%s\n' "The secret value was not printed."
