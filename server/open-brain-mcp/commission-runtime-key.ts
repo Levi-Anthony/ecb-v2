@@ -8,7 +8,9 @@ function requiredEnv(name: string): string {
 
 function randomKey(): string {
   const bytes = crypto.getRandomValues(new Uint8Array(32));
-  return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+  return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join(
+    "",
+  );
 }
 
 async function ensureKey(): Promise<{ key: string; path: string | null }> {
@@ -40,7 +42,9 @@ const admin = createClient(
   { auth: { persistSession: false, autoRefreshToken: false } },
 );
 
-const { error } = await admin.rpc("ecb11_commission_runtime_key", { p_key: key });
+const { error } = await admin.rpc("ecb11_commission_runtime_key", {
+  p_key: key,
+});
 if (error) {
   throw new Error(`Runtime-key commissioning failed: ${error.message}`);
 }
