@@ -1,6 +1,6 @@
 STATUS: BUILD-BOUNDARY READY  
 DISPOSITION: GOVERNING  
-VERSION: v0.3  
+VERSION: v0.4  
 ROLE: ECB v2 implementation boundary  
 SCOPE: Greenfield ECB v2
 
@@ -12,7 +12,7 @@ The following distinctions travel together for the current build boundary. Their
 
 **Telos / governing ideal**
 
-Produce the smallest clean ECB v2 substrate capable of preserving OB1’s disproportionate value while carrying forward only ECB extensions whose value and architectural necessity have been demonstrated.
+Produce the smallest clean ECB v2 substrate capable of preserving OB1’s disproportionate value while carrying forward only ECB extensions whose value and architectural necessity have been demonstrated or ratified through the governing architecture.
 
 **Master Key / governing discriminator**
 
@@ -28,7 +28,7 @@ Separate harvesting from rebuilding.
 
 **Revalidation trigger**
 
-Reopen the build boundary only when a real vertical slice cannot be implemented without violating an invariant or repeatedly reconstructing a distinction that has clearly earned persistence.
+Reopen the build boundary when a real vertical slice cannot be implemented without violating an invariant, repeatedly reconstructing a distinction that has clearly earned persistence, or leaving a ratified mechanically decidable architectural obligation dependent on discretionary reasoning.
 
 ## Lineage
 
@@ -58,7 +58,7 @@ Minimum capability:
 
 Thoughts are atomic evidence records.
 
-Semantic retrieval remains the fallback path when richer structure has not earned persistence.
+Semantic retrieval remains a fallback path when richer structure has not earned persistence.
 
 ## Layer B — Governance primitives
 
@@ -87,16 +87,22 @@ Specialized physical structures are promoted only when earned.
 
 ## Structure is earned
 
-Dedicated persistence may be introduced when generic representation creates:
+Dedicated persistence or another physical enforcement may be introduced when generic representation creates or would necessarily create:
 
 - integrity problems;
 - recurring semantic ambiguity;
 - repeated difficult queries;
 - transactional requirements;
 - measurable performance problems;
-- repeated reconstruction risk.
+- repeated reconstruction risk;
+- or a conflict with a ratified architectural obligation that is mechanically decidable at the active resolution.
 
-Philosophical importance alone is insufficient.
+Philosophical importance alone is insufficient. **Empirical recurrence is not a universal prerequisite.**
+A ratified architectural requirement can itself establish the decision consequence and stability needed
+for physicalization when leaving that requirement to model interpretation, remembered instruction, or
+broader-than-needed capability would contradict the architecture. Failure specimens remain valuable for
+discovery, falsification, qualification, and sizing; they are not a mandatory permission gate for the
+smallest deterministic enforcement of an already-settled structural obligation.
 
 The complementary ratified law is also governing:
 
@@ -106,16 +112,26 @@ Do not count relocation of a stable mechanically decidable consequential obligat
 structure into generic payload, model interpretation, stochastic compliance, or remembered instruction
 as architectural simplification. Genericity receives no automatic simplicity credit.
 
-A proposed physical distinction earns existence only when it is the smallest decision-relevant
-enforcement that materially lowers consequential semantic/stochastic liability without destroying
-required information, flexibility, or distinctions. Conversely, retain semantic/stochastic machinery
-where interpretation, novelty, uncertainty, or adaptation is itself decision-relevant and premature
-structuralization would destroy useful degrees of freedom.
+A proposed physical distinction earns existence when it is the smallest decision-relevant enforcement
+that materially lowers consequential semantic/stochastic liability without destroying required
+information, flexibility, or distinctions. Its warrant may come from a ratified architectural rule,
+transactional or integrity necessity, repeated reconstruction, observed failure, or another governing
+route sufficient under the active Master Key. No one warrant route is mandatory in every case.
+
+Conversely, retain semantic/stochastic machinery where interpretation, novelty, uncertainty, or
+adaptation is itself decision-relevant and premature structuralization would destroy useful degrees of
+freedom.
 
 For each proposed physicalization or collapse, the decision surface must identify the obligation moved,
 its mechanical decidability at the active resolution, the liability created or removed, the useful
 freedom/information preserved or lost, and whether a strictly smaller enforcement mechanism preserves
 the same safety and semantic distinctions.
+
+QLLST mapping and Question Forward remain required orientation grammar where applicable. They expose
+structure, unresolved cells, relations, and re-entry conditions; they are not waiting gates that require
+additional empirical recurrence after a mechanically decidable architectural obligation has already
+been settled. `Question Forward` preserves a genuine unknown; it must not recreate uncertainty about a
+ratified structural requirement merely to postpone physicalization.
 
 This amendment adds no automatic schema, enum, workflow, service, policy engine, or runtime machinery.
 
@@ -186,12 +202,12 @@ Awareness supplies the Metabolize feedback loop. It tests whether the basis supp
 
 ## Build sequence
 
-The BUILD 0–10 sequence below, including the earned 5A/5B decomposition, is the current dependency
-hypothesis, not canonical ontology. It remains the operative order until an earned decomposition or
-reordering is explicitly dispositioned through governing human/architecture authority. Such a change
-must account for affected obligations and dependencies; local convenience or a numbered label does
-not authorize it. This clarification changes no current dependency, opens no Build, and does not
-remove the requirement that BUILD 5B close before BUILD 6 opens.
+The BUILD 0–10 sequence below, including the earned 5A/5B decomposition, was the dependency
+hypothesis through BUILD 10, not canonical ontology. BUILD 11 and later sequencing is established only
+by explicit successor disposition under current governing authority; historical feed-forward numbering
+has no independent sequencing force.
+
+Completed sequence:
 
 1. BUILD 0 — Clean OB1 Kernel
 2. BUILD 1 — Harvest Fixture Path
@@ -206,13 +222,15 @@ remove the requirement that BUILD 5B close before BUILD 6 opens.
 11. BUILD 9 — Recursive Self-Application
 12. BUILD 10 — Propagation / Kernel Packets
 
-Do not skip forward merely because later architecture is already understood conceptually.
+BUILD 11 — Ordinary Operation Structural Kernel — is the explicitly designated post-BUILD-10 successor under ECO-132. This designation supersedes provisional feed-forward use of the label `BUILD 11` elsewhere; those earlier projections remain evidence, not sequencing authority.
+
+Do not skip forward merely because later architecture is already understood conceptually. Conversely, do not block a ratified current successor merely because an earlier feed-forward projection used a different number or hypothesized a different order.
 
 ### BUILD 5 decomposition
 
 Amended 2026-09-04 America/Phoenix by explicit human disposition. The original single slot
 `BUILD 5 — Immutable Events + Versioned Artifacts + First Transformation Receipt` is decomposed into
-BUILD 5A and BUILD 5B. Subsequent Build Unit numbering is unchanged.
+BUILD 5A and BUILD 5B. Subsequent Build Unit numbering is unchanged through BUILD 10.
 
 The decomposition was earned, not assumed. Versioned Artifact and First Transformation Receipt are not
 reachable from Worked Trace 04's falsifiers, while immutable Event/history and standing transition are
@@ -257,38 +275,3 @@ not permission to omit an applicable failure path.
 condition: a trigger, dependency, horizon, or named aperture/route whose activation requires renewed
 disposition. A bare “later” or an unconditioned pointer does not suffice. When the expiry condition
 holds, the deferral must be re-examined before the affected Shape decision is relied on.
-
-This is an inquiry/disposition surface, not a mandate to implement every pressure's possible
-mechanisms in every Build. One obligation can address several pressures; one pressure can require
-several bounded obligations. The rule prescribes no universal idempotency, concurrency, recovery,
-versioning, relation, or transition mechanism and does not reopen closed Builds automatically.
-
-## Freeze line
-
-The following do not block early builds unless a failing vertical slice demonstrates otherwise:
-
-- ultimate status of Bounded Infinity;
-- full projection mathematics;
-- Galois formulations;
-- literal conformal geometry;
-- complete FCA formalization;
-- metaphysics of agency/interiority;
-- universal altitude taxonomy;
-- complete relation ontology;
-- automatic Master-Key discovery;
-- generalized constitutional recursion;
-- final ECOS UI.
-
-These belong in `open-apertures.md`.
-
-## Definition of forward motion
-
-Forward motion occurs when another valuable or architecturally required behavior becomes reproducibly possible on the clean v2 substrate while preserving the invariants.
-
-Forward motion is not measured by:
-
-- concepts defined;
-- schema count;
-- v1 code ported;
-- automation count;
-- tool count.

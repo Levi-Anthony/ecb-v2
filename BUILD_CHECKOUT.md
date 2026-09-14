@@ -1,173 +1,159 @@
-STATUS: BUILD 10 CLOSED — POST-BUILD-10 SUCCESSOR SENSE OPEN
-DISPOSITION: BUILD 10 SENSE / SHAPE / MOVE / METABOLIZE CLOSED; SUCCESSOR SENSE OPEN UNDER ECO-131; SHAPE / MOVE / METABOLIZE UNOPENED
-ROLE: Canonical reentry checkpoint after BUILD 10 closure and successor Sense opening
-AUTHORITY: Human closure authorization + Linear ECO-125 / ECO-130 closure record + explicit Principal successor-Sense opening under ECO-131
-CANONICAL MAIN PRE-CLOSURE: a5ad892c4b7cee9a0cea72652beedded7d80cd25
-ACCEPTED MOVE EVIDENCE BASE: build/eco-114-build-10-move@55e688a56a42ea477a748b5f072e9333d66d7143
+STATUS: BUILD 11 MOVE QUALIFIED — REPOSITORY CANONICALIZATION NEXT; PRODUCTION INSTALLATION UNPERFORMED
+DISPOSITION: BUILD 0–10 CLOSED; ECO-131 SENSE CLOSED; BUILD 11 SHAPE CLOSED BY IMPLEMENTED DESIGN; MOVE PASS AT BOUNDED REGISTER-B CANDIDATE; METABOLIZE UNOPENED
+ROLE: Canonical reentry projection for active post-BUILD-10 successor work
+AUTHORITY: BUILD 10 closure + Principal ECO-131 corrections + explicit `Lean forward. Build it.` authorization under ECO-132
+CANONICAL MAIN AT BUILD-11 OPENING: e09ead7719a929e37a0f5610764877252f7981ef
+ACTIVE BUILD-11 BRANCH: build/eco-132-build-11-ordinary-operation-kernel
+QUALIFIED BUILD-11 CODE CANDIDATE: c2054218f51c717f1d226baa0004ac737f4b2311
+QUALIFICATION WORKFLOW RUN: 34815251896
+CANONICAL_BUILD7_DATABASE_INSTALL=NONE
+CANONICAL_BUILD8_DATABASE_INSTALL=NONE
+CANONICAL_BUILD9_DATABASE_INSTALL=NONE
 CANONICAL_BUILD10_DATABASE_INSTALL=NONE
+CANONICAL_BUILD11_DATABASE_INSTALL=NONE
 
 # Current disposition
 
-BUILD 0–10 are CLOSED at implementation Register B as applicable.
+BUILD 0–10 are CLOSED at bounded implementation Register B as applicable.
 
-BUILD 10 outer Sense is CLOSED / human accepted.
-BUILD 10 outer Shape is CLOSED / human accepted.
-BUILD 10 outer Move is CLOSED / PASS WITH CARRIED APERTURES under ECO-114.
-BUILD 10 outer Metabolize is CLOSED / PASS under ECO-125 after internal Sense / Shape / Move / Metabolize completion.
+ECO-131 post-BUILD-10 Sense is CLOSED by explicit Principal correction. Its Universal-Referent / QLLST map remains the accepted orientation map. The controlling correction is:
 
-Within BUILD 10 / Metabolize:
+> **Structural and architectural enforcement does not need to pass some evidence boundary. Lean forward. Build it.**
 
-- Sense is CLOSED / decision-complete under ECO-126.
-- Shape is CLOSED / decision-complete under ECO-127.
-- Move is CLOSED / PASS under ECO-128 after human-approved canonical fast-forward.
-- Metabolize is CLOSED / PASS under ECO-130 after cold canonical review.
+Accordingly:
 
-BUILD 10 is CLOSED.
+- `earned` does not mean `empirically recurrent first`;
+- ratified architectural obligation + mechanical decidability + the smallest bounded enforcement may justify physicalization directly;
+- empirical specimens remain useful for discovery, falsification, sizing, qualification, and proof;
+- QLLST and Question Forward expose unresolved structure but do not manufacture a waiting gate around a settled structural requirement;
+- semantic freedom remains where interpretation, novelty, ambiguity, and adaptation are decision-relevant.
 
-Post-BUILD-10 successor Sense is OPEN / AUTHORIZED under Linear ECO-131 by explicit Principal instruction on 2026-09-13 America/Phoenix.
-No numbered successor Build is designated by this opening. ECO-100's provisional BUILD 11–17 sequence remains feed-forward evidence only.
-Successor Shape / Move / Metabolize are UNOPENED.
+# BUILD 11 designation
 
-# Earned BUILD 10 claim
+The actual post-BUILD-10 successor is:
 
-The accepted bounded capability is the minimum semantic-transfer substrate for a pre-admitted receiving context:
+**BUILD 11 — Ordinary Operation Structural Kernel**
 
-One decision-relevant representation can leave a source context, arrive in independently recoverable destination custody, and remain meaningfully checkable there against a destination-owned finite contract and independently observed source basis without transport or checking manufacturing adoption, standing, warrant, currentness, applicability, authority, authorization, permission, or action effect.
+Linear ECO-132 controls the unit. ECO-100's earlier provisional use of the label BUILD 11 for Temporal Coordination is superseded as sequencing authority; its content remains feed-forward evidence only.
 
-This claim is accepted only at the bounded Register-B implementation scope exercised by BUILD 10.
+BUILD 11 Sense: CLOSED.
+BUILD 11 Shape: CLOSED at the implemented bounded design.
+BUILD 11 Move: PASS at the disposable Register-B candidate boundary recorded in `docs/build-receipts/038-build-11-move-qualified.md`.
+BUILD 11 Metabolize: UNOPENED.
+Canonical production installation: NOT PERFORMED.
 
-It does not establish the broader original propagation / ingest intention, including destination discovery, admission or negotiation, routing/subscription, open-world exchange, generalized liveness, ordinary Thought map-on-contact behavior, or authority/action effects.
+# Qualified capability
 
-The scope compression is accepted and does not reopen BUILD 10.
+The qualified implementation compiles mechanically decidable ordinary-operation correctness into upstream structure so a weak/literal worker does not need to reconstruct or remember correctness properties the system can decide itself.
 
-# Accepted proof lineage
+It includes:
 
-1. ae399a8b3ec7dc33741acb6cffbfe779bec87409
-   BUILD 10 implementation plus P01–P18 proof evidence.
+1. stable pre-effect operation identity and exact replay/reconciliation for ordinary capture;
+2. same-operation/changed-input conflict and distinct-operation/same-content preservation;
+3. canonical Thought evidence preservation independent of semantic-representation success;
+4. first-class representation Referents with independently observable readiness and deterministic repair;
+5. truthful semantic-coverage/degradation reporting;
+6. a deterministic PostgreSQL lexical retrieval floor behind the same outward `search` affordance;
+7. ordinary runtime capability through anon/publishable DB access + secret-gated bounded `ecb11_*` RPCs rather than `SUPABASE_SERVICE_ROLE_KEY`;
+8. unchanged outward MCP inventory: `capture_thought`, `search`, `fetch`;
+9. governing text clarifying architecture-first structural warrant;
+10. destructive negative controls and concurrency qualification.
 
-2. f3a4845cecc751055f065b3ae74501380ad01150
-   Durable fixture-inclusive pre-holdout freeze.
+Explicit nonclaims remain:
 
-3. 55e688a56a42ea477a748b5f072e9333d66d7143
-   Genuinely post-freeze semantic holdout plus PASS result.
+- no mandatory classification or ontology;
+- no automatic semantic promotion;
+- no truth/currentness/applicability/standing/authority from capture or retrieval;
+- no proactive continuity/resurfacing engine;
+- no generalized policy/workflow engine;
+- no real Master-Key designation authority;
+- no BUILD 8 action authority/effect;
+- no BUILD 7–10 canonical installation by implication;
+- no production BUILD 11 installation yet.
 
-4. a5ad892c4b7cee9a0cea72652beedded7d80cd25
-   Human-approved pre-close canonical normalization on main.
+# Universal Referent / QLLST carry-forward
 
-Checker method digest:
-05719027a7b0084681c8cccd67942b42348ad2fa5064d0dc3b497a497156b13f
+ECO-131 differentiated the natural Referents:
 
-Complete checker + fixture boundary digest:
-72d7b869da566e3fe1c2c2863056a411ce6f3e9ef9ced41ce7003b3ba12150c4
+- R1 — Thought / preserved evidence;
+- R2 — capture operation / attempt;
+- R3 — derived representation;
+- R4 — ordinary runtime identity / capability holder;
+- R5 — commission / accepted authority;
+- R6 — retrieval / re-encounter context;
+- R7 — ordinary worker / mapper.
 
-P01–P18 remain accepted at the bounded tested claim. P18/AP-05 did not earn a dedicated Packet / Kernel Packet primitive.
+BUILD 11 physicalizes R1/R2/R3 and the R4 ordinary capability boundary. R5 authority admission remains a separate normative seam. R6 receives only the deterministic retrieval floor and truthful coverage needed for ordinary evidence access. R7 retains semantic interpretation freedom without acquiring permission or state-transition powers through confidence alone.
 
-Same-worker holdout authorship remains an explicit limitation. Independent specification authorship is not claimed.
+Persistent first-class ordinary-operation and representation subjects receive stable Referent identity. Universal Referent identity does not imply semantic promotion or a table per concept.
 
-# Metabolize disposition and propagated evidence
+# Proof boundary
 
-The cold canonical review under ECO-130 returned:
+Qualified code candidate:
 
-METABOLIZE PASS — READY FOR FINAL BUILD 10 HUMAN CLOSURE GATE.
+`c2054218f51c717f1d226baa0004ac737f4b2311`
 
-Human authorization then accepted final BUILD 10 closure and bounded closure normalization.
+Successful GitHub Actions run:
 
-Qualified non-repository findings were already routed without creating successor standing:
+`34815251896`
 
-- ECO-105 — BUILD 10 freeze / holdout provenance specimen as feed-forward Evaluation/proof evidence only.
-- ECO-123 — qualified OB1 / ECB1 Thought-Ingest prior-art evidence, NONCANONICAL.
-- ECO-129 — continuity-family prior-art qualification, NONCANONICAL.
+The run passed:
 
-These routes did not promote their contents into BUILD 10 architecture. ECO-131 now governs the separately authorized post-BUILD-10 successor Sense and may inspect those sources only as evidence under its own boundaries.
+- accepted BUILD 0–5B predecessor reconstruction;
+- accepted BUILD 6 disposable installation;
+- BUILD 11 migration application on PostgreSQL 17 + pgvector;
+- BUILD 11 structural/negative-control qualification;
+- concurrent same-operation replay qualification;
+- source check that the ordinary runtime no longer depends on `SUPABASE_SERVICE_ROLE_KEY`;
+- Deno formatting;
+- Deno type checking;
+- MCP runtime tests.
 
-# Canonicalization versus installation
+`docs/build-receipts/038-build-11-move-qualified.md` records the detailed bounded proof and nonclaims.
+
+# Installation boundary
+
+Repository implementation and disposable qualification are complete enough for repository canonicalization under the existing accelerated Move authorization.
+
+Canonical production database/runtime/credential installation remains the first significant boundary.
+
+Production cutover must preserve all of the following:
+
+- apply BUILD 11 only to the exact canonical ECB v2 database from its current BUILD 0–6 installed state;
+- do not install BUILD 7–10 by implication;
+- commission one production `ECB_ORDINARY_DB_KEY` through the admin-only seam without printing or committing it;
+- deploy the ordinary MCP with `SUPABASE_ANON_KEY`, `SUPABASE_URL`, `ECB_ORDINARY_DB_KEY`, and existing `ECB_BRAIN_KEY`;
+- remove `SUPABASE_SERVICE_ROLE_KEY` from the ordinary runtime environment if present;
+- live-verify capture/replay/search/fetch and denial of unrelated Layer-B mutation.
+
+If the available tooling cannot unambiguously identify the canonical project/runtime or cannot carry the secret through a safe non-printing path, STOP at that exact gate rather than guessing or weakening the design.
+
+# Governing installation state
 
 Repository canonicalization and runtime/database installation remain separate decisions.
 
-BUILD 10 closure does NOT install BUILD 10 into canonical Supabase / ECB runtime and does NOT create real authority or action effect.
-
-Current installation state remains:
+Current production state remains:
 
 CANONICAL_BUILD7_DATABASE_INSTALL=NONE
 CANONICAL_BUILD8_DATABASE_INSTALL=NONE
 CANONICAL_BUILD9_DATABASE_INSTALL=NONE
 CANONICAL_BUILD10_DATABASE_INSTALL=NONE
+CANONICAL_BUILD11_DATABASE_INSTALL=NONE
 REAL_MASTER_KEY_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
 
-# Carried apertures / proof-travel limits
-
-The following remain outside the earned BUILD 10 claim and may be examined only by later authorized work:
-
-- broader discovery/admission/negotiation/routing/subscription/open-world propagation;
-- ordinary Thought ingest / map-on-contact behavior;
-- same-worker holdout independence limits;
-- finite disposable PostgreSQL proof scope;
-- AP-05 future residual evidence;
-- any future need for stronger physicalization beyond generic Artifact.
-
-These are limitations or future decision surfaces, not BUILD 10 closure blockers.
-
 # Ordinary personal operation
 
-Operating basis: the Principal's accepted Personal Operation disposition.
-This guidance records that disposition; it does not amend accepted Build claims,
-invariants, installation state, or authority scope.
-
-Serve the actual personal task using already-earned, available capability within
-standing authorization. The installed capture/search/fetch path is available for
-ordinary use. No successor opening, special experiment, or repeated approval is
-required for routine personal operation.
-
-Capture material submitted for preservation in ordinary language with proportionate
-source context. Do not silently capture all conversation, require classification,
-or make personal material adopt architecture vocabulary. Search when prior material
-can help; fetch the source when exact content, identity, provenance, or currentness
-matters. Continue accepted work without ceremonial interruption.
-
-Keep unresolved material unresolved. Distinguish historical evidence, corrections,
-and present applicability. Use supported operations; do not invent correction or
-deletion capabilities. Report capture/retrieval failures truthfully. If a write's
-outcome is unknown, establish what happened before repeating it.
-
-Personal use may generate architectural evidence but need not produce it. Retain
-or route observations when they can change an actual decision through consequence,
-recurrence, or falsification value. Otherwise let them remain ordinary experience.
-Observations do not automatically acquire architectural standing.
-
-Consult architectural sources when they affect the task's interpretation,
-legitimacy, or required capability; do not preload the Build program for routine
-use. Preserve decision-relevant provenance and governing constraints.
-
-Pause the dependent operation at a genuine boundary: architectural or governing
-commitment; authority change; installation/activation beyond existing release;
-destructive or difficult-to-reverse action; consequential external effect;
-material security/credential change; significant resource commitment; reserved
-normative choice; or another explicitly required disposition. Reuse existing
-authorization where it applies. Technical access alone grants no authority.
-Unaffected personal work may continue.
-
-Disposable experiments require a concrete reason such as isolation, destructive
-risk, fault injection, independence-sensitive proof, or inability to obtain the
-needed evidence safely through normal use.
+Until BUILD 11 is installed, the currently installed ordinary capture/search/fetch path remains active. Ordinary personal work continues without ceremony. If a write outcome is unknown under that current path, establish what happened before repeating it; BUILD 11 removes that burden only after installation.
 
 # Architecture-program next action
 
-BUILD 10 remains CLOSED.
+1. canonicalize the qualified BUILD 11 repository candidate by merging PR #33;
+2. record the resulting canonical main SHA in ECO-132 / currentness projection;
+3. reconcile the exact canonical production database and ordinary runtime identities;
+4. if unambiguous and safely actionable, perform the production migration + capability commissioning + runtime cutover and live verification;
+5. otherwise stop at that installation gate with exact remaining operator action;
+6. only after installation/currentness is truthfully resolved, open Metabolize/closure as appropriate.
 
-Post-BUILD-10 successor Sense is OPEN / AUTHORIZED under ECO-131. Following Principal correction, Sense is in **Referent-mapping / evidence-accumulation state**, not closure review. The active problem is seated as a focal Referent and must be mapped through inherited QLLST + relational/directional capacities with Question Forward dispositions before compression to a successor boundary.
-
-The earlier `Reliable Ordinary Thought Preservation / Capture Integrity` packet is retained only as provisional evidence / a Line-level hypothesis. It is NOT the current Sense closure candidate and does not authorize Shape.
-
-No successor Shape, Move, or Metabolize is open. No numbered successor Build is designated by this opening.
-
-ECO-123 and ECO-129 remain NONCANONICAL evidence without independent sequencing, architectural, or implementation authority. ECO-100 remains feed-forward evidence only. ECO-131 controls the active Sense and must preserve the Master Key, current installation/authority limits, universal-Referent / QLLST mapping requirements, Question Forward, and its explicit hard boundaries.
-
-The next legitimate architecture-program work is continued ECO-131 Sense accumulation: re-index the candidate pressure cluster onto its natural Referents and let QLLST/reference-frame surfaces accumulate discriminating evidence. Compress only when no unresolved mapped cell at the active resolution can still change the successor boundary. Do not infer Shape permission from any provisional packet.
-
-Personal-operation permission does not install BUILD 7–10 or resolve real
-Master-Key designation or action authority. The installation and authority
-limits above remain operative.
-
-Slash-separated phase paths remain operational recursive-location notation only.
+Do not reopen Sense for ordinary engineering defects. Reopen architectural orientation only if installation or live verification falsifies the accepted structural boundary or makes a governing distinction unrecoverable.

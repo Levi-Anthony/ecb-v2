@@ -83,7 +83,7 @@ No consequential transition may depend solely on an agent remembering an instruc
 
 ## Structural leverage
 
-Human-ratified governing addition, 2026-09-11 America/Phoenix.
+Human-ratified governing addition, 2026-09-11 America/Phoenix; clarified by explicit Principal disposition, 2026-09-13 America/Phoenix.
 
 > **Physicalize deterministic liability; preserve semantic freedom where interpretation remains valuable.**
 
@@ -91,6 +91,13 @@ When a decision-bearing obligation is sufficiently stable and mechanically decid
 physical enforcement materially lowers the probability or consequence of semantic/stochastic failure
 without destroying required information, flexibility, or distinctions, implementation SHOULD place
 that obligation in physical structure rather than discretionary reasoning.
+
+A ratified architectural obligation can itself establish that stability and decision consequence at the
+active resolution. Physicalization does **not** require prior repeated empirical failure, production
+incidents, or recurrence counts when the governing architecture already fixes the obligation and the
+smallest enforcement is mechanically decidable. Empirical specimens, recurrence, and fault evidence
+remain valid sources for discovering, sizing, falsifying, or requalifying an obligation; they are not a
+mandatory permission gate for enforcing an obligation that architecture has already settled.
 
 Conversely, semantic, stochastic, or latent machinery SHOULD retain responsibility where interpretation,
 novelty, uncertainty, or adaptation is itself decision-relevant and structuralization would prematurely
@@ -109,17 +116,25 @@ For a proposed physicalization or de-physicalization, the active decision must b
 traceably recover:
 
 1. what consequential obligation leaves or returns to semantic/stochastic interpretation;
-2. whether that obligation is stable and mechanically decidable at the active resolution;
+2. whether that obligation is stable and mechanically decidable at the active resolution, including
+   whether a ratified architectural rule already settles that question;
 3. what liability changes if the physical enforcement is removed;
 4. what useful information or flexibility is lost if the physical enforcement is retained; and
 5. whether a strictly smaller enforcement mechanism preserves the same safety and semantic distinctions.
 
 This invariant does not authorize schema, enums, state machines, privileges, workflows, services,
 policy engines, compiler machinery, or other physical structure merely because a concept is important.
-Physicalization still must be the smallest decision-relevant enforcement earned under the active
-Master Key. Genericity likewise receives no automatic simplicity credit when equivalent privilege,
+Physicalization still must be the smallest decision-relevant enforcement justified under the active
+Master Key. Architectural warrant, transactional/integrity pressure, repeated reconstruction, observed
+failure, and other qualified routes may each supply that justification; no one route is universally
+required. Genericity likewise receives no automatic simplicity credit when equivalent privilege,
 type, order, integrity, reconstruction, or authorization obligations remain and are merely displaced
 into payload semantics or agent judgment.
+
+QLLST mapping, Question Forward, Sense, and evidence gathering orient and test the decision surface; they
+must not be reinterpreted as waiting gates that forbid direct structural enforcement after the active
+architecture has already established a mechanically decidable obligation. Question Forward preserves
+unknowns and re-entry paths; it does not manufacture uncertainty about a settled structural requirement.
 
 ## Evaluative-language discipline
 

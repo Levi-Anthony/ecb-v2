@@ -1,0 +1,94 @@
+name: BUILD 11 ordinary operation kernel
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'sql/migrations/20260914063000_build_11_ordinary_operation_kernel.sql'
+      - 'server/open-brain-mcp/**'
+      - 'tests/build-11/**'
+      - 'docs/invariants.md'
+      - 'docs/build-contract.md'
+      - '.github/workflows/build-11-ordinary-operation-kernel.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.2-pg17
+        env:
+          POSTGRES_USER: custodian
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 55439:5432
+        options: >-
+          --health-cmd "pg_isready -U custodian -d postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      BUILD6_DISPOSABLE: 'YES'
+      BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:55439/build6
+      BUILD11_DATABASE_URL: postgresql://postgres@127.0.0.1:55439/build6
+      B5B_EVIDENCE_DIR: ${{ github.workspace }}/artifacts/build5b-predecessor
+    steps:
+      - name: Checkout exact candidate commit
+        uses: actions/checkout@v4
+
+      - name: Use Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Reconstruct accepted BUILD 5B predecessor
+        shell: bash
+        run: bash tests/build-6/ci-reconstruct-build5b.sh
+
+      - name: Install accepted BUILD 6 substrate into disposable database
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD11_DATABASE_URL"
+          -f sql/migrations/20260907234712_build_6_governance_bootstrap.sql
+
+      - name: Apply BUILD 11 candidate migration
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD11_DATABASE_URL"
+          -f sql/migrations/20260914063000_build_11_ordinary_operation_kernel.sql
+
+      - name: Run BUILD 11 structural qualification
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD11_DATABASE_URL"
+          -f tests/build-11/qualify.sql
+
+      - name: Run concurrent replay qualification
+        shell: bash
+        run: bash tests/build-11/concurrency.sh
+
+      - name: Verify ordinary runtime has no service-role credential dependency
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -q 'SUPABASE_SERVICE_ROLE_KEY' server/open-brain-mcp/index.ts; then
+            echo 'ordinary runtime still depends on SUPABASE_SERVICE_ROLE_KEY' >&2
+            exit 1
+          fi
+          grep -q 'SUPABASE_ANON_KEY' server/open-brain-mcp/index.ts
+          grep -q 'ECB_ORDINARY_DB_KEY' server/open-brain-mcp/index.ts
+
+      - name: Check and test MCP runtime
+        shell: bash
+        working-directory: server/open-brain-mcp
+        run: |
+          set -euo pipefail
+          deno fmt --check index.ts index.test.ts commission-runtime-key.ts deno.json
+          deno check --config deno.json index.ts index.test.ts commission-runtime-key.ts
+          deno test --allow-env --allow-net --config deno.json index.test.ts
