@@ -1,7 +1,8 @@
-import app from '../server.js';
+import { getApp } from './runtime.js';
 
 export default {
-  fetch(request: Request) {
+  async fetch(request: Request) {
+    const app = await getApp();
     const url = new URL(request.url);
     url.pathname = '/mcp';
     return app.fetch(new Request(url, request));
