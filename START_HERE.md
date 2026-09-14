@@ -13,7 +13,7 @@ ECB v1 is evidence, not inherited architecture.
 
 OB1 is the substrate lineage.
 
-The current objective is to reproduce valuable behavior on the smallest clean substrate while preserving the architectural distinctions already earned.
+The architecture program develops valuable behavior on the smallest clean substrate while preserving earned distinctions. Ordinary personal operation proceeds concurrently using available, already-earned capability. Serve the user's actual task; consult architecture when it changes interpretation, legitimacy, or required capability. Neither personal use nor architectural evidence automatically acquires the other's standing.
 
 ## Current governing distinction
 
@@ -38,13 +38,9 @@ These are harness roles, not epistemic standings:
 
 ## Where am I?
 
-Current build state is always declared in:
+For ordinary personal work, begin with the user's request and the [ordinary-operation guidance](BUILD_CHECKOUT.md#ordinary-personal-operation). Read the remaining Build state when it affects the task. For Build work or uncertainty about governing scope, begin with `BUILD_CHECKOUT.md` and follow its decision-relevant sources.
 
-`/BUILD_CHECKOUT.md`
-
-Read that next.
-
-Do not infer current work from:
+Do not infer current Build state or governing authority solely from:
 
 - newest file;
 - recent commit;
@@ -59,7 +55,7 @@ Read only as needed, in this order:
 
 1. `/BUILD_CHECKOUT.md`
 
-   Current Move. Tells you what is being built now, why, what proves completion, what is explicitly excluded, and what condition requires escalation. It is a projection, not architectural authority.
+   Current Build disposition and ordinary-operation guidance. It distinguishes available personal use from separately authorized architecture work and retains installation and authority limits. It is a reentry projection, not independent architectural authority.
 
 2. `/docs/invariants.md`
 
@@ -97,18 +93,18 @@ Read only as needed, in this order:
 
 Do not preload the whole architecture.
 
-Start with `BUILD_CHECKOUT.md`.
+Use the reentry route above; expand beyond ordinary-operation guidance when the task requires it.
 
-Expand context only when the current Move exposes a concrete need.
+Expand context only when the actual task exposes a decision-relevant need. The Build procedures below apply to commissioned Build work; they do not require a Build commission, acceptance test, or closure cycle for ordinary personal use.
 
 Route uncertainty as follows:
 
 | Condition | Route |
 |---|---|
-| Unclear current task | `BUILD_CHECKOUT.md` |
+| Unclear current task | Recover the user's request and accepted scope; use `BUILD_CHECKOUT.md` for Build state and operating boundaries |
 | Possible invariant violation | `docs/invariants.md` |
 | Architectural behavior unclear | `docs/build-contract.md` |
-| Expected result unclear | `docs/acceptance-tests.md` |
+| Build acceptance requirement unclear | `docs/acceptance-tests.md` |
 | Term ambiguous | `docs/glossary.md` |
 | Question intentionally unresolved | `docs/open-apertures.md` |
 | Active decision intersects candidate BUILD evidence | `docs/build-evidence.md` |
@@ -192,7 +188,7 @@ For every Build Unit:
 3. **TEST** — Run the frozen acceptance condition.
 4. **METABOLIZE** — Compare actual behavior to expected behavior.
 5. **ROUTE**
-   - Pass → close Build Unit and install the next checkout.
+   - Pass → return the evidence for applicable closure disposition; do not infer permission for a successor or installation.
    - Unexpected but nonblocking → record evidence/aperture.
    - Architectural pressure → ADR.
    - Invariant conflict → stop.
@@ -202,6 +198,4 @@ Do not expand scope merely because the current implementation succeeded.
 
 ## Current next handle
 
-Open:
-
-`BUILD_CHECKOUT.md`
+Follow the reentry route under “Where am I?” for the actual task.
