@@ -65,7 +65,10 @@ export type SearchCoverage = {
 export type SearchRepair = {
   attempted: number;
   repaired: number;
-  error?: "embedding_failed" | "representation_persistence_failed" | "repair_scan_failed";
+  error?:
+    | "embedding_failed"
+    | "representation_persistence_failed"
+    | "repair_scan_failed";
 };
 
 export type SearchResult = {
@@ -123,8 +126,15 @@ export type OrdinaryStore = {
     capturedAt?: string;
   }): Promise<PersistedCapture>;
   fetch(id: string, modelId: string): Promise<FetchedThought | null>;
-  listMissingEmbeddings(modelId: string, limit: number): Promise<MissingRepresentation[]>;
-  storeEmbedding(thoughtId: string, modelId: string, embedding: number[]): Promise<string>;
+  listMissingEmbeddings(
+    modelId: string,
+    limit: number,
+  ): Promise<MissingRepresentation[]>;
+  storeEmbedding(
+    thoughtId: string,
+    modelId: string,
+    embedding: number[],
+  ): Promise<string>;
   search(
     query: string,
     modelId: string,
@@ -458,9 +468,10 @@ function requiredEnv(name: string): string {
 }
 
 function rpcFailure(error: unknown, fallback: OperationFailureCode): never {
-  const message = typeof error === "object" && error !== null && "message" in error
-    ? String((error as { message: unknown }).message)
-    : String(error);
+  const message =
+    typeof error === "object" && error !== null && "message" in error
+      ? String((error as { message: unknown }).message)
+      : String(error);
 
   if (message.includes("ecb11_operation_conflict")) {
     throw new BrainOperationError("operation_conflict");
@@ -529,10 +540,13 @@ function createStore(): OrdinaryStore {
     },
 
     async listMissingEmbeddings(modelId, limit) {
-      const { data, error } = await supabase.rpc("ecb11_list_missing_embeddings", {
-        p_model_id: modelId,
-        p_limit: limit,
-      });
+      const { data, error } = await supabase.rpc(
+        "ecb11_list_missing_embeddings",
+        {
+          p_model_id: modelId,
+          p_limit: limit,
+        },
+      );
       if (error) rpcFailure(error, "search_failed");
       return (Array.isArray(data) ? data : []).map((row) => ({
         thoughtId: String(row.thought_id),
