@@ -107,12 +107,62 @@ The following remain outside the earned BUILD 10 claim and may be examined only 
 
 These are limitations or future decision surfaces, not BUILD 10 closure blockers.
 
-# Next legitimate action
+# Ordinary personal operation
 
-BUILD 10 is closed. Successor selection/opening remains a separate human decision.
+Operating basis: the Principal's accepted Personal Operation disposition.
+This guidance records that disposition; it does not amend accepted Build claims,
+invariants, installation state, or authority scope.
 
-Prepared NONCANONICAL successor evidence exists in ECO-123 and ECO-129, but neither has sequencing or architectural standing merely because BUILD 10 is closed.
+Serve the actual personal task using already-earned, available capability within
+standing authorization. The installed capture/search/fetch path is available for
+ordinary use. No successor opening, special experiment, or repeated approval is
+required for routine personal operation.
 
-Any next successor must begin from current canonical main, recover the smallest decision-relevant predecessor evidence, preserve the Master Key, and open only through an explicit authorized Sense transition.
+Capture material submitted for preservation in ordinary language with proportionate
+source context. Do not silently capture all conversation, require classification,
+or make personal material adopt architecture vocabulary. Search when prior material
+can help; fetch the source when exact content, identity, provenance, or currentness
+matters. Continue accepted work without ceremonial interruption.
+
+Keep unresolved material unresolved. Distinguish historical evidence, corrections,
+and present applicability. Use supported operations; do not invent correction or
+deletion capabilities. Report capture/retrieval failures truthfully. If a write's
+outcome is unknown, establish what happened before repeating it.
+
+Personal use may generate architectural evidence but need not produce it. Retain
+or route observations when they can change an actual decision through consequence,
+recurrence, or falsification value. Otherwise let them remain ordinary experience.
+Observations do not automatically acquire architectural standing.
+
+Consult architectural sources when they affect the task's interpretation,
+legitimacy, or required capability; do not preload the Build program for routine
+use. Preserve decision-relevant provenance and governing constraints.
+
+Pause the dependent operation at a genuine boundary: architectural or governing
+commitment; authority change; installation/activation beyond existing release;
+destructive or difficult-to-reverse action; consequential external effect;
+material security/credential change; significant resource commitment; reserved
+normative choice; or another explicitly required disposition. Reuse existing
+authorization where it applies. Technical access alone grants no authority.
+Unaffected personal work may continue.
+
+Disposable experiments require a concrete reason such as isolation, destructive
+risk, fault injection, independence-sensitive proof, or inability to obtain the
+needed evidence safely through normal use.
+
+# Architecture-program next action
+
+BUILD 10 remains CLOSED. No successor Build or successor Sense is open.
+Successor selection/opening remains a separate Principal decision; ordinary
+personal use need not wait for it.
+
+ECO-123 and ECO-129 remain prepared NONCANONICAL evidence, without sequencing,
+architectural, or implementation authority. A later successor must recover
+current canonical state and decision-relevant predecessor evidence, preserve
+the Master Key, and open only through an explicitly authorized Sense transition.
+
+Personal-operation permission does not install BUILD 7–10 or resolve real
+Master-Key designation or action authority. The installation and authority
+limits above remain operative.
 
 Slash-separated phase paths remain operational recursive-location notation only.
