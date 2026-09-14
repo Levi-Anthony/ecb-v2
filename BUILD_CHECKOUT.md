@@ -156,13 +156,15 @@ needed evidence safely through normal use.
 
 BUILD 10 remains CLOSED.
 
-Post-BUILD-10 successor Sense is OPEN / AUTHORIZED under ECO-131. The Sense commission qualifies the first earned personal-operation structural seam from current live substrate plus decision-relevant evidence. Its current review packet proposes `Reliable Ordinary Thought Preservation / Capture Integrity` as a closure candidate, but that candidate has not been human-accepted.
+Post-BUILD-10 successor Sense is OPEN / AUTHORIZED under ECO-131. Following Principal correction, Sense is in **Referent-mapping / evidence-accumulation state**, not closure review. The active problem is seated as a focal Referent and must be mapped through inherited QLLST + relational/directional capacities with Question Forward dispositions before compression to a successor boundary.
+
+The earlier `Reliable Ordinary Thought Preservation / Capture Integrity` packet is retained only as provisional evidence / a Line-level hypothesis. It is NOT the current Sense closure candidate and does not authorize Shape.
 
 No successor Shape, Move, or Metabolize is open. No numbered successor Build is designated by this opening.
 
-ECO-123 and ECO-129 remain NONCANONICAL evidence without independent sequencing, architectural, or implementation authority. ECO-100 remains feed-forward evidence only. ECO-131 controls the active Sense and must preserve the Master Key, current installation/authority limits, and its explicit hard boundaries.
+ECO-123 and ECO-129 remain NONCANONICAL evidence without independent sequencing, architectural, or implementation authority. ECO-100 remains feed-forward evidence only. ECO-131 controls the active Sense and must preserve the Master Key, current installation/authority limits, universal-Referent / QLLST mapping requirements, Question Forward, and its explicit hard boundaries.
 
-The next legitimate architecture-program action is Principal review/disposition of ECO-131's Sense output packet. Acceptance may close Sense and authorize a separately opened Shape; rejection or amendment keeps Sense open. Do not infer Shape permission from the existence of the packet.
+The next legitimate architecture-program work is continued ECO-131 Sense accumulation: re-index the candidate pressure cluster onto its natural Referents and let QLLST/reference-frame surfaces accumulate discriminating evidence. Compress only when no unresolved mapped cell at the active resolution can still change the successor boundary. Do not infer Shape permission from any provisional packet.
 
 Personal-operation permission does not install BUILD 7–10 or resolve real
 Master-Key designation or action authority. The installation and authority
