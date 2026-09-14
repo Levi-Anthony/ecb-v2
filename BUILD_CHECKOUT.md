@@ -1,7 +1,7 @@
-STATUS: BUILD 10 CLOSED — BOUNDED REGISTER-B SEMANTIC TRANSFER ACCEPTED
-DISPOSITION: BUILD 10 SENSE / SHAPE / MOVE / METABOLIZE CLOSED; SUCCESSOR UNOPENED
-ROLE: Canonical reentry checkpoint after BUILD 10 closure
-AUTHORITY: Human closure authorization + Linear ECO-125 / ECO-130 closure record
+STATUS: BUILD 10 CLOSED — POST-BUILD-10 SUCCESSOR SENSE OPEN
+DISPOSITION: BUILD 10 SENSE / SHAPE / MOVE / METABOLIZE CLOSED; SUCCESSOR SENSE OPEN UNDER ECO-131; SHAPE / MOVE / METABOLIZE UNOPENED
+ROLE: Canonical reentry checkpoint after BUILD 10 closure and successor Sense opening
+AUTHORITY: Human closure authorization + Linear ECO-125 / ECO-130 closure record + explicit Principal successor-Sense opening under ECO-131
 CANONICAL MAIN PRE-CLOSURE: a5ad892c4b7cee9a0cea72652beedded7d80cd25
 ACCEPTED MOVE EVIDENCE BASE: build/eco-114-build-10-move@55e688a56a42ea477a748b5f072e9333d66d7143
 CANONICAL_BUILD10_DATABASE_INSTALL=NONE
@@ -24,7 +24,9 @@ Within BUILD 10 / Metabolize:
 
 BUILD 10 is CLOSED.
 
-No successor Build or successor Sense is open.
+Post-BUILD-10 successor Sense is OPEN / AUTHORIZED under Linear ECO-131 by explicit Principal instruction on 2026-09-13 America/Phoenix.
+No numbered successor Build is designated by this opening. ECO-100's provisional BUILD 11–17 sequence remains feed-forward evidence only.
+Successor Shape / Move / Metabolize are UNOPENED.
 
 # Earned BUILD 10 claim
 
@@ -76,7 +78,7 @@ Qualified non-repository findings were already routed without creating successor
 - ECO-123 — qualified OB1 / ECB1 Thought-Ingest prior-art evidence, NONCANONICAL.
 - ECO-129 — continuity-family prior-art qualification, NONCANONICAL.
 
-These routes do not promote their contents into BUILD 10 architecture and do not open a successor.
+These routes did not promote their contents into BUILD 10 architecture. ECO-131 now governs the separately authorized post-BUILD-10 successor Sense and may inspect those sources only as evidence under its own boundaries.
 
 # Canonicalization versus installation
 
@@ -152,14 +154,15 @@ needed evidence safely through normal use.
 
 # Architecture-program next action
 
-BUILD 10 remains CLOSED. No successor Build or successor Sense is open.
-Successor selection/opening remains a separate Principal decision; ordinary
-personal use need not wait for it.
+BUILD 10 remains CLOSED.
 
-ECO-123 and ECO-129 remain prepared NONCANONICAL evidence, without sequencing,
-architectural, or implementation authority. A later successor must recover
-current canonical state and decision-relevant predecessor evidence, preserve
-the Master Key, and open only through an explicitly authorized Sense transition.
+Post-BUILD-10 successor Sense is OPEN / AUTHORIZED under ECO-131. The Sense commission qualifies the first earned personal-operation structural seam from current live substrate plus decision-relevant evidence. Its current review packet proposes `Reliable Ordinary Thought Preservation / Capture Integrity` as a closure candidate, but that candidate has not been human-accepted.
+
+No successor Shape, Move, or Metabolize is open. No numbered successor Build is designated by this opening.
+
+ECO-123 and ECO-129 remain NONCANONICAL evidence without independent sequencing, architectural, or implementation authority. ECO-100 remains feed-forward evidence only. ECO-131 controls the active Sense and must preserve the Master Key, current installation/authority limits, and its explicit hard boundaries.
+
+The next legitimate architecture-program action is Principal review/disposition of ECO-131's Sense output packet. Acceptance may close Sense and authorize a separately opened Shape; rejection or amendment keeps Sense open. Do not infer Shape permission from the existence of the packet.
 
 Personal-operation permission does not install BUILD 7–10 or resolve real
 Master-Key designation or action authority. The installation and authority
