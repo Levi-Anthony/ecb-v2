@@ -202,14 +202,18 @@ begin
   end if;
 end $$;
 
+-- Obtain the result identity through the admin qualification surface, then verify
+-- anon can only act through the bounded store RPC. An anon subquery against the
+-- operations table would correctly be denied and would test the wrong thing here.
+select result_referent_id::text as first_result_id
+from public.ordinary_operations
+where id='11111111-aaaa-4111-8111-111111111111'::uuid
+\gset
+
 -- Store one semantic representation through the secret-gated anon RPC.
 set role anon;
 select public.ecb11_store_embedding(
-  (
-    select result_referent_id
-    from public.ordinary_operations
-    where id='11111111-aaaa-4111-8111-111111111111'::uuid
-  ),
+  :'first_result_id'::uuid,
   'gte-small',
   ('[' || repeat('0,',383) || '0]')::extensions.vector(384)
 );
