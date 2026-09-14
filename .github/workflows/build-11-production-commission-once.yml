@@ -1,0 +1,21 @@
+name: BUILD 11 production commission once
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-11-production-commission-once.yml'
+
+jobs:
+  commission:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Commission environment-held runtime capability
+        run: |
+          set -euo pipefail
+          response="$(curl -fsS https://vezxivrvhakclxuvxzso.supabase.co/functions/v1/ecb11-commission)"
+          printf '%s\n' "$response"
+          case "$response" in
+            *'"status":"commissioned"'*|*'"status":"already_commissioned"'*) ;;
+            *) echo "Unexpected commission response" >&2; exit 1 ;;
+          esac
