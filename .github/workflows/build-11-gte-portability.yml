@@ -1,0 +1,28 @@
+name: BUILD 11 gte-small portability
+
+on:
+  push:
+    branches:
+      - build/eco-132-r4-runtime-confinement
+    paths:
+      - '.github/workflows/build-11-gte-portability.yml'
+      - 'tests/build-11/gte-portability.mjs'
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install portable model runtime
+        run: npm install --no-save @huggingface/transformers@3
+      - name: Compare Supabase Edge and portable gte-small vectors
+        env:
+          REFERENCE_URL: https://vezxivrvhakclxuvxzso.supabase.co/functions/v1/ecb11-embed-reference
+        run: node tests/build-11/gte-portability.mjs
