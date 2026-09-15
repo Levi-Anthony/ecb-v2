@@ -62,6 +62,12 @@ type SearchResult = {
 
 type FetchedThought = Thought & { representation_ready: boolean };
 
+type Artifact = {
+  id: string;
+  content: string;
+  registered_at: string;
+};
+
 type FailureCode =
   | 'operation_conflict'
   | 'runtime_unauthorized'
@@ -69,7 +75,6 @@ type FailureCode =
   | 'capture_failed'
   | 'search_failed'
   | 'fetch_failed'
-  | 'artifact_conflict'
   | 'artifact_write_failed'
   | 'artifact_fetch_failed';
 
@@ -151,11 +156,8 @@ async function rpc<T>(name: string, body: Record<string, unknown>, fallback: Fai
   });
   const text = await response.text();
   if (!response.ok) {
-    if (text.includes('ecb11_operation_conflict') || text.includes('ecb12_operation_conflict')) {
+    if (text.includes('ecb11_operation_conflict')) {
       throw new BrainOperationError('operation_conflict');
-    }
-    if (text.includes('ecb12_artifact_key_exists') || text.includes('ecb12_stale_supersession')) {
-      throw new BrainOperationError('artifact_conflict');
     }
     if (text.includes('ecb11_runtime_unauthorized') || text.includes('ecb11_runtime_uncommissioned')) {
       throw new BrainOperationError('runtime_unauthorized');
@@ -315,61 +317,40 @@ const runtime = {
     return fetchThought(id);
   },
 
-  async createArtifact(input: {
-    operationId: string;
-    artifactKey: string;
-    artifactType: string;
-    mediaType: string;
-    payloadText: string;
-    provenance: Record<string, unknown>;
-  }) {
-    return rpc<unknown>('ecb12_create_artifact', {
+  async createArtifact(input: { operationId: string; content: string }) {
+    const data = await rpc<unknown[]>('ecb12_create_artifact', {
       p_operation_id: input.operationId,
-      p_artifact_key: input.artifactKey,
-      p_artifact_type: input.artifactType,
-      p_media_type: input.mediaType,
-      p_payload_text: input.payloadText,
-      p_provenance: input.provenance,
-      p_created_by: 'ordinary_mcp',
+      p_content: input.content,
     }, 'artifact_write_failed');
+    const row = Array.isArray(data) ? data[0] as Record<string, unknown> | undefined : undefined;
+    if (!row) throw new BrainOperationError('artifact_write_failed');
+    return {
+      operation_id: String(row.operation_id),
+      artifact: {
+        id: String(row.artifact_id),
+        content: String(row.content),
+        registered_at: String(row.registered_at),
+      },
+      replayed: Boolean(row.replayed),
+    };
   },
 
-  async createArtifactVersion(input: {
-    operationId: string;
-    artifactId: string;
-    supersedesVersionId: string;
-    mediaType: string;
-    payloadText: string;
-    provenance: Record<string, unknown>;
-  }) {
-    return rpc<unknown>('ecb12_create_artifact_version', {
-      p_operation_id: input.operationId,
-      p_artifact_id: input.artifactId,
-      p_supersedes_version_id: input.supersedesVersionId,
-      p_media_type: input.mediaType,
-      p_payload_text: input.payloadText,
-      p_provenance: input.provenance,
-      p_created_by: 'ordinary_mcp',
-    }, 'artifact_write_failed');
-  },
-
-  async fetchArtifact(artifactId: string, versionNumber?: number) {
-    return rpc<unknown | null>('ecb12_fetch_artifact', {
-      p_artifact_id: artifactId,
-      p_version_number: versionNumber ?? null,
+  async fetchArtifact(id: string): Promise<Artifact | null> {
+    const data = await rpc<unknown[]>('ecb12_fetch_artifact', {
+      p_id: id,
     }, 'artifact_fetch_failed');
-  },
-
-  async fetchArtifactByKey(artifactKey: string, versionNumber?: number) {
-    return rpc<unknown | null>('ecb12_fetch_artifact_by_key', {
-      p_artifact_key: artifactKey,
-      p_version_number: versionNumber ?? null,
-    }, 'artifact_fetch_failed');
+    const row = Array.isArray(data) ? data[0] as Record<string, unknown> | undefined : undefined;
+    if (!row) return null;
+    return {
+      id: String(row.id),
+      content: String(row.content),
+      registered_at: String(row.registered_at),
+    };
   },
 };
 
 function buildServer(): McpServer {
-  const server = new McpServer({ name: 'ecb-v2-open-brain', version: '0.3.0' });
+  const server = new McpServer({ name: 'ecb-v2-open-brain', version: '0.3.1' });
 
   server.registerTool('capture_thought', {
     title: 'Capture Thought',
@@ -430,7 +411,7 @@ function buildServer(): McpServer {
   server.registerTool('create_artifact', {
     title: 'Create Artifact',
     description:
-      'Create one stable Artifact identity and immutable version-1 representation. Artifact creation preserves exact payload bytes, provenance and a content digest; it does not confer truth, standing, currentness, acceptance, authority or authorization on the payload.',
+      'Create one immutable text Artifact as a persistent Referent. The exact text is retained as representation content; creation does not confer truth, standing, currentness, relation, acceptance, authority, or authorization.',
     annotations: {
       readOnlyHint: false,
       destructiveHint: false,
@@ -439,55 +420,11 @@ function buildServer(): McpServer {
     },
     inputSchema: {
       operation_id: z.string().uuid(),
-      artifact_key: z.string().trim().min(1),
-      artifact_type: z.string().trim().min(1),
-      media_type: z.string().trim().min(1).optional().default('text/plain; charset=utf-8'),
-      payload_text: z.string(),
-      provenance: z.record(z.string(), z.unknown()).optional().default({}),
+      content: z.string(),
     },
-  }, async ({ operation_id, artifact_key, artifact_type, media_type, payload_text, provenance }) => {
+  }, async ({ operation_id, content }) => {
     try {
-      return result(await runtime.createArtifact({
-        operationId: operation_id,
-        artifactKey: artifact_key,
-        artifactType: artifact_type,
-        mediaType: media_type,
-        payloadText: payload_text,
-        provenance,
-      }));
-    } catch (error) {
-      return operationFailure(error, 'artifact_write_failed');
-    }
-  });
-
-  server.registerTool('create_artifact_version', {
-    title: 'Create Artifact Version',
-    description:
-      'Create the next immutable version of an existing Artifact by explicitly naming the current version it supersedes. Stale supersession is rejected; prior versions remain unchanged and fetchable.',
-    annotations: {
-      readOnlyHint: false,
-      destructiveHint: false,
-      idempotentHint: true,
-      openWorldHint: false,
-    },
-    inputSchema: {
-      operation_id: z.string().uuid(),
-      artifact_id: z.string().uuid(),
-      supersedes_version_id: z.string().uuid(),
-      media_type: z.string().trim().min(1).optional().default('text/plain; charset=utf-8'),
-      payload_text: z.string(),
-      provenance: z.record(z.string(), z.unknown()).optional().default({}),
-    },
-  }, async ({ operation_id, artifact_id, supersedes_version_id, media_type, payload_text, provenance }) => {
-    try {
-      return result(await runtime.createArtifactVersion({
-        operationId: operation_id,
-        artifactId: artifact_id,
-        supersedesVersionId: supersedes_version_id,
-        mediaType: media_type,
-        payloadText: payload_text,
-        provenance,
-      }));
+      return result(await runtime.createArtifact({ operationId: operation_id, content }));
     } catch (error) {
       return operationFailure(error, 'artifact_write_failed');
     }
@@ -496,33 +433,12 @@ function buildServer(): McpServer {
   server.registerTool('fetch_artifact', {
     title: 'Fetch Artifact',
     description:
-      'Fetch an Artifact by durable UUID. Supply version_number to retrieve an exact immutable version; omit it only when latest-version behavior is explicitly desired.',
+      'Fetch one immutable text Artifact by its durable Referent UUID. This operation has no latest-version or currentness semantics.',
     annotations: { readOnlyHint: true },
-    inputSchema: {
-      artifact_id: z.string().uuid(),
-      version_number: z.number().int().min(1).optional(),
-    },
-  }, async ({ artifact_id, version_number }) => {
+    inputSchema: { id: z.string().uuid() },
+  }, async ({ id }) => {
     try {
-      const artifact = await runtime.fetchArtifact(artifact_id, version_number);
-      return artifact ? result(artifact) : failure('not_found');
-    } catch (error) {
-      return operationFailure(error, 'artifact_fetch_failed');
-    }
-  });
-
-  server.registerTool('fetch_artifact_by_key', {
-    title: 'Fetch Artifact by Key',
-    description:
-      'Fetch an Artifact by stable artifact_key. Supply version_number for semantic or other hard dependencies so the caller does not silently drift to a later representation.',
-    annotations: { readOnlyHint: true },
-    inputSchema: {
-      artifact_key: z.string().trim().min(1),
-      version_number: z.number().int().min(1).optional(),
-    },
-  }, async ({ artifact_key, version_number }) => {
-    try {
-      const artifact = await runtime.fetchArtifactByKey(artifact_key, version_number);
+      const artifact = await runtime.fetchArtifact(id);
       return artifact ? result(artifact) : failure('not_found');
     } catch (error) {
       return operationFailure(error, 'artifact_fetch_failed');
@@ -544,9 +460,7 @@ app.get('/', (context) => context.json({
     'search',
     'fetch',
     'create_artifact',
-    'create_artifact_version',
     'fetch_artifact',
-    'fetch_artifact_by_key',
   ],
   provider_admin_credentials_required: false,
 }));
