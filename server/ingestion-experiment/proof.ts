@@ -1,8 +1,8 @@
-import commission from './commission.local.json' with { type: 'json' };
 import profile from './request-profile-v3.json' with { type: 'json' };
 import grammar from './grammar-runtime-v0.1.json' with { type: 'json' };
 
-const SOURCE_COMMIT='da524a03ace872d2210bea07038834f20e512fe9';
+const SOURCE_COMMIT='09c4f3bf5e6275e227cfb4f7e3d89f66dff9deec';
+const PROOF_EXPIRES_AT=Date.parse('2026-09-18T23:59:59Z');
 const CASES: Record<string,string> = {
   base: 'Jennifer wanted me to call her back.',
   already_discussed: 'Jennifer wanted me to call her back. I already saw Jennifer at the appointment and we talked about what she wanted.',
@@ -13,7 +13,7 @@ async function digest(text:string){return [...new Uint8Array(await crypto.subtle
 function json(status:number, body:unknown){return new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json','Cache-Control':'no-store'}});}
 
 Deno.serve(async (req:Request)=>{
-  if(Date.now()>=commission.expiresAt) return json(410,{error:'proof_window_expired'});
+  if(Date.now()>=PROOF_EXPIRES_AT) return json(410,{error:'proof_window_expired'});
   if(req.method!=='GET') return json(405,{error:'get_required'});
   const name=new URL(req.url).searchParams.get('case')??'';
   const raw=CASES[name];
