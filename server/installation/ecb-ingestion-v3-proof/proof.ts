@@ -1,5 +1,5 @@
-import profile from '../../ingestion-experiment/request-profile-v3.json' with { type: 'json' };
-import grammar from '../../ingestion-experiment/grammar-runtime-v0.1.json' with { type: 'json' };
+import profile from './request-profile-v3.json' with { type: 'json' };
+import grammar from './grammar-runtime-v0.1.json' with { type: 'json' };
 
 const SOURCE_BUNDLE_ID='ecb-ingestion-v3-proof';
 const CASES: Record<string,string> = {
