@@ -1,0 +1,18 @@
+✔ unauthorized rejected before provider call (9.639104ms)
+✔ expired capability rejected (0.951052ms)
+✔ missing key explicit, no fallback (0.937561ms)
+✔ caller cannot inject system or model (1.532618ms)
+✔ oversized input rejected (1.602543ms)
+✔ one fixed provider call, exact raw, no promotion (2.750562ms)
+✔ provider failure is sanitized and not retried (1.67346ms)
+✔ truncated generation rejected (1.37507ms)
+✔ invented span rejected (1.059565ms)
+✔ grounded false description exposes semantic limit (0.340052ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.986696

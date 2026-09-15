@@ -1,0 +1,72 @@
+{
+  "http_status": 200,
+  "case": "base",
+  "result": {
+    "operation": "disclose_atomic_thought",
+    "version": 1,
+    "attempt_id": "0dff5892-1ea3-4a7d-9013-449cc656156b",
+    "input": {
+      "text": "Jennifer wanted me to call her back.",
+      "source": "Principal-supplied illustrative fixture; not personal history",
+      "sha256": "1bfa47e0a7f7c49be9c6e5f5041a8ceea1f49342b08702fb262a33c03d57dc59"
+    },
+    "request_sha256": "584222e906bc25c377c106c4a345c84b49d3731dfcf0ff9bdf87434ba18403ff",
+    "model": "openai/gpt-4o-mini",
+    "provider": "OpenAI",
+    "usage": {
+      "prompt_tokens": 1101,
+      "completion_tokens": 187,
+      "total_tokens": 1288,
+      "cost": 0.00027735,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00027735,
+        "upstream_inference_prompt_cost": 0.00016515,
+        "upstream_inference_completions_cost": 0.0001122
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "annotation": {
+      "elements": [
+        {
+          "handle": "participant_1",
+          "description": "The person who expressed a desire to be contacted.",
+          "excerpt": "Jennifer",
+          "basis": "reported",
+          "question": "What is Jennifer's reason for wanting a call back?",
+          "relevance_test": "Understanding her motivation could clarify the context of the request."
+        },
+        {
+          "handle": "situation",
+          "description": "The reported action of making a phone call back to Jennifer.",
+          "excerpt": "wanted me to call her back",
+          "basis": "reported",
+          "question": "What was the context or urgency of the call back?",
+          "relevance_test": "Knowing the context could inform the importance of the request."
+        },
+        {
+          "handle": "inquiry_1",
+          "description": "The unresolved subject regarding the reason for the call back.",
+          "excerpt": "call her back",
+          "basis": "inquiry",
+          "question": "What specific information or response does Jennifer seek from the call?",
+          "relevance_test": "Identifying the information sought could determine the nature of the interaction."
+        }
+      ]
+    },
+    "mechanical_errors": [],
+    "semantic_standing": "UNASSESSED",
+    "canonical_effect": "NONE",
+    "qualification_limit": "Source correspondence and shape checks are not semantic truth or completeness."
+  }
+}

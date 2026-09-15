@@ -1,0 +1,88 @@
+{
+  "http_status": 200,
+  "case": "gift_information",
+  "result": {
+    "operation": "disclose_atomic_thought",
+    "version": 1,
+    "attempt_id": "56da95e7-846b-404d-a45e-a8e9c8fac09c",
+    "input": {
+      "text": "Jennifer wanted me to call her back. Jennifer is Mary's sister. She wanted the callback as soon as possible to learn what I got Mary for her birthday last year so she would not repeat it.",
+      "source": "Principal-supplied illustrative fixture; not personal history",
+      "sha256": "abf67182e15eee7dbed79bce567f3b6e20340a9b6709b4c440f0bf72df5d52b5"
+    },
+    "request_sha256": "70b22ad6999311e7fe83a5dee90386ba2e18d390f28e44a185fdd45b62b8a590",
+    "model": "openai/gpt-4o-mini",
+    "provider": "OpenAI",
+    "usage": {
+      "prompt_tokens": 1132,
+      "completion_tokens": 303,
+      "total_tokens": 1435,
+      "cost": 0.0002748,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 1024,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0002748,
+        "upstream_inference_prompt_cost": 9.3e-05,
+        "upstream_inference_completions_cost": 0.0001818
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "annotation": {
+      "elements": [
+        {
+          "handle": "participant_1",
+          "description": "Jennifer",
+          "excerpt": "Jennifer wanted me to call her back",
+          "basis": "reported",
+          "question": "What is Jennifer's reason for wanting the callback?",
+          "relevance_test": "Understanding Jennifer's motivation for the callback could clarify the urgency of the request."
+        },
+        {
+          "handle": "participant_2",
+          "description": "Mary",
+          "excerpt": "to learn what I got Mary for her birthday last year",
+          "basis": "reported",
+          "question": "What specific information does Jennifer want about Mary's birthday gift?",
+          "relevance_test": "Identifying the gift could reveal potential issues in gift-giving dynamics."
+        },
+        {
+          "handle": "relationship_1",
+          "description": "Jennifer and Mary",
+          "excerpt": "Jennifer is Mary's sister",
+          "basis": "reported",
+          "question": "How does the sibling relationship influence Jennifer's inquiry about the birthday gift?",
+          "relevance_test": "Understanding the familial relationship may provide context for the urgency of the request."
+        },
+        {
+          "handle": "unresolved_subject_1",
+          "description": "callback timing",
+          "excerpt": "She wanted the callback as soon as possible",
+          "basis": "reported",
+          "question": "What factors contribute to the urgency of the callback request?",
+          "relevance_test": "Clarifying the urgency could indicate the importance of the information to Jennifer."
+        },
+        {
+          "handle": "unresolved_subject_2",
+          "description": "gift repetition",
+          "excerpt": "so she would not repeat it",
+          "basis": "reported",
+          "question": "What implications does repeating a gift have for Jennifer and Mary?",
+          "relevance_test": "Understanding the significance of gift repetition could shed light on their relationship dynamics."
+        }
+      ]
+    },
+    "mechanical_errors": [],
+    "semantic_standing": "UNASSESSED",
+    "canonical_effect": "NONE",
+    "qualification_limit": "Source correspondence and shape checks are not semantic truth or completeness."
+  }
+}

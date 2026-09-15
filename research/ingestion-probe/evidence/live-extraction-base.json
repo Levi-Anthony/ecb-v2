@@ -1,0 +1,56 @@
+{
+  "http_status": 200,
+  "case": "base",
+  "result": {
+    "operation": "disclose_atomic_thought",
+    "version": 1,
+    "attempt_id": "7467bcf2-a6dc-43b9-885d-cc20f32d89f1",
+    "input": {
+      "text": "Jennifer wanted me to call her back.",
+      "source": "Principal-supplied illustrative fixture; not personal history",
+      "sha256": "1bfa47e0a7f7c49be9c6e5f5041a8ceea1f49342b08702fb262a33c03d57dc59"
+    },
+    "request_sha256": "dc9b2685f4a45c1c280a5771175a15323b8fc35440d631256e7d8a6272228cf3",
+    "model": "openai/gpt-4o-mini",
+    "provider": "Azure",
+    "usage": {
+      "prompt_tokens": 997,
+      "completion_tokens": 67,
+      "total_tokens": 1064,
+      "cost": 0.00018975,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00018975,
+        "upstream_inference_prompt_cost": 0.00014955,
+        "upstream_inference_completions_cost": 4.02e-05
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "annotation": {
+      "elements": [
+        {
+          "handle": "E1",
+          "description": "Reported desire to communicate",
+          "excerpt": "Jennifer wanted me to call her back.",
+          "basis": "reported",
+          "question": "What was the reason for Jennifer wanting the call back?",
+          "relevance_test": "Understanding the context of the communication could clarify the nature of the relationship or urgency."
+        }
+      ]
+    },
+    "mechanical_errors": [],
+    "semantic_standing": "UNASSESSED",
+    "canonical_effect": "NONE",
+    "qualification_limit": "Source correspondence and shape checks are not semantic truth or completeness."
+  }
+}

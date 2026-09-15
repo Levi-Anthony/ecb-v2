@@ -181,6 +181,10 @@ If the current Build Unit cannot be completed without one of those operations:
 
 ## Completion loop
 
+For Register B work, use the [bounded learning-through-action floor](docs/build-contract.md#register-b--bounded-learning-through-action)
+to qualify the next Move. Do not substitute exhaustive conceptual closure for an authorized,
+observable, recoverable experiment. The governing rule and its limits live in the Build Contract.
+
 For every Build Unit:
 
 1. **ORIENT** — Read `BUILD_CHECKOUT`.

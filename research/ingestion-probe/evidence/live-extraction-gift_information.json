@@ -1,0 +1,82 @@
+{
+  "http_status": 422,
+  "case": "gift_information",
+  "result": {
+    "operation": "disclose_atomic_thought",
+    "version": 1,
+    "attempt_id": "b2d5d94f-620a-4343-94e9-ec9d125c55fa",
+    "input": {
+      "text": "Jennifer wanted me to call her back. Jennifer is Mary's sister. She wanted the callback as soon as possible to learn what I got Mary for her birthday last year so she would not repeat it.",
+      "source": "Principal-supplied illustrative fixture; not personal history",
+      "sha256": "abf67182e15eee7dbed79bce567f3b6e20340a9b6709b4c440f0bf72df5d52b5"
+    },
+    "request_sha256": "76912208145561d1b3e58ac8272bf2ffca6a32c301a3a06a590c36d66c3bd2c3",
+    "model": "openai/gpt-4o-mini",
+    "provider": "OpenAI",
+    "usage": {
+      "prompt_tokens": 1028,
+      "completion_tokens": 267,
+      "total_tokens": 1295,
+      "cost": 0.0003144,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0003144,
+        "upstream_inference_prompt_cost": 0.0001542,
+        "upstream_inference_completions_cost": 0.0001602
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "annotation": {
+      "elements": [
+        {
+          "handle": "Jennifer_desire_callback",
+          "description": "Jennifer's desire for a callback to discuss a birthday gift.",
+          "excerpt": "Jennifer wanted me to call her back.",
+          "basis": "reported",
+          "question": "What is the significance of Jennifer wanting a callback?",
+          "relevance_test": "Understanding the urgency of communication can reveal relational dynamics."
+        },
+        {
+          "handle": "Jennifer_Mary_relationship",
+          "description": "The relationship between Jennifer and Mary as sisters.",
+          "excerpt": "Jennifer is Mary's sister.",
+          "basis": "reported",
+          "question": "How does the sister relationship influence their communication?",
+          "relevance_test": "The nature of familial relationships can affect the context of inquiries."
+        },
+        {
+          "handle": "callback_timing",
+          "description": "The urgency of the callback request.",
+          "excerpt": "She wanted the callback as soon as possible.",
+          "basis": "reported",
+          "question": "Why is the timing of the callback important to Jennifer?",
+          "relevance_test": "Timing can indicate the level of importance or urgency in the request."
+        },
+        {
+          "handle": "gift_repetition_concern",
+          "description": "Jennifer's concern about repeating a birthday gift.",
+          "excerpt": "to learn what I got Mary for her birthday last year so she would not repeat it.",
+          "basis": "reported",
+          "question": "What implications does Jennifer's concern about gift repetition have for her relationship with Mary?",
+          "relevance_test": "Understanding concerns about gift-giving can reveal deeper relational dynamics."
+        }
+      ]
+    },
+    "mechanical_errors": [
+      "excerpt_not_in_source"
+    ],
+    "semantic_standing": "UNASSESSED",
+    "canonical_effect": "NONE",
+    "qualification_limit": "Source correspondence and shape checks are not semantic truth or completeness."
+  }
+}
