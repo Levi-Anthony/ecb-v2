@@ -1,0 +1,123 @@
+name: BUILD 12 ordinary versioned artifacts
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'sql/migrations/20260915090000_build_12_ordinary_versioned_artifacts.sql'
+      - 'sql/migrations/20260915101000_build_12_artifact_key_fetch.sql'
+      - 'sql/migrations/20260915102000_seed_integral_holonic_grammar_semantic_contract_v1.sql'
+      - 'tests/build-12/**'
+      - 'server.ts'
+      - 'api/**'
+      - '.github/workflows/build-12-ordinary-versioned-artifacts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.2-pg17
+        env:
+          POSTGRES_USER: custodian
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 55439:5432
+        options: >-
+          --health-cmd "pg_isready -U custodian -d postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      BUILD6_DISPOSABLE: 'YES'
+      BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:55439/build6
+      BUILD12_DATABASE_URL: postgresql://postgres@127.0.0.1:55439/build6
+      B5B_EVIDENCE_DIR: ${{ github.workspace }}/artifacts/build5b-predecessor
+    steps:
+      - name: Checkout exact candidate commit
+        uses: actions/checkout@v4
+
+      - name: Reconstruct accepted BUILD 5B predecessor
+        shell: bash
+        run: bash tests/build-6/ci-reconstruct-build5b.sh
+
+      - name: Install accepted BUILD 6 substrate
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f sql/migrations/20260907234712_build_6_governance_bootstrap.sql
+
+      - name: Install BUILD 11 predecessor
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f sql/migrations/20260914063000_build_11_ordinary_operation_kernel.sql
+
+      - name: Qualify BUILD 11 predecessor and commission disposable runtime key
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f tests/build-11/qualify.sql
+
+      - name: Apply BUILD 12 Artifact substrate
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f sql/migrations/20260915090000_build_12_ordinary_versioned_artifacts.sql
+
+      - name: Apply BUILD 12 stable-key lookup
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f sql/migrations/20260915101000_build_12_artifact_key_fetch.sql
+
+      - name: Run BUILD 12 Artifact qualification
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f tests/build-12/qualify.sql
+
+      - name: Run stable-key exact-version qualification
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f tests/build-12/qualify-stable-key-fetch.sql
+
+      - name: Install locked semantic definition contract specimen
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f sql/migrations/20260915102000_seed_integral_holonic_grammar_semantic_contract_v1.sql
+
+      - name: Verify semantic contract exact version and digest
+        shell: bash
+        run: |
+          set -euo pipefail
+          result="$(psql -X -At "$BUILD12_DATABASE_URL" <<'SQL'
+          select
+            version.version_number || '|' ||
+            pg_catalog.encode(version.payload_digest, 'hex') || '|' ||
+            pg_catalog.octet_length(pg_catalog.convert_to(version.payload_text,'UTF8')) || '|' ||
+            (version.provenance->>'standing')
+          from public.artifact_objects artifact
+          join public.artifact_versions version on version.artifact_id=artifact.id
+          where artifact.artifact_key='semantic-contract.integral-holonic-grammar-core';
+          SQL
+          )"
+          test "$result" = '1|054b554c463c9aa643e3e8ef7f4de1495aab929bc254b85c2d7fc2c55103c3e2|3403|LOCKED'
+
+      - name: Verify ordinary runtime advertises Artifact tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q "registerTool('create_artifact'" server.ts
+          grep -q "registerTool('create_artifact_version'" server.ts
+          grep -q "registerTool('fetch_artifact'" server.ts
+          grep -q "registerTool('fetch_artifact_by_key'" server.ts
+          grep -q "version: '0.3.0'" server.ts
