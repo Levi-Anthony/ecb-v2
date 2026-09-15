@@ -68,7 +68,10 @@ type FailureCode =
   | 'persistence_failed'
   | 'capture_failed'
   | 'search_failed'
-  | 'fetch_failed';
+  | 'fetch_failed'
+  | 'artifact_conflict'
+  | 'artifact_write_failed'
+  | 'artifact_fetch_failed';
 
 type EmbeddingModel = (
   text: string,
@@ -148,7 +151,12 @@ async function rpc<T>(name: string, body: Record<string, unknown>, fallback: Fai
   });
   const text = await response.text();
   if (!response.ok) {
-    if (text.includes('ecb11_operation_conflict')) throw new BrainOperationError('operation_conflict');
+    if (text.includes('ecb11_operation_conflict') || text.includes('ecb12_operation_conflict')) {
+      throw new BrainOperationError('operation_conflict');
+    }
+    if (text.includes('ecb12_artifact_key_exists') || text.includes('ecb12_stale_supersession')) {
+      throw new BrainOperationError('artifact_conflict');
+    }
     if (text.includes('ecb11_runtime_unauthorized') || text.includes('ecb11_runtime_uncommissioned')) {
       throw new BrainOperationError('runtime_unauthorized');
     }
@@ -306,10 +314,62 @@ const runtime = {
   async fetch(id: string) {
     return fetchThought(id);
   },
+
+  async createArtifact(input: {
+    operationId: string;
+    artifactKey: string;
+    artifactType: string;
+    mediaType: string;
+    payloadText: string;
+    provenance: Record<string, unknown>;
+  }) {
+    return rpc<unknown>('ecb12_create_artifact', {
+      p_operation_id: input.operationId,
+      p_artifact_key: input.artifactKey,
+      p_artifact_type: input.artifactType,
+      p_media_type: input.mediaType,
+      p_payload_text: input.payloadText,
+      p_provenance: input.provenance,
+      p_created_by: 'ordinary_mcp',
+    }, 'artifact_write_failed');
+  },
+
+  async createArtifactVersion(input: {
+    operationId: string;
+    artifactId: string;
+    supersedesVersionId: string;
+    mediaType: string;
+    payloadText: string;
+    provenance: Record<string, unknown>;
+  }) {
+    return rpc<unknown>('ecb12_create_artifact_version', {
+      p_operation_id: input.operationId,
+      p_artifact_id: input.artifactId,
+      p_supersedes_version_id: input.supersedesVersionId,
+      p_media_type: input.mediaType,
+      p_payload_text: input.payloadText,
+      p_provenance: input.provenance,
+      p_created_by: 'ordinary_mcp',
+    }, 'artifact_write_failed');
+  },
+
+  async fetchArtifact(artifactId: string, versionNumber?: number) {
+    return rpc<unknown | null>('ecb12_fetch_artifact', {
+      p_artifact_id: artifactId,
+      p_version_number: versionNumber ?? null,
+    }, 'artifact_fetch_failed');
+  },
+
+  async fetchArtifactByKey(artifactKey: string, versionNumber?: number) {
+    return rpc<unknown | null>('ecb12_fetch_artifact_by_key', {
+      p_artifact_key: artifactKey,
+      p_version_number: versionNumber ?? null,
+    }, 'artifact_fetch_failed');
+  },
 };
 
 function buildServer(): McpServer {
-  const server = new McpServer({ name: 'ecb-v2-open-brain', version: '0.2.0' });
+  const server = new McpServer({ name: 'ecb-v2-open-brain', version: '0.3.0' });
 
   server.registerTool('capture_thought', {
     title: 'Capture Thought',
@@ -367,6 +427,108 @@ function buildServer(): McpServer {
     }
   });
 
+  server.registerTool('create_artifact', {
+    title: 'Create Artifact',
+    description:
+      'Create one stable Artifact identity and immutable version-1 representation. Artifact creation preserves exact payload bytes, provenance and a content digest; it does not confer truth, standing, currentness, acceptance, authority or authorization on the payload.',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    inputSchema: {
+      operation_id: z.string().uuid(),
+      artifact_key: z.string().trim().min(1),
+      artifact_type: z.string().trim().min(1),
+      media_type: z.string().trim().min(1).optional().default('text/plain; charset=utf-8'),
+      payload_text: z.string(),
+      provenance: z.record(z.string(), z.unknown()).optional().default({}),
+    },
+  }, async ({ operation_id, artifact_key, artifact_type, media_type, payload_text, provenance }) => {
+    try {
+      return result(await runtime.createArtifact({
+        operationId: operation_id,
+        artifactKey: artifact_key,
+        artifactType: artifact_type,
+        mediaType: media_type,
+        payloadText: payload_text,
+        provenance,
+      }));
+    } catch (error) {
+      return operationFailure(error, 'artifact_write_failed');
+    }
+  });
+
+  server.registerTool('create_artifact_version', {
+    title: 'Create Artifact Version',
+    description:
+      'Create the next immutable version of an existing Artifact by explicitly naming the current version it supersedes. Stale supersession is rejected; prior versions remain unchanged and fetchable.',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    inputSchema: {
+      operation_id: z.string().uuid(),
+      artifact_id: z.string().uuid(),
+      supersedes_version_id: z.string().uuid(),
+      media_type: z.string().trim().min(1).optional().default('text/plain; charset=utf-8'),
+      payload_text: z.string(),
+      provenance: z.record(z.string(), z.unknown()).optional().default({}),
+    },
+  }, async ({ operation_id, artifact_id, supersedes_version_id, media_type, payload_text, provenance }) => {
+    try {
+      return result(await runtime.createArtifactVersion({
+        operationId: operation_id,
+        artifactId: artifact_id,
+        supersedesVersionId: supersedes_version_id,
+        mediaType: media_type,
+        payloadText: payload_text,
+        provenance,
+      }));
+    } catch (error) {
+      return operationFailure(error, 'artifact_write_failed');
+    }
+  });
+
+  server.registerTool('fetch_artifact', {
+    title: 'Fetch Artifact',
+    description:
+      'Fetch an Artifact by durable UUID. Supply version_number to retrieve an exact immutable version; omit it only when latest-version behavior is explicitly desired.',
+    annotations: { readOnlyHint: true },
+    inputSchema: {
+      artifact_id: z.string().uuid(),
+      version_number: z.number().int().min(1).optional(),
+    },
+  }, async ({ artifact_id, version_number }) => {
+    try {
+      const artifact = await runtime.fetchArtifact(artifact_id, version_number);
+      return artifact ? result(artifact) : failure('not_found');
+    } catch (error) {
+      return operationFailure(error, 'artifact_fetch_failed');
+    }
+  });
+
+  server.registerTool('fetch_artifact_by_key', {
+    title: 'Fetch Artifact by Key',
+    description:
+      'Fetch an Artifact by stable artifact_key. Supply version_number for semantic or other hard dependencies so the caller does not silently drift to a later representation.',
+    annotations: { readOnlyHint: true },
+    inputSchema: {
+      artifact_key: z.string().trim().min(1),
+      version_number: z.number().int().min(1).optional(),
+    },
+  }, async ({ artifact_key, version_number }) => {
+    try {
+      const artifact = await runtime.fetchArtifactByKey(artifact_key, version_number);
+      return artifact ? result(artifact) : failure('not_found');
+    } catch (error) {
+      return operationFailure(error, 'artifact_fetch_failed');
+    }
+  });
+
   return server;
 }
 
@@ -377,7 +539,15 @@ app.get('/', (context) => context.json({
   runtime: 'vercel-node',
   canonical_brain: 'vezxivrvhakclxuvxzso',
   model: 'Supabase/gte-small',
-  ordinary_tools: ['capture_thought', 'search', 'fetch'],
+  ordinary_tools: [
+    'capture_thought',
+    'search',
+    'fetch',
+    'create_artifact',
+    'create_artifact_version',
+    'fetch_artifact',
+    'fetch_artifact_by_key',
+  ],
   provider_admin_credentials_required: false,
 }));
 
