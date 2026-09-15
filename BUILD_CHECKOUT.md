@@ -1,158 +1,185 @@
-STATUS: BUILD 11 PRODUCTION SUBSTRATE + REPLACEMENT RUNTIME QUALIFIED; CONSUMER CUTOVER PENDING
-DISPOSITION: BUILD 0–10 CLOSED; BUILD 11 SENSE CLOSED; SHAPE CLOSED; MOVE IMPLEMENTATION/DATABASE/RUNTIME QUALIFICATION PASS; METABOLIZE RECONCILED; OVERALL BUILD 11 CLOSURE WITHHELD PENDING CONSUMER ROUTING + PREDECESSOR RETIREMENT
-ROLE: Canonical reentry projection for BUILD 11 completion
-AUTHORITY: BUILD 10 closure + Principal ECO-131 correction + ECO-132 accelerated Shape/Move + ECO-133 production commission + Principal Metabolize instruction
-CANONICAL RUNTIME CODE: 1337f8f6072f6d2c31d1916cc0793a67227acd20
-CANONICAL BUILD-11 MIGRATION LEDGER: 20260914072022 / build_11_ordinary_operation_kernel
+STATUS: BUILD 12 GREENFIELD ARTIFACT CORRECTION — CANONICAL DB VERIFIED; CORRECTED PRODUCTION RUNTIME DEPLOYING
+DISPOSITION: FIRST BUILD 12 PHYSICALIZATION REJECTED AS ARCHITECTURE; GREENFIELD CORRECTION QUALIFIED + MERGED; CANONICAL DATABASE CORRECTED; PRODUCTION RUNTIME CUTOVER NOT YET VERIFIED
+ROLE: Canonical reentry projection
+AUTHORITY: Principal source-provenance correction, 2026-09-15 + governing ECB v2 greenfield sources + ADR 007 + PR #43 qualification
+CANONICAL MAIN: cb5592270c332d139133fd8f2b0bd6bfae09cfc0
 CANONICAL BRAIN: Supabase ecb-v2-brain / vezxivrvhakclxuvxzso
-QUALIFIED REPLACEMENT RUNTIME: Vercel ecb-v2 / dpl_BdDfGRKTtF3baWhpnF7iz68Cs39H
-FINAL LIVE VERIFIER RUN: 34837576050 / job 103958672920
+CANONICAL BUILD-12 CORRECTION: build_12_greenfield_artifact_correction / VERIFIED
+QUALIFIED CORRECTED PREVIEW: Vercel dpl_Syrvnb9pC2vypfm77v5XmNMx6gKs / READY
+CORRECTED PRODUCTION DEPLOYMENT: Vercel dpl_BEU5JDYCZv9reQgoQepmi5UksAQZ / DEPLOYING AT LAST VERIFICATION
 CANONICAL_BUILD7_DATABASE_INSTALL=NONE
 CANONICAL_BUILD8_DATABASE_INSTALL=NONE
 CANONICAL_BUILD9_DATABASE_INSTALL=NONE
 CANONICAL_BUILD10_DATABASE_INSTALL=NONE
 CANONICAL_BUILD11_DATABASE_INSTALL=VERIFIED
+CANONICAL_BUILD12_GREENFIELD_ARTIFACT_INSTALL=VERIFIED
 REAL_MASTER_KEY_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
 
-# Current disposition
+# Read this first
 
-BUILD 11 — Ordinary Operation Structural Kernel — has crossed repository qualification and canonical production database installation.
+ECB v2 remains greenfield.
 
-The canonical BUILD 11 database migration is installed exactly once on `ecb-v2-brain`, and the confined replacement ordinary MCP runtime is live-qualified on Vercel.
+When the Principal says to build a missing capability in ECB v2, derive it explicitly from the governing greenfield architecture before physicalizing it. Do not import ECB v1 merely because it exists. Do not promote a plausible assistant-designed schema merely because it works mechanically.
 
-The final production verifier proved:
+Mechanical success is necessary evidence for implementation; it is not architectural authority.
 
-- wrong bearer rejected with HTTP 401;
-- correct MCP initialize succeeds;
-- transport is stateless with no session header;
-- outward tool inventory is exactly `capture_thought`, `fetch`, `search`;
-- live search succeeds;
-- lexical retrieval available;
-- semantic query embedding available;
-- semantic index complete;
-- degraded = false;
-- repair metadata present.
+For the Build 12 correction, the governing source map is recorded in:
 
-Detailed production evidence and metabolized lessons are recorded in:
+- `docs/architecture-decisions/007-build-12-greenfield-artifact-creation.md`
+- `research/build-12-greenfield-correction/SOURCE_MAP.md`
+- `research/build-12-greenfield-correction/BOUNDARY.md`
 
-`docs/build-receipts/039-build-11-production-runtime-qualified-metabolize.md`
+# Current Build 12 state
 
-# Why BUILD 11 is not yet marked fully closed
+The first Build 12 implementation created a generic Artifact/version-family subsystem with stable keys, type labels, numbered versions, native supersession links, generic provenance/media metadata, and latest-version fetch behavior. It mechanically qualified, but the derivation was wrong: those distinctions were introduced before being traced to the ECB v2 greenfield grammar.
 
-Deployment readiness and consumer routing are distinct states.
+That implementation is historical evidence only. It is not accepted architecture.
 
-The predecessor Supabase Edge Function `open-brain-mcp` remains ACTIVE as a deliberate rollback path because the actual active ChatGPT/custom-app/other consumer endpoint has not yet been independently established as pointing to the new Vercel `/api/mcp` route.
+The Principal clarified that “build it” meant to base the capability explicitly on greenfield work rather than imported legacy or invented structure. PR #43 corrected the physicalization accordingly.
 
-Therefore do not claim that ordinary personal traffic is already using the confined BUILD 11 runtime merely because that runtime is healthy and production-qualified.
+The canonical database now contains the corrected Artifact slice:
 
-BUILD 11 overall closure remains withheld until:
+- `public.text_artifacts`
+- native columns exactly `id`, `content`
+- `id` is also the Artifact's universal Referent identity
+- Artifact rows are immutable
+- Referent `registered_at` supplies registration time; no duplicate Artifact timestamp is invented
+- `public.ecb12_create_artifact(uuid,text)`
+- `public.ecb12_fetch_artifact(uuid)`
+- Build 11 `ordinary_operations` supplies operation identity, exact replay reconciliation, and changed-input conflict
+- direct ordinary table mutation is not granted
 
-1. the actual active consumer endpoint is identified;
-2. it is pointed to the production Vercel `/api/mcp` endpoint without exposing bearer material;
-3. one live ordinary operation through that consumer is verified to reach Vercel;
-4. the predecessor Supabase `open-brain-mcp` is then retired/tombstoned;
-5. currentness is reconciled one final time.
+The corrected database was verified after canonical installation:
 
-Do not reopen Sense or Shape for this. It is the remaining ECO-133 Move seam.
+- old `artifact_objects` absent
+- old `artifact_versions` absent
+- old `create_artifact_version` RPC absent
+- old `fetch_artifact_by_key` RPC absent
+- `text_artifacts` present and empty immediately after correction
+- corrected create/fetch RPCs present
+- both assistant-created semantic-seed Referents removed
 
-# Qualified capability
+# Artifact semantic boundary
 
-BUILD 11 compiles mechanically decidable ordinary-operation correctness into upstream structure so a weak/literal worker does not need to reconstruct what the system can decide itself.
+Current ordinary Artifact capability is intentionally narrow because that is what the greenfield derivation presently supports.
 
-It provides:
+Artifact is a persistent first-class Referent with an exact immutable text representation.
 
-1. stable pre-effect operation identity and exact replay/reconciliation for capture;
-2. same-operation/changed-input conflict;
-3. distinct-operation/same-content preservation;
-4. Thought evidence preservation independent of semantic representation success;
-5. first-class representation Referents with inspectable readiness and deterministic repair;
-6. truthful search coverage and explicit degradation state;
-7. a deterministic PostgreSQL lexical floor behind the same outward `search` affordance;
-8. hybrid semantic ranking using the qualified `Supabase/gte-small` vector space when semantic embedding is available;
-9. narrow ordinary database capability through publishable access + `ECB_ORDINARY_DB_KEY` rather than provider-admin authority;
-10. unchanged outward MCP inventory: `capture_thought`, `search`, `fetch`;
-11. executable replay/concurrency/capability negative controls;
-12. architecture-first physicalization rule encoded in governing text.
+Artifact creation does NOT by itself confer:
 
-# Production architecture now qualified
+- truth;
+- epistemic standing;
+- currentness;
+- applicability;
+- authority;
+- acceptance;
+- authorization;
+- identity with a represented Referent;
+- a supersession/revision relationship to another Artifact.
 
-Canonical brain remains Supabase project `vezxivrvhakclxuvxzso`.
+If a later Artifact revises or supersedes another and that relation matters semantically, represent the relation through the existing Claim/relation grammar when warranted. Do not recreate a competing native relation truth store for convenience.
 
-The confined replacement ordinary runtime is hosted in Vercel project `ecb-v2` (`prj_oevToBKwqj7yHjyQCHs5zevegWCM`). The qualified runtime code is `main@1337f8f6072f6d2c31d1916cc0793a67227acd20`; qualified production deployment is `dpl_BdDfGRKTtF3baWhpnF7iz68Cs39H`.
+`current != newest` remains governing. There is no latest-version Artifact shortcut in the corrected slice.
 
-This host split is intentional capability confinement: the ordinary runtime can use the canonical brain through bounded RPC capability without inheriting Supabase provider-admin/service-role authority merely because it runs beside the database.
+Reopen Artifact physicalization only when an actual operation requires an additional distinction such as non-text payloads, semantic version families, supersession/currentness designation, richer provenance not expressible through existing grammar, or stable human aliases distinct from Referent UUIDs.
 
-# Installation discrepancies metabolized
+# Rejected semantic seed
 
-Production installation exposed ordinary engineering facts that did not reopen the accepted architecture:
+The conversation-derived Artifact formerly stored under:
 
-- Vercel discovers ordinary functions through `/api`, so thin adapters were required.
-- Current `@hono/mcp` peer requirements required MCP SDK/Hono dependency alignment rather than forced installation.
-- Stateless MCP needed to be configured structurally with `sessionIdGenerator: undefined`, not simulated by deleting a header afterward.
-- Node semantic inference required explicit approval of the exact `onnxruntime-node@1.21.0` installer under current npm policy.
-- Transformers.js default cache location was read-only in Vercel; the runtime now configures `/tmp/transformers-cache` before model loading.
-- The lexical floor correctly kept retrieval useful and reported `degraded=true` while semantic inference was unavailable; after the fixes, the unchanged verifier proved `semantic_query_available=true`, `semantic_index_complete=true`, `degraded=false`.
+`semantic-contract.integral-holonic-grammar-core`
 
-These are implementation/environment corrections, not new architecture.
+is not canonical and no longer exists in the canonical database.
 
-# Temporary-surface hygiene
+It was derived from conversational reconstruction rather than recovered or derived from governing greenfield sources. Do not recreate it from chat memory, the rejected migration payload, or the old content digest.
 
-Temporary diagnostic/install surfaces are not permanent architecture.
+Any future semantic contract must be recovered or derived from ECB v2 greenfield sources under the appropriate authority, then separately accepted before persistence.
 
-Current state:
+# Repository qualification
 
-- `ecb11-commission`: inert HTTP 410 tombstone;
-- `ecb11-brain-key-digest`: inert HTTP 410 tombstone;
-- `ecb11-embed-reference`: inert HTTP 410 tombstone;
-- `ecb11-vercel-live-verify`: inert HTTP 410 tombstone.
+PR #43 mechanically reconstructed the exact first Build 12 state—including the rejected conversational seed—then applied the forward correction.
 
-The predecessor `open-brain-mcp` is intentionally not retired yet because it is still the rollback path until consumer routing is proven.
+The passing disposable PostgreSQL 17 path proved:
+
+- the correction gate recognizes the exact rejected state;
+- cleanup aborts if user/semantic dependencies exist;
+- the rejected generic tables and key/version RPCs are removed;
+- Artifact identity is universally Referent-backed;
+- exact text round-trips;
+- same operation + same input replays the same Artifact;
+- same operation + changed input conflicts before another effect;
+- distinct operations with identical text preserve distinct Artifact identities;
+- fetch requires exact Artifact identity and no newest/current inference;
+- native Artifact rows are immutable;
+- ordinary access is confined to bounded create/fetch RPCs;
+- the outward runtime code contains only the corrected Artifact tools.
+
+Passing workflow: BUILD 12 greenfield artifact correction, run `34960153353`, job `104351546947`.
+
+# Ordinary MCP runtime
+
+The corrected runtime code on canonical main advertises the intended ordinary surface:
+
+- `capture_thought`
+- `search`
+- `fetch`
+- `create_artifact`
+- `fetch_artifact`
+
+The corrected preview deployment `dpl_Syrvnb9pC2vypfm77v5XmNMx6gKs` is READY.
+
+At the last verification during reconciliation, the production alias was still serving the rejected seven-tool Build 12 runtime while deployment `dpl_BEU5JDYCZv9reQgoQepmi5UksAQZ` was still deploying. Therefore:
+
+**Do not use ordinary Artifact MCP operations until the public production endpoint is verified to advertise exactly the corrected five-tool surface above.**
+
+The existing Thought operations `capture_thought`, `search`, and `fetch` are unchanged by the Artifact correction.
+
+# BUILD 11 residual state
+
+BUILD 11's database/runtime capability remains valid. The Artifact correction reuses its ordinary-operation and runtime-capability machinery rather than replacing it.
+
+The previously recorded consumer-routing distinction still applies unless newer evidence proves otherwise: deployment readiness does not itself prove which endpoint ChatGPT/custom-app/other ordinary consumers are actually using.
+
+Do not infer consumer cutover merely from a healthy Vercel production deployment.
+
+The predecessor Supabase `open-brain-mcp` should remain a rollback path until actual consumer routing is established and a live ordinary operation proves receipt at Vercel. Retire it only after that proof.
 
 # Residual operation-ID custody
 
-BUILD 11 guarantees exact replay only when the caller supplies the same stable `operation_id` for the same logical capture.
+Build 11 replay semantics still require the caller to supply the same stable `operation_id` for the same logical consequential operation.
 
-The server/database now enforce the algebra once that token is supplied, but generation and retention/reuse of the token remain caller/client-adapter custody. Do not claim that this client responsibility has already been physicalized.
+The server/database enforce replay/conflict once that token is supplied. Generation and retention/reuse of the token remain caller/client-adapter custody unless separately physicalized.
 
-A later client adapter may make that invisible to weak workers; BUILD 11 does not.
+This now applies to both Thought capture and Artifact creation.
 
 # Explicit nonclaims
 
-BUILD 11 still does not install or imply:
+The current system does not establish or install merely through Build 12:
 
-- mandatory classification or ontology;
+- a general document management ontology;
+- a semantic version-family ontology;
+- Artifact supersession/currentness semantics;
+- a canonical Integral holonic semantic contract;
 - automatic semantic promotion;
-- truth/currentness/applicability/standing/authority from capture or retrieval;
-- proactive continuity/resurfacing;
-- generalized policy/workflow machinery;
+- generalized workflow/policy machinery;
 - real Master-Key designation authority;
-- BUILD 8 action authority/effect;
-- BUILD 7–10 canonical database installation;
+- Build 8 action authority/effect;
+- Build 7–10 canonical database installation;
 - iPhone Action Button capture.
-
-# Metabolized control lessons
-
-- Measure capability by credentials/permissions actually held by the runtime, not by its advertised tool list.
-- Treat deployment readiness and consumer routing as different state variables.
-- Treat graceful degradation as both product integrity and diagnostic leverage.
-- Make serverless filesystem/native-install assumptions explicit when they gate required behavior.
-- Encode statelessness at transport construction rather than cosmetically after execution.
-- Retire temporary verification surfaces explicitly.
-- Provider-specific execution can move while durable semantics remain stable if the semantic contract is separately qualified.
 
 # Exact legitimate reentry seam
 
-Resume ECO-133 Move at consumer cutover only.
+First reconcile production runtime deployment:
 
-1. Identify the actual active ordinary MCP consumer/custom-app endpoint.
-2. If it is not already the production Vercel route, change it to the Vercel `/api/mcp` endpoint through the consumer's credential-safe configuration surface.
-3. Run one ordinary live probe through that consumer.
-4. Verify Vercel runtime logs prove receipt.
-5. Retire/tombstone Supabase `open-brain-mcp` only after that proof.
-6. Reconcile BUILD_CHECKOUT, ECO-133, and final closure receipt; then mark BUILD 11 CLOSED.
+1. Verify `dpl_BEU5JDYCZv9reQgoQepmi5UksAQZ` reaches READY or identify its replacement if Vercel supersedes it.
+2. Fetch the public production `/api` endpoint.
+3. Require ordinary tool inventory exactly:
+   `capture_thought`, `search`, `fetch`, `create_artifact`, `fetch_artifact`.
+4. Confirm the rejected `create_artifact_version` and `fetch_artifact_by_key` tools are absent.
+5. Only then declare the Build 12 runtime correction production-qualified.
 
-If routing has already changed outside this session, verify actual state rather than replaying the mutation.
+After that, consumer-routing verification remains a distinct seam. Establish the actual consumer endpoint before claiming ordinary traffic uses Vercel or retiring the predecessor Supabase function.
 
-Do not begin the iPhone capture adapter or another successor build merely because it is nearby. Select the post-BUILD-11 successor only after BUILD 11 closure or by an explicit independent commission.
+Do not recreate the rejected semantic seed. Future semantic-contract work begins from greenfield source recovery/derivation, not from the old conversation artifact.
