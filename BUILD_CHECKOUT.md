@@ -2,7 +2,7 @@ STATUS: BUILD 12 GREENFIELD ARTIFACT CORRECTION — CANONICAL DB + PRODUCTION RU
 DISPOSITION: FIRST BUILD 12 PHYSICALIZATION REJECTED AS ARCHITECTURE; GREENFIELD CORRECTION QUALIFIED, CANONICAL, AND PRODUCTION-VERIFIED
 ROLE: Canonical reentry projection
 AUTHORITY: Principal source-provenance correction, 2026-09-15 + governing ECB v2 greenfield sources + ADR 007 + PR #43 qualification
-CANONICAL MAIN: cb5592270c332d139133fd8f2b0bd6bfae09cfc0
+CANONICAL RUNTIME CODE: cb5592270c332d139133fd8f2b0bd6bfae09cfc0
 CANONICAL BRAIN: Supabase ecb-v2-brain / vezxivrvhakclxuvxzso
 CANONICAL BUILD-12 CORRECTION: build_12_greenfield_artifact_correction / VERIFIED
 QUALIFIED CORRECTED PREVIEW: Vercel dpl_Syrvnb9pC2vypfm77v5XmNMx6gKs / READY
@@ -121,7 +121,7 @@ Passing workflow: BUILD 12 greenfield artifact correction, run `34960153353`, jo
 
 # Ordinary MCP runtime
 
-Canonical main `cb5592270c332d139133fd8f2b0bd6bfae09cfc0` deployed successfully to Vercel production as `dpl_BEU5JDYCZv9reQgoQepmi5UksAQZ`.
+Canonical runtime code `cb5592270c332d139133fd8f2b0bd6bfae09cfc0` deployed successfully to Vercel production as `dpl_BEU5JDYCZv9reQgoQepmi5UksAQZ`.
 
 The public production `/api` endpoint was then fetched and verified to advertise exactly:
 
