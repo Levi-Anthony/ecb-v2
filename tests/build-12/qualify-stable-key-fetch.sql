@@ -10,18 +10,16 @@ select pg_catalog.set_config(
   false
 );
 
+-- Exact stable-key + version lookup works through the ordinary anon surface.
 set role anon;
-select public.ecb12_fetch_artifact_by_key(
-  'build12.qualification.semantic-contract',
-  1
-) as fetched_v1
-\gset
-reset role;
-
 do $$
 declare
-  fetched jsonb := :'fetched_v1'::jsonb;
+  fetched jsonb;
 begin
+  fetched := public.ecb12_fetch_artifact_by_key(
+    'build12.qualification.semantic-contract',
+    1
+  );
   if fetched is null then
     raise exception 'BUILD 12 stable-key fetch returned null for installed Artifact';
   end if;
@@ -37,7 +35,6 @@ begin
 end $$;
 
 -- Unknown stable keys return null rather than silently selecting another Artifact.
-set role anon;
 do $$
 declare
   missing jsonb;
