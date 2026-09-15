@@ -1,4 +1,4 @@
-name: BUILD 12 ordinary versioned artifacts
+name: BUILD 12 greenfield artifact correction
 
 on:
   pull_request:
@@ -9,9 +9,12 @@ on:
       - 'sql/migrations/20260915101000_build_12_artifact_key_fetch.sql'
       - 'sql/migrations/20260915102000_seed_integral_holonic_grammar_semantic_contract_v1.sql'
       - 'sql/migrations/20260915102500_build_12_artifact_key_fetch_fix.sql'
+      - 'sql/migrations/20260915114500_build_12_greenfield_artifact_correction.sql'
       - 'tests/build-12/**'
       - 'server.ts'
       - 'api/**'
+      - 'docs/architecture-decisions/007-build-12-greenfield-artifact-creation.md'
+      - 'research/build-12-greenfield-correction/**'
       - '.github/workflows/build-12-ordinary-versioned-artifacts.yml'
   workflow_dispatch:
 
@@ -66,65 +69,40 @@ jobs:
           psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
           -f tests/build-11/qualify.sql
 
-      - name: Apply BUILD 12 Artifact substrate
-        shell: bash
-        run: >-
-          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
-          -f sql/migrations/20260915090000_build_12_ordinary_versioned_artifacts.sql
-
-      - name: Apply BUILD 12 stable-key lookup
-        shell: bash
-        run: >-
-          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
-          -f sql/migrations/20260915101000_build_12_artifact_key_fetch.sql
-
-      - name: Apply BUILD 12 stable-key corrective migration
-        shell: bash
-        run: >-
-          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
-          -f sql/migrations/20260915102500_build_12_artifact_key_fetch_fix.sql
-
-      - name: Run BUILD 12 Artifact qualification
-        shell: bash
-        run: >-
-          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
-          -f tests/build-12/qualify.sql
-
-      - name: Run stable-key exact-version qualification
-        shell: bash
-        run: >-
-          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
-          -f tests/build-12/qualify-stable-key-fetch.sql
-
-      - name: Install locked semantic definition contract specimen
-        shell: bash
-        run: >-
-          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
-          -f sql/migrations/20260915102000_seed_integral_holonic_grammar_semantic_contract_v1.sql
-
-      - name: Verify semantic contract exact version and digest
+      # Reconstruct the exact first BUILD 12 state that reached canonical production.
+      - name: Reconstruct first BUILD 12 Artifact substrate
         shell: bash
         run: |
           set -euo pipefail
-          result="$(psql -X -At "$BUILD12_DATABASE_URL" <<'SQL'
-          select
-            version.version_number || '|' ||
-            pg_catalog.encode(version.payload_digest, 'hex') || '|' ||
-            pg_catalog.octet_length(pg_catalog.convert_to(version.payload_text,'UTF8')) || '|' ||
-            (version.provenance->>'standing')
-          from public.artifact_objects artifact
-          join public.artifact_versions version on version.artifact_id=artifact.id
-          where artifact.artifact_key='semantic-contract.integral-holonic-grammar-core';
-          SQL
-          )"
-          test "$result" = '1|054b554c463c9aa643e3e8ef7f4de1495aab929bc254b85c2d7fc2c55103c3e2|3403|LOCKED'
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL" -f sql/migrations/20260915090000_build_12_ordinary_versioned_artifacts.sql
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL" -f sql/migrations/20260915101000_build_12_artifact_key_fetch.sql
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL" -f sql/migrations/20260915102500_build_12_artifact_key_fetch_fix.sql
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL" -f sql/migrations/20260915102000_seed_integral_holonic_grammar_semantic_contract_v1.sql
 
-      - name: Verify ordinary runtime advertises Artifact tools
+      - name: Apply greenfield Artifact correction
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f sql/migrations/20260915114500_build_12_greenfield_artifact_correction.sql
+
+      - name: Qualify greenfield Artifact creation and retrieval
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f tests/build-12/qualify-greenfield-correction.sql
+
+      - name: Verify source provenance and runtime surface
         shell: bash
         run: |
           set -euo pipefail
+          grep -q 'Artifact is a logical primitive' docs/architecture-decisions/007-build-12-greenfield-artifact-creation.md
           grep -q "registerTool('create_artifact'" server.ts
-          grep -q "registerTool('create_artifact_version'" server.ts
           grep -q "registerTool('fetch_artifact'" server.ts
-          grep -q "registerTool('fetch_artifact_by_key'" server.ts
-          grep -q "version: '0.3.0'" server.ts
+          if grep -q "registerTool('create_artifact_version'" server.ts; then
+            echo 'unearned create_artifact_version tool survived' >&2
+            exit 1
+          fi
+          if grep -q "registerTool('fetch_artifact_by_key'" server.ts; then
+            echo 'unearned fetch_artifact_by_key tool survived' >&2
+            exit 1
+          fi
