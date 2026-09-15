@@ -47,6 +47,7 @@ This protocol operationalizes the installed grammar. It does not create new defi
 
   return json(200,{
     operation:'integral_ingestion_v3_fixed_proof',
+    source_bundle_id:'ecb-ingestion-v3-proof',
     case:name,
     pinned_source_commit:SOURCE_COMMIT,
     input:{text:raw,sha256:await digest(raw)},
