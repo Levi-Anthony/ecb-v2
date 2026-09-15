@@ -38,20 +38,19 @@ end $$;
 
 -- Unknown stable keys return null rather than silently selecting another Artifact.
 set role anon;
-select public.ecb12_fetch_artifact_by_key(
-  'build12.qualification.does-not-exist',
-  1
-) as missing_result
-\gset
-reset role;
-
 do $$
+declare
+  missing jsonb;
 begin
-  if :'missing_result' <> '' and :'missing_result' <> null then
-    -- psql renders SQL NULL as an empty variable in this \gset use.
+  missing := public.ecb12_fetch_artifact_by_key(
+    'build12.qualification.does-not-exist',
+    1
+  );
+  if missing is not null then
     raise exception 'BUILD 12 unknown stable key did not return null';
   end if;
 end $$;
+reset role;
 
 -- The stable-key surface is bounded like the UUID fetch surface.
 do $$
