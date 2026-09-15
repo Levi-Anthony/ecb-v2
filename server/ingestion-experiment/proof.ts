@@ -1,7 +1,8 @@
 import commission from './commission.local.json' with { type: 'json' };
+import profile from './request-profile-v3.json' with { type: 'json' };
+import grammar from './grammar-runtime-v0.1.json' with { type: 'json' };
 
 const SOURCE_COMMIT='da524a03ace872d2210bea07038834f20e512fe9';
-const RAW_ROOT=`https://raw.githubusercontent.com/Levi-Anthony/ecb-v2/${SOURCE_COMMIT}`;
 const CASES: Record<string,string> = {
   base: 'Jennifer wanted me to call her back.',
   already_discussed: 'Jennifer wanted me to call her back. I already saw Jennifer at the appointment and we talked about what she wanted.',
@@ -10,7 +11,6 @@ const CASES: Record<string,string> = {
 const encoder=new TextEncoder();
 async function digest(text:string){return [...new Uint8Array(await crypto.subtle.digest('SHA-256',encoder.encode(text)))].map(x=>x.toString(16).padStart(2,'0')).join('');}
 function json(status:number, body:unknown){return new Response(JSON.stringify(body),{status,headers:{'Content-Type':'application/json','Cache-Control':'no-store'}});}
-async function fetchJson(path:string){const r=await fetch(`${RAW_ROOT}/${path}`,{headers:{'Cache-Control':'no-cache'},signal:AbortSignal.timeout(15000)});if(!r.ok)throw new Error(`source_fetch_${r.status}`);return await r.json();}
 
 Deno.serve(async (req:Request)=>{
   if(Date.now()>=commission.expiresAt) return json(410,{error:'proof_window_expired'});
@@ -21,13 +21,6 @@ Deno.serve(async (req:Request)=>{
   const apiKey=Deno.env.get('OPENROUTER_API_KEY');
   if(!apiKey) return json(503,{error:'openrouter_not_configured'});
 
-  let profile,grammar;
-  try{
-    [profile,grammar]=await Promise.all([
-      fetchJson('server/ingestion-experiment/request-profile-v3.json'),
-      fetchJson('server/ingestion-experiment/grammar-runtime-v0.1.json'),
-    ]);
-  }catch(error){return json(502,{error:'pinned_source_unavailable',detail:String(error)});}
   if(profile.grammar_id!==grammar.grammar_id||profile.grammar_version!==grammar.version)return json(500,{error:'pinned_grammar_profile_mismatch'});
 
   const operationalProtocol=`
