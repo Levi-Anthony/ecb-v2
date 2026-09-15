@@ -1,12 +1,12 @@
-STATUS: BUILD 12 GREENFIELD ARTIFACT CORRECTION — CANONICAL DB VERIFIED; CORRECTED PRODUCTION RUNTIME DEPLOYING
-DISPOSITION: FIRST BUILD 12 PHYSICALIZATION REJECTED AS ARCHITECTURE; GREENFIELD CORRECTION QUALIFIED + MERGED; CANONICAL DATABASE CORRECTED; PRODUCTION RUNTIME CUTOVER NOT YET VERIFIED
+STATUS: BUILD 12 GREENFIELD ARTIFACT CORRECTION — CANONICAL DB + PRODUCTION RUNTIME VERIFIED
+DISPOSITION: FIRST BUILD 12 PHYSICALIZATION REJECTED AS ARCHITECTURE; GREENFIELD CORRECTION QUALIFIED, CANONICAL, AND PRODUCTION-VERIFIED
 ROLE: Canonical reentry projection
 AUTHORITY: Principal source-provenance correction, 2026-09-15 + governing ECB v2 greenfield sources + ADR 007 + PR #43 qualification
 CANONICAL MAIN: cb5592270c332d139133fd8f2b0bd6bfae09cfc0
 CANONICAL BRAIN: Supabase ecb-v2-brain / vezxivrvhakclxuvxzso
 CANONICAL BUILD-12 CORRECTION: build_12_greenfield_artifact_correction / VERIFIED
 QUALIFIED CORRECTED PREVIEW: Vercel dpl_Syrvnb9pC2vypfm77v5XmNMx6gKs / READY
-CORRECTED PRODUCTION DEPLOYMENT: Vercel dpl_BEU5JDYCZv9reQgoQepmi5UksAQZ / DEPLOYING AT LAST VERIFICATION
+QUALIFIED CORRECTED PRODUCTION: Vercel dpl_BEU5JDYCZv9reQgoQepmi5UksAQZ / READY + PUBLIC SURFACE VERIFIED
 CANONICAL_BUILD7_DATABASE_INSTALL=NONE
 CANONICAL_BUILD8_DATABASE_INSTALL=NONE
 CANONICAL_BUILD9_DATABASE_INSTALL=NONE
@@ -30,6 +30,7 @@ For the Build 12 correction, the governing source map is recorded in:
 - `docs/architecture-decisions/007-build-12-greenfield-artifact-creation.md`
 - `research/build-12-greenfield-correction/SOURCE_MAP.md`
 - `research/build-12-greenfield-correction/BOUNDARY.md`
+- `docs/build-receipts/040-build-12-greenfield-artifact-correction.md`
 
 # Current Build 12 state
 
@@ -120,7 +121,9 @@ Passing workflow: BUILD 12 greenfield artifact correction, run `34960153353`, jo
 
 # Ordinary MCP runtime
 
-The corrected runtime code on canonical main advertises the intended ordinary surface:
+Canonical main `cb5592270c332d139133fd8f2b0bd6bfae09cfc0` deployed successfully to Vercel production as `dpl_BEU5JDYCZv9reQgoQepmi5UksAQZ`.
+
+The public production `/api` endpoint was then fetched and verified to advertise exactly:
 
 - `capture_thought`
 - `search`
@@ -128,13 +131,9 @@ The corrected runtime code on canonical main advertises the intended ordinary su
 - `create_artifact`
 - `fetch_artifact`
 
-The corrected preview deployment `dpl_Syrvnb9pC2vypfm77v5XmNMx6gKs` is READY.
+The rejected `create_artifact_version` and `fetch_artifact_by_key` tools are absent.
 
-At the last verification during reconciliation, the production alias was still serving the rejected seven-tool Build 12 runtime while deployment `dpl_BEU5JDYCZv9reQgoQepmi5UksAQZ` was still deploying. Therefore:
-
-**Do not use ordinary Artifact MCP operations until the public production endpoint is verified to advertise exactly the corrected five-tool surface above.**
-
-The existing Thought operations `capture_thought`, `search`, and `fetch` are unchanged by the Artifact correction.
+Therefore the Build 12 greenfield Artifact correction is production-qualified at the runtime surface.
 
 # BUILD 11 residual state
 
@@ -142,7 +141,7 @@ BUILD 11's database/runtime capability remains valid. The Artifact correction re
 
 The previously recorded consumer-routing distinction still applies unless newer evidence proves otherwise: deployment readiness does not itself prove which endpoint ChatGPT/custom-app/other ordinary consumers are actually using.
 
-Do not infer consumer cutover merely from a healthy Vercel production deployment.
+Do not infer consumer cutover merely from the healthy Vercel production deployment.
 
 The predecessor Supabase `open-brain-mcp` should remain a rollback path until actual consumer routing is established and a live ordinary operation proves receipt at Vercel. Retire it only after that proof.
 
@@ -171,15 +170,14 @@ The current system does not establish or install merely through Build 12:
 
 # Exact legitimate reentry seam
 
-First reconcile production runtime deployment:
+The Build 12 Artifact implementation correction itself is complete and production-qualified.
 
-1. Verify `dpl_BEU5JDYCZv9reQgoQepmi5UksAQZ` reaches READY or identify its replacement if Vercel supersedes it.
-2. Fetch the public production `/api` endpoint.
-3. Require ordinary tool inventory exactly:
-   `capture_thought`, `search`, `fetch`, `create_artifact`, `fetch_artifact`.
-4. Confirm the rejected `create_artifact_version` and `fetch_artifact_by_key` tools are absent.
-5. Only then declare the Build 12 runtime correction production-qualified.
+The next unresolved operational seam is separate: establish actual ordinary-consumer routing before claiming traffic uses Vercel or retiring the predecessor Supabase runtime.
 
-After that, consumer-routing verification remains a distinct seam. Establish the actual consumer endpoint before claiming ordinary traffic uses Vercel or retiring the predecessor Supabase function.
+1. Identify the actual active ordinary MCP consumer/custom-app endpoint.
+2. Confirm whether it points to the production Vercel `/api/mcp` route.
+3. Run one ordinary live probe through that consumer.
+4. Verify Vercel runtime logs prove receipt.
+5. Only then retire/tombstone the predecessor Supabase `open-brain-mcp` if no longer required as rollback.
 
 Do not recreate the rejected semantic seed. Future semantic-contract work begins from greenfield source recovery/derivation, not from the old conversation artifact.
