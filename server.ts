@@ -359,6 +359,13 @@ const runtime = {
       p_version_number: versionNumber ?? null,
     }, 'artifact_fetch_failed');
   },
+
+  async fetchArtifactByKey(artifactKey: string, versionNumber?: number) {
+    return rpc<unknown | null>('ecb12_fetch_artifact_by_key', {
+      p_artifact_key: artifactKey,
+      p_version_number: versionNumber ?? null,
+    }, 'artifact_fetch_failed');
+  },
 };
 
 function buildServer(): McpServer {
@@ -504,6 +511,24 @@ function buildServer(): McpServer {
     }
   });
 
+  server.registerTool('fetch_artifact_by_key', {
+    title: 'Fetch Artifact by Key',
+    description:
+      'Fetch an Artifact by stable artifact_key. Supply version_number for semantic or other hard dependencies so the caller does not silently drift to a later representation.',
+    annotations: { readOnlyHint: true },
+    inputSchema: {
+      artifact_key: z.string().trim().min(1),
+      version_number: z.number().int().min(1).optional(),
+    },
+  }, async ({ artifact_key, version_number }) => {
+    try {
+      const artifact = await runtime.fetchArtifactByKey(artifact_key, version_number);
+      return artifact ? result(artifact) : failure('not_found');
+    } catch (error) {
+      return operationFailure(error, 'artifact_fetch_failed');
+    }
+  });
+
   return server;
 }
 
@@ -521,6 +546,7 @@ app.get('/', (context) => context.json({
     'create_artifact',
     'create_artifact_version',
     'fetch_artifact',
+    'fetch_artifact_by_key',
   ],
   provider_admin_credentials_required: false,
 }));
