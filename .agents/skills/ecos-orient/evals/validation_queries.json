@@ -1,0 +1,10 @@
+[
+  {"query":"Pick up this ECOS project cold. Determine the live focal system, operative purpose, source precedence, unresolved decision surface, and smallest warranted place to continue.","should_trigger":true},
+  {"query":"The ticket title says migration, but the prior session hints the real issue is governance. Reconstruct only enough current context to determine what this work actually is.","should_trigger":true},
+  {"query":"I am handing this repository to a new worker. First establish which build and phase are live, what authority exists, and which nearby-looking work is out of scope.","should_trigger":true},
+  {"query":"Resume the interrupted architecture review without trusting recency. Identify the governing anchors, active Master Key, decision-critical apertures, and legitimate continuation seam.","should_trigger":true},
+  {"query":"The current state and governing intent are both provided below. Produce only the state-versus-intention disposition table and the next discriminator for each gap.","should_trigger":false},
+  {"query":"Package the completed conversation into a durable reentry note that points to authority instead of copying it and preserves all unresolved loops.","should_trigger":false},
+  {"query":"Does a successful Vercel deployment prove that this change is current and authorized? Separate technical capability, verification, standing, and warrant.","should_trigger":false},
+  {"query":"The Move is already fully bounded and authorized. Make the code change, execute the specified regression suite, and report whether its acceptance conditions pass.","should_trigger":false}
+]
