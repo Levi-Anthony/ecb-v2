@@ -144,8 +144,18 @@ export function makeHandler({apiKey,capabilityHash,expiresAt,profile,grammar,fet
     if(compiledGrammar.grammar_id!==profile.grammar_id || compiledGrammar.version!==profile.grammar_version){
       return reply(500,{error:'grammar_profile_mismatch'});
     }
+    const operationalProtocol=`
+OPERATIONAL UNIVERSAL REFERENT WALK — REQUIRED ORDER:
+1. SOURCE LEDGER FIRST. Before classifying anything, traverse the Thought once only for disclosure. Enumerate every explicit named participant, every explicit participant pronoun, every event/action/situation needed to preserve a proposition, and every referent required as an argument of a relation. Do not decide yet whether it is important. A referent may be low-relevance; disclosure is not activation. If a pronoun has a source-grounded antecedent, give it a handle. If its antecedent cannot be resolved, still disclose the unresolved referent rather than dropping it.
+2. RELATION ARGUMENT CHECK. After the ledger exists, inspect each proposition and ensure every subject and object/argument has a disclosed handle. Never write a relation first and omit one of its referents. Preserve event/action referents when doing so prevents a modality collapse. 'wanted X to do Y' contains the wanting relation, the intended actor X, and the desired action Y; it does not report Y as performed.
+3. COVERAGE CHECK. Walk the source again against the ledger. Every materially relevant span must be retained, unresolved, or explicitly excluded with a reason. Do not let a compressed situation description replace its participants, arguments, or action modality.
+4. GRAMMAR PRESSURE IS AN INQUIRY, NOT A LABELING EXERCISE. For each required dimension, state what the current source actually exposes at the Master-Key resolution. Use HIGH only for source-supported signal. Use MINIMAL/LOW when little signal exists. Use UNRESOLVED when a material distinction cannot yet be resolved. Do not manufacture a Stage, Line, Type, directional tendency, level, quadrant, or frame merely to populate the field.
+5. QUESTION FORWARD BINDING. Every LOW or UNRESOLVED material pressure MUST create a QF object in the same pass, and the pressure entry MUST point to that exact QF id. The QF must be the smallest discriminating question, not a generic request for more context. It must state what observable answer would count, a plausible activation scenario, how new evidence re-enters, and what would change downstream. If currentness is the material distinction, ask whether later evidence satisfied, superseded, or left open the earlier state; do not substitute a generic motivation question.
+6. FINAL RECONCILIATION. Before emitting JSON, verify: every relation handle exists; every explicit participant/pronoun is accounted for; desired/performed modality is preserved; every pressure dimension is present; every LOW/UNRESOLVED pressure has a linked QF; and no QF is generic when a sharper structural discriminator is available.
+This protocol operationalizes the installed grammar. It does not create new definitions or promote any claim to canonical standing.`;
     const system=[
       profile.system,
+      operationalProtocol,
       `\nPRINCIPAL_MASTER_KEY:\n${JSON.stringify(profile.master_key)}`,
       `\nINSTALLED_GRAMMAR_CONTRACT:\n${JSON.stringify(compiledGrammar)}`,
     ].join('\n');
