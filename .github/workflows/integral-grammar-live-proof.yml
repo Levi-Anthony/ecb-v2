@@ -10,6 +10,14 @@ jobs:
   proof:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+
+      - name: Use Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
       - name: Collect fixed evidence cases without discarding failures
         shell: bash
         run: |
@@ -25,6 +33,21 @@ jobs:
               echo
             fi
           done
+
+      - name: Re-run exact checked-in mechanical qualification
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {checkAnnotation} from './server/ingestion-experiment/core.mjs';
+          const profile=JSON.parse(fs.readFileSync('./server/ingestion-experiment/request-profile-v3.json','utf8'));
+          for(const name of ['base','already_discussed','gift']){
+            const status=fs.readFileSync(`evidence-v3/${name}.status`,'utf8').trim();
+            const d=JSON.parse(fs.readFileSync(`evidence-v3/${name}.json`,'utf8'));
+            const errors=d.annotation ? checkAnnotation(d.input.text,d.annotation,profile.grammar_version) : ['missing_annotation'];
+            fs.writeFileSync(`evidence-v3/${name}.mechanical.json`,JSON.stringify({http_status:status,errors},null,2)+'\n');
+          }
+          NODE
 
       - name: Upload exact raw evidence even on failure
         if: always()
@@ -42,10 +65,9 @@ jobs:
           const fs=require('fs');
           for(const name of ['base','already_discussed','gift']){
             const status=fs.readFileSync(`evidence-v3/${name}.status`,'utf8').trim();
-            const raw=fs.readFileSync(`evidence-v3/${name}.json`,'utf8');
-            let d;
-            try { d=JSON.parse(raw); } catch { console.log(`CASE ${name} HTTP ${status} invalid-json`); continue; }
-            console.log(`CASE ${name} HTTP ${status}`);
+            const d=JSON.parse(fs.readFileSync(`evidence-v3/${name}.json`,'utf8'));
+            const m=JSON.parse(fs.readFileSync(`evidence-v3/${name}.mechanical.json`,'utf8'));
+            console.log(`CASE ${name} HTTP ${status} mechanics=${JSON.stringify(m.errors)}`);
             if(!d.annotation){ console.log('error',d); continue; }
             const a=d.annotation;
             console.log('referents',a.referents.map(x=>[x.handle,x.excerpt,x.description]));
@@ -60,7 +82,6 @@ jobs:
         run: |
           set -euo pipefail
           for case in base already_discussed gift; do
-            code="$(cat "evidence-v3/${case}.status")"
-            test "$code" = 200
-            node -e "const d=require('./evidence-v3/${case}.json'); if(d.operation!=='integral_ingestion_v3_fixed_proof'||d.canonical_effect!=='NONE'||d.mechanical_errors.length) { console.error(d); process.exit(1) }"
+            test "$(cat "evidence-v3/${case}.status")" = 200
+            node -e "const d=require('./evidence-v3/${case}.json'); const m=require('./evidence-v3/${case}.mechanical.json'); if(d.operation!=='integral_ingestion_v3_fixed_proof'||d.canonical_effect!=='NONE'||m.errors.length) { console.error({d,m}); process.exit(1) }"
           done
