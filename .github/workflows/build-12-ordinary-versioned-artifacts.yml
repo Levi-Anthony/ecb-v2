@@ -8,6 +8,7 @@ on:
       - 'sql/migrations/20260915090000_build_12_ordinary_versioned_artifacts.sql'
       - 'sql/migrations/20260915101000_build_12_artifact_key_fetch.sql'
       - 'sql/migrations/20260915102000_seed_integral_holonic_grammar_semantic_contract_v1.sql'
+      - 'sql/migrations/20260915102500_build_12_artifact_key_fetch_fix.sql'
       - 'tests/build-12/**'
       - 'server.ts'
       - 'api/**'
@@ -76,6 +77,12 @@ jobs:
         run: >-
           psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
           -f sql/migrations/20260915101000_build_12_artifact_key_fetch.sql
+
+      - name: Apply BUILD 12 stable-key corrective migration
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f sql/migrations/20260915102500_build_12_artifact_key_fetch_fix.sql
 
       - name: Run BUILD 12 Artifact qualification
         shell: bash
