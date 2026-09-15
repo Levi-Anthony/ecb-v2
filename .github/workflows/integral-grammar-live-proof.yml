@@ -1,5 +1,6 @@
 name: Integral grammar fixed live provider proof
 
+# Rerun marker: proof endpoint version 3 removes the startup import seam.
 on:
   pull_request:
     paths:
