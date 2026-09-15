@@ -1,0 +1,41 @@
+name: Integral holonic grammar Register B qualification
+
+on:
+  pull_request:
+    paths:
+      - 'research/integral-holonic-grammar/**'
+      - 'server/integral-grammar/**'
+      - 'tests/integral-grammar/**'
+      - '.github/workflows/integral-grammar-register-b.yml'
+  workflow_dispatch:
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+
+      - name: Use Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Syntax check evaluator
+        run: node --check server/integral-grammar/evaluate.mjs
+
+      - name: Parse grammar and fixtures
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('research/integral-holonic-grammar/grammar-v0.1.json','utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('tests/integral-grammar/fixtures.json','utf8'))"
+
+      - name: Run semantic discriminator qualification
+        run: node --test tests/integral-grammar/qualify.test.mjs
+
+      - name: Verify source-map and explicit-open seams survive
+        run: |
+          grep -q 'ECO-93 — centralized grammar / localized schema' research/integral-holonic-grammar/SOURCE_MAP.md
+          grep -q 'UL — RATIFIED' research/integral-holonic-grammar/SOURCE_MAP.md
+          grep -q 'UR / LL / LR exact current definitions' research/integral-holonic-grammar/SOURCE_MAP.md
+          grep -q 'PRINCIPAL_SHARPENING_REGISTER_B_HYPOTHESIS' research/integral-holonic-grammar/grammar-v0.1.json
+          grep -q 'REQUIRED_DEFINITION_OPEN' research/integral-holonic-grammar/grammar-v0.1.json
