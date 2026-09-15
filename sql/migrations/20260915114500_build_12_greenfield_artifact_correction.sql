@@ -256,11 +256,15 @@ begin
         using errcode = '23505';
     end if;
 
-    select artifact.*, referent.registered_at
-    into strict existing_artifact, existing_registered_at
+    select artifact.*
+    into strict existing_artifact
     from public.text_artifacts as artifact
-    join public.referents as referent on referent.id = artifact.id
     where artifact.id = existing_operation.result_referent_id;
+
+    select referent.registered_at
+    into strict existing_registered_at
+    from public.referents as referent
+    where referent.id = existing_operation.result_referent_id;
 
     return query
     select
