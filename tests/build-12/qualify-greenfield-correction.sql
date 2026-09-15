@@ -158,13 +158,16 @@ begin
 end;
 $$;
 
--- Fetch is exact-ID only; there is no newest/current/version-family shortcut.
+-- Resolve the test Artifact under owner custody, then prove ordinary fetch needs
+-- only that Artifact identity and does not require access to the private operation ledger.
+select result_referent_id as fetch_artifact_id
+from public.ordinary_operations
+where id='12a11111-aaaa-4121-8121-111111111111'::uuid
+\gset
+
 set role anon;
 select fetched.*
-from public.ecb12_fetch_artifact(
-  (select result_referent_id from public.ordinary_operations
-   where id='12a11111-aaaa-4121-8121-111111111111'::uuid)
-) as fetched;
+from public.ecb12_fetch_artifact(:'fetch_artifact_id'::uuid) as fetched;
 reset role;
 
 -- Native Artifact records are immutable even to owner-level direct mutation.
