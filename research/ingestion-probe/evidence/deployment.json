@@ -1,0 +1,32 @@
+{
+  "id": "c0a36ea8-4682-44f0-bac5-803a98908127",
+  "slug": "ecb-ingestion-experiment",
+  "name": "ecb-ingestion-experiment",
+  "status": "ACTIVE",
+  "version": 2,
+  "created_at": 1789457070457,
+  "updated_at": 1789457520642,
+  "verify_jwt": false,
+  "import_map": false,
+  "entrypoint_path": "/tmp/user_fn_lqbrzoicorehwidkdhoi_c0a36ea8-4682-44f0-bac5-803a98908127_2/source/index.ts",
+  "ezbr_sha256": "e32d33b708621ec33bc3b88f88fa82c90ae93e224da939902fab354a5b93e2ee",
+  "file_match": [
+    {
+      "name": "index.ts",
+      "exact_match": true
+    },
+    {
+      "name": "core.mjs",
+      "exact_match": true
+    },
+    {
+      "name": "request-profile.json",
+      "exact_match": true
+    },
+    {
+      "name": "commission.local.json",
+      "exact_match": true
+    }
+  ],
+  "access_expires_at_ms": 1789460666113
+}

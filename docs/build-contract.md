@@ -30,6 +30,50 @@ Separate harvesting from rebuilding.
 
 Reopen the build boundary when a real vertical slice cannot be implemented without violating an invariant, repeatedly reconstructing a distinction that has clearly earned persistence, or leaving a ratified mechanically decidable architectural obligation dependent on discretionary reasoning.
 
+## Register B — bounded learning through action
+
+Principal-authorized disposition, 2026-09-15. Provenance and scope:
+[`research/ingestion-probe/COMMISSION.md`](../research/ingestion-probe/COMMISSION.md).
+
+Register B optimizes for reliable learning under action. Prefer a physical probe over further
+abstract resolution when the next uncertainty can be discriminated by a Move satisfying this floor:
+
+| Condition | Required basis before the Move |
+|---|---|
+| Principal intent stable | Recoverable focal inquiry, intended outcome, and exclusions. |
+| Authority sufficient | The actual actor, operation, and affected surface are within the existing commission. |
+| Effect bounded | Identified targets, permitted mutations, and execution limit. |
+| Outcome observable | A retained observation that distinguishes the prediction from its failure. |
+| Failure acceptable or recoverable | A declared loss bound or tested rollback/recovery route. |
+| Result interpretable | Known inputs, method, comparison, and limits on the conclusion. |
+
+An unresolved question blocks this Move only if its alternatives can compromise principal intent,
+authority, safety, observability, recoverability, interpretation, or the evidence's ability to
+discriminate the active hypothesis. Otherwise preserve it through Question Forward and proceed.
+Determine whether each material question is best answered by reasoning, retrieval, observation, or
+intervention; Move may itself be the epistemic instrument. Shape need only establish this floor for
+the next intervention, not exhaust the subject. This does not remove separately governing human
+phase gates or authorize a transition outside the active commission.
+
+Before intervention, retain the hypothesis, prediction, effect boundary, observations to collect,
+failure conditions, and stopping condition. After intervention, compare prediction with observation
+and disposition the hypothesis as strengthened, weakened, falsified, or instrumentation insufficient;
+select another bounded probe only where an identified remaining question warrants it. Do not return
+automatically to comprehensive Shape.
+
+An observed missing tool that prevents an authorized operation is itself evidence sufficient to
+commission and build a bounded instrument for that operation; repeated failures, recurrence counts,
+or a completed ontology are not prerequisites. Prefer that direct capability over accumulating
+manual workarounds. Apply the same effect, authority, observability, recovery, and interpretation
+floor to the tool. This does not authorize bypassing an access restriction or confer standing on the
+tool's output. Keep the instrument revisable as its use produces evidence.
+
+Existing evidence, standing, authority, lineage, proof-sensitivity, and recovery disciplines remain
+unchanged. Required Integral/QLLST and relational/directional capacities cannot be removed because a
+small probe did not exercise them. Architectural capacity, local resolution, chosen procedure, and
+physical representation remain distinct. Success of a probe does not promote its representation,
+grant action authority, or establish an untested architectural claim.
+
 ## Lineage
 
 ECB v2 is not a rewrite of ECB v1.
