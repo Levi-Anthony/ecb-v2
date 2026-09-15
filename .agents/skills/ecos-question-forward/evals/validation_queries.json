@@ -1,0 +1,10 @@
+[
+  {"query":"We know this matters eventually but not before the upstream identity model changes. Preserve a dormant, answerable question with a dependency-based wake condition.","should_trigger":true},
+  {"query":"The evidence is genuinely contradictory and no authorized adjudicator is available today. State what remains safe, what is blocked, and exactly where resolution must resume.","should_trigger":true},
+  {"query":"Stop trying to complete the matrix by invention. Represent the empty cell as an unresolved question whose alternative answers have different consequences.","should_trigger":true},
+  {"query":"This inquiry should reopen only if user behavior crosses the agreed threshold. Capture the threshold, provenance, current disposition, and return route.","should_trigger":true},
+  {"query":"The needed logs are attached now. Analyze them and resolve whether the retry path is idempotent.","should_trigger":false},
+  {"query":"Create an ordinary project backlog with due dates and owners for these ten already-decided tasks.","should_trigger":false},
+  {"query":"Audit whether the newest successful receipt has the authority and verification sensitivity required to promote the claim.","should_trigger":false},
+  {"query":"The phase boundary and acceptance conditions are settled. Execute the Move rather than preserving it as an open question.","should_trigger":false}
+]
