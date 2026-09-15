@@ -1,9 +1,11 @@
 name: Integral grammar fixed live provider proof
 
-# Rerun marker: proof endpoint version 3 removes the startup import seam.
 on:
   pull_request:
     paths:
+      - 'research/integral-holonic-grammar/**'
+      - 'server/ingestion-experiment/**'
+      - 'server/installation/ecb-ingestion-v3-proof/**'
       - '.github/workflows/integral-grammar-live-proof.yml'
   workflow_dispatch:
 
@@ -84,5 +86,5 @@ jobs:
           set -euo pipefail
           for case in base already_discussed gift; do
             test "$(cat "evidence-v3/${case}.status")" = 200
-            node -e "const d=require('./evidence-v3/${case}.json'); const m=require('./evidence-v3/${case}.mechanical.json'); if(d.operation!=='integral_ingestion_v3_fixed_proof'||d.canonical_effect!=='NONE'||m.errors.length) { console.error({d,m}); process.exit(1) }"
+            node -e "const d=require('./evidence-v3/${case}.json'); const m=require('./evidence-v3/${case}.mechanical.json'); if(d.operation!=='integral_ingestion_v3_fixed_proof'||d.source_bundle_id!=='ecb-ingestion-v3-proof'||d.canonical_effect!=='NONE'||m.errors.length) { console.error({d,m}); process.exit(1) }"
           done
