@@ -1,0 +1,48 @@
+name: Integral grammar fixed live provider proof
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/integral-grammar-live-proof.yml'
+  workflow_dispatch:
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call fixed evidence cases
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence-v3
+          base='https://lqbrzoicorehwidkdhoi.supabase.co/functions/v1/ecb-ingestion-v3-proof'
+          for case in base already_discussed gift; do
+            code="$(curl --retry 2 --retry-delay 1 --silent --show-error --output "evidence-v3/${case}.json" --write-out '%{http_code}' "${base}?case=${case}")"
+            echo "${case}: HTTP ${code}"
+            test "$code" = 200
+            node -e "const d=require('./evidence-v3/${case}.json'); if(d.operation!=='integral_ingestion_v3_fixed_proof'||d.canonical_effect!=='NONE'||d.mechanical_errors.length) { console.error(d); process.exit(1) }"
+          done
+
+      - name: Summarize decision-bearing observations
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          for(const name of ['base','already_discussed','gift']){
+            const d=JSON.parse(fs.readFileSync(`evidence-v3/${name}.json`,'utf8'));
+            const a=d.annotation;
+            console.log(`CASE ${name}`);
+            console.log('referents',a.referents.map(x=>[x.handle,x.excerpt,x.description]));
+            console.log('relations',a.relations.map(x=>[x.subject_handle,x.relation,x.object_handle,x.modality]));
+            console.log('qf',a.questions_forward.map(x=>[x.target_dimension,x.question]));
+            console.log('pressure',a.grammar_pressure.map(x=>[x.dimension,x.signal,x.question_forward_id]));
+          }
+          NODE
+
+      - name: Upload exact raw evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: integral-ingestion-v3-live-proof
+          path: evidence-v3/*.json
+          if-no-files-found: error
+          retention-days: 7
