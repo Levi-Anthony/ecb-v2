@@ -1,7 +1,7 @@
-import profile from './request-profile-v3.json' with { type: 'json' };
-import grammar from './grammar-runtime-v0.1.json' with { type: 'json' };
+import profile from '../../ingestion-experiment/request-profile-v3.json' with { type: 'json' };
+import grammar from '../../ingestion-experiment/grammar-runtime-v0.1.json' with { type: 'json' };
 
-const SOURCE_COMMIT='__SOURCE_COMMIT__';
+const SOURCE_BUNDLE_ID='ecb-ingestion-v3-proof';
 const CASES: Record<string,string> = {
   base: 'Jennifer wanted me to call her back.',
   already_discussed: 'Jennifer wanted me to call her back. I already saw Jennifer at the appointment and we talked about what she wanted.',
@@ -41,5 +41,5 @@ This protocol operationalizes the installed grammar. It does not create new defi
   if(choice?.finish_reason!=='stop') return json(502,{error:'incomplete_generation',finish_reason:choice?.finish_reason??null});
   let annotation;
   try{annotation=JSON.parse(choice.message.content);}catch{return json(502,{error:'invalid_provider_json',content:String(choice?.message?.content??'').slice(0,2000)});}
-  return json(200,{operation:'integral_ingestion_v3_fixed_proof',case:name,pinned_source_commit:SOURCE_COMMIT,input:{text:raw,sha256:await digest(raw)},grammar:{id:grammar.grammar_id,version:grammar.version,sha256:await digest(JSON.stringify(grammar))},master_key:profile.master_key,request_sha256:await digest(JSON.stringify(request)),model:data.model??profile.request.model,provider:data.provider??null,usage:data.usage??null,annotation,semantic_standing:'UNASSESSED',canonical_effect:'NONE',qualification_limit:'Exact checked-in mechanical qualification is applied by the GitHub proof workflow after transport.'});
+  return json(200,{operation:'integral_ingestion_v3_fixed_proof',case:name,source_bundle_id:SOURCE_BUNDLE_ID,input:{text:raw,sha256:await digest(raw)},grammar:{id:grammar.grammar_id,version:grammar.version,sha256:await digest(JSON.stringify(grammar))},master_key:profile.master_key,request_sha256:await digest(JSON.stringify(request)),model:data.model??profile.request.model,provider:data.provider??null,usage:data.usage??null,annotation,semantic_standing:'UNASSESSED',canonical_effect:'NONE',qualification_limit:'Exact checked-in mechanical qualification is applied by the GitHub proof workflow after transport.'});
 });
