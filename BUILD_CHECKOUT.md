@@ -1,21 +1,20 @@
-STATUS: BUILD 12 GREENFIELD ARTIFACT CORRECTION — CANONICAL DB + PRODUCTION RUNTIME VERIFIED
-DISPOSITION: FIRST BUILD 12 PHYSICALIZATION REJECTED AS ARCHITECTURE; GREENFIELD CORRECTION QUALIFIED, CANONICAL, AND PRODUCTION-VERIFIED
+STATUS: ADJACENT ECO-138 / ECO-140 — CANONICAL DB + PRODUCTION RUNTIME VERIFIED
+DISPOSITION: UNIVERSAL ADMISSION + ACTIVE DISPOSITION + SHAPED NEXT-ACTION CURRENTNESS INSTALLED; BUILD 12 REMAINS VERIFIED SUBSTRATE
 ROLE: Canonical reentry projection
-AUTHORITY: Principal source-provenance correction, 2026-09-15 + governing ECB v2 greenfield sources + ADR 007 + PR #43 qualification
-CANONICAL RUNTIME CODE: cb5592270c332d139133fd8f2b0bd6bfae09cfc0
+AUTHORITY: Principal ECO-137/138/139/140 commissions + governing ECB v2 greenfield sources + qualified repository and live-install proof
+CANONICAL RUNTIME CODE: 24e39d3c62981030a1c3f955e7a39745b8490f76
 CANONICAL BRAIN: Supabase ecb-v2-brain / vezxivrvhakclxuvxzso
 CANONICAL BUILD-12 CORRECTION: build_12_greenfield_artifact_correction / VERIFIED
-QUALIFIED CORRECTED PREVIEW: Vercel dpl_Syrvnb9pC2vypfm77v5XmNMx6gKs / READY
-QUALIFIED CORRECTED PRODUCTION: Vercel dpl_BEU5JDYCZv9reQgoQepmi5UksAQZ / READY + PUBLIC SURFACE VERIFIED
+QUALIFIED CURRENT PRODUCTION: Vercel dpl_EujYK6AZKsVsQATrA43H3c7bCgUd / READY / main@24e39d3c62981030a1c3f955e7a39745b8490f76
 CANONICAL_BUILD7_DATABASE_INSTALL=NONE
 CANONICAL_BUILD8_DATABASE_INSTALL=NONE
 CANONICAL_BUILD9_DATABASE_INSTALL=NONE
 CANONICAL_BUILD10_DATABASE_INSTALL=NONE
 CANONICAL_BUILD11_DATABASE_INSTALL=VERIFIED
 CANONICAL_BUILD12_GREENFIELD_ARTIFACT_INSTALL=VERIFIED
-ADJACENT_ECO138_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=UNVERIFIED
-ADJACENT_ECO140_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=UNVERIFIED
-ADJACENT_REPOSITORY_MAIN=bf991b23c5f991a954d86967a779cf2445e0c36a
+ADJACENT_ECO138_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=VERIFIED
+ADJACENT_ECO140_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=VERIFIED
+ADJACENT_REPOSITORY_MAIN=24e39d3c62981030a1c3f955e7a39745b8490f76
 REAL_MASTER_KEY_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
@@ -35,36 +34,57 @@ For the Build 12 correction, the governing source map is recorded in:
 - `research/build-12-greenfield-correction/BOUNDARY.md`
 - `docs/build-receipts/040-build-12-greenfield-artifact-correction.md`
 
-## Adjacent repository-qualified extensions — production pending
+## Adjacent ECO-138 / ECO-140 — production verified
 
-Two adjacent extensions now exist in canonical repository main, downstream of the production-verified BUILD 12 substrate:
+Two adjacent extensions are now repository-canonical and production-installed downstream of the production-verified BUILD 12 substrate:
 
 - ECO-138 — universal admission provenance + active disposition;
 - ECO-140 — active disposition → shaped next atomic action.
 
-These are **repository-qualified/canonical, not production-installed facts**.
-
 Durable receipts:
 
-- `docs/build-receipts/041-eco-138-admission-disposition-repository-qualified.md`
-- `docs/build-receipts/042-eco-140-shaped-next-action-repository-qualified.md`
+- `docs/build-receipts/041-eco-138-admission-disposition-repository-qualified.md` — repository qualification lineage;
+- `docs/build-receipts/042-eco-140-shaped-next-action-repository-qualified.md` — repository qualification lineage;
+- `docs/build-receipts/043-eco-138-140-production-installed.md` — canonical production-install/live-verification receipt.
 
-Canonical repository state containing both extensions:
+Repository implementation merges:
 
-`bf991b23c5f991a954d86967a779cf2445e0c36a`
+- ECO-138: `b077d7496bed63105453ef22ec69423ffe0593fc`;
+- ECO-140: `bf991b23c5f991a954d86967a779cf2445e0c36a`.
 
-Do not infer canonical Supabase or Vercel installation from repository canonicalization. The last independently production-verified state remains the BUILD 12 correction described below.
+Current canonical main at live verification:
 
-Required live installation order is dependency-sensitive:
+`24e39d3c62981030a1c3f955e7a39745b8490f76`
 
-1. verify the exact current BUILD 12 production predecessor;
-2. install and independently verify ECO-138 admission/disposition migrations;
-3. install and independently verify ECO-140 shaped-projection migration;
-4. deploy/verify canonical runtime code from current main;
-5. run one live ordinary specimen proving evidence → provenance → current disposition → exact ACTION/HOLD recovery;
-6. only after that proof update this checkout to call ECO-138/ECO-140 production-installed.
+Canonical Supabase migration ledger contains, in order:
+
+- `20260916095747 eco138_admission_disposition`;
+- `20260916095800 eco138_disposition_transition_fix`;
+- `20260916100115 eco140_shaped_next_action`.
+
+Live postconditions after ECO-140:
+
+- 14 Thoughts;
+- 14 exact current disposition heads;
+- 14 exact current projection bindings;
+- 0 broken current projections;
+- 14 neutral current HOLD projections;
+- 0 fabricated ACTION projections;
+- `eco140_fetch_thought(uuid,text)` present;
+- projection-bearing `eco140_set_thought_disposition(...)` present.
+
+One live exact specimen proves:
+
+`canonical Thought evidence → admission receipt/provenance → exact current disposition revision → exactly one current ACTION/HOLD projection Artifact`.
+
+Specimen Thought `5e8b3c5b-e237-43fe-96e5-8887c56f5f68` recovers admission receipt `2ec94e2c-3819-49d0-87fc-d2b9c7d3d928`, current disposition revision `f010653f-cbeb-473d-b98a-a66624a64066`, disposition `unresolved`, and exactly one current HOLD Artifact `c54789d6-25e3-4cb7-a653-a3fa54e368d6` with a concrete reshaping reentry condition and explicit no-execution-authority boundary.
 
 ECO-140 does not confer action authority. A current shaped ACTION is guidance/current projection only; BUILD 8 authorization/execution boundaries remain separate.
+
+Companion operating laws now both apply:
+
+- `Capture broadly. Think selectively.`
+- `Shape continuously. Execute selectively.`
 
 # Current Build 12 state
 
@@ -153,31 +173,49 @@ The passing disposable PostgreSQL 17 path proved:
 
 Passing workflow: BUILD 12 greenfield artifact correction, run `34960153353`, job `104351546947`.
 
+ECO-138 repository qualification:
+
+- run `35080640126` — PASS;
+- independent BUILD 12 regression `35080640296` — PASS.
+
+ECO-140 repository qualification at `7fd654d3db4df072aa623f5dafe0cf1bd5da3ead`:
+
+- ECO-140 run `35081716208` — PASS;
+- ECO-138 regression `35081716210` — PASS;
+- BUILD 12 regression `35081716104` — PASS.
+
 # Ordinary MCP runtime
 
-Canonical runtime code `cb5592270c332d139133fd8f2b0bd6bfae09cfc0` deployed successfully to Vercel production as `dpl_BEU5JDYCZv9reQgoQepmi5UksAQZ`.
+Current production runtime is Vercel deployment `dpl_EujYK6AZKsVsQATrA43H3c7bCgUd`, READY on `main@24e39d3c62981030a1c3f955e7a39745b8490f76`.
 
-The public production `/api` endpoint was then fetched and verified to advertise exactly:
+The ECO-140 implementation deployment `dpl_5xvinrQzPVWUpeNmtcYXueKSmbCC` was independently READY on `main@bf991b23c5f991a954d86967a779cf2445e0c36a`; the later `24e39d3...` commit changes legibility only and retains that runtime contract.
+
+The ordinary runtime now exposes the bounded inventory:
 
 - `capture_thought`
 - `search`
 - `fetch`
+- `set_thought_disposition`
 - `create_artifact`
 - `fetch_artifact`
 
-The rejected `create_artifact_version` and `fetch_artifact_by_key` tools are absent.
+No planner or executor tool was added.
 
-Therefore the Build 12 greenfield Artifact correction is production-qualified at the runtime surface.
+`capture_thought` establishes custody plus a neutral current HOLD without a planner call.
+
+`fetch` is implemented against ECO-140 cold recovery and resolves evidence, admission provenance, active disposition, and the exact current projection separately.
+
+`set_thought_disposition` requires exact predecessor currentness plus an existing immutable projection Artifact and `ACTION`/`HOLD` kind. A shaped projection does not grant execution authority.
+
+Vercel reported no runtime-error clusters during post-install verification.
 
 # BUILD 11 residual state
 
-BUILD 11's database/runtime capability remains valid. The Artifact correction reuses its ordinary-operation and runtime-capability machinery rather than replacing it.
+BUILD 11's database/runtime capability remains valid. ECO-138/ECO-140 reuse its ordinary-operation and runtime-capability machinery rather than replacing it.
 
-The previously recorded consumer-routing distinction still applies unless newer evidence proves otherwise: deployment readiness does not itself prove which endpoint ChatGPT/custom-app/other ordinary consumers are actually using.
+The connected ECB v2 consumer successfully performed a live fetch after ECO-138/ECO-140 installation. This is evidence that at least one active consumer reaches canonical evidence, but it does not by itself prove mutation-input parity across every client surface.
 
-Do not infer consumer cutover merely from the healthy Vercel production deployment.
-
-The predecessor Supabase `open-brain-mcp` should remain a rollback path until actual consumer routing is established and a live ordinary operation proves receipt at Vercel. Retire it only after that proof.
+The predecessor Supabase `open-brain-mcp` should remain a rollback path until the active ordinary consumer/custom-app mutation surface is explicitly qualified, especially stable `operation_id` custody and the projection-bearing disposition input contract.
 
 # Residual operation-ID custody
 
@@ -185,45 +223,41 @@ Build 11 replay semantics still require the caller to supply the same stable `op
 
 The server/database enforce replay/conflict once that token is supplied. Generation and retention/reuse of the token remain caller/client-adapter custody unless separately physicalized.
 
-This now applies to both Thought capture and Artifact creation.
+This now applies to Thought capture, Artifact creation, and projection-bearing disposition transitions.
 
 # Explicit nonclaims
 
-The current system does not establish or install merely through Build 12:
+The current system does not establish merely through Build 12 + ECO-138 + ECO-140:
 
 - a general document management ontology;
 - a semantic version-family ontology;
-- Artifact supersession/currentness semantics;
+- native Artifact latest/supersession semantics;
 - a canonical Integral holonic semantic contract;
 - automatic semantic promotion;
-- generalized workflow/policy machinery;
+- a generalized workflow/policy engine;
+- autonomous planning or execution;
+- a generalized task manager;
+- a priority optimizer;
+- queue/SLA infrastructure;
 - real Master-Key designation authority;
-- Build 8 action authority/effect;
+- Build 8 real action authority/effect;
 - Build 7–10 canonical database installation;
 - iPhone Action Button capture.
 
-The adjacent repository-qualified ECO-138/ECO-140 extensions also do not establish merely through repository canonicalization:
-
-- production admission/disposition installation;
-- production shaped-action currentness;
-- autonomous planning or execution;
-- action authorization;
-- a generalized task manager or workflow engine.
+A current ACTION projection is current guidance only. It is not entitlement to execute.
 
 # Exact legitimate reentry seam
 
-The Build 12 Artifact implementation correction itself is complete and production-qualified.
+ECO-138 admission/active-disposition installation and ECO-140 system-wide ACTION/HOLD currentness are complete and production-verified.
 
-The immediate adjacent reentry seam is now the live installation/verification sequence recorded above: verify production predecessor → ECO-138 install/proof → ECO-140 install/proof → canonical runtime deployment/proof.
+The next architectural action is **not** to build a planner. Active dispositions begin in truthful neutral HOLD and should be shaped only when an actual operating demand earns semantic expenditure.
 
-The separately pre-existing BUILD 11 consumer-routing question remains distinct: a healthy Vercel production deployment does not by itself establish what endpoint an actual ChatGPT/custom-app/other consumer is using.
+The remaining independent infrastructure seam is consumer/input parity:
 
-After ECO-138/ECO-140 are live-verified:
-
-1. Identify the actual active ordinary MCP consumer/custom-app endpoint.
-2. Confirm whether it points to the production Vercel `/api/mcp` route.
-3. Run one ordinary live probe through that consumer.
-4. Verify Vercel runtime logs prove receipt.
-5. Only then retire/tombstone the predecessor Supabase `open-brain-mcp` if no longer required as rollback.
+1. identify the actual active ordinary MCP/custom-app mutation endpoint(s);
+2. verify the exposed client schema carries stable `operation_id` custody for consequential retries;
+3. verify the client can supply ECO-140 projection-bearing disposition inputs without semantic loss;
+4. run one bounded live mutation probe through that exact consumer and verify Vercel receipt/log evidence;
+5. only then retire/tombstone the predecessor Supabase `open-brain-mcp` if no longer required as rollback.
 
 Do not recreate the rejected semantic seed. Future semantic-contract work begins from greenfield source recovery/derivation, not from the old conversation artifact.
