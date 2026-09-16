@@ -44,6 +44,13 @@ type Disposition = {
   recorded_at: string;
 };
 
+type Projection = {
+  artifact_id: string;
+  kind: 'ACTION' | 'HOLD';
+  content: string;
+  bound_at: string;
+};
+
 type SearchCoverage = {
   total_thoughts: number;
   represented_thoughts: number;
@@ -78,6 +85,7 @@ type FetchedThought = Thought & {
   representation_ready: boolean;
   admission: Admission;
   disposition: Disposition;
+  projection: Projection;
 };
 
 type Artifact = {
@@ -226,7 +234,7 @@ async function embed(text: string): Promise<number[]> {
 }
 
 async function fetchThought(id: string): Promise<FetchedThought | null> {
-  const data = await rpc<unknown[]>('eco138_fetch_thought', {
+  const data = await rpc<unknown[]>('eco140_fetch_thought', {
     p_id: id,
     p_model_id: MODEL_ID,
   }, 'fetch_failed');
@@ -249,6 +257,12 @@ async function fetchThought(id: string): Promise<FetchedThought | null> {
       state: String(row.disposition),
       reentry_condition: nullableString(row.reentry_condition),
       recorded_at: String(row.disposition_recorded_at),
+    },
+    projection: {
+      artifact_id: String(row.projection_artifact_id),
+      kind: String(row.projection_kind) as 'ACTION' | 'HOLD',
+      content: String(row.projection_content),
+      bound_at: String(row.projection_bound_at),
     },
   };
 }
@@ -340,6 +354,9 @@ const runtime = {
       source: String(row.source),
       captured_at: String(row.captured_at),
     };
+    const representation = await representationForCapture(thought);
+    const current = await fetchThought(thought.id);
+    if (!current) throw new BrainOperationError('capture_failed');
     return {
       operation_id: String(row.operation_id),
       replayed: Boolean(row.replayed),
@@ -348,13 +365,9 @@ const runtime = {
         producer_context: nullableString(row.producer_context),
         parent_receipt_id: nullableString(row.parent_operation_id),
       },
-      disposition: {
-        revision_id: String(row.disposition_revision_id),
-        state: String(row.disposition),
-        reentry_condition: nullableString(row.reentry_condition),
-        recorded_at: String(row.disposition_recorded_at),
-      },
-      representation: await representationForCapture(thought),
+      disposition: current.disposition,
+      projection: current.projection,
+      representation,
     };
   },
 
@@ -387,13 +400,17 @@ const runtime = {
     expectedRevisionId: string;
     disposition: string;
     reentryCondition?: string;
+    projectionArtifactId: string;
+    projectionKind: 'ACTION' | 'HOLD';
   }) {
-    const data = await rpc<unknown[]>('eco138_set_thought_disposition', {
+    const data = await rpc<unknown[]>('eco140_set_thought_disposition', {
       p_operation_id: input.operationId,
       p_thought_id: input.thoughtId,
       p_expected_revision_id: input.expectedRevisionId,
       p_disposition: input.disposition,
       p_reentry_condition: input.reentryCondition ?? null,
+      p_projection_artifact_id: input.projectionArtifactId,
+      p_projection_kind: input.projectionKind,
     }, 'disposition_write_failed');
     const row = Array.isArray(data) ? data[0] as Record<string, unknown> | undefined : undefined;
     if (!row) throw new BrainOperationError('disposition_write_failed');
@@ -407,6 +424,11 @@ const runtime = {
         state: String(row.disposition),
         reentry_condition: nullableString(row.reentry_condition),
         recorded_at: String(row.recorded_at),
+      },
+      projection: {
+        artifact_id: String(row.projection_artifact_id),
+        kind: String(row.projection_kind) as 'ACTION' | 'HOLD',
+        bound_at: String(row.projection_bound_at),
       },
     };
   },
@@ -444,12 +466,12 @@ const runtime = {
 };
 
 function buildServer(): McpServer {
-  const server = new McpServer({ name: 'ecb-v2-open-brain', version: '0.4.0' });
+  const server = new McpServer({ name: 'ecb-v2-open-brain', version: '0.5.0' });
 
   server.registerTool('capture_thought', {
     title: 'Capture Thought',
     description:
-      'Transfer custody of one atomic evidence Thought under a stable operation UUID. Optional producer_context and parent_receipt_id preserve known encounter provenance without granting standing or triggering qualification. A neutral active disposition is established automatically.',
+      'Transfer custody of one atomic evidence Thought under a stable operation UUID. Optional producer_context and parent_receipt_id preserve known encounter provenance without granting standing or triggering qualification. A neutral active disposition and explicit HOLD projection are established automatically without invoking a planner.',
     annotations: {
       readOnlyHint: false,
       destructiveHint: false,
@@ -499,7 +521,7 @@ function buildServer(): McpServer {
   server.registerTool('fetch', {
     title: 'Fetch Thought',
     description:
-      'Fetch canonical Thought evidence by Thought UUID or its admission receipt UUID. Returns custody provenance, representation readiness, and the exact current operational disposition separately; none confers truth or authority.',
+      'Fetch canonical Thought evidence by Thought UUID or its admission receipt UUID. Returns custody provenance, representation readiness, the exact current operational disposition, and its exact ACTION/HOLD projection. Projection currentness confers no execution authority.',
     annotations: { readOnlyHint: true },
     inputSchema: { id: z.string().uuid() },
   }, async ({ id }) => {
@@ -514,7 +536,7 @@ function buildServer(): McpServer {
   server.registerTool('set_thought_disposition', {
     title: 'Set Thought Disposition',
     description:
-      'Append a new operational-disposition revision for one Thought using exact predecessor currentness. This records what ECOS is doing with the material now; it does not change the evidence, Claim standing, truth, authority, priority, or route. Preserve a concrete reentry_condition when intentionally deferring work on an unresolved condition.',
+      'Append a new operational-disposition revision using exact predecessor currentness and bind one immutable shaped projection Artifact. projection_kind is ACTION or HOLD; HOLD requires a concrete reentry_condition. A current projection is guidance, not execution authority, truth, standing, priority, or route.',
     annotations: {
       readOnlyHint: false,
       destructiveHint: false,
@@ -527,8 +549,18 @@ function buildServer(): McpServer {
       expected_revision_id: z.string().uuid(),
       disposition: nonBlankText(),
       reentry_condition: z.string().min(1).optional(),
+      projection_artifact_id: z.string().uuid(),
+      projection_kind: z.enum(['ACTION', 'HOLD']),
     },
-  }, async ({ operation_id, thought_id, expected_revision_id, disposition, reentry_condition }) => {
+  }, async ({
+    operation_id,
+    thought_id,
+    expected_revision_id,
+    disposition,
+    reentry_condition,
+    projection_artifact_id,
+    projection_kind,
+  }) => {
     try {
       return result(await runtime.setDisposition({
         operationId: operation_id,
@@ -536,6 +568,8 @@ function buildServer(): McpServer {
         expectedRevisionId: expected_revision_id,
         disposition,
         reentryCondition: reentry_condition,
+        projectionArtifactId: projection_artifact_id,
+        projectionKind: projection_kind,
       }));
     } catch (error) {
       return operationFailure(error, 'disposition_write_failed');
@@ -545,7 +579,7 @@ function buildServer(): McpServer {
   server.registerTool('create_artifact', {
     title: 'Create Artifact',
     description:
-      'Create one immutable text Artifact as a persistent Referent. The exact text is retained as representation content; creation does not confer truth, standing, currentness, relation, acceptance, authority, or authorization.',
+      'Create one immutable text Artifact as a persistent Referent. The exact text is retained as representation content; creation does not confer truth, standing, currentness, relation, acceptance, authority, or authorization. A shaped ACTION/HOLD remains only a candidate until an exact disposition revision binds it.',
     annotations: {
       readOnlyHint: false,
       destructiveHint: false,
