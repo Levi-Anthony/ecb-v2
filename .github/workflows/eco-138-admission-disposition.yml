@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'sql/migrations/20260916023000_eco138_admission_disposition.sql'
+      - 'sql/migrations/20260916023100_eco138_disposition_transition_fix.sql'
       - 'tests/eco-138/**'
       - 'server.ts'
       - 'api/**'
@@ -86,9 +87,10 @@ jobs:
 
       - name: Apply ECO-138 admission/disposition extension
         shell: bash
-        run: >-
-          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL"
-          -f sql/migrations/20260916023000_eco138_admission_disposition.sql
+        run: |
+          set -euo pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL" -f sql/migrations/20260916023000_eco138_admission_disposition.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL" -f sql/migrations/20260916023100_eco138_disposition_transition_fix.sql
 
       - name: Qualify ECO-138 positive and negative controls
         id: eco138_qualify
