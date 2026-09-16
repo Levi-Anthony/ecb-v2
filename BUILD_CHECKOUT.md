@@ -13,6 +13,9 @@ CANONICAL_BUILD9_DATABASE_INSTALL=NONE
 CANONICAL_BUILD10_DATABASE_INSTALL=NONE
 CANONICAL_BUILD11_DATABASE_INSTALL=VERIFIED
 CANONICAL_BUILD12_GREENFIELD_ARTIFACT_INSTALL=VERIFIED
+ADJACENT_ECO138_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=UNVERIFIED
+ADJACENT_ECO140_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=UNVERIFIED
+ADJACENT_REPOSITORY_MAIN=bf991b23c5f991a954d86967a779cf2445e0c36a
 REAL_MASTER_KEY_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
@@ -31,6 +34,37 @@ For the Build 12 correction, the governing source map is recorded in:
 - `research/build-12-greenfield-correction/SOURCE_MAP.md`
 - `research/build-12-greenfield-correction/BOUNDARY.md`
 - `docs/build-receipts/040-build-12-greenfield-artifact-correction.md`
+
+## Adjacent repository-qualified extensions — production pending
+
+Two adjacent extensions now exist in canonical repository main, downstream of the production-verified BUILD 12 substrate:
+
+- ECO-138 — universal admission provenance + active disposition;
+- ECO-140 — active disposition → shaped next atomic action.
+
+These are **repository-qualified/canonical, not production-installed facts**.
+
+Durable receipts:
+
+- `docs/build-receipts/041-eco-138-admission-disposition-repository-qualified.md`
+- `docs/build-receipts/042-eco-140-shaped-next-action-repository-qualified.md`
+
+Canonical repository state containing both extensions:
+
+`bf991b23c5f991a954d86967a779cf2445e0c36a`
+
+Do not infer canonical Supabase or Vercel installation from repository canonicalization. The last independently production-verified state remains the BUILD 12 correction described below.
+
+Required live installation order is dependency-sensitive:
+
+1. verify the exact current BUILD 12 production predecessor;
+2. install and independently verify ECO-138 admission/disposition migrations;
+3. install and independently verify ECO-140 shaped-projection migration;
+4. deploy/verify canonical runtime code from current main;
+5. run one live ordinary specimen proving evidence → provenance → current disposition → exact ACTION/HOLD recovery;
+6. only after that proof update this checkout to call ECO-138/ECO-140 production-installed.
+
+ECO-140 does not confer action authority. A current shaped ACTION is guidance/current projection only; BUILD 8 authorization/execution boundaries remain separate.
 
 # Current Build 12 state
 
@@ -168,11 +202,23 @@ The current system does not establish or install merely through Build 12:
 - Build 7–10 canonical database installation;
 - iPhone Action Button capture.
 
+The adjacent repository-qualified ECO-138/ECO-140 extensions also do not establish merely through repository canonicalization:
+
+- production admission/disposition installation;
+- production shaped-action currentness;
+- autonomous planning or execution;
+- action authorization;
+- a generalized task manager or workflow engine.
+
 # Exact legitimate reentry seam
 
 The Build 12 Artifact implementation correction itself is complete and production-qualified.
 
-The next unresolved operational seam is separate: establish actual ordinary-consumer routing before claiming traffic uses Vercel or retiring the predecessor Supabase runtime.
+The immediate adjacent reentry seam is now the live installation/verification sequence recorded above: verify production predecessor → ECO-138 install/proof → ECO-140 install/proof → canonical runtime deployment/proof.
+
+The separately pre-existing BUILD 11 consumer-routing question remains distinct: a healthy Vercel production deployment does not by itself establish what endpoint an actual ChatGPT/custom-app/other consumer is using.
+
+After ECO-138/ECO-140 are live-verified:
 
 1. Identify the actual active ordinary MCP consumer/custom-app endpoint.
 2. Confirm whether it points to the production Vercel `/api/mcp` route.
