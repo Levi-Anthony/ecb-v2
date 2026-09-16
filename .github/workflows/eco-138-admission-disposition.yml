@@ -91,10 +91,26 @@ jobs:
           -f sql/migrations/20260916023000_eco138_admission_disposition.sql
 
       - name: Qualify ECO-138 positive and negative controls
+        id: eco138_qualify
+        continue-on-error: true
         shell: bash
-        run: >-
-          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL"
-          -f tests/eco-138/qualify.sql
+        run: |
+          set -o pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL" -f tests/eco-138/qualify.sql 2>&1 | tee eco138-qualify.log
+
+      - name: Preserve ECO-138 qualification log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eco138-qualification-log
+          path: eco138-qualify.log
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Fail if ECO-138 qualification failed
+        if: steps.eco138_qualify.outcome != 'success'
+        shell: bash
+        run: exit 1
 
       - name: Verify outward runtime contract remains narrow
         shell: bash
