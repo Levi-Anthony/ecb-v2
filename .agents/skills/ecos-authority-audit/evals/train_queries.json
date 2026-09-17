@@ -1,0 +1,14 @@
+[
+  {"query":"A polished synthesis was committed after the ratified decision. Can the newer artifact be called canonical now, or what promotion evidence is missing?","should_trigger":true},
+  {"query":"The test passed, the database contains the row, and the agent says confidence is high. Separate what is evidenced, verified, current, authorized, and merely technically possible.","should_trigger":true},
+  {"query":"This MCP tool can write the transition directly. Determine whether the caller has warrant to do so and whether capability is being mistaken for permission.","should_trigger":true},
+  {"query":"Audit the claim that the latest retrieved ADR supersedes the older contract. I want the standing and promotion route checked, not a summary of both files.","should_trigger":true},
+  {"query":"A happy-path qualification reports PASS. Check exactly what proposition its controls can discriminate and whether the result supports the asserted standing change.","should_trigger":true},
+  {"query":"The same person authored, verified, and approved this record. Analyze the distinct roles and bases without assuming one identity makes the transition invalid or valid.","should_trigger":true},
+  {"query":"Recover which BUILD phase is live, the active focal object and Master Key, and the smallest legitimate next seam for a fresh session.","should_trigger":false},
+  {"query":"Turn these workshop notes into explicit behavioral requirements while preserving unsupported choices as OPEN.","should_trigger":false},
+  {"query":"Compare the observed runtime behavior with the supplied architectural intention and classify each functional obligation.","should_trigger":false},
+  {"query":"Preserve this unresolved schema question with its current effect, dependency trigger, and route back into Shape.","should_trigger":false},
+  {"query":"Create a handoff for the next session with decisions, source pointers, unresolved conflicts, and the exact reentry instruction.","should_trigger":false},
+  {"query":"Find the most recently modified build receipt and tell me its filename and commit date; do not assess whether it governs anything.","should_trigger":false}
+]
