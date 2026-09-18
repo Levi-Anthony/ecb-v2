@@ -83,19 +83,19 @@ No consequential transition may depend solely on an agent remembering an instruc
 
 ## Structural leverage
 
-Human-ratified governing addition, 2026-09-11 America/Phoenix; clarified by explicit Principal disposition, 2026-09-13 America/Phoenix.
+Human-ratified governing addition, 2026-09-11 America/Phoenix; clarified by explicit Principal dispositions, 2026-09-13 and 2026-09-18 America/Phoenix.
 
 > **Physicalize deterministic liability; preserve semantic freedom where interpretation remains valuable.**
 
-When a decision-bearing obligation is sufficiently stable and mechanically decidable, and the smallest
-physical enforcement materially lowers the probability or consequence of semantic/stochastic failure
-without destroying required information, flexibility, or distinctions, implementation SHOULD place
+When a decision-bearing obligation is sufficiently stable and mechanically decidable, and a physical
+enforcement with a decision-relevant job materially lowers the probability or consequence of semantic/stochastic failure
+without destroying required information, flexibility, distinctions, or the evidence-bearing behavior under test, implementation SHOULD place
 that obligation in physical structure rather than discretionary reasoning.
 
 A ratified architectural obligation can itself establish that stability and decision consequence at the
 active resolution. Physicalization does **not** require prior repeated empirical failure, production
 incidents, or recurrence counts when the governing architecture already fixes the obligation and the
-smallest enforcement is mechanically decidable. Empirical specimens, recurrence, and fault evidence
+enforcement is mechanically decidable. Empirical specimens, recurrence, and fault evidence
 remain valid sources for discovering, sizing, falsifying, or requalifying an obligation; they are not a
 mandatory permission gate for enforcing an obligation that architecture has already settled.
 
@@ -108,9 +108,9 @@ The governing boundary is:
 > **Structure what must not depend on judgment; preserve judgment where structure would destroy information.**
 
 Relocating a required deterministic distinction from mechanically protected structure into generic
-payload, model interpretation, or remembered instruction does not by itself make a candidate smaller.
-A candidate earns simplification credit only if it actually removes the obligation or satisfies the
-same obligation with less machinery without increasing consequential semantic/stochastic liability.
+payload, model interpretation, or remembered instruction does not by itself simplify a candidate.
+A candidate earns simplification credit only if it actually removes an unnecessary obligation or removes
+machinery that has no decision-relevant job, without increasing consequential semantic/stochastic liability or amputating the evidence-bearing behavior under test.
 
 For a proposed physicalization or de-physicalization, the active decision must be able to answer or
 traceably recover:
@@ -120,12 +120,12 @@ traceably recover:
    whether a ratified architectural rule already settles that question;
 3. what liability changes if the physical enforcement is removed;
 4. what useful information or flexibility is lost if the physical enforcement is retained; and
-5. whether a strictly smaller enforcement mechanism preserves the same safety and semantic distinctions.
+5. whether every element of the proposed enforcement has a decision-relevant job, and whether any lower-complexity alternative would preserve the same safety, semantic distinctions, and evidence-bearing behavior.
 
 This invariant does not authorize schema, enums, state machines, privileges, workflows, services,
 policy engines, compiler machinery, or other physical structure merely because a concept is important.
-Physicalization still must be the smallest decision-relevant enforcement justified under the active
-Master Key. Architectural warrant, transactional/integrity pressure, repeated reconstruction, observed
+Physicalization still must have a decision-relevant enforcement job justified under the active
+Master Key; size alone neither warrants nor defeats it. Architectural warrant, transactional/integrity pressure, repeated reconstruction, observed
 failure, and other qualified routes may each supply that justification; no one route is universally
 required. Genericity likewise receives no automatic simplicity credit when equivalent privilege,
 type, order, integrity, reconstruction, or authorization obligations remain and are merely displaced
