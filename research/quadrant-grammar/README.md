@@ -31,11 +31,15 @@ If a repository artifact conflicts with a later governing decision, explicit sup
 
 ## Current progression
 
-`functional contract → ECO-143 bounded semantic qualification → ECO-144 qualified design requirements → ECO-145 portable architecture intake → ECO-146 accepted Architecture Sense → ECO-147 accepted logical Architecture Shape/freeze → separately governed substrate-specific physical design`
+`functional contract → ECO-143 bounded semantic qualification → ECO-144 qualified design requirements → ECO-145 portable architecture intake → ECO-146 accepted Architecture Sense → ECO-147 accepted logical Architecture Shape/freeze → ECO-148 substrate-specific physical design → Register B method reorientation → separately authorized implementation commission`
 
-**Current frontier:** ECO-147 is accepted for continuity. The next legitimate phase is a separately commissioned **substrate-specific physical-design Move**. It must begin from the qualified logical contract, inventory the actual current ECB v2 substrate, map each logical responsibility/contract to existing capabilities where adequate, identify only genuine residual capabilities, and choose physical mechanisms without reopening R01–R10, A–G, CP1–CP6, or Q1–Q7 absent a defined reentry trigger.
+**Current frontier:** ECO-148 completed the substrate-specific physical-design return and selected the current physical implementation basis. Its frozen Markdown editions remain in draft PR #55 as historical/provenance evidence and intentionally preserve the wording and hashes of that return.
 
-Physical design may evaluate current Supabase/Postgres, referent registry, evidence/thought substrate, MCP/tooling, OpenRouter/callable code, Vercel, repository/build controls, and other installed capabilities as evidence and implementation options. Existing technology does not acquire architectural standing merely because it is already installed. Any new vendor or mechanism must be earned by a residual requirement.
+A Principal Register B reorientation on 2026-09-18 supersedes ECO-148's old Gate K/minimality implications for current implementation decisions. Gate K remains historically unclosed and preserved for future Register A qualification; it is not a Register B implementation prerequisite. "Smallest" is not a current architecture/slice/probe/proof/next-Move optimization target.
+
+The next legitimate seam is a **separately authorized Register B implementation commission**. It should implement the evidence-bearing boundary required for actual behavior to discriminate materially different next Moves, while bounding consequential exposure independently through authority, isolation, effect controls, reversibility/recovery, and inspectable receipts. The ECO-148 physical design is the standing implementation basis but remains falsifiable by bounded operational evidence under its defined reentry routes.
+
+Current governing method is carried by `docs/build-contract.md`, `docs/invariants.md`, and the durable Linear reorientation referent `3019bc73-ba4c-49ac-a0b0-90977bd4e713`. Repository presence, draft-PR status, or physical implementation does not independently create semantic standing or authority.
 
 ## Continuity discipline
 
