@@ -2,21 +2,21 @@
 
 18 September 2026. Controlling commission: ECO-148. Parent: ECO-136.
 
-**Disposition: physical-design candidate produced; source-grounded author analytical qualification completed within the limits below. Commissioned completion remains HELD only on Gate K's required fresh-worker check.** Gate K's fresh-worker check is NOT EXECUTED. Principal continuation disposition on 18 September 2026 removed deployment suppression as a publication requirement, so repository review-branch publication is authorized in this continuation.
+**Disposition: physical-design candidate produced; source-grounded author analytical qualification completed within the limits below. Commissioned completion remains HELD only on Gate K's required fresh-worker check.** Gate K's fresh-worker check is NOT EXECUTED. Principal continuation disposition on 18 September 2026 removed deployment suppression as a publication requirement; the required two-file repository review publication is now complete in draft PR #55.
 
-No aggregate PASS, independent transfer result, continuity acceptance, implementation correctness, or runtime conformance is claimed. The execution stops safely before implementation/deployment/runtime mutation. No outcome-determinative upstream semantic/logical conflict was identified; the two holds concern execution of qualification and publication control, not permission to reopen accepted meaning.
+No aggregate PASS, independent transfer result, continuity acceptance, implementation correctness, or runtime conformance is claimed. The execution stops safely before implementation/deployment/runtime mutation. No outcome-determinative upstream semantic/logical conflict was identified; the remaining hold concerns the required independent transfer check, not permission to reopen accepted meaning.
 
 ## 1. Deliverables, identity, and standing
 
 Specification: `Quadrant-Physical-Design-Spec-v0.1.md`.
 
-Final specification SHA-256: `36a728eb8fce7d0514cd4bedc42ae953fa88b7a8698f8b5ac44a6155837ff73f`.
+Final specification SHA-256: `c0d10954968e522222a1b396eede4a7f05650e02a0a6be9c92a8539eef4412dc`.
 
-Final specification byte count: **64,853** UTF-8 bytes.
+Final specification byte count: **64,705** UTF-8 bytes.
 
 The specification has fourteen numbered sections. It contains locally recoverable inherited meanings; actual substrate evidence; reuse/residual alternatives; concrete persistence and interface families; exact history/result recovery; judgment/authority/security boundaries; transaction/failure rules; implementation slices; and the frozen cold-transfer instructions.
 
-Intended repository location for both files is `research/quadrant-grammar/`. Until published on the required review branch, they are staged candidates, not repository-canonical artifacts. Successful attachment/publication identifiers and both final file hashes belong in the concluding ECO-148 coordination receipt after verification. A prepared upload URL, anticipated filename, or this statement alone is not proof that an upload completed. No README advancement or acceptance follows from staging.
+Both files are published for review under `research/quadrant-grammar/` in draft PR #55 on branch `docs/eco-148-quadrant-physical-design`. This closes the commissioned review-publication requirement but does not merge the files to canonical `main`, advance the quadrant README, or establish continuity acceptance. Final branch/head/blob receipts are recorded in ECO-148 coordination after readback verification.
 
 ## 2. Authority and currentness reconciliation
 
@@ -183,7 +183,7 @@ PASS below means **author analytical design judgment** within the recorded sourc
 | K Implementation/test readiness | HELD | Slices and hooks specified; required fresh-worker recovery trial not executed |
 | L No-build scope | PASS - execution boundary | Read-only product inspection and design-document staging only; no implementation/migration/deployment/runtime conformance work |
 
-Required repository publication: **AUTHORIZED** in this continuation and to be completed on the prescribed review-branch/PR route. ECO-148 remains incomplete and unaccepted until Gate K is closed and continuity disposition occurs.
+Required repository publication: **COMPLETED FOR REVIEW** in draft PR #55 on the prescribed branch/PR route. ECO-148 remains incomplete and unaccepted until Gate K is closed and continuity disposition occurs.
 
 ## 11. Cold-transfer record and frozen rubric
 
@@ -210,7 +210,7 @@ A material missing physical decision blocks Gate K. Repair local navigation/desi
 
 **QF-T: Does this exact specification transfer without hidden context?** The discriminating observation is one genuinely fresh worker recovering all ten items or identifying a missing/contradictory physical decision. Current route is an already-authorized environment with a fresh-worker facility, not an unavailable promise here. Until observed, hold Gate K and implementation-readiness acceptance; candidate review and preparation of the test remain permitted. Resume that trial without repeating settled source/design work unless the baseline or finding changes the decision.
 
-**QF-P: CLOSED by Principal disposition for this continuation.** Deployment suppression is not required. Publish the review packet under the existing ECO-148 authorization, verify the exact two-file diff, and keep README unchanged pending acceptance. Ordinary Vercel deployment side effects are not implementation/runtime-conformance evidence.
+**QF-P: CLOSED by Principal disposition and completed publication.** Deployment suppression is not required. Draft PR #55 carries exactly the two ECO-148 review files and the quadrant README remains unchanged pending acceptance. Ordinary Vercel deployment side effects are not implementation/runtime-conformance evidence.
 
 Upstream routes remain exact: changed required behavior -> ECO-144 (U1); persistent clarified generator conflict -> ECO-143 (U2); logical-role/C1-C6 inadequacy -> ECO-147; changed consumer/liveness/surrounding responsibility -> ECO-146/Principal (U3); authority/source conflict -> governing reconciliation (U4); physical failure with coherent meaning -> ECO-148 local repair (U5).
 
@@ -218,12 +218,12 @@ Upstream routes remain exact: changed required behavior -> ECO-144 (U1); persist
 
 At author-return time no GitHub branch, commit, PR, merge, or README/configuration update had been made. No Supabase schema/data/key/policy/extension/migration/Edge Function or Vercel configuration was created or changed. Brain capture and potentially mutating search were not invoked. No production/runtime conformance probe, provider installation, authority promotion, successor commission, or ECO-136 closure was performed. This continuation is authorized to add only the required documentation review branch/PR; README and product/runtime configuration remain unchanged.
 
-The generated Markdown files are design documentation. Local section/token/hash checks verify document integrity/navigation only, not semantic fitness or implementation behavior. Any successful Linear attachments/comments are coordination/staging actions, not canonical publication or acceptance. Final coordination must distinguish successful upload/readback from preparation alone and record the actual final hashes; no earlier unverified filename/size/hash should be reused as evidence.
+The generated Markdown files are design documentation. Local section/token/hash checks verify document integrity/navigation only, not semantic fitness or implementation behavior. GitHub review-branch publication/readback establishes publication of these review artifacts only; Linear attachments/comments remain coordination/staging actions. Neither surface establishes continuity acceptance or implementation/runtime behavior. Final coordination records the actual branch/head/blob/file hashes after verification.
 
 ## 14. Bounded conclusion
 
 The work establishes a substrate-specific candidate that realizes the accepted architecture on inspected current ECB v2 capabilities, exposes existing limits, earns each proposed addition through a concrete residual, and survives the recorded author-level design contrasts after local refinements. It supplies implementable mechanism families, four bounded slices, security/recovery constraints, and the exact cold-transfer contract.
 
-It does not establish completed ECO-148 qualification, independent transfer, repository publication, continuity acceptance, implemented correctness, installed/runtime conformance, general semantic reliability, real action authority, or full ECO-136 closure.
+It does not establish completed ECO-148 qualification, independent transfer, continuity acceptance, implemented correctness, installed/runtime conformance, general semantic reliability, real action authority, or full ECO-136 closure.
 
-**Next work is the authorized two-file review publication, then the held genuinely fresh-worker spec-only trial, followed by governing continuity disposition. Not implementation.**
+**Next work is the held genuinely fresh-worker spec-only trial. If Gate K passes, seek governing continuity disposition. Not implementation.**
