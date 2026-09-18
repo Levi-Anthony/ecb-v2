@@ -72,7 +72,7 @@ tool's output. Keep the instrument revisable as its use produces evidence.
 
 Existing evidence, standing, authority, lineage, proof-sensitivity, and recovery disciplines remain
 unchanged. Required Integral/QLLST and relational/directional capacities cannot be removed because a
-a given probe did not exercise them. Architectural capacity, local resolution, chosen procedure, and
+given probe did not exercise them. Architectural capacity, local resolution, chosen procedure, and
 physical representation remain distinct. Success of a probe does not promote its representation,
 grant action authority, or establish an untested architectural claim.
 
