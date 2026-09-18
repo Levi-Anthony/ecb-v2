@@ -2,187 +2,228 @@
 
 18 September 2026. Controlling commission: ECO-148. Parent: ECO-136.
 
-**Disposition: physical-design candidate produced, author-analytically reviewed, and published for review; commissioned completion HELD only on the required fresh-worker transfer.** Required fresh-worker transfer is NOT EXECUTED. Repository review publication is now present in draft PR #55; no continuity acceptance or implementation/runtime conformance follows from publication.
+**Disposition: physical-design candidate produced; source-grounded author analytical qualification completed within the limits below. Commissioned completion remains HELD only on Gate K's required fresh-worker check.** Gate K's fresh-worker check is NOT EXECUTED. Principal continuation disposition on 18 September 2026 removed deployment suppression as a publication requirement, so repository review-branch publication is authorized in this continuation.
 
-No aggregate PASS, independent transfer, acceptance, implementation correctness, or runtime conformance is claimed. No outcome-determinative upstream semantic/logical conflict was identified. The remaining hold concerns the required independent transfer, not permission to reopen accepted meaning.
+No aggregate PASS, independent transfer result, continuity acceptance, implementation correctness, or runtime conformance is claimed. The execution stops safely before implementation/deployment/runtime mutation. No outcome-determinative upstream semantic/logical conflict was identified; the two holds concern execution of qualification and publication control, not permission to reopen accepted meaning.
 
-## 1. Artifacts and staging standing
+## 1. Deliverables, identity, and standing
 
-The durable Linear specification is [STAGED — Quadrant Physical Design Specification v0.1 — ECO-148](https://linear.app/ecos-ops/document/staged-quadrant-physical-design-specification-v01-eco-148-2c01d81f0be1), document `e69a57c2-8d54-413f-b254-eb5a3945d284`, slug `2c01d81f0be1`.
+Specification: `Quadrant-Physical-Design-Spec-v0.1.md`.
 
-The conversation also supplies two full Markdown deliverables with verified local identities:
+Final specification SHA-256: `36a728eb8fce7d0514cd4bedc42ae953fa88b7a8698f8b5ac44a6155837ff73f`.
 
-| Downloadable Markdown edition | Bytes | SHA-256 |
-| -- | -- | -- |
-| Quadrant-Physical-Design-Spec-v0.1.md | 64,853 | `36a728eb8fce7d0514cd4bedc42ae953fa88b7a8698f8b5ac44a6155837ff73f` |
-| ECO-148-Quadrant-Physical-Design-and-Qualification-Return-2026-09-18.md | 29,462 | `c1cada425d8ccdfef6b450de280651cd2d7e13cbff15ce3cd85dcf502d090f69` |
+Final specification byte count: **64,853** UTF-8 bytes.
 
-These Linear documents are staging editions preserving selected decisions and the qualification record, not claimed byte-identical replicas of the Markdown files. Freeze the actual chosen specification edition and its actual input bytes/hash for cold transfer. Never attribute the downloadable edition's checksum to different Linear-rendered text.
+The specification has fourteen numbered sections. It contains locally recoverable inherited meanings; actual substrate evidence; reuse/residual alternatives; concrete persistence and interface families; exact history/result recovery; judgment/authority/security boundaries; transaction/failure rules; implementation slices; and the frozen cold-transfer instructions.
 
-Both files are now published for review under `research/quadrant-grammar/` on branch `docs/eco-148-quadrant-physical-design` in draft PR #55 against `main@4ecfa4dcad7b40a7eaf150f27e791bf0d77ee746`. The PR diff contains exactly the two ECO-148 documents; the quadrant README is unchanged. Publication is review persistence, not continuity acceptance. Earlier Linear staging and failed attachment PUT remain historical preservation attempts, not repository-canonical evidence.
+Intended repository location for both files is `research/quadrant-grammar/`. Until published on the required review branch, they are staged candidates, not repository-canonical artifacts. Successful attachment/publication identifiers and both final file hashes belong in the concluding ECO-148 coordination receipt after verification. A prepared upload URL, anticipated filename, or this statement alone is not proof that an upload completed. No README advancement or acceptance follows from staging.
 
-## 2. Authority and currentness
+## 2. Authority and currentness reconciliation
 
-Live ECO-148, current ECO-136, accepted ECO-147, and the canonical continuity chain were recovered before mechanism selection. ECO-148 was reread and comments checked before staging; no competing persisted execution return was present. Current ECO-136 accepts ECO-147 and opens ECO-148, superseding older stage-frontier descriptions only where completed. Full URG remains Working.
+Live ECO-148, current ECO-136, accepted ECO-147, and the canonical continuity chain were recovered before selecting physical mechanisms. ECO-148 was reread and its comments checked again before staging; no competing execution return was present. Current ECO-136 explicitly supersedes older stage-frontier descriptions where those steps are now completed, accepts the ECO-147 logical contract, and opens this physical-design Move. Earlier statements are preserved as history, not governing contradictions.
 
-Initial and final canonical main reads agree: repository `Levi-Anthony/ecb-v2`; main `4ecfa4dcad7b40a7eaf150f27e791bf0d77ee746`; tree `94f1b4a42316b944bbfbd7a3ceeee58501f24927`; message `docs: advance quadrant frontier to physical design`.
+Canonical repository input and final main recheck agree:
 
-ECO-147 acceptance comment `eb9c2096-30ba-4f69-a2d3-37cb81382ed3`, `2026-09-18T19:57:21.412Z`, accepts PR Levi-Anthony/ecb-v2#54 at `305abd9e0628c9709c24e2d1fd7b6f2c0a38a8de`. Four-role architecture and C1–C6 are accepted; R01–R10, A–G, CP1–CP6, Q1–Q7 stay governing. The authored contract's older candidate header does not negate later acceptance.
+- repository: `Levi-Anthony/ecb-v2`;
+- main: `4ecfa4dcad7b40a7eaf150f27e791bf0d77ee746`;
+- tree: `94f1b4a42316b944bbfbd7a3ceeee58501f24927`;
+- message: `docs: advance quadrant frontier to physical design`.
 
-Specification section 3 records exact paths/blob identities for README, logical contract, ECO-147 return, ECO-146 Sense, post-ECO-144 descent, invariants, Build Contract, START_HERE/BUILD_CHECKOUT, corrective Artifact ADR, server/experiment source, correction test definitions, and historical installation receipt. Inherited meanings were recovered from the accepted contract's Appendix A, not rebuilt from memory to fit storage. ECO-147's one cold trial plus affected retest is not ECO-148 transfer evidence.
+ECO-147 Principal acceptance comment `eb9c2096-30ba-4f69-a2d3-37cb81382ed3`, `2026-09-18T19:57:21.412Z`, accepts PR #54 at `305abd9e0628c9709c24e2d1fd7b6f2c0a38a8de`. Accepted architecture is Situated Basis -> Inquiry State -> Applicability Reconciler -> Reliance Qualifier, with C1-C6. R01-R10, A-G, CP1-CP6, and Q1-Q7 remain governing. The older candidate header on the authored contract does not override later explicit acceptance.
 
-## 3. Actual substrate and standing
+Specification section 3 retains exact source paths/blob IDs for README, logical contract, ECO-147 return, ECO-146 Sense return, post-ECO-144 descent plan, invariants, Build Contract, entry/checkout guidance, corrective Artifact ADR, server/experiment source, test definitions, and historical installation receipt. The accepted contract's Appendix A supplied inherited meanings, not recollection or adaptation to the substrate. ECO-147's one cold trial plus affected retest is logical transfer evidence only; it cannot substitute for this physical-design test.
 
-Supabase `vezxivrvhakclxuvxzso` (`ecb-v2-brain`) reported ACTIVE_HEALTHY. Read-only catalog observation at `2026-09-18T20:35:42.767961Z` returned PostgreSQL 17.6 and relevant application schemas. Reads covered columns, constraints, triggers, routine definitions, ledger, extensions, and privileges. Effective permissions at `2026-09-18T20:42:35.011879Z` covered seven load-bearing tables and anon/authenticated/service_role. No app mutation routine was used as a probe and no secret value was read.
+## 3. Live substrate findings and claim envelope
 
-Vercel project `prj_oevToBKwqj7yHjyQCHs5zevegWCM`, team `team_wueYGTZ3nxHz1WhMg8UE9gSy`, reported READY deployment `dpl_5NM9JgrLUVA4gAL6X1EF2faoHS8t` at exact current main. Metadata is not runtime conformance.
+Supabase project `vezxivrvhakclxuvxzso` (`ecb-v2-brain`) reported ACTIVE_HEALTHY. Read-only catalog observation at `2026-09-18T20:35:42.767961Z` returned PostgreSQL 17.6 and the relevant native application schemas. Reads covered columns, constraints, triggers, routine definitions, migration ledger, extensions, and effective permissions. Permission observations at `2026-09-18T20:42:35.011879Z` covered seven load-bearing tables and anon/authenticated/service_role. No application mutation routine was invoked as a probe; no secret value was read.
 
-| Standing | Finding | Consequence |
-| -- | -- | -- |
-| Canonical and installed | Referents, Thoughts/admission, Claims/Evidence Links/standing, ordinary operations, immutable text Artifacts, dispositions/projections | Reuse actual semantics, not blanket adequacy from presence |
-| Installed but narrower | Evidence links keep Thought digests, not prior meaning; relation predicate only depends_on; no Artifact use gate | Earn snapshots, Artifact resolver, scoped lineage, protected controls |
-| Historically runtime-proven | 16 September ECO-138/140 receipt verifies bounded admission/current disposition/exact HOLD | Not action authority or quadrant runtime proof |
-| Historical/corrected | Generic BUILD 12 keys/versions/latest/supersession | Current correction/catalog governs; don't reinstall old model by convenience |
-| Repository-only for relevant use | BUILD 7–10 real action authority/execution not established installed | Explicit closed external-effect adapter |
-| Test definitions, not new execution | BUILD 12 correction tests bytes/identity/replay/conflict/immutability/grants | Reuse disposable patterns, not production execution or current PASS |
-| Consumer mismatch | Six tools in server, three in connected brain; capture operation ID absent in consumer | Actual parity qualification required |
-| Experimental | Fixed-profile/expiry-gated OpenRouter handler | Not generic review/fresh-worker capability; not repurposed |
-| Proposed | All quadrant-specific mechanisms/slices | No installed/implemented/tested claim |
+Vercel project `prj_oevToBKwqj7yHjyQCHs5zevegWCM`, team `team_wueYGTZ3nxHz1WhMg8UE9gSy`, reported READY production deployment `dpl_5NM9JgrLUVA4gAL6X1EF2faoHS8t` at exact current main. That is configured/deployed metadata evidence, not observed quadrant runtime behavior.
 
-One control-relevant hazard remains: search calls embedding repair despite readOnlyHint, so it was not used for read-only inventory and is excluded from pure resolution. Prior documentation pushes produced ordinary Vercel deployments; Principal explicitly removed deployment suppression from the publication requirement for this continuation, so that fact is retained only as historical infrastructure evidence, not a blocker.
+| Evidence category | Finding | Design consequence |
+|---|---|---|
+| Repository-canonical and installed | Referents, Thoughts/admission, Claims/Evidence Links/standing transitions, ordinary operations, immutable text Artifacts, disposition/projection | Reuse their actual semantics; presence alone is not adequacy |
+| Installed but narrower than required | Evidence Links resolve Thoughts and keep a revision digest, not prior meaning; only `depends_on` relation predicate; Artifacts have no use gate | Earn selective immutable snapshots, Artifact evidence support, scoped relation predicates, and protected module controls |
+| Historically runtime-proven | 16 September ECO-138/140 receipt proves bounded admission/current-disposition/exact HOLD projection | Keep that evidence scoped; do not promote it into action authority or current quadrant proof |
+| Historical/corrected | Generic BUILD 12 key/version/latest/supersession model | Reject as reuse target; current catalog and corrective source govern |
+| Repository evidence, relevant installation unproven | BUILD 7-10 real-action authorization/execution/propagation | Do not invent a currently available action adapter; effect seam stays closed |
+| Test definitions, not this execution | BUILD 12 correction SQL tests exact bytes, identity, replay/conflict, immutable behavior and grants | Reuse patterns in disposable qualification; never run population-dependent tests blindly in production |
+| Server/consumer mismatch | Repository advertises six tools; connected brain exposes three and lacks caller-supplied capture operation UUID | Later consumer-parity qualification needed; no retirement or capability claim from source alone |
+| Experimental model code | Fixed-profile, expiry-gated OpenRouter annotation handler | Not a generic evaluator or isolated worker; not repurposed or called |
+| Proposed only | Every quadrant-specific table/profile/interface/predicate/validator/implementation slice | No installed or tested behavior claimed |
 
-## 4. Alternatives and selection
+One inspection finding materially affected the physical design: current search calls embedding repair despite a read-only hint; brain search was not used for read-only reconnaissance, and the proposed resolver excludes that side effect. Prior documentation pushes also produced ordinary Vercel deployments; Principal explicitly removed deployment suppression from the publication requirement for this continuation, so that remains historical infrastructure evidence rather than a publication blocker.
 
-Artifact-plus-prose/current ACTION-HOLD only minimizes tables but leaves fake PASS, stale use, concurrency and historical recovery in discretionary interpretation; rejected. Generic account/version/event/graph/observer infrastructure adds duplicate semantic stores and unearned responsibility; rejected. Selected: one bounded module on current runtime/database, reusing native foundations and adding only required controls.
+## 4. Alternatives and selected allocation
 
-Situated Basis uses Referent-backed basis/snapshot Artifacts. Inquiry State uses inquiry/assessment envelopes, Claims, version-aware Evidence Links, original/refined questions, coverage and QF. Reconciler uses before/after meaning, scoped impact judgments and CAS fencing. Qualifier uses protected use-level issuance and recoverable handoff. Shared physical substrate does not collapse logical roles.
+The alternatives were consequentially different physical allocations, not alternative quadrant semantics.
 
-## 5. Earned additions
+| Alternative | Benefit | Decisive liability | Disposition |
+|---|---|---|---|
+| Ordinary Artifacts plus prose/current ACTION-HOLD only | Fewest new native structures | Fake PASS, stale basis, concurrency, and relied-upon history remain unprotected or unrecoverable | Rejected as under-enforced, not credited as minimal |
+| Generic account/version/event/graph service with observers | Centralized lifecycle/query machinery | Duplicates current Artifact/Claim semantics, reinstates corrected-away supersession/latest, adds unearned global/liveness responsibilities | Rejected as operational and semantic excess |
+| Existing runtime/database plus bounded quadrant control module | Reuses installed foundations and enforces the exact residual distinctions | Requires small new control surfaces, resolver extension, qualified-method evidence, and later consumer work | Selected as the smallest defensible candidate found; not proof of global optimality |
 
-| Addition | Residual | Why lesser-looking substitute fails |
-| -- | -- | -- |
-| channels | Atomic selection and surfaced-change fence | Immutable prose cannot prevent conflicting heads/blind stale reuse |
-| records | Protected role/profile/operation binding | PASS-shaped ordinary Artifact must not become trusted result |
-| reviewer_capabilities | Authenticated method/producer remit separate from custody | producer_context/ordinary write access does not authenticate commissioned assessment |
-| Source snapshots in existing Artifacts | Recover old meaning | Digest cannot reconstruct absent payload |
-| Artifact Evidence Link/shared resolver | Evidence and standing-path consistency | Insertion-only extension leaves Thought-only standing logic |
-| Three scoped Claim predicates | Revision/refocus/question-refinement lineage | depends_on differs; native semantic supersession creates competing truth store |
-| Four interface families | Custody/resolve/assess/qualify separation | Generic arbitrary write displaces deterministic liability into judgment |
+Situated Basis maps to Referent-backed basis/source-snapshot Artifacts. Inquiry State maps to inquiry/assessment envelopes, Claims, version-aware Evidence Links, and question/coverage/QF records. Applicability Reconciler maps to preserved before/after content, explicit change/impact judgments, and compare-and-swap channel fencing. Reliance Qualifier maps to protected use-level issuance and recoverable handoffs. Shared physical process/database does not merge these responsibilities.
 
-No vendor, deployment unit, queue, scheduler, universal graph/identity system, generic platform, or always-on observer is added. Credentials are technical delegation, not truth or action authority. Method qualification remains inspectable. Minimality is the smallest defensible candidate found, not global optimality proof.
+## 5. Residual-earned mechanisms#
 
-## 6. Contract audit and refinements
+| Addition | Specific residual | Why a smaller-looking substitute fails |
+|---|---|---|
+| `ecb_quadrant.channels` | Atomic selected-basis/future-use fence, including surfaced possible change | Immutable prose alone cannot prevent two conflicting heads or blind stale reuse |
+| `ecb_quadrant.records` | Distinguish guarded role/profile/operation bindings from arbitrary stored text | A copied PASS-shaped Artifact must not acquire issued-result standing |
+| `ecb_quadrant.reviewer_capabilities` | Authenticate method/producer remit independently of ordinary custody | producer_context or ordinary authoring access cannot identify a commissioned assessment submission |
+| Selective source snapshots in existing Artifacts | Recover old semantic meaning when mutable/external sources change | Digests can detect mismatch but cannot reconstruct missing content |
+| Artifact Evidence Link scheme and shared resolver | Support Artifact-backed evidence consistently through insertion and standing transitions | Extending only insertion leaves an incompatible Thought-only standing path |
+| Three scoped Claim predicates | Actual revision, refocus, and question-refinement lineage | `depends_on` has different meaning; native semantic supersession creates a competing relation truth store |
+| Four guarded interface families | Separate custody, pure resolution, authenticated assessment, qualified reliance | One arbitrary generic write endpoint relocates deterministic role/currentness liability into judgment |
 
-C1 resolves exact situated inputs and separately assesses applicability. C2 preserves original/refined question, seat/burden, coverage and uncertainty. C3 binds exact proposition/input/use/method/controls/origin/standing/limits. C4 preserves old meaning and scoped impact while fencing blind reuse. C5 gates exact use/current fences/qualified assessments/decisive gaps/authority. C6 transfers exact closure/use/QF/reentry and rejects changed-use inheritance.
+These do not add a vendor, deployment unit, queue, scheduler, generic event platform, universal identity resolver, or always-on observer. Reviewer credentials are technical delegation, not semantic truth or action authority. Method qualification remains independently inspectable. All proposed names are bounded physical labels, not final ontology.
 
-Selected transaction family: READ COMMITTED plus explicit ordered locks/expected-epoch CAS, reusing ordinary operations. External cognition stays outside locks then rechecks inputs. Envelope/binding/generated native refs/result/head are atomic. Replay recovers history, not renewed eligibility. Deadlock/timeout retries are whole unchanged transactions, not partially rerun statements or silent epoch changes.
+## 6. Physical contract audit and design refinements
 
-Local refinements during author review: retain historical semantic payload, not only digest; share Evidence Link resolver with standing transitions; enforce protected-role allowlists in server and SQL; preserve exact submitted text and server-generated IDs/result manifest in an immutable envelope; separate replay/read rights from revoked reviewer submission rights/current eligibility; keep all-four coverage and explicit currentness in S1; distinguish qualified method evidence from field-presence proof.
+C1 binds exact subject/G/boundary/source basis but assesses joint applicability separately from successful resolution. C2 preserves original/refined question lineage, seat/burden, all four coverage meanings, and uncertainty. C3 binds proposition/input/use/method/controls/standing/limits, preserves shared origin, and makes unsupported assessment visible. C4 retains old meaning and scoped impact while fencing blind reuse. C5 checks exact use, current fences, applicable qualified assessments, decisive gaps, and separately required authority. C6 carries recoverable closure/use/QF/reentry and rejects unqualified changed-use inheritance.
 
-These refine physical allocation only. No change to generator, requirements, responsibilities, control points, four roles, C1–C6, or Q1–Q7.
+The selected transaction family is READ COMMITTED plus explicit ordered row locks and expected-epoch comparison, using the existing ordinary-operation ledger. External cognition occurs outside locks, then its inputs are checked again. Atomicity covers the issued envelope, protected binding, generated native references, ordinary result, and any selected head. Replays recover the original result; they never renew its present eligibility. Deadlock/timeout aborts require whole-transaction retry, not partial or silently modified-input retries.
 
-## 7. Bounded adversarial qualification
+During author review, the following local physical refinements closed identifiable failure paths:
 
-Method: source-grounded author-level contract tracing and synthetic adversarial state-transition walkthroughs. Outcomes are reasoned consequences of the written design, not executed SQL, runtime tests, physical observations, or independent worker performance. No aggregate score averages away a material gap.
+**Historical recovery:** retained full decisive source meaning in immutable Artifact composition rather than claiming a Thought digest could reconstruct it.
 
-| Case | Contrast | Derived result |
-| -- | -- | -- |
-| P01 | Exact closed use/basis/coverage/method/control/fences, no effect | One scoped non-executing handoff; removing required support changes outcome |
-| P02 | Epoch-4 assessment after selected epoch-5 notice | New issuance conflicts/restricts; prior receipt remains historical |
-| P03 | Two successors from same epoch | One operational selection, one conflict; winner not truth |
-| P04 | Precommit failure versus postcommit response loss | Atomic rollback versus exact replay, no duplicate effect |
-| P05 | Copies/replays of same source support two roles | One origin, not independent corroboration |
-| P06 | Old digest exists but prior content absent | Explicit historical loss/narrowed claim, no latest substitution |
-| P07 | All refs resolve but G differs trial/permanent | Joint applicability fails/narrows despite link success |
-| P08 | Ordinary author supplies perfect PASS/protected-role JSON | Guarded binding/remit/allowlists prevent trusted issuance; credential still not semantic truth |
-| P09 | Current ACTION, missing authority | No executable permission/dispatch |
-| P10 | Trial receipt reused for permanent installation | New C4/C5/authority inquiry, old scope retained |
-| P11 | Enrichment versus excluded constituent now included | Distinguish enrichment/boundary revision, preserve old basis, same UUID not concealment |
-| P12 | Decisive QF with no actual signal route | Preserve unanswerability/restrict dependent use; neither reminder nor blanket unrelated stop |
-| P13 | Provider cannot run/reviewer remit expires | Candidate/unavailable result retained, no fabricated PASS/new provider |
-| P14 | Custody actor attempts positive insert/update/truncate | Guarded roles/denied DML reject app path; no superuser guarantee |
-| P15 | Restart with only receipt/channel | Recover exact closure/use/method/QF/history or expose missing dependency |
-| P16 | Reviewer revoked after prior result | Authorized historical read remains; new issuance checks revocation, replay no renewal |
-| P17 | Existing UUID wrong native role or unproved co-reference | Native typing rejects mismatch; real-world co-reference remains unresolved |
-| P18 | Old artifact-key/version tests selected from history | Current correction governs; obsolete model not reintroduced |
+**Evidence/standing consistency:** required `prepare_evidence_link` and `prepare_claim_standing_transition` to use the same scheme-aware resolver, preserving the original Thought scheme.
 
-These support bounded author design judgment only. Implementation enforcement, universal method reliability and independent cold recovery remain unproven.
+**Protected-role bypass:** disjoint SQL/server role allowlists prevent ordinary record creation from minting assessment, reliance, or revocation bindings.
 
-## 8. Cross-cutting pressures
+**Exact result recovery:** defined a server-issued immutable envelope containing exact submitted text, generated IDs, and result manifest. A lost response therefore does not require reconstructing server-assigned identities. The request digest remains separate from generated output metadata.
 
-All twelve are APPLICABLE: duplicate/replay (P04/P05/P16); concurrency (P02/P03); stale basis (P02/P07/P10); partial failure (P04); restart (P06/P15); wrong identity/role (P08/P17); wrong version (P02/P06/P18); drift/revocation (P11/P16); false PASS/bypass (P08/P14); retry/idempotency (P04/P10/P16); time/order (P03/P11); unauthorized mutation (P09/P14). Specification sections 8/11 turn each into concrete acceptance obligations.
+**Replay and revocation:** separated historical recovery under current read authorization from new-use eligibility and reviewer submission authority. A revoked key gains no new rights by naming an old operation.
 
-Performance, backups, perfect impact discovery and atomic external observation are not established. New idle-time liveness routes to ECO-146/Principal. External effect/authority remains closed until separately commissioned. These limits are not positive operational assumptions.
+**First slice completeness:** the closed S1 fixture still represents all four obligations and a limited no-surfaced-change basis; later general C2/C4 tooling is not an excuse to skip their contracts.
 
-## 9. Implementation slices
+**Semantic versus structural checking:** explicit authenticated method evidence is required, but neither a credential nor field completeness proves reasoning sound. A semantic evaluator's errors remain possible and have an inspectable correction route.
 
-| Slice | Deliverable/evidence | Unproven |
-| -- | -- | -- |
-| S1 | Closed-basis C1–C6 non-executing handoff in disposable substrate; exact recovery/generated IDs; all-four fixture; method negative control; replay/conflict/stale/type/version/role/DML negatives; authority refusal | General semantics, production installation, action authority |
-| S2 | Full question/refinement/coverage/shared warrant/QF; lineage/cross-product; no copy corroboration; justified deferral versus material no-route; necessary/sufficient and report/occurrence controls | Universal semantics/final naming |
-| S3 | Change/history/scoped requalification/concurrency/revocation; before/after recovery; justified unaffected use; conflict; history-loss refusal; no replay renewal; deadlock/restart tests | Perfect discovery/observation/backups |
-| S4 | Actual consumer/handoff parity; observed schemas/operation IDs; pure resolver; changed-use gate; ACTION not authority; bounded old custody | Uncommissioned live/provider/runtime/effect installation |
+None of these refinements changed R01-R10, A-G, CP1-CP6, Q1-Q7, the generator, the four roles, or C1-C6.
 
-Specification section 12 provides concrete likely files, mechanisms, dependencies, rollback and test limits. No slice is commissioned by this return. Parser package, migration numbering, presentation and measured limits are replaceable engineering details, not license to weaken mechanisms. Method/remit and consumer access require evidence before dependent positive use.
+## 7. Bounded adversarial qualification performed
 
-## 10. Gates A–L
+Method: source-grounded author-level contract tracing and adversarial state-transition walkthroughs. Inputs below are synthetic stipulations. Outcomes are reasoned consequences of the final written design, not executed implementation tests or independent-worker observations. The checking surface is this analytical comparison; each row specifies the violation it distinguishes. No aggregate score hides a material gap.
 
-PASS means author analytical design judgment within the source/synthetic envelope, except L's observed execution boundary. It does not mean independent evaluation or runtime tests.
+| Case | Stipulated contrast | Derived result and sensitive failure |
+|---|---|---|
+| P01 Closed positive | Exact source/use/coverage/method/control/fences; no effect requested | One scoped non-executing handoff; removing a required basis/control changes the result |
+| P02 Stale basis | Assessment binds epoch 4; selected notice now epoch 5 | New issuance conflicts/restricts until reassessment; old receipt remains historical, not current by presence |
+| P03 Concurrent successors | Two operations select different revisions from the same epoch | One operational winner, one explicit conflict; winner is not thereby semantically superior |
+| P04 Partial failure / lost response | Fail before commit versus ew side effects |
+| P05 Duplicate source | Two roles use copies/replays from one origin | One source origin remains; link/copy count is not independent corroboration |
+| P06 Missing old meaning | Old digest exists, historical payload unavailable | Explicit historical loss and narrowed claim, not reconstruction from latest content |
+| P07 Resolved but incompatible | All links resolve; one G supports trial, another permanent use | Joint applicability cannot pass solely from resolution; requested composition narrows/stops |
+| P08 Forged PASS | Ordinary author stores perfect PASS-shaped JSON or selects protected role | Missing protected method/binding and SQL role allowlist prevent trusted issuance; credential alone still does not prove semantics |
+| P09 ACTION without authority | Current operational ACTION exists; independent authority absent | No executable permission/dispatch; affected use restricted despite current projection |
+| P10 Changed downstream use | Reversible-trial receipt presented for permanent installation | New C4/C5/authority inquiry; old exact payload does not widen its use envelope |
+| P11 Boundary versus enrichment | New relation already admitted by criterion versus excluded constituent now included | Preserve prior basis; distinguish enrichment from explicit boundary revision; same UUID cannot conceal the change |
+| P12 No-route material QF | Alternative outcomes change intended use, but no real signal route | Preserve unanswerability and restrict dependent use; neither generic reminder nor blanket unrelated stop is adequate |
+| P13 Provider/reviewer unavailable | Needed semantic assessment cannot run or remit expires | Retain candidate/evidence and unavailable/indeterminate finding; no fabricated positive or new provider call |
+| P14 Unauthorized mutation | Ordinary custody actor attempts direct positive insertion/update/truncate | Guarded entrypoints, separated roles and denied DML reject the application path; administrator compromise is outside guarantee |
+| P15 Restart | New process knows only receipt/channel | Recover immutable closure/use/method/QF/history; missing dependency is explicit, not supplied from conversation |
+| P16 Revocation after issuance | Reviewer revoked after an old result committed | Authorized read can recover history; new issuance checks revocation and does not refresh eligibility through replay |
+| P17 Wrong identity/type | UUID exists in a different native role, or two IDs are claimed co-referent without warrant | Native type check rejects wrong binding; real-world co-reference stays unresolved without evidence |
+| P18 Historical test/schema trap | Implementer chooses obsolete Artifact key/latest/version tests from migration history | Current corrective model/test governs; no reinstatement of generic version family by convenience |
 
-| Gate | Disposition | Basis/limit |
-| -- | -- | -- |
-| A Logical fidelity | PASS — analytical | Frozen meanings/traceability, no logical reopening |
-| B Substrate fidelity | PASS — bounded inventory | Catalog/routines/privileges/ledger/source/tests/deployment/history distinguished |
-| C Reuse/residual | PASS — analytical | Each addition earned, rejected smaller-looking workarounds explicit |
-| D Allocation | PASS — analytical | Accountable C1–C6 realization; unavailable effect dependency explicitly closed |
-| E Persistence/history/identity | PASS — analytical | Exact semantic closure/native identity/origin/Claim lineage, no digest-only recovery |
-| F Reliance/enforcement | PASS — analytical | Protected exact-use/fence/assessment gate, separate authority, no effect |
-| G Judgment observability | PASS — analytical | Inputs/method/control/standing/result/limits/reentry, no fields-as-truth |
-| H Change/QF | PASS — analytical | Fenced notice/scoped history/real routes/no-route consequence |
-| I Pressures | PASS — analytical | All twelve mapped to contrasts/acceptance |
-| J Minimality | PASS — analytical | One bounded module, no speculative platform/provider/observer; not global optimum proof |
-| K Readiness/transfer | HELD | Slices/hooks specified; fresh-worker test NOT EXECUTED |
-| L No-build scope | PASS — execution boundary | Read-only product inspection plus design staging; no implementation/deployment/runtime work |
+These contrasts support the author's bounded design judgment. They do not prove that an implementation enforces the rules, that a semantic method is universally reliable, or that a cold worker can yet implement the packet without missing decisions.
 
-Repository review-branch publication is complete in draft PR #55. ECO-148 remains incomplete/unaccepted until Gate K is closed and continuity disposition occurs.
+## 8. Systems-pressure disposition
 
-## 11. Cold-transfer record and rubric
+All twelve inherited pressures are APPLICABLE at this module's bounded trust boundary.
 
-**NOT EXECUTED. No fresh physical-design worker response exists.** Available tool discovery yielded no usable isolated worker; fixed-profile experiment, same-author reread, prior ECO-147 transfer, imagined output or new provider install are not substitutions.
+| Pressure | Acceptance obligation / cases |
+|---|---|
+| Duplicate/replay | Exact operation identity and shared-source preservation; P04/P05/P16 |
+| Concurrency | Expected-fence vector and ordered locking; P02/P03 |
+| Stale state/basis | Exact applicable use/currentness basis; P02/P07/P10 |
+| Partial failure/rollback | Atomic issued result/head/native changes; P04 |
+| Restart/reconstruction | Full recoverable semantic closure; P06/P15 |
+| Wrong identity/role | Native typing and protected producer roles; P08/P17 |
+| Wrong version | Exact payload/parser/method version, no latest fallback; P02/P06/P18 |
+| Basis drift/revocation | Observed-change fence and current remit check; P11/P16 |
+| Checker bypass/false PASS | Role separation, method/control evidence, semantic limits; P08/P14 |
+| Retry/idempotency | Same request recovery, changed inputs conflict, no eligibility renewal; P04/P10/P16 |
+| Time/order ambiguity | Separate recording/observation/effective scope and structural predecessor; P03/P11 |
+| Unauthorized mutation | Guarded RPC, denied direct DML, closed effect authority; P09/P14 |
 
-Give the fresh worker only a frozen specification edition and its section 13 prompt, not this return/conversation/answer key/repository briefing. Retain exact actual input bytes/hash, worker/isolation, prompt, unedited response, item evaluation, bounded verdict. Local repair/affected retest is not another independent trial.
+Performance, backup service guarantees, perfect impact discovery, and atomic observation of external changes are not established. Idle-time notification is outside the accepted current notice promise; a new requirement routes to ECO-146/Principal. Actual effect authorization/dispatch remains closed until a separate commission. These are explicit limits, not hidden positive assumptions.
 
-| Item | Recovery obligation | Spec location | Current result |
-| -- | -- | -- | -- |
-| 1 | Substrate/evidence standing | 3 | NOT EXECUTED |
-| 2 | Four roles/C1–C6 | 2/4/7 | NOT EXECUTED |
-| 3 | Reuse versus earned additions | 4/5 | NOT EXECUTED |
-| 4 | Truth/identity/version/history/currentness | 5/6/8/10 | NOT EXECUTED |
-| 5 | Reliance versus authority | 7/9 | NOT EXECUTED |
-| 6 | Change/requalification/QF | 6/10 | NOT EXECUTED |
-| 7 | Concurrency/replay/restart/partial failure | 7/8/11 | NOT EXECUTED |
-| 8 | First slice/evidence | 12/S1 | NOT EXECUTED |
-| 9 | Three prohibited inferences | 2/9/13 | NOT EXECUTED |
-| 10 | Exact reentry | 14 | NOT EXECUTED |
+## 9. Implementation slicing return
 
-Material missing decisions block K. Local physical/navigation failures repair in ECO-148; semantic/requirements/logical/context/authority defects route upstream.
+Specification section 12 selects the actual mechanism families, likely files, dependencies, positive/negative evidence, rollback, and nonclaims. These slices are proposed, not newly commissioned issues or implementation work.
 
-## 12. Question Forward and continuation
+| Slice | Coherent deliverable | Required evidence | Remaining nonclaims |
+|---|---|---|---|
+| S1 | Closed-basis qualified non-executing handoff, using real identity/Artifact/operation/assessment/gate chain in disposable substrate | Exact recovery including generated IDs; all-four-obligation fixture; discriminating control; replay/conflict; stale/type/version/forged-role/direct-DML negatives; authority refusal | General semantics, production installation, action authority |
+| S2 | Full question/refinement/coverage/shared-warrant/QF representation | Original lineage and cross-product; no source-copy corroboration; warranted deferral versus material no-route gap; necessary/sufficient and report/occurrence negatives | Universal semantic correctness/final labels |
+| S3 | Change/history/requalification/concurrency/revocation | Before/after recovery; justified unaffected use; two-writer conflict; historical-loss refusal; no renewed eligibility on replay; deadlock/restart recovery | Perfect dependency/change discovery or backup guarantees |
+| S4 | Actual consumer and qualified-handoff parity | Observed tool schemas and operation IDs; pure resolution without embedding repair; changed-use gate; ACTION not authority; old custody still bounded | Live-provider/runtime conformance without separate installation evidence |
 
-QF-T: Does the actual supplied spec transfer without hidden context? Discriminator: one genuinely isolated worker recovers all ten items or identifies a consequential missing/contradictory decision. Route: already-authorized fresh-worker environment. Current consequence: hold K/acceptance; candidate review/test preparation permitted. Resume that seam without redoing settled source work absent changed baseline or finding.
+Parser package, migration numbering, presentation, and measured request limits are replaceable engineering details. They cannot weaken a gate or substitute a different mechanism family silently. Qualified method/remit provisioning and actual consumer access must be evidenced before dependent positive use. A physical failure returns to ECO-148 unless it genuinely changes accepted meaning.
 
-QF-P: CLOSED. Draft PR #55 publishes exactly the two required ECO-148 documents on `docs/eco-148-quadrant-physical-design`; README remains unchanged pending acceptance.
+## 10. Gate disposition: no aggregate score
 
-Exact reentry: required behavior→ECO-144/U1; clarified generator conflict→ECO-143/U2; four-role/C1–C6 inadequacy→ECO-147; changed consumer/liveness/responsibility→ECO-146/Principal/U3; source/authority conflict→governing reconciliation/U4; physical failure with coherent meaning→ECO-148/U5.
+PASS below means **author analytical design judgment** within the recorded source and synthetic contrast envelope, except where the row explicitly reports an observed scope control. It does not mean independent review or executed runtime tests.
 
-## 13. Mutation and receipt boundaries
+| Gate | Disposition | Evidence / limit |
+|---|---|---|
+| A Logical fidelity | PASS - analytical | Local meanings, C1-C6 traceability, no generator/role/requirement reopened |
+| B Live substrate fidelity | PASS - bounded inventory | Catalog/functions/privileges/ledger, pinned source, inspected test definitions, deployment metadata and historical receipts separated |
+| C Reuse/residual | PASS - analytical | Mapping precedes additions; each addition has a concrete residual and rejected smaller-looking workaround |
+| D Allocation completeness | PASS - analytical | Each role/crossing has an accountable realization; action-effect dependency explicitly closed rather than assumed installed |
+| E Persistence/history/identity | PASS - analytical | Exact payload closure, native identity, source-origin distinction, Claim-based lineage, no digest-only recovery |
+| F Reliance/enforcement | PASS - analytical | Protected issuance/role separation, exact use/fences, qualified assessments, separately resolved authority; no effect dispatch |
+| G Judgment observability | PASS - analytical | Exact proposition/input/method/control/standing/result/limits/reentry; no field-presence semantic proof |
+| H Change/QF | PASS - analytical | Surfaced-change fence, scoped impact/history, actual notice routes and no-route limits |
+| I Systems pressure | PASS - analytical | All twelve pressures mapped to explicit contrasts and future acceptance obligations |
+| J Minimality | PASS - analytical | One existing-runtime module, bounded control surfaces, no speculative platform/provider/observer; not global optimality proof |
+| K Implementation/test readiness | HELD | Slices and hooks specified; required fresh-worker recovery trial not executed |
+| L No-build scope | PASS - execution boundary | Read-only product inspection and design-document staging only; no implementation/migration/deployment/runtime conformance work |
 
-At author-return time there had been no GitHub branch/commit/PR/merge/README/configuration change. During this continuation, only the required documentation branch and draft PR #55 were created/updated. The PR is two files ahead of `main`, with no README or product/runtime configuration change. No Supabase schema/data/key/policy/extension/migration/Edge Function change, brain capture, potentially mutating search, provider install, runtime conformance probe, authority promotion, successor commission, or ECO-136 closure occurred.
+Required repository publication: **AUTHORIZED** in this continuation and to be completed on the prescribed review-branch/PR route. ECO-148 remains incomplete and unaccepted until Gate K is closed and continuity disposition occurs.
 
-Only local design files and Linear design-document/coordination staging are produced. Direct upload failed before transfer/finalization and is not claimed completed. Local checks establish section/token/hash integrity only. Linear text normalization/condensation is not byte-identical-file proof. Final coordination identifies the actual documents, file hashes and remaining holds. Status stays Working; no acceptance promotion.
+## 11. Cold-transfer record and frozen rubric
+
+**NOT EXECUTED. No physical-design fresh-worker response exists.** Exposed tool discovery did not yield a usable isolated worker; the fixed-profile OpenRouter experiment is not a substitute. Same-worker rereading, imagined output, prior ECO-147 transfer evidence, or new provider installation would not satisfy the commissioned check within the current boundary.
+
+Exact input is the specification bytes/hash in section 1 and its section 13 prompt. Provide neither this return nor an answer key/conversation/repository briefing to the worker. Preserve worker/isolation identity, exact prompt, complete unedited response, item-level assessment, and bounded verdict.
+
+| Rubric item | Required recovery | Specification sections | Result |
+|---|---|---|---|
+| 1 | Current substrate and evidence standing | 3 | NOT EXECUTED |
+| 2 | Four roles and C1-C6 physical realization | 2, 4, 7 | NOT EXECUTED |
+| 3 | Reuse versus residual-earned mechanisms | 4, 5 | NOT EXECUTED |
+| 4 | Truth source, identity/version/history/currentness | 5, 6, 8, 10 | NOT EXECUTED |
+| 5 | Reliance enforcement versus authority | 7, 9 | NOT EXECUTED |
+| 6 | Change/requalification/QF | 6, 10 | NOT EXECUTED |
+| 7 | Concurrency/replay/restart/partial failure | 7, 8, 11 | NOT EXECUTED |
+| 8 | First slice and acceptance evidence | 12/S1 | NOT EXECUTED |
+| 9 | Three prohibited implementation inferences | 2, 9, 13 | NOT EXECUTED |
+| 10 | Exact upstream/local reentry routes | 14 | NOT EXECUTED |
+
+A material missing physical decision blocks Gate K. Repair local navigation/design and retest the affected surface; do not count that as a second independent trial. Requirements, semantics, logical ownership, operating-context, or authority defects route to their earliest responsible source instead of a convenient physical patch.
+
+## 12. Question Forward and exact continuation
+
+**QF-T: Does this exact specification transfer without hidden context?** The discriminating observation is one genuinely fresh worker recovering all ten items or identifying a missing/contradictory physical decision. Current route is an already-authorized environment with a fresh-worker facility, not an unavailable promise here. Until observed, hold Gate K and implementation-readiness acceptance; candidate review and preparation of the test remain permitted. Resume that trial without repeating settled source/design work unless the baseline or finding changes the decision.
+
+**QF-P: CLOSED by Principal disposition for this continuation.** Deployment suppression is not required. Publish the review packet under the existing ECO-148 authorization, verify the exact two-file diff, and keep README unchanged pending acceptance. Ordinary Vercel deployment side effects are not implementation/runtime-conformance evidence.
+
+Upstream routes remain exact: changed required behavior -> ECO-144 (U1); persistent clarified generator conflict -> ECO-143 (U2); logical-role/C1-C6 inadequacy -> ECO-147; changed consumer/liveness/surrounding responsibility -> ECO-146/Principal (U3); authority/source conflict -> governing reconciliation (U4); physical failure with coherent meaning -> ECO-148 local repair (U5).
+
+## 13. Mutation boundary and receipt discipline
+
+At author-return time no GitHub branch, commit, PR, merge, or README/configuration update had been made. No Supabase schema/data/key/policy/extension/migration/Edge Function or Vercel configuration was created or changed. Brain capture and potentially mutating search were not invoked. No production/runtime conformance probe, provider installation, authority promotion, successor commission, or ECO-136 closure was performed. This continuation is authorized to add only the required documentation review branch/PR; README and product/runtime configuration remain unchanged.
+
+The generated Markdown files are design documentation. Local section/token/hash checks verify document integrity/navigation only, not semantic fitness or implementation behavior. Any successful Linear attachments/comments are coordination/staging actions, not canonical publication or acceptance. Final coordination must distinguish successful upload/readback from preparation alone and record the actual final hashes; no earlier unverified filename/size/hash should be reused as evidence.
 
 ## 14. Bounded conclusion
 
-This return supplies a source-grounded substrate-specific candidate, actual capability limitations, residual-earned additions, author analytical adversarial qualification, four implementation slices, exact transfer/reentry contracts, and review publication in draft PR #55. It does not supply completed independent transfer, continuity acceptance, implementation/runtime conformance, general semantic reliability, real action authority or full ECO-136 closure.
+The work establishes a substrate-specific candidate that realizes the accepted architecture on inspected current ECB v2 capabilities, exposes existing limits, earns each proposed addition through a concrete residual, and survives the recorded author-level design contrasts after local refinements. It supplies implementable mechanism families, four bounded slices, security/recovery constraints, and the exact cold-transfer contract.
 
-**Next work: run the held genuinely fresh-worker spec-only test. If Gate K closes without a material defect, seek governing continuity disposition. Not implementation.**
+It does not establish completed ECO-148 qualification, independent transfer, repository publication, continuity acceptance, implemented correctness, installed/runtime conformance, general semantic reliability, real action authority, or full ECO-136 closure.
+
+**Next work is the authorized two-file review publication, then the held genuinely fresh-worker spec-only trial, followed by governing continuity disposition. Not implementation.**
