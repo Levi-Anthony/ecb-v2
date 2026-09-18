@@ -46,7 +46,10 @@ begin
     '{"profile":"ecb.quadrant/1","role":"basis","r":"rock-R1","boundary":"garden-border-seat","governing_orientation":"reversible seating trial","requested_use":"reversible_trial","scope":"one rock / one border seat / current fixture","source_standing":"synthetic fixture","stop_reentry":"reenter on material boundary/G/use change"}',
     null,null,true
   );
-  if not r.replayed or r.channel_id <> :'eco149_channel'::uuid then
+  if not r.replayed or r.channel_id <> (
+    select r2.channel_id from ecb_quadrant.records r2
+    where r2.receipt_id='14900000-0000-4149-8149-000000000001'::uuid
+  ) then
     raise exception 'exact replay failed to recover same basis result';
   end if;
 end $$;
@@ -107,7 +110,8 @@ begin
   begin
     perform * from public.quadrant_v1_assess(
       '14900000-0000-4149-8149-000000000019'::uuid,
-      :'eco149_channel'::uuid,:'eco149_epoch1'::bigint,
+      (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
+      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),
       '14900000-0000-4149-8149-000000000103'::uuid,
       '{"profile":"ecb.quadrant/1","role":"assessment","proposition":"fixture supports reversible_trial","input_receipts":["14900000-0000-4149-8149-000000000001","14900000-0000-4149-8149-000000000010"],"method":"fixture-v1","use":"reversible_trial","result":"PASS","negative_control":null,"scope":"fixture","limits":"synthetic only"}'
     );
@@ -123,7 +127,8 @@ set role anon;
 select artifact_id as eco149_assessment_artifact
 from public.quadrant_v1_assess(
   '14900000-0000-4149-8149-000000000020'::uuid,
-  :'eco149_channel'::uuid,:'eco149_epoch1'::bigint,
+  (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
+      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),
   '14900000-0000-4149-8149-000000000103'::uuid,
   '{"profile":"ecb.quadrant/1","role":"assessment","proposition":"basis + inquiry are adequate for reversible_trial","input_receipts":["14900000-0000-4149-8149-000000000001","14900000-0000-4149-8149-000000000010"],"method":"fixture-v1","use":"reversible_trial","result":"PASS","negative_control":{"case":"all four coverage cells exist but warrant absent","observed":"would not qualify","would_reverse":"control unexpectedly passes"},"scope":"fixture reversible_trial","limits":"synthetic structure only; no real-world truth"}'
 ) \gset
@@ -141,7 +146,8 @@ begin
   begin
     perform * from public.quadrant_v1_assess(
       '14900000-0000-4149-8149-000000000021'::uuid,
-      :'eco149_channel'::uuid,:'eco149_epoch1'::bigint,
+      (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
+      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),
       '14900000-0000-4149-8149-000000000103'::uuid,
       '{"profile":"ecb.quadrant/1","role":"assessment","proposition":"must fail authentication","input_receipts":["14900000-0000-4149-8149-000000000001"],"method":"fixture-v1","use":"reversible_trial","result":"PASS","negative_control":{"case":"wrong key","observed":"reject"},"scope":"fixture","limits":"none"}'
     );
@@ -164,7 +170,8 @@ set role anon;
 select artifact_id as eco149_reliance_artifact
 from public.quadrant_v1_qualify(
   '14900000-0000-4149-8149-000000000030'::uuid,
-  :'eco149_channel'::uuid,:'eco149_epoch1'::bigint,
+  (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
+      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),
   '{"profile":"ecb.quadrant/1","role":"reliance","requested_use":"reversible_trial","permitted_use":"reversible_trial","basis_receipt":"14900000-0000-4149-8149-000000000001","inquiry_receipt":"14900000-0000-4149-8149-000000000010","assessment_receipt":"14900000-0000-4149-8149-000000000020","disposition":"supported","authority_status":"not_required_for_nonexecuting_use","decisive_gap":false,"qf":[{"question":"observe actual seating result later","route":"explicit_evidence_return"}]}'
 ) \gset
 reset role;
@@ -176,7 +183,8 @@ begin
   begin
     perform * from public.quadrant_v1_qualify(
       '14900000-0000-4149-8149-000000000031'::uuid,
-      :'eco149_channel'::uuid,:'eco149_epoch1'::bigint,
+      (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
+      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),
       '{"profile":"ecb.quadrant/1","role":"reliance","requested_use":"permanent_installation","permitted_use":"permanent_installation","basis_receipt":"14900000-0000-4149-8149-000000000001","inquiry_receipt":"14900000-0000-4149-8149-000000000010","assessment_receipt":"14900000-0000-4149-8149-000000000020","disposition":"supported","authority_status":"not_required_for_nonexecuting_use","decisive_gap":false,"qf":[]}'
     );
     raise exception 'negative control failed: changed use inherited old assessment';
@@ -196,7 +204,8 @@ begin
       '14900000-0000-4149-8149-000000000039'::uuid,
       'change',
       '{"profile":"ecb.quadrant/1","role":"change","before_receipt":"14900000-0000-4149-8149-000000000010","after_summary":"digest changed","classification":"changed_source","affected_scope":"trial","unknown_impact":true,"before_payload_available":false,"claims_historical_requalification":true}',
-      :'eco149_channel'::uuid,:'eco149_epoch1'::bigint,true
+      (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
+      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),true
     );
     raise exception 'negative control failed: digest-only historical requalification accepted';
   exception when invalid_parameter_value then
@@ -209,7 +218,8 @@ from public.quadrant_v1_record(
   '14900000-0000-4149-8149-000000000040'::uuid,
   'change',
   '{"profile":"ecb.quadrant/1","role":"change","before_receipt":"14900000-0000-4149-8149-000000000010","after_summary":"new seating observation returned","classification":"enrichment","affected_scope":"reversible_trial","unknown_impact":true,"before_payload_available":true,"claims_historical_requalification":false}',
-  :'eco149_channel'::uuid,:'eco149_epoch1'::bigint,true
+  (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
+      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),true
 ) \gset
 reset role;
 
@@ -220,7 +230,8 @@ begin
   begin
     perform * from public.quadrant_v1_qualify(
       '14900000-0000-4149-8149-000000000041'::uuid,
-      :'eco149_channel'::uuid,:'eco149_epoch2'::bigint,
+      (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
+      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000040'::uuid),
       '{"profile":"ecb.quadrant/1","role":"reliance","requested_use":"reversible_trial","permitted_use":"reversible_trial","basis_receipt":"14900000-0000-4149-8149-000000000001","inquiry_receipt":"14900000-0000-4149-8149-000000000010","assessment_receipt":"14900000-0000-4149-8149-000000000020","disposition":"supported","authority_status":"not_required_for_nonexecuting_use","decisive_gap":false,"qf":[]}'
     );
     raise exception 'negative control failed: stale assessment supported fresh use';
@@ -243,8 +254,9 @@ begin
   begin
     perform * from public.quadrant_v1_qualify(
       '14900000-0000-4149-8149-000000000051'::uuid,
-      :'eco149_channel'::uuid,:'eco149_epoch2'::bigint,
-      format('{"profile":"ecb.quadrant/1","role":"reliance","requested_use":"reversible_trial","permitted_use":"reversible_trial","basis_receipt":"14900000-0000-4149-8149-000000000001","inquiry_receipt":"14900000-0000-4149-8149-000000000010","assessment_receipt":"%s","disposition":"supported","authority_status":"not_required_for_nonexecuting_use","decisive_gap":false,"qf":[]}', :'eco149_fake_pass_artifact')
+      (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
+      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000040'::uuid),
+      format('{"profile":"ecb.quadrant/1","role":"reliance","requested_use":"reversible_trial","permitted_use":"reversible_trial","basis_receipt":"14900000-0000-4149-8149-000000000001","inquiry_receipt":"14900000-0000-4149-8149-000000000010","assessment_receipt":"%s","disposition":"supported","authority_status":"not_required_for_nonexecuting_use","decisive_gap":false,"qf":[]}', (select o.result_referent_id from public.ordinary_operations o where o.id='14900000-0000-4149-8149-000000000050'::uuid))
     );
     raise exception 'negative control failed: raw PASS Artifact became assessment';
   exception when no_data_found then
@@ -284,7 +296,10 @@ declare scheme text; d1 bytea; d2 bytea;
 begin
   select evidence_revision_scheme,evidence_revision_digest into strict scheme,d1
   from public.evidence_links where id='14900000-0000-4149-8149-000000000061'::uuid;
-  select digest into strict d2 from ecb_quadrant.evidence_revision(:'eco149_reliance_artifact'::uuid);
+  select digest into strict d2 from ecb_quadrant.evidence_revision((
+    select o.result_referent_id from public.ordinary_operations o
+    where o.id='14900000-0000-4149-8149-000000000030'::uuid
+  ));
   if scheme <> 'ecb_text_artifact_v1_sha256' or d1 <> d2 then
     raise exception 'Artifact Evidence Link did not bind exact Artifact revision';
   end if;
@@ -304,10 +319,20 @@ set role anon;
 select public.quadrant_v1_resolve(:'eco149_channel'::uuid) as eco149_closure \gset
 reset role;
 
-do $$
-declare c jsonb := :'eco149_closure'::jsonb;
+do $
+declare
+  c jsonb;
+  expected_epoch bigint;
+  channel_id uuid;
 begin
-  if (c->>'epoch')::bigint <> :'eco149_epoch2'::bigint then
+  select r.channel_id into strict channel_id
+  from ecb_quadrant.records r
+  where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid;
+  select r.result_epoch into strict expected_epoch
+  from ecb_quadrant.records r
+  where r.receipt_id='14900000-0000-4149-8149-000000000040'::uuid;
+  c := public.quadrant_v1_resolve(channel_id);
+  if (c->>'epoch')::bigint <> expected_epoch then
     raise exception 'cold resolver lost current channel epoch';
   end if;
   if pg_catalog.jsonb_array_length(c->'records') < 5 then
