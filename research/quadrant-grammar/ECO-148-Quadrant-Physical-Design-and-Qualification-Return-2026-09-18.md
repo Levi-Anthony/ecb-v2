@@ -65,7 +65,7 @@ The alternatives were consequentially different physical allocations, not altern
 
 Situated Basis maps to Referent-backed basis/source-snapshot Artifacts. Inquiry State maps to inquiry/assessment envelopes, Claims, version-aware Evidence Links, and question/coverage/QF records. Applicability Reconciler maps to preserved before/after content, explicit change/impact judgments, and compare-and-swap channel fencing. Reliance Qualifier maps to protected use-level issuance and recoverable handoffs. Shared physical process/database does not merge these responsibilities.
 
-## 5. Residual-earned mechanisms#
+## 5. Residual-earned mechanisms
 
 | Addition | Specific residual | Why a smaller-looking substitute fails |
 |---|---|---|
@@ -112,7 +112,7 @@ Method: source-grounded author-level contract tracing and adversarial state-tran
 | P01 Closed positive | Exact source/use/coverage/method/control/fences; no effect requested | One scoped non-executing handoff; removing a required basis/control changes the result |
 | P02 Stale basis | Assessment binds epoch 4; selected notice now epoch 5 | New issuance conflicts/restricts until reassessment; old receipt remains historical, not current by presence |
 | P03 Concurrent successors | Two operations select different revisions from the same epoch | One operational winner, one explicit conflict; winner is not thereby semantically superior |
-| P04 Partial failure / lost response | Fail before commit versus ew side effects |
+| P04 Partial failure / lost response | Fail before commit versus lose response after commit | All transactional effects roll back in first case; second recovers exact original result, not new side effects |
 | P05 Duplicate source | Two roles use copies/replays from one origin | One source origin remains; link/copy count is not independent corroboration |
 | P06 Missing old meaning | Old digest exists, historical payload unavailable | Explicit historical loss and narrowed claim, not reconstruction from latest content |
 | P07 Resolved but incompatible | All links resolve; one G supports trial, another permanent use | Joint applicability cannot pass solely from resolution; requested composition narrows/stops |
