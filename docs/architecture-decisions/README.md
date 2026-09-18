@@ -28,6 +28,12 @@ Each ADR must record:
 - **REVERSIBILITY** — what can be undone and what evidence would survive;
 - **REOPENING CONDITION** — the concrete observation that makes this closure insufficient.
 
+### Current Register B sizing interpretation
+
+Historical ADRs may retain local terms such as `minimum experiment`, `minimum proof`, or `smallest Shape` because those records preserve the decision language used at the time. Those phrases do **not** establish a current global optimization rule.
+
+Under the 2026-09-18 Register B correction, size is not privileged for architecture, probes, slices, mechanisms, proofs, or next Moves. Current work follows the evidence-bearing boundary and bounds consequential exposure independently. Simplification remains useful only when removed machinery has no decision-relevant job and the reduction does not amputate the behavior needed for interpretable evidence.
+
 An ADR may close a locally delegated architectural choice.
 
 It may not amend a governing invariant or broaden the build contract unless separately authorized through the governing change route.
