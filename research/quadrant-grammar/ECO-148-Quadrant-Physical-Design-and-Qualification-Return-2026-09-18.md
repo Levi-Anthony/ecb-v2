@@ -2,9 +2,9 @@
 
 18 September 2026. Controlling commission: ECO-148. Parent: ECO-136.
 
-**Disposition: physical-design candidate produced and author-analytically reviewed; commissioned completion HELD only on the required fresh-worker transfer.** Required fresh-worker transfer is NOT EXECUTED. Principal continuation disposition on 18 September 2026 removed deployment suppression as a publication requirement, so repository review-branch/PR publication may proceed.
+**Disposition: physical-design candidate produced, author-analytically reviewed, and published for review; commissioned completion HELD only on the required fresh-worker transfer.** Required fresh-worker transfer is NOT EXECUTED. Repository review publication is now present in draft PR #55; no continuity acceptance or implementation/runtime conformance follows from publication.
 
-No aggregate PASS, independent transfer, acceptance, implementation correctness, or runtime conformance is claimed. No outcome-determinative upstream semantic/logical conflict was identified. These holds concern execution of qualification and publication control, not permission to reopen accepted meaning.
+No aggregate PASS, independent transfer, acceptance, implementation correctness, or runtime conformance is claimed. No outcome-determinative upstream semantic/logical conflict was identified. The remaining hold concerns the required independent transfer, not permission to reopen accepted meaning.
 
 ## 1. Artifacts and staging standing
 
@@ -19,7 +19,7 @@ The conversation also supplies two full Markdown deliverables with verified loca
 
 These Linear documents are staging editions preserving selected decisions and the qualification record, not claimed byte-identical replicas of the Markdown files. Freeze the actual chosen specification edition and its actual input bytes/hash for cold transfer. Never attribute the downloadable edition's checksum to different Linear-rendered text.
 
-Intended canonical path for both files is `research/quadrant-grammar/` on a required review branch. Staging is preservation, not repository publication or continuity acceptance. Direct attachment PUT was attempted but failed at DNS resolution of the upload host; no attachment was finalized from the prepared URL. The native Linear document route succeeded for the specification. Final coordination records successful document identifiers and readback, not upload preparation as persistence proof.
+Both files are now published for review under `research/quadrant-grammar/` on branch `docs/eco-148-quadrant-physical-design` in draft PR #55 against `main@4ecfa4dcad7b40a7eaf150f27e791bf0d77ee746`. The PR diff contains exactly the two ECO-148 documents; the quadrant README is unchanged. Publication is review persistence, not continuity acceptance. Earlier Linear staging and failed attachment PUT remain historical preservation attempts, not repository-canonical evidence.
 
 ## 2. Authority and currentness
 
@@ -144,7 +144,7 @@ PASS means author analytical design judgment within the source/synthetic envelop
 | K Readiness/transfer | HELD | Slices/hooks specified; fresh-worker test NOT EXECUTED |
 | L No-build scope | PASS — execution boundary | Read-only product inspection plus design staging; no implementation/deployment/runtime work |
 
-Repository review-branch publication is authorized and is to be completed in this continuation. ECO-148 remains incomplete/unaccepted until Gate K is closed and continuity disposition occurs.
+Repository review-branch publication is complete in draft PR #55. ECO-148 remains incomplete/unaccepted until Gate K is closed and continuity disposition occurs.
 
 ## 11. Cold-transfer record and rubric
 
@@ -171,18 +171,18 @@ Material missing decisions block K. Local physical/navigation failures repair in
 
 QF-T: Does the actual supplied spec transfer without hidden context? Discriminator: one genuinely isolated worker recovers all ten items or identifies a consequential missing/contradictory decision. Route: already-authorized fresh-worker environment. Current consequence: hold K/acceptance; candidate review/test preparation permitted. Resume that seam without redoing settled source work absent changed baseline or finding.
 
-QF-P: CLOSED by Principal disposition for this continuation. Deployment suppression is not required. Publish the review packet under existing ECO-148 authority and verify the exact two-file diff with README unchanged pending acceptance.
+QF-P: CLOSED. Draft PR #55 publishes exactly the two required ECO-148 documents on `docs/eco-148-quadrant-physical-design`; README remains unchanged pending acceptance.
 
 Exact reentry: required behavior→ECO-144/U1; clarified generator conflict→ECO-143/U2; four-role/C1–C6 inadequacy→ECO-147; changed consumer/liveness/responsibility→ECO-146/Principal/U3; source/authority conflict→governing reconciliation/U4; physical failure with coherent meaning→ECO-148/U5.
 
 ## 13. Mutation and receipt boundaries
 
-At author-return time there had been no GitHub branch/commit/PR/merge/README/configuration change, no Supabase schema/data/key/policy/extension/migration/Edge Function change, no brain capture or potentially mutating search, and no provider install/runtime conformance probe/authority promotion/successor commission/ECO-136 closure. This continuation is authorized to add only the required documentation review branch/PR; README and product/runtime configuration remain unchanged.
+At author-return time there had been no GitHub branch/commit/PR/merge/README/configuration change. During this continuation, only the required documentation branch and draft PR #55 were created/updated. The PR is two files ahead of `main`, with no README or product/runtime configuration change. No Supabase schema/data/key/policy/extension/migration/Edge Function change, brain capture, potentially mutating search, provider install, runtime conformance probe, authority promotion, successor commission, or ECO-136 closure occurred.
 
 Only local design files and Linear design-document/coordination staging are produced. Direct upload failed before transfer/finalization and is not claimed completed. Local checks establish section/token/hash integrity only. Linear text normalization/condensation is not byte-identical-file proof. Final coordination identifies the actual documents, file hashes and remaining holds. Status stays Working; no acceptance promotion.
 
 ## 14. Bounded conclusion
 
-This return supplies a source-grounded substrate-specific candidate, actual capability limitations, residual-earned additions, author analytical adversarial qualification, four implementation slices and exact transfer/reentry contracts. It does not supply completed independent transfer, repository publication, continuity acceptance, implementation/runtime conformance, general semantic reliability, real action authority or full ECO-136 closure.
+This return supplies a source-grounded substrate-specific candidate, actual capability limitations, residual-earned additions, author analytical adversarial qualification, four implementation slices, exact transfer/reentry contracts, and review publication in draft PR #55. It does not supply completed independent transfer, continuity acceptance, implementation/runtime conformance, general semantic reliability, real action authority or full ECO-136 closure.
 
-**Next work: complete the authorized two-file review publication, then run the held genuinely fresh-worker spec-only test, then seek governing continuity disposition. Not implementation.**
+**Next work: run the held genuinely fresh-worker spec-only test. If Gate K closes without a material defect, seek governing continuity disposition. Not implementation.**
