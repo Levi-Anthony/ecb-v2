@@ -13,7 +13,7 @@ ECB v1 is evidence, not inherited architecture.
 
 OB1 is the substrate lineage.
 
-The architecture program develops valuable behavior on the smallest clean substrate while preserving earned distinctions. Ordinary personal operation proceeds concurrently using available, already-earned capability. Serve the user's actual task; consult architecture when it changes interpretation, legitimacy, or required capability. Neither personal use nor architectural evidence automatically acquires the other's standing.
+The architecture program develops valuable behavior on a clean substrate while preserving earned distinctions. Size is not an optimization target: include the consequential interactions required for interpretable evidence, and bound exposure through the actual effect and recovery boundaries. Ordinary personal operation proceeds concurrently using available, already-earned capability. Serve the user's actual task; consult architecture when it changes interpretation, legitimacy, or required capability. Neither personal use nor architectural evidence automatically acquires the other's standing.
 
 ## Current governing distinction
 
@@ -63,7 +63,7 @@ Read only as needed, in this order:
 
 3. `/docs/build-contract.md`
 
-   Defines the build boundary, architectural minimum, build order, promotion rules, and enforcement discipline. Read when the current Build Unit requires architectural interpretation.
+   Defines the build boundary, architectural obligations, build order, promotion rules, and enforcement discipline. Read when the current Build Unit requires architectural interpretation.
 
 4. `/docs/acceptance-tests.md`
 
@@ -151,9 +151,9 @@ A Build Unit must state:
 - TEST
 - NON-GOAL
 
-One Build Unit should fit in one comprehensible diff.
+A Build Unit should remain comprehensible and reviewable, but do not amputate an evidence-bearing boundary merely to fit an arbitrary diff size.
 
-Do not introduce adjacent abstractions unless the current test cannot pass without them.
+Do not introduce adjacent abstractions without a decision-relevant job in the active evidence-bearing boundary.
 
 ## Authority rule
 
@@ -196,7 +196,7 @@ For every Build Unit:
    - Unexpected but nonblocking → record evidence/aperture.
    - Architectural pressure → ADR.
    - Invariant conflict → stop.
-   - Test failure → repair the smallest responsible layer.
+   - Test failure → repair the responsible layer evidenced by the failure; do not route upstream merely to avoid local rework, and do not shrink the phenomenon under test.
 
 Do not expand scope merely because the current implementation succeeded.
 
