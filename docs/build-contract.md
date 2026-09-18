@@ -1,6 +1,6 @@
 STATUS: BUILD-BOUNDARY READY  
 DISPOSITION: GOVERNING  
-VERSION: v0.4  
+VERSION: v0.5  
 ROLE: ECB v2 implementation boundary  
 SCOPE: Greenfield ECB v2
 
@@ -12,7 +12,7 @@ The following distinctions travel together for the current build boundary. Their
 
 **Telos / governing ideal**
 
-Produce the smallest clean ECB v2 substrate capable of preserving OB1’s disproportionate value while carrying forward only ECB extensions whose value and architectural necessity have been demonstrated or ratified through the governing architecture.
+Produce a clean ECB v2 substrate that preserves OB1’s disproportionate value while carrying forward only extensions with a demonstrated or ratified decision-relevant job. Size is not an optimization target. The implementation boundary follows the interactions required for interpretable evidence; consequential exposure is bounded independently through authority, isolation, reversibility, recovery, and effect controls.
 
 **Master Key / governing discriminator**
 
@@ -34,6 +34,8 @@ Reopen the build boundary when a real vertical slice cannot be implemented witho
 
 Principal-authorized disposition, 2026-09-15. Provenance and scope:
 [`research/ingestion-probe/COMMISSION.md`](../research/ingestion-probe/COMMISSION.md).
+
+Principal method correction, 2026-09-18: **Bound exposure, not learning** is compression, not an absolute. Preserve the decision-relevant learning surface while bounding consequential exposure. Implementation is epistemic only when plausible outcomes discriminate between materially different next Moves. The evidence-bearing boundary sets implementation breadth; blast-radius containment is specified independently. Do not use “smallest” as an architecture, slice, probe, proof, or next-action optimization criterion. The surviving anti-bloat rule is only: do not add machinery that has no decision-relevant job.
 
 Register B optimizes for reliable learning under action. Prefer a physical probe over further
 abstract resolution when the next uncertainty can be discriminated by a Move satisfying this floor:
@@ -70,7 +72,7 @@ tool's output. Keep the instrument revisable as its use produces evidence.
 
 Existing evidence, standing, authority, lineage, proof-sensitivity, and recovery disciplines remain
 unchanged. Required Integral/QLLST and relational/directional capacities cannot be removed because a
-small probe did not exercise them. Architectural capacity, local resolution, chosen procedure, and
+a given probe did not exercise them. Architectural capacity, local resolution, chosen procedure, and
 physical representation remain distinct. Success of a probe does not promote its representation,
 grant action authority, or establish an untested architectural claim.
 
@@ -146,7 +148,7 @@ A ratified architectural requirement can itself establish the decision consequen
 for physicalization when leaving that requirement to model interpretation, remembered instruction, or
 broader-than-needed capability would contradict the architecture. Failure specimens remain valuable for
 discovery, falsification, qualification, and sizing; they are not a mandatory permission gate for the
-smallest deterministic enforcement of an already-settled structural obligation.
+decision-relevant deterministic enforcement of an already-settled structural obligation.
 
 The complementary ratified law is also governing:
 
@@ -156,9 +158,7 @@ Do not count relocation of a stable mechanically decidable consequential obligat
 structure into generic payload, model interpretation, stochastic compliance, or remembered instruction
 as architectural simplification. Genericity receives no automatic simplicity credit.
 
-A proposed physical distinction earns existence when it is the smallest decision-relevant enforcement
-that materially lowers consequential semantic/stochastic liability without destroying required
-information, flexibility, or distinctions. Its warrant may come from a ratified architectural rule,
+A proposed physical distinction earns existence when it has a decision-relevant enforcement job that materially lowers consequential semantic/stochastic liability without destroying required information, flexibility, or distinctions. Its warrant may come from a ratified architectural rule,
 transactional or integrity necessity, repeated reconstruction, observed failure, or another governing
 route sufficient under the active Master Key. No one warrant route is mandatory in every case.
 
@@ -168,8 +168,7 @@ freedom.
 
 For each proposed physicalization or collapse, the decision surface must identify the obligation moved,
 its mechanical decidability at the active resolution, the liability created or removed, the useful
-freedom/information preserved or lost, and whether a strictly smaller enforcement mechanism preserves
-the same safety and semantic distinctions.
+freedom/information preserved or lost, and whether every added element has a decision-relevant job while preserving the required safety and semantic distinctions.
 
 QLLST mapping and Question Forward remain required orientation grammar where applicable. They expose
 structure, unresolved cells, relations, and re-entry conditions; they are not waiting gates that require
