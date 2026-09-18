@@ -2,7 +2,7 @@
 
 Commission: ECO-148. Parent: ECO-136. Date: 18 September 2026.
 
-**Standing: physical-design candidate, author-analytically reviewed. Independent cold transfer remains held. Repository review publication is authorized by Principal continuation disposition on 18 September 2026; deployment suppression is not a requirement for this publication. Not accepted, implemented, installed, or runtime-qualified.** The companion qualification return states the evidence and limits. This specification selects physical mechanism families; it is not an implementation commission.
+**Standing: physical-design candidate, author-analytically reviewed. Independent cold transfer remains held. Repository review publication is complete in draft PR #55; deployment suppression was explicitly removed as a requirement for this publication. Not accepted, implemented, installed, or runtime-qualified.** The companion qualification return states the evidence and limits. This specification selects physical mechanism families; it is not an implementation commission.
 
 Canonical input: `Levi-Anthony/ecb-v2/main@4ecfa4dcad7b40a7eaf150f27e791bf0d77ee746`. Intended publication path: `research/quadrant-grammar/`. A conversation or Linear staging copy is not repository-canonical. Do not advance the quadrant README before continuity acceptance.
 
@@ -423,6 +423,6 @@ Nonclaims: implemented schema/code/tools; installed/deployed quadrant behavior; 
 | Production implementation/deployment/effect activation requested | New commission and live authority preflight; not permission from this specification |
 | Fresh-worker unavailable | Hold Gate K, retain candidate and test contract; resume without redoing settled work unless baseline/findings change it |
 
-**Publication disposition:** Principal explicitly removed the Vercel suppression concern from this continuation on 18 September 2026. Repository review publication may proceed under the existing ECO-148 authorization. Any deployment side effect of the ordinary repository integration is not a blocker for this documentation publication and is not treated as implementation/runtime conformance.
+**Publication disposition:** Principal explicitly removed the Vercel suppression concern from this continuation on 18 September 2026. The required two-file review publication is complete in draft PR #55 on branch `docs/eco-148-quadrant-physical-design`. Any deployment side effect of the ordinary repository integration is not a blocker for this documentation publication and is not treated as implementation/runtime conformance. The quadrant README remains unchanged pending continuity acceptance.
 
-Exact next seam: publish and verify the required two-file review packet now, keeping README unchanged pending continuity acceptance; then conduct the one spec-only cold-transfer test in an already authorized genuinely fresh-worker environment. Do not begin implementation, invent a fresh-worker result, reopen accepted architecture for tool convenience, or claim all Gates A-L passed.
+Exact next seam: conduct the one spec-only cold-transfer test in an already authorized genuinely fresh-worker environment. If it passes, seek governing continuity disposition while keeping PR #55 unmerged and the quadrant README unchanged pending acceptance. Do not begin implementation, invent a fresh-worker result, reopen accepted architecture for tool convenience, or claim all Gates A-L passed.
