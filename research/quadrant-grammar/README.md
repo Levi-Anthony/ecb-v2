@@ -25,12 +25,13 @@ If a repository artifact conflicts with a later governing decision, explicit sup
 | [Quadrant-Grammar-Post-ECO-144-Descent-Plan-2026-09-18.md](./Quadrant-Grammar-Post-ECO-144-Descent-Plan-2026-09-18.md) | Project-management sequencing guidance; no architectural or semantic authority independently. Original Library lineage: `libfile_4858090377c08191ae9476990ecb2dff`. |
 | [Quadrant-Architecture-Intake-Packet-ECO-144-Baseline.md](./Quadrant-Architecture-Intake-Packet-ECO-144-Baseline.md) | ECO-145-qualified cold-readable interface to the ECO-144 requirements baseline. It does not itself authorize architecture or implementation. |
 | [ECO-145-Packet-Composition-Fidelity-and-Transfer-Return-2026-09-18.md](./ECO-145-Packet-Composition-Fidelity-and-Transfer-Return-2026-09-18.md) | Packet fidelity, traceability, and bounded cold-transfer qualification return. |
+| [ECO-146-Quadrant-Architecture-Sense-Return-2026-09-18.md](./ECO-146-Quadrant-Architecture-Sense-Return-2026-09-18.md) | Accepted substrate-independent Architecture Sense: A–G responsibility families, CP1–CP6 control points, recoverability/composition boundaries, capability reconnaissance, Q1–Q7 Shape decision surface, and upstream reentry routes. No logical architecture is selected by this return. |
 
 ## Current progression
 
-`functional contract → ECO-143 bounded semantic qualification → ECO-144 qualified design requirements → ECO-145 portable architecture intake → separately governed Architecture Sense`
+`functional contract → ECO-143 bounded semantic qualification → ECO-144 qualified design requirements → ECO-145 portable architecture intake → ECO-146 accepted Architecture Sense → separately governed Architecture Shape`
 
-Architecture Sense is the next legitimate phase once separately commissioned. It must derive architectural responsibilities and open choices from R01–R10 under a declared operating context, without selecting schemas, vendors, storage, APIs, or deployment topology.
+**Current frontier:** ECO-146 is accepted for continuity. The next legitimate phase is a separately commissioned **substrate-independent Architecture Shape**. Shape must select and qualify the smallest logical arrangement that satisfies R01–R10 and the accepted A–G/CP1–CP6 responsibility surface, resolving Q1–Q7 at logical-architecture resolution without selecting physical schema, APIs, vendors, deployment topology, or implementation.
 
 ## Continuity discipline
 
@@ -39,6 +40,6 @@ Architecture Sense is the next legitimate phase once separately commissioned. It
 - Every descent artifact must state what it inherits, what it adds, what it does not establish, and what reopens it.
 - Do not silently “clean up” a source into a new authority.
 - Traceability should flow both directions: requirement → responsibility/mechanism → test, and failed test → mechanism → requirement/reentry.
-- Requirement sufficiency, architecture qualification, physical design, implementation conformance, and runtime evidence remain separate claims.
+- Requirement sufficiency, Architecture Sense, logical Architecture Shape, physical design, implementation conformance, and runtime evidence remain separate claims.
 - Prefer a new versioned/qualified artifact over overwriting historical evidence when standing changes.
 - Update this index when the architectural frontier materially advances.
