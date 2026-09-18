@@ -1,0 +1,121 @@
+name: ECO-149 quadrant integrated Register B slice
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'sql/migrations/20260918233000_eco149_quadrant_integrated_slice.sql'
+      - 'tests/eco-149/**'
+      - '.github/workflows/eco-149-quadrant-integrated-slice.yml'
+      - 'server.ts'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.2-pg17
+        env:
+          POSTGRES_USER: custodian
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 55439:5432
+        options: >-
+          --health-cmd "pg_isready -U custodian -d postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      BUILD6_DISPOSABLE: 'YES'
+      BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:55439/build6
+      ECO149_DATABASE_URL: postgresql://postgres@127.0.0.1:55439/build6
+      B5B_EVIDENCE_DIR: ${{ github.workspace }}/artifacts/build5b-predecessor
+
+    steps:
+      - name: Checkout exact candidate commit
+        uses: actions/checkout@v4
+
+      - name: Reconstruct accepted BUILD 5B predecessor
+        shell: bash
+        run: bash tests/build-6/ci-reconstruct-build5b.sh
+
+      - name: Install accepted BUILD 6 substrate
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL"
+          -f sql/migrations/20260907234712_build_6_governance_bootstrap.sql
+
+      - name: Install and qualify BUILD 11
+        shell: bash
+        run: |
+          set -euo pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f sql/migrations/20260914063000_build_11_ordinary_operation_kernel.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f tests/build-11/qualify.sql
+
+      - name: Reconstruct and qualify corrected BUILD 12
+        shell: bash
+        run: |
+          set -euo pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f sql/migrations/20260915090000_build_12_ordinary_versioned_artifacts.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f sql/migrations/20260915101000_build_12_artifact_key_fetch.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f sql/migrations/20260915102500_build_12_artifact_key_fetch_fix.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f sql/migrations/20260915102000_seed_integral_holonic_grammar_semantic_contract_v1.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f sql/migrations/20260915114500_build_12_greenfield_artifact_correction.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f tests/build-12/qualify-greenfield-correction.sql
+
+      - name: Reconstruct and qualify canonical ECO-138 predecessor
+        shell: bash
+        run: |
+          set -euo pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f sql/migrations/20260916023000_eco138_admission_disposition.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f sql/migrations/20260916023100_eco138_disposition_transition_fix.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f tests/eco-138/qualify.sql
+
+      - name: Reconstruct and qualify ECO-140 predecessor
+        shell: bash
+        run: |
+          set -euo pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f sql/migrations/20260916030000_eco140_shaped_next_action.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f tests/eco-140/qualify.sql
+
+      - name: Apply ECO-149 candidate migration
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL"
+          -f sql/migrations/20260918233000_eco149_quadrant_integrated_slice.sql
+
+      - name: Qualify integrated C1-C6 and negative controls
+        id: eco149_qualify
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f tests/eco-149/qualify.sql 2>&1 | tee eco149-qualify.log
+
+      - name: Preserve ECO-149 qualification log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eco149-qualification-log
+          path: eco149-qualify.log
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Fail if ECO-149 qualification failed
+        if: steps.eco149_qualify.outcome != 'success'
+        shell: bash
+        run: exit 1
+
+      - name: Verify containment boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -R "vezxivrvhakclxuvxzso" tests/eco-149 .github/workflows/eco-149-quadrant-integrated-slice.yml
+          ! grep -R "SUPABASE_SERVICE_ROLE_KEY" tests/eco-149
+          ! grep -R "quadrant.*execute" sql/migrations/20260918233000_eco149_quadrant_integrated_slice.sql
