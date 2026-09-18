@@ -8,6 +8,8 @@
 **Repository continuity basis:** `research/quadrant-grammar/` on canonical `ecb-v2/main`  
 **Standing:** reviewable Architecture Shape candidate; no physical design, implementation, deployment, runtime-conformance, or authority claim is created by this document.
 
+**Cold-reader navigation:** Appendix A carries the inherited grammar, A–G, CP1–CP6, exact R01–R10, reentry labels and identity constraint. It is part of this contract; no external source is needed to recover those definitions. Qualification evidence remains separately scoped in the companion return.
+
 ## 1. Purpose and operating context
 
 This contract selects the smallest substrate-independent logical architecture found sufficient to realize the accepted ECO-146 responsibility surface without reopening R01–R10.
@@ -478,3 +480,219 @@ Remain within later **physical-design/implementation repair** when the logical c
 ---
 
 **Shape claim envelope:** Under the declared operating context and qualified R01–R10 / accepted A–G surface, this four-role architecture is the smallest arrangement found that preserves situated basis, inquiry/warrant/uncertainty, scoped change/requalification, and use-level reliance as distinct logical failure boundaries while permitting composition by reference and substrate-specific realization later. This statement is architecture qualification evidence only; it is not physical or runtime conformance.
+
+## Appendix A. Inherited definitions for contract-only recovery
+
+This appendix repairs definition/navigation omissions exposed by the first ECO-147 cold transfer. It adds no logical role, required behavior, physical allocation, or new semantic authority. Sections 1–14 remain the selected Shape; the inherited passages below make their fixed inputs locally readable.
+
+**Reading path:** A.1 defines the grammar and symbols used throughout; A.2 defines A–G; A.3 defines CP1–CP6; A.4 carries the complete fixed R01–R10 register; A.5 resolves reentry labels and identity constraints. Use §11 to trace these obligations to the chosen roles/contracts and positive/negative hooks, §4 for interfaces, §7 for flows, and §12 for physical choices.
+
+**Standing and evidence boundary:** A cold worker can recover what each inherited obligation means and how the selected architecture assigns it. This document alone does not independently authenticate its upstream sources, prove universal minimality, or establish executed qualification/runtime conformance. The companion ECO-147 qualification return retains those separate evidence claims. The cold-transfer test asks recovery of logical meaning and responsibility, not independent repetition of upstream qualification. Actual inquiry-specific authority, evidence, relevance and adequacy come from the Situated Basis and warrant contracts; they are inputs to this architecture, not missing universal answers to invent.
+
+**Source key and provenance:** D = ECO-144 requirements return, blob `d19fccbd0f7f200ab0340d26a3fd937370e6f78a`; S = accepted ECO-146 Sense return, blob `7a7ddff9a7aaf029a9f03afece737e7d01fcd190`; packet = ECO-145-qualified intake, blob `85f09bc8b9371969fcff784aa5e3d182b560ac3f`. All are in `research/quadrant-grammar/` on the canonical baseline `b3d2f6d404ab165b0bb277a3423ae3955800ad99`. C = amended `SIGMA-ECOS-Quadrant-Grammar-Register-B-Functional-Contract-v0.2.md`; Q = `ECO-143-Register-B-Qualification-Return-2026-09-18.md`; P = current ECO-136; I = its Principal-approved integration comment `a9c94cbc-7d93-43be-a202-cac188d29000`. Citations and T1–T10 specimen pointers in A.4 retain D's original source numbering; those evidence specimens are not new instructions or missing logical definitions. The historical phrase “none is selected here” in D/R10 describes D's requirements layer; §§2–4 of this contract select the logical architecture.
+
+### A.1 Governing orientation, symbols and minimum grammar
+
+Inherited governing orientation, verbatim from S §3:
+
+> Specify what a downstream SIGMA/ECOS system must preserve, distinguish, expose, and re-open so that quadrant inquiry can be used provisionally without encoding a known semantic defect.
+
+Parent lock, verbatim:
+
+> The mapper’s purpose must not silently become the mapped referent’s purpose, and the map’s selected contents must not silently become the referent’s exhaustive contents.
+
+Operational commitment, verbatim:
+
+> Every admitted referent is handled as holonically situated and potentially compositionally incomplete.
+
+Holonically situated preserves constituent organization, participation contexts, partial knowledge and revisable boundaries; it is not proof that the account exhausts reality.
+
+**Navigation glossary [C §§1–9; D §§2–4]:** R is the focal referent; G is the Governing Orientation; a constituent is counted within R's operative boundary; a co-relatum is another referent/context in a specified participation relation with R. A question's burden is what an adequate answer must establish. Warrant is the support for the particular claim and use, with its limits. “Move” denotes the scoped action or use at issue. Question Forward (QF) makes material uncertainty discriminable and actionable for later reentry. None of these labels prescribes a stored entity.
+
+The following operational grammar is reproduced verbatim from D §3:
+
+For ordinary traversal, preserve focal R, G, consequential constituent boundary/individuation, time/state scope, and relevance criterion. Known co-relata are initial scope, not an exhaustive universe. A property made salient as a predicate of R does not automatically become a new focal referent.
+
+Constitutive inquiry concerns R as presently bounded, including its constituent organization. Participatory inquiry concerns the same R through a specified relation crossing or exceeding that boundary. Material dependence, enclosure, scale and number do not determine the seat.
+
+The other distinction concerns the answer’s burden: establish what governs what may, must or cannot obtain, or establish the determinate case. Identifying an installed dependency is a determinate burden; establishing its implications is a governing burden. The same content can serve both. A unique admissible outcome does not erase that distinction.
+
+| Seat / burden | Governing burden | Determinate burden |
+|---|---|---|
+| Constitutive | UL: what governs what R can be/do as this bounded whole? | UR: what characterizes R as this bounded whole here? |
+| Participatory | LL: what governs what can occur through R’s specified participation? | LR: what obtains through that participation here? |
+
+These are working coordinates, not ratified pole names. Four obligations must be available, but neither four answers nor exactly four stored questions are required. Many questions or claims can contribute to one obligation; a compound question may require several obligations.
+
+Rejected generators remain: subjective/objective; consciousness or phenomenology; spatial interior/exterior or internal/external; inferred/observed; interpretive/directly known or observable; hidden/visible; individual/collective; small/large or local/global; evidence type, format or storage; mapper confidence; rule/fact as lexical classes; many possibilities/one actuality; changed focal referent; permanent evidence bins. “Take R’s place” is an optional anti-projection cue across all positions, not a generator or consciousness attribution.
+
+### A.2 Accepted responsibility families A–G
+
+The following definitions and obligations are reproduced verbatim from S §5; their allocation to the four chosen roles is in §§2 and 11.
+
+Letters are local traceability labels. These seven families are a minimal analytical grouping at this resolution, not seven components, services or actors. They group obligations with different failure and recovery conditions; Shape may combine or divide their realization if every distinction survives.
+
+| Responsibility / requirement basis | Necessary result and failure if absent | What later qualification must make observable or recoverable |
+|---|---|---|
+| **A — Preserve focal continuity and situated context.** R01/R03/R07; R09 history constraint. | Keep R, its map and mapper distinguishable where consequential; preserve original input/source, warranted identity, boundary/rationale, constituent and co-relatum standing, relevance criterion, context return paths and exposed incompleteness. Recognize explicit refocus and open discovery. Without A, an unchanged ID can conceal a changed subject or boundary. | A reviewer can recover the original focal subject; distinguish enriching the account from revising its boundary or making a report focal; and identify known context and unresolved return questions. No completeness or real-world co-reference guarantee follows from an ID. |
+| **B — Resolve applicable orientation and standing.** R02/R10; R01 non-substitution; R09 currentness. | Recover the intended use, relevant G, frame assumptions, priorities, scope, stopping and governing authority where needed. Distinguish source claims, stipulations, instructions and qualification judgments. Without B, a plausible result inherits an inapplicable purpose or authority. | The basis relied on, its source standing, applicability and limits can be inspected together. Unavailable or incompatible sources remain visible. Mapper purpose does not become attributed purpose. Source availability and semantic applicability have separate dispositions. |
+| **C — Make question burdens and fourfold coverage inspectable.** R03/R04/R05; R01/R06 protections. | Preserve the original question, its relation to refinements, the requested relation and adequate-answer burden; retain alternatives or decomposition where unresolved. Expose all four obligations and distinguish unconsidered, unresolved, warranted deferral and warranted answer. Without C, labels or filled positions masquerade as adequate inquiry. | A reviewer can reconstruct why a coordinate is justified, what remains ambiguous and whether clarification changed the task. Access swaps do not change the structural burden. Coverage records preserve their meanings without imposing enumeration values or storage cardinality. |
+| **D — Preserve warrant for each claim role.** R06/R10. | Maintain source/access, evidence scope, shared origin, inferential role, support limitations and correction conditions for each consequential claim. Keep necessary conditions, sufficient conditions, attributed reports, occurrences and proposed actions distinguishable. Without D, traceable evidence can still support an illicit stronger conclusion. | One datum reused in several roles remains one origin; exact rule wording and premise completeness delimit any inference. A reviewer can distinguish what is supported from what merely could be true. Neither digest equality nor classification establishes semantic support. |
+| **E — Discriminate material uncertainty and reentry.** R08/R05/R07/R10. | Convert every branch that can change the scoped interpretation, boundary, Move or stop condition into a calibrated question, contrasting signal, evidence/notice route and consequence. Preserve genuine unanswerability. Without E, “unknown” either silently passes or blocks everything indiscriminately. | A cold operator can identify which observation would change which disposition, where that evidence could be noticed, and what remains possible meanwhile. No-route cases remain explicit; a planned test is not evidence. Stop adding questions when no new consequential branch is discriminated. |
+| **F — Reconcile change, affected applicability and history.** R09 with R01–R08/R10. | Distinguish refocus, boundary revision, changed G/time/state, warrant update, question clarification and enrichment. Preserve old basis and scope; assess affected claims or a conservatively bounded scope; retain justified unaffected use. Without F, new information erases history or leaves obsolete conclusions apparently current. | Before/after basis, changed condition, affected-use reasoning, unresolved impact and continue/revise/suspend/reopen disposition are recoverable. A claim cannot appear requalified before the required assessment supports it. Perfect impact inference and detection of unobserved changes are not promised. |
+| **G — Bound consequential reliance and conformance claims.** R10 with R02/R05/R06/R08/R09. | Before a sufficiency claim or consequential reliance, recover the applicable A–F basis and determine what the use is sufficient for, what blocks it and what permits reentry. Without G, individually legible information can still be assembled into an invalid action or handoff. | A reviewer can explain why this use may proceed, must narrow or must stop. A known decisive gap blocks affected reliance while allowing preservation and authorized clarification. The result cannot create authority or promote requirements/architecture evidence into runtime conformance. |
+
+### A.3 Accepted control points CP1–CP6
+
+The following is reproduced verbatim from S §7. Reentry labels U1–U5 resolve locally in A.5.
+
+A control point is a circumstance where a consequential distinction must be exposed and acted upon. It is not a selected API, interceptor, service, approval step or state machine. Several points may coincide in one use; a continued inquiry may encounter them repeatedly.
+
+| Point / trigger | Required visibility and response | Responsibility / reentry |
+|---|---|---|
+| **CP1 — Establish or change focal subject/context.** Admit an underspecified account, focalize another subject, or confront a constituent/co-relatum choice. | Recover original source, R/map/mapper roles, boundary and rationale, known relations and criterion. Preserve unknowns. If subject or boundary changes, make the change explicit and assess affected scope; if it cannot be decided, retain alternatives and bound use. Raw preservation can continue. | A/B; E/F when unresolved/changed. R01/R03/R07/R09; U1/U3 if required behavior/context cannot be stated. |
+| **CP2 — Formulate, classify, clarify or claim inquiry coverage.** | Expose original and derived questions, adequate-answer burden and seat, all four obligations and coverage meanings. Clarify/decompose ambiguous wording or preserve alternatives; never force a coordinate or quietly change the task. A material blank receives QF or a warranted scoped disposition. | C/A/E. R04/R05/R08; U2 for persistent conflict under identical clarified burden. |
+| **CP3 — Use evidence for a claim role or stronger conclusion.** | Expose source/access, exact scope, dependence, inference and limits. Shared origin is not corroboration. A rule is not execution; necessary is not sufficient. Unsupported support claims remain unresolved/restricted and feed CP4/CP6. | D/B. R06/R10; repair warrant first, U2 only for a persistent grammar-induced defect. |
+| **CP4 — Defer, stop inquiry, or route an uncertainty.** | Show why the gap does or does not change this Move, contrasting findings, evidence/notice route and reentry. A decisive question cannot be labeled deferred merely because it is recorded. No present route means explicit unanswerability and an honest use boundary. | E/C/G. R05/R08/R10; U3 for missing decision-relevant operating purpose. |
+| **CP5 — Discover context or learn of a change.** | Distinguish enrichment, boundary revision, refocus, G/time/state change, clarification and warrant update. Preserve old basis. Identify affected claims or a conservative affected scope; expose unresolved applicability. Continue only justified unaffected use; requalification requires assessment, not a relabel. | F with A–E. R09 and affected originating R; U1/U2 only when requirements/grammar actually need change. |
+| **CP6 — Report sufficiency, rely, or transfer as adequate support.** | Recover the applicable subject/G/boundary/question/evidence/coverage/QF basis, with source standing, historical/current distinctions and stop disposition. Missing decisive support, stale warrant or an unqualified new use blocks that reliance. Do not infer permission from a current projection. Preserve allowed clarification/custody. | G/B/D/E/F. R02/R06/R08/R09/R10; U1–U4 according to localization. |
+
+CP6 also applies when a source was available earlier but is unavailable at reliance. An independently sufficient recoverable basis can support only the use it actually warrants; an obsolete cache or broken link cannot be silently counted as current support. CP5 and CP6 must together make the chosen design's limits on change notice intelligible. This statement does not claim detection of every outside change.
+
+### A.4 Exact inherited R01–R10 register
+
+Reproduced verbatim from D §4, also carried identically in S Appendix A. These passages retain their requirements-layer standing and source citations. They are not a reopening of the qualified baseline.
+
+### R01 — Referential continuity and situated incompleteness
+
+**Basis:** C §§1–2, 9, 10.1; P’s exact lock and composable-reference correction; Q §§2, 9.
+
+**Required behavior:** Preserve or resolve the focal referent sufficiently to keep claims and questions about that R under their original scope. Keep referent, representation and mapper distinguishable where consequential. Preserve source/raw input for underspecified admissions; assign or resolve identity only to the degree warranted. Make material uncertainty about constituent, containing or participatory context recoverable. Identity continuity must coexist with incomplete or corrected accounts. Focalizing a component, property, report, co-relatum or containing system as a new subject requires explicit refocus with a recoverable connection to the earlier inquiry.
+
+**Prohibited failure:** An ID is treated as proof of completeness; missing relations become nonexistent; the report becomes the person; or a changed subject is represented as quadrant traversal.
+
+**Conformance and limits:** A reviewer must be able to recover the original subject and distinguish a reported feeling about Mira from an inquiry into report typography. Explicit reference changes and source availability can be checked mechanically; whether two references denote the same real subject requires warrant. No global identity-resolution algorithm or one-ID-per-word rule follows.
+
+**Reentry:** Evidence of mistaken identity, subject substitution, or previously omitted consequential context reopens the affected inquiry, preserving original attribution. Specimens T2, T5, T6.
+
+### R02 — Recoverable Governing Orientation, scope and standing
+
+**Basis:** C §§0, 3, 8.3, 9, 10.3; P’s exact lock and map/mapper distinction; Q §§2, 9.
+
+**Required behavior:** Before treating a traversal as reliable for a use, recover enough purpose, relevance, consequential frame assumptions, priorities, ideal end state, time/state scope and stop/fail/reentry conditions to judge that use. Resolve authority from governing sources where action or promotion is at issue. Distinguish a source’s claim, a stipulation, a design instruction and a qualification judgment. The mapper’s G may select the question; it must not become R’s attributed purpose. Unresolved orientation supports only the bounded inquiry permitted by the available basis, not invented closure.
+
+**Prohibited failure:** A packet creates its own authority; an organizer’s aim becomes Mira’s intention; a new intended use silently inherits the old inquiry’s adequacy; or a broken governing reference is counted as recovered context.
+
+**Conformance and limits:** A cold reviewer can recover why the inquiry was undertaken and which source authorizes the proposed use. Reference availability and declared scope differences are mechanically checkable. Correct interpretation, sufficient orientation and applicable authority remain judgments. No universal approval ceremony or mandatory human gate is installed.
+
+**Reentry:** Changed G, scope, governing source or claimed authority prompts assessment of affected applicability. Specimens T5, T7, T9.
+
+### R03 — Explicit boundary and relational seat
+
+**Basis:** C §§2.2, 5.1, 9, 10.2; I; Q §§2–4, 7.
+
+**Required behavior:** Recover what counts as constituent, the operative criterion or rationale under G, known co-relata and the relation the question requires an answer about. Permit an incomplete account under an explicit boundary. Distinguish new information already admitted by that criterion from a change in the criterion or in expressly excluded/ included standing. When a consequential constituent/co-relatum choice is unresolved, expose the alternative seats and the evidence or decision needed; do not force one.
+
+**Prohibited failure:** Causal necessity, physical casing, spatial extent or convenience chooses the seat. A database expressly excluded from S1 becomes constituent without boundary revision and assessment of affected answers.
+
+**Conformance and limits:** Original and revised boundaries and the reason for changed seating are recoverable. Comparing declared membership or boundary references can expose an explicit change; it cannot prove the boundary is adequate. Refinement need not create a new real referent or ID in every case; the required result is legible scope and continuity, not an identity-allocation policy.
+
+**Reentry:** A relation conflicts with the recoverable boundary or new evidence makes individuation consequentially inadequate. Specimens T2, T3.
+
+### R04 — Question-directed generation and ambiguity handling
+
+**Basis:** C §§5–7, 10.4–10.5, 11; I; Q §§2, 5–6.
+
+**Required behavior:** Construct or justify coordinates from relational seat crossed with answer burden under the declared envelope. Expose the intended relation and what an adequate answer must establish sufficiently for inspection. When wording underdetermines either distinction, clarify, decompose or retain alternatives as unresolved. Preserve the original question and the relationship of any clarified/decomposed questions to it sufficiently to detect a changed task. Class-specific generators are not permitted.
+
+**Prohibited failure:** “Actual,” “rule,” “possible,” “why” or first-person language alone assigns a coordinate; one ambiguous sentence must receive one label; a governing conclusion is treated as observed execution; or clarification silently changes the asked question.
+
+**Conformance and limits:** Hold R/G/boundary/scope constant while changing access: the structural obligation stays fixed. Change identification to admissibility: the burden changes explicitly. A supplied cross-product and declared answer roles are mechanically inspectable; correct interpretation of unrestricted natural language is not thereby guaranteed.
+
+**Reentry:** Persistent conflicting coordinates after relation and answer burden are fixed, or a necessary class-specific exception, suspends affected classification and reopens semantic qualification. Specimens T1, T5, T8.
+
+### R05 — Fourfold coverage without fabricated completeness
+
+**Basis:** C §§2.1, 4, 6, 9, 10.6; I’s optional terminology; Q §§3–4, 9.
+
+**Required behavior:** Make all four obligations available and their coverage conspicuous under the inquiry’s envelope. Distinguish unconsidered, considered but unresolved, considered and currently nonconsequential/deferred under G, and answered with warranted standing. These are meanings to preserve, not prescribed enumeration values. A blank material cell must lead to a specific question or a warranted scoped disposition. A traversal can be sufficient for a Move with unresolved answers if those unknowns do not defeat that Move’s conditions.
+
+**Prohibited failure:** Four filled cells imply truth; four unknown labels imply adequate consideration; a quadrant disappears because evidence is missing; or “deferred” hides an outcome-determinative gap.
+
+**Conformance and limits:** A reviewer can inspect each obligation and distinguish missing inquiry from legitimate openness. Availability of four positions and explicit coverage declarations is mechanically checkable; adequacy of the questions and deferrals is not. No mandatory “Relational Face” entity, account cardinality or user-interface grid follows.
+
+**Reentry:** New relevance, evidence or intended use makes a deferred/unconsidered obligation consequential, or a completion claim exceeds its actual coverage. Specimens T4, T7, T9.
+
+### R06 — Independent evidence and warrant for each claim role
+
+**Basis:** C §§8, 9, 10.4, 10.6; Q §§3–7 and Appendix C.
+
+**Required behavior:** Preserve what evidence is available, its provenance/access, the claim and scope it supports, limitations and correction conditions. Allow one datum to serve multiple obligations while retaining its shared origin and distinct inferential roles. Keep factual occurrence, attributed report, stipulation, derived constraint and proposed action distinguishable when those differences affect use. Record rule necessity/sufficiency as warranted by its actual content; do not silently strengthen it.
+
+**Prohibited failure:** Reuse becomes independent corroboration; signature validity proves delivery; a required switch output becomes an observed output; one commit proves all-path deduplication; or an unavailable acknowledgment proves nonoccurrence.
+
+**Conformance and limits:** Each consequential conclusion can be traced to what supports it and what it does not establish. Shared source identities, explicit scope and formal implications under complete supplied premises can be checked. Completeness of premises, source authenticity and causal/explanatory adequacy require their own warrant. Confidence is neither evidence nor a coordinate.
+
+**Reentry:** Contradictory evidence, source correction/loss, changed access or a claim exceeding support reopens affected warrant; coordinates change only if the structural question changes. Specimens T1, T3, T4, T5, T8.
+
+### R07 — Open-world discovery and recoverable context
+
+**Basis:** C §§1.3, 2, 5.1, 9, 17; I’s Lower-discovery repair; Q §§4, 7.
+
+**Required behavior:** Preserve known constituent and participatory context together with a criterion admitting newly disclosed consequential relations. Maintain return paths to known context or calibrated questions where context is unknown. Admit discovery without requiring exhaustive co-relata pre-enumeration. Assess whether a discovery enriches the account, changes boundary/G, or affects prior answers. Do not rewrite history as though the new relation was already known.
+
+**Prohibited failure:** A predeclared list is treated as the universe; unrelated discoveries endlessly expand inquiry; every new relation forces re-individuation; or unrecorded context is treated as absent.
+
+**Conformance and limits:** An introduced vibration can enter the rock’s seating inquiry under its existing criterion; an irrelevant relation can be set aside with a scoped reason. Reference reachability and recorded before/after accounts can be checked; relevance and completeness of impact assessment require judgment. No exhaustive graph or mandatory recursive materialization follows.
+
+**Reentry:** A discovery meets the relevance criterion or challenges its adequacy for G. Specimens T2, T3, T6.
+
+### R08 — Question Forward that discriminates consequences
+
+**Basis:** C §§1.3, 9, 12–12.1, 16; P’s current formulation; Q §7.
+
+**Required behavior:** For each material uncertainty branch, expose a specific question, why it matters under G, discriminating evidence or signal, contrasting possible findings and their effect on the claim, boundary, Move or stop condition. Make the notice/evidence route and reentry recoverable. Preserve explicit unanswerability when no present route is available; a desired future test is not existing evidence. Add questions until consequential branches are covered and stop when additional questions would be redundant or nonconsequential.
+
+**Prohibited failure:** “Need more information” substitutes for a calibrated question; a fixed count defines sufficiency; two materially different outcomes lead to no different disposition; or an unanswered material question is treated as answered because a follow-up exists.
+
+**Conformance and limits:** A cold operator can identify what observation would change what decision. Presence of the components and declared links can be checked; their discrimination, feasibility and qualitative sufficiency require judgment. No automatic-question-generator accuracy claim is implied.
+
+**Reentry:** A newly consequential branch lacks a discriminating question or the nominated signal cannot resolve the alternatives. Specimens T1, T4, T6, T9.
+
+### R09 — Explicit change, scoped requalification and preserved history
+
+**Basis:** C §§2.3, 3, 5.1, 7, 10, 16–17; I; Q §§2, 4, 7.
+
+**Required behavior:** Distinguish refocus, boundary revision, changed G/time/state, evidence/warrant update, question clarification and ordinary account enrichment. Preserve old answers under their original basis. Identify affected claims or a conservatively bounded affected scope, expose unresolved applicability, and prevent those claims being presented as requalified until the required assessment supports it. Keep unaffected use available where its continued validity is warranted. Preserve the reason for continuing, revising, suspending or reopening sufficiently for reentry.
+
+**Prohibited failure:** Current answers inherit validity after a material change without assessment; all history is overwritten; every metadata/access change invalidates everything; or a relabeling is called completed requalification.
+
+**Conformance and limits:** Before/after scope, declared change and disposition can be inspected. A declared change can mechanically trigger an explicit applicability check; automatic detection of every real-world change, dependency or semantic effect is not established. Event sourcing, a particular dependency graph and perfect impact inference are not required by this document.
+
+**Reentry:** Any of the source contract’s failure conditions or Q §7 triggers occurs. Specimens T2–T7.
+
+### R10 — Bounded reliance and recoverable conformance claims
+
+**Basis:** C §§0, 3–4, 9–10, 13–17; P’s enforcement split and exact lock; Q §§8–11; ECO-144’s completion contract.
+
+**Required behavior:** Before reporting adequate inquiry or relying on its results for a consequential Move, recover its applicable basis, coverage, support, unresolved material questions and stop/fail/reentry disposition. A claim of sufficiency must state what it is sufficient for and preserve the qualification envelope. A known outcome-determinative gap prevents the affected reliance, while raw preservation and authorized clarification remain possible. Recoverability may be compositional and must not require hidden conversation state. Distinguish this requirements result, later architecture qualification and eventual installation/behavior evidence.
+
+**Prohibited failure:** A compliant-looking form proves semantic fitness; the package authorizes itself; unknowns always block every action or never block any action; bounded qualification becomes universal ontology or full ECO-136 acceptance; or specification becomes deployment evidence.
+
+**Conformance and limits:** A reviewer can determine why the declared use may proceed or must stop, and recover the supporting materials. Reference resolution and declared gate conditions are mechanically checkable; sufficiency of their meaning and evidence remains a scoped judgment. The future architecture must show how its chosen mechanisms support these behaviors, but none is selected here.
+
+**Reentry:** The intended use exceeds the qualified envelope, consequential sources cannot be recovered, or conformance claims outrun the demonstrated evidence. Specimens T4, T7, T9, T10.
+
+### A.5 Local reentry labels and universal identity constraint
+
+The labels used in the inherited control-point table resolve to the already-selected routes in §14:
+
+| Label | Local meaning and destination |
+|---|---|
+| U1 | Required behavior would need to change: ECO-144 requirements reentry. |
+| U2 | Persistent generator conflict under identical clarified R/G/boundary/scope/seat/burden: ECO-143 / semantic contract. |
+| U3 | Consumer, reliance, notice/liveness or surrounding-responsibility uncertainty changes the module boundary or stop condition: ECO-146 / Principal operating-context reentry. |
+| U4 | Source conflict or authority ambiguity changes scope, standing or permission: governing-source reconciliation. |
+| U5 | A method or physical mechanism fails while logical meaning remains coherent: repair/narrow the responsible design or implementation and its evidence, without reopening semantics solely for that failure. |
+
+The universal-identity constraint referenced in §12 is inherited from `docs/invariants.md`, blob `e7b36a56a3a1eff58d7e2debce4aaeb6e1a359d4`: every persistent first-class subject of inspection or relation has a stable Referent identity; type-specific content remains in its native record. Registration may precede description/classification/native binding. It does not confer semantic identity with a represented subject, co-reference, description, standing, warrant, authority, promotion or currentness. UUID uniqueness does not prove subject uniqueness. This is a constraint on later realization, not an identifier format or schema choice.
