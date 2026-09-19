@@ -20,15 +20,15 @@ jobs:
           POSTGRES_USER: custodian
           POSTGRES_HOST_AUTH_METHOD: trust
         ports:
-          - '127.0.0.1:55442:5432'
+          - '127.0.0.1:55439:5432'
         options: >-
           --health-cmd "pg_isready -U custodian -d postgres"
           --health-interval 5s --health-timeout 5s --health-retries 20
     env:
       BUILD6_DISPOSABLE: 'YES'
       ECO152_DISPOSABLE: 'YES'
-      BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:55442/build6
-      ECO152_DATABASE_URL: postgresql://postgres@127.0.0.1:55442/build6
+      BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:55439/build6
+      ECO152_DATABASE_URL: postgresql://postgres@127.0.0.1:55439/build6
       B5B_EVIDENCE_DIR: ${{ github.workspace }}/artifacts/build5b-predecessor
       ECO152_EVIDENCE_DIR: ${{ github.workspace }}/artifacts/eco152
     steps:
@@ -98,7 +98,7 @@ jobs:
           set -euo pipefail
           docker restart "$PG_CONTAINER" | tee artifacts/eco152/restart.log
           for i in $(seq 1 30); do
-            if pg_isready -h 127.0.0.1 -p 55442 -U orientation_client -d build6; then break; fi
+            if pg_isready -h 127.0.0.1 -p 55439 -U orientation_client -d build6; then break; fi
             sleep 1
           done
           python3 - <<'PY' | tee -a artifacts/eco152/restart.log
