@@ -257,7 +257,7 @@ from public.ecb12_create_artifact(
 ) \gset
 select pg_catalog.set_config('eco149.test.fake_pass_artifact', :'eco149_fake_pass_artifact', false);
 
-do $
+do $$
 begin
   begin
     perform * from public.quadrant_v1_qualify(
@@ -327,7 +327,7 @@ set role anon;
 select public.quadrant_v1_resolve(:'eco149_channel'::uuid) as eco149_closure \gset
 reset role;
 
-do $
+do $$
 declare
   c jsonb;
   expected_epoch bigint;
