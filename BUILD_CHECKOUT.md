@@ -15,10 +15,34 @@ ADJACENT_ECO140_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=VERIFIED
 REAL_PGO_DESIGNATION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
-FIRST_CLASS_NAME_FRONTIER=ECO-160_COMMISSIONED; GENERATE_TEST_SELECT_OPEN; EXECUTION_NOT_STARTED
+FIRST_CLASS_NAME_FRONTIER=ECO-160_CLOSED; BRIMAR_PROPOSED; PRINCIPAL_DISPOSITION_OPEN
 SEMANTIC_NAME_PROPOSAL=ORIENTING_COMPOSITION; DESCRIPTOR_ONLY; NOT_ADOPTED
 NAMING_LAYER_ARCHITECTURE=FIRST_CLASS_PROPER_NAME_PLUS_RECOVERABLE_DESCRIPTOR; FROZEN_BY_ECO-158
-FIRST_CLASS_PROPER_NAME=UNRESOLVED
+FIRST_CLASS_PROPER_NAME=UNRESOLVED; PROPOSAL=BRIMAR; NOT_ADOPTED
+FIRST_CLASS_NAME_CANONICAL_SEMANTIC_COLLISION=UNKNOWN
+FIRST_CLASS_NAME_PRINCIPAL_RECOGNITION=OPEN
+
+## 19 September 2026 — ECO-160 naming return: BRIMAR proposed, not adopted
+
+ECO-160 completed the proposal-only Generate → Test/Overshoot → Select Move under the frozen ECO-158 architecture.
+
+- **Selected proposal:** **BRIMAR**, pronounced **BRY-mar**.
+- **Proposed expansion:** **Bounded Relevance Integration for Meaning, Action, and Reentry**.
+- **Semantic descriptor retained:** **orienting composition**.
+- **Standing:** analytically qualified proposal only; not adopted or canonical.
+- The seven independent generation lanes, non-compensatory hard gates, first-class identity floor, Overshoot surface, and conjunctive selection architecture remain unchanged.
+- Accessible exact-collision checks on current repository, ECOS Linear, Library, and reachable legacy Open Brain did not surface an existing BRIMAR designation.
+- Canonical semantic-collision standing remains **UNKNOWN** because canonical BRAIN ecb-v2-brain / vezxivrvhakclxuvxzso was not reachable through the available Supabase connection. Legacy Open Brain was not substituted.
+- Principal/human recognition remains **OPEN**.
+- External unrelated BRIMAR brands and live marks create a real public/commercial-use caveat; ECO-160 does not claim trademark or legal clearance.
+- Master Key and PGO remain historical/provisional aliases; Decoder Ring remains the historical derivation procedure; Orienting Composition remains the descriptor.
+- No machine identifier, schema/API/tool/runtime rename, broad lexical replacement, authority promotion, action authorization, or runtime mutation is authorized or implied.
+
+Durable return:
+- research/naming/ECO-160-first-class-name-generate-test-select-return-2026-09-19.md
+- Linear document a7036d5f-d630-4425-a446-8abd002eb933 / slug 194c3adbda44
+
+**Exact next seam:** Principal disposition on BRIMAR. If accepted, the separately bounded adoption Move must first execute the outstanding canonical BRAIN semantic-collision check; a material collision returns to Generate rather than being averaged away.
 
 ## 18 September 2026 — ECO-160 naming Generate → Test/Overshoot → Select commissioned
 
