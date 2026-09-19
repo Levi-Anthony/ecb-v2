@@ -90,6 +90,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 tests/eco-152/qualify.py 2>&1 | tee artifacts/eco152/qualification.log
+          python3 tests/eco-152/history_lineage.py 2>&1 | tee artifacts/eco152/history-lineage.log
       - name: Restart disposable database and reconstruct from a fresh client
         shell: bash
         env:
