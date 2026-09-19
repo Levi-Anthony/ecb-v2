@@ -22,12 +22,29 @@ FIRST_CLASS_PROPER_NAME=UNRESOLVED; PROPOSAL=BRIMAR; NOT_ADOPTED
 FIRST_CLASS_NAME_CANONICAL_SEMANTIC_COLLISION=UNKNOWN
 FIRST_CLASS_NAME_PRINCIPAL_RECOGNITION=UPSTREAM_REFERENT_REQUALIFICATION_TRIGGERED
 
-INTEGRAL_COHERENCE_FRONTIER=ECO-163_COMMISSIONED; MOVE_NOT_STARTED
+INTEGRAL_COHERENCE_FRONTIER=ECO-163_MOVE_EXECUTED_TO_COLD_WORKER_GATE; NOT_YET_QUALIFIED; METABOLIZE_NOT_ENTERED
 INTEGRAL_COHERENCE_SENSE=ECO-161_PASS_WITH_MATERIAL_CORRECTION
 INTEGRAL_COHERENCE_SHAPE=ECO-162_PASS; TRI_AXIAL_PLUS_FIDELITY; SUBSTRATE_INDEPENDENT
-INTEGRAL_COHERENCE_MOVE=ECO-163_COMMISSIONED; NOT_STARTED
+INTEGRAL_COHERENCE_MOVE=ECO-163_EXECUTED; CASE_A_PASS; CASE_B_FRESH_WORKER_UNEXECUTED; CASE_C_PASS_SPECIMEN; CASE_D_PASS; VERDICT=INSTRUMENTATION_INSUFFICIENT
 SMALLNESS_OPTIMIZATION=PROHIBITED_REGISTER_B
 BRIMAR_ADOPTION=HOLD; PROJECTION_LEVEL_PROPOSAL_ONLY
+
+## 19 September 2026 — ECO-163 Move executed to mandatory cold-worker gate; Metabolize not entered
+
+ECO-163 has executed the reachable operational-qualification surface under the Principal's current authorization.
+
+- **Case A — reflective reorientation: PASS.** ECO-160's narrower orienting-composition referent and historical qualification remain intact while the later finite-coherence referent is distinct; FIBERR/Filament nonidentity and the ECO-161/162 corrections remain preserved.
+- **Case B — cold handoff / reconstruction: UNEXECUTED.** A sealed bounded packet and gold comparison surface are durable, but an actual Linear-agent delegation attempt was rejected because workspace coding sessions with GitHub code access are not enabled. No same-worker substitute is counted.
+- **Case C — unfamiliar open-world specimen: PASS at specimen level.** arXiv:1602.03837 was handled compositionally without a domain-specific universal schema; source/frame limits, dormant uncertainty and QF-triggered reactivation remained distinct.
+- **Case D — BUILD-7′ negative space: PASS.** The fixed ECO-152 lifecycle preserves Resolution / Qualification / Authority / Binding / currentness / requalification / withdrawal / recovery separations. Its real counterfeit-historical-PASS defect and repair provide negative-control evidence for exact lineage/warrant fidelity.
+- **Move verdict: NOT YET QUALIFIED — INSTRUMENTATION INSUFFICIENT.** No executed specimen falsified ECO-162, but fresh-worker reconstruction and blind anti-confirmation are non-compensatory acceptance gates and remain untested.
+- **Metabolize has not been entered.** No Shape promotion, naming adoption, schema/API selection, runtime mutation or production installation follows.
+
+Durable continuity:
+- `research/core-architecture/ECO-163-Integral-Coherence-Move-Return-2026-09-19.md`
+- `research/core-architecture/ECO-163-Cold-Worker-Packet-2026-09-19.md`
+
+**Exact next seam:** run the sealed ECO-163 packet in a genuinely fresh context, preserve its unedited reconstruction and J1/J2/J3 judgments, compare to the gold surface, then either close the Move or route the observed failure to the responsible Shape/specimen layer. Stop before Metabolize pending that evidence.
 
 ## 19 September 2026 — ECO-161 Sense + ECO-162 Shape complete; ECO-163 Move commissioned
 
