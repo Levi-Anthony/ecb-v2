@@ -15,12 +15,41 @@ ADJACENT_ECO140_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=VERIFIED
 REAL_PGO_DESIGNATION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
-FIRST_CLASS_NAME_FRONTIER=ECO-160_CLOSED; BRIMAR_PROPOSED; PRINCIPAL_DISPOSITION_OPEN
+FIRST_CLASS_NAME_FRONTIER=ECO-160_CLOSED; BRIMAR_PROPOSED; ADOPTION_HOLD=ECO-161_REFERENT_REQUALIFICATION
 SEMANTIC_NAME_PROPOSAL=ORIENTING_COMPOSITION; DESCRIPTOR_ONLY; NOT_ADOPTED
 NAMING_LAYER_ARCHITECTURE=FIRST_CLASS_PROPER_NAME_PLUS_RECOVERABLE_DESCRIPTOR; FROZEN_BY_ECO-158
 FIRST_CLASS_PROPER_NAME=UNRESOLVED; PROPOSAL=BRIMAR; NOT_ADOPTED
 FIRST_CLASS_NAME_CANONICAL_SEMANTIC_COLLISION=UNKNOWN
-FIRST_CLASS_NAME_PRINCIPAL_RECOGNITION=OPEN
+FIRST_CLASS_NAME_PRINCIPAL_RECOGNITION=UPSTREAM_REFERENT_REQUALIFICATION_TRIGGERED
+
+INTEGRAL_COHERENCE_FRONTIER=ECO-161_COMMISSIONED; SENSE_NOT_STARTED
+INTEGRAL_COHERENCE_HYPOTHESIS=URG_X_PGO_X_SSMM; PROVISIONAL; NOT_CANONICAL
+SMALLNESS_OPTIMIZATION=PROHIBITED_REGISTER_B
+BRIMAR_ADOPTION=HOLD_PENDING_ECO-161
+
+## 19 September 2026 — Move → Metabolize: integral coherence requalification opens ECO-161
+
+Principal review of the ECO-160 naming proposal exposed a likely upstream referent issue. The naming result remains valid evidence for the referent ECO-160 actually tested, but **BRIMAR adoption is now on hold** while the deeper mechanism is requalified.
+
+Provisional synthesis only:
+
+- **URG** may supply open-world semantic composition — *openness without chaos*.
+- **PGO / Master-Key lineage** may supply locally governing telic relevance — *relevance without reduction*.
+- **SSMM** may supply recursively gated temporal governance — *change without drift*.
+- Dynamic pruning, binding, Question Forward, reentry, handoff, Decoder Ring behavior, and FIBERR/Filament continuity may be derived behaviors/projections of their interaction. This is not yet canonical.
+- The governing correction is **prune computation, not possibility; narrow commitment, not reality**.
+- Register-B smallness/minimality optimization remains prohibited. Finite activation does not imply semantic elimination.
+- A real unification must generate the differences among prior instruments rather than flatten them into generic context management.
+
+Durable Metabolize checkpoint:
+- `research/core-architecture/Integral-Coherence-Maintenance-Metabolize-2026-09-19.md`
+- Linear document `4258a207-1497-449f-8ce8-cfa43e68268a` / slug `3a30391eee4e`
+
+Fresh Sense commission:
+- **ECO-161 — Integral coherence maintenance — URG × PGO × SSMM requalification**
+- `research/core-architecture/ECO-161-Integral-Coherence-Sense-Commission-2026-09-19.md`
+
+**Exact next semantic seam:** execute ECO-161 Sense. Do not Shape, rename, adopt BRIMAR/BRAID, or consolidate historical instruments before its cold-readable return.
 
 ## 19 September 2026 — ECO-160 naming return: BRIMAR proposed, not adopted
 
