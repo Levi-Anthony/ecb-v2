@@ -34,7 +34,7 @@ The same artifact explicitly narrows the Master Key definition to avoid **output
 
 **INFERENCE — later ECOS usage progressively blurred that distinction.** By July, “Master Key / Decoder Ring” was sometimes spoken of as one scoped-meaning primitive family while still retaining the explicit rule that child-room keys are derived via the Decoder Ring procedure. Later Master-Key architecture accumulated focal object, frame, scope, sensors, authority/currentness questions, and other orientation work.
 
-**CONSEQUENCE — the current** ECO-153 **function is best understood as a successor synthesis from that broader orientation lineage, not simply the historical Master Key under a new label.** This does not destabilize the current semantic contract. It explains why the old name became increasingly misleading.
+**CONSEQUENCE — the current ECO-153 function is best understood as a successor synthesis from that broader orientation lineage, not simply the historical Master Key under a new label.** This does not destabilize the current semantic contract. It explains why the old name became increasingly misleading.
 
 ## 3. Provenance ledger
 
