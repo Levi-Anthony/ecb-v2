@@ -15,6 +15,21 @@ ADJACENT_ECO140_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=VERIFIED
 REAL_PGO_DESIGNATION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
+FIRST_CLASS_NAME_FRONTIER=ECO-157_SENSE_PASS; SHAPE_PENDING
+SEMANTIC_NAME_PROPOSAL=ORIENTING_COMPOSITION; NOT_ADOPTED
+FIRST_CLASS_PROPER_NAME=UNRESOLVED
+
+## 18 September 2026 — first-class naming Sense reentry
+
+ECO-157 completed provenance-first naming Sense and returned **PASS**. The first-class naming requirement is now explicit: semantic adequacy alone is insufficient for this first-class ECOS function.
+
+- `Orienting Composition` remains a qualified **semantic proposal/descriptor only** from ECO-153; it is not an adopted first-class proper name.
+- Historical recovery confirms **Decoder Ring** (derivation procedure) and **Master Key** (derived room target + helps-rule) were originally distinct; later operational usage blurred and expanded the lineage. The current focal function is treated as the present successor synthesis, not as one historical key object.
+- **SIGMA is the model naming outcome**, but not because acronym generation is mandatory. The recovered doctrine is function-first, every term earns real disciplinary load, art emerges from rigor; BRAIN, ECOS, and FIBERR establish additional legitimate naming mechanisms.
+- Candidate generation remains unopened. Next recommended transition is **Close Sense → Enter Shape** under ECO-157.
+- No canonical lexical adoption, schema/API rename, or runtime mutation is authorized.
+
+Durable return: `research/naming/ECO-157-first-class-name-provenance-sense-2026-09-18.md` and Linear document `4593c1f6-19a4-45fa-9677-8f0a43bc224e`.
 
 ## 18 September 2026 — promotion frontier update
 
