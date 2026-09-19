@@ -98,17 +98,28 @@ jobs:
           set -o pipefail
           psql -X -v ON_ERROR_STOP=1 "$ECO149_DATABASE_URL" -f tests/eco-149/qualify.sql 2>&1 | tee eco149-qualify.log
 
-      - name: Preserve ECO-149 qualification log
+      - name: Exercise decision-bearing systems pressure
+        id: eco149_pressure
+        if: steps.eco149_qualify.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          bash tests/eco-149/pressure.sh "$ECO149_DATABASE_URL" 2>&1 | tee eco149-pressure.log
+
+      - name: Preserve ECO-149 qualification logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: eco149-qualification-log
-          path: eco149-qualify.log
-          if-no-files-found: error
+          path: |
+            eco149-qualify.log
+            eco149-pressure.log
+          if-no-files-found: warn
           retention-days: 14
 
-      - name: Fail if ECO-149 qualification failed
-        if: steps.eco149_qualify.outcome != 'success'
+      - name: Fail if ECO-149 evidence run failed
+        if: steps.eco149_qualify.outcome != 'success' || steps.eco149_pressure.outcome != 'success'
         shell: bash
         run: exit 1
 
