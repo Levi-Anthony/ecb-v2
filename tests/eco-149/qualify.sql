@@ -46,11 +46,15 @@ begin
     '{"profile":"ecb.quadrant/1","role":"basis","r":"rock-R1","boundary":"garden-border-seat","governing_orientation":"reversible seating trial","requested_use":"reversible_trial","scope":"one rock / one border seat / current fixture","source_standing":"synthetic fixture","stop_reentry":"reenter on material boundary/G/use change"}',
     null,null,true
   );
-  if not r.replayed or r.channel_id <> (
-    select r2.channel_id from ecb_quadrant.records r2
-    where r2.receipt_id='14900000-0000-4149-8149-000000000001'::uuid
-  ) then
-    raise exception 'exact replay failed to recover same basis result';
+  if not r.replayed
+     or r.operation_id <> '14900000-0000-4149-8149-000000000001'::uuid
+     or r.receipt_id <> '14900000-0000-4149-8149-000000000001'::uuid
+     or r.channel_id is null
+     or r.artifact_id is null
+     or (r.envelope::jsonb->>'operation_id')::uuid <> r.operation_id
+     or (r.envelope::jsonb->>'artifact_id')::uuid <> r.artifact_id
+     or (r.envelope::jsonb->>'channel_id')::uuid <> r.channel_id then
+    raise exception 'exact replay failed to recover the committed basis identity/envelope';
   end if;
 end $$;
 reset role;
