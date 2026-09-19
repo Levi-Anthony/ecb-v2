@@ -15,10 +15,23 @@ ADJACENT_ECO140_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=VERIFIED
 REAL_PGO_DESIGNATION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
-FIRST_CLASS_NAME_FRONTIER=ECO-158_SHAPE_PASS; GENERATE_TEST_SELECT_READY; NOT_OPENED
+FIRST_CLASS_NAME_FRONTIER=ECO-160_COMMISSIONED; GENERATE_TEST_SELECT_OPEN; EXECUTION_NOT_STARTED
 SEMANTIC_NAME_PROPOSAL=ORIENTING_COMPOSITION; DESCRIPTOR_ONLY; NOT_ADOPTED
 NAMING_LAYER_ARCHITECTURE=FIRST_CLASS_PROPER_NAME_PLUS_RECOVERABLE_DESCRIPTOR; FROZEN_BY_ECO-158
 FIRST_CLASS_PROPER_NAME=UNRESOLVED
+
+## 18 September 2026 — ECO-160 naming Generate → Test/Overshoot → Select commissioned
+
+ECO-160 is the fresh-session controlling commission for the proposal-only first-class naming execution downstream of ECO-158 Shape PASS.
+
+- Generate → Test/Overshoot → Select is now **opened by commission** but execution has not started.
+- Candidate generation must run independently by the seven ECO-158 method lanes before incumbents/control designations re-enter.
+- Master Key, PGO, generic Governing Orientation, and `Orienting Composition` are not generation seeds.
+- All candidates face the same non-compensatory hard gates, first-class identity floor, retrieval/collision tests, and Overshoot surface.
+- Selection remains conjunctive, preserves `none qualifies`, and permits Principal/human recognition only among already-qualified survivors.
+- State effect remains proposal only: no name adoption, lexical propagation, machine identifier, schema/API rename, or runtime mutation.
+
+Commission mirror: `research/naming/ECO-160-first-class-name-generate-test-select-commission-2026-09-18.md`.
 
 ## 18 September 2026 — ECO-158 first-class naming Shape PASS
 
