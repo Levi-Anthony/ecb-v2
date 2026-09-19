@@ -1,0 +1,131 @@
+name: ECO-152 isolated orientation lifecycle
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'sql/migrations/20260919065000_eco152_orientation_kernel.sql'
+      - 'tests/eco-152/**'
+      - '.github/workflows/eco-152-orientation-lifecycle.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.2-pg17@sha256:feb68f4f15446397d8cac7f4fe48fe4586de83160d1fc48b46283312d1a33966
+        env:
+          POSTGRES_USER: custodian
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - '127.0.0.1:55442:5432'
+        options: >-
+          --health-cmd 'pg_isready -U custodian -d postgres'
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      BUILD6_DISPOSABLE: 'YES'
+      ECO152_DISPOSABLE: 'YES'
+      BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:55442/build6
+      ECO152_DATABASE_URL: postgresql://postgres@127.0.0.1:55442/build6
+      B5B_EVIDENCE_DIR: ${{ github.workspace }}/artifacts/build5b-predecessor
+      ECO152_EVIDENCE_DIR: ${{ github.workspace }}/artifacts/eco152
+    steps:
+      - name: Checkout exact candidate head, not synthetic test merge
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Preserve revision and executable identity before execution
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/eco152/source
+          git rev-parse HEAD | tee artifacts/eco152/tested-sha.txt
+          git status --porcelain > artifacts/eco152/checkout-status.txt
+          cp sql/migrations/20260919065000_eco152_orientation_kernel.sql artifacts/eco152/source/
+          cp tests/eco-152/*.py artifacts/eco152/source/
+          cp .github/workflows/eco-152-orientation-lifecycle.yml artifacts/eco152/source/
+          sha256sum artifacts/eco152/source/* > artifacts/eco152/source-sha256.txt
+          python3 --version > artifacts/eco152/python-version.txt
+          psql --version > artifacts/eco152/psql-version.txt
+      - name: Verify containment before database setup
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/eco-152/containment.py | tee artifacts/eco152/containment.log
+      - name: Reconstruct accepted current substrate without historical BUILD 7-10 or quadrant installs
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            bash tests/build-6/ci-reconstruct-build5b.sh
+            for file in \
+              sql/migrations/20260907234712_build_6_governance_bootstrap.sql \
+              sql/migrations/20260914063000_build_11_ordinary_operation_kernel.sql \
+              tests/build-11/qualify.sql \
+              sql/migrations/20260915090000_build_12_ordinary_versioned_artifacts.sql \
+              sql/migrations/20260915101000_build_12_artifact_key_fetch.sql \
+              sql/migrations/20260915102500_build_12_artifact_key_fetch_fix.sql \
+              sql/migrations/20260915102000_seed_integral_holonic_grammar_semantic_contract_v1.sql \
+              sql/migrations/20260915114500_build_12_greenfield_artifact_correction.sql \
+              tests/build-12/qualify-greenfield-correction.sql \
+              sql/migrations/20260916023000_eco138_admission_disposition.sql \
+              sql/migrations/20260916023100_eco138_disposition_transition_fix.sql \
+              tests/eco-138/qualify.sql \
+              sql/migrations/20260916030000_eco140_shaped_next_action.sql \
+              tests/eco-140/qualify.sql; do
+              echo "RECONSTRUCT $file"
+              sha256sum "$file" >> artifacts/eco152/predecessor-sha256.txt
+              psql -X -v ON_ERROR_STOP=1 "$ECO152_DATABASE_URL" -f "$file"
+            done
+          } 2>&1 | tee artifacts/eco152/predecessor.log
+      - name: Apply orientation candidate only in disposable database
+        shell: bash
+        run: |
+          set -euo pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO152_DATABASE_URL" -f sql/migrations/20260919065000_eco152_orientation_kernel.sql 2>&1 | tee artifacts/eco152/migration.log
+      - name: Qualify lifecycle, exact lineage, independent authority and systems pressure
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/eco-152/qualify.py 2>&1 | tee artifacts/eco152/qualification.log
+      - name: Restart disposable database and reconstruct from a fresh client
+        shell: bash
+        env:
+          PG_CONTAINER: ${{ job.services.postgres.id }}
+        run: |
+          set -euo pipefail
+          docker restart "$PG_CONTAINER" | tee artifacts/eco152/restart.log
+          for i in $(seq 1 30); do
+            if pg_isready -h 127.0.0.1 -p 55442 -U orientation_client -d build6; then break; fi
+            sleep 1
+          done
+          python3 - <<'PY' | tee -a artifacts/eco152/restart.log
+          import json, importlib.util
+          from pathlib import Path
+          spec = importlib.util.spec_from_file_location('qualifier', 'tests/eco-152/qualify.py')
+          m = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(m)
+          expected = json.loads((m.OUT/'cold-state.json').read_text())
+          current = m.resolve(expected)
+          if current != expected:
+              raise SystemExit('ECO152_RESTART=FAIL: durable state changed across restart')
+          (m.OUT/'restart-state.json').write_text(json.dumps(current, indent=2))
+          print('ECO152_RESTART=PASS')
+          PY
+      - name: Preserve database version and redacted schema inspection
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p artifacts/eco152
+          psql -X -At "$ECO152_DATABASE_URL" -c 'select version();' > artifacts/eco152/database-version.txt || true
+          psql -X -At "$ECO152_DATABASE_URL" -c "select n.nspname,p.proname,p.prosecdef,p.proconfig,p.proacl from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='ecb_orientation' or p.proname like 'orientation_v1_%' order by 1,2;" > artifacts/eco152/function-privileges.txt || true
+      - name: Retain complete isolated evidence including failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: eco152-orientation-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/eco152/
+          if-no-files-found: error
+          retention-days: 90
