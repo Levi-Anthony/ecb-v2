@@ -15,9 +15,31 @@ ADJACENT_ECO140_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=VERIFIED
 REAL_PGO_DESIGNATION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
-FIRST_CLASS_NAME_FRONTIER=ECO-158_SHAPE_OPEN; CANDIDATE_GENERATION_UNOPENED
-SEMANTIC_NAME_PROPOSAL=ORIENTING_COMPOSITION; NOT_ADOPTED
+FIRST_CLASS_NAME_FRONTIER=ECO-158_SHAPE_PASS; GENERATE_TEST_SELECT_READY; NOT_OPENED
+SEMANTIC_NAME_PROPOSAL=ORIENTING_COMPOSITION; DESCRIPTOR_ONLY; NOT_ADOPTED
+NAMING_LAYER_ARCHITECTURE=FIRST_CLASS_PROPER_NAME_PLUS_RECOVERABLE_DESCRIPTOR; FROZEN_BY_ECO-158
 FIRST_CLASS_PROPER_NAME=UNRESOLVED
+
+## 18 September 2026 — ECO-158 first-class naming Shape PASS
+
+ECO-158 completed the first-class naming architecture Shape and returned **PASS**. No candidate names were generated.
+
+- Frozen interface: **first-class proper name + recoverable semantic descriptor**.
+- Five naming layers remain distinct: proper name; semantic descriptor/cold definition; procedure/operation; materialization/representation; machine identifier.
+- Hard semantic/structural rejection gates are non-compensatory. Brand appeal, memorability, resonance, or cleverness cannot average away a material failure.
+- A separate first-class identity floor now requires usable invocation, memorability/recognition, corpus discrimination, compositional prose behavior, architectural durability, sibling coherence without mimicry, and progressive disclosure.
+- Multiplicative value—disciplinary teaching, layered meaning, symbolism/etymology, form-function isomorphism, visual identity, morphology, cross-scale utility, and related synergy—is considered only among floor-passing candidates.
+- Seven generation lanes are eligible and share one qualification surface: forward disciplinary acronym; layered/brand acronym; bounded real-word/metaphor; earned coinage/transformation; opaque proper noun; scientific/symbolic/linguistic borrowing; direct functional/compound control.
+- Generation is anti-anchored: incumbents and `Orienting Composition` are withheld as seeds and re-enter only as later control/test subjects.
+- Selection is a conjunctive cascade, not a weighted score; `none qualifies` remains a valid outcome. Principal/human recognition may close the last gap only among structurally qualified survivors.
+- `Orienting Composition` remains descriptor-only and not adopted.
+- Candidate generation is **ready to commission but remains unopened**. Adoption, machine identifiers, schema/API renames, and runtime mutation remain unauthorized.
+
+Durable return:
+- `research/naming/ECO-158-first-class-name-shape-return-2026-09-18.md`
+- Linear document `be11360a-75cf-4439-ad75-7cb0c4aeb509` / slug `88d03438aaf1`
+
+The return contains the exact later **Generate → Test/Overshoot → Select** commission. Opening that phase requires a separate controlling commission.
 
 ## 18 September 2026 — first-class naming Shape opened
 
