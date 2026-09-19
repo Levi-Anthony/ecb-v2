@@ -21,6 +21,7 @@ url = urlparse(ADMIN)
 if os.environ.get("ECO152_DISPOSABLE") != "YES" or url.hostname not in ("127.0.0.1", "localhost") or url.path != "/build6":
     raise SystemExit("Refusing non-disposable/non-loopback target")
 CLIENT = urlunparse(url._replace(netloc=f"orientation_client@{url.hostname}:{url.port}"))
+CUSTODIAN = urlunparse(url._replace(netloc=f"custodian@{url.hostname}:{url.port}"))
 OUT = Path(os.environ.get("ECO152_EVIDENCE_DIR", "artifacts/eco152"))
 OUT.mkdir(parents=True, exist_ok=True)
 HEADERS = {"x-ecb-runtime-key": "build11-test-runtime-key-00000000000000000000",
@@ -41,7 +42,8 @@ def log_file(name, item):
         f.write(encode(item) + "\n")
 def execute(sql, *, admin=False, headers=None):
     prefix = "" if admin else "SET ROLE anon; SET request.headers=" + lit(encode(HEADERS if headers is None else headers)) + ";\n"
-    return subprocess.run(["psql", "-X", "-qAt", "-v", "ON_ERROR_STOP=1", ADMIN if admin else CLIENT],
+    database = CUSTODIAN if admin == "custodian" else (ADMIN if admin else CLIENT)
+    return subprocess.run(["psql", "-X", "-qAt", "-v", "ON_ERROR_STOP=1", database],
                           input=prefix + sql, text=True, capture_output=True, timeout=30)
 def run(sql, *, admin=False, headers=None):
     p = execute(sql, admin=admin, headers=headers)
@@ -99,7 +101,8 @@ def snapshot(name):
     (OUT / name).write_text(json.dumps(data, indent=2), encoding="utf-8")
 
 def main():
-    run("create role orientation_client login noinherit nosuperuser nocreatedb nocreaterole; grant anon to orientation_client;", admin=True)
+    # Cluster-role commissioning is fixture custody, never the candidate's ordinary path.
+    run("create role orientation_client login noinherit nosuperuser nocreatedb nocreaterole; grant anon to orientation_client;", admin="custodian")
     actor, issuer, focal = uid(), uid(), uid()
     run("insert into public.referents(id) values("+lit(actor)+"),("+lit(issuer)+"),("+lit(focal)+");", admin=True)
     source = artifact("Fixture governing source: nonexecuting bounded inspection only.")
