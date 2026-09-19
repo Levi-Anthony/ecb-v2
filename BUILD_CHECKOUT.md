@@ -103,6 +103,23 @@ ECO-152 remains architecturally valid but is intentionally paused before impleme
 
 Fresh-session execution should use ECO-153 as the controlling commission and stop at a proposal-only naming recommendation.
 
+
+## 18 September 2026 — mathematical holonic-seeding Sense lane
+
+ECO-154 is commissioned under ECO-136 as a **parallel, non-blocking Sense lane** investigating whether rigorous mathematical problem families can generate or falsify candidate mechanisms for holonic seeding, governed compression/coarse-graining, and faithful transformation.
+
+Its starting neighborhood includes conformal/quasiconformal maps, bounded distortion and metric embeddings, algorithmic-information/compression similarity, MDL, rate-distortion, Information Bottleneck, hierarchical/ultrametric structure, partial-order-constrained hierarchy, and renormalization/coarse-graining.
+
+Governing import rule: distinguish **formal fact**, **structural correspondence**, **ECOS hypothesis**, and **metaphor only**. Compression efficiency does not confer ontological standing; embedding distance is not presumed semantic distance; conformal language fails closed where no justified geometry exists.
+
+ECO-154 must finish Sense with a preservation/loss matrix, candidate seeding mechanisms, toy formalizations, negative controls, Question Forward, and a smallest discriminating Register-B probe recommendation. It stops before Shape and before any URG/schema/API/runtime change.
+
+Durable commission:
+- `research/holonic-seeding/ECO-154-Mathematical-Structure-Preservation-Sense-Commission-2026-09-18.md`
+- Linear `ECO-154`
+
+ECO-153 remains independently active for the bounded naming Move; ECO-154 neither blocks nor renames it.
+
 # Read this first
 
 ECB v2 remains greenfield.
