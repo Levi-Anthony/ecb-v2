@@ -34,6 +34,7 @@ from public.quadrant_v1_record(
   null,null,true
 ) \gset
 reset role;
+select pg_catalog.set_config('eco149.test.channel', :'eco149_channel', false);
 
 -- Replay is recovery, not a second result.
 set role anon;
@@ -106,6 +107,7 @@ from public.quadrant_v1_record(
   :'eco149_channel'::uuid,0,true
 ) \gset
 reset role;
+select pg_catalog.set_config('eco149.test.epoch1', :'eco149_epoch1', false);
 
 -- PASS without a discriminating negative control cannot be issued.
 set role anon;
@@ -114,8 +116,8 @@ begin
   begin
     perform * from public.quadrant_v1_assess(
       '14900000-0000-4149-8149-000000000019'::uuid,
-      (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
-      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),
+      pg_catalog.current_setting('eco149.test.channel')::uuid,
+      pg_catalog.current_setting('eco149.test.epoch1')::bigint,
       '14900000-0000-4149-8149-000000000103'::uuid,
       '{"profile":"ecb.quadrant/1","role":"assessment","proposition":"fixture supports reversible_trial","input_receipts":["14900000-0000-4149-8149-000000000001","14900000-0000-4149-8149-000000000010"],"method":"fixture-v1","use":"reversible_trial","result":"PASS","negative_control":null,"scope":"fixture","limits":"synthetic only"}'
     );
@@ -131,8 +133,8 @@ set role anon;
 select artifact_id as eco149_assessment_artifact
 from public.quadrant_v1_assess(
   '14900000-0000-4149-8149-000000000020'::uuid,
-  (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
-      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),
+  pg_catalog.current_setting('eco149.test.channel')::uuid,
+      pg_catalog.current_setting('eco149.test.epoch1')::bigint,
   '14900000-0000-4149-8149-000000000103'::uuid,
   '{"profile":"ecb.quadrant/1","role":"assessment","proposition":"basis + inquiry are adequate for reversible_trial","input_receipts":["14900000-0000-4149-8149-000000000001","14900000-0000-4149-8149-000000000010"],"method":"fixture-v1","use":"reversible_trial","result":"PASS","negative_control":{"case":"all four coverage cells exist but warrant absent","observed":"would not qualify","would_reverse":"control unexpectedly passes"},"scope":"fixture reversible_trial","limits":"synthetic structure only; no real-world truth"}'
 ) \gset
@@ -150,8 +152,8 @@ begin
   begin
     perform * from public.quadrant_v1_assess(
       '14900000-0000-4149-8149-000000000021'::uuid,
-      (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
-      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),
+      pg_catalog.current_setting('eco149.test.channel')::uuid,
+      pg_catalog.current_setting('eco149.test.epoch1')::bigint,
       '14900000-0000-4149-8149-000000000103'::uuid,
       '{"profile":"ecb.quadrant/1","role":"assessment","proposition":"must fail authentication","input_receipts":["14900000-0000-4149-8149-000000000001"],"method":"fixture-v1","use":"reversible_trial","result":"PASS","negative_control":{"case":"wrong key","observed":"reject"},"scope":"fixture","limits":"none"}'
     );
@@ -174,8 +176,8 @@ set role anon;
 select artifact_id as eco149_reliance_artifact
 from public.quadrant_v1_qualify(
   '14900000-0000-4149-8149-000000000030'::uuid,
-  (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
-      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),
+  pg_catalog.current_setting('eco149.test.channel')::uuid,
+      pg_catalog.current_setting('eco149.test.epoch1')::bigint,
   '{"profile":"ecb.quadrant/1","role":"reliance","requested_use":"reversible_trial","permitted_use":"reversible_trial","basis_receipt":"14900000-0000-4149-8149-000000000001","inquiry_receipt":"14900000-0000-4149-8149-000000000010","assessment_receipt":"14900000-0000-4149-8149-000000000020","disposition":"supported","authority_status":"not_required_for_nonexecuting_use","decisive_gap":false,"qf":[{"question":"observe actual seating result later","route":"explicit_evidence_return"}]}'
 ) \gset
 reset role;
@@ -187,8 +189,8 @@ begin
   begin
     perform * from public.quadrant_v1_qualify(
       '14900000-0000-4149-8149-000000000031'::uuid,
-      (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
-      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),
+      pg_catalog.current_setting('eco149.test.channel')::uuid,
+      pg_catalog.current_setting('eco149.test.epoch1')::bigint,
       '{"profile":"ecb.quadrant/1","role":"reliance","requested_use":"permanent_installation","permitted_use":"permanent_installation","basis_receipt":"14900000-0000-4149-8149-000000000001","inquiry_receipt":"14900000-0000-4149-8149-000000000010","assessment_receipt":"14900000-0000-4149-8149-000000000020","disposition":"supported","authority_status":"not_required_for_nonexecuting_use","decisive_gap":false,"qf":[]}'
     );
     raise exception 'negative control failed: changed use inherited old assessment';
@@ -208,8 +210,8 @@ begin
       '14900000-0000-4149-8149-000000000039'::uuid,
       'change',
       '{"profile":"ecb.quadrant/1","role":"change","before_receipt":"14900000-0000-4149-8149-000000000010","after_summary":"digest changed","classification":"changed_source","affected_scope":"trial","unknown_impact":true,"before_payload_available":false,"claims_historical_requalification":true}',
-      (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
-      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),true
+      pg_catalog.current_setting('eco149.test.channel')::uuid,
+      pg_catalog.current_setting('eco149.test.epoch1')::bigint,true
     );
     raise exception 'negative control failed: digest-only historical requalification accepted';
   exception when invalid_parameter_value then
@@ -222,10 +224,11 @@ from public.quadrant_v1_record(
   '14900000-0000-4149-8149-000000000040'::uuid,
   'change',
   '{"profile":"ecb.quadrant/1","role":"change","before_receipt":"14900000-0000-4149-8149-000000000010","after_summary":"new seating observation returned","classification":"enrichment","affected_scope":"reversible_trial","unknown_impact":true,"before_payload_available":true,"claims_historical_requalification":false}',
-  (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
-      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000010'::uuid),true
+  pg_catalog.current_setting('eco149.test.channel')::uuid,
+      pg_catalog.current_setting('eco149.test.epoch1')::bigint,true
 ) \gset
 reset role;
+select pg_catalog.set_config('eco149.test.epoch2', :'eco149_epoch2', false);
 
 -- Old assessment is now historically readable but cannot support fresh use.
 set role anon;
@@ -234,8 +237,8 @@ begin
   begin
     perform * from public.quadrant_v1_qualify(
       '14900000-0000-4149-8149-000000000041'::uuid,
-      (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
-      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000040'::uuid),
+      pg_catalog.current_setting('eco149.test.channel')::uuid,
+      pg_catalog.current_setting('eco149.test.epoch2')::bigint,
       '{"profile":"ecb.quadrant/1","role":"reliance","requested_use":"reversible_trial","permitted_use":"reversible_trial","basis_receipt":"14900000-0000-4149-8149-000000000001","inquiry_receipt":"14900000-0000-4149-8149-000000000010","assessment_receipt":"14900000-0000-4149-8149-000000000020","disposition":"supported","authority_status":"not_required_for_nonexecuting_use","decisive_gap":false,"qf":[]}'
     );
     raise exception 'negative control failed: stale assessment supported fresh use';
@@ -258,8 +261,8 @@ begin
   begin
     perform * from public.quadrant_v1_qualify(
       '14900000-0000-4149-8149-000000000051'::uuid,
-      (select r.channel_id from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000001'::uuid),
-      (select r.result_epoch from ecb_quadrant.records r where r.receipt_id='14900000-0000-4149-8149-000000000040'::uuid),
+      pg_catalog.current_setting('eco149.test.channel')::uuid,
+      pg_catalog.current_setting('eco149.test.epoch2')::bigint,
       format('{"profile":"ecb.quadrant/1","role":"reliance","requested_use":"reversible_trial","permitted_use":"reversible_trial","basis_receipt":"14900000-0000-4149-8149-000000000001","inquiry_receipt":"14900000-0000-4149-8149-000000000010","assessment_receipt":"%s","disposition":"supported","authority_status":"not_required_for_nonexecuting_use","decisive_gap":false,"qf":[]}', (select o.result_referent_id from public.ordinary_operations o where o.id='14900000-0000-4149-8149-000000000050'::uuid))
     );
     raise exception 'negative control failed: raw PASS Artifact became assessment';
