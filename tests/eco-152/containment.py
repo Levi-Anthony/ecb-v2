@@ -14,11 +14,12 @@ def prohibited(text):
 def effect_surface(text):
     return bool(re.search(r"create\s+(?:or\s+replace\s+)?function\s+(?:public\.)?orientation[^\s(]*execute", text, re.I))
 # The same check must discriminate both directions, not merely emit PASS.
-if not prohibited("https://fixture.supabase.co") or prohibited("postgresql://fixture@127.0.0.1:55442/build6"):
+if not prohibited("https://fixture.supabase.co") or prohibited("postgresql://fixture@127.0.0.1:55439/build6"):
     raise SystemExit("containment checker sensitivity failure")
 if not effect_surface("create function public.orientation_v1_execute()") or effect_surface("create function public.orientation_v1_resolve()"):
     raise SystemExit("effect-surface checker sensitivity failure")
-paths = [ROOT / "sql/migrations/20260919065000_eco152_orientation_kernel.sql", ROOT / "tests/eco-152/qualify.py"]
+paths = list((ROOT / "sql/migrations").glob("*eco152*.sql"))
+paths += [p for p in (ROOT / "tests/eco-152").glob("*.py") if p.name != "containment.py"]
 for p in paths:
     text = p.read_text()
     if prohibited(text) or (p.suffix == ".sql" and effect_surface(text)):

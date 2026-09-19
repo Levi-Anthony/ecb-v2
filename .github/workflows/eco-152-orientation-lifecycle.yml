@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'sql/migrations/20260919065000_eco152_orientation_kernel.sql'
+      - 'sql/migrations/*eco152*.sql'
       - 'tests/eco-152/**'
       - '.github/workflows/eco-152-orientation-lifecycle.yml'
   workflow_dispatch:
@@ -43,7 +43,7 @@ jobs:
           mkdir -p artifacts/eco152/source
           git rev-parse HEAD | tee artifacts/eco152/tested-sha.txt
           git status --porcelain > artifacts/eco152/checkout-status.txt
-          cp sql/migrations/20260919065000_eco152_orientation_kernel.sql artifacts/eco152/source/
+          cp sql/migrations/*eco152*.sql artifacts/eco152/source/
           cp tests/eco-152/*.py artifacts/eco152/source/
           cp .github/workflows/eco-152-orientation-lifecycle.yml artifacts/eco152/source/
           sha256sum artifacts/eco152/source/* > artifacts/eco152/source-sha256.txt
@@ -80,11 +80,14 @@ jobs:
               psql -X -v ON_ERROR_STOP=1 "$ECO152_DATABASE_URL" -f "$file"
             done
           } 2>&1 | tee artifacts/eco152/predecessor.log
-      - name: Apply orientation candidate only in disposable database
+      - name: Apply orientation candidate and forward lineage repair in disposable database
         shell: bash
         run: |
           set -euo pipefail
-          psql -X -v ON_ERROR_STOP=1 "$ECO152_DATABASE_URL" -f sql/migrations/20260919065000_eco152_orientation_kernel.sql 2>&1 | tee artifacts/eco152/migration.log
+          {
+            psql -X -v ON_ERROR_STOP=1 "$ECO152_DATABASE_URL" -f sql/migrations/20260919065000_eco152_orientation_kernel.sql
+            psql -X -v ON_ERROR_STOP=1 "$ECO152_DATABASE_URL" -f sql/migrations/20260919070500_eco152_historical_lineage_guard.sql
+          } 2>&1 | tee artifacts/eco152/migration.log
       - name: Qualify lifecycle, exact lineage, independent authority and systems pressure
         shell: bash
         run: |

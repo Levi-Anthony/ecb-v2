@@ -46,6 +46,23 @@ def main():
     m.check('invalid_history_claim_has_no_committed_receipt', count == 0,
             {'operation_count': count, 'operation_id': request['operation_id']},
             'A rejected historical claim must not acquire a durable qualification receipt')
+    # A newly formed Resolution must not launder the same invalid historical claim.
+    fresh = dict(exact_resolution, parent_resolution_id=rid)
+    fresh.pop('profile', None)
+    fresh_id = m.write('resolution', fresh, s)['artifact_id']
+    fresh_assessment = dict(template, resolution_id=fresh_id, result='PASS',
+                            change_receipt_id=s['last_fence_id'], historical_requalification=True)
+    m.rejected('new_resolution_cannot_launder_history',
+               m.sql_for(m.request('qualification', fresh_assessment, s)),
+               'orientation_historical_lineage_mismatch',
+               'A new identity does not retroactively validate unrelated prior-meaning evidence')
+    fresh_assessment['historical_requalification'] = False
+    qualified = m.write('qualification', fresh_assessment, s)
+    current = m.resolve(s)
+    m.check('new_exact_basis_without_history_claim_allowed',
+            qualified['record_kind'] == 'qualification' and current['current_binding_id'] is None
+            and not current['reliance_permitted'], qualified,
+            'Permit bounded new-basis qualification without inventing historical proof, currentness or authority')
     m.snapshot('history-regression-after.json')
     final = m.resolve(s)
     (m.OUT / 'cold-state.json').write_text(m.encode(final))
