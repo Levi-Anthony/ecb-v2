@@ -15,9 +15,20 @@ ADJACENT_ECO140_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=VERIFIED
 REAL_PGO_DESIGNATION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
-FIRST_CLASS_NAME_FRONTIER=ECO-157_SENSE_PASS; SHAPE_PENDING
+FIRST_CLASS_NAME_FRONTIER=ECO-158_SHAPE_OPEN; CANDIDATE_GENERATION_UNOPENED
 SEMANTIC_NAME_PROPOSAL=ORIENTING_COMPOSITION; NOT_ADOPTED
 FIRST_CLASS_PROPER_NAME=UNRESOLVED
+
+## 18 September 2026 — first-class naming Shape opened
+
+Principal disposition closed ECO-157 Sense and opened **ECO-158 — First-class naming architecture — successor orientation function**.
+
+- Shape now freezes the naming-layer architecture, hard rejection gates, first-class identity floor, multiplicative-value dimensions, generation-method lanes, anti-anchoring rules, qualification/Overshoot matrix, and selection interface.
+- SIGMA remains the model **outcome**, not a mandated acronym form.
+- `Orienting Composition` remains a semantic proposal/descriptor only and is not a privileged generation seed.
+- Candidate generation, selection, canonical adoption, machine identifiers, schema/API changes, and runtime mutation remain unopened.
+
+Commission mirror: `research/naming/ECO-158-first-class-name-shape-commission-2026-09-18.md`.
 
 ## 18 September 2026 — first-class naming Sense reentry
 
