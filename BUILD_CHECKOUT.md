@@ -1,11 +1,9 @@
-STATUS: ADJACENT ECO-138 / ECO-140 — CANONICAL DB + PRODUCTION RUNTIME VERIFIED
-DISPOSITION: UNIVERSAL ADMISSION + ACTIVE DISPOSITION + SHAPED NEXT-ACTION CURRENTNESS INSTALLED; BUILD 12 REMAINS VERIFIED SUBSTRATE
+STATUS: ACTIVE — CANONICAL DB + PRODUCTION RUNTIME VERIFIED THROUGH ECO-138 / ECO-140; ECO-149 ISOLATED IMPLEMENTATION OPEN
+DISPOSITION: CURRENTNESS / REENTRY PROJECTION
 ROLE: Canonical reentry projection
-AUTHORITY: Principal ECO-137/138/139/140 commissions + governing ECB v2 greenfield sources + qualified repository and live-install proof
-CANONICAL RUNTIME CODE: 24e39d3c62981030a1c3f955e7a39745b8490f76
+AUTHORITY: Principal commissions + governing ECB v2 greenfield sources + qualified repository/live-install evidence
+LAST VERIFIED PRODUCTION RUNTIME CODE: 24e39d3c62981030a1c3f955e7a39745b8490f76
 CANONICAL BRAIN: Supabase ecb-v2-brain / vezxivrvhakclxuvxzso
-CANONICAL BUILD-12 CORRECTION: build_12_greenfield_artifact_correction / VERIFIED
-QUALIFIED CURRENT PRODUCTION: Vercel dpl_EujYK6AZKsVsQATrA43H3c7bCgUd / READY / main@24e39d3c62981030a1c3f955e7a39745b8490f76
 CANONICAL_BUILD7_DATABASE_INSTALL=NONE
 CANONICAL_BUILD8_DATABASE_INSTALL=NONE
 CANONICAL_BUILD9_DATABASE_INSTALL=NONE
@@ -14,10 +12,44 @@ CANONICAL_BUILD11_DATABASE_INSTALL=VERIFIED
 CANONICAL_BUILD12_GREENFIELD_ARTIFACT_INSTALL=VERIFIED
 ADJACENT_ECO138_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=VERIFIED
 ADJACENT_ECO140_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=VERIFIED
-ADJACENT_REPOSITORY_MAIN=24e39d3c62981030a1c3f955e7a39745b8490f76
-REAL_MASTER_KEY_AUTHORITY=QUESTION_FORWARD
+REAL_PGO_DESIGNATION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
+
+## 18 September 2026 — BUILD 7–10 currentness correction
+
+BUILD 7, BUILD 8, BUILD 9 and BUILD 10 are each **CLOSED at implementation Register B**. They are not unfinished Builds.
+
+Their canonical database installs remain `NONE` by deliberate historical boundary. The repository migration files for those Builds are frozen executable proof specimens, **not** a pending chronological install queue:
+
+- BUILD 7: fixture-only orientation/currentness proof; synthetic scope and `G_TEST`;
+- BUILD 8: disposable synthetic Action Envelope proof; `A_TEST` + `advance_one`;
+- BUILD 9: synthetic recursive inquiry proof;
+- BUILD 10: disposable bounded transfer proof with specimen-specific semantic checker.
+
+Current governing rule: **promote capabilities, not historical migration bytes**.
+
+ECO-150 governs production-promotion reconciliation. A future BUILD 7'/8'/9'/10' means a new forward production realization from the current B11/B12/ECO-138/140 substrate, not delayed execution of the historical migration.
+
+The current dependency model is:
+
+```
+B0–6 + B11/12 + ECO-138/140
+             |
+      URG / PGO interface subset
+             |
+         BUILD 7'
+       /          \
+  BUILD 8'      BUILD 9'
+
+BUILD 10' = adjacent transfer/custody promotion lane
+```
+
+Full URG closure is **not** presumed to be a prerequisite. BUILD 7' waits only for enough versioned URG/PGO interface stability to avoid freezing a known-wrong semantic boundary and to make implementation failures interpretable.
+
+ECO-149 retains separate implementation custody for the current quadrant C1–C6 reality-contact encounter. Its evidence feeds ECO-150 where it bears on BUILD-7' basis/currentness/applicability/requalification/reliance allocation; ECO-149 is not silently expanded into BUILD-7 productionization.
+
+Historical BUILD 7–10 migration bytes should remain unchanged for provenance unless a separately governed provenance repair requires alteration.
 
 # Read this first
 
