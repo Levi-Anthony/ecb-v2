@@ -359,3 +359,5 @@ begin
     raise exception 'unexpected quadrant effect execution surface exists';
   end if;
 end $$;
+
+select 'ECO149_QUALIFICATION=PASS' as result;
