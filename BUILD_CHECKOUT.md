@@ -78,6 +78,31 @@ ECO-149 retains separate implementation custody for the current quadrant C1–C6
 
 Historical BUILD 7–10 migration bytes should remain unchanged for provenance unless a separately governed provenance repair requires alteration.
 
+## 18 September 2026 — naming frontier
+
+ECO-153 is the active bounded naming Move for the semantic/compositional function historically called **Master Key** and provisionally called **Principal Governing Orientation (PGO)**.
+
+Naming Sense + Shape is complete. The target is the governing function itself, **not**:
+- Orientation Resolution;
+- Orientation Scope;
+- Qualification;
+- Current Binding / Binding Transition;
+- Authority Decision;
+- Move;
+- Question Forward.
+
+Until ECO-153 returns and the Principal separately adopts a recommendation:
+
+- **Master Key** is a historical alias;
+- **PGO / Principal Governing Orientation** is provisional continuity vocabulary;
+- generic **Governing Orientation** is descriptive only;
+- no current alias should be treated as the final canonical designation;
+- no schema/API/runtime term should be renamed merely to anticipate the naming result.
+
+ECO-152 remains architecturally valid but is intentionally paused before implementation so the low-cost naming run can land first and avoid unnecessary public/API/documentation debt. This is sequencing, **not** a semantic or architecture blocker.
+
+Fresh-session execution should use ECO-153 as the controlling commission and stop at a proposal-only naming recommendation.
+
 # Read this first
 
 ECB v2 remains greenfield.

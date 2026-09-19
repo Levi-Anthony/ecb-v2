@@ -6,6 +6,8 @@ SCOPE: Greenfield ECB v2
 
 # ECB v2 Build Contract
 
+> **NAMING CURRENTNESS — 18 September 2026:** The semantic/compositional function referred to in this contract as **Master Key** is under bounded naming rederivation in ECO-153. Later architecture currently uses provisional **Principal Governing Orientation (PGO)** for the same focal function, but that label is not canonical either. Treat both as aliases to the function whose role is to recover/qualify/compose enough consequential information to bound the present interpretation/action envelope. Do not infer that the function is one packet, creates authority, equals current binding, or authorizes external effect. ECO-153 may recommend a replacement designation; no lexical propagation occurs without later Principal adoption. Historical wording below is preserved as lineage rather than silently rewritten.
+
 ## Current Orientation Expression
 
 The following distinctions travel together for the current build boundary. Their compound expression does not redefine the Master Key.
