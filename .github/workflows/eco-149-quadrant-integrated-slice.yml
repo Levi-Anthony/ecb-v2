@@ -116,6 +116,17 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ! grep -R "vezxivrvhakclxuvxzso" tests/eco-149 .github/workflows/eco-149-quadrant-integrated-slice.yml
-          ! grep -R "SUPABASE_SERVICE_ROLE_KEY" tests/eco-149
-          ! grep -R "quadrant.*execute" sql/migrations/20260918233000_eco149_quadrant_integrated_slice.sql
+          canonical_ref="vezxi""vrvhakclxuvxzso"
+          if grep -R -F "$canonical_ref" tests/eco-149 .github/workflows/eco-149-quadrant-integrated-slice.yml sql/migrations/20260918233000_eco149_quadrant_integrated_slice.sql; then
+            echo "ECO149_CONTAINMENT=FAIL canonical project reference present"
+            exit 1
+          fi
+          if grep -R -F "SUPABASE_SERVICE_ROLE_KEY" tests/eco-149 sql/migrations/20260918233000_eco149_quadrant_integrated_slice.sql; then
+            echo "ECO149_CONTAINMENT=FAIL service-role dependency present"
+            exit 1
+          fi
+          if grep -E "quadrant.*execute" sql/migrations/20260918233000_eco149_quadrant_integrated_slice.sql; then
+            echo "ECO149_CONTAINMENT=FAIL effect-execution surface present"
+            exit 1
+          fi
+          echo "ECO149_CONTAINMENT=PASS"
