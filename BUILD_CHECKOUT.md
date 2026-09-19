@@ -22,10 +22,42 @@ FIRST_CLASS_PROPER_NAME=UNRESOLVED; PROPOSAL=BRIMAR; NOT_ADOPTED
 FIRST_CLASS_NAME_CANONICAL_SEMANTIC_COLLISION=UNKNOWN
 FIRST_CLASS_NAME_PRINCIPAL_RECOGNITION=UPSTREAM_REFERENT_REQUALIFICATION_TRIGGERED
 
-INTEGRAL_COHERENCE_FRONTIER=ECO-161_COMMISSIONED; SENSE_NOT_STARTED
-INTEGRAL_COHERENCE_HYPOTHESIS=URG_X_PGO_X_SSMM; PROVISIONAL; NOT_CANONICAL
+INTEGRAL_COHERENCE_FRONTIER=ECO-163_COMMISSIONED; MOVE_NOT_STARTED
+INTEGRAL_COHERENCE_SENSE=ECO-161_PASS_WITH_MATERIAL_CORRECTION
+INTEGRAL_COHERENCE_SHAPE=ECO-162_PASS; TRI_AXIAL_PLUS_FIDELITY; SUBSTRATE_INDEPENDENT
+INTEGRAL_COHERENCE_MOVE=ECO-163_COMMISSIONED; NOT_STARTED
 SMALLNESS_OPTIMIZATION=PROHIBITED_REGISTER_B
-BRIMAR_ADOPTION=HOLD_PENDING_ECO-161
+BRIMAR_ADOPTION=HOLD; PROJECTION_LEVEL_PROPOSAL_ONLY
+
+## 19 September 2026 — ECO-161 Sense + ECO-162 Shape complete; ECO-163 Move commissioned
+
+The finite-coherence requalification has reached the Principal-authorized **Move border**.
+
+- **ECO-161 Sense: PASS WITH MATERIAL CORRECTION.**
+  - URG, Governing Orientation/Master-Key function, and SSMM survive as three irreducible **macro-capability dimensions**, not an exhaustive three-primitive ontology.
+  - Strong prior evidence requires independently variable fidelity concerns: focal/grain/boundary, mapper/frame/access, warrant/standing, authority/currentness, possibility preservation, QF/reentry, and transfer reconstruction.
+  - FIBERR and Filament are explicitly nonidentical in recovered provenance: FIBERR is a scoped work/orientation record/container tracking Filaments; Filament is a separate holonic/Integral grammar source. They may share recursive grammar without template identity.
+  - The ECO-160 naming referent is a valid use-facing projection rather than the deeper target. BRIMAR remains proposal evidence for that projection only.
+
+- **ECO-162 Shape: PASS.**
+  - Selected substrate-independent architecture: **open semantic composition × locally governing consequentiality × temporal/coordination governance**, constrained by a cross-cutting fidelity contract and exposed through non-monolithic engagement projections.
+  - Coverage, activation, and disposition are orthogonal logical dimensions. Inactive does not mean unexamined, unresolved, rejected, or absent.
+  - Current BUILD-7′ Orientation Scope / Resolution / Qualification / Authority Decision / Binding Transition separations are preserved as a narrower realization, not superseded.
+  - Requalification is typed by what changed; one generic “refresh context” operation is rejected.
+
+- **ECO-163 Move / operational qualification is COMMISSIONED but NOT STARTED.**
+  - Four required cases: reflective reorientation, cold handoff/reconstruction, unfamiliar-domain open-world specimen, and BUILD-7′ authority/currentness negative space.
+  - Mandatory coordinate perturbations, dormancy→QF-triggered reactivation, fresh-worker reconstruction, and anti-confirmation control.
+  - No production/runtime/schema mutation or naming adoption is authorized.
+
+Durable continuity:
+- `research/core-architecture/ECO-161-Integral-Coherence-Sense-Return-2026-09-19.md`
+- `research/core-architecture/ECO-162-Integral-Coherence-Architecture-Shape-Return-2026-09-19.md`
+- `research/core-architecture/ECO-163-Integral-Coherence-Move-Commission-2026-09-19.md`
+- Linear Sense return `d6243f88-179d-403a-b780-3e8d478dd8da` / `704f67104130`
+- Linear Shape return `3bf5f910-ca37-4619-8dae-99b2e311c9f2` / `fecb8e1c73a8`
+
+**Exact next seam:** execute ECO-163 as the controlling Move. Stop after its evidence-bearing return; do not auto-enter Metabolize or physical design.
 
 ## 19 September 2026 — Move → Metabolize: integral coherence requalification opens ECO-161
 
