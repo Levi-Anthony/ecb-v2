@@ -255,15 +255,16 @@ from public.ecb12_create_artifact(
   '14900000-0000-4149-8149-000000000050'::uuid,
   'PASS -- ordinary Artifact text, not quadrant assessment standing'
 ) \gset
+select pg_catalog.set_config('eco149.test.fake_pass_artifact', :'eco149_fake_pass_artifact', false);
 
-do $$
+do $
 begin
   begin
     perform * from public.quadrant_v1_qualify(
       '14900000-0000-4149-8149-000000000051'::uuid,
       pg_catalog.current_setting('eco149.test.channel')::uuid,
       pg_catalog.current_setting('eco149.test.epoch2')::bigint,
-      format('{"profile":"ecb.quadrant/1","role":"reliance","requested_use":"reversible_trial","permitted_use":"reversible_trial","basis_receipt":"14900000-0000-4149-8149-000000000001","inquiry_receipt":"14900000-0000-4149-8149-000000000010","assessment_receipt":"%s","disposition":"supported","authority_status":"not_required_for_nonexecuting_use","decisive_gap":false,"qf":[]}', (select o.result_referent_id from public.ordinary_operations o where o.id='14900000-0000-4149-8149-000000000050'::uuid))
+      format('{"profile":"ecb.quadrant/1","role":"reliance","requested_use":"reversible_trial","permitted_use":"reversible_trial","basis_receipt":"14900000-0000-4149-8149-000000000001","inquiry_receipt":"14900000-0000-4149-8149-000000000010","assessment_receipt":"%s","disposition":"supported","authority_status":"not_required_for_nonexecuting_use","decisive_gap":false,"qf":[]}', pg_catalog.current_setting('eco149.test.fake_pass_artifact'))
     );
     raise exception 'negative control failed: raw PASS Artifact became assessment';
   exception when no_data_found then
