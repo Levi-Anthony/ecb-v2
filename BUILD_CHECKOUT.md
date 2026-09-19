@@ -16,6 +16,33 @@ REAL_PGO_DESIGNATION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
 
+## 18 September 2026 — promotion frontier update
+
+ECO-149 has completed bounded Register-B implementation qualification and is repository-normalized through PR #58 at `1e7686e494e622702cc9ac316fb3569e4593ac24`.
+
+Evidence:
+- `ECO149_QUALIFICATION=PASS`
+- `ECO149_PRESSURE=PASS`
+- `ECO149_CONTAINMENT=PASS`
+
+This is repository proof normalization only. Canonical Supabase/runtime installation of ECO-149 remains **NONE**.
+
+ECO-150 production-promotion Sense is in Review. Its dependency result is unchanged after ECO-149 evidence: full URG closure is not a BUILD-7′ prerequisite; the real prerequisite is the minimum versioned URG/PGO interface required for the orientation capability.
+
+ECO-151 has completed Architecture Shape for **BUILD 7′ — Production Orientation Kernel**. Selected architecture:
+- dedicated private orientation scope/head/current-binding domain;
+- B11 operation identity/replay;
+- B12 immutable Text Artifact semantic payloads;
+- existing `depends_on` Claims for dependency discoverability;
+- separate authenticated qualification;
+- separate delegated orientation-binding authority seam;
+- material-change fencing + requalification;
+- narrow public cold resolver for BUILD 8′/9′.
+
+Real production orientation-binding authority remains unresolved and therefore blocks **production activation**, not isolated Register-B implementation.
+
+Historical BUILD-7 SQL remains proof evidence and is not the implementation plan.
+
 ## 18 September 2026 — BUILD 7–10 currentness correction
 
 BUILD 7, BUILD 8, BUILD 9 and BUILD 10 are each **CLOSED at implementation Register B**. They are not unfinished Builds.
