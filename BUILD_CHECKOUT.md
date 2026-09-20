@@ -29,7 +29,7 @@ INTEGRAL_COHERENCE_MOVE=ECO-163_CLOSED_PASS_WITH_REGISTER_A_APERTURE; CASE_A_PAS
 SMALLNESS_OPTIMIZATION=PROHIBITED_REGISTER_B
 BRIMAR_ADOPTION=HOLD; PROJECTION_LEVEL_PROPOSAL_ONLY
 
-## 19 September 2026 — CURRENT: ECO-166 Sense + ECO-167 Shape closed; ECO-168 Move commissioned at border
+## 20 September 2026 — CURRENT: ECO-168 Move closed PASS; final internal Metabolize next
 
 Principal authorization continued the internal ECO-165 Metabolize cycle through Sense and Shape and stopped before Move execution.
 
