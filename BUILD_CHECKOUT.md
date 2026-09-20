@@ -22,7 +22,7 @@ FIRST_CLASS_PROPER_NAME=UNRESOLVED; PROPOSAL=BRIMAR; NOT_ADOPTED
 FIRST_CLASS_NAME_CANONICAL_SEMANTIC_COLLISION=UNKNOWN
 FIRST_CLASS_NAME_PRINCIPAL_RECOGNITION=UPSTREAM_REFERENT_REQUALIFICATION_TRIGGERED
 
-INTEGRAL_COHERENCE_FRONTIER=ECO-165_METABOLIZE_OPEN; ECO-166_SENSE_CLOSED_PASS; ECO-167_SHAPE_CLOSED_PASS; ECO-168_MOVE_COMMISSIONED_NOT_EXECUTED
+INTEGRAL_COHERENCE_FRONTIER=ECO-165_METABOLIZE_OPEN; ECO-166_SENSE_CLOSED_PASS; ECO-167_SHAPE_CLOSED_PASS; ECO-168_MOVE_CLOSED_PASS; FINAL_INTERNAL_METABOLIZE_NEXT
 INTEGRAL_COHERENCE_SENSE=ECO-161_PASS_WITH_MATERIAL_CORRECTION
 INTEGRAL_COHERENCE_SHAPE=ECO-162_PASS; TRI_AXIAL_PLUS_FIDELITY; SUBSTRATE_INDEPENDENT
 INTEGRAL_COHERENCE_MOVE=ECO-163_CLOSED_PASS_WITH_REGISTER_A_APERTURE; CASE_A_PASS; CASE_B_FRESH_WORKER_UNEXECUTED_REGISTER_A; CASE_C_PASS_SPECIMEN; CASE_D_PASS
@@ -35,20 +35,21 @@ Principal authorization continued the internal ECO-165 Metabolize cycle through 
 
 - **ECO-166 Metabolize / Sense: CLOSED — PASS.** It assimilated ECO-163 evidence into an earned Register-B claim, explicit nonclaims, Register-A evidence routing, Register-B Question Forward set, propagation map, and candidate next evidence seams.
 - **ECO-167 Metabolize / Shape: CLOSED — PASS.** It froze a four-part assimilation architecture: standing capsule, decision-point propagation, Register-A/Register-B aperture separation, and cold-reentry frontier.
-- **ECO-168 Metabolize / Move: COMMISSIONED ONLY / NOT EXECUTED.** It may mutate documentation/currentness/evidence-routing surfaces only. Runtime/database/schema/API/service implementation remains prohibited.
+- **ECO-168 Metabolize / Move: CLOSED — PASS.** Standing/currentness/evidence routing was propagated without runtime/database/schema/API/service mutation.
 - The fresh-worker reconstruction / blind anti-confirmation lane remains **UNEXECUTED / UNKNOWN** in the Register-A evidence pool. It is not a Register-B blocker and is not claimed passed.
-- Selected next post-Metabolize evidence seam: **Derived Engagement Projection — physical-design / implementation probe**, to be commissioned but not executed by ECO-168.
+- **ECO-169** now holds the cold-transfer reconstruction / blind anti-confirmation lane as Register-A UNKNOWN and nonblocking.
+- **ECO-170** is the commissioned but unopened next post-Metabolize seam: **Derived Engagement Projection — physical-design / implementation probe**.
 - ECO-165 outer Metabolize remains **OPEN**. Git publication must not auto-close it semantically.
 
 State checkpoint:
 - `INTEGRAL_COHERENCE_METABOLIZE=ECO-165_OPEN`
 - `INTEGRAL_COHERENCE_METABOLIZE_SENSE=ECO-166_CLOSED_PASS`
 - `INTEGRAL_COHERENCE_METABOLIZE_SHAPE=ECO-167_CLOSED_PASS`
-- `INTEGRAL_COHERENCE_METABOLIZE_MOVE=ECO-168_COMMISSIONED_NOT_EXECUTED`
+- `INTEGRAL_COHERENCE_METABOLIZE_MOVE=ECO-168_CLOSED_PASS`
 - `COLD_TRANSFER_PROOF=REGISTER_A_EVIDENCE_POOL`
 - `NEXT_POST_METABOLIZE_SEAM=DERIVED_ENGAGEMENT_PROJECTION_PHYSICAL_DESIGN_PROBE`
 
-**Exact current seam:** execute ECO-168 as the controlling bounded Metabolize Move. Stop after its propagation/currentness/evidence-routing receipts; do not auto-execute final internal Metabolize/closure.
+**Exact current seam:** review/enter the final internal Metabolize/closure step for ECO-165. ECO-170 remains unopened until outer Metabolize closes or separate Principal authorization opens it.
 
 ## 19 September 2026 — HISTORICAL: ECO-163 Move closed; ECO-165 Metabolize / ECO-166 Sense opened
 
