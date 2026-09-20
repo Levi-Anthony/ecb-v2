@@ -15,23 +15,23 @@ ADJACENT_ECO140_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=VERIFIED
 REAL_PGO_DESIGNATION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
-FIRST_CLASS_NAME_FRONTIER=ECO-160_CLOSED; BRIMAR_PROJECTION_PROPOSAL; DEEPER_NAMING_HOLD=ECO-165_METABOLIZE_UNTIL_CLOSURE
+FIRST_CLASS_NAME_FRONTIER=ECO-160_CLOSED; BRIMAR_PROJECTION_PROPOSAL_ONLY; DEEPER_NAMING_REENTRY=ELIGIBLE_NOT_OPEN
 SEMANTIC_NAME_PROPOSAL=ORIENTING_COMPOSITION; PROJECTION_DESCRIPTOR_ONLY; NOT_ADOPTED
 NAMING_LAYER_ARCHITECTURE=FIRST_CLASS_PROPER_NAME_PLUS_RECOVERABLE_DESCRIPTOR; FROZEN_BY_ECO-158
 FIRST_CLASS_PROPER_NAME=UNRESOLVED; PROPOSAL=BRIMAR; NOT_ADOPTED
 FIRST_CLASS_NAME_CANONICAL_SEMANTIC_COLLISION=UNKNOWN
 FIRST_CLASS_NAME_PRINCIPAL_RECOGNITION=UPSTREAM_REFERENT_REQUALIFICATION_TRIGGERED
 
-INTEGRAL_COHERENCE_FRONTIER=ECO-165_METABOLIZE_OPEN; ECO-166_SENSE_CLOSED_PASS; ECO-167_SHAPE_CLOSED_PASS; ECO-168_MOVE_CLOSED_PASS; FINAL_INTERNAL_METABOLIZE_NEXT
+INTEGRAL_COHERENCE_FRONTIER=ECO-165_METABOLIZE_CLOSED_PASS; ECO-169_REGISTER_A_BACKLOG_UNKNOWN_NONBLOCKING; ECO-170_NEXT_COMMISSIONED_UNOPENED
 INTEGRAL_COHERENCE_SENSE=ECO-161_PASS_WITH_MATERIAL_CORRECTION
 INTEGRAL_COHERENCE_SHAPE=ECO-162_PASS; TRI_AXIAL_PLUS_FIDELITY; SUBSTRATE_INDEPENDENT
 INTEGRAL_COHERENCE_MOVE=ECO-163_CLOSED_PASS_WITH_REGISTER_A_APERTURE; CASE_A_PASS; CASE_B_FRESH_WORKER_UNEXECUTED_REGISTER_A; CASE_C_PASS_SPECIMEN; CASE_D_PASS
 SMALLNESS_OPTIMIZATION=PROHIBITED_REGISTER_B
 BRIMAR_ADOPTION=HOLD; PROJECTION_LEVEL_PROPOSAL_ONLY
 
-## 20 September 2026 — CURRENT: ECO-168 Move closed PASS; final internal Metabolize next
+## 20 September 2026 — CURRENT: ECO-165 Metabolize closed PASS; ECO-170 next commissioned/unopened
 
-Principal authorization continued the internal ECO-165 Metabolize cycle through Sense and Shape and stopped before Move execution.
+Principal authorization carried the internal ECO-165 Metabolize cycle through Sense, Shape, Move, and a final closure audit. ECO-165 is now closed PASS.
 
 - **ECO-166 Metabolize / Sense: CLOSED — PASS.** It assimilated ECO-163 evidence into an earned Register-B claim, explicit nonclaims, Register-A evidence routing, Register-B Question Forward set, propagation map, and candidate next evidence seams.
 - **ECO-167 Metabolize / Shape: CLOSED — PASS.** It froze a four-part assimilation architecture: standing capsule, decision-point propagation, Register-A/Register-B aperture separation, and cold-reentry frontier.
@@ -39,17 +39,17 @@ Principal authorization continued the internal ECO-165 Metabolize cycle through 
 - The fresh-worker reconstruction / blind anti-confirmation lane remains **UNEXECUTED / UNKNOWN** in the Register-A evidence pool. It is not a Register-B blocker and is not claimed passed.
 - **ECO-169** now holds the cold-transfer reconstruction / blind anti-confirmation lane as Register-A UNKNOWN and nonblocking.
 - **ECO-170** is the commissioned but unopened next post-Metabolize seam: **Derived Engagement Projection — physical-design / implementation probe**.
-- ECO-165 outer Metabolize remains **OPEN**. Git publication must not auto-close it semantically.
+- **ECO-165 outer Metabolize: CLOSED — PASS.** Final closure explicitly audited stale/current contradictions, cold reentry, carried apertures, stranded learning, and downstream gating.
 
 State checkpoint:
-- `INTEGRAL_COHERENCE_METABOLIZE=ECO-165_OPEN`
+- `INTEGRAL_COHERENCE_METABOLIZE=ECO-165_CLOSED_PASS`
 - `INTEGRAL_COHERENCE_METABOLIZE_SENSE=ECO-166_CLOSED_PASS`
 - `INTEGRAL_COHERENCE_METABOLIZE_SHAPE=ECO-167_CLOSED_PASS`
 - `INTEGRAL_COHERENCE_METABOLIZE_MOVE=ECO-168_CLOSED_PASS`
 - `COLD_TRANSFER_PROOF=REGISTER_A_EVIDENCE_POOL`
 - `NEXT_POST_METABOLIZE_SEAM=DERIVED_ENGAGEMENT_PROJECTION_PHYSICAL_DESIGN_PROBE`
 
-**Exact current seam:** review/enter the final internal Metabolize/closure step for ECO-165. ECO-170 remains unopened until outer Metabolize closes or separate Principal authorization opens it.
+**Exact current seam:** ECO-170 is the selected next Register-B seam and remains commissioned but unopened. ECO-165 closure satisfies its phase prerequisite, but opening/execution still requires a separately governed transition. Deeper first-class naming is likewise eligible for a new referent-specific commission but is not automatically reopened.
 
 ## 19 September 2026 — HISTORICAL: ECO-163 Move closed; ECO-165 Metabolize / ECO-166 Sense opened
 
