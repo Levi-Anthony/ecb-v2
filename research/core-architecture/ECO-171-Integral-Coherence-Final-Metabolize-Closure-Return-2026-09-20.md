@@ -116,3 +116,14 @@ Cold reentry now resolves to:
 4. deeper naming reentry eligible but not open;
 5. reopen upstream architecture only on material contradictory evidence.
 
+
+## Post-publication cold-reread addendum
+
+A final direct reread after canonical closure publication exposed four additional stale-instruction surfaces in completed phase issues. They were repaired before closure was reported complete to the Principal:
+
+- **ECO-161:** the old commission-opening banner still said “Sense has not started.” It is now explicitly a historical snapshot beneath a current CLOSED / PASS WITH MATERIAL CORRECTION banner.
+- **ECO-162:** the issue still opened with an imperative “Execute Shape” control block. It is now explicitly historical beneath a current CLOSED / PASS banner.
+- **ECO-166:** its completed Sense banner still said “Next: Metabolize Shape.” That sentence now records Shape as the historical next step and notes that Shape, Move and final closure have since passed.
+- **ECO-167:** its completed Shape banner still said Metabolize Move “must be separately executed.” It now records that as the historical boundary and notes ECO-168 Move and ECO-171 closure have since passed.
+
+A subsequent direct-state audit found no live currentness surface among ECO-161/162/163/165/166/167/168/169/170/171, ECO-136, or the active naming-continuity surfaces that incorrectly reports Sense/Shape/Move as unopened, ECO-165 as open, ECO-169 as a Register-B blocker, ECO-170 as executable, or deeper naming as already reopened.
