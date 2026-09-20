@@ -15,21 +15,41 @@ ADJACENT_ECO140_REPOSITORY=CANONICAL; PRODUCTION_INSTALL=VERIFIED
 REAL_PGO_DESIGNATION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_AUTHORITY=QUESTION_FORWARD
 REAL_ACTION_EFFECT=NONE
-FIRST_CLASS_NAME_FRONTIER=ECO-160_CLOSED; BRIMAR_PROJECTION_PROPOSAL; DEEPER_NAMING_HOLD=ECO-163_QUALIFICATION
+FIRST_CLASS_NAME_FRONTIER=ECO-160_CLOSED; BRIMAR_PROJECTION_PROPOSAL; DEEPER_NAMING_HOLD=ECO-165_METABOLIZE
 SEMANTIC_NAME_PROPOSAL=ORIENTING_COMPOSITION; PROJECTION_DESCRIPTOR_ONLY; NOT_ADOPTED
 NAMING_LAYER_ARCHITECTURE=FIRST_CLASS_PROPER_NAME_PLUS_RECOVERABLE_DESCRIPTOR; FROZEN_BY_ECO-158
 FIRST_CLASS_PROPER_NAME=UNRESOLVED; PROPOSAL=BRIMAR; NOT_ADOPTED
 FIRST_CLASS_NAME_CANONICAL_SEMANTIC_COLLISION=UNKNOWN
 FIRST_CLASS_NAME_PRINCIPAL_RECOGNITION=UPSTREAM_REFERENT_REQUALIFICATION_TRIGGERED
 
-INTEGRAL_COHERENCE_FRONTIER=ECO-163_MOVE_EXECUTED_TO_COLD_WORKER_GATE; NOT_YET_QUALIFIED; METABOLIZE_NOT_ENTERED
+INTEGRAL_COHERENCE_FRONTIER=ECO-165_METABOLIZE_OPEN; ECO-166_METABOLIZE_SENSE_OPEN
 INTEGRAL_COHERENCE_SENSE=ECO-161_PASS_WITH_MATERIAL_CORRECTION
 INTEGRAL_COHERENCE_SHAPE=ECO-162_PASS; TRI_AXIAL_PLUS_FIDELITY; SUBSTRATE_INDEPENDENT
-INTEGRAL_COHERENCE_MOVE=ECO-163_EXECUTED; CASE_A_PASS; CASE_B_FRESH_WORKER_UNEXECUTED; CASE_C_PASS_SPECIMEN; CASE_D_PASS; VERDICT=INSTRUMENTATION_INSUFFICIENT
+INTEGRAL_COHERENCE_MOVE=ECO-163_CLOSED_PASS_WITH_REGISTER_A_APERTURE; CASE_A_PASS; CASE_B_FRESH_WORKER_UNEXECUTED_REGISTER_A; CASE_C_PASS_SPECIMEN; CASE_D_PASS
 SMALLNESS_OPTIMIZATION=PROHIBITED_REGISTER_B
 BRIMAR_ADOPTION=HOLD; PROJECTION_LEVEL_PROPOSAL_ONLY
 
-## 19 September 2026 — ECO-163 Move executed to mandatory cold-worker gate; Metabolize not entered
+## 19 September 2026 — CURRENT: ECO-163 Register-B Move closed; ECO-165 Metabolize / ECO-166 Sense opened
+
+Principal disposition reclassified the remaining fresh-worker reconstruction / blind anti-confirmation lane from a mandatory Register-B gate to a **Register-A evidence-gathering aperture**.
+
+- **ECO-163 Move: CLOSED — PASS WITH CARRIED REGISTER-A APERTURE.**
+- Cases A, C and D plus reachable coordinate-perturbation and dormancy/reactivation evidence remain the bounded Register-B Move record; no executed specimen exposed an architecture falsifier.
+- Case B fresh-worker reconstruction remains genuinely **UNEXECUTED / UNKNOWN**. No cold-transfer proof is claimed.
+- The residual fresh-worker / blind anti-confirmation question is preserved in the Register-A evidence pool and is **not Register-B qualification debt or a Metabolize blocker**.
+- **ECO-165** is the open outer Metabolize phase.
+- **ECO-166** is the open internal `Metabolize / Sense` commission. Its job is assimilation: earned claim vs nonclaims, learning/repair harvest, uncertainty routing, propagation, currentness/reentry repair, and selection of later Metabolize Shape decisions.
+- Reopen Register B only if later implementation or evidence materially contradicts the accepted architecture.
+
+State checkpoint:
+- `INTEGRAL_COHERENCE_MOVE=CLOSED_PASS_WITH_REGISTER_A_APERTURE`
+- `INTEGRAL_COHERENCE_METABOLIZE=ECO-165_OPEN`
+- `INTEGRAL_COHERENCE_METABOLIZE_INTERNAL_SENSE=ECO-166_OPEN`
+- `COLD_TRANSFER_PROOF=REGISTER_A_EVIDENCE_POOL`
+
+**Exact current seam:** execute ECO-166 as the controlling read-only Metabolize / Sense commission. Stop before Metabolize Shape.
+
+## 19 September 2026 — HISTORICAL: ECO-163 Move stopped at cold-worker gate before Principal Register correction
 
 ECO-163 has executed the reachable operational-qualification surface under the Principal's current authorization.
 
