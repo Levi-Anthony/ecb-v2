@@ -9,6 +9,24 @@ DATE: 2026-09-22 America/Phoenix
 
 This repository mirror preserves the fresh-session commission from Linear ECO-179. Linear remains the controlling commission/coordination surface. Repository placement supplies cold-readable continuity and does not itself ratify the candidate UL definition.
 
+## Higher-order PGO — URG axis-definition program
+
+This Sense run is subordinate to a larger Register-B program goal:
+
+> **Structurally define each axis of the Universal Referent Grammar to sufficient implementation-grade closure, in dependency-aware order, so the URG can descend from semantic/structural definition into functional-contract requirements, physical design, and eventual installation without carrying unresolved axis ambiguity downstream.**
+
+Current program standing:
+
+- **Level / vertical constituency-dependency axis:** sufficiently defined for present Register-B descent. Preserve fundamental ↔ significant asymmetry; reopen only if ECO-179 produces materially contradictory evidence.
+- **Quadrant:** current active semantic-definition frontier. ECO-179 exists to help close the structural-functional definition of this URG axis, not to pursue an isolated theory of UL.
+- **Remaining URG axes:** still require their own bounded semantic-definition work after Quadrant reaches sufficient closure.
+- **Descent rule:** do not descend into new/updated functional-contract requirements, architecture, or installation merely because one UL formulation survives. First judge whether the Quadrant axis as a whole is sufficiently defined, internally discriminable, portable across referents/levels, and composition-ready with the other URG axes.
+- **Register-B stopping rule:** sufficient closure means strong enough to build on while explicitly routing residual uncertainty; it does not require metaphysical completeness.
+
+Evaluate every ECO-179 result twice:
+1. **locally** — does it sharpen or falsify the candidate UL/Quadrant structure?
+2. **programmatically** — does it materially change readiness to treat Quadrant as a sufficiently defined URG axis and move to the next axis-definition frontier?
+
 ## Principal-origin question
 
 Derive and test whether **focal-local possibility/dependency structure** is the stable, level-independent and referent-independent structural-functional definition of the Upper-Left (UL), while preserving explicit holarchic altitude, four-quadrant co-arising, stable referent seating, mapper accountability, and PGO-governed relevance.
