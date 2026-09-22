@@ -56,3 +56,10 @@ Current governing method is carried by `docs/build-contract.md`, `docs/invariant
 - Requirement sufficiency, Architecture Sense, logical Architecture Shape, physical design, implementation conformance, and runtime evidence remain separate claims.
 - Prefer a new versioned/qualified artifact over overwriting historical evidence when standing changes.
 - Update this index when the architectural frontier materially advances.
+
+
+## Active exploratory semantic stem — ECO-179 (2026-09-22)
+
+[ECO-179-UL-Invariant-Sense-Commission-2026-09-22.md](./ECO-179-UL-Invariant-Sense-Commission-2026-09-22.md) is a **commissioned / unopened Register B Sense** child of ECO-136. It tests whether focal-local possibility/dependency structure is the level-independent structural-functional definition of UL while preserving explicit holarchic altitude, stable referent seating, quadrant co-arising, mapper accountability, PGO, and the focal-indexed-disclosure signal.
+
+This stem does **not** supersede or amend the current v0.2 functional contract, the accepted logical/physical architecture, ECO-161/162 tri-axial standing, or implementation evidence. Any semantic change requires its own qualified return and explicit downstream acceptance.
