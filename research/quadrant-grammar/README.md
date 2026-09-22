@@ -58,6 +58,10 @@ Current governing method is carried by `docs/build-contract.md`, `docs/invariant
 - Update this index when the architectural frontier materially advances.
 
 
+## Closed pre-Sense harvest — 2026-09-22
+
+[ECO-179-Pre-Sense-Session-Harvest-2026-09-22.md](./ECO-179-Pre-Sense-Session-Harvest-2026-09-22.md) preserves the completed exploratory session that generated ECO-179. It records the strongest current UL/Quadrant signals, rejected collapse moves, focal-indexing and possibility-structure hypotheses, the higher-order URG-axis PGO, workflow friction/repair evidence, and exact cold-reentry frontier. It is provenance/evidence, not a semantic amendment and not ECO-179 execution.
+
 ## Active exploratory semantic stem — ECO-179 (2026-09-22)
 
 [ECO-179-UL-Invariant-Sense-Commission-2026-09-22.md](./ECO-179-UL-Invariant-Sense-Commission-2026-09-22.md) is a **commissioned / unopened Register B Sense** child of ECO-136. It tests whether focal-local possibility/dependency structure is the level-independent structural-functional definition of UL while preserving explicit holarchic altitude, stable referent seating, quadrant co-arising, mapper accountability, PGO, and the focal-indexed-disclosure signal. Its higher-order PGO is the URG axis-definition program: Level is sufficiently defined for present Register-B use, Quadrant is the active semantic-definition frontier, and further functional-contract/architecture/installation descent should wait until the Quadrant axis is sufficiently portable and composition-ready.
