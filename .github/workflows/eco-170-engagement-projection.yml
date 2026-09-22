@@ -1,0 +1,65 @@
+name: ECO-170 derived engagement projection
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'research/engagement-projection/ECO-170-Derived-Engagement-Projection-Physical-Shape-2026-09-22.md'
+      - 'tests/eco-170/**'
+      - '.github/workflows/eco-170-engagement-projection.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact candidate commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Run ECO-170 qualification
+        id: qualify
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          node tests/eco-170/qualify.mjs 2>&1 | tee eco170-qualification.log
+
+      - name: Preserve qualification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eco170-engagement-projection-evidence
+          path: |
+            eco170-qualification.log
+            artifacts/eco-170/receipt.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Containment checks
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e sql/migrations/20260922_eco170.sql
+          if git diff --name-only origin/main...HEAD | grep -E '^(server\.ts|api/|sql/migrations/)'; then
+            echo 'ECO-170 containment failed: production/runtime/schema surface changed' >&2
+            exit 1
+          fi
+          echo 'ECO170_CONTAINMENT=PASS'
+
+      - name: Fail if qualification failed
+        if: steps.qualify.outcome != 'success'
+        shell: bash
+        run: exit 1
