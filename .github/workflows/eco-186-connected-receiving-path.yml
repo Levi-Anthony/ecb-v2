@@ -3,7 +3,7 @@ name: ECO-186 connected obligation-to-use receiving path
 on:
   pull_request:
     branches:
-      - build/eco-170-engagement-projection
+      - build/eco-186-qualification-base
     paths:
       - 'tests/eco-186/**'
       - '.github/workflows/eco-186-connected-receiving-path.yml'
