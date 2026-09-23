@@ -1,0 +1,30 @@
+{
+  "encounter": {
+    "focal": {"id":"a6ad4441-722d-4a6b-8a84-afbac417ceed","handle":"ECO-179"},
+    "use": "recover the governed reentry basis without executing ECO-179",
+    "mapper_frame": "eco186-receiving-worker-frame-v1",
+    "pgo_digest": "eco186-consumer-bound-installation-v1",
+    "qualification_basis": {
+      "mapper_frame": "eco186-receiving-worker-frame-v1",
+      "pgo_digest": "eco186-consumer-bound-installation-v1"
+    },
+    "operational_disposition": "HOLD",
+    "relations": [
+      {"id":"eco181-parent-use","kind":"functional"},
+      {"id":"eco170-projection","kind":"qualified_component"}
+    ]
+  },
+  "consumer": {
+    "id": "eco186-isolated-receiving-worker",
+    "status": "bound",
+    "binding_receipt": "eco186-fixture-consumer-binding",
+    "can_recover": true,
+    "activation": "active_for_isolated_qualification"
+  },
+  "authority": {
+    "status": "isolated_move_permitted",
+    "source_reference": "ECO-186 Principal launch",
+    "permitted_effects": ["recover_compose_return"],
+    "forbidden_effects": ["execute_eco179","merge","deploy","production_mutation"]
+  }
+}
