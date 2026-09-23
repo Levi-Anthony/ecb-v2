@@ -1,0 +1,75 @@
+name: ECO-186 connected obligation-to-use receiving path
+
+on:
+  pull_request:
+    branches:
+      - build/eco-170-engagement-projection
+    paths:
+      - 'tests/eco-186/**'
+      - '.github/workflows/eco-186-connected-receiving-path.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact candidate commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Verify exact checked-out head
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="${{ github.event.pull_request.head.sha || github.sha }}"
+          observed="$(git rev-parse HEAD)"
+          test "$observed" = "$expected"
+          echo "ECO186_TESTED_HEAD=$observed"
+
+      - name: Use Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Run ECO-186 qualification
+        id: qualify
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          node tests/eco-186/qualify.mjs 2>&1 | tee eco186-qualification.log
+
+      - name: Preserve qualification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eco186-connected-receiving-path-evidence
+          path: |
+            eco186-qualification.log
+            artifacts/eco-186/receipt.json
+            tests/eco-186/live-source-receipt.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Containment checks
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="origin/${{ github.base_ref }}"
+          if git diff --name-only "$base"...HEAD | grep -E '^(server\.ts|api/|sql/migrations/)'; then
+            echo 'ECO-186 containment failed: production/runtime/schema surface changed' >&2
+            exit 1
+          fi
+          echo 'ECO186_CONTAINMENT=PASS'
+
+      - name: Fail if qualification failed
+        if: steps.qualify.outcome != 'success'
+        shell: bash
+        run: exit 1
