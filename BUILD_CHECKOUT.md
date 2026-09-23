@@ -22,14 +22,32 @@ FIRST_CLASS_PROPER_NAME=UNRESOLVED; PROPOSAL=BRIMAR; NOT_ADOPTED
 FIRST_CLASS_NAME_CANONICAL_SEMANTIC_COLLISION=UNKNOWN
 FIRST_CLASS_NAME_PRINCIPAL_RECOGNITION=UPSTREAM_REFERENT_REQUALIFICATION_TRIGGERED
 
-INTEGRAL_COHERENCE_FRONTIER=ECO-165_METABOLIZE_CLOSED_PASS; ECO-169_REGISTER_A_BACKLOG_UNKNOWN_NONBLOCKING; ECO-170_NEXT_COMMISSIONED_UNOPENED
+INTEGRAL_COHERENCE_FRONTIER=ECO-165_METABOLIZE_CLOSED_PASS; ECO-169_REGISTER_A_BACKLOG_UNKNOWN_NONBLOCKING; ECO-170_ISOLATED_PROBE_CLOSED_PASS_REVIEW
+DESCENT_SENSE=ECO-176_PRINCIPAL_ACCEPTED_CLOSED
+DESCENT_NEXT=ECO-182_ARCHITECTURE_SHAPE_COMMISSIONED_AUTHORIZED_UNEXECUTED
 INTEGRAL_COHERENCE_SENSE=ECO-161_PASS_WITH_MATERIAL_CORRECTION
 INTEGRAL_COHERENCE_SHAPE=ECO-162_PASS; TRI_AXIAL_PLUS_FIDELITY; SUBSTRATE_INDEPENDENT
 INTEGRAL_COHERENCE_MOVE=ECO-163_CLOSED_PASS_WITH_REGISTER_A_APERTURE; CASE_A_PASS; CASE_B_FRESH_WORKER_UNEXECUTED_REGISTER_A; CASE_C_PASS_SPECIMEN; CASE_D_PASS
 SMALLNESS_OPTIMIZATION=PROHIBITED_REGISTER_B
 BRIMAR_ADOPTION=HOLD; PROJECTION_LEVEL_PROPOSAL_ONLY
 
-## 20 September 2026 — CURRENT: ECO-165 Metabolize closed PASS; ECO-170 next commissioned/unopened
+## 22 September 2026 — CURRENT: descent Sense accepted; obligation-to-use Shape commissioned
+
+**ECO-176 — ECOS descent and installation gradient: PRINCIPAL ACCEPTED / SENSE CLOSED.** The Principal instructed: “Accepted. Close Sense, propagate, increment, and update surfaces accordingly.” The accepted complete Sense return is Linear document `c021b996-b347-4bd0-bc52-99af6b3c1626`, slug `3e48d4c2ee68`; its accepted original edition was updated `2026-09-22T23:39:16.606Z`. Acceptance receipt: ECO-176 comment `be2f6327-9764-451d-a222-591b3ef82a3e`.
+
+**ECO-182 — Obligation-to-use realization contract — loss-aware transformation and consumer-bound installation** is the next controlling **Architecture Shape**. It is commissioned and authorized to execute; no Shape execution or qualification is claimed. A returning worker needs no further generic permission for that bounded span. Execute the current ECO-182 commission through its complete Shape return and stop before implementation or production effects.
+
+The accepted Sense supports graded, compositional, boundary-relative installation, not a fixed ladder or completed substrate-independent self-installation. Its FACT / INFERENCE / HYPOTHESIS / UNKNOWN distinctions remain intact. ECO-182 must reuse ECO-156's interaction contract, ECO-181's capability-in-use design and ECO-170's isolated projection evidence, while retaining the semantic/procedural contrast. It does not reopen those completed scopes or create a general compiler program.
+
+**ECO-170 — Derived Engagement Projection** has completed its bounded isolated implementation/probe, **PASS / Review**. Its full return is Linear document `6f2043bd-7793-4915-9b6e-00a6dc91583f`, slug `b28ff8eef100`. PR #83 remains draft/unmerged at the recovered publication head `dc5d8f0e7c1baf59f272de5ce5d1c97e8e75f555`; exact tested head `0e208cd64bd12dfd065c91c07edaa83303478b13`. This does not establish automatic connected-source assembly, actual ECO-152 SQL composition, production installation or real specimen-launch authority. Historical tests were not rerun in the descent Sense or acceptance closure.
+
+**ECO-177 — Crucible identity** remains independently commissioned and unexecuted. Its eventual second interface account must compare with the accepted ECO-176 account and route outcome-determinative discrepancies to ECO-182 and the actual consumer. Its full completion is not a blanket Shape prerequisite. **ECO-155 — toolscape derivation** retains the native capture/operation-identity custody failure and repair evidence; this closure does not claim that defect repaired or perform a capture workaround.
+
+Receipt and reading path: [Sense acceptance and Shape increment](docs/build-receipts/ECO-176-sense-accepted-2026-09-22.md). The full accepted report and complete successor commission remain at their exact Linear locators; this projection does not replace them.
+
+**Currentness scope:** older dated phase/next-step statements below are historical checkpoints for their stated dates. In particular, the 20 September “ECO-170 unopened” frontier is superseded by its current control/return above. Preserve unaffected architecture, qualification and installation distinctions. The production baseline fields above are retained from their existing verification receipts, not freshly reverified here. No implementation, schema, runtime semantics, real authority, naming adoption, or PR #67/#83 acceptance is changed by this documentation update.
+
+## 20 September 2026 — HISTORICAL: ECO-165 Metabolize closed PASS; ECO-170 then commissioned/unopened
 
 Principal authorization carried the internal ECO-165 Metabolize cycle through Sense, Shape, Move, and a final closure audit. ECO-165 is now closed PASS.
 

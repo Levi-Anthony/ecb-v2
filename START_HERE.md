@@ -203,3 +203,5 @@ Do not expand scope merely because the current implementation succeeded.
 ## Current next handle
 
 Follow the reentry route under “Where am I?” for the actual task.
+
+For the accepted descent/installation inquiry, read the [Sense acceptance and Shape increment receipt](docs/build-receipts/ECO-176-sense-accepted-2026-09-22.md), then the current **ECO-182 — Obligation-to-use realization contract** commission. It is the authorized Architecture Shape continuation from the Principal-closed ECO-176 Sense, not an implementation release. Other tasks retain their own controlling commissions; this is not a global next-work override.
