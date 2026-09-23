@@ -1,0 +1,7 @@
+{
+  "controlling_issue": "ECO-186",
+  "qualification_base": "build/eco-186-qualification-base",
+  "base_commit": "865ba4f7a256556dd3f008363fa9281bd90f312f",
+  "purpose": "trigger exact-head pull-request qualification after proof-custody repair",
+  "prior_local_reconstruction_disposition": "not accepted as exact-head proof"
+}
