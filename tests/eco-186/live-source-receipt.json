@@ -1,0 +1,20 @@
+{
+  "assembly_mode": "connected_linear_github_session",
+  "discovery_seed": {
+    "controlling_issue": "ECO-186",
+    "active_use": "ECO-181/ECO-170 receiving-worker reentry",
+    "focal_referent": "ECO-179"
+  },
+  "captured_at": "2026-09-23T11:49:55.210Z",
+  "sources": [
+    {"id":"eco182-shape","kind":"linear_document","locator":"87612b33-5b95-478a-9773-d2567e483453","slug":"483fb63e2df6","bound_version":"2026-09-23T11:19:38.391Z","observed_version":"2026-09-23T11:19:38.391Z","standing":"shape_pass_review","materiality":"material","exact_hydrated":true},
+    {"id":"eco177-interface","kind":"linear_document","locator":"c51313a1-3b1a-49f9-9400-f1d9ec2e0544","slug":"b4ce0a9a5521","bound_version":"2026-09-23T11:21:21.007Z","observed_version":"2026-09-23T11:21:21.007Z","standing":"sense_complete_review_no_shape_conflict","materiality":"material","exact_hydrated":true},
+    {"id":"eco181-use","kind":"linear_document","locator":"33c83850-f7da-4431-8c0e-b1f425988dad","slug":"d6392db39dea","bound_version":"2026-09-22T19:12:05.269Z","observed_version":"2026-09-22T19:12:05.269Z","standing":"sense_shape_pass","materiality":"material","exact_hydrated":true},
+    {"id":"eco170-return","kind":"linear_document","locator":"6f2043bd-7793-4915-9b6e-00a6dc91583f","slug":"b28ff8eef100","bound_version":"2026-09-22T20:45:48.838Z","observed_version":"2026-09-22T20:45:48.838Z","standing":"bounded_implementation_probe_pass_review","materiality":"material","exact_hydrated":true},
+    {"id":"eco156-interaction","kind":"linear_document","locator":"eacb8bc9-0c75-4f0b-85ac-3cb695383571","slug":"28c959e066e6","bound_version":"2026-09-19T05:01:16.430Z","observed_version":"2026-09-19T05:01:16.430Z","standing":"interaction_surface_shape_pass","materiality":"material","exact_hydrated":true},
+    {"id":"eco170-pr","kind":"github_pull_request","locator":"Levi-Anthony/ecb-v2#83","bound_version":"dc5d8f0e7c1baf59f272de5ce5d1c97e8e75f555","observed_version":"dc5d8f0e7c1baf59f272de5ce5d1c97e8e75f555","standing":"open_draft_unmerged_mergeable","materiality":"material","exact_hydrated":true},
+    {"id":"eco170-projection-code","kind":"github_blob","locator":"tests/eco-170/engagement-projection.mjs","bound_version":"86c915a67b06c38e7fb854cbdb033b7c0e4becd5","observed_version":"86c915a67b06c38e7fb854cbdb033b7c0e4becd5","standing":"qualified_isolated_component","materiality":"material","exact_hydrated":true},
+    {"id":"build11-receipt","kind":"github_blob","locator":"docs/build-receipts/039-build-11-production-runtime-qualified-metabolize.md","bound_version":"175ec6456e07ae1ab4b39d7a3b04fa4b79eeba01","observed_version":"175ec6456e07ae1ab4b39d7a3b04fa4b79eeba01","standing":"production_runtime_qualified_consumer_cutover_unproven","materiality":"material","exact_hydrated":true},
+    {"id":"repo-main","kind":"github_commit","locator":"Levi-Anthony/ecb-v2:main","bound_version":"1dee29328edc06aa4661f9dae5c0aeb00dc918a0","observed_version":"1dee29328edc06aa4661f9dae5c0aeb00dc918a0","standing":"discovery_context","materiality":"context","exact_hydrated":true}
+  ]
+}
