@@ -2,11 +2,11 @@
 
 **Date:** 24 September 2026 · America/Phoenix
 **Controlling issue:** [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal)
-**Phase:** Shape, followed by bounded qualification under the same authorized episode
+**Phase:** Shape — CLOSED. Validation in this document is Shape-internal stress testing; Move was not opened.
 **Register:** B
 **Governing inputs:** [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal) Formal Sense return; [ECO-192](https://linear.app/ecos-ops/issue/ECO-192/probe-translation-frontier-fiberr-indexed-semantics-test-lawful) Translation Frontier return; [ECO-189](https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain) canonical-BRAIN / reconstitution Shape
 **Physical production/schema/runtime mutation:** NONE
-**Disposition:** PASS — Shape contract frozen; bounded structural qualification passed; no upstream defect found.
+**Disposition:** PASS — Shape contract frozen and Shape-internal stress tests passed; STOP AT MOVE BORDER.
 
 ## 0. What would physically change if this contract were installed
 
@@ -259,7 +259,7 @@ A physical realization may persist or derive a coordination view, but it must no
 
 [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal) receipts that cross the canonicalization frontier are decision-bearing provenance under [ECO-189](https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain) and must be recoverable sufficiently to reconstitute current state. Exact physical representation remains a Move decision.
 
-## 11. Bounded qualification executed under this episode
+## 11. Shape-internal validation
 
 This Shape was tested structurally against the recovered fixtures and a fresh finite checker model. This is a bounded Move-level qualification of the contract, not [ECO-190](https://linear.app/ecos-ops/issue/ECO-190/move-physical-realization-qualification-tri-axial-coordination-core) implementation and not a fresh production database run.
 
@@ -338,4 +338,4 @@ Not promoted:
 * guaranteed bootstrap convergence;
 * production schema/API/runtime design.
 
-**SHAPE PASS — INDEXED CHANGE / RECONCILIATION CONTRACT FROZEN FOR REGISTER-B USE**
+**SHAPE PASS — INDEXED CHANGE / RECONCILIATION CONTRACT FROZEN; STOP AT MOVE BORDER**
