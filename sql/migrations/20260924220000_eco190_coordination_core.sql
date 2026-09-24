@@ -667,11 +667,15 @@ begin
     raise exception 'ecb11_operation_conflict' using errcode = '23505';
   end if;
 
-  select r.*, a.content
-  into strict rec, content
+  select r.*
+  into strict rec
   from ecb_coordination.records r
-  join public.text_artifacts a on a.id = r.artifact_id
   where r.receipt_id = p_operation_id;
+
+  select a.content
+  into strict content
+  from public.text_artifacts a
+  where a.id = rec.artifact_id;
 
   return jsonb_build_object(
     'operation_id',p_operation_id,
