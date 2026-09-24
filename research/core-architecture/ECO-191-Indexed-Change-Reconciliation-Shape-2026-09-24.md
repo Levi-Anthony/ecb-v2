@@ -1,10 +1,10 @@
-# <issue id="3b306b18-df3f-4818-808e-9aa59c6bb47a" href="https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal">ECO-191</issue> — Shape Return: Indexed Change, Transport + Reconciliation Contract v1.0
+# [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal) — Shape Return: Indexed Change, Transport + Reconciliation Contract v1.0
 
 **Date:** 24 September 2026 · America/Phoenix
-**Controlling issue:** <issue id="3b306b18-df3f-4818-808e-9aa59c6bb47a" href="https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal">ECO-191</issue>
+**Controlling issue:** [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal)
 **Phase:** Shape, followed by bounded qualification under the same authorized episode
 **Register:** B
-**Governing inputs:** <issue id="3b306b18-df3f-4818-808e-9aa59c6bb47a" href="https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal">ECO-191</issue> Formal Sense return; <issue id="eb0ca1e9-873f-4bd5-b95b-cdc5b79cfbe8" href="https://linear.app/ecos-ops/issue/ECO-192/probe-translation-frontier-fiberr-indexed-semantics-test-lawful">ECO-192</issue> Translation Frontier return; <issue id="8a7f9bf4-2504-4ee5-8388-3599b4c67224" href="https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain">ECO-189</issue> canonical-BRAIN / reconstitution Shape
+**Governing inputs:** [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal) Formal Sense return; [ECO-192](https://linear.app/ecos-ops/issue/ECO-192/probe-translation-frontier-fiberr-indexed-semantics-test-lawful) Translation Frontier return; [ECO-189](https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain) canonical-BRAIN / reconstitution Shape
 **Physical production/schema/runtime mutation:** NONE
 **Disposition:** PASS — Shape contract frozen; bounded structural qualification passed; no upstream defect found.
 
@@ -34,7 +34,7 @@ The central Shape decision is:
 
 > **A complete lawful reseating/change event is not one transport operation. Transport is a bounded sub-operation inside a larger guarded transition that also performs destination-sensitive disclosure, requalification and current-use reconciliation.**
 
-This preserves <issue id="eb0ca1e9-873f-4bd5-b95b-cdc5b79cfbe8" href="https://linear.app/ecos-ops/issue/ECO-192/probe-translation-frontier-fiberr-indexed-semantics-test-lawful">ECO-192</issue>'s useful indexed-transport result without forcing full SIGMA semantics into a stronger mathematical correspondence than the evidence supports.
+This preserves [ECO-192](https://linear.app/ecos-ops/issue/ECO-192/probe-translation-frontier-fiberr-indexed-semantics-test-lawful)'s useful indexed-transport result without forcing full SIGMA semantics into a stronger mathematical correspondence than the evidence supports.
 
 A material transition therefore has the logical form:
 
@@ -44,7 +44,7 @@ No term may silently stand in for another.
 
 ## 2. State and indexing surfaces
 
-<issue id="3b306b18-df3f-4818-808e-9aa59c6bb47a" href="https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal">ECO-191</issue> Sense carries forward the inspection state:
+[ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal) Sense carries forward the inspection state:
 
 **S = (K, H; r, b, f, g, q, t, u; e, w, a, z)**
 
@@ -92,7 +92,7 @@ Every material indexed change must produce a receipt with the following logicall
 | 8. Current-use fidelity | exact index/basis match; currentness; SSMM legality; authority/authorization; consumer/environment where consequential | PASS → permission, phase → authority, historical → current collapse |
 | 9. Reconciliation return | reliance eligibility; typed reasons; remaining apertures; permitted next transition(s); receipt identity | a generic checker inventing parent routing policy |
 
-<issue id="8a7f9bf4-2504-4ee5-8388-3599b4c67224" href="https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain">ECO-189</issue> loss-accounting vocabulary is reused where useful: **PRESERVED, DERIVED / REFORMULATED, ADDED, STRIPPED / REJECTED, DEFERRED**.
+[ECO-189](https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain) loss-accounting vocabulary is reused where useful: **PRESERVED, DERIVED / REFORMULATED, ADDED, STRIPPED / REJECTED, DEFERRED**.
 
 The transport status must additionally distinguish:
 
@@ -212,7 +212,7 @@ For an addressable structure x:
 
 where ref(x) designates x itself, not the thing x represents.
 
-When this <issue id="3b306b18-df3f-4818-808e-9aa59c6bb47a" href="https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal">ECO-191</issue> report becomes R, its authored PASS text is a claim contained in the artifact. It is not evidence that the report was accepted, installed, authoritative or correct.
+When this [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal) report becomes R, its authored PASS text is a claim contained in the artifact. It is not evidence that the report was accepted, installed, authoritative or correct.
 
 If the parent actually depends on x, bounded recursive inquiry binds:
 
@@ -243,25 +243,25 @@ It may not invent semantic facts, binding authority or a unique warranted select
 
 Therefore a content-neutral deterministic selector is not required to return one candidate when the evidence supports several. Preserving the candidate set is lawful.
 
-## 10. Reconciliation with <issue id="8a7f9bf4-2504-4ee5-8388-3599b4c67224" href="https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain">ECO-189</issue>
+## 10. Reconciliation with [ECO-189](https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain)
 
 No architectural conflict was found.
 
-<issue id="8a7f9bf4-2504-4ee5-8388-3599b4c67224" href="https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain">ECO-189</issue> answers: **where accepted governing/current/reliance state is canonically custodied and how a capability remains reconstructible without confusing stored state with external reality.**
+[ECO-189](https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain) answers: **where accepted governing/current/reliance state is canonically custodied and how a capability remains reconstructible without confusing stored state with external reality.**
 
-<issue id="3b306b18-df3f-4818-808e-9aa59c6bb47a" href="https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal">ECO-191</issue> Shape now answers: **what exact semantic transition and reconciliation must occur when a decision-bearing seat/basis changes, and what a receipt must prove before prior qualification is reused.**
+[ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal) Shape now answers: **what exact semantic transition and reconciliation must occur when a decision-bearing seat/basis changes, and what a receipt must prove before prior qualification is reused.**
 
 The combination is:
 
-> canonical independently standing constituents + typed reliance/dependency edges + derived coordination projection + <issue id="3b306b18-df3f-4818-808e-9aa59c6bb47a" href="https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal">ECO-191</issue> indexed-change receipt + dependency-local requalification.
+> canonical independently standing constituents + typed reliance/dependency edges + derived coordination projection + [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal) indexed-change receipt + dependency-local requalification.
 
 A physical realization may persist or derive a coordination view, but it must not create a monolithic object that owns Referent, PGO, SSMM phase, evidence, authority and currentness as one inseparable truth.
 
-<issue id="3b306b18-df3f-4818-808e-9aa59c6bb47a" href="https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal">ECO-191</issue> receipts that cross the canonicalization frontier are decision-bearing provenance under <issue id="8a7f9bf4-2504-4ee5-8388-3599b4c67224" href="https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain">ECO-189</issue> and must be recoverable sufficiently to reconstitute current state. Exact physical representation remains a Move decision.
+[ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal) receipts that cross the canonicalization frontier are decision-bearing provenance under [ECO-189](https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain) and must be recoverable sufficiently to reconstitute current state. Exact physical representation remains a Move decision.
 
 ## 11. Bounded qualification executed under this episode
 
-This Shape was tested structurally against the recovered fixtures and a fresh finite checker model. This is a bounded Move-level qualification of the contract, not <issue id="26d9543c-5219-41ea-933b-acb1f7642013" href="https://linear.app/ecos-ops/issue/ECO-190/move-physical-realization-qualification-tri-axial-coordination-core">ECO-190</issue> implementation and not a fresh production database run.
+This Shape was tested structurally against the recovered fixtures and a fresh finite checker model. This is a bounded Move-level qualification of the contract, not [ECO-190](https://linear.app/ecos-ops/issue/ECO-190/move-physical-realization-qualification-tri-axial-coordination-core) implementation and not a fresh production database run.
 
 ### Finite structural checks
 
@@ -284,10 +284,10 @@ All checks passed the shaped contract.
 | BUILD 9 G1 parent → child → reentry | child result affects named dependency only; independent D2/current basis still gates parent | PASS |
 | Fixed-R/fixed-PGO Quadrant traversal | changing q/answer burden changes exact engagement index; no result swap | PASS |
 | microSSMM → focal macroSSMM | focal scale role changes; process identities/nesting/return destination survive | PASS |
-| <issue id="10609eff-7723-4c4f-b3c2-81bba37da157" href="https://linear.app/ecos-ops/issue/ECO-185/shape-adversarial-qualification-state-stage-line-level-try-to">ECO-185</issue> dressing repair | PGO enrichment and later reseat are separate explicit changes; Stage witness retains extra obligations | PASS |
-| <issue id="619d6555-40d6-402e-a02c-642cdc766bc5" href="https://linear.app/ecos-ops/issue/ECO-159/move-qualification-quadrant-implementation-audit-enforced-claims-and">ECO-159</issue> wrong-basis PASS | same PASS/channel cannot transfer across changed exact assessed basis | PASS |
+| [ECO-185](https://linear.app/ecos-ops/issue/ECO-185/shape-adversarial-qualification-state-stage-line-level-try-to) dressing repair | PGO enrichment and later reseat are separate explicit changes; Stage witness retains extra obligations | PASS |
+| [ECO-159](https://linear.app/ecos-ops/issue/ECO-159/move-qualification-quadrant-implementation-audit-enforced-claims-and) wrong-basis PASS | same PASS/channel cannot transfer across changed exact assessed basis | PASS |
 | Non-agentic latch | new observation changes warrant; mapper purpose is not referent intention | PASS |
-| <issue id="3b306b18-df3f-4818-808e-9aa59c6bb47a" href="https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal">ECO-191</issue> report as R | same focal grammar applies; authored PASS grants no authority | PASS |
+| [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal) report as R | same focal grammar applies; authored PASS grants no authority | PASS |
 | Bootstrap symmetry | alternatives/HOLD/QF permitted; no fabricated unique answer | PASS |
 | Destination-only permission | transported old load support leaves unmatched permission uncovered | PASS |
 | Revoke/restore round trip | endpoint equality does not erase intervening history/currentness change | PASS |
@@ -306,7 +306,7 @@ Reenter Shape if implementation evidence shows any of the following:
 5. SelfFocus requires a separate meta-grammar to preserve representation/subject/authority distinctions;
 6. the receipt model forces semantic completeness claims merely to operate;
 7. the bookkeeping burden materially exceeds its discriminating value and a simpler representation preserves every tested anti-collapse property;
-8. physical realization exposes an upstream contradiction with <issue id="8a7f9bf4-2504-4ee5-8388-3599b4c67224" href="https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain">ECO-189</issue>'s canonical-state/reality-contact contract.
+8. physical realization exposes an upstream contradiction with [ECO-189](https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain)'s canonical-state/reality-contact contract.
 
 Ordinary schema inconvenience is not an upstream semantic defect.
 
@@ -326,7 +326,7 @@ Promoted to Register-B Shape standing:
 * same-grammar SelfFocus;
 * guarded bootstrap alternatives/HOLD;
 * semantic/mechanical responsibility boundary;
-* compatibility with <issue id="8a7f9bf4-2504-4ee5-8388-3599b4c67224" href="https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain">ECO-189</issue> dependency-local canonicalization/reconstitution.
+* compatibility with [ECO-189](https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain) dependency-local canonicalization/reconstitution.
 
 Not promoted:
 
