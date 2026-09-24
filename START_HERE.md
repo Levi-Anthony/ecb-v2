@@ -242,3 +242,30 @@ A merge hold must be concrete and recorded. Valid examples include:
 Absent such a reason, **complete → verify → merge → record receipt** is the default lifecycle.
 
 Opening a pull request is not completion. A clean bounded change should not accumulate avoidable branch/PR debt.
+
+
+## 24 September 2026 — frontier capability decomposition accepted; ECO-194 active
+
+ECO-193's Sense decomposition is **Principal-accepted as the build candidate**.
+
+Accepted capability cut:
+- **Frontier Exploration / Scout** — new Skill candidate;
+- **Translation Frontier** — new Skill candidate;
+- Defender reuses existing evidence/standing audit capability;
+- Fulcrum Inquiry remains a Question Forward specialization/profile;
+- formal-notation accessibility is a standing operator-facing invariant plus shared helper;
+- prior-art search, correspondence stress testing, provenance checking, Intuition Bridge and Momentum selection remain composed/subprocedural unless later qualification earns separate packaging;
+- no standalone dispatcher and no generic SIGMA-reasoning super-skill are presently authorized.
+
+The first-use notation/human-audit sequence is:
+
+`ORIENT → SYMBOLS → NAME/TOKEN → SAY FORMALLY → SAY NATURALLY → READ → WORKED EXAMPLE → SYSTEM APPLICATION`.
+
+Pronounceability and conceptual interpretation are distinct requirements.
+
+**ECO-194** is the active bounded packaging/qualification successor under ECO-135. It must build and compare the two new Skill candidates, shared notation helper and Fulcrum profile against the current catalog, using training plus untouched holdouts and with/without output comparison. File presence is not activation evidence; polished output is not qualification evidence; absent direct Principal comprehension evidence remains UNKNOWN.
+
+Lane separation:
+- ECO-194 owns Skill packaging/routing/comparative qualification.
+- ECO-191/ECO-192's transport/disclosure/reconciliation Shape remains a separate formal/architecture lane.
+- ECO-190 physical realization remains HOLD pending that Shape reconciliation.
