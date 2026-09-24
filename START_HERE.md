@@ -222,3 +222,23 @@ Library availability, chat history, Linear attachment presence, or a worker's lo
 Do not silently treat the GitHub fallback as canonical BRAIN custody. When canonical ECB v2 write capability becomes available, reconcile the GitHub fallback into canonical custody and retain the GitHub document as provenance/history rather than deleting it.
 
 A work episode that creates a decision-relevant Library artifact is not continuity-complete until either canonical ECB custody exists or the GitHub fallback + receipt exists.
+
+
+## Default repository merge invariant
+
+When an authorized bounded repository change is completed and its relevant checks pass, merge it into the intended base branch in the same work episode by default.
+
+Do not leave completed changes sitting on a branch or open pull request merely for passive review unless there is an explicit reason to hold.
+
+A merge hold must be concrete and recorded. Valid examples include:
+
+- the Principal explicitly requested review before merge;
+- required validation or qualification is incomplete or failing;
+- the change would cross an authority, standing, promotion, or implementation boundary not yet authorized;
+- unresolved merge conflicts or materially changed upstream state require reconciliation;
+- the branch is intentionally exploratory, evidentiary, or provisional and is not meant to alter the current base;
+- an external dependency or safety condition makes immediate merge misleading or irreversible.
+
+Absent such a reason, **complete → verify → merge → record receipt** is the default lifecycle.
+
+Opening a pull request is not completion. A clean bounded change should not accumulate avoidable branch/PR debt.
