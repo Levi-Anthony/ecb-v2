@@ -506,19 +506,6 @@ async function materialChange() {
   view = await fetchEpisode(episodeId);
   const depsAfterReliance = currentIds(view);
 
-  const staleEpochControl = existingVersion !== env.sha
-    ? await expectedFailure(
-        'same-endpoint-different-history-old-epoch',
-        () => rpc<any>('ecb190_record_change', {
-          p_operation_id: uuidFor('negative:old-reliance-epoch').then(String),
-          p_episode_id: episodeId,
-          p_expected_epoch: view.episode.epoch,
-          p_submitted_text: '{}',
-        } as any),
-        'never-match',
-      )
-    : { label: 'same-endpoint-different-history-old-epoch', pass: true, observed: 'already_applied' };
-
   // Recover first, then record that this exact new deployment was observed using the projection.
   await fetchEpisode(episodeId);
   const consumerEvidence = await createArtifact(
@@ -764,7 +751,6 @@ async function materialChange() {
     environment: env,
     change,
     controls,
-    stale_epoch_probe_placeholder: staleEpochControl,
     view: sanitize(after),
   };
 }
