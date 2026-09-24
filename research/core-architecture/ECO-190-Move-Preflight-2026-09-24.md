@@ -12,7 +12,7 @@
 
 No upstream architectural contradiction or unresolved canonical-BRAIN identity/access defect was found.
 
-The bounded [ECO-190](https://linear.app/ecos-ops/issue/ECO-190/move-physical-realization-qualification-tri-axial-coordination-core) Move may proceed from the current substrate. This preflight did **not** apply a database migration, deploy runtime code, cut over a consumer/provider, alter production schema/state, or activate real authority/effects.
+The bounded [ECO-190](https://linear.app/ecos-ops/issue/ECO-190/move-physical-realization-qualification-tri-axial-coordination-core) Move may proceed from the current substrate. This preflight did **not** apply a database migration, change runtime code/configuration, cut over a consumer/provider, alter canonical production schema/state, or activate real authority/effects. Mirroring this preflight documentation to GitHub main triggered the repository's existing automatic Vercel build pipeline; that docs-only rebuild is a continuity-surface side effect, not an ECO-190 runtime implementation change.
 
 The implementation must be a forward allocation from the accepted [ECO-189](https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain) + [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal) Shapes onto the current canonical substrate. It must not install historical proof migrations merely because they exist and must not create a second governing truth store.
 
@@ -137,7 +137,7 @@ The bounded Move must now demonstrate, in dependency order:
 **FACT:** live migration/schema/currentness state reconciles with current repository receipts.
 **FACT:** production-facing Vercel runtime is READY and its authentication boundary is live; no runtime errors were observed in the 24-hour window checked.
 **FACT:** no second governing truth store is required by the accepted architecture or current substrate.
-**FACT:** no preflight mutation was performed.
+**FACT:** no ECO-190 target implementation/schema/runtime-semantic mutation was performed. The required documentation mirror changed repository continuity state and automatically queued a docs-only Vercel rebuild from that commit.
 
 **OPEN EVIDENCE OBLIGATIONS:** actual installed consumer use, native operation-ID custody, typed external reliance, canonical realization-artifact custody, tri-axial derived projection, material-change receipt and reconstitution proof.
 
