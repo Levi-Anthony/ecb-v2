@@ -1,9 +1,14 @@
 const SUPABASE_URL = 'https://vezxivrvhakclxuvxzso.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_4mAxzOfWinJcn-98szUEYA_Wh88UdPW';
 const REPO = 'Levi-Anthony/ecb-v2';
-const BRANCH = 'move/eco-190-coordination-core';
-const RELIANCE_LOCATOR = `vercel:project:ecb-v2:branch:${BRANCH}`;
-const CONSUMER_LOCATOR = `vercel-preview:ecb-v2:${BRANCH}:coordination`;
+
+function relianceLocator(branch: string): string {
+  return `vercel:project:ecb-v2:branch:${branch}`;
+}
+
+function consumerLocator(branch: string): string {
+  return `vercel-preview:ecb-v2:${branch}:coordination`;
+}
 
 type AnyJson = Record<string, any>;
 
@@ -74,9 +79,10 @@ function requiredPreviewEnv() {
     throw new Error('eco190_preview_only');
   }
   const sha = process.env.VERCEL_GIT_COMMIT_SHA?.trim();
+  const branch = process.env.VERCEL_GIT_COMMIT_REF?.trim();
   const vercelUrl = process.env.VERCEL_URL?.trim();
-  if (!sha || !vercelUrl) throw new Error('eco190_preview_identity_unavailable');
-  return { sha, vercelUrl, environment: 'preview' as const };
+  if (!sha || !branch || !vercelUrl) throw new Error('eco190_preview_identity_unavailable');
+  return { sha, branch, vercelUrl, environment: 'preview' as const };
 }
 
 async function githubCommit(sha: string): Promise<{ date: string; message: string }> {
@@ -109,7 +115,7 @@ async function createArtifact(label: string, content: string) {
   return { operationId, artifact };
 }
 
-async function realizationBundle(sha: string) {
+async function realizationBundle(sha: string, branch: string) {
   const paths = [
     'sql/migrations/20260924220000_eco190_coordination_core.sql',
     'api/coordination.ts',
@@ -128,7 +134,7 @@ async function realizationBundle(sha: string) {
     commit_sha: sha,
     commit_date: commit.date,
     commit_message: commit.message,
-    branch: BRANCH,
+    branch,
     files,
   });
   return createArtifact(`realization-bundle:${sha}`, content);
@@ -231,7 +237,7 @@ async function bootstrap() {
     consumer: await uuidFor('consumer:vercel-preview'),
   };
   const staticSet = await staticArtifacts();
-  const bundle = await realizationBundle(env.sha);
+  const bundle = await realizationBundle(env.sha, env.branch);
 
   const snapshot = JSON.stringify({
     profile: 'ecb.coordination.snapshot/1',
@@ -262,7 +268,7 @@ async function bootstrap() {
     JSON.stringify({
       profile: 'ecb.coordination.external-observation/1',
       system: 'vercel',
-      stable_locator: RELIANCE_LOCATOR,
+      stable_locator: relianceLocator(env.branch),
       deployment_url: env.vercelUrl,
       commit_sha: env.sha,
       commit_date: commit.date,
@@ -272,7 +278,7 @@ async function bootstrap() {
   const reliancePayload = JSON.stringify({
     profile: 'ecb.coordination.reliance/1',
     source_system: 'vercel',
-    source_locator: RELIANCE_LOCATOR,
+    source_locator: relianceLocator(env.branch),
     observed_version: env.sha,
     observed_fingerprint: await sha256Hex(`${env.sha}|${env.vercelUrl}`),
     observed_status: 'READY_PREVIEW',
@@ -298,7 +304,7 @@ async function bootstrap() {
     `consumer-evidence:${env.sha}`,
     JSON.stringify({
       profile: 'ecb.coordination.consumer-observation/1',
-      consumer: CONSUMER_LOCATOR,
+      consumer: consumerLocator(env.branch),
       deployment_url: env.vercelUrl,
       commit_sha: env.sha,
       observation: 'preview consumer successfully recovered canonical coordination projection',
@@ -307,7 +313,7 @@ async function bootstrap() {
   const consumerPayload = JSON.stringify({
     profile: 'ecb.coordination.consumer/1',
     consumer_kind: 'vercel-preview-http',
-    consumer_locator: CONSUMER_LOCATOR,
+    consumer_locator: consumerLocator(env.branch),
     environment: 'preview',
     deployment_id: env.vercelUrl,
     runtime_id: env.sha,
@@ -466,13 +472,13 @@ async function materialChange() {
   const depsBefore = currentIds(view);
   const existingVersion = String(view.external_reliances[0]?.payload?.observed_version ?? '');
 
-  const bundle = await realizationBundle(env.sha);
+  const bundle = await realizationBundle(env.sha, env.branch);
   const relianceEvidence = await createArtifact(
     `reliance-evidence:${env.sha}`,
     JSON.stringify({
       profile: 'ecb.coordination.external-observation/1',
       system: 'vercel',
-      stable_locator: RELIANCE_LOCATOR,
+      stable_locator: relianceLocator(env.branch),
       deployment_url: env.vercelUrl,
       commit_sha: env.sha,
       commit_date: commit.date,
@@ -489,7 +495,7 @@ async function materialChange() {
       p_submitted_text: JSON.stringify({
         profile: 'ecb.coordination.reliance/1',
         source_system: 'vercel',
-        source_locator: RELIANCE_LOCATOR,
+        source_locator: relianceLocator(env.branch),
         observed_version: env.sha,
         observed_fingerprint: await sha256Hex(`${env.sha}|${env.vercelUrl}`),
         observed_status: 'READY_PREVIEW',
@@ -512,7 +518,7 @@ async function materialChange() {
     `consumer-evidence:${env.sha}`,
     JSON.stringify({
       profile: 'ecb.coordination.consumer-observation/1',
-      consumer: CONSUMER_LOCATOR,
+      consumer: consumerLocator(env.branch),
       deployment_url: env.vercelUrl,
       commit_sha: env.sha,
       observation: 'new preview deployment recovered and used coordination projection',
@@ -528,7 +534,7 @@ async function materialChange() {
       p_submitted_text: JSON.stringify({
         profile: 'ecb.coordination.consumer/1',
         consumer_kind: 'vercel-preview-http',
-        consumer_locator: CONSUMER_LOCATOR,
+        consumer_locator: consumerLocator(env.branch),
         environment: 'preview',
         deployment_id: env.vercelUrl,
         runtime_id: env.sha,
