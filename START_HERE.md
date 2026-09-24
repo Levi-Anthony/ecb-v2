@@ -205,3 +205,20 @@ Do not expand scope merely because the current implementation succeeded.
 Follow the reentry route under “Where am I?” for the actual task.
 
 For the accepted descent/installation inquiry, read the [Sense acceptance and Shape increment receipt](docs/build-receipts/ECO-176-sense-accepted-2026-09-22.md), then the current **ECO-182 — Obligation-to-use realization contract** commission. It is the authorized Architecture Shape continuation from the Principal-closed ECO-176 Sense, not an implementation release. Other tasks retain their own controlling commissions; this is not a global next-work override.
+
+
+## Library durability / mirror invariant
+
+A ChatGPT Library item created for ECOS/SIGMA work must not remain Library-only.
+
+Preferred custody order:
+
+1. **Canonical ECB v2 mirror** — create or bind the corresponding canonical Artifact/record in the ECB v2 BRAIN when an authorized write path is available.
+2. **GitHub fallback mirror** — if canonical ECB v2 persistence is unavailable, create a durable document mirror in this repository in the same work episode, preserving source identity/provenance and marking the mirror as pending canonical ECB promotion.
+3. **Continuity receipt** — record the Library item identity, durable mirror path, mirror status, and any remaining promotion debt in a recoverable ledger or source-adjacent receipt.
+
+Library availability, chat history, Linear attachment presence, or a worker's local return does **not** substitute for this durable mirror obligation.
+
+Do not silently treat the GitHub fallback as canonical BRAIN custody. When canonical ECB v2 write capability becomes available, reconcile the GitHub fallback into canonical custody and retain the GitHub document as provenance/history rather than deleting it.
+
+A work episode that creates a decision-relevant Library artifact is not continuity-complete until either canonical ECB custody exists or the GitHub fallback + receipt exists.

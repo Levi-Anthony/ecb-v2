@@ -585,3 +585,19 @@ The remaining independent infrastructure seam is consumer/input parity:
 5. only then retire/tombstone the predecessor Supabase `open-brain-mcp` if no longer required as rollback.
 
 Do not recreate the rejected semantic seed. Future semantic-contract work begins from greenfield source recovery/derivation, not from the old conversation artifact.
+
+## Library durability / mirror invariant
+
+A ChatGPT Library item created for ECOS/SIGMA work must not remain Library-only.
+
+Preferred custody order:
+
+1. **Canonical ECB v2 mirror** — create or bind the corresponding canonical Artifact/record in the ECB v2 BRAIN when an authorized write path is available.
+2. **GitHub fallback mirror** — if canonical ECB v2 persistence is unavailable, create a durable document mirror in this repository in the same work episode, preserving source identity/provenance and marking the mirror as pending canonical ECB promotion.
+3. **Continuity receipt** — record the Library item identity, durable mirror path, mirror status, and any remaining promotion debt in a recoverable ledger or source-adjacent receipt.
+
+Library availability, chat history, Linear attachment presence, or a worker's local return does **not** substitute for this durable mirror obligation.
+
+Do not silently treat the GitHub fallback as canonical BRAIN custody. When canonical ECB v2 write capability becomes available, reconcile the GitHub fallback into canonical custody and retain the GitHub document as provenance/history rather than deleting it.
+
+A work episode that creates a decision-relevant Library artifact is not continuity-complete until either canonical ECB custody exists or the GitHub fallback + receipt exists.
