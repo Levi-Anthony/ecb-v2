@@ -99,9 +99,9 @@ No fixture forced reopening of the Sense laws or [ECO-189](https://linear.app/ec
 
 [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal) and [ECO-189](https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain) now divide responsibility cleanly.
 
-[ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal)**:** semantics and proof obligations of material indexed change/reseating/requalification.
+[ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal): semantics and proof obligations of material indexed change/reseating/requalification.
 
-[ECO-189](https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain)**:** canonical custody, reality-contact/reliance semantics, reconstitution and realization boundaries.
+[ECO-189](https://linear.app/ecos-ops/issue/ECO-189/architecture-shape-tri-axial-coordination-realization-canonical-brain): canonical custody, reality-contact/reliance semantics, reconstitution and realization boundaries.
 
 Together they imply the following implementation requirement:
 
@@ -134,7 +134,14 @@ The [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigm
 
 ### GitHub / documentation mirror
 
-A repository mirror is required for durable project continuity under the current process invariant. The Shape and Metabolize returns should be mirrored under the ecb-v2 research/core-architecture path and merged unless a concrete repository conflict blocks that action.
+Repository continuity is installed. The Shape and Metabolize returns are mirrored on ecb-v2 main under research/core-architecture:
+
+* [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal)-Indexed-Change-Reconciliation-Shape-2026-09-24.md
+* [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal)-Formal-Change-Metabolize-2026-09-24.md
+
+Initial mirror PR [ECO-191: mirror Shape and Metabolize returns](https://linear.app/ecos-ops/review/eco-191-mirror-shape-and-metabolize-returns-b4f4b5295566) was merged; repository-native Markdown hygiene was then repaired and merged in PR [ECO-191: normalize mirrored Linear links](https://linear.app/ecos-ops/review/eco-191-normalize-mirrored-linear-links-f0f02a950bd8). PR [Levi-Anthony/ecb-v2#91](https://linear.app/ecos-ops/review/eco-191-normalize-mirrored-linear-links-f0f02a950bd8) established the repository-native baseline at 4d291e15c56fe0163a99df53b5a5f0648f231690; later synchronization of this Metabolize edition may advance main without changing that provenance.
+
+This satisfies the required GitHub continuity mirror. It does not make GitHub the canonical BRAIN.
 
 ### Canonical BRAIN
 
