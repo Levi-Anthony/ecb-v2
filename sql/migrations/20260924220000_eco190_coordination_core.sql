@@ -1033,6 +1033,7 @@ declare
   destination_constituents jsonb;
   coverage_row jsonb;
   transport_row jsonb;
+  affected_row jsonb;
   blocking_gap boolean := false;
   bridge_required boolean := false;
   current_use jsonb;
@@ -1102,6 +1103,12 @@ begin
   ) then
     raise exception 'ecb190_continuity_mode_invalid' using errcode = '22023';
   end if;
+  if length(btrim(coalesce(payload#>>'{continuity,basis}',''))) = 0 then
+    raise exception 'ecb190_continuity_basis_required' using errcode = '22023';
+  end if;
+  if coalesce((payload#>>'{source_retention,preserve_history}')::boolean,false) is not true then
+    raise exception 'ecb190_source_retention_required' using errcode = '22023';
+  end if;
 
   source_index := ecb_coordination.record_index(episode_row.head_receipt_id);
   source_basis := ecb_coordination.record_basis(episode_row.head_receipt_id);
@@ -1147,6 +1154,14 @@ begin
       bridge_id := ecb_coordination.require_artifact(
         transport_row->'bridge_artifact_id'
       );
+    end if;
+  end loop;
+
+  for affected_row in select value from jsonb_array_elements(payload->'affected_old') loop
+    if not (affected_row ?& array['item','disposition'])
+       or length(btrim(coalesce(affected_row->>'item',''))) = 0
+       or affected_row->>'disposition' not in ('UNCHANGED','AFFECTED','UNKNOWN') then
+      raise exception 'ecb190_affected_old_row_invalid' using errcode = '22023';
     end if;
   end loop;
 
@@ -1218,7 +1233,15 @@ begin
   consumer_payload := ecb_coordination.current_payload(consumer_row.head_receipt_id);
   if consumer_payload->>'connected_status' <> 'CONNECTED'
      or consumer_payload->>'observed_use' <> 'OBSERVED'
-     or consumer_payload->>'environment' <> current_use->>'consumer_environment' then
+     or consumer_payload->>'environment' <> current_use->>'consumer_environment'
+     or (consumer_payload->>'external_reliance_id')::uuid <> reliance_row.id
+     or consumer_payload->>'runtime_id' <> reliance_payload->>'observed_version'
+     or not (
+       consumer_payload->'realization_artifact_ids'
+       @> jsonb_build_array(
+         (destination_constituents->>'realization_manifest')::uuid
+       )
+     ) then
     eligible := false;
   end if;
 
@@ -1295,7 +1318,7 @@ begin
 
   digest := ecb_coordination.request_digest(
     'eco190_record_receipt:' || internal_role,
-    p_episode_id,p_episode_id,episode_row.epoch,p_submitted_text
+    p_episode_id,p_episode_id,null,p_submitted_text
   );
 
   perform pg_catalog.pg_advisory_xact_lock(
