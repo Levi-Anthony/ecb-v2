@@ -14,7 +14,6 @@ Governing continuity rule: every ECOS/SIGMA ChatGPT Library item created during 
 |---|---|---|---|---|
 | ECO-191 Formal Sense Return | `libfile_add8f08aaa2881919a6b1bde2b1f0221` / `file_000000005a7c81fbaf12a43901c21bc6` | `research/formal-semantics/ECO-191-Formal-Sense-Return-2026-09-24.md` | GITHUB_FALLBACK_PENDING_ECB | Bind/promote into canonical ECB v2 custody when authorized write path is available |
 | ECO-192 Translation Frontier Probe | `libfile_4628f643c9c08191a3d2ed282888144a` / `file_00000000fb3c81f4a7def9a11702fd6c` | `research/formal-semantics/ECO-192-Translation-Frontier-Probe-2026-09-24.md` | GITHUB_FALLBACK_PENDING_ECB | Bind/promote into canonical ECB v2 custody when authorized write path is available |
-
 | ECO-193 Frontier Capability Decomposition | `libfile_1dadce70711081919734e3716010e3d0` / `file_000000002dbc81f6b1209a8072b24705` | `research/formal-semantics/ECO-193-Frontier-Capability-Decomposition-2026-09-24.md` | GITHUB_FALLBACK_PENDING_ECB | Canonical Artifact write is not exposed by the current native BRAIN connector; bind into canonical custody when that authorized path is available. Sense return submitted for review; no Skill installation or acceptance implied |
 
 ## Interpretation
