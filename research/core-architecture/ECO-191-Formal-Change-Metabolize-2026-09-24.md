@@ -1,3 +1,7 @@
+> **SUPERSEDED / NON-CONTROLLING — PHASE-BOUNDARY CORRECTION, 24 SEP 2026**
+>
+> The Principal subsequently directed: **Close Shape; do not begin Move.** This file was created prematurely after Shape and must not be read as evidence that Move or Metabolize opened. Its substantive notes remain historical planning material only. Current controlling standing is the ECO-191 Shape return, closed at the Move border. ECO-190 remains prepared/unlaunched.
+
 # [ECO-191](https://linear.app/ecos-ops/issue/ECO-191/sense-formalization-sigma-recursive-referent-system-derive-minimal) — Metabolize Report: Formal Change Contract Standing, Propagation + [ECO-190](https://linear.app/ecos-ops/issue/ECO-190/move-physical-realization-qualification-tri-axial-coordination-core) Handoff
 
 **Date:** 24 September 2026 · America/Phoenix
