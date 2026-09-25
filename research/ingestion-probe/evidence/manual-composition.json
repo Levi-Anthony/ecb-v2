@@ -1,0 +1,142 @@
+{
+  "envelope": {
+    "raw": "Jennifer wanted me to call her back.",
+    "sha256": "1bfa47e0a7f7c49be9c6e5f5041a8ceea1f49342b08702fb262a33c03d57dc59",
+    "source": "principal-supplied illustrative sentence",
+    "status": "illustrative_evidence_not_personal_history"
+  },
+  "candidate_errors": [],
+  "branches": {
+    "already_discussed": {
+      "parent": {
+        "referent": "Levi",
+        "telos": "self-improvement"
+      },
+      "local_inquiry": "ingestion preparation under both possible continuations",
+      "base_evidence": {
+        "raw": "Jennifer wanted me to call her back.",
+        "sha256": "1bfa47e0a7f7c49be9c6e5f5041a8ceea1f49342b08702fb262a33c03d57dc59",
+        "source": "principal-supplied illustrative sentence",
+        "status": "illustrative_evidence_not_personal_history"
+      },
+      "annotation": {
+        "elements": [
+          {
+            "handle": "jennifer",
+            "description": "Jennifer as mentioned in this sentence",
+            "excerpt": "Jennifer",
+            "basis": "reported",
+            "question": "Which existing Jennifer, if any, does this mention identify?",
+            "relevance_test": "A match changes whose contextual evidence may be used."
+          },
+          {
+            "handle": "speaker",
+            "description": "The speaker referred to by me",
+            "excerpt": "me",
+            "basis": "reported",
+            "question": "What source attribution identifies the speaker?",
+            "relevance_test": "The author of the capture need not be the speaker in quoted text."
+          },
+          {
+            "handle": "desire",
+            "description": "The reported desire for this callback",
+            "excerpt": "Jennifer wanted me to call her back",
+            "basis": "reported",
+            "question": "What was sought through this callback, and is it still sought?",
+            "relevance_test": "Purpose and currentness distinguish both supplied continuations."
+          },
+          {
+            "handle": "occasion",
+            "description": "What occasioned the reported desire, currently unspecified",
+            "excerpt": "wanted me to call her back",
+            "basis": "inquiry",
+            "question": "What situation or contrast occasioned the reported desire?",
+            "relevance_test": "Could other available evidence identify or satisfy the underlying need?"
+          },
+          {
+            "handle": "relationship",
+            "description": "The speaker-Jennifer relationship, nature unspecified",
+            "excerpt": "Jennifer wanted me",
+            "basis": "inquiry",
+            "question": "What relationship/context connects these participants in this occurrence?",
+            "relevance_test": "Relationship evidence may disambiguate identity and explain the request."
+          }
+        ]
+      },
+      "additional_evidence": {
+        "raw": "I already saw Jennifer at the appointment and we talked about what she wanted.",
+        "sha256": "79f919d1742e374bfe2ebac83aa9b39a9c633f8027aad7ca3ccaec67875121e5",
+        "source": "illustrative continuation: already_discussed",
+        "status": "illustrative_evidence_not_personal_history"
+      },
+      "interpretation_status": "not_automatically_resolved",
+      "canonical_promotions": []
+    },
+    "gift_information": {
+      "parent": {
+        "referent": "Levi",
+        "telos": "self-improvement"
+      },
+      "local_inquiry": "ingestion preparation under both possible continuations",
+      "base_evidence": {
+        "raw": "Jennifer wanted me to call her back.",
+        "sha256": "1bfa47e0a7f7c49be9c6e5f5041a8ceea1f49342b08702fb262a33c03d57dc59",
+        "source": "principal-supplied illustrative sentence",
+        "status": "illustrative_evidence_not_personal_history"
+      },
+      "annotation": {
+        "elements": [
+          {
+            "handle": "jennifer",
+            "description": "Jennifer as mentioned in this sentence",
+            "excerpt": "Jennifer",
+            "basis": "reported",
+            "question": "Which existing Jennifer, if any, does this mention identify?",
+            "relevance_test": "A match changes whose contextual evidence may be used."
+          },
+          {
+            "handle": "speaker",
+            "description": "The speaker referred to by me",
+            "excerpt": "me",
+            "basis": "reported",
+            "question": "What source attribution identifies the speaker?",
+            "relevance_test": "The author of the capture need not be the speaker in quoted text."
+          },
+          {
+            "handle": "desire",
+            "description": "The reported desire for this callback",
+            "excerpt": "Jennifer wanted me to call her back",
+            "basis": "reported",
+            "question": "What was sought through this callback, and is it still sought?",
+            "relevance_test": "Purpose and currentness distinguish both supplied continuations."
+          },
+          {
+            "handle": "occasion",
+            "description": "What occasioned the reported desire, currently unspecified",
+            "excerpt": "wanted me to call her back",
+            "basis": "inquiry",
+            "question": "What situation or contrast occasioned the reported desire?",
+            "relevance_test": "Could other available evidence identify or satisfy the underlying need?"
+          },
+          {
+            "handle": "relationship",
+            "description": "The speaker-Jennifer relationship, nature unspecified",
+            "excerpt": "Jennifer wanted me",
+            "basis": "inquiry",
+            "question": "What relationship/context connects these participants in this occurrence?",
+            "relevance_test": "Relationship evidence may disambiguate identity and explain the request."
+          }
+        ]
+      },
+      "additional_evidence": {
+        "raw": "Jennifer is Mary's sister. She wanted the callback as soon as possible to learn what I got Mary for her birthday last year so she would not repeat it.",
+        "sha256": "1ab11f1b1e3799480a570a9beb06ccefc802280b11428d6ce4f18a64d7c5d111",
+        "source": "illustrative continuation: gift_information",
+        "status": "illustrative_evidence_not_personal_history"
+      },
+      "interpretation_status": "not_automatically_resolved",
+      "canonical_promotions": []
+    }
+  },
+  "producer": "hand-authored comparison fixture, NOT model extraction"
+}

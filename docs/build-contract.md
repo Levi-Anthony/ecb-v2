@@ -1,10 +1,18 @@
 STATUS: BUILD-BOUNDARY READY  
 DISPOSITION: GOVERNING  
-VERSION: v0.4  
+VERSION: v0.5  
 ROLE: ECB v2 implementation boundary  
 SCOPE: Greenfield ECB v2
 
 # ECB v2 Build Contract
+
+> **NAMING / REFERENT / COHERENCE CURRENTNESS — 19 September 2026:** ECO-161 Sense returned **PASS WITH MATERIAL CORRECTION** and ECO-162 Shape returned **PASS**. The deeper architecture is now shaped as three irreducible macro-capability dimensions — **open semantic composition × locally governing consequentiality × temporal/coordination governance** — plus cross-cutting fidelity coordinates/invariants and typed requalification. This is not an exhaustive three-primitive ontology and not a physical schema. Coverage, activation, and disposition remain orthogonal; nonactivation must not become nonexistence or rejection. Focal selection, frame qualification, governing orientation, evidence/warrant, authority/currentness, and coordination remain independently inspectable where they can vary independently. FIBERR and Filament remain nonidentical in recovered provenance. ECO-160's referent is retained as a valid orienting-composition projection; **BRIMAR remains a proposal for that projection only and is not adopted**. ECO-163 has executed the reachable operational-qualification surface: reflective reorientation, unfamiliar-domain/open-world composition, BUILD-7′ authority/currentness negative space, the required dormancy/reactivation trace, and all reachable coordinate perturbations support the frozen architecture. **ECO-163 Register-B Move is closed — PASS WITH CARRIED REGISTER-A APERTURE.** The executable reorientation, open-world, authority/currentness, coordinate-perturbation, and dormancy/reactivation evidence strengthens the frozen ECO-162 architecture without exposing an architecture falsifier. The fresh-worker reconstruction and blind anti-confirmation lane remains genuinely unexecuted, but Principal disposition reclassified it into the Register-A evidence-gathering pool rather than Register-B qualification debt. No cold-transfer proof is claimed. Outer Metabolize is CLOSED PASS under ECO-165 after ECO-171 final closure audit. ECO-166 internal Sense, ECO-167 internal Shape, and ECO-168 internal Move are CLOSED PASS. Register B should reopen upstream architecture only on material contradictory evidence. No name adoption, schema/API/storage selection, canonical Supabase/runtime mutation, historical consolidation, authority implication, action authorization, or production installation follows from Sense/Shape closure.
+
+> **HISTORICAL PRE-ECO-168-MOVE FRONTIER — 19 September 2026:** ECO-166 assimilated the ECO-163 Move evidence and ECO-167 froze the propagation/currentness/reentry Shape. Current standing is sufficient for Register-B design/implementation, with the cold-transfer/blind anti-confirmation lane carried separately as Register-A UNKNOWN. The selected next post-Metabolize evidence seam is a **derived engagement projection physical-design / implementation probe**: a bounded current-engagement view derived from independently standing constituents, explicitly non-authoritative by possession. ECO-168 is commissioned to propagate standing, repair stale currentness, create the dedicated Register-A evidence route, preserve the ECO-152 counterfeit-historical-PASS negative control, record Register-B QFs, and commission that next seam. ECO-168 is not authorized to execute runtime/schema work or the probe itself.
+
+> **ECO-168 METABOLIZE MOVE RETURN — 20 September 2026:** The bounded propagation/currentness/evidence-routing Move passed. Register-B standing is now propagated as a **non-exhaustive tri-axial architecture + cross-cutting fidelity contract**. ECO-169 is the dedicated Register-A home for the unexecuted cold-transfer/blind anti-confirmation evidence; it does not block Register B. ECO-170 is the commissioned but unopened derived-engagement-projection physical-design/probe seam. ECO-152's counterfeit-historical-PASS defect remains preserved as negative-control evidence for exact lineage/warrant. No runtime/database/schema/API/service, authority, naming, or probe execution occurred. At ECO-168 Move closure, outer ECO-165 still remained open; ECO-171 subsequently completed the final closure audit and closed ECO-165 PASS.
+
+> **ECO-171 FINAL METABOLIZE CLOSURE — 20 September 2026:** ECO-165 outer Metabolize is **CLOSED PASS**. The closure audit reconciled mutable currentness surfaces so superseded phase instructions are explicitly historical rather than live control; preserved prior evidence returns without rewriting their historical state; kept ECO-169 cold-transfer/blind anti-confirmation as **Register-A UNKNOWN / nonblocking**; preserved ECO-152's counterfeit-historical-PASS defect as the exact-lineage/warrant negative control; and confirmed ECO-170 as the selected next Register-B seam, still **commissioned but unopened**. ECO-165 closure releases the deeper-name hold only into **separately governed referent-specific naming reentry**; it does not adopt BRIMAR, generate names, or reopen naming automatically. No runtime/database/schema/API/service/authority mutation occurred in Metabolize.
 
 ## Current Orientation Expression
 
@@ -12,7 +20,7 @@ The following distinctions travel together for the current build boundary. Their
 
 **Telos / governing ideal**
 
-Produce the smallest clean ECB v2 substrate capable of preserving OB1’s disproportionate value while carrying forward only ECB extensions whose value and architectural necessity have been demonstrated or ratified through the governing architecture.
+Produce a clean ECB v2 substrate that preserves OB1’s disproportionate value while carrying forward only extensions with a demonstrated or ratified decision-relevant job. Size is not an optimization target. The implementation boundary follows the interactions required for interpretable evidence; consequential exposure is bounded independently through authority, isolation, reversibility, recovery, and effect controls.
 
 **Master Key / governing discriminator**
 
@@ -29,6 +37,52 @@ Separate harvesting from rebuilding.
 **Revalidation trigger**
 
 Reopen the build boundary when a real vertical slice cannot be implemented without violating an invariant, repeatedly reconstructing a distinction that has clearly earned persistence, or leaving a ratified mechanically decidable architectural obligation dependent on discretionary reasoning.
+
+## Register B — bounded learning through action
+
+Principal-authorized disposition, 2026-09-15. Provenance and scope:
+[`research/ingestion-probe/COMMISSION.md`](../research/ingestion-probe/COMMISSION.md).
+
+Principal method correction, 2026-09-18: **Bound exposure, not learning** is compression, not an absolute. Preserve the decision-relevant learning surface while bounding consequential exposure. Implementation is epistemic only when plausible outcomes discriminate between materially different next Moves. The evidence-bearing boundary sets implementation breadth; blast-radius containment is specified independently. Do not use “smallest” as an architecture, slice, probe, proof, or next-action optimization criterion. The surviving anti-bloat rule is only: do not add machinery that has no decision-relevant job.
+
+Register B optimizes for reliable learning under action. Prefer a physical probe over further
+abstract resolution when the next uncertainty can be discriminated by a Move satisfying this floor:
+
+| Condition | Required basis before the Move |
+|---|---|
+| Principal intent stable | Recoverable focal inquiry, intended outcome, and exclusions. |
+| Authority sufficient | The actual actor, operation, and affected surface are within the existing commission. |
+| Effect bounded | Identified targets, permitted mutations, and execution limit. |
+| Outcome observable | A retained observation that distinguishes the prediction from its failure. |
+| Failure acceptable or recoverable | A declared loss bound or tested rollback/recovery route. |
+| Result interpretable | Known inputs, method, comparison, and limits on the conclusion. |
+
+An unresolved question blocks this Move only if its alternatives can compromise principal intent,
+authority, safety, observability, recoverability, interpretation, or the evidence's ability to
+discriminate the active hypothesis. Otherwise preserve it through Question Forward and proceed.
+Determine whether each material question is best answered by reasoning, retrieval, observation, or
+intervention; Move may itself be the epistemic instrument. Shape need only establish this floor for
+the next intervention, not exhaust the subject. This does not remove separately governing human
+phase gates or authorize a transition outside the active commission.
+
+Before intervention, retain the hypothesis, prediction, effect boundary, observations to collect,
+failure conditions, and stopping condition. After intervention, compare prediction with observation
+and disposition the hypothesis as strengthened, weakened, falsified, or instrumentation insufficient;
+select another bounded probe only where an identified remaining question warrants it. Do not return
+automatically to comprehensive Shape.
+
+An observed missing tool that prevents an authorized operation is itself evidence sufficient to
+commission and build a bounded instrument for that operation; repeated failures, recurrence counts,
+or a completed ontology are not prerequisites. Prefer that direct capability over accumulating
+manual workarounds. Apply the same effect, authority, observability, recovery, and interpretation
+floor to the tool. This does not authorize bypassing an access restriction or confer standing on the
+tool's output. Keep the instrument revisable as its use produces evidence.
+
+Existing evidence, standing, authority, lineage, proof-sensitivity, and recovery disciplines remain
+unchanged. Required Integral/QLLST and relational/directional capacities cannot be removed because a
+given probe did not exercise them. Architectural capacity, local resolution, chosen procedure, and
+physical representation remain distinct. Success of a probe does not promote its representation,
+grant action authority, or establish an untested architectural claim.
 
 ## Lineage
 
@@ -102,7 +156,7 @@ A ratified architectural requirement can itself establish the decision consequen
 for physicalization when leaving that requirement to model interpretation, remembered instruction, or
 broader-than-needed capability would contradict the architecture. Failure specimens remain valuable for
 discovery, falsification, qualification, and sizing; they are not a mandatory permission gate for the
-smallest deterministic enforcement of an already-settled structural obligation.
+decision-relevant deterministic enforcement of an already-settled structural obligation.
 
 The complementary ratified law is also governing:
 
@@ -112,9 +166,7 @@ Do not count relocation of a stable mechanically decidable consequential obligat
 structure into generic payload, model interpretation, stochastic compliance, or remembered instruction
 as architectural simplification. Genericity receives no automatic simplicity credit.
 
-A proposed physical distinction earns existence when it is the smallest decision-relevant enforcement
-that materially lowers consequential semantic/stochastic liability without destroying required
-information, flexibility, or distinctions. Its warrant may come from a ratified architectural rule,
+A proposed physical distinction earns existence when it has a decision-relevant enforcement job that materially lowers consequential semantic/stochastic liability without destroying required information, flexibility, or distinctions. Its warrant may come from a ratified architectural rule,
 transactional or integrity necessity, repeated reconstruction, observed failure, or another governing
 route sufficient under the active Master Key. No one warrant route is mandatory in every case.
 
@@ -124,8 +176,7 @@ freedom.
 
 For each proposed physicalization or collapse, the decision surface must identify the obligation moved,
 its mechanical decidability at the active resolution, the liability created or removed, the useful
-freedom/information preserved or lost, and whether a strictly smaller enforcement mechanism preserves
-the same safety and semantic distinctions.
+freedom/information preserved or lost, and whether every added element has a decision-relevant job while preserving the required safety and semantic distinctions.
 
 QLLST mapping and Question Forward remain required orientation grammar where applicable. They expose
 structure, unresolved cells, relations, and re-entry conditions; they are not waiting gates that require

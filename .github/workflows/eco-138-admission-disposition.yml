@@ -1,0 +1,133 @@
+name: ECO-138 admission provenance + active disposition
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'sql/migrations/20260916023000_eco138_admission_disposition.sql'
+      - 'sql/migrations/20260916023100_eco138_disposition_transition_fix.sql'
+      - 'tests/eco-138/**'
+      - 'server.ts'
+      - 'api/**'
+      - '.github/workflows/eco-138-admission-disposition.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.2-pg17
+        env:
+          POSTGRES_USER: custodian
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 55439:5432
+        options: >-
+          --health-cmd "pg_isready -U custodian -d postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      BUILD6_DISPOSABLE: 'YES'
+      BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:55439/build6
+      ECO138_DATABASE_URL: postgresql://postgres@127.0.0.1:55439/build6
+      B5B_EVIDENCE_DIR: ${{ github.workspace }}/artifacts/build5b-predecessor
+    steps:
+      - name: Checkout exact candidate commit
+        uses: actions/checkout@v4
+
+      - name: Reconstruct accepted BUILD 5B predecessor
+        shell: bash
+        run: bash tests/build-6/ci-reconstruct-build5b.sh
+
+      - name: Install accepted BUILD 6 substrate
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL"
+          -f sql/migrations/20260907234712_build_6_governance_bootstrap.sql
+
+      - name: Install BUILD 11 ordinary-operation predecessor
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL"
+          -f sql/migrations/20260914063000_build_11_ordinary_operation_kernel.sql
+
+      - name: Qualify BUILD 11 and commission disposable runtime key
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL"
+          -f tests/build-11/qualify.sql
+
+      - name: Reconstruct first BUILD 12 state
+        shell: bash
+        run: |
+          set -euo pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL" -f sql/migrations/20260915090000_build_12_ordinary_versioned_artifacts.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL" -f sql/migrations/20260915101000_build_12_artifact_key_fetch.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL" -f sql/migrations/20260915102500_build_12_artifact_key_fetch_fix.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL" -f sql/migrations/20260915102000_seed_integral_holonic_grammar_semantic_contract_v1.sql
+
+      - name: Apply canonical BUILD 12 greenfield correction
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL"
+          -f sql/migrations/20260915114500_build_12_greenfield_artifact_correction.sql
+
+      - name: Requalify canonical BUILD 12 predecessor
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL"
+          -f tests/build-12/qualify-greenfield-correction.sql
+
+      - name: Apply ECO-138 admission/disposition extension
+        shell: bash
+        run: |
+          set -euo pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL" -f sql/migrations/20260916023000_eco138_admission_disposition.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL" -f sql/migrations/20260916023100_eco138_disposition_transition_fix.sql
+
+      - name: Qualify ECO-138 positive and negative controls
+        id: eco138_qualify
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO138_DATABASE_URL" -f tests/eco-138/qualify.sql 2>&1 | tee eco138-qualify.log
+
+      - name: Preserve ECO-138 qualification log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eco138-qualification-log
+          path: eco138-qualify.log
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Fail if ECO-138 qualification failed
+        if: steps.eco138_qualify.outcome != 'success'
+        shell: bash
+        run: exit 1
+
+      - name: Verify outward runtime contract remains narrow
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q "registerTool('capture_thought'" server.ts
+          grep -q 'producer_context' server.ts
+          grep -q 'parent_receipt_id' server.ts
+          grep -q "registerTool('set_thought_disposition'" server.ts
+          grep -q "'set_thought_disposition'" server.ts
+          if grep -q "registerTool('route_thought'" server.ts; then
+            echo 'unearned routing tool appeared' >&2
+            exit 1
+          fi
+          if grep -q "registerTool('grade_thought'" server.ts; then
+            echo 'unearned grading tool appeared' >&2
+            exit 1
+          fi

@@ -30,6 +30,27 @@ type RepresentationStatus = {
   error?: 'embedding_failed' | 'representation_persistence_failed' | 'representation_status_failed';
 };
 
+type Admission = {
+  operation_id: string | null;
+  committed_at: string | null;
+  producer_context: string | null;
+  parent_receipt_id: string | null;
+};
+
+type Disposition = {
+  revision_id: string;
+  state: string;
+  reentry_condition: string | null;
+  recorded_at: string;
+};
+
+type Projection = {
+  artifact_id: string;
+  kind: 'ACTION' | 'HOLD';
+  content: string;
+  bound_at: string;
+};
+
 type SearchCoverage = {
   total_thoughts: number;
   represented_thoughts: number;
@@ -60,15 +81,35 @@ type SearchResult = {
   repair: SearchRepair;
 };
 
-type FetchedThought = Thought & { representation_ready: boolean };
+type FetchedThought = Thought & {
+  representation_ready: boolean;
+  admission: Admission;
+  disposition: Disposition;
+  projection: Projection;
+};
+
+type Artifact = {
+  id: string;
+  content: string;
+  registered_at: string;
+};
 
 type FailureCode =
   | 'operation_conflict'
+  | 'disposition_conflict'
   | 'runtime_unauthorized'
   | 'persistence_failed'
   | 'capture_failed'
   | 'search_failed'
-  | 'fetch_failed';
+  | 'fetch_failed'
+  | 'disposition_write_failed'
+  | 'artifact_write_failed'
+  | 'artifact_fetch_failed';
+
+type EmbeddingModel = (
+  text: string,
+  options: { pooling: 'mean'; normalize: true },
+) => Promise<{ data: Iterable<number> }>;
 
 class BrainOperationError extends Error {
   constructor(readonly code: FailureCode) {
@@ -102,6 +143,16 @@ function operationFailure(error: unknown, fallback: FailureCode) {
   const code = error instanceof BrainOperationError ? error.code : fallback;
   logFailure(code, error);
   return failure(code);
+}
+
+function nullableString(value: unknown): string | null {
+  return value === null || value === undefined ? null : String(value);
+}
+
+function nonBlankText() {
+  return z.string().refine((value) => value.trim().length > 0, {
+    message: 'must contain non-whitespace text',
+  });
 }
 
 function hex(bytes: Uint8Array): string {
@@ -143,7 +194,12 @@ async function rpc<T>(name: string, body: Record<string, unknown>, fallback: Fai
   });
   const text = await response.text();
   if (!response.ok) {
-    if (text.includes('ecb11_operation_conflict')) throw new BrainOperationError('operation_conflict');
+    if (text.includes('ecb11_operation_conflict')) {
+      throw new BrainOperationError('operation_conflict');
+    }
+    if (text.includes('eco138_disposition_predecessor_conflict')) {
+      throw new BrainOperationError('disposition_conflict');
+    }
     if (text.includes('ecb11_runtime_unauthorized') || text.includes('ecb11_runtime_uncommissioned')) {
       throw new BrainOperationError('runtime_unauthorized');
     }
@@ -153,10 +209,13 @@ async function rpc<T>(name: string, body: Record<string, unknown>, fallback: Fai
   return JSON.parse(text) as T;
 }
 
-let embeddingPipeline: Promise<Awaited<ReturnType<typeof pipeline>>> | null = null;
+let embeddingPipeline: Promise<EmbeddingModel> | null = null;
 
-async function getEmbeddingPipeline() {
-  embeddingPipeline ??= pipeline('feature-extraction', 'Supabase/gte-small');
+async function getEmbeddingPipeline(): Promise<EmbeddingModel> {
+  embeddingPipeline ??= pipeline(
+    'feature-extraction',
+    'Supabase/gte-small',
+  ) as unknown as Promise<EmbeddingModel>;
   return embeddingPipeline;
 }
 
@@ -171,11 +230,11 @@ function validateEmbedding(vector: Iterable<number>): number[] {
 async function embed(text: string): Promise<number[]> {
   const model = await getEmbeddingPipeline();
   const output = await model(text, { pooling: 'mean', normalize: true });
-  return validateEmbedding(output.data as Iterable<number>);
+  return validateEmbedding(output.data);
 }
 
 async function fetchThought(id: string): Promise<FetchedThought | null> {
-  const data = await rpc<unknown[]>('ecb11_fetch_thought', {
+  const data = await rpc<unknown[]>('eco140_fetch_thought', {
     p_id: id,
     p_model_id: MODEL_ID,
   }, 'fetch_failed');
@@ -187,6 +246,24 @@ async function fetchThought(id: string): Promise<FetchedThought | null> {
     source: String(row.source),
     captured_at: String(row.captured_at),
     representation_ready: Boolean(row.representation_ready),
+    admission: {
+      operation_id: nullableString(row.admission_operation_id),
+      committed_at: nullableString(row.admission_committed_at),
+      producer_context: nullableString(row.producer_context),
+      parent_receipt_id: nullableString(row.parent_operation_id),
+    },
+    disposition: {
+      revision_id: String(row.disposition_revision_id),
+      state: String(row.disposition),
+      reentry_condition: nullableString(row.reentry_condition),
+      recorded_at: String(row.disposition_recorded_at),
+    },
+    projection: {
+      artifact_id: String(row.projection_artifact_id),
+      kind: String(row.projection_kind) as 'ACTION' | 'HOLD',
+      content: String(row.projection_content),
+      bound_at: String(row.projection_bound_at),
+    },
   };
 }
 
@@ -208,7 +285,7 @@ async function representationForCapture(thought: Thought): Promise<Representatio
 
   let vector: number[];
   try {
-    vector = await embed(thought.content);
+    vector = validateEmbedding(await embed(thought.content));
   } catch {
     return { model_id: MODEL_ID, ready: false, error: 'embedding_failed' };
   }
@@ -253,12 +330,21 @@ async function repairMissing(): Promise<SearchRepair> {
 }
 
 const runtime = {
-  async capture(input: { operationId: string; content: string; source: string; capturedAt?: string }) {
+  async capture(input: {
+    operationId: string;
+    content: string;
+    source: string;
+    capturedAt?: string;
+    producerContext?: string;
+    parentReceiptId?: string;
+  }) {
     const data = await rpc<unknown[]>('ecb11_capture_thought', {
       p_operation_id: input.operationId,
       p_content: input.content,
       p_source: input.source,
       p_captured_at: input.capturedAt ?? null,
+      p_producer_context: input.producerContext ?? null,
+      p_parent_operation_id: input.parentReceiptId ?? null,
     }, 'persistence_failed');
     const row = Array.isArray(data) ? data[0] as Record<string, unknown> | undefined : undefined;
     if (!row) throw new BrainOperationError('persistence_failed');
@@ -268,11 +354,20 @@ const runtime = {
       source: String(row.source),
       captured_at: String(row.captured_at),
     };
+    const representation = await representationForCapture(thought);
+    const current = await fetchThought(thought.id);
+    if (!current) throw new BrainOperationError('capture_failed');
     return {
       operation_id: String(row.operation_id),
       replayed: Boolean(row.replayed),
       thought,
-      representation: await representationForCapture(thought),
+      admission: {
+        producer_context: nullableString(row.producer_context),
+        parent_receipt_id: nullableString(row.parent_operation_id),
+      },
+      disposition: current.disposition,
+      projection: current.projection,
+      representation,
     };
   },
 
@@ -298,15 +393,85 @@ const runtime = {
   async fetch(id: string) {
     return fetchThought(id);
   },
+
+  async setDisposition(input: {
+    operationId: string;
+    thoughtId: string;
+    expectedRevisionId: string;
+    disposition: string;
+    reentryCondition?: string;
+    projectionArtifactId: string;
+    projectionKind: 'ACTION' | 'HOLD';
+  }) {
+    const data = await rpc<unknown[]>('eco140_set_thought_disposition', {
+      p_operation_id: input.operationId,
+      p_thought_id: input.thoughtId,
+      p_expected_revision_id: input.expectedRevisionId,
+      p_disposition: input.disposition,
+      p_reentry_condition: input.reentryCondition ?? null,
+      p_projection_artifact_id: input.projectionArtifactId,
+      p_projection_kind: input.projectionKind,
+    }, 'disposition_write_failed');
+    const row = Array.isArray(data) ? data[0] as Record<string, unknown> | undefined : undefined;
+    if (!row) throw new BrainOperationError('disposition_write_failed');
+    return {
+      operation_id: String(row.operation_id),
+      replayed: Boolean(row.replayed),
+      thought_id: String(row.thought_id),
+      disposition: {
+        revision_id: String(row.disposition_revision_id),
+        predecessor_revision_id: nullableString(row.predecessor_revision_id),
+        state: String(row.disposition),
+        reentry_condition: nullableString(row.reentry_condition),
+        recorded_at: String(row.recorded_at),
+      },
+      projection: {
+        artifact_id: String(row.projection_artifact_id),
+        kind: String(row.projection_kind) as 'ACTION' | 'HOLD',
+        bound_at: String(row.projection_bound_at),
+      },
+    };
+  },
+
+  async createArtifact(input: { operationId: string; content: string }) {
+    const data = await rpc<unknown[]>('ecb12_create_artifact', {
+      p_operation_id: input.operationId,
+      p_content: input.content,
+    }, 'artifact_write_failed');
+    const row = Array.isArray(data) ? data[0] as Record<string, unknown> | undefined : undefined;
+    if (!row) throw new BrainOperationError('artifact_write_failed');
+    return {
+      operation_id: String(row.operation_id),
+      artifact: {
+        id: String(row.artifact_id),
+        content: String(row.content),
+        registered_at: String(row.registered_at),
+      },
+      replayed: Boolean(row.replayed),
+    };
+  },
+
+  async fetchArtifact(id: string): Promise<Artifact | null> {
+    const data = await rpc<unknown[]>('ecb12_fetch_artifact', {
+      p_id: id,
+    }, 'artifact_fetch_failed');
+    const row = Array.isArray(data) ? data[0] as Record<string, unknown> | undefined : undefined;
+    if (!row) return null;
+    return {
+      id: String(row.id),
+      content: String(row.content),
+      registered_at: String(row.registered_at),
+    };
+  },
 };
 
 function buildServer(): McpServer {
-  const server = new McpServer({ name: 'ecb-v2-open-brain', version: '0.2.0' });
+  const server = new McpServer({ name: 'ecb-v2-open-brain', version: '0.5.0' });
 
   server.registerTool('capture_thought', {
     title: 'Capture Thought',
     description:
-      'Persist one atomic evidence thought under a stable operation UUID. Reuse the same operation_id to reconcile an uncertain retry; use a new operation_id for a distinct encounter, even when content repeats.',
+      'Transfer custody of one atomic evidence Thought under a stable operation UUID. Optional producer_context and parent_receipt_id preserve known encounter provenance without granting standing or triggering qualification. A neutral active disposition and explicit HOLD projection are established automatically without invoking a planner.',
     annotations: {
       readOnlyHint: false,
       destructiveHint: false,
@@ -315,13 +480,22 @@ function buildServer(): McpServer {
     },
     inputSchema: {
       operation_id: z.string().uuid(),
-      content: z.string().trim().min(1),
-      source: z.string().trim().min(1),
+      content: nonBlankText(),
+      source: nonBlankText(),
       captured_at: z.string().datetime({ offset: true }).optional(),
+      producer_context: z.string().min(1).optional(),
+      parent_receipt_id: z.string().uuid().optional(),
     },
-  }, async ({ operation_id, content, source, captured_at }) => {
+  }, async ({ operation_id, content, source, captured_at, producer_context, parent_receipt_id }) => {
     try {
-      return result(await runtime.capture({ operationId: operation_id, content, source, capturedAt: captured_at }));
+      return result(await runtime.capture({
+        operationId: operation_id,
+        content,
+        source,
+        capturedAt: captured_at,
+        producerContext: producer_context,
+        parentReceiptId: parent_receipt_id,
+      }));
     } catch (error) {
       return operationFailure(error, 'capture_failed');
     }
@@ -347,7 +521,7 @@ function buildServer(): McpServer {
   server.registerTool('fetch', {
     title: 'Fetch Thought',
     description:
-      'Fetch one canonical thought by durable UUID and report whether its current semantic representation is ready.',
+      'Fetch canonical Thought evidence by Thought UUID or its admission receipt UUID. Returns custody provenance, representation readiness, the exact current operational disposition, and its exact ACTION/HOLD projection. Projection currentness confers no execution authority.',
     annotations: { readOnlyHint: true },
     inputSchema: { id: z.string().uuid() },
   }, async ({ id }) => {
@@ -356,6 +530,86 @@ function buildServer(): McpServer {
       return thought ? result(thought) : failure('not_found');
     } catch (error) {
       return operationFailure(error, 'fetch_failed');
+    }
+  });
+
+  server.registerTool('set_thought_disposition', {
+    title: 'Set Thought Disposition',
+    description:
+      'Append a new operational-disposition revision using exact predecessor currentness and bind one immutable shaped projection Artifact. projection_kind is ACTION or HOLD; HOLD requires a concrete reentry_condition. A current projection is guidance, not execution authority, truth, standing, priority, or route.',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    inputSchema: {
+      operation_id: z.string().uuid(),
+      thought_id: z.string().uuid(),
+      expected_revision_id: z.string().uuid(),
+      disposition: nonBlankText(),
+      reentry_condition: z.string().min(1).optional(),
+      projection_artifact_id: z.string().uuid(),
+      projection_kind: z.enum(['ACTION', 'HOLD']),
+    },
+  }, async ({
+    operation_id,
+    thought_id,
+    expected_revision_id,
+    disposition,
+    reentry_condition,
+    projection_artifact_id,
+    projection_kind,
+  }) => {
+    try {
+      return result(await runtime.setDisposition({
+        operationId: operation_id,
+        thoughtId: thought_id,
+        expectedRevisionId: expected_revision_id,
+        disposition,
+        reentryCondition: reentry_condition,
+        projectionArtifactId: projection_artifact_id,
+        projectionKind: projection_kind,
+      }));
+    } catch (error) {
+      return operationFailure(error, 'disposition_write_failed');
+    }
+  });
+
+  server.registerTool('create_artifact', {
+    title: 'Create Artifact',
+    description:
+      'Create one immutable text Artifact as a persistent Referent. The exact text is retained as representation content; creation does not confer truth, standing, currentness, relation, acceptance, authority, or authorization. A shaped ACTION/HOLD remains only a candidate until an exact disposition revision binds it.',
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    inputSchema: {
+      operation_id: z.string().uuid(),
+      content: z.string(),
+    },
+  }, async ({ operation_id, content }) => {
+    try {
+      return result(await runtime.createArtifact({ operationId: operation_id, content }));
+    } catch (error) {
+      return operationFailure(error, 'artifact_write_failed');
+    }
+  });
+
+  server.registerTool('fetch_artifact', {
+    title: 'Fetch Artifact',
+    description:
+      'Fetch one immutable text Artifact by its durable Referent UUID. This operation has no latest-version or currentness semantics.',
+    annotations: { readOnlyHint: true },
+    inputSchema: { id: z.string().uuid() },
+  }, async ({ id }) => {
+    try {
+      const artifact = await runtime.fetchArtifact(id);
+      return artifact ? result(artifact) : failure('not_found');
+    } catch (error) {
+      return operationFailure(error, 'artifact_fetch_failed');
     }
   });
 
@@ -369,7 +623,14 @@ app.get('/', (context) => context.json({
   runtime: 'vercel-node',
   canonical_brain: 'vezxivrvhakclxuvxzso',
   model: 'Supabase/gte-small',
-  ordinary_tools: ['capture_thought', 'search', 'fetch'],
+  ordinary_tools: [
+    'capture_thought',
+    'search',
+    'fetch',
+    'set_thought_disposition',
+    'create_artifact',
+    'fetch_artifact',
+  ],
   provider_admin_credentials_required: false,
 }));
 
@@ -390,11 +651,12 @@ app.all('/mcp', async (context) => {
   }
 
   const server = buildServer();
-  const transport = new StreamableHTTPTransport();
+  const transport = new StreamableHTTPTransport({
+    sessionIdGenerator: undefined,
+  });
   await server.connect(transport);
   const response = await transport.handleRequest(context);
   if (!response) return context.json({ error: 'transport_failed' }, 500);
-  response.headers.delete('mcp-session-id');
   for (const [name, value] of Object.entries(corsHeaders)) response.headers.set(name, value);
   return response;
 });

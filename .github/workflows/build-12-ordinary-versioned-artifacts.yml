@@ -1,0 +1,108 @@
+name: BUILD 12 greenfield artifact correction
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'sql/migrations/20260915090000_build_12_ordinary_versioned_artifacts.sql'
+      - 'sql/migrations/20260915101000_build_12_artifact_key_fetch.sql'
+      - 'sql/migrations/20260915102000_seed_integral_holonic_grammar_semantic_contract_v1.sql'
+      - 'sql/migrations/20260915102500_build_12_artifact_key_fetch_fix.sql'
+      - 'sql/migrations/20260915114500_build_12_greenfield_artifact_correction.sql'
+      - 'tests/build-12/**'
+      - 'server.ts'
+      - 'api/**'
+      - 'docs/architecture-decisions/007-build-12-greenfield-artifact-creation.md'
+      - 'research/build-12-greenfield-correction/**'
+      - '.github/workflows/build-12-ordinary-versioned-artifacts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.2-pg17
+        env:
+          POSTGRES_USER: custodian
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 55439:5432
+        options: >-
+          --health-cmd "pg_isready -U custodian -d postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      BUILD6_DISPOSABLE: 'YES'
+      BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:55439/build6
+      BUILD12_DATABASE_URL: postgresql://postgres@127.0.0.1:55439/build6
+      B5B_EVIDENCE_DIR: ${{ github.workspace }}/artifacts/build5b-predecessor
+    steps:
+      - name: Checkout exact candidate commit
+        uses: actions/checkout@v4
+
+      - name: Reconstruct accepted BUILD 5B predecessor
+        shell: bash
+        run: bash tests/build-6/ci-reconstruct-build5b.sh
+
+      - name: Install accepted BUILD 6 substrate
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f sql/migrations/20260907234712_build_6_governance_bootstrap.sql
+
+      - name: Install BUILD 11 predecessor
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f sql/migrations/20260914063000_build_11_ordinary_operation_kernel.sql
+
+      - name: Qualify BUILD 11 predecessor and commission disposable runtime key
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f tests/build-11/qualify.sql
+
+      # Reconstruct the exact first BUILD 12 state that reached canonical production.
+      - name: Reconstruct first BUILD 12 Artifact substrate
+        shell: bash
+        run: |
+          set -euo pipefail
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL" -f sql/migrations/20260915090000_build_12_ordinary_versioned_artifacts.sql
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL" -f sql/migrations/20260915101000_build_12_artifact_key_fetch.sql
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL" -f sql/migrations/20260915102500_build_12_artifact_key_fetch_fix.sql
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL" -f sql/migrations/20260915102000_seed_integral_holonic_grammar_semantic_contract_v1.sql
+
+      - name: Apply greenfield Artifact correction
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f sql/migrations/20260915114500_build_12_greenfield_artifact_correction.sql
+
+      - name: Qualify greenfield Artifact creation and retrieval
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$BUILD12_DATABASE_URL"
+          -f tests/build-12/qualify-greenfield-correction.sql
+
+      - name: Verify source provenance and runtime surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'Artifact is a logical primitive' docs/architecture-decisions/007-build-12-greenfield-artifact-creation.md
+          grep -q "registerTool('create_artifact'" server.ts
+          grep -q "registerTool('fetch_artifact'" server.ts
+          if grep -q "registerTool('create_artifact_version'" server.ts; then
+            echo 'unearned create_artifact_version tool survived' >&2
+            exit 1
+          fi
+          if grep -q "registerTool('fetch_artifact_by_key'" server.ts; then
+            echo 'unearned fetch_artifact_by_key tool survived' >&2
+            exit 1
+          fi

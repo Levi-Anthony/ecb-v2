@@ -13,7 +13,7 @@ ECB v1 is evidence, not inherited architecture.
 
 OB1 is the substrate lineage.
 
-The architecture program develops valuable behavior on the smallest clean substrate while preserving earned distinctions. Ordinary personal operation proceeds concurrently using available, already-earned capability. Serve the user's actual task; consult architecture when it changes interpretation, legitimacy, or required capability. Neither personal use nor architectural evidence automatically acquires the other's standing.
+The architecture program develops valuable behavior on a clean substrate while preserving earned distinctions. Size is not an optimization target: include the consequential interactions required for interpretable evidence, and bound exposure through the actual effect and recovery boundaries. Ordinary personal operation proceeds concurrently using available, already-earned capability. Serve the user's actual task; consult architecture when it changes interpretation, legitimacy, or required capability. Neither personal use nor architectural evidence automatically acquires the other's standing.
 
 ## Current governing distinction
 
@@ -63,7 +63,7 @@ Read only as needed, in this order:
 
 3. `/docs/build-contract.md`
 
-   Defines the build boundary, architectural minimum, build order, promotion rules, and enforcement discipline. Read when the current Build Unit requires architectural interpretation.
+   Defines the build boundary, architectural obligations, build order, promotion rules, and enforcement discipline. Read when the current Build Unit requires architectural interpretation.
 
 4. `/docs/acceptance-tests.md`
 
@@ -151,9 +151,9 @@ A Build Unit must state:
 - TEST
 - NON-GOAL
 
-One Build Unit should fit in one comprehensible diff.
+A Build Unit should remain comprehensible and reviewable, but do not amputate an evidence-bearing boundary merely to fit an arbitrary diff size.
 
-Do not introduce adjacent abstractions unless the current test cannot pass without them.
+Do not introduce adjacent abstractions without a decision-relevant job in the active evidence-bearing boundary.
 
 ## Authority rule
 
@@ -181,6 +181,10 @@ If the current Build Unit cannot be completed without one of those operations:
 
 ## Completion loop
 
+For Register B work, use the [bounded learning-through-action floor](docs/build-contract.md#register-b--bounded-learning-through-action)
+to qualify the next Move. Do not substitute exhaustive conceptual closure for an authorized,
+observable, recoverable experiment. The governing rule and its limits live in the Build Contract.
+
 For every Build Unit:
 
 1. **ORIENT** — Read `BUILD_CHECKOUT`.
@@ -192,10 +196,76 @@ For every Build Unit:
    - Unexpected but nonblocking → record evidence/aperture.
    - Architectural pressure → ADR.
    - Invariant conflict → stop.
-   - Test failure → repair the smallest responsible layer.
+   - Test failure → repair the responsible layer evidenced by the failure; do not route upstream merely to avoid local rework, and do not shrink the phenomenon under test.
 
 Do not expand scope merely because the current implementation succeeded.
 
 ## Current next handle
 
 Follow the reentry route under “Where am I?” for the actual task.
+
+For the accepted descent/installation inquiry, read the [Sense acceptance and Shape increment receipt](docs/build-receipts/ECO-176-sense-accepted-2026-09-22.md), then the current **ECO-182 — Obligation-to-use realization contract** commission. It is the authorized Architecture Shape continuation from the Principal-closed ECO-176 Sense, not an implementation release. Other tasks retain their own controlling commissions; this is not a global next-work override.
+
+
+## Library durability / mirror invariant
+
+A ChatGPT Library item created for ECOS/SIGMA work must not remain Library-only.
+
+Preferred custody order:
+
+1. **Canonical ECB v2 mirror** — create or bind the corresponding canonical Artifact/record in the ECB v2 BRAIN when an authorized write path is available.
+2. **GitHub fallback mirror** — if canonical ECB v2 persistence is unavailable, create a durable document mirror in this repository in the same work episode, preserving source identity/provenance and marking the mirror as pending canonical ECB promotion.
+3. **Continuity receipt** — record the Library item identity, durable mirror path, mirror status, and any remaining promotion debt in a recoverable ledger or source-adjacent receipt.
+
+Library availability, chat history, Linear attachment presence, or a worker's local return does **not** substitute for this durable mirror obligation.
+
+Do not silently treat the GitHub fallback as canonical BRAIN custody. When canonical ECB v2 write capability becomes available, reconcile the GitHub fallback into canonical custody and retain the GitHub document as provenance/history rather than deleting it.
+
+A work episode that creates a decision-relevant Library artifact is not continuity-complete until either canonical ECB custody exists or the GitHub fallback + receipt exists.
+
+
+## Default repository merge invariant
+
+When an authorized bounded repository change is completed and its relevant checks pass, merge it into the intended base branch in the same work episode by default.
+
+Do not leave completed changes sitting on a branch or open pull request merely for passive review unless there is an explicit reason to hold.
+
+A merge hold must be concrete and recorded. Valid examples include:
+
+- the Principal explicitly requested review before merge;
+- required validation or qualification is incomplete or failing;
+- the change would cross an authority, standing, promotion, or implementation boundary not yet authorized;
+- unresolved merge conflicts or materially changed upstream state require reconciliation;
+- the branch is intentionally exploratory, evidentiary, or provisional and is not meant to alter the current base;
+- an external dependency or safety condition makes immediate merge misleading or irreversible.
+
+Absent such a reason, **complete → verify → merge → record receipt** is the default lifecycle.
+
+Opening a pull request is not completion. A clean bounded change should not accumulate avoidable branch/PR debt.
+
+
+## 24 September 2026 — frontier capability decomposition accepted; ECO-194 active
+
+ECO-193's Sense decomposition is **Principal-accepted as the build candidate**.
+
+Accepted capability cut:
+- **Frontier Exploration / Scout** — new Skill candidate;
+- **Translation Frontier** — new Skill candidate;
+- Defender reuses existing evidence/standing audit capability;
+- Fulcrum Inquiry remains a Question Forward specialization/profile;
+- formal-notation accessibility is a standing operator-facing invariant plus shared helper;
+- prior-art search, correspondence stress testing, provenance checking, Intuition Bridge and Momentum selection remain composed/subprocedural unless later qualification earns separate packaging;
+- no standalone dispatcher and no generic SIGMA-reasoning super-skill are presently authorized.
+
+The first-use notation/human-audit sequence is:
+
+`ORIENT → SYMBOLS → NAME/TOKEN → SAY FORMALLY → SAY NATURALLY → READ → WORKED EXAMPLE → SYSTEM APPLICATION`.
+
+Pronounceability and conceptual interpretation are distinct requirements.
+
+**ECO-194** is the active bounded packaging/qualification successor under ECO-135. It must build and compare the two new Skill candidates, shared notation helper and Fulcrum profile against the current catalog, using training plus untouched holdouts and with/without output comparison. File presence is not activation evidence; polished output is not qualification evidence; absent direct Principal comprehension evidence remains UNKNOWN.
+
+Lane separation:
+- ECO-194 owns Skill packaging/routing/comparative qualification.
+- ECO-191/ECO-192's transport/disclosure/reconciliation Shape remains a separate formal/architecture lane.
+- ECO-190 physical realization remains HOLD pending that Shape reconciliation.

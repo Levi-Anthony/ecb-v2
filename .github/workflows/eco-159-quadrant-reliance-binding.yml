@@ -1,0 +1,154 @@
+name: ECO-159 quadrant exact reliance binding
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'sql/migrations/20260919054000_eco159_quadrant_exact_reliance_binding.sql'
+      - 'tests/eco-159/**'
+      - '.github/workflows/eco-159-quadrant-reliance-binding.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.2-pg17
+        env:
+          POSTGRES_USER: custodian
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 55439:5432
+        options: >-
+          --health-cmd "pg_isready -U custodian -d postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      BUILD6_DISPOSABLE: 'YES'
+      BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:55439/build6
+      ECO159_DATABASE_URL: postgresql://postgres@127.0.0.1:55439/build6
+      B5B_EVIDENCE_DIR: ${{ github.workspace }}/artifacts/build5b-predecessor
+
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+
+      - name: Reconstruct accepted BUILD 5B predecessor
+        shell: bash
+        run: bash tests/build-6/ci-reconstruct-build5b.sh
+
+      - name: Install accepted BUILD 6 substrate
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL"
+          -f sql/migrations/20260907234712_build_6_governance_bootstrap.sql
+
+      - name: Install and qualify BUILD 11
+        shell: bash
+        run: |
+          set -euo pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f sql/migrations/20260914063000_build_11_ordinary_operation_kernel.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f tests/build-11/qualify.sql
+
+      - name: Reconstruct and qualify corrected BUILD 12
+        shell: bash
+        run: |
+          set -euo pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f sql/migrations/20260915090000_build_12_ordinary_versioned_artifacts.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f sql/migrations/20260915101000_build_12_artifact_key_fetch.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f sql/migrations/20260915102500_build_12_artifact_key_fetch_fix.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f sql/migrations/20260915102000_seed_integral_holonic_grammar_semantic_contract_v1.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f sql/migrations/20260915114500_build_12_greenfield_artifact_correction.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f tests/build-12/qualify-greenfield-correction.sql
+
+      - name: Reconstruct and qualify ECO-138 predecessor
+        shell: bash
+        run: |
+          set -euo pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f sql/migrations/20260916023000_eco138_admission_disposition.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f sql/migrations/20260916023100_eco138_disposition_transition_fix.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f tests/eco-138/qualify.sql
+
+      - name: Reconstruct and qualify ECO-140 predecessor
+        shell: bash
+        run: |
+          set -euo pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f sql/migrations/20260916030000_eco140_shaped_next_action.sql
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f tests/eco-140/qualify.sql
+
+      - name: Apply historical ECO-149 candidate
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL"
+          -f sql/migrations/20260918233000_eco149_quadrant_integrated_slice.sql
+
+      - name: Establish ECO-149 qualified fixture
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL"
+          -f tests/eco-149/qualify.sql
+
+      - name: Observe pre-repair counterexample
+        shell: bash
+        run: |
+          set -o pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f tests/eco-159/pre-repair-counterexample.sql 2>&1 | tee eco159-pre-repair.log
+          grep -q 'ECO159_PRE_REPAIR_COUNTEREXAMPLE=OBSERVED' eco159-pre-repair.log
+
+      - name: Apply ECO-159 forward repair
+        shell: bash
+        run: >-
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL"
+          -f sql/migrations/20260919054000_eco159_quadrant_exact_reliance_binding.sql
+
+      - name: Qualify exact binding repair
+        shell: bash
+        run: |
+          set -o pipefail
+          psql -X -v ON_ERROR_STOP=1 "$ECO159_DATABASE_URL" -f tests/eco-159/qualify.sql 2>&1 | tee eco159-qualify.log
+          grep -q 'ECO159_BINDING_REPAIR=PASS' eco159-qualify.log
+
+      - name: Re-run ECO-149 systems pressure through repaired qualifier
+        shell: bash
+        run: |
+          set -o pipefail
+          bash tests/eco-149/pressure.sh "$ECO159_DATABASE_URL" 2>&1 | tee eco159-pressure.log
+          grep -q 'ECO149_PRESSURE=PASS' eco159-pressure.log
+
+      - name: Preserve ECO-159 evidence logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eco159-reliance-binding-evidence
+          path: |
+            eco159-pre-repair.log
+            eco159-qualify.log
+            eco159-pressure.log
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Verify containment boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          canonical_ref="vezxi""vrvhakclxuvxzso"
+          if grep -R -F "$canonical_ref" tests/eco-159 .github/workflows/eco-159-quadrant-reliance-binding.yml sql/migrations/20260919054000_eco159_quadrant_exact_reliance_binding.sql; then
+            echo "ECO159_CONTAINMENT=FAIL canonical project reference present"
+            exit 1
+          fi
+          if grep -R -F "SUPABASE_SERVICE_ROLE_KEY" tests/eco-159 sql/migrations/20260919054000_eco159_quadrant_exact_reliance_binding.sql; then
+            echo "ECO159_CONTAINMENT=FAIL service-role dependency present"
+            exit 1
+          fi
+          if grep -E "quadrant.*execute" sql/migrations/20260919054000_eco159_quadrant_exact_reliance_binding.sql; then
+            echo "ECO159_CONTAINMENT=FAIL effect-execution surface present"
+            exit 1
+          fi
+          echo "ECO159_CONTAINMENT=PASS"

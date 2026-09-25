@@ -74,3 +74,10 @@ Required files:
 - `analysis.md` — normalized claims, classification, candidate tests, triggers, and route.
 
 Do not add a generalized schema or executable research framework until repeated probes demonstrate that the document protocol is insufficient.
+
+
+## Library-source mirror rule
+
+Formal-semantics returns or source packets created in ChatGPT Library must receive durable custody outside Library in the same work episode. Prefer canonical ECB v2 Artifact/record custody when available. If that write path is unavailable, mirror the exact/faithful source into this research tree and register it in `LIBRARY_MIRROR_LEDGER.md` as `GITHUB_FALLBACK_PENDING_ECB`.
+
+The GitHub copy is a continuity fallback and provenance carrier, not a substitute for canonical BRAIN standing or authority.
