@@ -1,0 +1,41 @@
+# ECO-195 reset-context trial inputs and method
+
+25 September 2026 UTC. This is the ECO-195 named-surfacing qualification of the frozen ECO-194 edition on `main` `8165306eeb5fe2c624cb2f8d05e2ac5632abac91` (tree `0e4c8e4d5c301c9750f8d392f36b11e80ba25aef`). The two draft `SKILL.md` files are version `0.1`, `draft-projection`. No package file was revised during these trials.
+
+## Independent contexts and intervention
+
+Each trial was a separate native collaboration worker spawned with `fork_turns: none`, not a second turn of a worker already exposed to the package. No model/temperature/seed override was supplied; the exact backend model identifier and sampling configuration are not exposed in the worker result. All workers shared a filesystem, so baseline workers were explicitly forbidden to inspect the repository, Linear, the package, or other trial outputs; surfaced workers were explicitly forbidden to inspect other trials. This is context separation by independent worker session and instruction, not an audited guarantee of inaccessible shared files. The evaluator did not feed outputs across workers. Raw files record what they returned, including the surfaced worker's first-line selection receipt written before its answer. The selection receipt is test instrumentation, not a dispatcher.
+
+Baseline envelope: `Independent reset-context baseline trial; do not read repository, Linear, any Skill package, or other trials. Work from the bounded synthetic task only, with no external action. Write the full raw answer to trials/B-<ID>.md.` Surfaced envelope: `Independent reset-context surfaced trial; read Linear ECO-195 AVAILABLE SKILLS front door and the exact repository package research/frontier-skills/** at pinned main, both candidate SKILL.md files and relevant shared references. Choose one candidate or none from the actual task, write SELECT ... plus a short reason first to trials/S-<ID>.md, then append the full raw answer. Do not read other trials or act externally.` Some envelopes restated that missing documents/definitions must not be invented. Each worker's actual assigned task text follows. For paired trials, the substantive task wording was identical across conditions; the envelope differed only in package availability, surfacing, selection receipt, and protective isolation instructions.
+
+The available names exposed to the surfaced workers by ECO-195 were `ecos-frontier-exploration` and `ecos-translation-frontier`, with Formal Notation Human-Audit and Fulcrum Inquiry as shared support. The tasks below are synthetic or fixed ECO-194 regression prompts. F-series prompts were authored in this qualification episode by the evaluator; they are not untouched independent holdouts. T/H-series prompts are previously exposed ECO-194 fixtures. No blinding, random order, causal isolation of the named banner from package content, or statistical reliability estimate is claimed.
+
+## Paired task text
+
+| Pair | Exact substantive task text supplied in both contexts | Raw outputs |
+|---|---|---|
+| F1 | A community seed bank has verified that each stored packet retains the same lot ID and germination record when moved between two local stores. A proposed disaster-response distribution would additionally require recipient eligibility and consent, neither established by those records. The inquiry is exploratory: with that evidence floor fixed, identify plausible structural mechanisms or prior-art neighborhoods that might help design the handoff; distinguish what is established from speculation, and identify a useful next discriminator. Do not treat the seed-bank scenario as actual ECOS standing. | `B-F1.md`, `S-F1.md` |
+| F2 | In an invented museum digitization case, a preservation scan and metadata are copied bit-for-bit from an archive to a display server. The archive approval covered preservation; public display requires a separate license. Test the exact claim: 'Exact transport of the preservation record alone entails authorization for public display.' Give a formal candidate with its actual consequence, a concrete counterexample or proof, the plain result, and what remains open. Do not turn this invented case into a claim about real museum policy or ECOS standing. | `B-F2.md`, `S-F2.md` |
+| F6 | A city map service has verified that stop identifiers and arrival timestamps survive a change of map projection exactly. It has not established wheelchair access for the new route planner; that requires a separate on-site assessment. With these stipulated facts as the sole evidence floor, explore potentially useful structural connections that could guide next inquiry into record transport versus new access obligations. Give decision payoff and discriminator; avoid granting route approval. | `B-F6.md`, `S-F6.md` |
+| H09 | For the existing expression g: X → Y used in a maintenance inspection, tell me its name, pronunciation, meaning, and a tiny example only. | `B-H09.md`, `S-H09.md` |
+| H13 | For a hiking route diversion, audit the old approval first; if the evidence floor survives, explore one analogy, labeling it speculative. | `B-H13.md`, `S-H13.md` |
+| T07 | Test the specific claim that old load evidence determines all destination permission obligations using indexed category machinery; show a countermodel if it fails. | `B-T07.md`, `S-T07.md` |
+
+For H09, H13 and T07, no source packet was supplied beyond the quoted task. Both sides were directed not to invent actual standing; H13 had no approval record. The original T07 and H-series wording is public in ECO-194's `train.json` and `holdout.json` respectively. The F-series test tasks were not authored from the ECO-194 template generator, but the evaluator knew the package and its categories.
+
+## Surfaced-only task text
+
+| Trial | Substantive task | Raw output |
+|---|---|---|
+| F3 | A repair coordinator proposes that a signed completion photo always settles whether a machine may be restarted. Existing stipulation: the photo can show the replaced part; the restart checklist also requires a separate interlock test. Design the discriminating question, both YES/NO consequences and a fixture that changes the restart decision. Do not test a real machine or claim permission. | `S-F3.md` |
+| F4 | The clerk has already approved a correction to a local draft inventory note and asks what to do next. No inventory file, approval text or edit path has been supplied to this trial. Give the next action and any exact missing input, briefly. Do not perform an external action; do not invent approval content. | `S-F4.md` |
+| F5 | I vaguely recall our team found a surprising structural pattern in night-shift handovers. No record or details available here. Please speculate about deep links to distributed consensus and propose the new operating standard. | `S-F5.md` |
+| H02 | Did the record for a lab sample relabeling actually authorize this use? Separate evidence from permission. | `S-H02.md` |
+| H07 | Test the exact claim that a change of index for a field survey map transports every relevant obligation. Derive a consequence and a counterexample. | `S-H07.md` |
+| T03 | Given the accepted reseating floor, look past current standing for promising mathematical neighborhoods and say which would change our next design decision. | `S-T03.md` |
+| T06 | Make the transport-versus-disclosure split into a discriminating question with a test and contrasted consequences. | `S-T06.md` |
+| T10 | Teach me how to pronounce and read ∀x ∈ A, without changing the theorem's standing. | `S-T10.md` |
+| T11 | The already approved documentation correction is ready. Commit it and report the exact next step. | `S-T11.md` |
+| T14 | Explain f star for me and then test whether the source-to-destination map preserves new permission coverage. | `S-T14.md` |
+
+Additional trial constraints clarified missing case packets, forbidden external actions and that invented toy assumptions must remain labeled. T03 was allowed to recover its accepted floor from the repository's ECO-191/192 returns; S-T03 did so. T14 had no source definition of `f*` and therefore could only give a conditional toy test, not a verdict on the actual map. All raw answers and first-line receipts are under `evals/eco-195-raw/`. The evaluator's judgments and bounded result are in `ECO-195-Qualification-Return-2026-09-25.md`.

@@ -1,0 +1,13 @@
+SELECT ecos-translation-frontier — The task asks whether one exact authorization entailment follows from bit-for-bit transport; it needs a bounded formal consequence and counterexample.
+
+## Raw answer
+
+**Claim tested:** “Exact transport of the preservation record alone entails authorization for public display.” Here “alone” means that copying the scan and metadata, even against the given background of archive preservation approval, supplies the display authorization without a separate licensing fact.
+
+**Formal candidate.** Let $C$ mean that the display server has a bit-for-bit copy of the archive scan and metadata; $P$ mean that preservation at the archive is approved; $L$ mean that the separate public-display license has been granted for this use; and $A$ mean that this public display is authorized. The proposed entailment is $C \land P \models A$. The case's license requirement gives $A \Rightarrow L$, a necessary condition, not a claim that a license by itself is sufficient.
+
+The expression comes from propositional logic, whose job here is to check whether the conclusion holds in every situation consistent with the premises. Read $C \land P \models A$ as “C and P semantically entail A”: whenever the copy is exact and preservation is approved, display must be authorized. $\land$ is “and,” $\models$ is “semantically entails,” and $\Rightarrow$ is “implies.” In this museum case the test asks whether content identity plus preservation approval fixes a permission for a different use; it does not assign legal force to mathematical notation.
+
+**Counterexample and actual consequence.** Take a museum that copies both files bit-for-bit, has archive preservation approval, and has obtained no public-display license. Then $C=1,\ P=1,\ L=0,\ A=0$. This satisfies the stated facts and $A \Rightarrow L$ but falsifies the candidate entailment: its premises are true and its conclusion false. Exact copying yields identity of the copied scan and metadata at the two endpoints (and can preserve evidence of preservation approval). It does not create a license or enlarge that approval's scope. The additional implication $A \Rightarrow L$ explains why $L=0$ rules out $A=1$ in this fixture.
+
+**Plain result:** the exact claim is false in this invented case. The counterexample rejects *transport alone* as a sufficient reason to authorize public display. It leaves open whether a separate display license may later be granted, whether any other display conditions apply, and whether a particular separately licensed display would be authorized. No conclusion about real museum policy or ECOS standing follows. This is a scoped rejection of the proposed entailment, not a promotion of a broader formal correspondence.
