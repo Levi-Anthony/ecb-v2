@@ -118,12 +118,16 @@ async function createArtifact(label: string, content: string) {
 async function realizationBundle(sha: string, branch: string) {
   const paths = [
     'sql/migrations/20260924220000_eco190_coordination_core.sql',
+    'sql/migrations/20260925030000_eco190_dependency_currentness.sql',
     'api/coordination.ts',
     'server.ts',
     'api/mcp.ts',
     'api/index.ts',
     'api/runtime.ts',
     'package.json',
+    'research/core-architecture/ECO-189-Architecture-Shape-2026-09-23.md',
+    'research/core-architecture/ECO-191-Indexed-Change-Reconciliation-Shape-2026-09-24.md',
+    'research/core-architecture/ECO-190-Reconstitution-Runbook.md',
   ];
   const files: Record<string, string> = {};
   for (const path of paths) files[path] = await rawFile(sha, path);
@@ -589,6 +593,28 @@ async function materialChange() {
     ),
     realization_manifest: bundle.artifact.id,
   };
+  // The accepted contracts and restore instructions cross the same custody
+  // frontier as the executable realization; source URLs are only provenance.
+  const governing = await createArtifact(
+    `governing-and-restore:${env.sha}`,
+    JSON.stringify({
+      profile: 'ecb.coordination.governing-restore/1',
+      source_bundle_artifact_id: bundle.artifact.id,
+      source_paths: [
+        'research/core-architecture/ECO-189-Architecture-Shape-2026-09-23.md',
+        'research/core-architecture/ECO-191-Indexed-Change-Reconciliation-Shape-2026-09-24.md',
+        'research/core-architecture/ECO-190-Reconstitution-Runbook.md',
+      ],
+      configuration: {
+        environment: 'preview',
+        canonical_project: 'vezxivrvhakclxuvxzso',
+        runtime_capability_name: 'ECB_ORDINARY_DB_KEY',
+        runtime_capability_value_custodied: false,
+        production_cutover_authorized: false,
+      },
+    }),
+  );
+  destinationConstituents.governing_restore = governing.artifact.id;
   const coverage = [
     {
       requirement_id: 'preview_consumer_observed',
@@ -607,6 +633,12 @@ async function materialChange() {
       blocking: true,
       status: 'SATISFIED',
       basis_artifact_id: bundle.artifact.id,
+    },
+    {
+      requirement_id: 'governing_configuration_restore_custody',
+      blocking: true,
+      status: 'SATISFIED',
+      basis_artifact_id: governing.artifact.id,
     },
   ];
   const qualifiedTransport = [{
@@ -750,6 +782,30 @@ async function materialChange() {
     p_expected_epoch: view.episode.epoch,
     p_submitted_text: valid,
   });
+  const controlReceipt = await rpc<any>('ecb190_record_receipt', {
+    p_operation_id: await uuidFor(`change-controls:${env.sha}`),
+    p_episode_id: episodeId,
+    p_role: 'QUALIFICATION',
+    p_submitted_text: JSON.stringify({
+      profile: 'ecb.coordination.receipt/1',
+      kind: 'material-change-controls',
+      artifact_refs: [bridge.artifact.id, changedBasis.artifact.id],
+      change_receipt_id: change.receipt_id,
+      controls,
+    }),
+  });
+  const manifestReceipt = await rpc<any>('ecb190_record_receipt', {
+    p_operation_id: await uuidFor(`reconstitution-receipt-reconciled:${env.sha}`),
+    p_episode_id: episodeId,
+    p_role: 'RECONSTITUTION_MANIFEST',
+    p_submitted_text: JSON.stringify({
+      profile: 'ecb.coordination.receipt/1',
+      kind: 'exact_governing_configuration_restore_custody',
+      artifact_refs: [bundle.artifact.id, governing.artifact.id, changedBasis.artifact.id],
+      bound_change_receipt_id: change.receipt_id,
+      reconstruction_rule: 'recover accepted Shapes, migration chain, consumer source, configuration and restore runbook from canonical Artifact custody',
+    }),
+  });
 
   const after = await fetchEpisode(episodeId);
   return {
@@ -757,6 +813,8 @@ async function materialChange() {
     environment: env,
     change,
     controls,
+    control_receipt: controlReceipt,
+    manifest_receipt: manifestReceipt,
     view: sanitize(after),
   };
 }
@@ -1017,6 +1075,49 @@ async function negativeControls() {
   };
 }
 
+async function differentHistoryRegression() {
+  const env = requiredPreviewEnv();
+  const episodeId = await uuidFor('episode');
+  const view = await fetchEpisode(episodeId);
+  const reconciliation = view.projection?.current_use_reconciliation;
+  const reliance = view.external_reliances?.find(
+    (item: any) => item.id === reconciliation?.bound_external_reliance_id,
+  );
+  const consumer = view.consumer_bindings?.find(
+    (item: any) => item.id === reconciliation?.bound_consumer_id,
+  );
+  const pass = view.episode.epoch === 1
+    && reconciliation?.expected_reliance_epoch === '1'
+    && reconciliation?.expected_consumer_epoch === '1'
+    && reconciliation?.live_reliance_epoch === 3
+    && reconciliation?.live_consumer_epoch === 3
+    && reliance?.payload?.currentness === 'CURRENT'
+    && consumer?.payload?.connected_status === 'CONNECTED'
+    && consumer?.payload?.observed_use === 'OBSERVED'
+    && reconciliation?.qualified === false
+    && reconciliation?.debt?.some((item: any) => item.kind === 'external_reliance' && item.state === 'EPOCH_MISMATCH')
+    && reconciliation?.debt?.some((item: any) => item.kind === 'consumer' && item.state === 'EPOCH_MISMATCH');
+  if (!pass) throw new Error('eco190_same_visible_different_history_regression_failed');
+  const receipt = await rpc<any>('ecb190_record_receipt', {
+    p_operation_id: await uuidFor(`different-history-regression:${env.sha}`),
+    p_episode_id: episodeId,
+    p_role: 'QUALIFICATION',
+    p_submitted_text: JSON.stringify({
+      profile: 'ecb.coordination.receipt/1',
+      kind: 'same-visible-different-history',
+      artifact_refs: [view.episode.qualification_basis_artifact_id],
+      pass,
+      historical_episode_head: view.episode.head_receipt_id,
+      expected_reliance_epoch: 1,
+      live_reliance_epoch: 3,
+      expected_consumer_epoch: 1,
+      live_consumer_epoch: 3,
+      projection: reconciliation,
+    }),
+  });
+  return { action: 'different-history-regression', pass, receipt, view: sanitize(view) };
+}
+
 async function reconstruct() {
   requiredPreviewEnv();
   const episodeId = await uuidFor('episode');
@@ -1026,14 +1127,51 @@ async function reconstruct() {
   const bundle = JSON.parse(bundleText);
   const required = [
     'sql/migrations/20260924220000_eco190_coordination_core.sql',
+    'sql/migrations/20260925030000_eco190_dependency_currentness.sql',
     'api/coordination.ts',
     'server.ts',
     'api/mcp.ts',
     'api/index.ts',
     'api/runtime.ts',
     'package.json',
+    'research/core-architecture/ECO-189-Architecture-Shape-2026-09-23.md',
+    'research/core-architecture/ECO-191-Indexed-Change-Reconciliation-Shape-2026-09-24.md',
+    'research/core-architecture/ECO-190-Reconstitution-Runbook.md',
   ];
-  const missing = required.filter((path) => typeof bundle.files?.[path] !== 'string');
+  const missing = required.filter((path) => typeof bundle.files?.[path] !== 'string'
+    || bundle.files[path].length < 100);
+  const governingText = view.current?.constituents?.governing_restore?.content;
+  const governing = governingText ? JSON.parse(governingText) : null;
+  const bundleId = view.current?.constituents?.realization_manifest?.artifact_id;
+  const manifest = (view.supporting_receipts ?? []).find((row: any) =>
+    row.record_role === 'reconstitution_manifest'
+    && row.payload?.kind === 'exact_governing_configuration_restore_custody'
+    && row.payload?.bound_change_receipt_id === view.episode.head_receipt_id
+    && row.payload?.artifact_refs?.includes(bundleId)
+    && row.payload?.artifact_refs?.includes(view.current?.constituents?.governing_restore?.artifact_id));
+  const checks = {
+    exact_bundle_profile: bundle.profile === 'ecb.coordination.realization-bundle/1',
+    exact_consumer_source: bundle.commit_sha === view.consumer_bindings?.[0]?.payload?.runtime_id,
+    migration_chain: missing.length === 0
+      && bundle.files[required[0]]?.includes('create schema ecb_coordination')
+      && bundle.files[required[1]]?.includes('EPOCH_MISMATCH')
+      && bundle.files[required[1]]?.includes('create or replace function public.ecb190_fetch_episode'),
+    entrypoint_and_runtime: bundle.files['api/coordination.ts']?.includes('current_use_reconciliation')
+      && bundle.files['api/coordination.ts']?.includes("if (action === 'qualify')")
+      && bundle.files['server.ts']?.includes('ECB_ORDINARY_DB_KEY'),
+    accepted_governing_content: missing.length === 0
+      && bundle.files['research/core-architecture/ECO-189-Architecture-Shape-2026-09-23.md']?.includes('canonical BRAIN')
+      && bundle.files['research/core-architecture/ECO-191-Indexed-Change-Reconciliation-Shape-2026-09-24.md']?.includes('Destination disclosure'),
+    restore_and_configuration: governing?.source_bundle_artifact_id === bundleId
+      && governing?.configuration?.canonical_project === 'vezxivrvhakclxuvxzso'
+      && governing?.configuration?.runtime_capability_name === 'ECB_ORDINARY_DB_KEY'
+      && governing?.configuration?.runtime_capability_value_custodied === false
+      && bundle.files['research/core-architecture/ECO-190-Reconstitution-Runbook.md']?.includes('Restore sequence'),
+    canonical_manifest_binding: Boolean(manifest),
+  };
+  const hashes = Object.fromEntries(await Promise.all(required.filter((path) => !missing.includes(path))
+    .map(async (path) => [path, await sha256Hex(bundle.files[path])] as const)));
+  const pass = missing.length === 0 && Object.values(checks).every(Boolean);
   return {
     action: 'reconstruct',
     source: 'canonical_BRAIN_artifact_only',
@@ -1041,7 +1179,16 @@ async function reconstruct() {
     bundle_commit_sha: bundle.commit_sha,
     files_present: required.filter((path) => !missing.includes(path)),
     missing,
-    pass: missing.length === 0,
+    checks,
+    content_sha256: hashes,
+    restore_sequence: [
+      'recover exact migration and runtime source bytes from this canonical Artifact',
+      'restore PostgreSQL and apply the additive migration chain in order',
+      'supply runtime capability through a separately authorized secret binding',
+      'deploy a Preview consumer and revalidate external reliance and observed use',
+      'run exact current-use reconciliation; no restored observation self-qualifies',
+    ],
+    pass,
     projection: sanitize(view).projection,
   };
 }
@@ -1051,9 +1198,47 @@ async function qualify() {
   const episodeId = await uuidFor('episode');
   const reconstruction = await reconstruct();
   const view = await fetchEpisode(episodeId);
-  if (!reconstruction.pass) throw new Error('eco190_reconstruction_incomplete');
-  const currentStale = view.projection?.stale_or_unauthorized ?? [];
-  const verdict = currentStale.length === 0 ? 'PASS' : 'FAIL';
+  const currentStale = view.projection?.stale_or_unauthorized;
+  const reconciliation = view.projection?.current_use_reconciliation;
+  const receipts = view.supporting_receipts ?? [];
+  const controls = {
+    brain_reconstitution: reconstruction.pass === true,
+    exact_current_reconciliation: reconciliation?.qualified === true
+      && Array.isArray(currentStale) && currentStale.length === 0
+      && reconciliation?.live_reliance_epoch === Number(reconciliation?.expected_reliance_epoch)
+      && reconciliation?.live_consumer_epoch === Number(reconciliation?.expected_consumer_epoch),
+    bound_consumer_and_realization: view.consumer_bindings?.some((item: any) =>
+      item.id === reconciliation?.bound_consumer_id
+      && item.payload?.runtime_id === env.sha
+      && item.payload?.connected_status === 'CONNECTED'
+      && item.payload?.observed_use === 'OBSERVED'
+      && item.payload?.realization_artifact_ids?.includes(view.current?.constituents?.realization_manifest?.artifact_id)),
+    bound_external_reliance: view.external_reliances?.some((item: any) =>
+      item.id === reconciliation?.bound_external_reliance_id
+      && item.payload?.observed_version === env.sha
+      && item.payload?.currentness === 'CURRENT'),
+    composite_change: view.current?.envelope?.role === 'material_change'
+      && view.current?.envelope?.parsed?.reconciliation?.reliance_eligibility === 'ELIGIBLE'
+      && view.current?.envelope?.parsed?.transition?.source_head_receipt_id
+      && Array.isArray(view.current?.envelope?.parsed?.coverage)
+      && view.current.envelope.parsed.coverage.length >= 4,
+    seven_negative_controls: receipts.some((item: any) =>
+      item.payload?.kind === 'negative-control-evidence'
+      && item.payload?.controls?.length === 7
+      && item.payload.controls.every((control: any) => control.pass === true)),
+    same_visible_different_history: receipts.some((item: any) =>
+      item.payload?.kind === 'same-visible-different-history'
+      && item.payload?.pass === true
+      && item.payload?.historical_episode_head !== view.episode.head_receipt_id),
+    changed_basis_and_blocking_controls: receipts.some((item: any) =>
+      item.payload?.kind === 'material-change-controls'
+      && item.payload?.change_receipt_id === view.episode.head_receipt_id
+      && item.payload?.controls?.length >= 3
+      && item.payload.controls.every((control: any) => control.pass === true)),
+  };
+  const pass = Object.values(controls).every((value) => value === true);
+  if (!pass) throw new Error(`eco190_qualification_gates_failed:${JSON.stringify(controls)}`);
+  const verdict = 'PASS';
   const evidenceArtifacts = [
     view.current?.constituents?.realization_manifest?.artifact_id,
     view.episode?.qualification_basis_artifact_id,
@@ -1069,6 +1254,7 @@ async function qualify() {
       verdict,
       deployment_sha: env.sha,
       reconstruction,
+      qualification_predicate: controls,
       stale_or_unauthorized: currentStale,
       production_cutover: 'NOT_AUTHORIZED_NOT_PERFORMED',
     }),
@@ -1097,6 +1283,7 @@ export default {
       if (action === 'bootstrap') return Response.json(await bootstrap());
       if (action === 'material-change') return Response.json(await materialChange());
       if (action === 'negative-controls') return Response.json(await negativeControls());
+      if (action === 'different-history-regression') return Response.json(await differentHistoryRegression());
       if (action === 'reconstruct') return Response.json(await reconstruct());
       if (action === 'qualify') return Response.json(await qualify());
       if (action === 'fetch') {
