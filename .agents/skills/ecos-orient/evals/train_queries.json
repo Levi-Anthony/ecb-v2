@@ -1,0 +1,14 @@
+[
+  {"query":"Fresh session on ECB v2: recover the actual live BUILD 11 state, governing sources, authority, and exact legitimate next seam before touching anything.","should_trigger":true},
+  {"query":"I have not worked on this ECOS branch in two weeks. Figure out what object we are actually working on, why it matters, what remains open, and where work may resume.","should_trigger":true},
+  {"query":"Before commissioning the architecture worker, establish the focal object, containing altitude, Master Key, current standing, and decision-relevant unknowns from the repo.","should_trigger":true},
+  {"query":"We inherited this task from another agent and the visible ticket may not be the real unit of consequence. Reconstruct enough context to identify the proper scope and next seam.","should_trigger":true},
+  {"query":"Reenter ECO-133 from current repository evidence. I need a compact orientation, not a full archaeology dump or new architecture proposal.","should_trigger":true},
+  {"query":"Several documents look current and I cannot tell which one governs this build. Establish the operative anchors and what this session is actually permitted to do.","should_trigger":true},
+  {"query":"Here are the governing intention source and a verified runtime trace. Compare the implementation against that intention and classify each obligation as realized, deferred, drifted, or untested.","should_trigger":false},
+  {"query":"Convert the attached ratified doctrine into SHALL, SHOULD, and OPEN behavioral requirements with acceptance conditions; do not propose a schema.","should_trigger":false},
+  {"query":"This investigation is finished. Compile its decisions, evidence pointers, hypotheses, unresolved conflicts, and exact next action into a cold-successor handoff.","should_trigger":false},
+  {"query":"The newest receipt says PASS and the code can perform the transition. Audit whether that establishes verification, standing, warrant, currentness, and authorization.","should_trigger":false},
+  {"query":"We can safely defer the retention-policy question until the provider exposes deletion receipts. Record what remains open, what can proceed, and the event that should reactivate it.","should_trigger":false},
+  {"query":"Apply the already-approved patch to these three files and run the named tests. The scope, authority, base commit, and completion conditions are all stated below.","should_trigger":false}
+]
