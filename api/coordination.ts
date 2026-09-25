@@ -474,7 +474,7 @@ async function materialChange() {
 
   const bundle = await realizationBundle(env.sha, env.branch);
   const relianceEvidence = await createArtifact(
-    `reliance-evidence:${env.sha}`,
+    `material-change:reliance-evidence:${env.sha}`,
     JSON.stringify({
       profile: 'ecb.coordination.external-observation/1',
       system: 'vercel',
@@ -515,7 +515,7 @@ async function materialChange() {
   // Recover first, then record that this exact new deployment was observed using the projection.
   await fetchEpisode(episodeId);
   const consumerEvidence = await createArtifact(
-    `consumer-evidence:${env.sha}`,
+    `material-change:consumer-evidence:${env.sha}`,
     JSON.stringify({
       profile: 'ecb.coordination.consumer-observation/1',
       consumer: consumerLocator(env.branch),
