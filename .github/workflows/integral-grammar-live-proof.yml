@@ -1,0 +1,90 @@
+name: Integral grammar fixed live provider proof
+
+on:
+  pull_request:
+    paths:
+      - 'research/integral-holonic-grammar/**'
+      - 'server/ingestion-experiment/**'
+      - 'server/installation/ecb-ingestion-v3-proof/**'
+      - '.github/workflows/integral-grammar-live-proof.yml'
+  workflow_dispatch:
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+
+      - name: Use Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Collect fixed evidence cases without discarding failures
+        shell: bash
+        run: |
+          set -u
+          mkdir -p evidence-v3
+          base='https://lqbrzoicorehwidkdhoi.supabase.co/functions/v1/ecb-ingestion-v3-proof'
+          for case in base already_discussed gift; do
+            code="$(curl --retry 2 --retry-delay 1 --silent --show-error --output "evidence-v3/${case}.json" --write-out '%{http_code}' "${base}?case=${case}" || printf '000')"
+            printf '%s\n' "$code" > "evidence-v3/${case}.status"
+            echo "${case}: HTTP ${code}"
+            if test -f "evidence-v3/${case}.json"; then
+              cat "evidence-v3/${case}.json"
+              echo
+            fi
+          done
+
+      - name: Re-run exact checked-in mechanical qualification
+        shell: bash
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import {checkAnnotation} from './server/ingestion-experiment/core.mjs';
+          const profile=JSON.parse(fs.readFileSync('./server/ingestion-experiment/request-profile-v3.json','utf8'));
+          for(const name of ['base','already_discussed','gift']){
+            const status=fs.readFileSync(`evidence-v3/${name}.status`,'utf8').trim();
+            const d=JSON.parse(fs.readFileSync(`evidence-v3/${name}.json`,'utf8'));
+            const errors=d.annotation ? checkAnnotation(d.input.text,d.annotation,profile.grammar_version) : ['missing_annotation'];
+            fs.writeFileSync(`evidence-v3/${name}.mechanical.json`,JSON.stringify({http_status:status,errors},null,2)+'\n');
+          }
+          NODE
+
+      - name: Upload exact raw evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integral-ingestion-v3-live-proof
+          path: evidence-v3/*
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Summarize decision-bearing observations
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          for(const name of ['base','already_discussed','gift']){
+            const status=fs.readFileSync(`evidence-v3/${name}.status`,'utf8').trim();
+            const d=JSON.parse(fs.readFileSync(`evidence-v3/${name}.json`,'utf8'));
+            const m=JSON.parse(fs.readFileSync(`evidence-v3/${name}.mechanical.json`,'utf8'));
+            console.log(`CASE ${name} HTTP ${status} mechanics=${JSON.stringify(m.errors)}`);
+            if(!d.annotation){ console.log('error',d); continue; }
+            const a=d.annotation;
+            console.log('referents',a.referents.map(x=>[x.handle,x.excerpt,x.description]));
+            console.log('relations',a.relations.map(x=>[x.subject_handle,x.relation,x.object_handle,x.modality]));
+            console.log('qf',a.questions_forward.map(x=>[x.target_dimension,x.question]));
+            console.log('pressure',a.grammar_pressure.map(x=>[x.dimension,x.signal,x.question_forward_id]));
+          }
+          NODE
+
+      - name: Assert proof acceptance floor
+        shell: bash
+        run: |
+          set -euo pipefail
+          for case in base already_discussed gift; do
+            test "$(cat "evidence-v3/${case}.status")" = 200
+            node -e "const d=require('./evidence-v3/${case}.json'); const m=require('./evidence-v3/${case}.mechanical.json'); if(d.operation!=='integral_ingestion_v3_fixed_proof'||d.source_bundle_id!=='ecb-ingestion-v3-proof'||d.canonical_effect!=='NONE'||m.errors.length) { console.error({d,m}); process.exit(1) }"
+          done
