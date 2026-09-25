@@ -587,7 +587,7 @@ async function materialChange() {
 
   const sourceIndex = view.current.engagement_index;
   const destinationIndex = { ...sourceIndex, u: changedUse.artifact.id };
-  const destinationConstituents = {
+  const destinationConstituents: Record<string, string> = {
     ...Object.fromEntries(
       Object.entries(view.current.constituents).map(([key, value]: [string, any]) => [key, value.artifact_id]),
     ),
