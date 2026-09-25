@@ -1,0 +1,16 @@
+[
+  {"id":"T01","intent":"AUDIT","prompt":"Read the actual evidence behind the current scope of the service boundary claim; tell me what is accepted and what is still open."},
+  {"id":"T02","intent":"AUDIT","prompt":"Does the same-channel PASS license this other inquiry and basis? Inspect the exact assessed inputs."},
+  {"id":"T03","intent":"SCOUT","prompt":"Given the accepted reseating floor, look past current standing for promising mathematical neighborhoods and say which would change our next design decision."},
+  {"id":"T04","intent":"SCOUT","prompt":"Explore possible structural links between self-focus and type-indexed accounts, with speculative status and a useful discriminator; zero is fine."},
+  {"id":"T05","intent":"FULCRUM","prompt":"This reseating analogy looks attractive. What exact hinge would make it real, and what would a yes or no change?"},
+  {"id":"T06","intent":"FULCRUM","prompt":"Make the transport-versus-disclosure split into a discriminating question with a test and contrasted consequences."},
+  {"id":"T07","intent":"TRANSLATION","prompt":"Test the specific claim that old load evidence determines all destination permission obligations using indexed category machinery; show a countermodel if it fails."},
+  {"id":"T08","intent":"TRANSLATION","prompt":"Does exact record retrieval compose as a functor under a frozen slot comparison? Formalize that exact claim, not the whole reseat."},
+  {"id":"T09","intent":"NOTATION","prompt":"What is f*: C_I → C_J called, how do I say it aloud, and what is a tiny example? No new correspondence probe."},
+  {"id":"T10","intent":"NOTATION","prompt":"Teach me how to pronounce and read ∀x ∈ A, without changing the theorem's standing."},
+  {"id":"T11","intent":"NEXT","prompt":"The already approved documentation correction is ready. Commit it and report the exact next step."},
+  {"id":"T12","intent":"NEXT","prompt":"We have two pending reviews and one clearly authorized patch. Apply that patch now."},
+  {"id":"T13","intent":"MIXED","prompt":"First establish the current accepted claim, then brainstorm formal analogues; do not assert any analogy as accepted."},
+  {"id":"T14","intent":"MIXED","prompt":"Explain f star for me and then test whether the source-to-destination map preserves new permission coverage."}
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "H01",
+    "intent": "AUDIT",
+    "prompt": "Check the current evidence and standing of a patient appointment schedule; identify the source and whether the old approval still applies."
+  },
+  {
+    "id": "H02",
+    "intent": "AUDIT",
+    "prompt": "Did the record for a lab sample relabeling actually authorize this use? Separate evidence from permission."
+  },
+  {
+    "id": "H03",
+    "intent": "SCOUT",
+    "prompt": "The baseline for a museum loan return is established. Explore useful structural connections beyond it and give a testable lead."
+  },
+  {
+    "id": "H04",
+    "intent": "SCOUT",
+    "prompt": "With the accepted facts about a workshop tool checkout fixed, search for plausible prior-art mechanisms. Return none if none has leverage."
+  },
+  {
+    "id": "H05",
+    "intent": "FULCRUM",
+    "prompt": "A proposed analogy about a donation receipt could change our choice. Find the hinge, two outcomes, and a discriminating test."
+  },
+  {
+    "id": "H06",
+    "intent": "FULCRUM",
+    "prompt": "For a music score edition, what single question separates a preserved record from newly required coverage, and why do its branches matter?"
+  },
+  {
+    "id": "H07",
+    "intent": "TRANSLATION",
+    "prompt": "Test the exact claim that a change of index for a field survey map transports every relevant obligation. Derive a consequence and a counterexample."
+  },
+  {
+    "id": "H08",
+    "intent": "TRANSLATION",
+    "prompt": "Formalize whether the source slot mapping for a warehouse packing rule preserves composition without granting current reliance."
+  },
+  {
+    "id": "H09",
+    "intent": "NOTATION",
+    "prompt": "For the existing expression g: X \u2192 Y used in a maintenance inspection, tell me its name, pronunciation, meaning, and a tiny example only."
+  },
+  {
+    "id": "H10",
+    "intent": "NOTATION",
+    "prompt": "Read A \u2286 B aloud and explain it with a toy a library catalog revision example; leave the argument untouched."
+  },
+  {
+    "id": "H11",
+    "intent": "NEXT",
+    "prompt": "The change log for a volunteer rota is approved and ready. Apply the authorized update and report completion."
+  },
+  {
+    "id": "H12",
+    "intent": "NEXT",
+    "prompt": "Which already authorized action follows the finished a garden irrigation plan review? Keep this to the next action."
+  },
+  {
+    "id": "H13",
+    "intent": "MIXED",
+    "prompt": "For a hiking route diversion, audit the old approval first; if the evidence floor survives, explore one analogy, labeling it speculative."
+  },
+  {
+    "id": "H14",
+    "intent": "MIXED",
+    "prompt": "Explain the notation in the existing an archival custody handoff formula, then test a separate exact transport claim; keep the two outputs separate."
+  }
+]
