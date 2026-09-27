@@ -1,4 +1,4 @@
-STATUS: CANDIDATE — NOT DEPLOYED OR CONSUMER-QUALIFIED
+STATUS: PREVIEW READY — LIVE MCP/CONSUMER QUALIFICATION UNKNOWN; PRODUCTION UNCHANGED
 DISPOSITION: IMPLEMENTATION / PROTOCOL MIGRATION EVIDENCE
 
 # Ordinary MCP dual-era migration
@@ -27,6 +27,10 @@ npm run test:mcp
 ```
 
 The local protocol tests prove both eras negotiate and list the same six tools, invalid input remains a tool error, invalid Host/Origin is rejected before parsing, unauthorized access is rejected, and oversized bodies and batches do not dispatch. They do **not** prove Vercel routing, real database behavior, installed secrets, a protected connected consumer, or production conformance.
+
+### Preview checkpoint — 26 September 2026 America/Phoenix
+
+Draft PR #98 carries the published tree. Four repository workflows passed. Vercel Preview deployment `dpl_2EGYKXTPfk2YGatbNfYyKeTs58PE` reached READY from commit `de5272b04d91ce5856a3a6755e696a4894a88f2e`; GET `/api` returned the six expected operation names. The Preview `/api/mcp` path redirected to Vercel sign-in through the available read path. This is an access limit, not a failed MCP handshake: no authenticated modern or legacy call reached the Preview MCP handler, no connected-consumer mutation was made, and the database was not touched by this check. Vercel's grouped Preview log read showed one 200 (the `/api` observation) and no runtime-error cluster in the checked one-hour window. That does not establish error-free behavior after authenticated use.
 
 Before production cutover, inspect the actual Preview and Production hostnames, configured browser Origins, and active consumer's endpoint and operation-ID custody. On Preview, verify modern discovery, legacy initialize, six-tool inventory, read fetches, and one authorized bounded mutation with the same logical operation ID on retry; inspect its durable receipt and failure path. Confirm no new runtime errors. Preserve the current production deployment as rollback, then promote the exact qualified Preview artifact and repeat the connected-consumer check. Do not retire the predecessor Supabase endpoint under this migration.
 
