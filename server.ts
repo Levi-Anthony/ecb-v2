@@ -1,6 +1,10 @@
-import { StreamableHTTPTransport } from '@hono/mcp';
 import { pipeline } from '@huggingface/transformers';
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import {
+  createMcpHandler,
+  hostHeaderValidationResponse,
+  McpServer,
+  originValidationResponse,
+} from '@modelcontextprotocol/server';
 import { Hono } from 'hono';
 import { z } from 'zod';
 
@@ -13,7 +17,7 @@ const REPAIR_BATCH_LIMIT = 100;
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers':
-    'authorization, content-type, accept, mcp-session-id, mcp-protocol-version, last-event-id',
+    'authorization, content-type, accept, mcp-session-id, mcp-protocol-version, mcp-method, mcp-name, last-event-id',
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, DELETE',
 };
 
@@ -466,7 +470,10 @@ const runtime = {
 };
 
 function buildServer(): McpServer {
-  const server = new McpServer({ name: 'ecb-v2-open-brain', version: '0.5.0' });
+  const server = new McpServer(
+    { name: 'ecb-v2-open-brain', version: '0.5.0' },
+    { capabilities: { tools: {} } },
+  );
 
   server.registerTool('capture_thought', {
     title: 'Capture Thought',
@@ -504,8 +511,9 @@ function buildServer(): McpServer {
   server.registerTool('search', {
     title: 'Search Thoughts',
     description:
-      'Search canonical thought evidence through one hybrid retrieval surface. Lexical retrieval remains available when semantic embedding is unavailable; coverage reports whether semantic indexing is complete or degraded.',
-    annotations: { readOnlyHint: true },
+      'Search canonical thought evidence through one hybrid retrieval surface. This call can repair missing semantic representations before retrieval. Lexical retrieval remains available when semantic embedding is unavailable; coverage reports whether semantic indexing is complete or degraded.',
+    // Search repairs missing embeddings before retrieval, so it can write representations.
+    annotations: { readOnlyHint: false, destructiveHint: false },
     inputSchema: {
       query: z.string().trim().min(1),
       limit: z.number().int().min(1).max(100).optional().default(10),
@@ -617,6 +625,27 @@ function buildServer(): McpServer {
 }
 
 const app = new Hono();
+const mcpHandler = createMcpHandler(buildServer, { legacy: 'stateless' });
+
+function allowedHostnames(): string[] {
+  const configured = (process.env.ECB_MCP_ALLOWED_HOSTS ?? '').split(',');
+  const vercel = [
+    process.env.VERCEL_URL,
+    process.env.VERCEL_BRANCH_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL,
+  ];
+  return [...new Set([...configured, ...vercel, 'localhost', '127.0.0.1', '[::1]']
+    .map((value) => value?.trim().toLowerCase())
+    .filter((value): value is string => Boolean(value)))];
+}
+
+function validateMcpHostAndOrigin(request: Request): Response | undefined {
+  const hosts = allowedHostnames();
+  const origins = [...hosts, ...(process.env.ECB_MCP_ALLOWED_ORIGIN_HOSTS ?? '')
+    .split(',').map((value) => value.trim().toLowerCase()).filter(Boolean)];
+  return hostHeaderValidationResponse(request, hosts)
+    ?? originValidationResponse(request, origins);
+}
 
 app.get('/', (context) => context.json({
   service: 'ecb-v2-open-brain',
@@ -634,9 +663,14 @@ app.get('/', (context) => context.json({
   provider_admin_credentials_required: false,
 }));
 
-app.options('*', (context) => context.text('ok', 200, corsHeaders));
+app.options('*', (context) => {
+  const rejected = validateMcpHostAndOrigin(context.req.raw);
+  return rejected ?? context.text('ok', 200, corsHeaders);
+});
 
 app.all('/mcp', async (context) => {
+  const rejected = validateMcpHostAndOrigin(context.req.raw);
+  if (rejected) return rejected;
   try {
     if (!(await bearerAccepted(context.req.raw))) {
       return context.json(
@@ -650,13 +684,7 @@ app.all('/mcp', async (context) => {
     return context.json({ error: 'runtime_configuration_failed' }, 503, corsHeaders);
   }
 
-  const server = buildServer();
-  const transport = new StreamableHTTPTransport({
-    sessionIdGenerator: undefined,
-  });
-  await server.connect(transport);
-  const response = await transport.handleRequest(context);
-  if (!response) return context.json({ error: 'transport_failed' }, 500);
+  const response = await mcpHandler.fetch(context.req.raw);
   for (const [name, value] of Object.entries(corsHeaders)) response.headers.set(name, value);
   return response;
 });
