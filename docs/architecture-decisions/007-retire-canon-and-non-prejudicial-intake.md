@@ -48,7 +48,7 @@ Principal forward directive in conversation on 2026-09-29. Durable continuity:
 - ECB handoff event 954 / `b6167667-ea3f-45e2-9207-03b851b1ddc9`;
 - ECB thought `8bf88173-1582-41b2-8d70-9853657b8164`;
 - ECB pulse `dba1b91a-ee30-4e1f-a5b8-6c48d40ca31c`;
-- Linear ECO-210.
+- Linear ECO-210 — canceled provenance of the initially unwarranted work container; it is not the live owner. Forward vocabulary routes through ECO-118, intake architecture through ECO-177, and v2 tool-surface debt through ECO-155.
 
 ## REVERSIBILITY
 
