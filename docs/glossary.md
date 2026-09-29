@@ -32,7 +32,7 @@ After BUILD 2 activation, a committed Thought and its Referent use exactly the s
 activation, an accepted BUILD 0 Thought without a Referent registry row is expected historical
 substrate state.
 
-**NOT EQUIVALENT TO:** promoted claim; canonical knowledge; Universal Referent implementation; standing; authority; governing designation; currentness.
+**NOT EQUIVALENT TO:** promoted claim; qualified/current/authoritative knowledge; Universal Referent implementation; standing; authority; governing designation; currentness.
 
 ## Native binding
 
@@ -158,8 +158,12 @@ Explicitly designated as operative for a declared scope/operation.
 
 **STATUS: PROVISIONAL; DEPLOYMENT CHOICE OPEN**
 
-The externally reachable interface through which a human, ordinarily through an AI client, accesses the canonical brain's bounded MCP capabilities.
+The externally reachable interface through which a human, ordinarily through an AI client, accesses the designated current BRAIN substrate's bounded MCP capabilities.
 
 For BUILD 0, the human door exposes only capture, semantic search, and fetch.
 
-**NOT EQUIVALENT TO:** the canonical brain; a second store; a dashboard; governance authority; a warrant.
+**NOT EQUIVALENT TO:** the designated current BRAIN substrate; a second store; a dashboard; governance authority; a warrant.
+
+## Canon / canonical — retired vocabulary
+
+Not a live ECOS/SIGMA primitive or normative architecture category after 2026-09-29. Historical occurrences are provenance-bearing language and must be interpreted in their dated context. For current work, replace the legacy term with the exact relation meant: provenance/existence, standing, authority, currentness, qualification, control, supersession, persistence/custody, production designation, or another explicitly defined relation. Do not substitute a new omnibus synonym.
