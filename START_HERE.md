@@ -21,7 +21,7 @@ The architecture program develops valuable behavior on a clean substrate while p
 
 Capture/admission is aggressively non-prejudicial: encounter/material + provenance only. Intake does not by itself create relevance, standing, authority, persistence, review debt, future optionality, entitlement to retention, qualification, routing, or promotion. Do not use “remain capable” or equivalent language to smuggle such obligations into intake.
 
-See [ADR-007](docs/architecture-decisions/007-retire-canon-and-non-prejudicial-intake.md) and Linear ECO-210.
+See [ADR-007](docs/architecture-decisions/007-retire-canon-and-non-prejudicial-intake.md). Linear ECO-210 preserves provenance of an initially unwarranted container and is not a live owner; route vocabulary, intake architecture, and v2 tool-surface debt through ECO-118, ECO-177, and ECO-155 respectively.
 
 ## Current governing distinction
 
