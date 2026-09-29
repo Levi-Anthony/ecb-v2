@@ -14,6 +14,7 @@ ROLE: Index and template for local architectural closure
 | [ADR-004](004-build-2-physical-realization.md) | ACCEPTED | BUILD 2 trigger, coupling, interlock, and privilege realization |
 | [ADR-005](005-cross-cutting-integrity-and-promotion-discipline.md) | ACCEPTED BY HUMAN GOVERNING DISPOSITION | Cross-cutting integrity, promotion, requalification, and adversarial-disposition discipline |
 | [ADR-006](006-build-5b-artifact-receipt-boundary.md) | ACCEPTED AT REQUALIFIED SHAPE; MOVE UNRELEASED | BUILD 5B Artifact specimens, bounded checks, and committed attempt boundary |
+| [ADR-007](007-retire-canon-and-non-prejudicial-intake.md) | ACCEPTED BY PRINCIPAL FORWARD DIRECTIVE | Retire canon/canonical from live architecture; enforce non-prejudicial intake |
 
 Create an ADR when the active Build Unit requires a local architectural choice that is not already licensed by governing sources.
 
