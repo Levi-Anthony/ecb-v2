@@ -24,9 +24,9 @@ FIRST_CLASS_NAME_PRINCIPAL_RECOGNITION=UPSTREAM_REFERENT_REQUALIFICATION_TRIGGER
 
 FORWARD_TERMINOLOGY_2026_09_29=CANON_CANONICAL_RETIRED_FROM_NEW_LIVE_ARCHITECTURE
 FORWARD_INTAKE_2026_09_29=NON_PREJUDICIAL_CAPTURE_ENCOUNTER_PLUS_PROVENANCE_ONLY
-LEGACY_CANONICAL_PREFIX_FIELDS=DEPRECATED_ALIASES_PRESERVED_PENDING_SAFE_MIGRATION_UNDER_ECO_210
+LEGACY_CANONICAL_PREFIX_FIELDS=DEPRECATED_ALIASES_PRESERVED_PENDING_SAFE_MIGRATION_BY_OWNING_SURFACE
 
-> **FORWARD VOCABULARY / INTAKE OVERRIDE — 29 September 2026:** New live ECOS/SIGMA architecture must not use `canon` / `canonical` as a normative omnibus category. Historical occurrences and machine-like legacy fields remain where needed for provenance or compatibility, but readers must resolve them to the exact relation intended (for example: designated production substrate, currentness, governing authority, qualified standing, durable custody, or supersession state). Capture/admission is aggressively non-prejudicial and confers none of those relations merely by ingestion. See ADR-007 and ECO-210.
+> **FORWARD VOCABULARY / INTAKE OVERRIDE — 29 September 2026:** New live ECOS/SIGMA architecture must not use `canon` / `canonical` as a normative omnibus category. Historical occurrences and machine-like legacy fields remain where needed for provenance or compatibility, but readers must resolve them to the exact relation intended (for example: designated production substrate, currentness, governing authority, qualified standing, durable custody, or supersession state). Capture/admission is aggressively non-prejudicial and confers none of those relations merely by ingestion. See ADR-007. ECO-210 is canceled provenance only; live vocabulary, intake-architecture, and v2 tool-surface ownership routes through ECO-118, ECO-177, and ECO-155 respectively.
 
 INTEGRAL_COHERENCE_FRONTIER=ECO-165_METABOLIZE_CLOSED_PASS; ECO-169_REGISTER_A_BACKLOG_UNKNOWN_NONBLOCKING; ECO-170_ISOLATED_PROBE_CLOSED_PASS_REVIEW
 DESCENT_SENSE=ECO-176_PRINCIPAL_ACCEPTED_CLOSED
