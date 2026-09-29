@@ -15,6 +15,14 @@ OB1 is the substrate lineage.
 
 The architecture program develops valuable behavior on a clean substrate while preserving earned distinctions. Size is not an optimization target: include the consequential interactions required for interpretable evidence, and bound exposure through the actual effect and recovery boundaries. Ordinary personal operation proceeds concurrently using available, already-earned capability. Serve the user's actual task; consult architecture when it changes interpretation, legitimacy, or required capability. Neither personal use nor architectural evidence automatically acquires the other's standing.
 
+## Forward vocabulary and intake directive — 29 September 2026
+
+`canon` / `canonical` are retired from new live normative ECOS/SIGMA architecture language. Historical occurrences remain provenance and are not silently rewritten. When encountering the legacy term, resolve the exact relation actually meant: provenance/existence, standing, authority, currentness, qualification, control, supersession, persistence/custody, production designation, or another explicit relation. Do not introduce a replacement omnibus synonym.
+
+Capture/admission is aggressively non-prejudicial: encounter/material + provenance only. Intake does not by itself create relevance, standing, authority, persistence, review debt, future optionality, entitlement to retention, qualification, routing, or promotion. Do not use “remain capable” or equivalent language to smuggle such obligations into intake.
+
+See [ADR-007](docs/architecture-decisions/007-retire-canon-and-non-prejudicial-intake.md) and Linear ECO-210.
+
 ## Current governing distinction
 
 proven capability ≠ inherited implementation
@@ -109,7 +117,7 @@ Route uncertainty as follows:
 | Question intentionally unresolved | `docs/open-apertures.md` |
 | Active decision intersects candidate BUILD evidence | `docs/build-evidence.md` |
 | Need to know what v1 actually did | `docs/harvest-ledger.md` and `/harvest/v1` |
-| Need to know what canonical OB1 already solves | `docs/ob1-prior-art.md` |
+| Need to know what pinned OB1 prior art already solves | `docs/ob1-prior-art.md` |
 | Mathematical or formal-semantics probe | `research/formal-semantics/README.md` |
 | Human-door deployment choice | `docs/deployment-shapes/human-door.md` |
 | Custody-transfer harness test | `prompts/harness-orientation-test.md` |
@@ -213,15 +221,15 @@ A ChatGPT Library item created for ECOS/SIGMA work must not remain Library-only.
 
 Preferred custody order:
 
-1. **Canonical ECB v2 mirror** — create or bind the corresponding canonical Artifact/record in the ECB v2 BRAIN when an authorized write path is available.
-2. **GitHub fallback mirror** — if canonical ECB v2 persistence is unavailable, create a durable document mirror in this repository in the same work episode, preserving source identity/provenance and marking the mirror as pending canonical ECB promotion.
+1. **ECB v2 durable custody** — create or bind the corresponding Artifact/record in the designated current ECB v2 BRAIN substrate when an authorized write path is available.
+2. **GitHub fallback mirror** — if designated ECB v2 durable persistence is unavailable, create a durable document mirror in this repository in the same work episode, preserving source identity/provenance and marking the mirror as pending ECB v2 custody reconciliation.
 3. **Continuity receipt** — record the Library item identity, durable mirror path, mirror status, and any remaining promotion debt in a recoverable ledger or source-adjacent receipt.
 
 Library availability, chat history, Linear attachment presence, or a worker's local return does **not** substitute for this durable mirror obligation.
 
-Do not silently treat the GitHub fallback as canonical BRAIN custody. When canonical ECB v2 write capability becomes available, reconcile the GitHub fallback into canonical custody and retain the GitHub document as provenance/history rather than deleting it.
+Do not silently treat the GitHub fallback as current ECB v2 BRAIN custody. When the designated ECB v2 write capability becomes available, reconcile the GitHub fallback into durable ECB custody and retain the GitHub document as provenance/history rather than deleting it.
 
-A work episode that creates a decision-relevant Library artifact is not continuity-complete until either canonical ECB custody exists or the GitHub fallback + receipt exists.
+A work episode that creates a decision-relevant Library artifact is not continuity-complete until either durable ECB custody exists or the GitHub fallback + receipt exists.
 
 
 ## Default repository merge invariant
