@@ -23,6 +23,18 @@ Capture/admission is aggressively non-prejudicial: encounter/material + provenan
 
 See [ADR-007](docs/architecture-decisions/007-retire-canon-and-non-prejudicial-intake.md). Linear ECO-210 preserves provenance of an initially unwarranted container and is not a live owner; route vocabulary, intake architecture, and v2 tool-surface debt through ECO-118, ECO-177, and ECO-155 respectively.
 
+## Forward Sense-seating / composite-referent evidence — 29 September 2026
+
+A closed live Sense/reconciliation episode exposed a reusable failure mode: a worker can remain locally coherent while silently swapping the focal referent, especially when an abstract correction replaces the actually seated operational object. The missed correction then behaves as displaced qualification/referent-seating debt.
+
+For consequential Sense work, begin with a low-pressure orientation and recover: **point of view → initial contrast → object of focus**. Before extended inference, either establish that this is sufficient for the bounded Move or explicitly seat the referent by locating its containing whole, salient discrete/interacting parts at the active resolution, and at least a general PGO. A material change of focal object is a reseating event and should not be hidden inside rhetoric.
+
+The same episode sharpened a per-instance **composed operational referent**: the currently useful work object may be assembled from focal designation, boundary/grain, whole/parts, objective/possibility/dependency neighborhood, PGO, question, SSMM position, consumers, evidence and unresolved obligations. Do **not** infer that this requires one persistent database object. The installed 'public.referents' substrate supplies identity/addressability; situated composition remains a separate architecture question.
+
+User-story-like forms are retained as a promising UL-facing elicitation technology because they keep the focal seat and intended possibility/dependency neighborhood visible. They are not themselves quadrants, and functional requirements/specifications are not universally assigned to LR.
+
+Read the closed evidence before any physicalization of this front: [Composite Referent, Sense Seating, and UL Elicitation — Session Harvest](research/quadrant-grammar/2026-09-29-Composite-Referent-Sense-Seating-Harvest.md).
+
 ## Current governing distinction
 
 proven capability ≠ inherited implementation
