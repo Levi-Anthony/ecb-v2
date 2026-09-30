@@ -68,3 +68,15 @@ test('two prepared selections are visible ambiguity rather than a newest-edition
  await assert.rejects(()=>recoverCorpusInputs(f.call),/ambiguous/);
  assert.ok(!f.calls.includes('assimilate_corpus'));
 });
+
+test('explicit prepared-receipt succession selects a terminal edition while forks and cycles block',async()=>{
+ const f=nativeRecoveryFixture(),next=randomUUID();
+ f.artifacts.set(next,{...f.receipt,supersedes_receipt_artifact:f.receiptId});
+ f.work.parts.push({constituent_id:next,role:'prepared circulation commission; selection must be explicitly revalidated'});
+ assert.equal((await recoverCorpusInputs(f.call)).plan.ids.corpus_work,f.work.id);
+ const fork=randomUUID();f.artifacts.set(fork,{...f.receipt,supersedes_receipt_artifact:f.receiptId});
+ f.work.parts.push({constituent_id:fork,role:'prepared circulation commission; selection must be explicitly revalidated'});
+ await assert.rejects(()=>recoverCorpusInputs(f.call),/ambiguous/);
+ f.work.parts.pop();f.receipt.supersedes_receipt_artifact=next;
+ await assert.rejects(()=>recoverCorpusInputs(f.call),/ambiguous/);
+});

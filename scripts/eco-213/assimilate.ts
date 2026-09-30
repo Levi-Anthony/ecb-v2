@@ -25,11 +25,22 @@ export async function recoverCorpusInputs(call:Call){
    const id=uuid.parse(part.constituent_id);
    if(!cache.has(id)){const f=await call('fetch_referent',{referent_id:id});cache.set(id,JSON.parse(f.artifact?.content));}
    const receipt=cache.get(id);
-   if(receipt.type==='eco213-native-dormant-commission-v3'&&receipt.corpus_work_id===work.id)candidates.push({work,receipt});
+   if(receipt.type==='eco213-native-dormant-commission-v3'&&receipt.corpus_work_id===work.id)candidates.push({id,work,receipt});
   }
  }
- if(candidates.length!==1)throw new Error('corpus_prepared_selection_missing_or_ambiguous');
- const {work,receipt}=candidates[0];
+ // Follow explicit immutable receipt succession; timestamp or model novelty has no authority.
+ const superseded=new Set<string>();
+ for(const c of candidates){
+  const predecessor=c.receipt.supersedes_receipt_artifact;
+  if(!predecessor)continue;
+  const prior=candidates.find(p=>p.id===predecessor);
+  if(prior&&(prior.work.id!==c.work.id||prior.receipt.revision_id!==c.receipt.revision_id))
+   throw new Error('corpus_prepared_succession_scope_mismatch');
+  superseded.add(predecessor);
+ }
+ const selected=candidates.filter(c=>!superseded.has(c.id));
+ if(selected.length!==1)throw new Error('corpus_prepared_selection_missing_or_ambiguous');
+ const {work,receipt}=selected[0];
  const corpus=discovery.corpus_coverage?.find((c:any)=>c.id===receipt.corpus_id);
  if(!corpus||work.remit_revision_id!==receipt.revision_id)throw new Error('corpus_current_basis_mismatch');
  const manifest=JSON.parse((await call('fetch_referent',{referent_id:uuid.parse(corpus.manifest_carrier_id)})).artifact?.content);
