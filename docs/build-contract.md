@@ -1,3 +1,5 @@
+> **ECO-213 MOVE — 30 September 2026:** Recursive semantic circulation is implemented and isolated-qualified on the existing branch; native storage, source recovery and the prepared successor commission are installed dormant. [Implementation, exact evidence and reentry](eco-213-implementation.md) records the verified candidate, preserved source/operation identities and open twelve-use qualification. Target-local provider and Vercel configuration custody are the current execution boundary. Current phase is Move / Working; earlier Shape/Review and no-installation statements below are historical.
+
 STATUS: BUILD-BOUNDARY READY  
 DISPOSITION: GOVERNING  
 VERSION: v0.5  

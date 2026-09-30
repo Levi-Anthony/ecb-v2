@@ -1,5 +1,7 @@
 # ECO-213 concrete implementation launch
 
+ECO-213 is recursive semantic circulation: source differentiation, bidirectional composition and persistence. Move is its implementation phase. MCP means Model Context Protocol; RLS means row-level security; CI means continuous integration; pgmq is the PostgreSQL durable message queue. ECO-212 is ordinary MCP installation with combined code and decoupled activation.
+
 Current phase: **Move**. The native storage layer and a dormant initial commission are installed on the actual v2 target. Hosted worker execution and complete initial-use qualification are pending target-local provider and Vercel configuration custody. The Principal's forward implementation release governs; the former read-only exclusion is superseded.
 
 ## Actual allocation
@@ -14,7 +16,7 @@ Current phase: **Move**. The native storage layer and a dormant initial commissi
 
 The exact code source manifest digest is `2323e7d9f13b8bf74aa3e31fe686b79a97fa6bc81a67d52061aa1adeb93c2ff7`. Compiled prompt/schema editions are stored as native mechanisms. Source, interpretation, Claim standing, current use, capability and authority remain separate.
 
-The compiled runtime/storage edition is commit `ae71cc6f3224b13a42e9dc37225fd25d790fd07e`, qualified in [native CI run 36765325607](https://github.com/Levi-Anthony/ecb-v2/actions/runs/36765325607) on [PR #102](https://github.com/Levi-Anthony/ecb-v2/pull/102). The other four affected workflows passed. Main predecessor is `822aac4951110097768b388f18a5a268baf29243`; exact ECO-212 donor `94e291174f48bf2c3648f75be9df5dd7a332639f` is consumed as code. Its independent credential/install qualification is not inherited.
+The compiled runtime/storage edition is commit `ae71cc6f3224b13a42e9dc37225fd25d790fd07e`, tree `6c3fe4c40ad0b9f25150b79663bfd7aabb8ec35f`, qualified in [native CI run 36765325607](https://github.com/Levi-Anthony/ecb-v2/actions/runs/36765325607) on [PR #102](https://github.com/Levi-Anthony/ecb-v2/pull/102). The other four affected workflows passed. Main predecessor is `822aac4951110097768b388f18a5a268baf29243`; exact ECO-212 donor `94e291174f48bf2c3648f75be9df5dd7a332639f` is consumed as code. Its independent credential/install qualification is not inherited.
 
 Cold recovery now exposes the retained Work parts. The Work epoch includes the immutable constituent records; fetch/traverse expose their edges, and the worker receives their references with that epoch. Admission captures a situated Work digest. Lease, reservation and commit deny changed/missing Work bases; stale queued work is blocked without dispatch. Reusing a Work ID with different parts conflicts. Prepared commission recovery follows explicit immutable receipt succession; forks, cycles and independent selections block rather than selecting by time or model novelty.
 
@@ -69,6 +71,7 @@ Controls cover atomic custody/admission and rollback; stable replay/conflict; no
 Live post-install reads verified all 35 native tables have RLS, ordinary native table grants are absent, the queue is logged/empty, anonymous queue access is denied, and pre-existing Claims/Evidence/standing history and Thought evidence digests are unchanged. Missing worker credential/effect authorization denies execution, and dormant wake creates no dispatch. All eight native envelopes, both representations and digests match the frozen export.
 
 The twelve complete initial-use obligations remain open:
+
 1. trusted capture through the installed ordinary target, including crash recovery;
 2. fresh participant/modality/polarity/condition cases and semantic false-PASS discrimination;
 3. cold cue → capability/permission recovery → completed propagation;
@@ -88,9 +91,13 @@ A structurally valid exact quotation can still support a false description. Prov
 
 ## Remaining execution boundary and reentry
 
-The workspace returned verified `409 Conflict / environment_offline`. Required recovery changes were then preserved and qualified through connected GitHub/CI; the installed data/commission are durable. Reopen the exact branch from the remote head when execution returns; do not reconstruct the earlier lost local candidate.
+A connected-read check of actual native custody recovered the prepared receipt through explicit succession, reconstructed all eight exact requests and eight preserved operation identities, and denied admission under the disabled remit. No transition was dispatched; this is not hosted ordinary qualification. Earlier source-recovery predecessor custody is Artifact `d9c22b10-2dd1-4c3d-be8c-fbd02d048c99`; its qualification evidence at the preceding edition is `d14d6cb6-8b71-48af-8572-5bc975a89a56`. Both remain retained history.
+
+The earlier workspace outage and lost local candidate are historical. Execution is available in `/workspace/scratch/28d6c9de6159/ecb-v2`; the candidate is preserved remotely. Reentry starts from the current remote branch and this installed receipt. All concurrent increments were retained through non-forced branch advances. No reconstruction of the earlier lost checkout is required.
 
 Target Vault metadata contains only the newly created scoped worker credential, with no provider credential. No circulation provider credential is present in the available execution environment. The Vercel connector exposes no environment setter, and no Vercel API token is available. No legacy environment secret was read. A target-local provider credential and an authorized Vercel configuration/deployment route are required to bind the encrypted worker credential and scoped MCP grants, deploy this exact dormant candidate, and run the bounded ordinary/worker recipes.
+
+Required local bindings: `ECB_CIRCULATION_MCP_URL`, `ECB_CIRCULATION_PARTICIPANT_BEARER` for the ordinary adapter; `ECB_CIRCULATION_OPENROUTER_KEY`, `ECB_CIRCULATION_WORKER_KEY`, the current compiled digest and prepared work/mechanism IDs for the exact host. Secrets require local/target custody. There is no local Vercel authentication. The latest deployment list still identifies Production `dpl_FZF3s9B3bk8ZVDoPo4JrBYNx4Ndn` at predecessor `822aac4951110097768b388f18a5a268baf29243`, with no circulation-branch deployment among the latest 20 entries. The existing disabled remit expires at the recorded time; no implicit renewal follows.
 
 This is the current concrete execution/custody boundary, not a renewed read-only exclusion or generic permission request. No new code/schema authorization is needed to continue within the released envelope. Provider calls, worker/scheduler activation, merge/Production promotion and complete initial-use acceptance have not occurred.
 
