@@ -28,6 +28,11 @@ LEGACY_CANONICAL_PREFIX_FIELDS=DEPRECATED_ALIASES_PRESERVED_PENDING_SAFE_MIGRATI
 
 > **FORWARD VOCABULARY / INTAKE OVERRIDE — 29 September 2026:** New live ECOS/SIGMA architecture must not use `canon` / `canonical` as a normative omnibus category. Historical occurrences and machine-like legacy fields remain where needed for provenance or compatibility, but readers must resolve them to the exact relation intended (for example: designated production substrate, currentness, governing authority, qualified standing, durable custody, or supersession state). Capture/admission is aggressively non-prejudicial and confers none of those relations merely by ingestion. See ADR-007. ECO-210 is canceled provenance only; live vocabulary, intake-architecture, and v2 tool-surface ownership routes through ECO-118, ECO-177, and ECO-155 respectively.
 
+SENSE_SEATING_FORWARD_2026_09_29=POINT_OF_VIEW_PLUS_INITIAL_CONTRAST_PLUS_FOCAL_OBJECT_THEN_WHOLE_PARTS_AND_GENERAL_PGO_WHEN_CONSEQUENTIAL
+COMPOSITE_REFERENT_FORWARD_2026_09_29=PER_INSTANCE_OPERATIONAL_COMPOSITION; NOT_ONE_PERSISTENT_DATABASE_ENTITY
+COMPOSITE_REFERENT_PHYSICALIZATION=OPEN_RECONCILIATION; NO_SCHEMA_RUNTIME_OR_MCP_AUTHORIZATION
+MEMORY_ARCHITECTURE_ROLE=REENTRY_RETRIEVAL_AID_ONLY; VERIFY_CONSEQUENTIAL_CLAIMS_AGAINST_QUALIFIED_SOURCE_OR_LIVE_STATE
+
 INTEGRAL_COHERENCE_FRONTIER=ECO-165_METABOLIZE_CLOSED_PASS; ECO-169_REGISTER_A_BACKLOG_UNKNOWN_NONBLOCKING; ECO-170_ISOLATED_PROBE_CLOSED_PASS_REVIEW
 DESCENT_SENSE=ECO-176_PRINCIPAL_ACCEPTED_CLOSED
 DESCENT_NEXT=ECO-182_ARCHITECTURE_SHAPE_COMMISSIONED_AUTHORIZED_UNEXECUTED
@@ -36,6 +41,24 @@ INTEGRAL_COHERENCE_SHAPE=ECO-162_PASS; TRI_AXIAL_PLUS_FIDELITY; SUBSTRATE_INDEPE
 INTEGRAL_COHERENCE_MOVE=ECO-163_CLOSED_PASS_WITH_REGISTER_A_APERTURE; CASE_A_PASS; CASE_B_FRESH_WORKER_UNEXECUTED_REGISTER_A; CASE_C_PASS_SPECIMEN; CASE_D_PASS
 SMALLNESS_OPTIMIZATION=PROHIBITED_REGISTER_B
 BRIMAR_ADOPTION=HOLD; PROJECTION_LEVEL_PROPOSAL_ONLY
+
+## 29 September 2026 — forward Sense seating and composite-referent reconciliation
+
+A closed live Sense/reconciliation episode produced new architecture evidence without authorizing implementation.
+
+**Process evidence:** insufficient initial referent seating allowed a worker to replace the active operational object with locally defensible abstractions while remaining superficially coherent. An unmade correction became displaced referent-seating / qualification debt and compounded downstream. Recovery was: low-pressure Sense → point of view → initial contrast → object of focus → containing whole / salient discrete-interacting parts → general PGO → extended inference. Treat a material change of focal object as an explicit reseating event.
+
+**Composite-referent evidence:** current work can be modeled as a per-instance composed operational referent assembled, to the resolution required by the active PGO, from focal designation, boundary/grain, whole/parts, objective/possibility/dependency neighborhood, question, SSMM position, consumers, evidence, qualification and unresolved obligations. This does not establish a persistent composite-referent entity.
+
+**Software reconciliation:** live inspection confirmed that BUILD 2 'public.referents' is the deliberately minimal identity/addressability spine. BUILD 2 did not install a Referent resolver RPC/view/MCP surface or semantic composition. Richer later substrate supplies Claims, Evidence Links, relation Claims, standing history, Artifacts, governance, operations, dispositions/currentness and coordination records. The current open question is how a fresh Sense instance should recover/compose the correctly seated work referent from those independently standing pieces.
+
+**Memory correction:** a compressed memory summary had incorrectly implied a BUILD 2 Referent resolver/MCP. Qualified source and live inspection contradict that summary. For architecture, memory is a reentry/retrieval aid; it does not outrank qualified source or live installed evidence.
+
+**UL elicitation:** generalized user-story-like structure is retained as a promising focal-seat / objective-neighborhood elicitation technique because it can preserve possibility/dependency and intended-outcome information that lower-level requirements/specifications may suppress. Do not infer “user story = UL” or “functional requirement = LR” as universal artifact classifications.
+
+**Current boundary:** no new Supabase migration, runtime change, MCP tool, persistent ontology or 'composite_referents' table is authorized by this evidence. The next legitimate operation on this front is bounded architecture reconciliation: map existing carriers, distinguish missing information from difficult recovery, derive the minimum recoverable composition capability, define falsifiers/fresh-worker acceptance, and only then decide whether the composition should be transient, qualified/materialized, or hybrid.
+
+Full evidence and cold-reader handoff: [2026-09-29 Composite Referent / Sense Seating Harvest](research/quadrant-grammar/2026-09-29-Composite-Referent-Sense-Seating-Harvest.md).
 
 ## 22 September 2026 — CURRENT: descent Sense accepted; obligation-to-use Shape commissioned
 
