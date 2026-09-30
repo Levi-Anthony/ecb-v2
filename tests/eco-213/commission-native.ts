@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import pg from 'pg';
-import {randomUUID} from 'node:crypto';
+import {createHash} from 'node:crypto';
 import {makeCommission,sourceManifest,LEGACY_IDS} from '../../scripts/eco-213/commission.js';
 import {corpusRequests} from '../../scripts/eco-213/assimilate.js';
+import {verifyColdRecovery} from './cold-native.js';
 
 const url=process.env.ECO213_TEST_DATABASE_URL;
 if(url!=='postgresql://postgres@127.0.0.1:55439/build6')throw new Error('Explicit disposable localhost database required');
@@ -24,8 +25,12 @@ try{
  assert.deepEqual(stored.items,plan.manifest.items);
  assert.equal(new Set(stored.items.map((i:any)=>i.operation_id)).size,8);
  console.log('PASS rendered commission executes natively; exact source/operation/mechanism editions remain dormant');
+ // The preceding native storage suite has commissioned this disposable key.
+ // A standalone run may commission it; an unexpected existing key is a failure.
  const runtimeKey='constructed-ordinary-test-key-at-least-32-bytes';
- await db.query('select public.ecb11_commission_runtime_key($1)',[runtimeKey]);
+ const runtime=(await db.query("select encode(key_digest,'hex') as digest from ecb11.runtime_capability")).rows[0];
+ if(runtime)assert.equal(runtime.digest,createHash('sha256').update(runtimeKey).digest('hex'));
+ else await db.query('select public.ecb11_commission_runtime_key($1)',[runtimeKey]);
  await db.query("select set_config('request.headers',$1,false)",[JSON.stringify({'x-ecb-runtime-key':runtimeKey})]);
  const requests=corpusRequests(plan,exported);
  async function importRow(payload:any){return (await db.query('select public.eco213_dispatch($1,$2::jsonb,$3) as r',
@@ -39,6 +44,8 @@ try{
  const recovered=(await db.query('select ecb_circulation.recover($1) as r',[plan.ids.corpus_work])).rows[0].r;
  assert.equal(recovered.corpus_coverage.find((c:any)=>c.id===plan.ids.corpus).preserved_items,8);
  assert.equal(recovered.processing.length,8);assert.ok(recovered.processing.every((p:any)=>p.status==='pending'));
- await db.query('update ecb_circulation.remit_heads set enabled=false where revision_id=$1',[plan.ids.revision]);
  console.log('PASS eight constructed envelopes preserve both representations and exact replay; source admission does not claim assimilation');
+ await verifyColdRecovery(runtimeKey,true);
+ await db.query('update ecb_circulation.remit_heads set enabled=false where revision_id=$1',[plan.ids.revision]);
+ await verifyColdRecovery(runtimeKey,false);
 }finally{await db.end();}
