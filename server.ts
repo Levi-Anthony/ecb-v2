@@ -1,6 +1,12 @@
-import { StreamableHTTPTransport } from '@hono/mcp';
 import { pipeline } from '@huggingface/transformers';
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import {
+  type AuthInfo,
+  type ScopeChallengeHandler,
+  createMcpHandler,
+  hostHeaderValidationResponse,
+  McpServer,
+  originValidationResponse,
+} from '@modelcontextprotocol/server';
 import { Hono } from 'hono';
 import { z } from 'zod';
 
@@ -9,11 +15,19 @@ const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_4mAxzOfWinJcn-98szUEYA_Wh88UdPW
 const MODEL_ID = 'gte-small';
 const VECTOR_DIMENSIONS = 384;
 const REPAIR_BATCH_LIMIT = 100;
+const CAPABILITY_POLICY_VERSION = 'eco206-preview-v1';
+const CAPABILITIES = {
+  recover: 'ecb:recover',
+  preserve: 'ecb:preserve',
+  transition: 'ecb:transition',
+} as const;
+type Capability = keyof typeof CAPABILITIES;
+type CredentialGrant = { key_sha256: string; client_id: string; capabilities: Capability[] };
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers':
-    'authorization, content-type, accept, mcp-session-id, mcp-protocol-version, last-event-id',
+    'authorization, content-type, accept, mcp-session-id, mcp-protocol-version, mcp-method, mcp-name, last-event-id',
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, DELETE',
 };
 
@@ -163,19 +177,75 @@ async function sha256Hex(value: string): Promise<string> {
   return hex(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))));
 }
 
-async function bearerAccepted(request: Request): Promise<boolean> {
-  const authorization = request.headers.get('authorization');
-  if (!authorization?.startsWith('Bearer ')) return false;
-  const token = authorization.slice('Bearer '.length).trim();
-  if (!token) return false;
-  const expected = requiredEnv('ECB_BRAIN_KEY_SHA256').toLowerCase();
-  if (!/^[0-9a-f]{64}$/.test(expected)) throw new Error('invalid_ecb_brain_key_sha256');
-  const actual = await sha256Hex(token);
+function digestEquals(actual: string, expected: string): boolean {
   let difference = 0;
-  for (let index = 0; index < expected.length; index += 1) {
+  for (let index = 0; index < 64; index += 1) {
     difference |= actual.charCodeAt(index) ^ expected.charCodeAt(index);
   }
   return difference === 0;
+}
+
+function configuredGrants(): CredentialGrant[] {
+  const raw = process.env.ECB_MCP_CAPABILITY_GRANTS;
+  if (!raw) return [];
+  const parsed: unknown = JSON.parse(raw);
+  if (!Array.isArray(parsed) || parsed.length > 32) throw new Error('invalid_ecb_mcp_capability_grants');
+  const seen = new Set<string>();
+  return parsed.map((item) => {
+    if (!item || typeof item !== 'object') throw new Error('invalid_ecb_mcp_capability_grants');
+    const grant = item as Partial<CredentialGrant>;
+    if (typeof grant.key_sha256 !== 'string' || !/^[0-9a-f]{64}$/.test(grant.key_sha256)
+      || typeof grant.client_id !== 'string' || !/^[a-zA-Z0-9._:-]{1,80}$/.test(grant.client_id)
+      || !Array.isArray(grant.capabilities) || grant.capabilities.length === 0
+      || grant.capabilities.some((value) => !Object.keys(CAPABILITIES).includes(value))) {
+      throw new Error('invalid_ecb_mcp_capability_grants');
+    }
+    if (seen.has(grant.key_sha256)) throw new Error('duplicate_ecb_mcp_capability_credential');
+    seen.add(grant.key_sha256);
+    return grant as CredentialGrant;
+  });
+}
+
+async function authenticateOrdinaryCredential(request: Request): Promise<AuthInfo | null> {
+  const authorization = request.headers.get('authorization');
+  if (!authorization?.startsWith('Bearer ')) return null;
+  const token = authorization.slice('Bearer '.length).trim();
+  if (!token) return null;
+  const expected = requiredEnv('ECB_BRAIN_KEY_SHA256').toLowerCase();
+  if (!/^[0-9a-f]{64}$/.test(expected)) throw new Error('invalid_ecb_brain_key_sha256');
+  const grants = configuredGrants();
+  if (grants.some((grant) => grant.key_sha256 === expected)) {
+    throw new Error('compatibility_credential_collision');
+  }
+  const actual = await sha256Hex(token);
+  const compatibility = digestEquals(actual, expected);
+  const matches = grants.filter((grant) => digestEquals(actual, grant.key_sha256));
+  if (compatibility) return {
+    token, clientId: 'ordinary-compatibility', scopes: Object.values(CAPABILITIES),
+  };
+  if (matches.length !== 1) return null;
+  return {
+    token, clientId: matches[0].client_id,
+    scopes: [...new Set(matches[0].capabilities.map((capability) => CAPABILITIES[capability]))],
+  };
+}
+
+function capabilityCheck(capability: Capability): ScopeChallengeHandler {
+  const required = CAPABILITIES[capability];
+  return ({ request, authInfo }) => {
+    const allowed = authInfo?.scopes.includes(required) === true;
+    const args = request.params?.arguments;
+    const candidate = args && typeof args === 'object' && 'operation_id' in args
+      ? (args as { operation_id?: unknown }).operation_id : undefined;
+    const operationId = typeof candidate === 'string' && /^[0-9a-f-]{36}$/i.test(candidate)
+      ? candidate : undefined;
+    console.info(JSON.stringify({
+      event: 'ordinary_capability_decision', policy: CAPABILITY_POLICY_VERSION,
+      client_id: authInfo?.clientId ?? 'missing', required, decision: allowed ? 'allow' : 'deny',
+      ...(operationId ? { operation_id: operationId } : {}),
+    }));
+    return allowed ? undefined : { scopes: [required] as [string], errorDescription: `${required} capability required` };
+  };
 }
 
 function rpcHeaders(): Record<string, string> {
@@ -466,7 +536,10 @@ const runtime = {
 };
 
 function buildServer(): McpServer {
-  const server = new McpServer({ name: 'ecb-v2-open-brain', version: '0.5.0' });
+  const server = new McpServer(
+    { name: 'ecb-v2-open-brain', version: '0.5.0' },
+    { capabilities: { tools: {} } },
+  );
 
   server.registerTool('capture_thought', {
     title: 'Capture Thought',
@@ -478,6 +551,7 @@ function buildServer(): McpServer {
       idempotentHint: true,
       openWorldHint: false,
     },
+    scopeChallenge: capabilityCheck('preserve'),
     inputSchema: {
       operation_id: z.string().uuid(),
       content: nonBlankText(),
@@ -504,8 +578,10 @@ function buildServer(): McpServer {
   server.registerTool('search', {
     title: 'Search Thoughts',
     description:
-      'Search canonical thought evidence through one hybrid retrieval surface. Lexical retrieval remains available when semantic embedding is unavailable; coverage reports whether semantic indexing is complete or degraded.',
-    annotations: { readOnlyHint: true },
+      'Search canonical thought evidence through one hybrid retrieval surface. This call can repair missing semantic representations before retrieval. Lexical retrieval remains available when semantic embedding is unavailable; coverage reports whether semantic indexing is complete or degraded.',
+    // Search repairs missing embeddings before retrieval, so it can write representations.
+    annotations: { readOnlyHint: false, destructiveHint: false },
+    scopeChallenge: capabilityCheck('recover'),
     inputSchema: {
       query: z.string().trim().min(1),
       limit: z.number().int().min(1).max(100).optional().default(10),
@@ -523,6 +599,7 @@ function buildServer(): McpServer {
     description:
       'Fetch canonical Thought evidence by Thought UUID or its admission receipt UUID. Returns custody provenance, representation readiness, the exact current operational disposition, and its exact ACTION/HOLD projection. Projection currentness confers no execution authority.',
     annotations: { readOnlyHint: true },
+    scopeChallenge: capabilityCheck('recover'),
     inputSchema: { id: z.string().uuid() },
   }, async ({ id }) => {
     try {
@@ -543,6 +620,7 @@ function buildServer(): McpServer {
       idempotentHint: true,
       openWorldHint: false,
     },
+    scopeChallenge: capabilityCheck('transition'),
     inputSchema: {
       operation_id: z.string().uuid(),
       thought_id: z.string().uuid(),
@@ -586,6 +664,7 @@ function buildServer(): McpServer {
       idempotentHint: true,
       openWorldHint: false,
     },
+    scopeChallenge: capabilityCheck('preserve'),
     inputSchema: {
       operation_id: z.string().uuid(),
       content: z.string(),
@@ -603,6 +682,7 @@ function buildServer(): McpServer {
     description:
       'Fetch one immutable text Artifact by its durable Referent UUID. This operation has no latest-version or currentness semantics.',
     annotations: { readOnlyHint: true },
+    scopeChallenge: capabilityCheck('recover'),
     inputSchema: { id: z.string().uuid() },
   }, async ({ id }) => {
     try {
@@ -617,6 +697,27 @@ function buildServer(): McpServer {
 }
 
 const app = new Hono();
+const mcpHandler = createMcpHandler(buildServer, { legacy: 'stateless' });
+
+function allowedHostnames(): string[] {
+  const configured = (process.env.ECB_MCP_ALLOWED_HOSTS ?? '').split(',');
+  const vercel = [
+    process.env.VERCEL_URL,
+    process.env.VERCEL_BRANCH_URL,
+    process.env.VERCEL_PROJECT_PRODUCTION_URL,
+  ];
+  return [...new Set([...configured, ...vercel, 'localhost', '127.0.0.1', '[::1]']
+    .map((value) => value?.trim().toLowerCase())
+    .filter((value): value is string => Boolean(value)))];
+}
+
+function validateMcpHostAndOrigin(request: Request): Response | undefined {
+  const hosts = allowedHostnames();
+  const origins = [...hosts, ...(process.env.ECB_MCP_ALLOWED_ORIGIN_HOSTS ?? '')
+    .split(',').map((value) => value.trim().toLowerCase()).filter(Boolean)];
+  return hostHeaderValidationResponse(request, hosts)
+    ?? originValidationResponse(request, origins);
+}
 
 app.get('/', (context) => context.json({
   service: 'ecb-v2-open-brain',
@@ -634,11 +735,18 @@ app.get('/', (context) => context.json({
   provider_admin_credentials_required: false,
 }));
 
-app.options('*', (context) => context.text('ok', 200, corsHeaders));
+app.options('*', (context) => {
+  const rejected = validateMcpHostAndOrigin(context.req.raw);
+  return rejected ?? context.text('ok', 200, corsHeaders);
+});
 
 app.all('/mcp', async (context) => {
+  const rejected = validateMcpHostAndOrigin(context.req.raw);
+  if (rejected) return rejected;
+  let authInfo: AuthInfo | null;
   try {
-    if (!(await bearerAccepted(context.req.raw))) {
+    authInfo = await authenticateOrdinaryCredential(context.req.raw);
+    if (!authInfo) {
       return context.json(
         { error: 'unauthorized' },
         401,
@@ -650,13 +758,7 @@ app.all('/mcp', async (context) => {
     return context.json({ error: 'runtime_configuration_failed' }, 503, corsHeaders);
   }
 
-  const server = buildServer();
-  const transport = new StreamableHTTPTransport({
-    sessionIdGenerator: undefined,
-  });
-  await server.connect(transport);
-  const response = await transport.handleRequest(context);
-  if (!response) return context.json({ error: 'transport_failed' }, 500);
+  const response = await mcpHandler.fetch(context.req.raw, { authInfo });
   for (const [name, value] of Object.entries(corsHeaders)) response.headers.set(name, value);
   return response;
 });
