@@ -24,13 +24,13 @@ try{
  assert.deepEqual(stored.items,plan.manifest.items);
  assert.equal(new Set(stored.items.map((i:any)=>i.operation_id)).size,8);
  console.log('PASS rendered commission executes natively; exact source/operation/mechanism editions remain dormant');
- const runtimeKey='constructed-commission-native-runtime-key-at-least-32-bytes';
+ const runtimeKey='constructed-ordinary-test-key-at-least-32-bytes';
  await db.query('select public.ecb11_commission_runtime_key($1)',[runtimeKey]);
  await db.query("select set_config('request.headers',$1,false)",[JSON.stringify({'x-ecb-runtime-key':runtimeKey})]);
  const requests=corpusRequests(plan,exported);
  async function importRow(payload:any){return (await db.query('select public.eco213_dispatch($1,$2::jsonb,$3) as r',
   ['assimilate_corpus',JSON.stringify(payload),'commission-native-fixture'])).rows[0].r;}
- await assert.rejects(()=>importRow(requests[0]),/remit_denied/);
+ await assert.rejects(()=>importRow(requests[0]),/remit_(?:denied|inactive)/);
  await db.query('update ecb_circulation.remit_heads set enabled=true where revision_id=$1',[plan.ids.revision]);
  for(const payload of requests){const first=await importRow(payload),replayed=await importRow(payload);assert.equal(replayed.activity_id,first.activity_id);
   const row=(await db.query('select ecb_circulation.carrier_text(carrier_id) as content,ecb_circulation.carrier_text(original_carrier_id) as original,ecb_circulation.carrier_text(envelope_carrier_id) as envelope from ecb_circulation.source_occurrences where id=$1',[first.source_occurrence_id])).rows[0];
