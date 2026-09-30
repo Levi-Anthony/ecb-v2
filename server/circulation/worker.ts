@@ -69,7 +69,8 @@ export async function runStep(io: WorkerIO) {
     if (!reservation.dispatch_permitted || reservation.replayed) throw new StepError('provider_outcome_ambiguous');
     const response = await io.fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST', headers: { Authorization: `Bearer ${providerKey}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: MODEL, provider: { require_parameters: true, allow_fallbacks: false },
+      body: JSON.stringify({ model: MODEL, provider: { require_parameters: true, allow_fallbacks: false, only: ['openai'],
+        max_price: { prompt: prompt * 1_000_000, completion: completion * 1_000_000, request } },
         messages: [{ role: 'system', content: instructions[stage] }, { role: 'user', content: user }],
         max_tokens: outputBound, temperature: 0,
         response_format: { type: 'json_schema', json_schema: { name: `eco213_${stage}`, strict: true, schema } } }),
@@ -82,6 +83,7 @@ export async function runStep(io: WorkerIO) {
     provider = { ...provider, returned_model: parsed.model, provider: parsed.provider ?? 'UNKNOWN', generation_id: parsed.id,
       usage: parsed.usage ?? { status: 'UNKNOWN' }, reservation_id: reservation.reservation_id };
     if (!parsed.model || !parsed.id || parsed.choices?.[0]?.finish_reason !== 'stop') throw new StepError('provider_completion_incomplete');
+    if (parsed.model !== MODEL || String(parsed.provider ?? '').toLowerCase() !== 'openai') throw new StepError('provider_identity_requires_requalification');
     const content = parsed.choices[0].message?.content;
     if (typeof content !== 'string') throw new StepError('provider_output_missing');
     const carriers = new Map<string, string>([[lease.source.carrier_id, lease.source.text]]);
