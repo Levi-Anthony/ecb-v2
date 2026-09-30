@@ -2,7 +2,19 @@
 
 ECO-213 is recursive semantic circulation: source differentiation, bidirectional composition and persistence. Move is its implementation phase. MCP means Model Context Protocol; RLS means row-level security; CI means continuous integration; pgmq is the PostgreSQL durable message queue. ECO-212 is ordinary MCP installation with combined code and decoupled activation.
 
-Current phase: **Move**. The native storage layer and a dormant initial commission are installed on the actual v2 target. Hosted worker execution and complete initial-use qualification are pending target-local provider and Vercel configuration custody. The Principal's forward implementation release governs; the former read-only exclusion is superseded.
+Current phase: **Move closed — 30 September 2026, by Principal instruction**. Result: implemented, isolated-qualified native storage and a prepared commission installed dormant on the actual v2 target. [ECO-214 — hosted binding and twelve initial-use obligations](https://linear.app/ecos-ops/issue/ECO-214/qualification-hosted-use-semantic-circulation-scoped-host-binding) retains the hosted ordinary/worker execution and complete initial-use qualification. The existing forward-release boundaries and original remit expiry remain recorded; closure supplies no semantic qualification result.
+
+## Move closure and handoff
+
+The Principal's instruction **“Close Move”**, received 30 September 2026 at 13:07 America/Phoenix, closes this implementation phase at its actual custody boundary. It does not alter the constitutive design or cancel the twelve use obligations. The linked follow-up is Todo under ECO-207, the tri-axial core generalization / portable-descent parent, which remains open.
+
+Closure readback at 20:11:03 UTC / 13:11:03 America/Phoenix: eight retained sources; zero activities, attempts, outcomes, spend reservations and queue messages; zero enabled remits, workers or schedulers; all five methods at the recorded compiled-source fingerprint present. The original remit still expires 2 October 2026 at 18:12:43 UTC / 11:12:43 America/Phoenix. No renewal or budget reset occurred.
+
+All six workflows passed at repository reentry commit `0ed7af188e7df2fa925e736b3e986293b9b29638`, including [native qualification run 36768193166](https://github.com/Levi-Anthony/ecb-v2/actions/runs/36768193166). The closure update changes documentation only. The runtime candidate remains in draft PR #102; main and Production have not been promoted.
+
+Preserved findings: native Work constituents participate in reliance and execution checks; cold recovery follows explicit prepared-receipt succession; retained source and operation identities survive recovery/replay; actual provider evidence is required; ambiguous outcomes remain inspectable. Their source, failed-path dispositions and qualification limits are recorded below. No constructed case establishes a completed hosted/provider obligation.
+
+Context disposition: **FRESH HANDOFF** to [ECO-214 — hosted binding and twelve initial-use obligations](https://linear.app/ecos-ops/issue/ECO-214/qualification-hosted-use-semantic-circulation-scoped-host-binding) when provider and host configuration custody are available. The successor reads that issue, this exact candidate/receipt and the governing launch contract, revalidates the original expiry and scope, and executes the twelve declared recipes. If the original remit has expired, a recorded successor is required before activation. This closure performs no successor execution.
 
 ## Actual allocation
 
