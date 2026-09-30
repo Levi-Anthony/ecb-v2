@@ -303,7 +303,7 @@ AS $function$ declare p jsonb:=p_payload; w ecb_circulation.work_accounts; s ecb
     elsif w.created_by<>p_actor or (to_jsonb(w)-'created_at'-'created_by') is distinct from (item-'parts'-'reseating_reason')
       or coalesce((select jsonb_agg(jsonb_build_object('referent_id',p.constituent_id,'role',p.role) order by p.constituent_id,p.role)
         from ecb_circulation.work_parts p where p.work_id=w.id),'[]'::jsonb)
-        is distinct from coalesce((select jsonb_agg(v order by v->>'referent_id',v->>'role') from jsonb_array_elements(coalesce(item->'parts','[]'::jsonb)) v),'[]'::jsonb) then raise exception 'eco213_work_identity_conflict';end if;
+        is distinct from coalesce((select jsonb_agg(proposed.value order by proposed.value->>'referent_id',proposed.value->>'role') from jsonb_array_elements(coalesce(item->'parts','[]'::jsonb)) proposed(value)),'[]'::jsonb) then raise exception 'eco213_work_identity_conflict';end if;
   else select * into strict w from ecb_circulation.work_accounts where id=(p->>'work_id')::uuid;end if;
   if p_operation='record_observation' then
     perform ecb_circulation.assert_remit(w.remit_revision_id,p_actor,null,null,'observe');
