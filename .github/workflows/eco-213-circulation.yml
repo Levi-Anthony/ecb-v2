@@ -8,6 +8,7 @@ on:
       - 'api/circulation/**'
       - 'sql/migrations/*eco213*'
       - 'tests/eco-213/**'
+      - 'scripts/eco-213/**'
       - 'package*.json'
       - '.github/workflows/eco-213-circulation.yml'
   workflow_dispatch:
@@ -58,3 +59,4 @@ jobs:
           npm run typecheck:circulation
           node --import tsx tests/eco-213/protocol.test.ts
           node --import tsx tests/eco-213/worker.test.ts
+          node --import tsx tests/eco-213/commission.test.ts

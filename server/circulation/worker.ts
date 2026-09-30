@@ -50,13 +50,18 @@ export async function runStep(io: WorkerIO) {
     if (!(kind in schemas)) throw new StepError('mechanism_stage_unsupported');
     const stage = kind as Stage;
     if (lease.mechanism.model !== MODEL) throw new StepError('mechanism_model_requires_requalification');
+    const schema = z.toJSONSchema(schemas[stage]);
+    const digest=(s:string)=>createHash('sha256').update(s).digest('hex');
+    const codeDigest=io.env.ECB_CIRCULATION_CODE_DIGEST;
+    if(!codeDigest||!/^[0-9a-f]{64}$/.test(codeDigest))throw new StepError('mechanism_code_unbound');
+    if(lease.mechanism.code_digest!==codeDigest||lease.mechanism.prompt_digest!==digest(instructions[stage])
+      ||lease.mechanism.schema_digest!==digest(JSON.stringify(schema)))throw new StepError('mechanism_edition_requires_requalification');
     const providerKey = io.env.ECB_CIRCULATION_OPENROUTER_KEY;
     if (!providerKey) throw new StepError('provider_uncommissioned');
     const user = JSON.stringify({ work: lease.work, source: lease.source, prior_outputs: lease.context_outputs,
       native_subjects: lease.context_subjects, context_coverage: lease.context_coverage });
     // UTF-8 octet count conservatively bounds BPE tokens; schema/instruction overhead
     // is included, with 512 tokens reserved for provider chat framing. No truncation.
-    const schema = z.toJSONSchema(schemas[stage]);
     const inputBound = Buffer.byteLength(user + instructions[stage] + JSON.stringify(schema), 'utf8') + 512;
     const outputBound = lease.remit.max_output;
     if (inputBound > lease.remit.max_input) throw new StepError('input_resource_boundary');

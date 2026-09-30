@@ -1,8 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { randomUUID } from 'node:crypto';
+import { randomUUID,createHash } from 'node:crypto';
+import {z} from 'zod';
 import { runStep, workerAuthorized } from '../../server/circulation/worker.js';
-import { MODEL, validateOutput } from '../../server/circulation/profile.js';
+import { MODEL,instructions,schemas,validateOutput } from '../../server/circulation/profile.js';
 
 // All values and IO below are constructed controls, never live/provider qualification.
 const key = 'constructed-test-worker-key-with-32-bytes';
@@ -18,12 +19,13 @@ const bundle = {
     anchors: [{ carrier_id: carrier, byte_start: 0, byte_end: Buffer.byteLength(source), excerpt: source }] }],
   relations: [], omissions: [], losses: [], questions: [], repairs_output_id: null, repair_reason: null,
 };
+const digest=(s:string)=>createHash('sha256').update(s).digest('hex');
 function harness(overrides: Record<string, unknown> = {}) {
   const calls: { url: string; body: any }[] = [];
   const lease = { status: 'leased', attempt_id: randomUUID(), fence: 1, activity: { kind: 'differentiate' },
-    source: { carrier_id: carrier, text: source }, mechanism: { model: MODEL }, work: {}, remit: { max_input: 16000, max_output: 4000 },
+    source: { carrier_id: carrier, text: source }, mechanism: { model:MODEL,code_digest:'0'.repeat(64),prompt_digest:digest(instructions.differentiate),schema_digest:digest(JSON.stringify(z.toJSONSchema(schemas.differentiate))) }, work: {}, remit: { max_input: 16000, max_output: 4000 },
     context_outputs: [], context_subjects: [], context_coverage: { complete_outputs: true }, ...overrides };
-  const env = { ECB_CIRCULATION_ENABLED: 'true', ECB_CIRCULATION_WORKER_KEY: key, ECB_CIRCULATION_OPENROUTER_KEY: 'constructed-test-provider-key' };
+  const env = { ECB_CIRCULATION_ENABLED: 'true',ECB_CIRCULATION_CODE_DIGEST:'0'.repeat(64), ECB_CIRCULATION_WORKER_KEY: key, ECB_CIRCULATION_OPENROUTER_KEY: 'constructed-test-provider-key' };
   let modelReply: any = { model: MODEL, provider: 'OpenAI', id: 'constructed-generation', usage: { prompt_tokens: 20, completion_tokens: 20 },
     choices: [{ finish_reason: 'stop', message: { content: JSON.stringify(bundle) } }] };
   let reservation = { dispatch_permitted: true, replayed: false, reservation_id: randomUUID() };
@@ -119,4 +121,10 @@ test('late commit and failure rejection retain provider evidence without retry',
  }) as typeof fetch;
  assert.equal((await runStep({env:h.env,fetch:fetcher})).effect_committed,false);
  assert.equal(h.calls.filter(x=>x.url.endsWith('/chat/completions')).length,1);
+});
+
+test('changed mechanism code/prompt/schema cannot dispatch provider calls',async()=>{
+ const h=harness();h.lease.mechanism.prompt_digest='1'.repeat(64);
+ assert.equal((await h.run()).failure_code,'mechanism_edition_requires_requalification');
+ assert.equal(h.calls.some(x=>x.url.includes('openrouter.ai')),false);
 });
