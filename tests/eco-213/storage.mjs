@@ -38,6 +38,8 @@ try {
   await query(`insert into ecb_circulation.work_accounts(id,focal_id,remit_revision_id,point_of_view,noticed_contrast,boundary,orientation,frame,question,intended_use,process_coordinate,return_route,created_by)
     values($1,$2,$3,'test executor','cold recovery versus lost work','one disposable source','retain desired/performed distinctions','constructed fixture','What was desired?','qualify storage controls','{"phase":"Move","fixture":true}','test output',$4)`,[ids.work,focal,ids.revision,actor]);
   await query('insert into ecb_circulation.execution_credentials(worker,key_digest,remit_revision_id,enabled) values($1,extensions.digest(convert_to($2,\'UTF8\'),\'sha256\'),$3,true)',[executor,workerKey,ids.revision]);
+  const normative = await artifact('CONSTRUCTED governing source for cold and worker recovery.');
+  await query('insert into ecb_circulation.work_parts(work_id,constituent_id,role) values($1,$2,$3)',[ids.work,normative,'governing fixture source']);
   const input={operation_id:randomUUID(),work_id:ids.work,mechanism_id:ids.differentiate,content:'Jennifer wanted me to call her back.',source:'constructed-control',captured_at:'2026-09-30T12:00:00Z'};
   let captured;
   await check('atomic exact custody and logged dispatch admission',async()=>{
@@ -65,13 +67,17 @@ try {
   await check('cold contract recovery exposes current seat, work and unknown observer basis',async()=>{
     const r=await dispatch('recover_work',{work_id:ids.work});assert.equal(r.work[0].focal_id,focal);assert.equal(r.processing[0].status,'pending');assert.equal(r.liveness.observation_basis,'UNKNOWN');
     assert.ok(r.access.TRANSITION.includes('request_processing'));assert.ok(r.work[0].epoch);
+    assert.equal(r.work[0].parts[0].constituent_id,normative);
+    assert.equal((await dispatch('traverse_structure',{referent_id:normative})).work_parts[0].work_id,ids.work);
+    assert.equal((await dispatch('fetch_referent',{referent_id:ids.work})).work_parts[0].constituent_id,normative);
   });
   let l;
   await check('worker key is distinct and missing key denies lease',async()=>{
     await query("select set_config('request.headers',$1,false)",[JSON.stringify({'x-ecb-runtime-key':key})]);
     await rejects(()=>lease(),'worker_unauthorized');await query("select set_config('request.headers',$1,false)",[JSON.stringify(headers)]);
   });
-  await check('lease persists attempt, scope, source and advancing fence',async()=>{l=await lease();assert.equal(l.status,'leased');assert.equal(l.fence,1);assert.equal(l.source.text,input.content);assert.equal(l.work.id,ids.work);});
+  await check('lease persists attempt, scope, source and advancing fence',async()=>{l=await lease();assert.equal(l.status,'leased');assert.equal(l.fence,1);assert.equal(l.source.text,input.content);assert.equal(l.work.id,ids.work);assert.equal(l.work.parts[0].constituent_id,normative);
+    assert.equal(l.work.epoch,(await dispatch('recover_work',{work_id:ids.work})).work[0].epoch);});
   await check('budget reservation is single-use; changed retry conflicts',async()=>{
     assert.equal((await reserve(l)).dispatch_permitted,true);assert.equal((await reserve(l)).dispatch_permitted,false);
     await rejects(()=>reserve(l,3),'reservation_conflict');
@@ -211,6 +217,29 @@ try {
     const retry=await lease();assert.equal(retry.status,'blocked');assert.equal(retry.failure_code,'provider_outcome_ambiguous');
     assert.equal((await one('select count(*)::int as n from ecb_circulation.attempts where activity_id=$1',[first.activity.id])).n,1);
     assert.equal((await one('select provider_basis from ecb_circulation.attempt_outcomes where attempt_id=$1',[first.attempt_id])).provider_basis.automatic_regeneration,false);
+  });
+  await check('changed Work parts invalidate reliance and block leased and pending execution before provider dispatch',async()=>{
+    const current=await dispatch('recover_work',{work_id:ids.work});const oldEpoch=current.work[0].epoch;
+    const depIds=[composed.id,unit.id,claim.id];
+    const freshDeps=await Promise.all(depIds.map(async subject_id=>({subject_id,digest:(await one('select ecb_circulation.referent_digest($1) as d',[subject_id])).d,work_epoch:oldEpoch,role:'consumed basis'})));
+    await dispatch('reconcile_use',{...binding,operation_id:randomUUID(),use_key:'work-parts',expected_predecessor_id:null,work_epoch:oldEpoch,dependencies:freshDeps});
+    const queued=await dispatch('request_processing',{operation_id:randomUUID(),work_id:ids.work,source_id:captured.source_occurrence_id,mechanism_id:ids.differentiate,predecessor_id:null});
+    const queued2=await dispatch('request_processing',{operation_id:randomUUID(),work_id:ids.work,source_id:captured.source_occurrence_id,mechanism_id:ids.differentiate,predecessor_id:null});
+    const active=await lease();assert.equal(active.status,'leased');
+    const before=(await one('select count(*)::int as n from ecb_circulation.spend_reservations')).n;
+    const addition=await artifact('CONSTRUCTED newly encountered destination source');
+    await query('insert into ecb_circulation.work_parts(work_id,constituent_id,role) values($1,$2,$3)',[ids.work,addition,'new destination constraint']);
+    const changed=await dispatch('recover_work',{work_id:ids.work});
+    assert.notEqual(changed.work[0].epoch,oldEpoch);
+    assert.equal(changed.use_bindings.find(x=>x.use_key==='work-parts').basis_current,false);
+    assert.equal((await one('select ecb_circulation.referent_digest($1) as d',[ids.work])).d,changed.work[0].epoch);
+    await rejects(()=>reserve(active),'work_basis_stale');
+    assert.equal((await one('select count(*)::int as n from ecb_circulation.spend_reservations')).n,before);
+    const pending=await lease();assert.equal(pending.status,'blocked');assert.equal(pending.failure_code,'work_basis_stale');
+    // A changed part set under an existing Work identity is a conflict, including when other fields match.
+    const account=await one('select * from ecb_circulation.work_accounts where id=$1',[ids.work]);
+    delete account.created_at;delete account.created_by;account.parts=[];
+    await rejects(()=>dispatch('request_processing',{operation_id:randomUUID(),work:account,source_id:captured.source_occurrence_id,mechanism_id:ids.differentiate,predecessor_id:null}),'work_identity_conflict');
   });
   await check('revocation disables worker effect while custody/recovery/history survive',async()=>{
     await query('update ecb_circulation.remit_heads set enabled=false where remit_id=$1',[ids.remit]);await rejects(()=>lease(),'remit_inactive');

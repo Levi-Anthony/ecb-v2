@@ -12,7 +12,8 @@ const SOURCE_FILES=['server.ts','server/circulation/profile.ts','server/circulat
  'package.json','package-lock.json',
  'api/circulation/run.ts','sql/migrations/20260930155729_eco213_circulation_native.sql',
  'sql/migrations/20260930155734_eco213_circulation_execution.sql','sql/migrations/20260930165122_eco213_circulation_scheduler.sql',
- 'sql/migrations/20260930183100_eco213_recovery_source_parts.sql'];
+ 'sql/migrations/20260930183100_eco213_recovery_source_parts.sql',
+ 'sql/migrations/20260930191330_eco213_work_context.sql'];
 const sha=(text:string)=>createHash('sha256').update(text).digest('hex');
 const quote=(text:string)=>"'"+text.replace(/'/g,"''")+"'";
 const json=(v:unknown)=>quote(JSON.stringify(v))+'::jsonb';
