@@ -40,7 +40,7 @@ AS $function$ declare v jsonb;begin
     'corpus_coverage',coalesce((select jsonb_agg(to_jsonb(c)||jsonb_build_object('preserved_items',(select count(*) from ecb_circulation.corpus_members cm where cm.corpus_id=c.id),
       'items',(select jsonb_agg(to_jsonb(cm)||jsonb_build_object('processing',(select jsonb_agg(to_jsonb(h)) from ecb_circulation.activities a join ecb_circulation.processing_heads h on h.activity_id=a.id where a.source_id=cm.source_id))) from ecb_circulation.corpus_members cm where cm.corpus_id=c.id))) from ecb_circulation.corpus_editions c),'[]'),
     'liveness',coalesce(v,jsonb_build_object('observation_basis','UNKNOWN')));
-end $function$
+end $function$;
 
 
 CREATE OR REPLACE FUNCTION ecb_circulation.reconcile(p jsonb, p_actor text)
@@ -84,7 +84,7 @@ AS $function$ declare w ecb_circulation.work_accounts; ca ecb_circulation.compos
   insert into ecb_circulation.use_heads(work_id,use_key,assessment_id) values(w.id,p->>'use_key',new_id)
     on conflict(work_id,use_key) do update set assessment_id=excluded.assessment_id;
   return jsonb_build_object('assessment_id',new_id,'replayed',false);
-end $function$
+end $function$;
 
 
 CREATE OR REPLACE FUNCTION ecb_circulation.referent_digest(p_id uuid)
@@ -112,7 +112,7 @@ AS $function$ declare v jsonb; s text;begin
     v:=v||jsonb_build_array(jsonb_build_object('members',(select jsonb_agg(to_jsonb(m) order by m.id) from ecb_circulation.composition_members m where m.account_id=p_id)));
   end if;
   return ecb_circulation.sha(v::text);
-end $function$
+end $function$;
 
 
 CREATE OR REPLACE FUNCTION ecb_circulation.enqueue(p_operation uuid, p_work uuid, p_source uuid, p_mechanism uuid, p_actor text, p_predecessor uuid DEFAULT NULL::uuid)
@@ -139,7 +139,7 @@ AS $function$ declare a ecb_circulation.activities; w ecb_circulation.work_accou
     values(v,p_predecessor,ecb_circulation.referent_digest(p_predecessor),'predecessor activity');end if;
   select pgmq.send('eco213',jsonb_build_object('activity_id',v)) into msg;
   insert into ecb_circulation.processing_heads(activity_id,message_id,status) values(v,msg,'pending'); return v;
-end $function$
+end $function$;
 
 
 CREATE OR REPLACE FUNCTION ecb_circulation.check_lease(p_attempt uuid, p_fence bigint, p_worker text, p_revision uuid)
@@ -157,7 +157,7 @@ AS $function$ declare a ecb_circulation.activities; h ecb_circulation.processing
     and i.role='situated_work' and i.digest=ecb_circulation.work_epoch(w.id)) then raise exception 'eco213_work_basis_stale';end if;
   select * into strict s from ecb_circulation.source_occurrences where id=a.source_id;
   perform ecb_circulation.assert_remit(p_revision,p_worker,s.origin,s.locator,'execute');return a;
-end $function$
+end $function$;
 
 
 CREATE OR REPLACE FUNCTION public.eco213_lease()
@@ -224,7 +224,7 @@ AS $function$ declare c ecb_circulation.execution_credentials; msg record; a ecb
       'context_coverage',jsonb_build_object('total_outputs',total,'returned_outputs',jsonb_array_length(ctx),'complete_outputs',total<=60,
         'subject_limit',60,'complete_subjects',(select count(distinct subject_id)<=60 from ecb_circulation.semantic_representations where work_id=w.id)));
   end loop;return jsonb_build_object('status','idle');
-end $function$
+end $function$;
 
 
 CREATE OR REPLACE FUNCTION public.eco213_dispatch(p_operation text, p_payload jsonb, p_actor text)
@@ -368,7 +368,7 @@ AS $function$ declare p jsonb:=p_payload; w ecb_circulation.work_accounts; s ecb
     values(att,activity,h.fence+1,p_actor,'interactive_producer',clock_timestamp(),clock_timestamp()+interval '120 seconds');
   update ecb_circulation.processing_heads set status='leased',fence=h.fence+1,attempt_id=att,lease_until=clock_timestamp()+interval '120 seconds' where activity_id=activity;
   return ecb_circulation.commit_output(att,h.fence+1,p_actor,w.remit_revision_id,p->'bundle',jsonb_build_object('producer',p_actor,'provider_dispatch',false),'interactive_producer');
-end $function$
+end $function$;
 
 
 revoke all on function ecb_circulation.work_epoch(uuid) from public, anon, authenticated, service_role;
