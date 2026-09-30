@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { randomUUID,createHash } from 'node:crypto';
 import {z} from 'zod';
 import { runStep, workerAuthorized } from '../../server/circulation/worker.js';
-import { MODEL,instructions,schemas,validateOutput } from '../../server/circulation/profile.js';
+import { MODEL,EMBEDDING_MODEL,EMBEDDING_PROMPT,EMBEDDING_SCHEMA,instructions,schemas,validateOutput } from '../../server/circulation/profile.js';
 
 // All values and IO below are constructed controls, never live/provider qualification.
 const key = 'constructed-test-worker-key-with-32-bytes';
@@ -31,18 +31,22 @@ function harness(overrides: Record<string, unknown> = {}) {
   let reservation = { dispatch_permitted: true, replayed: false, reservation_id: randomUUID() };
   let tariff: any = { id: MODEL, pricing: { prompt: '0.00000015', completion: '0.00000060', request: '0' } };
   let status = 200;
+  let metadata: any = { data: { id: 'constructed-generation', model: MODEL, provider_name: 'OpenAI', total_cost: 0.00002 } };
+  let metadataStatus = 200;
   const fetcher = (async (url: string | URL | Request, init?: RequestInit) => {
     const path = String(url); const body = init?.body ? JSON.parse(String(init.body)) : null; calls.push({ url: path, body });
     if (path.endsWith('eco213_lease')) return Response.json(lease);
     if (path.endsWith('/models')) return Response.json({ data: [tariff] });
     if (path.endsWith('eco213_reserve')) return Response.json(reservation);
     if (path.endsWith('/chat/completions')) return Response.json(modelReply, { status });
+    if (path.includes('/generation?id=')) return Response.json(metadata, { status: metadataStatus });
     if (path.endsWith('eco213_finish')) return Response.json({ status: 'complete' });
     if (path.endsWith('eco213_fail')) return Response.json({ status: 'failed', failure_code: body.p_code });
     throw new Error('unexpected constructed dispatch');
   }) as typeof fetch;
   return { calls, lease, env, fetcher, reply: (x: any) => modelReply = x, tariff: (x: any) => tariff = x,
     reservation: (x: any) => reservation = x, status: (x: number) => status = x,
+    metadata: (x: any, code = 200) => { metadata = x; metadataStatus = code; },
     run: () => runStep({ env, fetch: fetcher }) };
 }
 test('worker authentication requires installed key and Bearer scheme', () => {
@@ -126,5 +130,51 @@ test('late commit and failure rejection retain provider evidence without retry',
 test('changed mechanism code/prompt/schema cannot dispatch provider calls',async()=>{
  const h=harness();h.lease.mechanism.prompt_digest='1'.repeat(64);
  assert.equal((await h.run()).failure_code,'mechanism_edition_requires_requalification');
+ assert.equal(h.calls.some(x=>x.url.includes('openrouter.ai')),false);
+});
+
+test('documented completion without provider binds actual generation metadata before commit',async()=>{
+ const h=harness();h.reply({model:MODEL,id:'constructed-generation',usage:{prompt_tokens:20,completion_tokens:20},
+  choices:[{finish_reason:'stop',message:{content:JSON.stringify(bundle)}}]});
+ assert.equal((await h.run()).status,'complete');
+ const finish=h.calls.find(x=>x.url.endsWith('eco213_finish'))!;
+ assert.equal(finish.body.p_provider.provider,'OpenAI');
+ assert.equal(finish.body.p_provider.provider_identity_basis,'generation_metadata');
+ assert.equal(finish.body.p_provider.generation_metadata.id,'constructed-generation');
+ assert.equal(h.calls.filter(x=>x.url.endsWith('/chat/completions')).length,1);
+});
+test('missing or mismatched generation provenance retains output and denies regeneration',async()=>{
+ for(const [metadata,code,error]of [
+  [{error:'not available'},404,'provider_provenance_unavailable'],
+  [{data:{id:'different-generation',model:MODEL,provider_name:'OpenAI'}},200,'provider_identity_requires_requalification'],
+  [{data:{id:'constructed-generation',model:MODEL,provider_name:'Other'}},200,'provider_identity_requires_requalification'],
+ ] as const){
+  const h=harness();h.reply({model:MODEL,id:'constructed-generation',choices:[{finish_reason:'stop',message:{content:JSON.stringify(bundle)}}]});
+  h.metadata(metadata,code);assert.equal((await h.run()).failure_code,error);
+  assert.ok(h.calls.at(-1)?.body.p_provider.raw_output.includes('constructed-generation'));
+  assert.ok(h.calls.at(-1)?.body.p_provider.generation_metadata_raw);
+  assert.equal(h.calls.at(-1)?.body.p_transient,false);
+  assert.equal(h.calls.some(x=>x.url.endsWith('eco213_finish')),false);
+  assert.equal(h.calls.filter(x=>x.url.endsWith('/chat/completions')).length,1);
+ }
+});
+test('null tariff is unbounded and cannot authorize a zero-price dispatch',async()=>{
+ const h=harness();h.tariff({id:MODEL,pricing:{prompt:null,completion:null}});
+ assert.equal((await h.run()).failure_code,'tariff_unbounded');
+ assert.equal(h.calls.some(x=>x.url.endsWith('/chat/completions')),false);
+});
+test('embedding validates its bound mechanism before compute or index commit',async()=>{
+ const mechanism={model:EMBEDDING_MODEL,code_digest:'0'.repeat(64),prompt_digest:digest(EMBEDDING_PROMPT),schema_digest:digest(JSON.stringify(EMBEDDING_SCHEMA))};
+ for(const [changed,error]of [
+  [{model:'other-embedding-model'},'mechanism_model_requires_requalification'],
+  [{code_digest:'1'.repeat(64)},'mechanism_edition_requires_requalification'],
+  [{schema_digest:'1'.repeat(64)},'mechanism_edition_requires_requalification'],
+ ] as const){
+  const h=harness({activity:{kind:'embed'},mechanism:{...mechanism,...changed},missing_representations:[{id:randomUUID(),content:source}]});
+  let computed=0;assert.equal((await runStep({env:h.env,fetch:h.fetcher,embed:async()=>{computed++;return Array(384).fill(0);}})).failure_code,error);
+  assert.equal(computed,0);assert.equal(h.calls.some(x=>x.url.endsWith('eco213_finish')),false);
+ }
+ const h=harness({activity:{kind:'embed'},mechanism,missing_representations:[{id:randomUUID(),content:source}]});
+ assert.equal((await runStep({env:h.env,fetch:h.fetcher,embed:async()=>Array(384).fill(0.1)})).status,'complete');
  assert.equal(h.calls.some(x=>x.url.includes('openrouter.ai')),false);
 });

@@ -60,6 +60,8 @@ jobs:
           node --import tsx tests/eco-213/protocol.test.ts
           node --import tsx tests/eco-213/worker.test.ts
           node --import tsx tests/eco-213/commission.test.ts
+          node --import tsx tests/eco-213/assimilate.test.ts
+          node --import tsx tests/eco-213/commission-native.ts
 
       - name: Public compiled edition receipt
         run: node --import tsx scripts/eco-213/edition-receipt.ts

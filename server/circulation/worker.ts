@@ -1,6 +1,6 @@
 import { createHash, timingSafeEqual } from 'node:crypto';
 import { z } from 'zod';
-import { MODEL, instructions, schemas, validateOutput, type Stage } from './profile.js';
+import { MODEL, EMBEDDING_MODEL, EMBEDDING_PROMPT, EMBEDDING_SCHEMA, instructions, schemas, validateOutput, type Stage } from './profile.js';
 
 export const DATABASE = 'https://vezxivrvhakclxuvxzso.supabase.co';
 export const PUBLISHABLE_KEY = 'sb_publishable_4mAxzOfWinJcn-98szUEYA_Wh88UdPW';
@@ -37,6 +37,16 @@ export async function runStep(io: WorkerIO) {
   let provider: Record<string, unknown> = {};
   try {
     const kind = lease.activity.kind;
+    if (kind !== 'embed' && !(kind in schemas)) throw new StepError('mechanism_stage_unsupported');
+    const schema = kind === 'embed' ? EMBEDDING_SCHEMA : z.toJSONSchema(schemas[kind as Stage]);
+    const instruction = kind === 'embed' ? EMBEDDING_PROMPT : instructions[kind as Stage];
+    const model = kind === 'embed' ? EMBEDDING_MODEL : MODEL;
+    if (lease.mechanism.model !== model) throw new StepError('mechanism_model_requires_requalification');
+    const digest = (s: string) => createHash('sha256').update(s).digest('hex');
+    const codeDigest = io.env.ECB_CIRCULATION_CODE_DIGEST;
+    if (!codeDigest || !/^[0-9a-f]{64}$/.test(codeDigest)) throw new StepError('mechanism_code_unbound');
+    if (lease.mechanism.code_digest !== codeDigest || lease.mechanism.prompt_digest !== digest(instruction)
+      || lease.mechanism.schema_digest !== digest(JSON.stringify(schema))) throw new StepError('mechanism_edition_requires_requalification');
     if (kind === 'embed') {
       if (!io.embed) throw new StepError('embedding_unavailable');
       const representations = [];
@@ -45,17 +55,9 @@ export async function runStep(io: WorkerIO) {
         if (vector.length !== 384 || !vector.every(Number.isFinite)) throw new StepError('embedding_invalid');
         representations.push({ representation_id: r.id, vector });
       }
-      return await rpc('eco213_finish', { ...basis, p_bundle: { representations }, p_provider: { model: 'Supabase/gte-small', dimensions: 384, provider_dispatch: false } });
+      return await rpc('eco213_finish', { ...basis, p_bundle: { representations }, p_provider: { model: EMBEDDING_MODEL, dimensions: 384, provider_dispatch: false } });
     }
-    if (!(kind in schemas)) throw new StepError('mechanism_stage_unsupported');
     const stage = kind as Stage;
-    if (lease.mechanism.model !== MODEL) throw new StepError('mechanism_model_requires_requalification');
-    const schema = z.toJSONSchema(schemas[stage]);
-    const digest=(s:string)=>createHash('sha256').update(s).digest('hex');
-    const codeDigest=io.env.ECB_CIRCULATION_CODE_DIGEST;
-    if(!codeDigest||!/^[0-9a-f]{64}$/.test(codeDigest))throw new StepError('mechanism_code_unbound');
-    if(lease.mechanism.code_digest!==codeDigest||lease.mechanism.prompt_digest!==digest(instructions[stage])
-      ||lease.mechanism.schema_digest!==digest(JSON.stringify(schema)))throw new StepError('mechanism_edition_requires_requalification');
     const providerKey = io.env.ECB_CIRCULATION_OPENROUTER_KEY;
     if (!providerKey) throw new StepError('provider_uncommissioned');
     const user = JSON.stringify({ work: lease.work, source: lease.source, prior_outputs: lease.context_outputs,
@@ -68,7 +70,7 @@ export async function runStep(io: WorkerIO) {
     const quoted = await io.fetch('https://openrouter.ai/api/v1/models', { signal: AbortSignal.timeout(10000) });
     if (!quoted.ok) throw new StepError('tariff_unavailable');
     const route = (await quoted.json()).data?.find((m: { id: string }) => m.id === MODEL);
-    if (!route?.pricing || route.pricing.prompt === undefined || route.pricing.completion === undefined) throw new StepError('tariff_unbounded');
+    if (!route?.pricing || route.pricing.prompt == null || route.pricing.completion == null) throw new StepError('tariff_unbounded');
     const prompt = Number(route.pricing.prompt), completion = Number(route.pricing.completion), request = Number(route.pricing.request ?? 0);
     if (![prompt, completion, request].every(x => Number.isFinite(x) && x >= 0)) throw new StepError('tariff_unbounded');
     const tariff = { model: MODEL, pricing: route.pricing, quote_source: 'https://openrouter.ai/api/v1/models', quoted_at: new Date().toISOString() };
@@ -91,7 +93,23 @@ export async function runStep(io: WorkerIO) {
     provider = { ...provider, returned_model: parsed.model, provider: parsed.provider ?? 'UNKNOWN', generation_id: parsed.id,
       usage: parsed.usage ?? { status: 'UNKNOWN' }, reservation_id: reservation.reservation_id };
     if (!parsed.model || !parsed.id || parsed.choices?.[0]?.finish_reason !== 'stop') throw new StepError('provider_completion_incomplete');
-    if (parsed.model !== MODEL || String(parsed.provider ?? '').toLowerCase() !== 'openai') throw new StepError('provider_identity_requires_requalification');
+    if (parsed.model !== MODEL) throw new StepError('provider_identity_requires_requalification');
+    // Completion responses need not include a provider. Recover the actual provider
+    // from this generation's documented metadata, never infer it from requested routing.
+    if (!parsed.provider) {
+      const metadata = await io.fetch(`https://openrouter.ai/api/v1/generation?id=${encodeURIComponent(parsed.id)}`, {
+        headers: { Authorization: `Bearer ${providerKey}` }, signal: AbortSignal.timeout(10000),
+      });
+      const metadataRaw = await metadata.text();
+      provider = { ...provider, generation_metadata_raw: metadataRaw, generation_metadata_status: metadata.status };
+      if (!metadata.ok) throw new StepError('provider_provenance_unavailable');
+      const generation = JSON.parse(metadataRaw).data;
+      if (generation?.id !== parsed.id || generation.model !== parsed.model
+        || typeof generation.provider_name !== 'string' || !generation.provider_name) throw new StepError('provider_identity_requires_requalification');
+      provider = { ...provider, provider: generation.provider_name, generation_metadata: generation,
+        provider_identity_basis: 'generation_metadata' };
+    } else provider = { ...provider, provider_identity_basis: 'completion_response' };
+    if (String(provider.provider).toLowerCase() !== 'openai') throw new StepError('provider_identity_requires_requalification');
     const content = parsed.choices[0].message?.content;
     if (typeof content !== 'string') throw new StepError('provider_output_missing');
     const carriers = new Map<string, string>([[lease.source.carrier_id, lease.source.text]]);

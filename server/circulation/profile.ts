@@ -1,6 +1,9 @@
 import { z } from 'zod';
 
 export const MODEL = 'openai/gpt-4o-mini-2024-07-18';
+export const EMBEDDING_MODEL = 'Supabase/gte-small';
+export const EMBEDDING_PROMPT = 'gte-small 384 dimensions; mean pooling; normalized; no semantic verdict';
+export const EMBEDDING_SCHEMA = { dimensions: 384, model: EMBEDDING_MODEL };
 const text = z.string().min(1);
 const uuid = z.string().uuid();
 const verdict = z.enum(['SATISFIED', 'UNSATISFIED', 'UNKNOWN']);

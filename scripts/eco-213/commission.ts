@@ -2,13 +2,14 @@ import {createHash,randomUUID} from 'node:crypto';
 import {readFile,writeFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
 import {z} from 'zod';
-import {MODEL,instructions,schemas} from '../../server/circulation/profile.js';
+import {MODEL,EMBEDDING_MODEL,EMBEDDING_PROMPT,EMBEDDING_SCHEMA,instructions,schemas} from '../../server/circulation/profile.js';
 export const LEGACY_IDS=[
  'b6420c79-34f7-494e-8f25-18bc7d92a63a','779f84ef-f3a4-4c61-b712-a6ed78f80e83','6d686eb0-619a-48b4-8b30-fb72a71e2082',
  '9cb62145-7042-491a-bdf1-8f2c406447ac','aab4816f-4445-438b-82fb-06157287c2e4','7fc2aae6-0e17-4565-a40e-2722d69591ca',
  '8bf88173-1582-41b2-8d70-9853657b8164','cc356b5a-40b0-44f2-ad0a-1910957723f3',
 ];
 const SOURCE_FILES=['server.ts','server/circulation/profile.ts','server/circulation/tools.ts','server/circulation/worker.ts',
+ 'package.json','package-lock.json',
  'api/circulation/run.ts','sql/migrations/20260930155729_eco213_circulation_native.sql',
  'sql/migrations/20260930155734_eco213_circulation_execution.sql','sql/migrations/20260930165122_eco213_circulation_scheduler.sql'];
 const sha=(text:string)=>createHash('sha256').update(text).digest('hex');
@@ -26,11 +27,12 @@ const configSchema=z.strictObject({
 });
 export function makeCommission(input:unknown,exported:{origin:string;frozen_at:string;export_basis:unknown;rows:Record<string,unknown>[]}){
  const c=configSchema.parse(input);const expected=new Set(LEGACY_IDS);
+ const corpus_operations=Object.fromEntries(LEGACY_IDS.map(id=>[id,randomUUID()]));
  if(exported.origin!=='legacy:lqbrzoicorehwidkdhoi'||exported.rows.length!==8)throw new Error('frozen_cohort_mismatch');
  const items=exported.rows.map(row=>{
   if(!expected.delete(String(row.id))||!['id','content','original_content','metadata','source_id','status','created_at','updated_at'].every(k=>k in row)
    ||typeof row.content!=='string'||!(typeof row.original_content==='string'||row.original_content===null))throw new Error('frozen_envelope_mismatch');
-  return {id:String(row.id),digest:sha(JSON.stringify(row))};
+  return {id:String(row.id),digest:sha(JSON.stringify(row)),operation_id:corpus_operations[String(row.id)]};
  });if(expected.size)throw new Error('frozen_cohort_missing');
  const issued=new Date(c.issued_at),expires=new Date(issued.getTime()+48*60*60*1000);
  if(!Number.isFinite(issued.getTime()))throw new Error('time_basis_invalid');
@@ -49,11 +51,11 @@ export function makeCommission(input:unknown,exported:{origin:string;frozen_at:s
   const stage=kind==='embed'?null:kind;
   const configuration=kind==='differentiate'||kind==='reinspect'?{assessment_mechanism_id:ids.assess,embedding_mechanism_id:ids.embed}
    :kind==='assess'?{composition_mechanism_id:ids.compose}:kind==='compose'?{embedding_mechanism_id:ids.embed}:{};
-  const prompt=stage?instructions[stage]:'gte-small 384 dimensions; mean pooling; normalized; no semantic verdict';
-  const schema=stage?z.toJSONSchema(schemas[stage]):{dimensions:384,model:'Supabase/gte-small'};
+  const prompt=stage?instructions[stage]:EMBEDDING_PROMPT;
+  const schema=stage?z.toJSONSchema(schemas[stage]):EMBEDDING_SCHEMA;
   sql.push(`insert into ecb_circulation.mechanism_editions(id,kind,code_digest,prompt_digest,schema_digest,model,config,qualification)
    values('${ids[kind]}',${quote(kind)},${quote(c.code_digest)},${quote(sha(prompt))},${quote(sha(JSON.stringify(schema)))},
-   ${quote(stage?MODEL:'Supabase/gte-small')},${json(configuration)},${json(c.qualification)});`);
+   ${quote(stage?MODEL:EMBEDDING_MODEL)},${json(configuration)},${json(c.qualification)});`);
  }
  for(const [name,frame,question,use]of [
  ['capture_work','fresh UTF-8 captures','What did the source actually report, and what remains unknown?','trusted capture and revisitable source account'],
@@ -63,7 +65,8 @@ export function makeCommission(input:unknown,exported:{origin:string;frozen_at:s
   values('${ids[name]}','${c.launch_artifact_id}','${ids.revision}','bounded circulation participant','raw custody versus recoverable situated use',
   'initial released cohort; no authority widening','trusted capture, cold participation and corpus assimilation',${quote(frame)},${quote(question)},${quote(use)},
   '{"issue":"ECO-213","phase":"Move","enclosing":"ECO-207"}','ECO-213 launch and evidence receipt',${quote(c.actors[0])});`);
-  for(const [artifact,role]of [[c.launch_artifact_id,'launch source; historical exclusions superseded'],[c.requirements_artifact_id,'integrated governing requirements']])
+  for(const [artifact,role]of [[c.launch_artifact_id,'launch source; historical exclusions superseded'],[c.requirements_artifact_id,'integrated governing requirements'],
+   ...(name==='corpus_work'?[[c.frozen_export_artifact_id,'exact frozen source package; preservation is not semantic qualification']]:[])])
    sql.push(`insert into ecb_circulation.work_parts(work_id,constituent_id,role) values('${ids[name]}','${artifact}',${quote(role)});`);
  }
  sql.push(`insert into ecb_circulation.corpus_editions(id,manifest_carrier_id,digest,origin,expected_count,frozen_at,export_basis)
@@ -74,6 +77,7 @@ export function makeCommission(input:unknown,exported:{origin:string;frozen_at:s
  values('${ids.revision}',${quote(c.worker_url)},'${c.vault_secret_id}',false,${json({commit:c.qualified_commit,code_digest:c.code_digest,status:'requires_hosted_proof'})});`);
  sql.push('commit;');
  return {target:'vezxivrvhakclxuvxzso',status:'DORMANT PLAN; not installed or activated',ids,manifest,sql:sql.join('\n'),
+  corpus_operations,
   host_bindings:{ECB_CIRCULATION_ENABLED:'false',ECB_CIRCULATION_DEFAULT_WORK_ID:ids.capture_work,ECB_CIRCULATION_DEFAULT_MECHANISM_ID:ids.differentiate,
    ECB_CIRCULATION_CODE_DIGEST:c.code_digest},
   missing_custody:[...(!c.worker_key_sha256?['worker credential hash']:[]),...(!c.vault_secret_id?['Vault secret identity']:[]),
