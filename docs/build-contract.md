@@ -38,6 +38,18 @@ Separate harvesting from rebuilding.
 
 Reopen the build boundary when a real vertical slice cannot be implemented without violating an invariant, repeatedly reconstructing a distinction that has clearly earned persistence, or leaving a ratified mechanically decidable architectural obligation dependent on discretionary reasoning.
 
+## Principal observable first design direction
+
+Principal direction, 30 September 2026, integrated through [trusted participation requirements](../research/semantic-circulation/2026-09-30-Trusted-Participation-Requirements-and-Session-Integration.md).
+
+Begin substantial realization design from the magical fully idealistic end-state observables and their governing purpose. Derive backward from constitutive requirements and forward from current substrate, accepted contracts and use evidence simultaneously. Converge on a coherent realization; do not make implementation size the objective or defer settled load-bearing responsibilities until isolated components fail.
+
+The Greenfield bootstrap envelope positively favors integrity-preserving replacement and restructuring while present external consequences are cheap and recoverable. Architectural debt counts as present cost even when its operational consequences arrive later. Identify actual authority, effect, recovery and external dependencies; boundedness governs those conditions independently of required architectural breadth.
+
+For recursive semantic circulation, the result must support trusted capture, minimally contextualized worker participation and active corpus assimilation through the same substrate. Every observation or measurement used downstream must carry or explicitly bind its situating information, with known unknowns retained. The thing–situation reciprocity proposal remains a hypothesis for ordinary-case qualification; no new universal primitive or full-core proof is adopted.
+
+These directives refine design/implementation decisions. They do not release a successor Move, database migration, provider change or production promotion. Existing governing distinctions and proof limits remain.
+
 ## Register B — bounded learning through action
 
 Principal-authorized disposition, 2026-09-15. Provenance and scope:
