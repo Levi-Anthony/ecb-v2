@@ -1,3 +1,11 @@
+## Current capture contract and trusted participation requirements
+
+30 September 2026. The connected ECB-v2-BRAIN capture interface may advertise only content, source and captured_at, but the native server also requires **operation_id**, a stable operation UUID (universally unique identifier). Supply that field when calling through code mode; this same connected path accepted it in live use. Generate the identifier once per intended capture, retain it before dispatch and reuse it for an identical retry. Identical replay returned the same Thought; conflicting reuse returned operation_conflict. Do not report capture as blocked merely because the advertised schema omits the field. The advertised schema still needs correction on its owning connection surface; no server safeguard was removed.
+
+Read the full tool-content error as well as adapter metadata: the adapter labeled an operation_conflict as INVALID_ARGUMENT. The three-operation connected capture surface also trims surrounding text whitespace. A plain document capture lost its final LF newline. For byte-sensitive source custody, preserve an explicit reversible representation and record any normalization; do not call a normalized copy byte-exact. The session receipt records both this observation and an exactly recovered JSON-encoded source document.
+
+The Principal's current requirement is a coherent semantic-circulation realization serving **trusted capture, cold-worker participation, and active corpus assimilation**. Every observation or measurement needs explicit situating information. Start with the magical observable and derive simultaneously top-down and bottom-up; bound actual exposure independently of architecture breadth. See [requirements and integration](research/semantic-circulation/2026-09-30-Trusted-Participation-Requirements-and-Session-Integration.md) and [custody and reentry receipt](research/semantic-circulation/2026-09-30-Custody-and-Reentry-Receipt.md). These updates do not install the capability or release production/schema work.
+
 STATUS: ACTIVE  
 DISPOSITION: PROJECTION  
 ROLE: Universal repo entry point  
