@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {Client,StreamableHTTPClientTransport} from '@modelcontextprotocol/client';
+import {recoverCorpusInputs,corpusRequests} from '../../scripts/eco-213/assimilate.js';
 
 // No work, corpus, mechanism or source identifiers are supplied to this process.
 // It receives a cue, the loopback ordinary endpoint and a RECOVER-only credential.
@@ -34,6 +35,9 @@ try{
   if(m.export_artifact_id===sourcePart.constituent_id){corpus=c;manifest=m;break;}
  }
  assert.ok(corpus);assert.equal(corpus.preserved_items,8);assert.equal(manifest.items.length,8);
+ const hydrated=await recoverCorpusInputs(call);
+ assert.equal(hydrated.plan.ids.corpus_work,work.id);
+ assert.deepEqual(corpusRequests(hydrated.plan,hydrated.exported).map(x=>x.operation_id),manifest.items.map((x:any)=>x.operation_id));
  const processing=await call('inspect_processing',{work_id:work.id});assert.equal(processing.processing.length,8);
  assert.ok(processing.processing.every((p:any)=>p.status==='pending'));
  assert.equal(recovered.use_bindings.length,0);

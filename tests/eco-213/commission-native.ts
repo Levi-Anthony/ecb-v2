@@ -25,6 +25,11 @@ try{
  assert.deepEqual(stored.items,plan.manifest.items);
  assert.equal(new Set(stored.items.map((i:any)=>i.operation_id)).size,8);
  console.log('PASS rendered commission executes natively; exact source/operation/mechanism editions remain dormant');
+ const prepared=await artifact(JSON.stringify({type:'eco213-native-dormant-commission-v3',corpus_work_id:plan.ids.corpus_work,
+  revision_id:plan.ids.revision,corpus_id:plan.ids.corpus,mechanisms:{differentiate:plan.ids.differentiate},
+  host_bindings:plan.host_bindings,compiled_source_manifest:{code_digest:manifest.code_digest}}));
+ await db.query('insert into ecb_circulation.work_parts(work_id,constituent_id,role) values($1,$2,$3)',
+  [plan.ids.corpus_work,prepared,'prepared circulation commission; selection must be explicitly revalidated']);
  // The preceding native storage suite has commissioned this disposable key.
  // A standalone run may commission it; an unexpected existing key is a failure.
  const runtimeKey='constructed-ordinary-test-key-at-least-32-bytes';
