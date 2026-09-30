@@ -64,7 +64,7 @@ export function makeCommission(input:unknown,exported:{origin:string;frozen_at:s
   sql.push(`insert into ecb_circulation.work_accounts(id,focal_id,remit_revision_id,point_of_view,noticed_contrast,boundary,orientation,frame,question,intended_use,process_coordinate,return_route,created_by)
   values('${ids[name]}','${c.launch_artifact_id}','${ids.revision}','bounded circulation participant','raw custody versus recoverable situated use',
   'initial released cohort; no authority widening','trusted capture, cold participation and corpus assimilation',${quote(frame)},${quote(question)},${quote(use)},
-  '{"issue":"ECO-213","phase":"Move","enclosing":"ECO-207"}','ECO-213 launch and evidence receipt',${quote(c.actors[0])});`);
+  '{"issue":"ECO-213","phase":"Move","enclosing":"ECO-207"}','ECO-213 launch and evidence receipt',current_user);`);
   for(const [artifact,role]of [[c.launch_artifact_id,'launch source; historical exclusions superseded'],[c.requirements_artifact_id,'integrated governing requirements'],
    ...(name==='corpus_work'?[[c.frozen_export_artifact_id,'exact frozen source package; preservation is not semantic qualification']]:[])])
    sql.push(`insert into ecb_circulation.work_parts(work_id,constituent_id,role) values('${ids[name]}','${artifact}',${quote(role)});`);
