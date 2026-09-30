@@ -9,6 +9,7 @@ import {
 } from '@modelcontextprotocol/server';
 import { Hono } from 'hono';
 import { z } from 'zod';
+import { registerCirculationTools } from './server/circulation/tools.js';
 
 const SUPABASE_URL = 'https://vezxivrvhakclxuvxzso.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_4mAxzOfWinJcn-98szUEYA_Wh88UdPW';
@@ -279,6 +280,19 @@ async function rpc<T>(name: string, body: Record<string, unknown>, fallback: Fai
   return JSON.parse(text) as T;
 }
 
+async function circulationDispatch(operation: string, payload: Record<string, unknown>, actor: string): Promise<unknown> {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/eco213_dispatch`, {
+    method: 'POST', headers: rpcHeaders(),
+    body: JSON.stringify({ p_operation: operation, p_payload: payload, p_actor: actor }),
+  });
+  const body = await response.text();
+  if (!response.ok) {
+    const code = body.match(/eco213_[a-z_]+/)?.[0] ?? 'eco213_operation_failed';
+    throw new Error(code);
+  }
+  return body ? JSON.parse(body) : null;
+}
+
 let embeddingPipeline: Promise<EmbeddingModel> | null = null;
 
 async function getEmbeddingPipeline(): Promise<EmbeddingModel> {
@@ -407,15 +421,30 @@ const runtime = {
     capturedAt?: string;
     producerContext?: string;
     parentReceiptId?: string;
+    actor?: string;
+    processingMode?: 'trusted' | 'raw_only';
   }) {
-    const data = await rpc<unknown[]>('ecb11_capture_thought', {
+    let processing: unknown = { admission: 'not_requested', existing_continuation: 'UNKNOWN' };
+    const args = {
       p_operation_id: input.operationId,
       p_content: input.content,
       p_source: input.source,
       p_captured_at: input.capturedAt ?? null,
       p_producer_context: input.producerContext ?? null,
       p_parent_operation_id: input.parentReceiptId ?? null,
-    }, 'persistence_failed');
+    };
+    let data: unknown[];
+    if (process.env.ECB_CIRCULATION_ENABLED === 'true' && input.processingMode !== 'raw_only') {
+      if (!input.actor) throw new Error('eco213_actor_missing');
+      const trusted = await circulationDispatch('trusted_capture', {
+        operation_id: input.operationId, content: input.content, source: input.source,
+        captured_at: input.capturedAt ?? null, producer_context: input.producerContext ?? null,
+        parent_receipt_id: input.parentReceiptId ?? null,
+        work_id: requiredEnv('ECB_CIRCULATION_DEFAULT_WORK_ID'),
+        mechanism_id: requiredEnv('ECB_CIRCULATION_DIFFERENTIATION_MECHANISM_ID'),
+      }, input.actor) as { capture: Record<string, unknown>; processing: unknown };
+      data = [trusted.capture]; processing = trusted.processing;
+    } else data = await rpc<unknown[]>('ecb11_capture_thought', args, 'persistence_failed');
     const row = Array.isArray(data) ? data[0] as Record<string, unknown> | undefined : undefined;
     if (!row) throw new BrainOperationError('persistence_failed');
     const thought: Thought = {
@@ -438,6 +467,7 @@ const runtime = {
       disposition: current.disposition,
       projection: current.projection,
       representation,
+      processing,
     };
   },
 
@@ -544,7 +574,7 @@ function buildServer(): McpServer {
   server.registerTool('capture_thought', {
     title: 'Capture Thought',
     description:
-      'Transfer custody of one atomic evidence Thought under a stable operation UUID. Optional producer_context and parent_receipt_id preserve known encounter provenance without granting standing or triggering qualification. A neutral active disposition and explicit HOLD projection are established automatically without invoking a planner.',
+      'Preserve exact Thought custody under a stable operation UUID. When circulation is commissioned, default trusted mode atomically admits bounded processing under its separate service remit. raw_only preserves without commissioning continuation. Custody, admission and semantic success are separately reported; no standing is granted.',
     annotations: {
       readOnlyHint: false,
       destructiveHint: false,
@@ -559,8 +589,9 @@ function buildServer(): McpServer {
       captured_at: z.string().datetime({ offset: true }).optional(),
       producer_context: z.string().min(1).optional(),
       parent_receipt_id: z.string().uuid().optional(),
+      processing_mode: z.enum(['trusted', 'raw_only']).optional(),
     },
-  }, async ({ operation_id, content, source, captured_at, producer_context, parent_receipt_id }) => {
+  }, async ({ operation_id, content, source, captured_at, producer_context, parent_receipt_id, processing_mode }, context) => {
     try {
       return result(await runtime.capture({
         operationId: operation_id,
@@ -569,11 +600,17 @@ function buildServer(): McpServer {
         capturedAt: captured_at,
         producerContext: producer_context,
         parentReceiptId: parent_receipt_id,
+        actor: context.http?.authInfo?.clientId,
+        processingMode: processing_mode,
       }));
     } catch (error) {
       return operationFailure(error, 'capture_failed');
     }
   });
+
+  if (process.env.ECB_CIRCULATION_ENABLED === 'true') {
+    registerCirculationTools(server, { check: capabilityCheck, dispatch: circulationDispatch, embed });
+  }
 
   server.registerTool('search', {
     title: 'Search Thoughts',
