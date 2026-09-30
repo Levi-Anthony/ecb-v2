@@ -1,5 +1,7 @@
 > **ECO-213 MOVE CLOSED — 30 September 2026:** Recursive semantic circulation's implementation Move is closed by Principal instruction at the qualified, dormant installation checkpoint. [Closure, exact evidence and reentry](eco-213-implementation.md) preserves the candidate and source/operation identities. [ECO-214 — hosted binding and twelve initial-use obligations](https://linear.app/ecos-ops/issue/ECO-214/qualification-hosted-use-semantic-circulation-scoped-host-binding) now carries the target-local provider/Vercel custody boundary and all twelve full hosted-use obligations. ECO-213 is closed / Done; earlier Move / Working, Shape / Review and no-installation status statements below are historical.
 
+> **ECO-215 METABOLIZE FORWARD RETURN — 30 September 2026:** [Semantic-circulation consequence assimilation](../research/semantic-circulation/ECO-215-Metabolize-Forward-Shaping-Return-2026-09-30.md) preserves evidence standing and supplies sixteen receiver-specific shaping packets. ECO-216 (host-binding dependency Sense) and ECO-217 (first-use situations and semantic falsifiers Sense) are prepared / Todo. ECO-214 retains all twelve hosted-use obligations; receiver phases and effects remain separately governed.
+
 STATUS: BUILD-BOUNDARY READY  
 DISPOSITION: GOVERNING  
 VERSION: v0.5  

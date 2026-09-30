@@ -4,6 +4,10 @@ ECO-213 is recursive semantic circulation: source differentiation, bidirectional
 
 Current phase: **Move closed — 30 September 2026, by Principal instruction**. Result: implemented, isolated-qualified native storage and a prepared commission installed dormant on the actual v2 target. [ECO-214 — hosted binding and twelve initial-use obligations](https://linear.app/ecos-ops/issue/ECO-214/qualification-hosted-use-semantic-circulation-scoped-host-binding) retains the hosted ordinary/worker execution and complete initial-use qualification. The existing forward-release boundaries and original remit expiry remain recorded; closure supplies no semantic qualification result.
 
+## Metabolize and forward-shaping return
+
+ECO-215, the subsequent semantic-circulation Metabolize phase commissioned by the Principal, assimilates the implementation consequences into standing, currentness, constituent fate and receiving decisions. [Full forward-shaping return](../research/semantic-circulation/ECO-215-Metabolize-Forward-Shaping-Return-2026-09-30.md) carries sixteen contextual packets plus ECO-216 (host-binding dependency Sense) and ECO-217 (first-use situations and semantic falsifiers Sense), both prepared / Todo. ECO-214 continues to own all twelve full hosted-use obligations. Read the Metabolize completion receipt for propagation and native-source capture evidence; these packets do not promote receiver phases or semantic standing.
+
 ## Move closure and handoff
 
 The Principal's instruction **“Close Move”**, received 30 September 2026 at 13:07 America/Phoenix, closes this implementation phase at its actual custody boundary. It does not alter the constitutive design or cancel the twelve use obligations. The linked follow-up is Todo under ECO-207, the tri-axial core generalization / portable-descent parent, which remains open.
