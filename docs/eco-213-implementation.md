@@ -12,9 +12,11 @@ Current phase: **Move**. The native storage layer and a dormant initial commissi
 | Execution | Vercel `prj_oevToBKwqj7yHjyQCHs5zevegWCM`, Node 24, `/api/circulation/run`; fixed OpenRouter model `openai/gpt-4o-mini-2024-07-18`; local gte-small 384-dimensional embedding | Implemented; encrypted scoped worker credential exists in target Vault, disabled; provider/host bindings absent |
 | Dispatch and observation | Logged pgmq 1.5.1 queue `eco213`; native lease/fence/outcome/reservation ledger; private pg_cron/pg_net wake and independent observer functions | Queue installed and empty; scheduler disabled, pg_cron/pg_net not enabled; liveness basis UNKNOWN |
 
-The exact code source manifest digest is `12b8faffbf15a776227941a58a344fff984a9b2b238fbc9235d62803fbe1d2c9`. Compiled prompt/schema editions are stored as native mechanisms. Source, interpretation, Claim standing, current use, capability and authority remain separate.
+The exact code source manifest digest is `2323e7d9f13b8bf74aa3e31fe686b79a97fa6bc81a67d52061aa1adeb93c2ff7`. Compiled prompt/schema editions are stored as native mechanisms. Source, interpretation, Claim standing, current use, capability and authority remain separate.
 
-The qualified runtime/storage source was preserved in commits `b53c2c67adab656abb32c36f9950f5c4651ff860` and `60b47c97106f0b066d3ff41e2bd18ea15d5699dd` on [PR #102](https://github.com/Levi-Anthony/ecb-v2/pull/102). A concurrent branch increment `a04434ee7cbd6478a610ecdd9fd668bf3983f6fc` strengthens provider provenance and adds replay-safe corpus commissioning. Its changes are preserved; its qualified compiled edition must be seated explicitly before hosted use. Installed dormant storage/initial method identities remain the exact earlier manifest until that receipt is recorded. Main predecessor is `822aac4951110097768b388f18a5a268baf29243`; exact ECO-212 donor `94e291174f48bf2c3648f75be9df5dd7a332639f` is consumed as code. Its independent credential/install qualification is not inherited.
+The compiled runtime/storage edition is commit `ae71cc6f3224b13a42e9dc37225fd25d790fd07e`, qualified in [native CI run 36765325607](https://github.com/Levi-Anthony/ecb-v2/actions/runs/36765325607) on [PR #102](https://github.com/Levi-Anthony/ecb-v2/pull/102). The other four affected workflows passed. Main predecessor is `822aac4951110097768b388f18a5a268baf29243`; exact ECO-212 donor `94e291174f48bf2c3648f75be9df5dd7a332639f` is consumed as code. Its independent credential/install qualification is not inherited.
+
+Cold recovery now exposes the retained Work parts. The Work epoch includes the immutable constituent records; fetch/traverse expose their edges, and the worker receives their references with that epoch. Admission captures a situated Work digest. Lease, reservation and commit deny changed/missing Work bases; stale queued work is blocked without dispatch. Reusing a Work ID with different parts conflicts. Prepared commission recovery follows explicit immutable receipt succession; forks, cycles and independent selections block rather than selecting by time or model novelty.
 
 ## Permitted effects and current commission
 
@@ -29,16 +31,18 @@ The dormant remit revision is `56cee722-0e87-43a1-8b8e-bc39e0c26e0d`, expiring *
 | Capture work | `261b8039-4f53-40ed-adc3-8f13b6d96af1` |
 | Corpus work | `83984cde-d6f2-40f9-8144-eb8b4a4c35bb` |
 | Corpus edition | `01587ce8-b0e3-42b3-812d-e2bc47565356` |
-| Differentiate mechanism | `cabce962-516f-4343-93e1-b00ba9b61d5a` |
-| Reinspect mechanism | `1f525911-da8a-4a1b-84ec-831bb1c33e34` |
-| Assessment mechanism | `af663607-b248-4f4f-b942-f65c4fe603fc` |
-| Composition mechanism | `87ad6bf0-3282-4b58-9d9b-7f60db2cafb8` |
-| Embedding mechanism | `0286da82-4bba-47f4-83b8-1773759aff2b` |
-| Current private commission receipt | `bca47d45-af00-4812-8639-c3b88b36bf7f` |
+| Differentiate mechanism | `b3bc442d-7106-4026-94f7-f23dbc062a67` |
+| Reinspect mechanism | `d20cb441-5a0a-47a8-8403-599f8affc5e5` |
+| Assessment mechanism | `2735dcd9-f386-4537-adae-a724166d11cc` |
+| Composition mechanism | `94230e55-c790-401f-8842-6812a6081e37` |
+| Embedding mechanism | `fc5728ff-72b5-4aad-9e99-cbc6909b9401` |
+| Current private commission receipt | `064c6aba-2d08-464a-866a-c98c53142788` |
 
 The initial custodian seed assigned the prospective cold actor to `created_by`. Successor work records correct creation to the authenticated database role, retain the original records and explicit reseating lineage, and are the bindings above. No active use existed during the correction.
 
 Repository helper `scripts/eco-213/commission.ts` renders a complete dormant commission from the exact export and current compiled source. Use the already installed commission above for this cohort; do not blindly render/reseed a duplicate. The manifest retains one operation UUID per source for the first ordinary admission/replay.
+
+Once the scoped ordinary endpoint and participant credential are actually bound, `scripts/eco-213/assimilate.ts --recover PRIVATE_REPORT_JSON` obtains the exact prepared plan and full export through ordinary discovery/fetch; source/work/mechanism IDs need no manual handoff. It validates all eight requests before dispatch, rechecks the live remit and compiled edition, admits with retained operation IDs, and stops an ambiguous transport outcome with exact replay recovery. Source admission is recorded separately from semantic assimilation.
 
 ## Source custody and recovery package
 
@@ -52,13 +56,13 @@ Repository helper `scripts/eco-213/commission.ts` renders a complete dormant com
 
 Library identity: `libfile_a116354e7954819187adeb4edd8a8ebe`, file `file_00000000b97081fb90d31a3365c63e3a`, `ECO-213-implementation-launch.md`, version 0. Its original exclusion language remains historical source; the present Principal release supersedes it. Durable v2 custody is verified; no Library-only promotion debt remains.
 
-Installed migration ledger: `20260930175619 eco213_circulation_native`, `20260930175622 eco213_circulation_execution`, `20260930175624 eco213_circulation_scheduler`. These are the host-issued installation versions for the qualified repository SQL editions; do not reapply the repository files to this host.
+Installed migration ledger: `20260930175619 eco213_circulation_native`, `20260930175622 eco213_circulation_execution`, `20260930175624 eco213_circulation_scheduler`, `20260930184536 eco213_recovery_source_parts`, `20260930192513 eco213_work_context`. These are the host-issued installation versions for the qualified repository SQL editions; do not reapply the repository files to this host.
 
 Normal recovery: disable the exact remit and worker credential, disable scheduler dispatch, remove/disable hosted circulation activation, preserve all sources, attempts, reservations, outcomes, lineages and receipts. Keep the independent observer where available; its stopped basis expires visibly. Preserve additive storage dormant or repair forward. Do not drop queues, purge records or overwrite history to simulate rollback. A prior runtime restores routing only. Refresh the exact host/alias binding before any runtime promotion or recovery; the historical observed baseline alone is insufficient.
 
 ## Qualification and initial use
 
-[ECO-213 native CI run](https://github.com/Levi-Anthony/ecb-v2/actions/runs/36755721142) actually executed **32 native PostgreSQL controls, 11 inherited MCP controls, 3 cold-entry controls, 14 worker controls, and 1 commission renderer control**, with TypeScript checking. The other four affected CI workflows also passed. Fixtures/mocked IO are explicitly constructed; the corpus is inspected, not blind.
+[ECO-213 native CI run](https://github.com/Levi-Anthony/ecb-v2/actions/runs/36765325607) actually executed **33 native PostgreSQL controls, 11 inherited MCP controls, 3 cold protocol controls, 18 worker controls, 1 commission renderer control and 6 corpus/recovery controls**, with TypeScript checking. It also executed the rendered commission in native PostgreSQL, eight-envelope admission/replay, and two fresh-process cold recovery runs (active and revoked remits) over real ordinary HTTP backed by guarded SQL as anon. RECOVER-only participants were denied transition. The other four affected CI workflows passed. These are disposable, constructed tests; they do not establish hosted ordinary use or provider semantic adequacy. Fixtures/mocked IO are explicitly constructed; the corpus is inspected, not blind.
 
 Controls cover atomic custody/admission and rollback; stable replay/conflict; no ordinary table/queue access; distinct worker identity; leases/fences; aggregate budget; exact anchors/participants; lexical fallback and stale-vector degradation; typed Evidence with unchanged Thought digest; incomplete semantic coverage denial; separate composition/current-use; two-sided review and blocking UNKNOWN; stale/mixed/revoked bases; a real two-session use race; ambiguous crash redelivery; late evidence without effect commit; situated salt/tare/instrument and recurrence distinctions; complete envelope replay; independent observation and dormant scheduling; deployed code/prompt/schema binding.
 
@@ -77,6 +81,8 @@ The twelve complete initial-use obligations remain open:
 10. failed output/mechanism as focal, explicit repair and self-amendment denial;
 11. independent reuse versus repeated capture;
 12. hosted restart, activation disable and preserved history.
+
+Retained predecessor function/Work/receipt custody for the Work-context repair is Artifact `8538bb5e-a003-4ad4-91fa-0dc5de1dce0d`, SHA-256 `35e5e61aa8a9ccdeebfbf47a238a68724e3c49bf8c972c833b9f40cbf666efe4`. Current commission receipt SHA-256 is `b68aae918149f8111db719d4a2debed5af1c709e31a4bfaa85183c1533ccf55d`; it explicitly supersedes `d7dc8f3b-c25c-4dda-a419-e01d853f2055`. The prior mechanisms, receipts and source records remain inspectable. No expiry extension, budget reset or activation accompanied these forward repairs.
 
 A structurally valid exact quotation can still support a false description. Provider assessment and independent fresh-use evidence are required. No semantic adequacy, retrieval uplift or installed ordinary/worker use is claimed from these deterministic controls.
 
