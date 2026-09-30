@@ -334,6 +334,8 @@ as $$ declare a ecb_circulation.activities; w ecb_circulation.work_accounts; s e
   select * into strict s from ecb_circulation.source_occurrences where id=p_source;
   select * into strict m from ecb_circulation.mechanism_editions where id=p_mechanism;
   perform ecb_circulation.assert_remit(w.remit_revision_id,p_actor,s.origin,s.locator,'process');
+  if p_predecessor is not null and not exists(select 1 from ecb_circulation.activities prior where prior.id=p_predecessor
+    and (prior.work_id=w.id or prior.work_id=w.predecessor_id)) then raise exception 'eco213_predecessor_scope_denied';end if;
   d:=ecb_circulation.sha(jsonb_build_array(p_work,p_source,p_mechanism,p_actor,p_predecessor)::text);
   perform pg_advisory_xact_lock(hashtextextended(p_operation::text,213));
   select * into a from ecb_circulation.activities where operation_id=p_operation;
@@ -341,6 +343,8 @@ as $$ declare a ecb_circulation.activities; w ecb_circulation.work_accounts; s e
   insert into ecb_circulation.activities(id,operation_id,request_digest,work_id,source_id,mechanism_id,predecessor_id,kind,actor)
     values(v,p_operation,d,p_work,p_source,p_mechanism,p_predecessor,m.kind,p_actor);
   insert into ecb_circulation.activity_inputs(activity_id,subject_id,digest,role) values(v,s.id,s.digest,'source');
+  if p_predecessor is not null then insert into ecb_circulation.activity_inputs(activity_id,subject_id,digest,role)
+    values(v,p_predecessor,ecb_circulation.referent_digest(p_predecessor),'predecessor activity');end if;
   select pgmq.send('eco213',jsonb_build_object('activity_id',v)) into msg;
   insert into ecb_circulation.processing_heads(activity_id,message_id,status) values(v,msg,'pending'); return v;
 end $$;

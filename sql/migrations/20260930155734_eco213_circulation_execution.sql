@@ -100,15 +100,29 @@ as $$ declare c ecb_circulation.execution_credentials; msg record; a ecb_circula
     select * into strict s from ecb_circulation.source_occurrences where id=a.source_id;
     if w.remit_revision_id<>c.remit_revision_id then perform pgmq.set_vt('eco213',msg.msg_id,60);return jsonb_build_object('status','scope_mismatch');end if;
     perform ecb_circulation.assert_remit(c.remit_revision_id,c.worker,s.origin,s.locator,'execute');
+    -- A crashed reserved attempt has an unknown external outcome, not automatic retry authority.
+    if h.status='leased' and h.lease_until<=clock_timestamp()
+      and exists(select 1 from ecb_circulation.spend_reservations where attempt_id=h.attempt_id)
+      and not exists(select 1 from ecb_circulation.attempt_outcomes where attempt_id=h.attempt_id) then
+      insert into ecb_circulation.attempt_outcomes(attempt_id,outcome,failure_code,raw_carrier_id,provider_basis)
+        values(h.attempt_id,'failed','provider_outcome_ambiguous',ecb_circulation.artifact(''),
+          jsonb_build_object('dispatch','UNKNOWN','outcome','UNKNOWN','reservation_retained',true,'automatic_regeneration',false));
+      update ecb_circulation.processing_heads set status='blocked',failure_code='provider_outcome_ambiguous',lease_until=null where activity_id=a.id;
+      perform pgmq.archive('eco213',msg.msg_id);
+      return jsonb_build_object('status','blocked','activity_id',a.id,'failure_code','provider_outcome_ambiguous');
+    end if;
     select * into strict m from ecb_circulation.mechanism_editions where id=a.mechanism_id;
     h.fence:=h.fence+1;h.lease_until:=clock_timestamp()+interval '120 seconds';
     insert into ecb_circulation.attempts(id,activity_id,fence,executor,role,started_at,lease_until)
       values(t,a.id,h.fence,c.worker,'scheduled_executor',clock_timestamp(),h.lease_until);
     update ecb_circulation.processing_heads set status='leased',fence=h.fence,attempt_id=t,lease_until=h.lease_until where activity_id=a.id;
-    select count(*) into total from ecb_circulation.activity_outputs where activity_id in(select id from ecb_circulation.activities where work_id=w.id);
+    select count(*) into total from ecb_circulation.activity_outputs where activity_id in(select id from ecb_circulation.activities
+      where (work_id=w.id or work_id=w.predecessor_id) and (source_id=s.id or id=a.predecessor_id));
     select coalesce(jsonb_agg(to_jsonb(x)),'[]') into ctx from
       (select o.*,ecb_circulation.carrier_text(o.carrier_id) as bundle from ecb_circulation.activity_outputs o
-       join ecb_circulation.activities aa on aa.id=o.activity_id where aa.work_id=w.id order by o.created_at,o.id limit 60) x;
+       join ecb_circulation.activities aa on aa.id=o.activity_id
+       where (aa.work_id=w.id or aa.work_id=w.predecessor_id) and (aa.source_id=s.id or aa.id=a.predecessor_id)
+       order by o.created_at desc,o.id limit 60) x;
     select coalesce(jsonb_agg(to_jsonb(x)),'[]') into subjects from
       (select distinct on(subject_id) subject_id,basis_digest,content from ecb_circulation.semantic_representations where work_id=w.id order by subject_id,created_at desc limit 60)x;
     select coalesce(jsonb_agg(to_jsonb(x)),'[]') into missing from
@@ -198,6 +212,11 @@ as $$ declare a ecb_circulation.activities;s ecb_circulation.source_occurrences;
     continuation:=nullif(m.config->>'assessment_mechanism_id','')::uuid;
   elsif a.kind='assess' then
     if p_bundle->>'verdict' not in ('SATISFIED','UNSATISFIED','UNKNOWN') then raise exception 'eco213_assessment_invalid';end if;
+    if jsonb_typeof(p_bundle->'coverage') is distinct from 'object'
+      or not (p_bundle->'coverage') ?& array['participants','modality','polarity','conditions','attribution','dependencies']
+      or (select count(*) from jsonb_object_keys(p_bundle->'coverage'))<>6
+      or exists(select 1 from jsonb_each_text(p_bundle->'coverage') where value not in ('SATISFIED','UNSATISFIED','UNKNOWN'))
+      or jsonb_typeof(p_bundle->'unresolved') is distinct from 'array' then raise exception 'eco213_assessment_coverage_missing';end if;
     if p_bundle->>'verdict'='SATISFIED' then
       if exists(select 1 from jsonb_each_text(p_bundle->'coverage') where value<>'SATISFIED')
         or jsonb_array_length(p_bundle->'unresolved')>0 then raise exception 'eco213_assessment_false_satisfied';end if;
@@ -216,6 +235,8 @@ as $$ declare a ecb_circulation.activities;s ecb_circulation.source_occurrences;
         values(ca,rid,item->>'reason',ecb_circulation.referent_digest(rid));
     end loop;
     if p_bundle->>'predecessor_id' is not null then
+      if not exists(select 1 from ecb_circulation.composition_accounts prior where prior.id=(p_bundle->>'predecessor_id')::uuid
+        and prior.focal_id=w.focal_id and (prior.work_id=w.id or prior.work_id=w.predecessor_id)) then raise exception 'eco213_lineage_scope_denied';end if;
       insert into ecb_circulation.account_lineage(predecessor_id,successor_id,activity_id,relation,reason)
         values((p_bundle->>'predecessor_id')::uuid,ca,a.id,p_bundle->>'lineage_relation',p_bundle->>'lineage_reason');
     end if;
@@ -230,6 +251,8 @@ as $$ declare a ecb_circulation.activities;s ecb_circulation.source_occurrences;
     end loop;
   end if;
   if p_bundle->>'repairs_output_id' is not null then
+    if not exists(select 1 from ecb_circulation.activity_outputs prior join ecb_circulation.activities aa on aa.id=prior.activity_id
+      where prior.id=(p_bundle->>'repairs_output_id')::uuid and (aa.work_id=w.id or aa.work_id=w.predecessor_id)) then raise exception 'eco213_lineage_scope_denied';end if;
     insert into ecb_circulation.account_lineage(predecessor_id,successor_id,activity_id,relation,reason)
       values((p_bundle->>'repairs_output_id')::uuid,o.id,a.id,'repair',p_bundle->>'repair_reason');
   end if;
@@ -274,7 +297,8 @@ as $$ declare v jsonb;begin
     'work',coalesce((select jsonb_agg(to_jsonb(w)||jsonb_build_object('epoch',ecb_circulation.sha(to_jsonb(w)::text))) from ecb_circulation.work_accounts w where p_work is null or w.id=p_work),'[]'),
     'mechanisms',coalesce((select jsonb_agg(to_jsonb(m)) from ecb_circulation.mechanism_editions m),'[]'),
     'processing',coalesce((select jsonb_agg(to_jsonb(h)||jsonb_build_object('activity',to_jsonb(a),'lease_expired',h.lease_until<=clock_timestamp(),
-      'attempts',(select jsonb_agg(to_jsonb(t)||jsonb_build_object('outcome',(select to_jsonb(o) from ecb_circulation.attempt_outcomes o where o.attempt_id=t.id))) from ecb_circulation.attempts t where t.activity_id=a.id)))
+      'attempts',(select jsonb_agg(to_jsonb(t)||jsonb_build_object('outcome',(select to_jsonb(o) from ecb_circulation.attempt_outcomes o where o.attempt_id=t.id),
+        'evidence_observations',(select jsonb_agg(to_jsonb(e)) from ecb_circulation.attempt_observations e where e.attempt_id=t.id))) from ecb_circulation.attempts t where t.activity_id=a.id)))
       from ecb_circulation.activities a join ecb_circulation.processing_heads h on h.activity_id=a.id where p_work is null or a.work_id=p_work),'[]'),
     'use_bindings',coalesce((select jsonb_agg(to_jsonb(h)||jsonb_build_object('assessment',to_jsonb(a),'basis_current',
       a.work_epoch=ecb_circulation.sha(to_jsonb(w)::text) and a.verdict='SATISFIED'
@@ -361,11 +385,15 @@ as $$ declare p jsonb:=p_payload; w ecb_circulation.work_accounts; s ecb_circula
       'participants',(select jsonb_agg(to_jsonb(c)) from ecb_circulation.unit_participants c where unit_id=record_id or subject_id=record_id),
       'discovery_limit','Encountered native edges are not complete destination discovery or world truth.');
   elsif p_operation='search_structure' then
-    select count(distinct subject_id),count(distinct subject_id) filter(where vector is not null) into total,represented from ecb_circulation.semantic_representations;
-    with latest as (select distinct on(subject_id) * from ecb_circulation.semantic_representations order by subject_id,created_at desc,id desc),
+    select count(distinct (subject_id,work_id)),count(distinct (subject_id,work_id)) filter(where vector is not null
+      and basis_digest=ecb_circulation.referent_digest(subject_id)) into total,represented from ecb_circulation.semantic_representations
+      where p->>'work_id' is null or work_id=(p->>'work_id')::uuid;
+    with latest as (select distinct on(subject_id,work_id) * from ecb_circulation.semantic_representations order by subject_id,work_id,created_at desc,id desc),
       matches as (select subject_id,work_id,basis_digest,edition,content,model,vector is not null as vector_ready,
+        basis_digest=ecb_circulation.referent_digest(subject_id) as basis_current,
         ts_rank(lexical,plainto_tsquery('simple',coalesce(p->>'query',''))) as lexical_rank,
-        case when p->'query_embedding' is not null and p->'query_embedding'<>'null' and vector is not null then 1-(vector OPERATOR(extensions.<=>) (p->'query_embedding')::text::extensions.vector) else null end as semantic_similarity
+        case when p->'query_embedding' is not null and p->'query_embedding'<>'null' and vector is not null
+          and basis_digest=ecb_circulation.referent_digest(subject_id) then 1-(vector OPERATOR(extensions.<=>) (p->'query_embedding')::text::extensions.vector) else null end as semantic_similarity
       from latest where (p->>'work_id' is null or work_id=(p->>'work_id')::uuid))
     select coalesce(jsonb_agg(to_jsonb(x)),'[]') into v from (select * from matches where lexical_rank>0 or semantic_similarity is not null
       order by coalesce(semantic_similarity,0)+lexical_rank desc,subject_id limit least(greatest(coalesce((p->>'limit')::int,10),1),50)) x;

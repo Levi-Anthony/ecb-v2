@@ -56,4 +56,5 @@ jobs:
           node tests/eco-213/storage.mjs
           npm run test:mcp
           npm run typecheck:circulation
+          node --import tsx tests/eco-213/protocol.test.ts
           node --import tsx tests/eco-213/worker.test.ts

@@ -25,7 +25,10 @@ export async function runStep(io: WorkerIO) {
       method: 'POST', headers: { apikey: PUBLISHABLE_KEY, 'content-type': 'application/json', 'x-eco213-worker-key': key! },
       body: JSON.stringify(payload), signal: AbortSignal.timeout(15000),
     });
-    if (!response.ok) throw new StepError('worker_rpc_failed');
+    if (!response.ok) {
+      const code=(await response.text()).match(/eco213_[a-z_]+/)?.[0] ?? 'worker_rpc_failed';
+      throw new StepError(code);
+    }
     return response.json();
   }
   const lease = await rpc('eco213_lease');
@@ -94,7 +97,11 @@ export async function runStep(io: WorkerIO) {
     const timeout = error instanceof Error && (error.name === 'TimeoutError' || error.name === 'AbortError');
     const code = error instanceof StepError ? error.code : timeout ? 'provider_outcome_ambiguous' : 'output_validation_failed';
     // Timeout/unknown external outcome is retained; it never authorizes immediate regeneration.
-    return await rpc('eco213_fail', { ...basis, p_code: code, p_transient: error instanceof StepError && error.transient,
-      p_provider: provider });
+    try {
+      return await rpc('eco213_fail', { ...basis, p_code: code, p_transient: error instanceof StepError && error.transient, p_provider: provider });
+    } catch {
+      // Evidence preservation grants no late commit or retry authority.
+      return await rpc('eco213_preserve_attempt', { ...basis, p_code: code, p_provider: provider });
+    }
   }
 }

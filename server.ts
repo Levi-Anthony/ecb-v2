@@ -9,7 +9,7 @@ import {
 } from '@modelcontextprotocol/server';
 import { Hono } from 'hono';
 import { z } from 'zod';
-import { registerCirculationTools } from './server/circulation/tools.js';
+import { contracts as circulationContracts, registerCirculationTools } from './server/circulation/tools.js';
 
 const SUPABASE_URL = 'https://vezxivrvhakclxuvxzso.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_4mAxzOfWinJcn-98szUEYA_Wh88UdPW';
@@ -155,7 +155,8 @@ function logFailure(code: string, error: unknown): void {
 }
 
 function operationFailure(error: unknown, fallback: FailureCode) {
-  const code = error instanceof BrainOperationError ? error.code : fallback;
+  const message = error instanceof Error ? error.message : '';
+  const code = error instanceof BrainOperationError ? error.code : /^eco213_[a-z_]+$/.test(message) ? message : fallback;
   logFailure(code, error);
   return failure(code);
 }
@@ -768,6 +769,7 @@ app.get('/', (context) => context.json({
     'set_thought_disposition',
     'create_artifact',
     'fetch_artifact',
+    ...(process.env.ECB_CIRCULATION_ENABLED === 'true' ? Object.keys(circulationContracts) : []),
   ],
   provider_admin_credentials_required: false,
 }));

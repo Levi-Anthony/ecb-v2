@@ -109,3 +109,14 @@ test('blocking semantic UNKNOWN cannot be labeled satisfied', () => {
 test('unrecognized fields cannot silently widen mechanism output', () => {
   assert.throws(() => validateOutput('differentiate', { ...bundle, policy_override: true }, new Map([[carrier, source]])));
 });
+
+test('late commit and failure rejection retain provider evidence without retry',async()=>{
+ const h=harness();const fetcher=(async(url:string|URL|Request,init?:RequestInit)=>{
+  if(String(url).endsWith('eco213_finish')||String(url).endsWith('eco213_fail')) return new Response('constructed fence rejection',{status:409});
+  if(String(url).endsWith('eco213_preserve_attempt')){
+   assert.ok(JSON.parse(String(init?.body)).p_provider.raw_output);return Response.json({status:'evidence_preserved',effect_committed:false});
+  }return h.fetcher(url,init);
+ }) as typeof fetch;
+ assert.equal((await runStep({env:h.env,fetch:fetcher})).effect_committed,false);
+ assert.equal(h.calls.filter(x=>x.url.endsWith('/chat/completions')).length,1);
+});

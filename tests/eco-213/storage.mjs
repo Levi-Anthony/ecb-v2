@@ -72,7 +72,7 @@ try {
     await rejects(()=>lease(),'worker_unauthorized');await query("select set_config('request.headers',$1,false)",[JSON.stringify(headers)]);
   });
   await check('lease persists attempt, scope, source and advancing fence',async()=>{l=await lease();assert.equal(l.status,'leased');assert.equal(l.fence,1);assert.equal(l.source.text,input.content);assert.equal(l.work.id,ids.work);});
-  await check('budget reservation is single-use and overspend is denied',async()=>{
+  await check('budget reservation is single-use; changed retry conflicts',async()=>{
     assert.equal((await reserve(l)).dispatch_permitted,true);assert.equal((await reserve(l)).dispatch_permitted,false);
     await rejects(()=>reserve(l,3),'reservation_conflict');
   });
@@ -111,8 +111,12 @@ try {
     await query('select pgmq.set_vt(\'eco213\',(select message_id from ecb_circulation.processing_heads where activity_id=$1),0)',[a.activity.id]);
     await rejects(()=>finish(a,{verdict:'UNKNOWN'}),'stale_fence');
     const resumed=await lease();assert.ok(resumed.fence>a.fence);await rejects(()=>finish(a,{verdict:'UNKNOWN'}),'stale_fence');
+    await check('aggregate remit budget denies a new attempt',()=>rejects(()=>reserve(resumed,3),'budget_denied'));
     await reserve(resumed);
-    await finish(resumed,{verdict:'UNSATISFIED',coverage:{participants:'UNSATISFIED',modality:'UNKNOWN',conditions:'UNKNOWN'},findings:['constructed semantic rejection'],unresolved:['needs repair']});
+    await check('partial semantic coverage cannot certify satisfaction',()=>rejects(()=>finish(resumed,
+      {verdict:'SATISFIED',coverage:{participants:'SATISFIED'},findings:[],unresolved:[],limitations:[]}), 'assessment_coverage_missing'));
+    await finish(resumed,{verdict:'UNSATISFIED',coverage:{participants:'UNSATISFIED',modality:'UNKNOWN',polarity:'UNKNOWN',conditions:'UNKNOWN',
+      attribution:'UNKNOWN',dependencies:'UNKNOWN'},findings:['constructed semantic rejection'],unresolved:['needs repair'],limitations:['constructed']});
     assert.equal((await one('select count(*)::int as n from ecb_circulation.composition_accounts')).n,0);
   });
   let composed;
@@ -145,10 +149,19 @@ try {
     assert.equal((await dispatch('recover_work',{work_id:ids.work})).use_bindings[0].basis_current,true);
     await rejects(()=>dispatch('reconcile_use',{...binding,operation_id:randomUUID()}),'use_predecessor_conflict');
   });
-  await check('same Claim standing with changed evidence history invalidates reliance',async()=>{
+  await check('same standing with changed evidence history invalidates reliance and vector coverage',async()=>{
+    const lexical=await one('select * from ecb_circulation.semantic_representations where subject_id=$1 limit 1',[claim.id]);
+    const vector=Array.from({length:384},(_,i)=>i===0?1:0);
+    await query(`insert into ecb_circulation.semantic_representations(subject_id,work_id,basis_digest,edition,content,vector,model)
+      values($1,$2,$3,$4,$5,$6::extensions.vector,'gte-small')`,[claim.id,ids.work,lexical.basis_digest,'constructed-vector',lexical.content,JSON.stringify(vector)]);
+    const before=(await dispatch('search_structure',{query:'Jennifer',work_id:ids.work,query_embedding:vector})).coverage.represented_subjects;
+    assert.ok(before>=1);
     const evidence=await artifact('CONSTRUCTED additional evidence history; no standing transition.');await query('insert into public.evidence_links(claim_id,evidence_referent_id) values($1,$2)',[claim.id,evidence]);
     assert.equal((await one('select epistemic_standing from public.claims where id=$1',[claim.id])).epistemic_standing,'unassessed');
     assert.equal((await dispatch('recover_work',{work_id:ids.work})).use_bindings[0].basis_current,false);
+    const after=await dispatch('search_structure',{query:'Jennifer',work_id:ids.work,query_embedding:vector});
+    assert.equal(after.coverage.represented_subjects,before-1);
+    const stale=after.results.find(x=>x.subject_id===claim.id);assert.equal(stale.basis_current,false);assert.equal(stale.semantic_similarity,null);
   });
   await check('alternative composition keeps focal identity and explicit lineage',async()=>{
     const alt=structuredClone(composeArgs);alt.operation_id=randomUUID();alt.bundle.predecessor_id=composed.id;alt.bundle.lineage_relation='alternative';alt.bundle.lineage_reason='changed organizing account at same focal identity';alt.bundle.account='CONSTRUCTED alternative account';
@@ -190,11 +203,41 @@ try {
       }finally{await Promise.all([a.end(),b.end()]);}
     });
   } else console.log('NOT RUN native concurrent sessions — supplementary WASM cannot qualify concurrency');
+  let ambiguousAttempt;
+  await check('crash after reservation blocks ambiguous regeneration on redelivery',async()=>{
+    const first=await lease();ambiguousAttempt=first;assert.equal(first.status,'leased');await reserve(first);
+    await query("update ecb_circulation.processing_heads set lease_until=clock_timestamp()-interval '1 second' where activity_id=$1",[first.activity.id]);
+    await one("select pgmq.set_vt('eco213',(select message_id from ecb_circulation.processing_heads where activity_id=$1),0)",[first.activity.id]);
+    const retry=await lease();assert.equal(retry.status,'blocked');assert.equal(retry.failure_code,'provider_outcome_ambiguous');
+    assert.equal((await one('select count(*)::int as n from ecb_circulation.attempts where activity_id=$1',[first.activity.id])).n,1);
+    assert.equal((await one('select provider_basis from ecb_circulation.attempt_outcomes where attempt_id=$1',[first.attempt_id])).provider_basis.automatic_regeneration,false);
+  });
   await check('revocation disables worker effect while custody/recovery/history survive',async()=>{
     await query('update ecb_circulation.remit_heads set enabled=false where remit_id=$1',[ids.remit]);await rejects(()=>lease(),'remit_inactive');
     const r=await dispatch('recover_work',{work_id:ids.work});assert.equal(r.remits[0].enabled,false);assert.ok(r.processing.length>0);
     assert.equal((await dispatch('fetch_referent',{referent_id:captured.capture.thought_id})).thought.content,input.content);
     assert.equal(r.use_bindings[0].basis_current,false);
+  });
+  await check('late evidence survives remit revocation without committing an effect',async()=>{
+    const evidence={raw_output:'CONSTRUCTED late provider response',generation_id:'constructed-late'};
+    const args=[ambiguousAttempt.attempt_id,ambiguousAttempt.fence,'provider_outcome_ambiguous',JSON.stringify(evidence)];
+    const saved=(await one('select public.eco213_preserve_attempt($1,$2,$3,$4::jsonb) as r',args)).r;
+    assert.equal(saved.status,'evidence_preserved');assert.equal(saved.effect_committed,false);
+    assert.equal((await one('select public.eco213_preserve_attempt($1,$2,$3,$4::jsonb) as r',args)).r.observation_id,saved.observation_id);
+    const foreign=[ambiguousAttempt.attempt_id,ambiguousAttempt.fence+1,'provider_outcome_ambiguous',JSON.stringify(evidence)];
+    await rejects(()=>one('select public.eco213_preserve_attempt($1,$2,$3,$4::jsonb)',foreign),'attempt_evidence_scope_denied');
+    const r=await dispatch('inspect_processing',{work_id:ids.work});
+    assert.ok(r.processing.flatMap(x=>x.attempts??[]).some(x=>(x.evidence_observations??[]).length===1));
+    await query('update ecb_circulation.execution_credentials set enabled=false where worker=$1',[executor]);
+    await rejects(()=>one('select public.eco213_preserve_attempt($1,$2,$3,$4::jsonb)',args),'worker_unauthorized');
+  });
+  await check('independent observer persists expiry and wake defaults dormant',async()=>{
+    const observed=(await one('select ecb_circulation.observe() as r')).r;
+    assert.ok(['DUE_WORK','NO_DUE_WORK','OVERDUE_WORK','STALE_WORKER'].includes(observed.state));
+    assert.equal((await dispatch('inspect_processing',{work_id:ids.work})).liveness.observation_basis,'CURRENT');
+    await one('select ecb_circulation.wake()');
+    assert.equal((await one("select count(*)::int as n from ecb_circulation.liveness_observations where event='dispatch'")).n,0);
+    await rejects(()=>one('select ecb_circulation.set_scheduler(true)'),'scheduler_extension_requires_requalification');
   });
   console.log(JSON.stringify({passed,failed:0,evidence:supplemental?'SUPPLEMENTARY WASM with SHA256 shim; no native/concurrency qualification':'NATIVE disposable PG; deterministic controls only, no provider/live recipe qualification'}));
 } finally { await client.end(); }
