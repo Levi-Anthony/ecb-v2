@@ -1,0 +1,90 @@
+{
+  "qualified_commit": "ae71cc6f3224b13a42e9dc37225fd25d790fd07e",
+  "qualification_run": "https://github.com/Levi-Anthony/ecb-v2/actions/runs/36765325607",
+  "source_manifest": {
+    "entries": [
+      {
+        "path": "api/circulation/run.ts",
+        "digest": "2a9aae829b11f43badd7fb6dc486c0550e6d21c70a305a5476bc5838969b02b3"
+      },
+      {
+        "path": "package-lock.json",
+        "digest": "613b57429cfbdc9e62f81773bbb09b0a0f1ee5e2532449e75ad30af5bbcfbaa8"
+      },
+      {
+        "path": "package.json",
+        "digest": "87acc22f3c225fa6ac781699c3def4a0b0583c4e48cd8e0fc522d98d23ef44d3"
+      },
+      {
+        "path": "server.ts",
+        "digest": "52b1059cc4ed12a0c3d0b3d4c56d3c3b8e3e57ef0733ba32f0f1062083860c04"
+      },
+      {
+        "path": "server/circulation/profile.ts",
+        "digest": "9d46ef0a1b8be377c9f2d8ac5672a9482ce9a06028e4929cb8ea85709c1fd800"
+      },
+      {
+        "path": "server/circulation/tools.ts",
+        "digest": "c062cfdcd17f9188623f7d4cdf9a28618ec8b1fc5ce115691dad5ef3167dd06f"
+      },
+      {
+        "path": "server/circulation/worker.ts",
+        "digest": "ca0f9728ebfb5456ee53097831e29a33a13b47dd593ed0a8f26fdf177570c379"
+      },
+      {
+        "path": "sql/migrations/20260930155729_eco213_circulation_native.sql",
+        "digest": "a243319cda5734331c526ced93e8ea06966dbd47b484cf80f913a27031e197a0"
+      },
+      {
+        "path": "sql/migrations/20260930155734_eco213_circulation_execution.sql",
+        "digest": "a94e1f4d92afc36067ccf29de0eb160930ed36fd7eb9d337c74a9bfa7dd2c8f4"
+      },
+      {
+        "path": "sql/migrations/20260930165122_eco213_circulation_scheduler.sql",
+        "digest": "13eea12ecdfd3b9ce0c46ab0ba3535411a9a7a2be125b79a2365e1a9a5c34f9a"
+      },
+      {
+        "path": "sql/migrations/20260930183100_eco213_recovery_source_parts.sql",
+        "digest": "03506dec6180291f8fc37df391a4427c4ce2105d3eba900c68d995401423af5e"
+      },
+      {
+        "path": "sql/migrations/20260930191330_eco213_work_context.sql",
+        "digest": "03125dab814958a36d62636d693d2ed14d53ba4c4be533fe5d5fe345c48f5561"
+      }
+    ],
+    "code_digest": "2323e7d9f13b8bf74aa3e31fe686b79a97fa6bc81a67d52061aa1adeb93c2ff7"
+  },
+  "model": "openai/gpt-4o-mini-2024-07-18",
+  "qualification_scope": "compiled code/prompt/schema identity; not provider adequacy or hosted installation",
+  "editions": {
+    "differentiate": {
+      "prompt_digest": "78a38b7406b85b18bc27ea3331c8f82fe11e23d49cefb0e8776c0ba11a445518",
+      "schema_digest": "6c9d768ed7a29d76ca8d73d6222c647775d4ca30d5b745f8fd80dfcd3f995c10",
+      "model": "openai/gpt-4o-mini-2024-07-18"
+    },
+    "reinspect": {
+      "prompt_digest": "7468e60255ad997ed1a945a63bfcc0f7ac0f2116affe403df69b03feb485b514",
+      "schema_digest": "6c9d768ed7a29d76ca8d73d6222c647775d4ca30d5b745f8fd80dfcd3f995c10",
+      "model": "openai/gpt-4o-mini-2024-07-18"
+    },
+    "assess": {
+      "prompt_digest": "6b14e300b47a09a2bb3fd16b7f852a6b76d23dc4d090ff06a55c67c0d0e06ae8",
+      "schema_digest": "4b0475977e0870bd6fd9f42d0b974061c023d4f200a3e4b02b04f6eddc0333cf",
+      "model": "openai/gpt-4o-mini-2024-07-18"
+    },
+    "compose": {
+      "prompt_digest": "cc074a64a669eaaebd9d058991aa016c1fc034e2b5d5e3620ad4d1c52c96414d",
+      "schema_digest": "113ee390e9b8189ce36c2c33a2dac1c34c7f238ebf61eccc30ed494b989b5354",
+      "model": "openai/gpt-4o-mini-2024-07-18"
+    },
+    "embed": {
+      "prompt_digest": "bc46a280b9037650080f4078c1c6ae19347e68c7fe3b3e5d517699fc401e7280",
+      "schema_digest": "9ab4f94f8b4f4fe119c8671b40d2f8f433c09d0f16d49f4d337189c293196db7",
+      "model": "Supabase/gte-small"
+    }
+  },
+  "native_commission_artifact": "064c6aba-2d08-464a-866a-c98c53142788",
+  "native_commission_digest": "b68aae918149f8111db719d4a2debed5af1c709e31a4bfaa85183c1533ccf55d",
+  "installation": "INSTALLED_DORMANT",
+  "initial_use": "HOSTED_AND_PROVIDER_OBLIGATIONS_OPEN"
+}

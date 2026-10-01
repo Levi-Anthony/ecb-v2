@@ -1,0 +1,67 @@
+name: ECO-213 native circulation qualification
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'server.ts'
+      - 'server/circulation/**'
+      - 'api/circulation/**'
+      - 'sql/migrations/*eco213*'
+      - 'tests/eco-213/**'
+      - 'scripts/eco-213/**'
+      - 'package*.json'
+      - '.github/workflows/eco-213-circulation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.2-pg17
+        env:
+          POSTGRES_USER: custodian
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports: ['55439:5432']
+        options: >-
+          --health-cmd "pg_isready -U custodian -d postgres"
+          --health-interval 5s --health-timeout 5s --health-retries 20
+    env:
+      BUILD6_DISPOSABLE: 'YES'
+      BUILD6_DATABASE_URL: postgresql://custodian@127.0.0.1:55439/build6
+      ECO213_TEST_DATABASE_URL: postgresql://postgres@127.0.0.1:55439/build6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts
+      - name: Install exact pure-SQL pgmq 1.5.1 distribution
+        env:
+          PG_CONTAINER: ${{ job.services.postgres.id }}
+        run: |
+          set -euo pipefail
+          git clone https://github.com/pgmq/pgmq.git /tmp/pgmq
+          git -C /tmp/pgmq checkout 7fd411d8ffd53b5313039f59167124c861d46430
+          extension_dir=$(docker exec "$PG_CONTAINER" pg_config --sharedir)/extension
+          docker cp /tmp/pgmq/pgmq-extension/pgmq.control "$PG_CONTAINER:$extension_dir/pgmq.control"
+          docker cp /tmp/pgmq/pgmq-extension/sql/pgmq.sql "$PG_CONTAINER:$extension_dir/pgmq--1.5.1.sql"
+      - name: Reconstruct installed public predecessor
+        run: |
+          bash tests/build-6/ci-reconstruct-build5b.sh
+          node tests/eco-213/install.mjs
+      - name: Deterministic native controls and inherited protocol
+        run: |
+          node tests/eco-213/storage.mjs
+          npm run test:mcp
+          npm run typecheck:circulation
+          node --import tsx tests/eco-213/protocol.test.ts
+          node --import tsx tests/eco-213/worker.test.ts
+          node --import tsx tests/eco-213/commission.test.ts
+          node --import tsx tests/eco-213/assimilate.test.ts
+          node --import tsx tests/eco-213/commission-native.ts
+
+      - name: Public compiled edition receipt
+        run: node --import tsx scripts/eco-213/edition-receipt.ts
