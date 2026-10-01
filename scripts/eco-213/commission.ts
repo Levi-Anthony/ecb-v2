@@ -80,7 +80,7 @@ export function makeCommission(input:unknown,exported:{origin:string;frozen_at:s
  sql.push('commit;');
  return {target:'vezxivrvhakclxuvxzso',status:'DORMANT PLAN; not installed or activated',ids,manifest,sql:sql.join('\n'),
   corpus_operations,
-  host_bindings:{ECB_CIRCULATION_ENABLED:'false',ECB_CIRCULATION_DEFAULT_WORK_ID:ids.capture_work,ECB_CIRCULATION_DEFAULT_MECHANISM_ID:ids.differentiate,
+  host_bindings:{ECB_CIRCULATION_ENABLED:'false',ECB_CIRCULATION_DEFAULT_WORK_ID:ids.capture_work,ECB_CIRCULATION_DIFFERENTIATION_MECHANISM_ID:ids.differentiate,
    ECB_CIRCULATION_CODE_DIGEST:c.code_digest},
   missing_custody:[...(!c.worker_key_sha256?['worker credential hash']:[]),...(!c.vault_secret_id?['Vault secret identity']:[]),
    ...(!c.worker_url?['verified exact hosted worker URL']:[]),'target-local circulation provider credential; never a legacy secret read'],

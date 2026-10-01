@@ -1,6 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {randomUUID} from 'node:crypto';
+import {randomUUID,createHash} from 'node:crypto';
+import {Client,StreamableHTTPClientTransport} from '@modelcontextprotocol/client';
+import app from '../../server.ts';
 import {makeCommission,LEGACY_IDS,sourceManifest} from '../../scripts/eco-213/commission.js';
 test('commission binds exact eight envelopes and real mechanism digests while remaining dormant',async()=>{
  const manifest=await sourceManifest();assert.match(manifest.code_digest,/^[0-9a-f]{64}$/);
@@ -14,4 +16,29 @@ test('commission binds exact eight envelopes and real mechanism digests while re
  assert.ok(p.missing_custody.includes('worker credential hash'));
  assert.throws(()=>makeCommission(c,{...exported,rows:exported.rows.slice(1)}),/cohort/);
  assert.throws(()=>makeCommission(c,{...exported,rows:exported.rows.map((r,i)=>i===0?{...r,id:randomUUID()}:r)}),/envelope/);
+ // Consume the renderer's bindings through the real ordinary capture adapter.
+ // A naming mismatch must fail here before any host or native commissioning.
+ const token='constructed-commission-compatibility';
+ const bindings={...p.host_bindings,ECB_CIRCULATION_ENABLED:'true',
+  ECB_BRAIN_KEY_SHA256:createHash('sha256').update(token).digest('hex'),ECB_ORDINARY_DB_KEY:'constructed-database-key'};
+ const names=[...Object.keys(bindings),'ECB_MCP_CAPABILITY_GRANTS'];
+ const prior=names.map(name=>process.env[name]);const savedFetch=globalThis.fetch;let dispatched=0;
+ const client=new Client({name:'constructed-commission-consumer',version:'1'});
+ try {
+  Object.assign(process.env,bindings);delete process.env.ECB_MCP_CAPABILITY_GRANTS;
+  globalThis.fetch=async(_url,init)=>{
+   const body=JSON.parse(String(init?.body));
+   assert.equal(body.p_operation,'trusted_capture');assert.equal(body.p_payload.work_id,p.ids.capture_work);
+   assert.equal(body.p_payload.mechanism_id,p.ids.differentiate);dispatched++;
+   return new Response('eco213_constructed_stop',{status:503});
+  };
+  const transport=new StreamableHTTPClientTransport(new URL('http://localhost/mcp'),{fetch:async(url,init)=>app.fetch(new Request(url,{
+   ...init,headers:{...Object.fromEntries(new Headers(init?.headers)),host:'localhost',authorization:`Bearer ${token}`}}))});
+  await client.connect(transport);
+  const stopped=await client.callTool({name:'capture_thought',arguments:{operation_id:randomUUID(),content:'CONSTRUCTED binding probe',source:'constructed'}});
+  assert.equal(stopped.isError,true);assert.equal(dispatched,1);
+ } finally {
+  await client.close();globalThis.fetch=savedFetch;
+  names.forEach((name,i)=>{if(prior[i]===undefined)delete process.env[name];else process.env[name]=prior[i];});
+ }
 });
