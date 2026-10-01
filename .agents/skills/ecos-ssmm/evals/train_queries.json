@@ -1,0 +1,14 @@
+[
+  {"query":"Run this bounded ECOS inquiry through Sense, Shape, Move, and Metabolize while preserving the authorization boundary between analysis and implementation.","should_trigger":true},
+  {"query":"The episode is activated but the team keeps jumping from first observation straight to code. Use the SSMM phase grammar to carry it to a tested disposition.","should_trigger":true},
+  {"query":"Scope and execute this experiment as a tiny SSMM: understand the failure, bound the repair, apply only the authorized change, then compare the result with the claim.","should_trigger":true},
+  {"query":"BUILD 12 Sense is open and later phases are unopened. Conduct only the active phase and return the evidence, calibrated questions, and legitimate closure condition.","should_trigger":true},
+  {"query":"We have a Shape return and explicit Move authority. Preserve the inherited boundaries during implementation and metabolize what the test actually established.","should_trigger":true},
+  {"query":"Design a nested investigation without collapsing exploration, decision, actuation, and evaluation into one answer; scale the phases to consequence.","should_trigger":true},
+  {"query":"The task is already fully specified: change the constant, run the named unit test, and stop if it passes.","should_trigger":false},
+  {"query":"Compile this finished work episode into a reentry packet for a different agent; no new inquiry or action should occur.","should_trigger":false},
+  {"query":"Determine whether the latest ADR has authority to supersede the contract and whether its evidence supports that promotion.","should_trigger":false},
+  {"query":"Preserve this single unresolved dependency question with its current effect, wake condition, and return route.","should_trigger":false},
+  {"query":"Explain what Sense, Shape, Move, and Metabolize mean in plain language; I am not asking you to run a work episode.","should_trigger":false},
+  {"query":"Schedule a nightly health check and alert me if the endpoint fails; the monitoring behavior and response are already decided.","should_trigger":false}
+]

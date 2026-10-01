@@ -1,0 +1,10 @@
+[
+  {"query":"Carry the accepted problem from evidence gathering through bounded design and authorized execution, then evaluate whether the result actually answered the original question.","should_trigger":true},
+  {"query":"Use SSMM at the smallest useful scale for this ambiguous bug so diagnosis, repair choice, code change, and post-test learning remain distinguishable.","should_trigger":true},
+  {"query":"Move is open but Move/Sense is the active unit. Investigate the implementation problem without smuggling in a repair or opening the next phase.","should_trigger":true},
+  {"query":"The last team conflated a passing command with closure. Reconstruct the episode phase boundaries and finish the missing evaluation and propagation disposition.","should_trigger":true},
+  {"query":"Apply this approved SQL migration and execute the exact verification command; all reasoning and acceptance criteria are already settled.","should_trigger":false},
+  {"query":"Create a concise reference page defining the four SSMM phase names and their usual meanings.","should_trigger":false},
+  {"query":"Audit the claim that successful persistence makes this record authoritative and current.","should_trigger":false},
+  {"query":"Package the existing decisions into a handoff for tomorrow without reopening or executing any part of the work.","should_trigger":false}
+]
