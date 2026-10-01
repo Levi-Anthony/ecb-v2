@@ -1,11 +1,11 @@
 {
-  "qualified_commit": "ae71cc6f3224b13a42e9dc37225fd25d790fd07e",
-  "qualification_run": "https://github.com/Levi-Anthony/ecb-v2/actions/runs/36765325607",
+  "qualified_commit": "b3c4947a332c3cd63df50dd27e51e592350ed66d",
+  "qualification_run": "https://github.com/Levi-Anthony/ecb-v2/actions/runs/36821587247",
   "source_manifest": {
     "entries": [
       {
         "path": "api/circulation/run.ts",
-        "digest": "2a9aae829b11f43badd7fb6dc486c0550e6d21c70a305a5476bc5838969b02b3"
+        "digest": "5b6447b6bb52450bf4a077e3ae6e8f502d5eb9ec0175d91f0408dd24fe574a10"
       },
       {
         "path": "package-lock.json",
@@ -52,7 +52,7 @@
         "digest": "03125dab814958a36d62636d693d2ed14d53ba4c4be533fe5d5fe345c48f5561"
       }
     ],
-    "code_digest": "2323e7d9f13b8bf74aa3e31fe686b79a97fa6bc81a67d52061aa1adeb93c2ff7"
+    "code_digest": "c9a949005c0cbd0bb19205059dbc0cbe0de4fe7af8f4ccca585cf3291bdf47f6"
   },
   "model": "openai/gpt-4o-mini-2024-07-18",
   "qualification_scope": "compiled code/prompt/schema identity; not provider adequacy or hosted installation",
@@ -83,8 +83,31 @@
       "model": "Supabase/gte-small"
     }
   },
-  "native_commission_artifact": "064c6aba-2d08-464a-866a-c98c53142788",
-  "native_commission_digest": "b68aae918149f8111db719d4a2debed5af1c709e31a4bfaa85183c1533ccf55d",
+  "native_commission_artifact": "bf04ea22-c44f-41b3-9c8b-03ba23f0a09b",
+  "native_commission_digest": "a242ec87a6f772ad2a8851257fd47783e92b79ca738e9c0e87e7e0e66660cee7",
   "installation": "INSTALLED_DORMANT",
-  "initial_use": "HOSTED_AND_PROVIDER_OBLIGATIONS_OPEN"
+  "initial_use": "HOSTED_DORMANT_ROUTE_CONTROLS_PASS; AUTHENTICATED_AND_PROVIDER_OBLIGATIONS_OPEN",
+  "native_mechanisms": {
+    "differentiate": "ae6c736e-3922-4beb-b6c5-5ef66215187e",
+    "reinspect": "8b91fb92-b6a8-4a72-84be-43beadba7e47",
+    "assess": "8e8c83d6-f3e1-4b78-9d3d-b32e35f7e72c",
+    "compose": "4de642f6-75f9-4771-b03a-f4102c1347eb",
+    "embed": "fab07d6c-2c44-4d6c-97c5-1fa41bf6c59c"
+  },
+  "hosted_dormant": {
+    "production_commit": "393e3646353e64c233529faf305608975a8b016a",
+    "deployment_id": "dpl_C2Ew5u9pxj6GCPRzepMoieMKwATk",
+    "worker_get": 405,
+    "worker_unauthenticated_post": 401,
+    "worker_wrong_bearer_post": 401,
+    "authenticated_dormant_worker": "NOT_RUN",
+    "authenticated_ordinary_mcp": "NOT_RUN",
+    "source_receipt": "research/semantic-circulation/2026-09-30-Greenfield-Main-Dormant-Host-Receipt.md"
+  },
+  "predecessor": {
+    "qualified_commit": "ae71cc6f3224b13a42e9dc37225fd25d790fd07e",
+    "source_digest": "2323e7d9f13b8bf74aa3e31fe686b79a97fa6bc81a67d52061aa1adeb93c2ff7",
+    "native_commission_artifact": "064c6aba-2d08-464a-866a-c98c53142788",
+    "native_commission_digest": "b68aae918149f8111db719d4a2debed5af1c709e31a4bfaa85183c1533ccf55d"
+  }
 }

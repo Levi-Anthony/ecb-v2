@@ -1,3 +1,5 @@
+> **EXECUTION ADVANCE — MAIN MERGED; REPAIRED HOST READY AND DORMANT; CUSTODY NEXT.** Principal “Go” executed the integration/consolidation direction below. [Current exact receipt](2026-09-30-Greenfield-Main-Dormant-Host-Receipt.md) supersedes pending-merge wording in this original decision record. All twelve complete first-use obligations remain open; the Greenfield direction and surviving controls are unchanged.
+
 # GREENFIELD BOOTSTRAP DISPOSITION — CONSOLIDATE BEFORE FIRST USE
 
 **Standing: CURRENT PRINCIPAL DIRECTION / SUPERSEDES PREVIEW-FIRST EXECUTION.**
