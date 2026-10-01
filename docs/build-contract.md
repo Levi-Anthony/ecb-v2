@@ -1,3 +1,7 @@
+> **CURRENT PRINCIPAL DISPOSITION — GREENFIELD: CONSOLIDATE BEFORE FIRST USE (30 September 2026, America/Phoenix).** No incumbent ECOS/circulation installation is being protected. Exploit the one-time Greenfield freedom: build coherently with integrity, compound effort/effect and prepay architectural/design debt. Complete the PR #102 integration sanity check, consolidate into designated main, bind the enduring deployment dormant, verify, then run ECO-214's bounded first-use cohort and repair forward. **Earlier branch-specific Preview / Production unchanged / hosted qualification before merge guidance is superseded for this installation route.** [Exact Principal source, changed dispositions, surviving controls and cold reentry](../research/semantic-circulation/2026-09-30-Greenfield-Bootstrap-Disposition.md).
+>
+> ECO-213's implementation Move and ECO-215's finite Metabolize remain closed; ECO-216 (host-binding Sense) and ECO-217 (first-use-basis Sense) have completed returns / Review. All twelve hosted obligations remain unrun. Original scoped custody, dormant activation, cohort, request/token/USD 2 ceilings, expiry and evidence/authority distinctions survive. This documentation update does not merge PR #102 or activate circulation. Do not ask the Principal to repeat this orientation or restore isolation without a named decision-relevant job. Lower dated records retain their observation-time standing; use the linked disposition for the current installation sequence.
+
 STATUS: BUILD-BOUNDARY READY  
 DISPOSITION: GOVERNING  
 VERSION: v0.5  
