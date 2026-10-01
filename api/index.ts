@@ -1,4 +1,4 @@
-import { getApp } from './runtime.js';
+import { getApp } from './_runtime.js';
 
 export default {
   async fetch(request: Request) {

@@ -2,7 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "git": {
     "deploymentEnabled": {
-      "move/eco-213-semantic-circulation": false
+      "move/eco-213-semantic-circulation": false,
+      "repair/eco-214-vercel-helper-discovery": false
     }
   }
 }

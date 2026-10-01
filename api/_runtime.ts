@@ -1,3 +1,4 @@
+// Shared initialization; the underscore keeps Vercel from deploying a helper route.
 import { env } from '@huggingface/transformers';
 
 env.cacheDir = '/tmp/transformers-cache';
