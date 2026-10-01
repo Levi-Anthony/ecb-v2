@@ -12,21 +12,24 @@ The first Ready production deployment exposed an actual host defect. Vercel trea
 
 [PR #103](https://github.com/Levi-Anthony/ecb-v2/pull/103) repaired the adapter with an explicit Web fetch export, matching the existing ordinary adapters, and added a regression control for method/authentication/dormant rejection with zero dispatch. Source `b3c4947a332c3cd63df50dd27e51e592350ed66d` merged at `393e3646353e64c233529faf305608975a8b016a`. All three applicable exact-head workflows passed, including [native circulation qualification](https://github.com/Levi-Anthony/ecb-v2/actions/runs/36821587247). Local circulation typecheck, 29 circulation controls and 11 ordinary MCP controls passed. The CI compiled receipt exactly matches the repaired source manifest.
 
+[PR #104](https://github.com/Levi-Anthony/ecb-v2/pull/104) then corrected the commission renderer's mechanism variable to **ECB_CIRCULATION_DIFFERENTIATION_MECHANISM_ID**, the name actually consumed by trusted capture. A constructed control consumed generated bindings through the real ordinary MCP adapter and verified its exact work/mechanism dispatch before a deliberate native/provider stop. [Exact-head native qualification](https://github.com/Levi-Anthony/ecb-v2/actions/runs/36822874378) passed at source `86d7a30958ec3d8fabba21d7a945b35d9d297ce6`; merge `6ebf32798e141f34e087449bb4080b6fb197e1a5`. The twelve-file runtime/source digest is unchanged. The misnamed prior plan was preserved and explicitly superseded by corrected receipt `8880cdfe-b3c2-40e8-a1fc-d64323b8a98a` at 2026-10-01T06:06:13.202042+00:00; both work accounts bind its successor. The previous mechanism editions remain valid because their runtime/prompt/schema bytes did not change.
+
 ## Current exact installation
 
 | Binding | Exact referent |
 | --- | --- |
-| Qualified runtime source | `b3c4947a332c3cd63df50dd27e51e592350ed66d` |
+| Qualified runtime/configuration source | `86d7a30958ec3d8fabba21d7a945b35d9d297ce6` |
 | Main runtime merge | `393e3646353e64c233529faf305608975a8b016a` |
+| Main configuration repair merge | `6ebf32798e141f34e087449bb4080b6fb197e1a5` |
 | Compiled source digest | `c9a949005c0cbd0bb19205059dbc0cbe0de4fe7af8f4ccca585cf3291bdf47f6` |
 | Ready Vercel production deployment | `dpl_C2Ew5u9pxj6GCPRzepMoieMKwATk` |
 | Immutable deployment URL | https://ecb-v2-1ech1zez5-levi-anthonys-projects.vercel.app |
 | Stable service / MCP / worker | https://ecb-v2-eight.vercel.app/api ; /api/mcp ; /api/circulation/run |
 | Vercel project | `prj_oevToBKwqj7yHjyQCHs5zevegWCM` (ecb-v2) |
 | Canonical Supabase brain | `vezxivrvhakclxuvxzso` |
-| Prepared native receipt | `bf04ea22-c44f-41b3-9c8b-03ba23f0a09b` |
-| Immutable receipt digest | `a242ec87a6f772ad2a8851257fd47783e92b79ca738e9c0e87e7e0e66660cee7` |
-| Explicit receipt predecessor | `064c6aba-2d08-464a-866a-c98c53142788` |
+| Prepared native receipt | `8880cdfe-b3c2-40e8-a1fc-d64323b8a98a` |
+| Immutable receipt digest | `00e2a9925afd8f3751968cc60889f7d7bb9bd1923d6c824b9a1f27474c77c40c` |
+| Explicit receipt predecessor | `bf04ea22-c44f-41b3-9c8b-03ba23f0a09b` |
 | Capture work / corpus work | `261b8039-4f53-40ed-adc3-8f13b6d96af1` / `83984cde-d6f2-40f9-8144-eb8b4a4c35bb` |
 | Default differentiate mechanism | `ae6c736e-3922-4beb-b6c5-5ef66215187e` |
 | Worker / remit revision | `eco213-worker-v1` / `56cee722-0e87-43a1-8b8e-bc39e0c26e0d` |
@@ -59,7 +62,7 @@ Open the ecb-v2 project's Production environment-variable editor. Bind the exist
 | ECB_CIRCULATION_ENABLED | `false` |
 | ECB_CIRCULATION_CODE_DIGEST | `c9a949005c0cbd0bb19205059dbc0cbe0de4fe7af8f4ccca585cf3291bdf47f6` |
 | ECB_CIRCULATION_DEFAULT_WORK_ID | `261b8039-4f53-40ed-adc3-8f13b6d96af1` |
-| ECB_CIRCULATION_DEFAULT_MECHANISM_ID | `ae6c736e-3922-4beb-b6c5-5ef66215187e` |
+| ECB_CIRCULATION_DIFFERENTIATION_MECHANISM_ID | `ae6c736e-3922-4beb-b6c5-5ef66215187e` |
 
 ECB_CIRCULATION_WORKER_KEY uses the existing scoped worker key; do not rotate it merely to launch. ECB_CIRCULATION_OPENROUTER_KEY is an OpenRouter inference credential, not a provider administration key. Ordinary scoped grants/authentication remain separately bound and tested. After configuration, create a fresh deployment of the same source edition, verify configured-worker fail-closed behavior and ordinary authenticated use, predeclare the ECO-217 first-use cohort, then activate only the bounded remit/worker required by ECO-214. Keep scheduler disabled until its independently verified wake step.
 

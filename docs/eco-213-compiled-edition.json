@@ -1,6 +1,6 @@
 {
-  "qualified_commit": "b3c4947a332c3cd63df50dd27e51e592350ed66d",
-  "qualification_run": "https://github.com/Levi-Anthony/ecb-v2/actions/runs/36821587247",
+  "qualified_commit": "86d7a30958ec3d8fabba21d7a945b35d9d297ce6",
+  "qualification_run": "https://github.com/Levi-Anthony/ecb-v2/actions/runs/36822874378",
   "source_manifest": {
     "entries": [
       {
@@ -83,8 +83,8 @@
       "model": "Supabase/gte-small"
     }
   },
-  "native_commission_artifact": "bf04ea22-c44f-41b3-9c8b-03ba23f0a09b",
-  "native_commission_digest": "a242ec87a6f772ad2a8851257fd47783e92b79ca738e9c0e87e7e0e66660cee7",
+  "native_commission_artifact": "8880cdfe-b3c2-40e8-a1fc-d64323b8a98a",
+  "native_commission_digest": "00e2a9925afd8f3751968cc60889f7d7bb9bd1923d6c824b9a1f27474c77c40c",
   "installation": "INSTALLED_DORMANT",
   "initial_use": "HOSTED_DORMANT_ROUTE_CONTROLS_PASS; AUTHENTICATED_AND_PROVIDER_OBLIGATIONS_OPEN",
   "native_mechanisms": {
@@ -105,9 +105,25 @@
     "source_receipt": "research/semantic-circulation/2026-09-30-Greenfield-Main-Dormant-Host-Receipt.md"
   },
   "predecessor": {
-    "qualified_commit": "ae71cc6f3224b13a42e9dc37225fd25d790fd07e",
-    "source_digest": "2323e7d9f13b8bf74aa3e31fe686b79a97fa6bc81a67d52061aa1adeb93c2ff7",
-    "native_commission_artifact": "064c6aba-2d08-464a-866a-c98c53142788",
-    "native_commission_digest": "b68aae918149f8111db719d4a2debed5af1c709e31a4bfaa85183c1533ccf55d"
+    "qualified_commit": "b3c4947a332c3cd63df50dd27e51e592350ed66d",
+    "source_digest": "c9a949005c0cbd0bb19205059dbc0cbe0de4fe7af8f4ccca585cf3291bdf47f6",
+    "native_commission_artifact": "bf04ea22-c44f-41b3-9c8b-03ba23f0a09b",
+    "native_commission_digest": "a242ec87a6f772ad2a8851257fd47783e92b79ca738e9c0e87e7e0e66660cee7"
+  },
+  "configuration_repair": {
+    "pr": "https://github.com/Levi-Anthony/ecb-v2/pull/104",
+    "qualified_source": "86d7a30958ec3d8fabba21d7a945b35d9d297ce6",
+    "main_merge": "6ebf32798e141f34e087449bb4080b6fb197e1a5",
+    "qualified_run": "https://github.com/Levi-Anthony/ecb-v2/actions/runs/36822874378",
+    "binding_name": "ECB_CIRCULATION_DIFFERENTIATION_MECHANISM_ID",
+    "superseded_binding_name": "ECB_CIRCULATION_DEFAULT_MECHANISM_ID",
+    "proof": "generated plan consumed through real ordinary MCP capture adapter; constructed stop before native/provider effects",
+    "runtime_manifest": "unchanged c9a949005c0cbd0bb19205059dbc0cbe0de4fe7af8f4ccca585cf3291bdf47f6"
+  },
+  "host_bindings": {
+    "ECB_CIRCULATION_ENABLED": "false",
+    "ECB_CIRCULATION_CODE_DIGEST": "c9a949005c0cbd0bb19205059dbc0cbe0de4fe7af8f4ccca585cf3291bdf47f6",
+    "ECB_CIRCULATION_DEFAULT_WORK_ID": "261b8039-4f53-40ed-adc3-8f13b6d96af1",
+    "ECB_CIRCULATION_DIFFERENTIATION_MECHANISM_ID": "ae6c736e-3922-4beb-b6c5-5ef66215187e"
   }
 }
