@@ -1,0 +1,69 @@
+name: Integral holonic grammar Register B qualification
+
+on:
+  pull_request:
+    paths:
+      - 'research/integral-holonic-grammar/**'
+      - 'server/integral-grammar/**'
+      - 'tests/integral-grammar/**'
+      - 'server/ingestion-experiment/**'
+      - '.github/workflows/integral-grammar-register-b.yml'
+  workflow_dispatch:
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@v4
+
+      - name: Use Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Syntax check evaluators
+        run: |
+          node --check server/integral-grammar/evaluate.mjs
+          node --check server/ingestion-experiment/core.mjs
+
+      - name: Parse contracts and fixtures
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('research/integral-holonic-grammar/grammar-v0.1.json','utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('tests/integral-grammar/fixtures.json','utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('server/ingestion-experiment/request-profile-v3.json','utf8'))"
+          node -e "JSON.parse(require('fs').readFileSync('server/ingestion-experiment/grammar-runtime-v0.1.json','utf8'))"
+
+      - name: Verify compiled runtime grammar is a literal projection of source grammar
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const source=JSON.parse(fs.readFileSync('research/integral-holonic-grammar/grammar-v0.1.json','utf8'));
+          const runtime=JSON.parse(fs.readFileSync('server/ingestion-experiment/grammar-runtime-v0.1.json','utf8'));
+          if(runtime.grammar_id!==source.grammar_id||runtime.version!==source.version) throw Error('runtime grammar identity drift');
+          for(const [key,def] of Object.entries(runtime.definitions)){
+            if(!source.definitions[key]) throw Error(`runtime definition absent from source: ${key}`);
+            for(const field of ['term','positive_definition','discriminator','standing']){
+              if(JSON.stringify(def[field])!==JSON.stringify(source.definitions[key][field])) throw Error(`runtime drift: ${key}.${field}`);
+            }
+          }
+          NODE
+
+      - name: Run semantic discriminator qualification
+        run: node --test tests/integral-grammar/qualify.test.mjs
+
+      - name: Run grammar-native ingestion boundary qualification
+        run: node --test server/ingestion-experiment/core.test.mjs
+
+      - name: Verify source-map and explicit-open seams survive
+        run: |
+          grep -q 'ECO-93 — centralized grammar / localized schema' research/integral-holonic-grammar/SOURCE_MAP.md
+          grep -q 'UL — RATIFIED' research/integral-holonic-grammar/SOURCE_MAP.md
+          grep -q 'UR / LL / LR exact current definitions' research/integral-holonic-grammar/SOURCE_MAP.md
+          grep -q 'PRINCIPAL_SHARPENING_REGISTER_B_HYPOTHESIS' research/integral-holonic-grammar/grammar-v0.1.json
+          grep -q 'REQUIRED_DEFINITION_OPEN' research/integral-holonic-grammar/grammar-v0.1.json
+          grep -q 'Line.*categorically different' research/integral-holonic-grammar/SOURCE_MAP.md
+          if grep -q 'A separately named capacity dimension' server/ingestion-experiment/request-profile-v3.json; then
+            echo 'stale Line=capacity definition leaked into v3 profile' >&2
+            exit 1
+          fi

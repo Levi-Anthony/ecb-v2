@@ -1,0 +1,154 @@
+{
+  "holoarchy": {
+    "physical_handful": {
+      "focal": "physical_handful_of_mtg_cards",
+      "required_constituents": ["hand", "cards"],
+      "required_organization": "cards_are_held_by_hand",
+      "survivors_if_focal_disappears": ["hand", "cards"],
+      "expected_status": "ASYMMETRY_OBSERVED"
+    }
+  },
+  "master_key_contrast": [
+    {
+      "master_key": "hold_as_long_as_possible",
+      "departure_mode": "played",
+      "expected": "FAILURE_RELATIVE_TO_MASTER_KEY"
+    },
+    {
+      "master_key": "play_selected_cards_effectively",
+      "departure_mode": "played",
+      "expected": "SUCCESS_POSSIBLE_RELATIVE_TO_MASTER_KEY"
+    },
+    {
+      "master_key": "play_selected_cards_effectively",
+      "departure_mode": "dropped",
+      "expected": "FAILURE_RELATIVE_TO_MASTER_KEY"
+    }
+  ],
+  "directional": {
+    "same_level_retention_improvement": {
+      "input": {
+        "same_focal_identity_continues": true,
+        "persistence_improves": true,
+        "responsive_reconfiguration": false,
+        "higher_order_organization_emerges": false,
+        "focal_organization_ceases": false
+      },
+      "expected": {
+        "preservation": "HIGH",
+        "transcendence": "LOW_OR_UNESTABLISHED"
+      }
+    },
+    "adaptive_grip": {
+      "input": {
+        "same_focal_identity_continues": true,
+        "persistence_improves": false,
+        "responsive_reconfiguration": true,
+        "higher_order_organization_emerges": false,
+        "focal_organization_ceases": false
+      },
+      "expected": {
+        "adaptation": "HIGH",
+        "transcendence": "LOW_OR_UNESTABLISHED"
+      }
+    },
+    "played_card_cross_level": {
+      "focal_hand_input": {
+        "same_focal_identity_continues": false,
+        "persistence_improves": false,
+        "responsive_reconfiguration": false,
+        "higher_order_organization_emerges": false,
+        "focal_organization_ceases": true
+      },
+      "higher_order_strategy_input": {
+        "same_focal_identity_continues": true,
+        "persistence_improves": false,
+        "responsive_reconfiguration": true,
+        "higher_order_organization_emerges": true,
+        "focal_organization_ceases": false
+      },
+      "expected_focal_dissolution": "HIGH",
+      "expected_higher_order_transcendence": "HIGH"
+    }
+  },
+  "ul": {
+    "thermostat_native": {
+      "focal_referent_id": "thermostat-A",
+      "frame_anchor_referent_id": "thermostat-A",
+      "mapper_referent_id": "ecos-worker",
+      "access_basis": "observed_device_readout_and_switching_behavior",
+      "expected_pass": true
+    },
+    "false_clairvoyance": {
+      "focal_referent_id": "person-B",
+      "frame_anchor_referent_id": "person-B",
+      "mapper_referent_id": "ecos-worker",
+      "access_basis": "mapper_direct_access_to_other_referent_ul",
+      "expected_pass": false
+    }
+  },
+  "quadrant_referent_correspondence": {
+    "same_referent": {
+      "focal_referent_id": "levi",
+      "quadrant_entries": {
+        "UL": {"referent_id": "levi"},
+        "UR": {"referent_id": "levi"},
+        "LL": {"referent_id": "levi"},
+        "LR": {"referent_id": "levi"}
+      },
+      "expected_pass": true
+    },
+    "silent_substitution": {
+      "focal_referent_id": "levi",
+      "quadrant_entries": {
+        "UL": {"referent_id": "levi"},
+        "UR": {"referent_id": "levi"},
+        "LL": {"referent_id": "levi"},
+        "LR": {"referent_id": "purelit"}
+      },
+      "expected_pass": false
+    }
+  },
+  "question_forward": {
+    "strap_boundary": {
+      "current_signal": "LOW_OR_UNESTABLISHED",
+      "question": "Does adding the strap merely increase persistence of the existing physical handful, or does it create a higher-order holding organization with capabilities unavailable to the unaided handful?",
+      "answer_detection_criteria": [
+        "identify the focal Referent and relevant holoarchic level before and after the change",
+        "test whether a new organization has its own existence dependencies",
+        "test whether the claimed new capability is more than improved same-level retention"
+      ],
+      "activation_scenario": {
+        "evidence_status": "HYPOTHETICAL_CALIBRATION",
+        "description": "A strap is added around hand and deck; the cards remain retained after grip force falls below the level at which the unaided handful would cease. The scenario is invented to discriminate improved preservation from possible higher-order emergence."
+      },
+      "reentry_trigger": "Observed or proposed change adds a persistent organizing relation whose existence-dependency test could establish a new higher-order whole.",
+      "decision_consequence": "Reclassify the change from preservation/adaptation only to a candidate transcendence event if the higher-order organization test is satisfied."
+    },
+    "invalid_bare_low_signal": {
+      "current_signal": "LOW",
+      "question": "",
+      "answer_detection_criteria": [],
+      "activation_scenario": null,
+      "reentry_trigger": "",
+      "decision_consequence": "",
+      "expected_pass": false
+    }
+  },
+  "line_independence": {
+    "witness": {
+      "before": {"operational_capability": 2, "epistemic_maturity": 2},
+      "after": {"operational_capability": 4, "epistemic_maturity": 2},
+      "line_a": "operational_capability",
+      "line_b": "epistemic_maturity",
+      "expected": "INDEPENDENCE_WITNESS"
+    },
+    "non_witness": {
+      "before": {"a": 1, "b": 1},
+      "after": {"a": 2, "b": 2},
+      "line_a": "a",
+      "line_b": "b",
+      "expected": "INDEPENDENCE_NOT_DEMONSTRATED"
+    }
+  }
+}
