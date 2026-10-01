@@ -3,10 +3,38 @@ import assert from 'node:assert/strict';
 import { randomUUID,createHash } from 'node:crypto';
 import {z} from 'zod';
 import { runStep, workerAuthorized } from '../../server/circulation/worker.js';
+import endpoint from '../../api/circulation/run.js';
 import { MODEL,EMBEDDING_MODEL,EMBEDDING_PROMPT,EMBEDDING_SCHEMA,instructions,schemas,validateOutput } from '../../server/circulation/profile.js';
 
 // All values and IO below are constructed controls, never live/provider qualification.
 const key = 'constructed-test-worker-key-with-32-bytes';
+test('hosted worker exports Web fetch and fails closed before any dispatch', async () => {
+  const savedFetch = globalThis.fetch;
+  const names = ['ECB_CIRCULATION_ENABLED', 'ECB_CIRCULATION_WORKER_KEY'] as const;
+  const saved = names.map(name => process.env[name]);
+  let dispatched = 0;
+  globalThis.fetch = async () => { dispatched++; throw new Error('unexpected dispatch'); };
+  try {
+    process.env.ECB_CIRCULATION_ENABLED = 'false';
+    delete process.env.ECB_CIRCULATION_WORKER_KEY;
+    assert.equal(typeof endpoint.fetch, 'function');
+    assert.equal((await endpoint.fetch(new Request('https://localhost/api/circulation/run'))).status, 405);
+    assert.equal((await endpoint.fetch(new Request('https://localhost/api/circulation/run', { method: 'POST' }))).status, 401);
+    process.env.ECB_CIRCULATION_WORKER_KEY = key;
+    assert.equal((await endpoint.fetch(new Request('https://localhost/api/circulation/run', {
+      method: 'POST', headers: { authorization: 'Bearer constructed-wrong-key' },
+    }))).status, 401);
+    const dormant = await endpoint.fetch(new Request('https://localhost/api/circulation/run', {
+      method: 'POST', headers: { authorization: `Bearer ${key}` },
+    }));
+    assert.equal(dormant.status, 503);
+    assert.deepEqual(await dormant.json(), { error: 'circulation_unavailable', recovery: 'inspect_processing' });
+    assert.equal(dispatched, 0);
+  } finally {
+    globalThis.fetch = savedFetch;
+    names.forEach((name, i) => { if (saved[i] === undefined) delete process.env[name]; else process.env[name] = saved[i]; });
+  }
+});
 const carrier = randomUUID();
 const source = 'Jennifer wanted me to call her back.';
 const bundle = {
