@@ -1,3 +1,5 @@
+> **ECO-136 FULL-CORE QUALIFICATION PASS — PRINCIPAL REVIEW GATE — 5 October 2026.** The integrated URG candidate passed 42/42 bounded cases with exact committed checker/matrix bytes. ECO-136 now owes explicit Principal Shape acceptance. Do not treat checker PASS as acceptance, open parent Move, close the issue, or deploy the core before that decision.
+>
 > **ECO-136 FULL-CORE SHAPE FINALIZATION — 5 October 2026.** All locked URG distinctions now have installed Register-B formal descendants. The repository contains a full-core integration candidate plus source manifest and qualification matrix under [research/urg-kernel](research/urg-kernel/README.md). If bounded qualification passes, ECO-136 must move to Review for explicit Principal Shape acceptance; do not auto-close or deploy.
 >
 > **URG TYPE — ECO-136 CONSOLIDATED MOVE — 5 October 2026.** Type is in the Principal-locked URG distinction set. Shape formalizes it as schema-indexed classification with native membership semantics preserved; it is not a universal software class system or developmental hierarchy. Qualification artifacts live under [research/urg-kernel](research/urg-kernel/README.md).

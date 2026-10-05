@@ -94,3 +94,7 @@ Qualification surfaces:
 - [check_urg_core_contract.py](./check_urg_core_contract.py)
 
 This candidate composes stable referents, typed relations, situated bases, the seven locked URG distinctions, domain-semantic descent, fidelity/transition laws, Question Forward and human/agent projection obligations. It is a Shape candidate pending bounded qualification and explicit Principal acceptance; it is not runtime installation or constitutional promotion.
+
+## Full-core Shape qualification — PASS / Principal Review required
+
+The integrated candidate passed **42 / 42** bounded structural/cold-reader cases using exact committed checker + matrix bytes. See [URG-Core-Shape-Qualification-Receipt-v1.0.md](./URG-Core-Shape-Qualification-Receipt-v1.0.md). This is evidence for ECO-136 Shape review, not self-acceptance or Move authorization.
