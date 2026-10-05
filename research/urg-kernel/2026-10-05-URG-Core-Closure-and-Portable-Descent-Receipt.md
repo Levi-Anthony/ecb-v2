@@ -8,15 +8,22 @@
 
 The Principal accepted the full-core Shape after 42/42 bounded qualification cases.
 
-Move installed the canonical portable contract package at:
+Move first installed the portable package at `b65071622e915f2140bc3ef6828fed71d9eb5e09`. A post-closure exact-source audit then exposed representation-fidelity omissions; those were repaired without semantic reopening.
 
-`b65071622e915f2140bc3ef6828fed71d9eb5e09`
+**Current canonical package:** `a253b73897b17f9080bf50097ac215beecd9d73d` / implementation revision `1.0.2`.
 
-Qualification:
-- TypeScript typecheck PASS;
-- 21/21 package tests PASS;
+Current qualification:
+- URG TypeScript typecheck PASS;
+- 38/38 URG package tests PASS;
 - 42/42 inherited full-core matrix PASS;
-- GitHub Actions run `37311482672` SUCCESS.
+- 11/11 MCP regression tests PASS;
+- 7/7 OAuth regression tests PASS;
+- 29/29 circulation regression tests PASS;
+- GitHub Actions run `37313488632` SUCCESS.
+
+Current Move evidence: `research/urg-kernel/URG-Core-Move-Receipt-v1.1.md`.
+
+The earlier green package is historical evidence, not the current implementation receipt. The correction demonstrates verification PASS != semantic completeness.
 
 Metabolize installed currentness reconciliation at:
 
@@ -79,3 +86,10 @@ Existing receiving surfaces:
 - ECO-218 — ordinary OAuth consumer access, independently authorized but still carrying real provider/human-consent obligations.
 
 No provider request, worker activation or OAuth human action is authorized by this receipt.
+
+
+## Post-closure currentness note
+
+The closure remains valid after implementation-fidelity hardening because no accepted semantic contract, authority boundary or runtime effect was reopened. Current package evidence is Move Receipt v1.1 / Manifest v1.1 at implementation revision 1.0.2.
+
+The qualification environment also reported two high-severity npm vulnerability warnings. They were not introduced or diagnosed by the URG changes; no security-clean claim is made here.

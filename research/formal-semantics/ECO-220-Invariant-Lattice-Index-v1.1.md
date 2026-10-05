@@ -20,14 +20,14 @@ Since ECO-220 closed, the axis program completed formal descendants for every Pr
 
 The full-core Shape candidate passed 42/42 bounded qualification cases and was explicitly accepted by the Principal.
 
-The accepted Shape is implemented canonically as the portable package:
+The accepted Shape is implemented canonically as the portable package at implementation revision 1.0.2 after a source-audit fidelity hardening pass:
 
 - `server/urg-core.ts`
 - `schemas/urg-core-v1.contract.json`
 
 Implementation receipt:
 
-- `research/urg-kernel/URG-Core-Move-Receipt-v1.0.md`
+- `research/urg-kernel/URG-Core-Move-Receipt-v1.1.md` (current; v1.0 retained as historical pre-hardening evidence)
 
 ## Architectural consequence
 

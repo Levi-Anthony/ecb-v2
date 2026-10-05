@@ -1,0 +1,83 @@
+{
+  "schema": "eco136-urg-core-move-manifest-v1.1",
+  "date": "2026-10-05",
+  "supersedes_for_current_evidence": "research/urg-kernel/URG-Core-Move-Manifest-v1.0.json",
+  "accepted_shape": {
+    "principal_acceptance_linear_document": "3c5e6d1f-e792-4e98-b4a1-dc6d6c51cc83",
+    "candidate_commit": "c8316ad2d91f10bdff39af1da0bde04b455e9a2f",
+    "qualification_receipt_commit": "bcd27d369b764c7f56c17f94dcc7ae5265c5022e"
+  },
+  "implementation": {
+    "revision": "1.0.2",
+    "commit": "a253b73897b17f9080bf50097ac215beecd9d73d",
+    "artifacts": [
+      {
+        "path": "server/urg-core.ts",
+        "blob": "cb1139a0b63d383d8a9883b80418811e8d23717b"
+      },
+      {
+        "path": "schemas/urg-core-v1.contract.json",
+        "blob": "5d739296b5e02833859681bc97baf0bc25285975"
+      },
+      {
+        "path": "tests/urg-core/contract.test.ts",
+        "blob": "926912334b4db73cae8ecd143e211bbf04223bf2"
+      },
+      {
+        "path": ".github/workflows/eco-136-urg-core.yml",
+        "blob": "87381fb110f605c4aa89f8b7a8a01e9f449d5508"
+      },
+      {
+        "path": "docs/architecture-decisions/009-urg-core-portable-package.md",
+        "blob": "69fea0b9ba32f5ff894783697691e99c9f3eb1ca"
+      },
+      {
+        "path": "package.json",
+        "blob": "dbc42cd70f352c4c03320f44a2dfe9eeb46ff747"
+      }
+    ]
+  },
+  "qualification": {
+    "workflow_run_id": 37313488632,
+    "job_id": 111774369369,
+    "conclusion": "SUCCESS",
+    "urg_typecheck": "PASS",
+    "urg_contract_tests": {
+      "pass": 38,
+      "fail": 0
+    },
+    "full_core_matrix": {
+      "pass": 42,
+      "fail": 0
+    },
+    "mcp_tests": {
+      "pass": 11,
+      "fail": 0
+    },
+    "oauth_tests": {
+      "pass": 7,
+      "fail": 0
+    },
+    "circulation_tests": {
+      "pass": 29,
+      "fail": 0
+    }
+  },
+  "constitutional_invariants_blob": "72b89a2bf7ccb9b2de484be01e45cf5a62e612b6",
+  "observed_environment_findings": [
+    {
+      "finding": "npm ci reported 2 high severity vulnerabilities",
+      "standing": "OBSERVED_NOT_ATTRIBUTED",
+      "nonclaim": "Move did not identify packages, exploitability or remediation and makes no security-clean claim"
+    }
+  ],
+  "non_mutations": [
+    "docs/invariants.md",
+    "database schema",
+    "Build 4 relation predicate vocabulary",
+    "MCP tool/capability surface",
+    "Supabase runtime/schema",
+    "Vercel deployment",
+    "circulation activation"
+  ]
+}
