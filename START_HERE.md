@@ -1,3 +1,5 @@
+> **URG DIRECTIONAL PRESSURES — ECO-222 MOVE — 5 October 2026.** Shape has frozen the four-direction relational-transformation contract as paired-but-nonexclusive partial predicates. Bounded qualification artifacts live under [research/urg-kernel](research/urg-kernel/README.md). No universal scalar axis, automatic Level promotion, or metaphysical exhaustiveness is asserted.
+>
 > **URG LEVEL + QUADRANT KERNEL — ECO-221 MOVE — 5 October 2026.** Shape has frozen the Level + Quadrant formal contract. The bounded Move artifacts live under [research/urg-kernel](research/urg-kernel/README.md). Directional pressures remain adjacent/deferred and are not silently included in this kernel.
 >
 > **NEXT URG FORMALIZATION FRONTIER — ECO-221 OPEN — 5 October 2026.** ECO-220 invariant-lattice excavation is CLOSED / PASS across Sense→Shape→Move→Metabolize. Begin URG semantic work from the [installed invariant-lattice index](research/formal-semantics/ECO-220-Invariant-Lattice-Index-v1.0.md), then enter ECO-221 for the Level + Quadrant kernel. Directional pressures are conditional and must not delay Level+Quadrant.

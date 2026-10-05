@@ -1,0 +1,207 @@
+{
+  "schema": "eco222-directional-pressure-fixtures-v1",
+  "standing": "research qualification fixtures; semantic premises are stipulated",
+  "fixtures": [
+    {
+      "id": "F1-cell-osmoregulation",
+      "directions": {
+        "A": "SUPPORTED",
+        "C": "SUPPORTED",
+        "T": "NOT_ESTABLISHED",
+        "D": "NOT_ESTABLISHED"
+      },
+      "identity_preservation": true,
+      "participatory_change": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F2-error-correction",
+      "directions": {
+        "A": "SUPPORTED",
+        "C": "NOT_ESTABLISHED",
+        "T": "NOT_ESTABLISHED",
+        "D": "NOT_ESTABLISHED"
+      },
+      "identity_preservation": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F3-protocol-adaptation",
+      "directions": {
+        "A": "NOT_ESTABLISHED",
+        "C": "SUPPORTED",
+        "T": "NOT_ESTABLISHED",
+        "D": "NOT_ESTABLISHED"
+      },
+      "same_r": true,
+      "participatory_change": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F4-new-composite-service",
+      "directions": {
+        "A": "NOT_ESTABLISHED",
+        "C": "NOT_ESTABLISHED",
+        "T": "SUPPORTED",
+        "D": "NOT_ESTABLISHED"
+      },
+      "composite_candidate": true,
+      "level_inferred_from_transcendence": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F5-orderly-decommission",
+      "directions": {
+        "A": "NOT_ESTABLISHED",
+        "C": "NOT_ESTABLISHED",
+        "T": "NOT_ESTABLISHED",
+        "D": "SUPPORTED"
+      },
+      "dissolution_witness": true,
+      "record_deleted_only": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F6-migration-reorganization",
+      "directions": {
+        "A": "NOT_ESTABLISHED",
+        "C": "NOT_ESTABLISHED",
+        "T": "SUPPORTED",
+        "D": "SUPPORTED"
+      },
+      "composite_candidate": true,
+      "dissolution_witness": true,
+      "level_inferred_from_transcendence": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F7-nonagentic-network",
+      "directions": {
+        "A": "SUPPORTED",
+        "C": "NOT_ESTABLISHED",
+        "T": "NOT_ESTABLISHED",
+        "D": "NOT_ESTABLISHED"
+      },
+      "identity_preservation": true,
+      "requires_agent_intent": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F8-software-autoscaling",
+      "directions": {
+        "A": "SUPPORTED",
+        "C": "SUPPORTED",
+        "T": "NOT_ESTABLISHED",
+        "D": "NOT_ESTABLISHED"
+      },
+      "identity_preservation": true,
+      "participatory_change": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F9-static-snapshot",
+      "directions": {
+        "A": "UNKNOWN",
+        "C": "UNKNOWN",
+        "T": "UNKNOWN",
+        "D": "UNKNOWN"
+      },
+      "no_transformation_evidence": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F10-same-capability-multiple-directions",
+      "capability_id": "communication",
+      "contexts": [
+        {
+          "direction": "A"
+        },
+        {
+          "direction": "C"
+        },
+        {
+          "direction": "T"
+        },
+        {
+          "direction": "D"
+        }
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "F11-transcendence-auto-level-negative",
+      "directions": {
+        "A": "NOT_ESTABLISHED",
+        "C": "NOT_ESTABLISHED",
+        "T": "SUPPORTED",
+        "D": "NOT_ESTABLISHED"
+      },
+      "composite_candidate": true,
+      "level_inferred_from_transcendence": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F12-deleted-record-dissolution-negative",
+      "directions": {
+        "A": "NOT_ESTABLISHED",
+        "C": "NOT_ESTABLISHED",
+        "T": "NOT_ESTABLISHED",
+        "D": "SUPPORTED"
+      },
+      "dissolution_witness": false,
+      "record_deleted_only": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F13-uncovered-transformation",
+      "directions": {
+        "A": "NOT_ESTABLISHED",
+        "C": "NOT_ESTABLISHED",
+        "T": "NOT_ESTABLISHED",
+        "D": "NOT_ESTABLISHED"
+      },
+      "direction_uncovered": true,
+      "force_fitted": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F14-capacity-drive-mode",
+      "direction": "A",
+      "capacity": {
+        "mode": "capacity",
+        "supported": true
+      },
+      "drive": {
+        "mode": "drive",
+        "supported": true,
+        "mobilized": true
+      },
+      "expected_valid": true
+    },
+    {
+      "id": "F15-ac-coactivation",
+      "directions": {
+        "A": "SUPPORTED",
+        "C": "SUPPORTED",
+        "T": "NOT_ESTABLISHED",
+        "D": "NOT_ESTABLISHED"
+      },
+      "exclusive_pair_rule": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F16-td-coactivation",
+      "directions": {
+        "A": "NOT_ESTABLISHED",
+        "C": "NOT_ESTABLISHED",
+        "T": "SUPPORTED",
+        "D": "SUPPORTED"
+      },
+      "composite_candidate": true,
+      "dissolution_witness": true,
+      "exclusive_pair_rule": false,
+      "level_inferred_from_transcendence": false,
+      "expected_valid": true
+    }
+  ]
+}
