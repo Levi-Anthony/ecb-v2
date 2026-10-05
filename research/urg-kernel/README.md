@@ -71,3 +71,14 @@ The consolidated ECO-136 Stage loop is CLOSED / PASS across Sense→Shape→Move
 ### Type frontier standing correction
 
 Live ECO-136 source recovery confirms **Types are already in the Principal-locked URG distinction set**. The next Type Sense therefore formalizes that locked distinction; it does not begin by asking whether Type should be removed. The key discriminator is between URG Type's universal structural job and concrete domain-native type/class/schema/definition/usage/instance semantics, which should remain native where possible.
+
+
+## URG Type — ECO-136 consolidated axis loop
+
+**Current artifact:** [Type-Formal-Contract-v1.0.md](./Type-Formal-Contract-v1.0.md)
+
+Qualification artifacts:
+- [type-fixtures-v1.0.json](./type-fixtures-v1.0.json)
+- [check_type_contract.py](./check_type_contract.py)
+
+Standing: Register-B Shape contract under bounded Move qualification. Type is a schema-indexed classification relation preserving horizontal/categorical differentiation while leaving concrete classifier and membership semantics in the native typology/schema. Type does not imply Level, Stage, State, Line, Quadrant, Direction, role, or referent identity.

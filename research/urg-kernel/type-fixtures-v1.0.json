@@ -1,0 +1,204 @@
+{
+  "schema": "eco136-type-fixtures-v1",
+  "standing": "research qualification fixtures; semantic premises are stipulated",
+  "fixtures": [
+    {
+      "id": "F1-multiple-typologies",
+      "schemas": [
+        "mbti",
+        "blood"
+      ],
+      "merge_profiles": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F2-same-label-different-schema",
+      "same_label": true,
+      "different_schema": true,
+      "classifier_identity_inferred": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F3-taxonomy-not-level",
+      "native_relation": "specializes",
+      "level_auto_asserted": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F4-state-change-type-stable",
+      "state_changed": true,
+      "type_changed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F5-type-change-r-stable",
+      "type_changed": true,
+      "referent_changed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F6-role-no-auto-type",
+      "role_changed": true,
+      "schema_declares_role_classifier": false,
+      "type_auto_asserted": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F7-multilabel-permitted",
+      "membership_mode": "multi",
+      "claims": [
+        "legal",
+        "financial"
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "F8-exclusive-permitted",
+      "membership_mode": "exclusive",
+      "claims": [
+        "A"
+      ],
+      "expected_valid": true
+    },
+    {
+      "id": "F9-uncovered",
+      "no_classifier_fits": true,
+      "force_fit": false,
+      "result": "TYPE_UNCOVERED",
+      "expected_valid": true
+    },
+    {
+      "id": "F10-schema-revision-crosswalk",
+      "schema_changed": true,
+      "crosswalk": true,
+      "direct_identity_claimed": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F11-schema-revision-no-crosswalk",
+      "schema_changed": true,
+      "crosswalk": false,
+      "direct_identity_claimed": false,
+      "result": "TYPE_SCHEMA_INCOMPARABLE",
+      "expected_valid": true
+    },
+    {
+      "id": "F12-native-relation-preserved",
+      "native_relation": "definition_usage",
+      "normalized_relation": "typing",
+      "native_relation_recoverable": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F13-same-type-across-stages",
+      "same_type": true,
+      "stage_changed": true,
+      "type_stage_collapsed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F14-conflicting-claims",
+      "same_schema": true,
+      "claims": [
+        "A",
+        "B"
+      ],
+      "conflict_preserved": true,
+      "standing_preserved": true,
+      "forced_merge": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F15-native-probabilistic-membership",
+      "membership_mode": "probabilistic",
+      "native_probability": true,
+      "epistemic_confidence_conflated": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F16-classifier-focal",
+      "classifier_becomes_focal": true,
+      "classifier_referent_addressable": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F17-schema-meta-typed",
+      "schema_typed_by_other_schema": true,
+      "infinite_regress_required": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F18-pgo-selection-no-creation",
+      "pgo_selects_schema": true,
+      "unsupported_membership_created": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F19-type-auto-level-negative",
+      "type_witnessed": true,
+      "level_auto_asserted": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F20-type-auto-stage-negative",
+      "type_witnessed": true,
+      "stage_auto_asserted": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F21-state-auto-type-negative",
+      "state_changed": true,
+      "type_auto_asserted": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F22-direction-auto-type-negative",
+      "directional_event": true,
+      "type_auto_asserted": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F23-same-label-auto-identity-negative",
+      "same_label": true,
+      "different_schema": true,
+      "classifier_identity_inferred": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F24-forced-nearest-category-negative",
+      "no_classifier_fits": true,
+      "force_fit": true,
+      "result": "TYPE_WITNESSED",
+      "expected_valid": false
+    },
+    {
+      "id": "F25-role-auto-type-negative",
+      "role_changed": true,
+      "schema_declares_role_classifier": false,
+      "type_auto_asserted": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F26-multilabel-under-exclusive-negative",
+      "membership_mode": "exclusive",
+      "claims": [
+        "A",
+        "B"
+      ],
+      "expected_valid": false
+    },
+    {
+      "id": "F27-schema-revision-auto-r-change-negative",
+      "schema_changed": true,
+      "referent_changed": true,
+      "referent_change_inferred_from_schema_only": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F28-classifier-referent-collapse-negative",
+      "type_witnessed": true,
+      "referent_equals_classifier_by_type_claim": true,
+      "expected_valid": false
+    }
+  ]
+}
