@@ -51,6 +51,17 @@ No server guard, operation identity or permission boundary was weakened. Both in
 
 A second finding is surrounding-whitespace normalization in the connected three-operation server. The current six-operation server.ts source uses a nonblank check that preserves content, while the connected surface's observed behavior and edge source use trimming. Do not confuse these source/runtime paths. The finding belongs in ECO-155's exact-source/tool-contract work and ECO-213's custody acceptance controls; no migration or runtime replacement is silently launched.
 
+## 5 October 2026 — Bootstrap Envelope D&I continuity reconciliation
+
+The Session 3 systems-engineering D&I walkthrough briefly introduced a Modelica-homotopy-inspired scaffold→target pattern as a possible new ECOS architectural hypothesis. The Principal corrected that novelty claim: **ECOS already addresses the problem through the Bootstrap Envelope under PGO**.
+
+- Governing antecedent BRAIN thought: `27ef45b2-2a5d-448b-8a29-7ee6c476fc50`.
+- Superseded course-derived hypothesis: `00c0a0ba-c6f7-4ce1-b07e-a161ae1064d3`.
+- Append-only D&I reconciliation: `9ae7cccf-c944-4cef-8cf4-e29eeb68110e`.
+- Durable repository reconciliation: [2026-10-05-Bootstrap-Envelope-DI-Reconciliation.md](2026-10-05-Bootstrap-Envelope-DI-Reconciliation.md).
+
+Current rule: use the existing Bootstrap Envelope to carry target-relative freedom, authority/limits, provisional standing, provenance/recoverability, preserved invariants and relevant replacement/reentry conditions. Retain Modelica homotopy only as external comparative evidence. No new ECOS primitive, functional requirement, implementation authority or phase transition follows.
+
 ## Reentry
 
 Start from current ECO-213 and the linked requirements document. Its current target is trusted participation through coherent semantic circulation, not isolated atomization. Preserve current ECO-207 consumer-trial standing and ECO-212 code/activation integration gates.
