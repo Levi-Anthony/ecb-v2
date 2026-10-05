@@ -30,6 +30,18 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+
+      # ECO-136 direct executable/package qualification.
       - run: npm run typecheck:urg
       - run: npm run test:urg
       - run: python3 research/urg-kernel/check_urg_core_contract.py research/urg-kernel/URG-Core-Qualification-Matrix-v1.0.json
+
+      # Existing ordinary-runtime regressions required by the Move opening.
+      # The URG package is intentionally not allowed to break or silently widen
+      # MCP, OAuth/capability, or circulation behavior.
+      - run: npm run typecheck:mcp
+      - run: npm run test:mcp
+      - run: npm run typecheck:oauth
+      - run: npm run test:oauth
+      - run: npm run typecheck:circulation
+      - run: npm run test:circulation
