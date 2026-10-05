@@ -97,3 +97,7 @@ ECO-220 is CLOSED / PASS across the full SSMM excavation loop. ECO-221 is OPEN /
 ## Level + Quadrant kernel — ECO-221
 
 The current semantic/formal descendant of ECO-220 is under [`research/urg-kernel/`](../urg-kernel/README.md). It freezes a local witnessed Level relation plus fixed-R Quadrant product and a bounded structural checker. Directional pressures remain out of this kernel pending their own formalization lane.
+
+## Current invariant-lattice overlay — v1.1
+
+The original ECO-220 v1.0 index remains lineage. Current axis maturity and post-Shape implementation standing are reconciled in [ECO-220 Invariant Lattice Currentness Overlay v1.1](./ECO-220-Invariant-Lattice-Index-v1.1.md).

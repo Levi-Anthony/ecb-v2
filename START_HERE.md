@@ -1,3 +1,5 @@
+> **URG MOVE PASS — PORTABLE CORE CANONICAL ON MAIN — 5 October 2026.** The Principal-accepted full core is implemented in `server/urg-core.ts` + `schemas/urg-core-v1.contract.json`; exact CI passed 21/21 package tests and the inherited 42/42 matrix. The invariant-lattice currentness overlay is [v1.1](research/formal-semantics/ECO-220-Invariant-Lattice-Index-v1.1.md). No database, MCP capability, Supabase, Vercel or circulation activation was part of this Move.
+>
 > **ECO-136 MOVE — PRINCIPAL-ACCEPTED URG CORE NOW HAS A CANONICAL PORTABLE IMPLEMENTATION PACKAGE.** The implementation lives in `server/urg-core.ts` with a language-neutral descriptor in `schemas/urg-core-v1.contract.json`, discriminating tests, and dedicated CI. ADR-009 records why this Move does not widen the database ontology or MCP surface.
 >
 > **ECO-136 FULL-CORE QUALIFICATION PASS — PRINCIPAL REVIEW GATE — 5 October 2026.** The integrated URG candidate passed 42/42 bounded cases with exact committed checker/matrix bytes. ECO-136 now owes explicit Principal Shape acceptance. Do not treat checker PASS as acceptance, open parent Move, close the issue, or deploy the core before that decision.

@@ -112,3 +112,7 @@ Following explicit Principal Shape acceptance, the first canonical executable pa
 Physicalization decision: [ADR-009](../../docs/architecture-decisions/009-urg-core-portable-package.md).
 
 This package is intentionally a discriminated contract surface, not a seven-field database record and not a replacement for native domain schemas. No MCP capability expansion or database ontology widening is part of this Move.
+
+## ECO-136 Move PASS
+
+The Principal-accepted full core is now canonically implemented as a portable discriminated contract package. See [Move receipt](./URG-Core-Move-Receipt-v1.0.md) and [machine Move manifest](./URG-Core-Move-Manifest-v1.0.json). Exact CI at implementation commit passed typecheck, 21/21 package tests and the 42/42 accepted full-core matrix. No database/MCP/provider physicalization was added.
