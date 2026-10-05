@@ -1,3 +1,5 @@
+> **URG CORE FORMALIZATION — LEVEL + QUADRANT + DIRECTION CLOSED — 5 October 2026.** ECO-221 and ECO-222 are CLOSED / PASS. Installed contracts live under [research/urg-kernel](research/urg-kernel/README.md). The next dependency-aware URG axis frontier is **State**; do not reopen Level/Quadrant/Direction absent their recorded reentry conditions.
+>
 > **URG DIRECTIONAL PRESSURES — ECO-222 MOVE — 5 October 2026.** Shape has frozen the four-direction relational-transformation contract as paired-but-nonexclusive partial predicates. Bounded qualification artifacts live under [research/urg-kernel](research/urg-kernel/README.md). No universal scalar axis, automatic Level promotion, or metaphysical exhaustiveness is asserted.
 >
 > **URG LEVEL + QUADRANT KERNEL — ECO-221 MOVE — 5 October 2026.** Shape has frozen the Level + Quadrant formal contract. The bounded Move artifacts live under [research/urg-kernel](research/urg-kernel/README.md). Directional pressures remain adjacent/deferred and are not silently included in this kernel.

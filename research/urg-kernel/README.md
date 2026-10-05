@@ -26,3 +26,7 @@ Qualification artifacts:
 - [check_directional_pressure_contract.py](./check_directional_pressure_contract.py)
 
 Standing: Register-B Shape contract under bounded Move qualification. The four directions are formalized as four partial, multi-label directional predicates with paired-but-nonexclusive structure. No universal scalar magnitude is assumed. Transcendence does not auto-promote Level standing; Direction does not determine Quadrant. A material nonfit returns `DIRECTION_UNCOVERED` rather than being force-fit.
+
+## Current frontier after ECO-222
+
+ECO-222 is CLOSED / PASS across Sense→Shape→Move→Metabolize. Level, Quadrant, and the four Directional Pressures now have installed Register-B formal contracts. The next dependency-aware URG axis frontier is **State**: define determinate/actualized configuration under declared scope while preserving distinction from observation, representation, Direction, boundary revision, Stage, and ECO-191 engagement-state bookkeeping.
