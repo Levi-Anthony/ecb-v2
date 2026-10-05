@@ -58,3 +58,23 @@ Both would prepay the wrong debt.
 Open a bounded physicalization/reconciliation decision if a real consumer cannot preserve required URG distinctions using the portable contract plus existing Referent/Claim/Artifact substrate, or if first use demonstrates that persistent first-class axis/native-relation claims need a generalized database representation.
 
 Such evidence may justify a migration. It does not authorize silent widening of existing tables.
+
+
+## Move-time fidelity repair — 5 October 2026
+
+The first executable package commit passed its mechanical tests, then a source-to-implementation audit exposed a meaningful incompleteness before Move closure.
+
+The initial `SituatedContext` represented only a generic frame reference instead of preserving the accepted **mapper / frame / access** independence. It also represented standing too thinly and omitted an explicit typed material-change/requalification record even though the accepted full core and ECO-162 make those obligations cross-cutting.
+
+That implementation was therefore **mechanically green but semantically incomplete**. The correct response is repair, not reinterpretation of the accepted Shape.
+
+Revision 1.0.1 repairs the implementation by:
+
+- preserving referent, grain and boundary independently;
+- preserving governing orientation separately from mapper/frame/access;
+- preserving coverage, activation and disposition as orthogonal coordinates;
+- preserving evidence/warrant, authority/custody and currentness as independently attributable references;
+- adding an explicit typed `change` record with source basis, destination basis, continuity mode, affected claims and requalification targets;
+- strengthening projections and Question Forward records to carry the accepted fidelity/reentry information.
+
+This repair changes the implementation representation, not the accepted URG semantics. It is evidence that checker PASS does not self-establish semantic completeness.

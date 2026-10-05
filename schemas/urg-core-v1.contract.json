@@ -3,9 +3,10 @@
   "$id": "https://ecos.invalid/schemas/urg-core-v1.contract.json",
   "title": "SIGMA/ECOS Universal Referent Grammar portable core contract",
   "contract_id": "ecos:urg-core:register-b:v1",
+  "implementation_revision": "1.0.1",
   "standing": "Principal-accepted ECO-136 Shape; Move implementation contract",
   "accepted_on": "2026-10-05",
-  "representation_note": "Machine-consumable descriptor. The TypeScript discriminated union is the executable structural validator. This file does not confer truth, currentness, authority, or domain validity.",
+  "representation_note": "Language-neutral descriptor. The TypeScript discriminated union is the executable structural validator. Neither confers truth, currentness, authority, or domain validity.",
   "architectural_form": "stable referents + attributable typed relations/claims + explicit situated bases + independently standing URG semantic contracts + domain-schema descent + typed change/requalification + composable projections",
   "record_kinds": [
     "level",
@@ -17,6 +18,7 @@
     "type",
     "native_relation",
     "projection",
+    "change",
     "question_forward"
   ],
   "locked_distinctions": [
@@ -28,17 +30,58 @@
     "Stage",
     "Type"
   ],
-  "shared_context": {
-    "referent_id": "stable focal referent identity",
-    "boundary_ref": "explicit boundary/individuation basis",
-    "pgo_ref": "optional/required-by-contract governing orientation reference",
-    "frame_ref": "optional/required-by-use mapper/reference/access frame",
-    "source_refs": "recoverable source/provenance references"
+  "situated_index": {
+    "R": "referent_id",
+    "B": "boundary_ref with independently recoverable grain_ref",
+    "G": "governing_orientation_ref",
+    "F": "mapper_ref + frame_ref + access_ref as independently attributable coordinates"
+  },
+  "fidelity_coordinates": {
+    "coverage": [
+      "UNEXAMINED",
+      "EXAMINED"
+    ],
+    "activation": [
+      "ACTIVE",
+      "DORMANT"
+    ],
+    "disposition": [
+      "RELIED_FOR_DECLARED_USE",
+      "UNRESOLVED",
+      "NONCONSEQUENTIAL_NOW",
+      "CONDITIONAL_SENSORED",
+      "REJECTED_CONTRADICTED_WITH_WARRANT",
+      "PROHIBITED_IMPOSSIBLE_UNDER_QUALIFIED_RULE"
+    ],
+    "independent_refs": [
+      "evidence_refs",
+      "warrant_ref",
+      "authority_ref",
+      "custody_ref",
+      "currentness_ref",
+      "challenge_qf_refs"
+    ]
+  },
+  "typed_change": {
+    "required_fields": [
+      "change_kind",
+      "subject_referent_id",
+      "source_basis_ref",
+      "destination_basis_ref",
+      "continuity_mode_ref",
+      "affected_claim_refs",
+      "requalify_refs"
+    ],
+    "rule": "No generic refresh-context transition satisfies the accepted contract."
   },
   "anti_collapse": [
     "referent != representation",
     "mapper purpose != mapped referent purpose",
     "verification != truth/authority",
+    "persistence != standing",
+    "current/newest != current binding",
+    "coverage != activation != disposition",
+    "semantic qualification != authority != currentness",
     "Type hierarchy != Level",
     "StateTransition != Direction",
     "Line != chronology",
@@ -57,6 +100,10 @@
     "qualification_receipt": {
       "path": "research/urg-kernel/URG-Core-Shape-Qualification-Receipt-v1.0.md",
       "blob": "c4fc6f96dff4877ff0dd8c2d04c06c9ac9a4cace"
+    },
+    "eco162_fidelity": {
+      "path": "research/core-architecture/ECO-162-Integral-Coherence-Architecture-Shape-Return-2026-09-19.md",
+      "blob": "7299cfb7875c1842a2f3d05d07873615e8fd981e"
     },
     "constitutional_invariants": {
       "path": "docs/invariants.md",

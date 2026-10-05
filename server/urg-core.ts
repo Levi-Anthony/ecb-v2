@@ -1,18 +1,17 @@
 /**
  * ECO-136 URG portable core, Register-B v1.
  *
- * This module is a machine-consumable structural contract. It deliberately
- * models URG semantics as a discriminated union rather than one record with
- * seven interchangeable "axis" fields.
+ * Machine-consumable structural contract for the Principal-accepted Shape.
+ * It is deliberately a discriminated grammar, not one record with seven
+ * interchangeable axis fields and not a replacement for native domain schemas.
  *
- * NONCLAIMS:
- * - validation does not establish semantic truth, authority, currentness,
- *   empirical exhaustiveness, or correct domain classification;
- * - native domain semantics remain authoritative for their own relation kinds;
- * - no runtime persistence shape is prescribed here.
+ * Validation establishes only structural conformance to this package.
+ * It does not establish semantic truth, authority, currentness, empirical
+ * exhaustiveness, or correct domain classification.
  */
 
 export const URG_CORE_ID = "ecos:urg-core:register-b:v1" as const;
+export const URG_IMPLEMENTATION_REVISION = "1.0.1" as const;
 
 export const URG_RECORD_KINDS = [
   "level",
@@ -24,30 +23,76 @@ export const URG_RECORD_KINDS = [
   "type",
   "native_relation",
   "projection",
+  "change",
   "question_forward",
 ] as const;
 
 export type UrgRecordKind = typeof URG_RECORD_KINDS[number];
 
-export type SituatedContext = {
-  referent_id: string;
-  boundary_ref: string;
-  pgo_ref?: string;
-  frame_ref?: string;
-  source_refs?: string[];
+export const URG_CHANGE_KINDS = [
+  "Enrich",
+  "ReviseBoundary",
+  "Reseat",
+  "Refocus",
+  "ChangeFrame",
+  "Reorient",
+  "StateTransition",
+  "DirectionalEvent",
+  "RefineStateBasis",
+  "RebaseLine",
+  "RebaseStage",
+  "RebaseType",
+  "RequalifyStanding",
+  "ChangeAuthority",
+  "ChangeCurrentBinding",
+  "AssessDependencyMateriality",
+  "AdvanceCoordination",
+  "TriggerQuestionForward",
+  "Handoff",
+  "Reconstruct",
+  "GrammarChange",
+] as const;
+
+export type UrgChangeKind = typeof URG_CHANGE_KINDS[number];
+
+export type Coverage = "UNEXAMINED" | "EXAMINED";
+export type Activation = "ACTIVE" | "DORMANT";
+export type Disposition =
+  | "RELIED_FOR_DECLARED_USE"
+  | "UNRESOLVED"
+  | "NONCONSEQUENTIAL_NOW"
+  | "CONDITIONAL_SENSORED"
+  | "REJECTED_CONTRADICTED_WITH_WARRANT"
+  | "PROHIBITED_IMPOSSIBLE_UNDER_QUALIFIED_RULE";
+
+export type FidelityCoordinates = {
+  coverage: Coverage;
+  activation: Activation;
+  disposition?: Disposition;
+  evidence_refs?: string[];
+  warrant_ref?: string;
+  authority_ref?: string;
+  custody_ref?: string;
+  currentness_ref?: string;
+  challenge_qf_refs?: string[];
 };
 
-export type EvidenceStanding =
-  | "SUPPORTED"
-  | "NOT_ESTABLISHED"
-  | "UNKNOWN"
-  | "INAPPLICABLE"
-  | "UNCOVERED"
-  | "CONTRADICTED";
+export type SituatedContext = {
+  referent_id: string;
+  grain_ref?: string;
+  boundary_ref: string;
+  governing_orientation_ref?: string;
+  mapper_ref?: string;
+  frame_ref?: string;
+  access_ref?: string;
+  actor_ref?: string;
+  source_refs?: string[];
+};
 
 export type LevelClaim = {
   kind: "level";
   context: SituatedContext;
+  fidelity: FidelityCoordinates;
   result: "LEVEL_WITNESSED" | "LEVEL_NOT_ESTABLISHED" | "LEVEL_UNKNOWN";
   constituent_referent_ids?: string[];
   organization_ref?: string;
@@ -57,6 +102,7 @@ export type LevelClaim = {
 export type QuadrantClaim = {
   kind: "quadrant";
   context: SituatedContext;
+  fidelity: FidelityCoordinates;
   result: "QUADRANT_POSITION" | "DECOMPOSE" | "QUADRANT_UNKNOWN";
   seat?: "Constitutive" | "Participatory";
   burden?: "Governing" | "Determinate";
@@ -68,6 +114,7 @@ export type DirectionStatus = "SUPPORTED" | "NOT_ESTABLISHED" | "UNKNOWN";
 export type DirectionClaim = {
   kind: "direction";
   context: SituatedContext;
+  fidelity: FidelityCoordinates;
   directions: {
     A: DirectionStatus;
     C: DirectionStatus;
@@ -86,9 +133,15 @@ export type DirectionClaim = {
 export type StateClaim = {
   kind: "state";
   context: SituatedContext;
+  fidelity: FidelityCoordinates;
   state_basis_ref: string;
   occasion_ref: string;
-  result: "STATE_WITNESSED" | "STATE_UNKNOWN" | "STATE_CONTRADICTED";
+  result:
+    | "STATE_WITNESSED"
+    | "STATE_UNKNOWN"
+    | "STATE_CONTRADICTED"
+    | "STATE_BASIS_INCOMPARABLE"
+    | "STATE_FRAME_INCOMPARABLE";
   state_value?: unknown;
   candidate_set_ref?: string;
   qf_ref?: string;
@@ -97,6 +150,7 @@ export type StateClaim = {
 export type LineClaim = {
   kind: "line";
   context: SituatedContext;
+  fidelity: FidelityCoordinates;
   line_contract_ref: string;
   standing:
     | "LINE_CONTRACT"
@@ -112,6 +166,7 @@ export type LineClaim = {
 export type StageClaim = {
   kind: "stage";
   context: SituatedContext;
+  fidelity: FidelityCoordinates;
   stage_basis_ref: string;
   line_ref: string;
   result:
@@ -133,6 +188,7 @@ export type StageClaim = {
 export type TypeClaim = {
   kind: "type";
   context: SituatedContext;
+  fidelity: FidelityCoordinates;
   typology_ref: string;
   result:
     | "TYPE_WITNESSED"
@@ -149,11 +205,11 @@ export type TypeClaim = {
 export type NativeRelationClaim = {
   kind: "native_relation";
   schema_ref: string;
+  schema_edition_ref: string;
   relation_kind_ref: string;
   participants: Array<{ role: string; referent_id: string }>;
-  basis_ref?: string;
-  standing: EvidenceStanding;
-  evidence_refs?: string[];
+  situated_basis_ref: string;
+  fidelity: FidelityCoordinates;
   qf_ref?: string;
 };
 
@@ -161,21 +217,42 @@ export type ProjectionRecord = {
   kind: "projection";
   projection_id: string;
   mapped_referent_ids: string[];
+  mapped_claim_refs?: string[];
   mapper_ref: string;
-  pgo_ref: string;
+  mapping_relation_ref: string;
+  governing_orientation_ref: string;
   frame_ref: string;
+  access_ref: string;
+  scope_resolution_ref: string;
   content_ref: string;
-  standing: EvidenceStanding;
+  fidelity: FidelityCoordinates;
   omissions: string[];
   source_refs?: string[];
+};
+
+export type ChangeRecord = {
+  kind: "change";
+  change_kind: UrgChangeKind;
+  subject_referent_id: string;
+  source_basis_ref: string;
+  destination_basis_ref: string;
+  continuity_mode_ref: string;
+  affected_claim_refs: string[];
+  requalify_refs: string[];
+  fidelity: FidelityCoordinates;
+  evidence_refs?: string[];
+  qf_ref?: string;
 };
 
 export type QuestionForward = {
   kind: "question_forward";
   unresolved_ref: string;
+  basis_ref: string;
+  current_standing_ref: string;
   discriminator_question: string;
   paired_signal_scenario: string;
   evidence_change_criteria: string;
+  alternative_signal_routing: string;
   decision_consequence: string;
   return_route: string;
   reentry_condition: string;
@@ -191,6 +268,7 @@ export type UrgRecord =
   | TypeClaim
   | NativeRelationClaim
   | ProjectionRecord
+  | ChangeRecord
   | QuestionForward;
 
 export type ValidationResult =
@@ -203,6 +281,15 @@ const directionStatuses = new Set<DirectionStatus>([
   "SUPPORTED",
   "NOT_ESTABLISHED",
   "UNKNOWN",
+]);
+
+const dispositions = new Set<Disposition>([
+  "RELIED_FOR_DECLARED_USE",
+  "UNRESOLVED",
+  "NONCONSEQUENTIAL_NOW",
+  "CONDITIONAL_SENSORED",
+  "REJECTED_CONTRADICTED_WITH_WARRANT",
+  "PROHIBITED_IMPOSSIBLE_UNDER_QUALIFIED_RULE",
 ]);
 
 function object(value: unknown): UnknownRecord | null {
@@ -219,6 +306,47 @@ function texts(value: unknown): value is string[] {
   return Array.isArray(value) && value.every(text);
 }
 
+function requireText(record: UnknownRecord, key: string, errors: string[]) {
+  if (!text(record[key])) errors.push(`${key} is required`);
+}
+
+function validateFidelity(value: unknown, errors: string[]): UnknownRecord | null {
+  const fidelity = object(value);
+  if (!fidelity) {
+    errors.push("fidelity must be an object");
+    return null;
+  }
+
+  if (!["UNEXAMINED","EXAMINED"].includes(String(fidelity.coverage))) {
+    errors.push("fidelity.coverage is invalid");
+  }
+  if (!["ACTIVE","DORMANT"].includes(String(fidelity.activation))) {
+    errors.push("fidelity.activation is invalid");
+  }
+
+  if (fidelity.coverage === "EXAMINED") {
+    if (!dispositions.has(fidelity.disposition as Disposition)) {
+      errors.push("EXAMINED fidelity requires an explicit disposition");
+    }
+  } else if (fidelity.coverage === "UNEXAMINED" && fidelity.disposition !== undefined) {
+    errors.push("UNEXAMINED fidelity may not silently carry a disposition");
+  }
+
+  for (const key of [
+    "warrant_ref","authority_ref","custody_ref","currentness_ref",
+  ]) {
+    if (fidelity[key] !== undefined && !text(fidelity[key])) {
+      errors.push(`fidelity.${key} must be nonblank when present`);
+    }
+  }
+  for (const key of ["evidence_refs","challenge_qf_refs"]) {
+    if (fidelity[key] !== undefined && !texts(fidelity[key])) {
+      errors.push(`fidelity.${key} must contain nonblank references`);
+    }
+  }
+  return fidelity;
+}
+
 function validateContext(value: unknown, errors: string[]): UnknownRecord | null {
   const context = object(value);
   if (!context) {
@@ -227,14 +355,24 @@ function validateContext(value: unknown, errors: string[]): UnknownRecord | null
   }
   if (!text(context.referent_id)) errors.push("context.referent_id is required");
   if (!text(context.boundary_ref)) errors.push("context.boundary_ref is required");
-  if (context.pgo_ref !== undefined && !text(context.pgo_ref)) errors.push("context.pgo_ref must be nonblank");
-  if (context.frame_ref !== undefined && !text(context.frame_ref)) errors.push("context.frame_ref must be nonblank");
-  if (context.source_refs !== undefined && !texts(context.source_refs)) errors.push("context.source_refs must be nonblank strings");
+
+  for (const key of [
+    "grain_ref","governing_orientation_ref","mapper_ref","frame_ref",
+    "access_ref","actor_ref",
+  ]) {
+    if (context[key] !== undefined && !text(context[key])) {
+      errors.push(`context.${key} must be nonblank when present`);
+    }
+  }
+  if (context.source_refs !== undefined && !texts(context.source_refs)) {
+    errors.push("context.source_refs must contain nonblank references");
+  }
   return context;
 }
 
-function requireText(record: UnknownRecord, key: string, errors: string[]) {
-  if (!text(record[key])) errors.push(`${key} is required`);
+function validateCommon(record: UnknownRecord, errors: string[]) {
+  validateContext(record.context, errors);
+  validateFidelity(record.fidelity, errors);
 }
 
 export function validateUrgRecord(value: unknown): ValidationResult {
@@ -248,7 +386,7 @@ export function validateUrgRecord(value: unknown): ValidationResult {
   }
 
   if (["level","quadrant","direction","state","line","stage","type"].includes(kind)) {
-    validateContext(record.context, errors);
+    validateCommon(record, errors);
   }
 
   switch (kind) {
@@ -300,13 +438,24 @@ export function validateUrgRecord(value: unknown): ValidationResult {
     case "state": {
       requireText(record, "state_basis_ref", errors);
       requireText(record, "occasion_ref", errors);
-      const allowed = new Set(["STATE_WITNESSED","STATE_UNKNOWN","STATE_CONTRADICTED"]);
+      const context = object(record.context);
+      if (!context || (!text(context.mapper_ref) && !text(context.frame_ref) && !text(context.access_ref))) {
+        errors.push("State requires an explicit consequential mapper/frame/access coordinate");
+      }
+      const allowed = new Set([
+        "STATE_WITNESSED","STATE_UNKNOWN","STATE_CONTRADICTED",
+        "STATE_BASIS_INCOMPARABLE","STATE_FRAME_INCOMPARABLE",
+      ]);
       if (!allowed.has(String(record.result))) errors.push("invalid State result");
       if (record.result === "STATE_WITNESSED" && !Object.prototype.hasOwnProperty.call(record, "state_value")) {
         errors.push("STATE_WITNESSED requires state_value");
       }
       if (record.result === "STATE_UNKNOWN" && !text(record.candidate_set_ref) && !text(record.qf_ref)) {
         errors.push("STATE_UNKNOWN requires candidate_set_ref or qf_ref");
+      }
+      if (["STATE_BASIS_INCOMPARABLE","STATE_FRAME_INCOMPARABLE"].includes(String(record.result))
+          && !text(record.qf_ref)) {
+        errors.push("incomparable State result requires qf_ref");
       }
       break;
     }
@@ -340,7 +489,9 @@ export function validateUrgRecord(value: unknown): ValidationResult {
       if (!allowed.has(String(record.result))) errors.push("invalid Stage result");
       if (record.result === "STAGE_LEVEL") {
         const context = object(record.context);
-        if (!context || !text(context.pgo_ref)) errors.push("STAGE_LEVEL requires context.pgo_ref");
+        if (!context || !text(context.governing_orientation_ref)) {
+          errors.push("STAGE_LEVEL requires context.governing_orientation_ref");
+        }
         requireText(record, "level_claim_ref", errors);
         requireText(record, "projection_ref", errors);
         requireText(record, "stage_key", errors);
@@ -369,35 +520,59 @@ export function validateUrgRecord(value: unknown): ValidationResult {
       break;
     }
     case "native_relation": {
-      requireText(record, "schema_ref", errors);
-      requireText(record, "relation_kind_ref", errors);
+      for (const key of ["schema_ref","schema_edition_ref","relation_kind_ref","situated_basis_ref"]) {
+        requireText(record, key, errors);
+      }
+      validateFidelity(record.fidelity, errors);
       if (!Array.isArray(record.participants) || record.participants.length < 1) {
         errors.push("native relation requires participants");
       } else {
         for (const participant of record.participants) {
           const p = object(participant);
-          if (!p || !text(p.role) || !text(p.referent_id)) errors.push("native relation participants require role + referent_id");
+          if (!p || !text(p.role) || !text(p.referent_id)) {
+            errors.push("native relation participants require role + referent_id");
+          }
         }
-      }
-      if (!["SUPPORTED","NOT_ESTABLISHED","UNKNOWN","INAPPLICABLE","UNCOVERED","CONTRADICTED"].includes(String(record.standing))) {
-        errors.push("invalid native relation standing");
       }
       break;
     }
     case "projection": {
-      requireText(record, "projection_id", errors);
-      if (!texts(record.mapped_referent_ids) || record.mapped_referent_ids.length < 1) errors.push("projection requires mapped_referent_ids");
-      for (const key of ["mapper_ref","pgo_ref","frame_ref","content_ref"]) requireText(record, key, errors);
-      if (!Array.isArray(record.omissions) || !record.omissions.every(v => typeof v === "string")) errors.push("projection.omissions must be strings");
-      if (!["SUPPORTED","NOT_ESTABLISHED","UNKNOWN","INAPPLICABLE","UNCOVERED","CONTRADICTED"].includes(String(record.standing))) {
-        errors.push("invalid projection standing");
+      for (const key of [
+        "projection_id","mapper_ref","mapping_relation_ref","governing_orientation_ref",
+        "frame_ref","access_ref","scope_resolution_ref","content_ref",
+      ]) requireText(record, key, errors);
+      validateFidelity(record.fidelity, errors);
+      if (!texts(record.mapped_referent_ids) || record.mapped_referent_ids.length < 1) {
+        errors.push("projection requires mapped_referent_ids");
       }
+      if (record.mapped_claim_refs !== undefined && !texts(record.mapped_claim_refs)) {
+        errors.push("projection.mapped_claim_refs must contain nonblank references");
+      }
+      if (!Array.isArray(record.omissions) || !record.omissions.every(v => typeof v === "string")) {
+        errors.push("projection.omissions must be strings");
+      }
+      break;
+    }
+    case "change": {
+      if (!URG_CHANGE_KINDS.includes(record.change_kind as UrgChangeKind)) {
+        errors.push("change_kind is unknown");
+      }
+      for (const key of [
+        "subject_referent_id","source_basis_ref","destination_basis_ref","continuity_mode_ref",
+      ]) requireText(record, key, errors);
+      if (!texts(record.affected_claim_refs)) errors.push("affected_claim_refs must contain nonblank references");
+      if (!texts(record.requalify_refs)) errors.push("requalify_refs must contain nonblank references");
+      if (record.evidence_refs !== undefined && !texts(record.evidence_refs)) {
+        errors.push("change.evidence_refs must contain nonblank references");
+      }
+      validateFidelity(record.fidelity, errors);
       break;
     }
     case "question_forward": {
       for (const key of [
-        "unresolved_ref","discriminator_question","paired_signal_scenario",
-        "evidence_change_criteria","decision_consequence","return_route","reentry_condition",
+        "unresolved_ref","basis_ref","current_standing_ref","discriminator_question",
+        "paired_signal_scenario","evidence_change_criteria","alternative_signal_routing",
+        "decision_consequence","return_route","reentry_condition",
       ]) requireText(record, key, errors);
       break;
     }
