@@ -100,3 +100,31 @@ The packet is a reconciled projection/index over authoritative source artifacts,
 - one recommended Shape frontier.
 
 **Stop at Sense return / Close Sense recommendation. Do not enter Shape without Principal disposition.**
+
+
+## Principal loop disposition — 5 October 2026
+
+The Principal has now dedicated the **entire SSMM loop** to excavation/reconciliation of the already-earned invariant/definition architecture.
+
+- **Sense** — recover exact source editions, standing, definitions, invariants, collisions, formal witnesses, supersessions and gaps without premature normalization.
+- **Shape** — freeze the reconciled invariant-lattice architecture, dependency/derivation graph, standing rules, closure matrix and exact boundary between earned structure and genuinely new formalization.
+- **Move** — install and qualify a durable navigable excavation product over the real source corpus, with exact lineage, source links, negative controls, cold-reentry support and contradiction visibility, without changing semantic authority by proximity.
+- **Metabolize** — propagate reconciled standing/supersession to ECO-136 and downstream consumers and commission the next formalization loop from a clean inherited basis.
+
+This supersedes the earlier assumption that only Sense/Shape would carry the excavation. It does **not** erase the phase distinctions: each phase still has its own evidence and stop conditions.
+
+### Direct next formalization target after excavation
+
+Principal-set priority:
+
+1. **Holarchic altitude / Level** — vertical constituency/dependency plus referent seating/re-seating.
+2. **Quadrants** — four-position structural-functional generator with fixed-referent traversal/composition across altitude.
+3. **Potentially the four fundamental directional pressures** — agency/self-preservation, communion/self-adaptation, transcendence, dissolution — if excavation confirms that their current Register-B standing is sufficiently upstream, structurally distinct and composition-ready.
+
+Current source standing already suggests this is high leverage but not yet a completed Shape decision:
+
+- Level is recorded as sufficiently defined for present Register-B descent; ECO-51 now owns mechanization/enforcement of an already-existing written checker rather than first-principles discovery.
+- Quadrant v0.2 is qualified for provisional bounded use using constitutive vs participatory seat crossed with governing possibility/dependency vs determinate-case burden; changing constituency is boundary revision/re-individuation, not ordinary quadrant traversal.
+- ECO-184's Principal-accepted working architecture treats the four directions as a generalized two-axis/four-direction grammar of **relational transformation**; tendency/capacity/drive are modal views of the same coordinate structure. Exhaustiveness and exact formal mathematics remain open.
+
+ECO-220 must test this target against the recovered dependency lattice rather than simply ratify it.
