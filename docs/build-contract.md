@@ -67,6 +67,8 @@ Principal-authorized disposition, 2026-09-15. Provenance and scope:
 
 Principal method correction, 2026-09-18: **Bound exposure, not learning** is compression, not an absolute. Preserve the decision-relevant learning surface while bounding consequential exposure. Implementation is epistemic only when plausible outcomes discriminate between materially different next Moves. The evidence-bearing boundary sets implementation breadth; blast-radius containment is specified independently. Do not use “smallest” as an architecture, slice, probe, proof, or next-action optimization criterion. The surviving anti-bloat rule is only: do not add machinery that has no decision-relevant job.
 
+**Principal durability correction, 2026-10-05:** “bounded Move,” “bounded probe,” and “bounded instrument” do not mean bounded-lived or disposable implementation. In the Greenfield window, the default is the enduring target installation already earned by Shape. Bound authority, external effects, spend, mutation scope, recovery, and evidence claims independently. A qualification cohort exercises the real installation; it does not justify a temporary host, branch, schema, provider identity, credential, or placeholder architecture. Provisional physicalization requires either a concrete preservation/safety job or an explicit Bootstrap-Envelope scaffold with a named target and supersession condition.
+
 Register B optimizes for reliable learning under action. Prefer a physical probe over further
 abstract resolution when the next uncertainty can be discriminated by a Move satisfying this floor:
 
