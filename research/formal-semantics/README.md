@@ -81,3 +81,7 @@ Do not add a generalized schema or executable research framework until repeated 
 Formal-semantics returns or source packets created in ChatGPT Library must receive durable custody outside Library in the same work episode. Prefer canonical ECB v2 Artifact/record custody when available. If that write path is unavailable, mirror the exact/faithful source into this research tree and register it in `LIBRARY_MIRROR_LEDGER.md` as `GITHUB_FALLBACK_PENDING_ECB`.
 
 The GitHub copy is a continuity fallback and provenance carrier, not a substitute for canonical BRAIN standing or authority.
+
+## Active frontier — ECO-220 invariant-lattice Sense — 5 October 2026
+
+[ECO-220](https://linear.app/ecos-ops/issue/ECO-220/sense-urg-invariant-lattice-reconcile-axis-definitions-fidelity) is OPEN / Working under ECO-136. It reconciles the already-existing governing invariants, URG axis definitions, ECO-162 fidelity invariants/independent coordinates, ECO-191 transformation laws, and formal witnesses into a source-traceable invariant lattice before proposing any new primitive or definition. Its [Sense-opening mirror](./ECO-220-URG-Invariant-Lattice-Sense-Opening-2026-10-05.md) carries the proximal/grand orientation, governing telos, magic-wand end state, source anchors, and stop boundary. This research does not amend `docs/invariants.md`, promote a mathematical probe, or enter Shape/Move by proximity.
