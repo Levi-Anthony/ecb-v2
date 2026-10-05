@@ -1,0 +1,276 @@
+{
+  "schema": "eco136-stage-fixtures-v1",
+  "standing": "research qualification fixtures; semantic premises are stipulated",
+  "fixtures": [
+    {
+      "id": "F1-regime-no-level",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "level_witnessed": false,
+      "gamma_changed": true,
+      "result": "REGIME_ONLY",
+      "stage_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F2-level-not-selected",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "level_witnessed": true,
+      "projection_selected": false,
+      "result": "LEVEL_NOT_STAGE_UNDER_PGO",
+      "stage_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F3-pgo-underenriched",
+      "line_witnessed": true,
+      "pgo_adequate": false,
+      "level_witnessed": true,
+      "result": "PGO_UNDERENRICHED",
+      "stage_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F4-positive-stage",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "lawful_seat": true,
+      "level_witnessed": true,
+      "projection_selected": true,
+      "theta_explicit": true,
+      "stage_claimed": true,
+      "result": "STAGE_LEVEL",
+      "expected_valid": true
+    },
+    {
+      "id": "F5-many-state-changes-same-stage",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "level_witnessed": true,
+      "projection_selected": true,
+      "same_stage_key": true,
+      "state_changed": true,
+      "stage_transition_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F6-direction-no-level",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "level_witnessed": false,
+      "directional_event": true,
+      "stage_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F7-transcendence-unqualified-level",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "transcendence_candidate": true,
+      "level_witnessed": false,
+      "stage_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F8-selected-level-change-stage-transition",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "level_witnessed": true,
+      "projection_selected": true,
+      "stage_keys": [
+        "s1",
+        "s2"
+      ],
+      "projected_level_changed": true,
+      "stage_transition_claimed": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F9-unselected-level-change",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "level_witnessed": true,
+      "projection_selected": false,
+      "projected_level_changed": true,
+      "stage_transition_claimed": false,
+      "result": "LEVEL_NOT_STAGE_UNDER_PGO",
+      "expected_valid": true
+    },
+    {
+      "id": "F10-gamma-change-same-stage",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "level_witnessed": true,
+      "projection_selected": true,
+      "gamma_changed": true,
+      "same_stage_key": true,
+      "stage_transition_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F11-no-line-stage-negative",
+      "line_witnessed": false,
+      "pgo_adequate": true,
+      "level_witnessed": true,
+      "projection_selected": true,
+      "stage_claimed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F12-no-level-stage-negative",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "level_witnessed": false,
+      "projection_selected": true,
+      "stage_claimed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F13-inadequate-pgo-stage-negative",
+      "line_witnessed": true,
+      "pgo_adequate": false,
+      "level_witnessed": true,
+      "projection_selected": true,
+      "stage_claimed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F14-regression",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "level_witnessed": true,
+      "projection_selected": true,
+      "stage_keys": [
+        "s1",
+        "s2",
+        "s1"
+      ],
+      "monotonicity_required": false,
+      "occurrences_distinct": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F15-same-class-later-occurrence",
+      "same_stage_key": true,
+      "positions": [
+        "p1",
+        "p8"
+      ],
+      "same_occurrence_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F16-theta-rebase",
+      "theta_changed": true,
+      "crosswalk": true,
+      "stage_transition_claimed": false,
+      "rebase_declared": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F17-same-label-different-theta",
+      "same_label": true,
+      "theta_changed": true,
+      "stage_identity_inferred_from_label": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F18-partial-order",
+      "line_witnessed": true,
+      "stage_order": "partial",
+      "total_order_required": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F19-no-min-dwell",
+      "stage_claimed": true,
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "lawful_seat": true,
+      "level_witnessed": true,
+      "projection_selected": true,
+      "theta_explicit": true,
+      "min_dwell_required": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F20-operational-first-class-no-persistence",
+      "stage_claimed": true,
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "lawful_seat": true,
+      "level_witnessed": true,
+      "projection_selected": true,
+      "theta_explicit": true,
+      "dedicated_persistence_required": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F21-label-rename-no-transition",
+      "same_stage_key": true,
+      "label_changed": true,
+      "stage_transition_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F22-state-only-auto-stage-negative",
+      "state_changed": true,
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "level_witnessed": true,
+      "projection_selected": true,
+      "same_stage_key": true,
+      "stage_transition_claimed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F23-gamma-auto-stage-negative",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "level_witnessed": false,
+      "gamma_changed": true,
+      "stage_claimed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F24-no-lawful-seat-negative",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "lawful_seat": false,
+      "level_witnessed": true,
+      "projection_selected": true,
+      "theta_explicit": true,
+      "stage_claimed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F25-basis-change-no-crosswalk-negative",
+      "theta_changed": true,
+      "crosswalk": false,
+      "direct_stage_identity_claimed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F26-label-auto-identity-negative",
+      "same_label": true,
+      "theta_changed": true,
+      "stage_identity_inferred_from_label": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F27-global-numbering-negative",
+      "global_numeric_stage_rank_required": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F28-direction-auto-stage-negative",
+      "directional_event": true,
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "level_witnessed": false,
+      "stage_claimed": true,
+      "expected_valid": false
+    }
+  ]
+}

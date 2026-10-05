@@ -1,3 +1,5 @@
+> **URG STAGE — ECO-136 CONSOLIDATED MOVE — 5 October 2026.** Linear's free issue ceiling prevents minting another successor issue, so the Stage SSMM is governed directly under ECO-136. Shape freezes Stage as a PGO-relevant, Line-indexed projection of warranted Level. Bounded artifacts live under [research/urg-kernel](research/urg-kernel/README.md).
+>
 > **URG LINE — ECO-225 MOVE — 5 October 2026.** Shape has frozen Line as a longitudinal continuity/comparison contract plus witnessed instance graph. Bounded qualification artifacts live under [research/urg-kernel](research/urg-kernel/README.md). Timestamp order, monotonicity, total ordering, Stage labels, and scalar maturity are not URG defaults.
 >
 > **URG STATE — ECO-224 MOVE — 5 October 2026.** Shape has frozen State as a basis-indexed actualized-configuration contract. Bounded qualification artifacts live under [research/urg-kernel](research/urg-kernel/README.md). Observation/evidence, basis/frame change, Direction, Stage, Level, and ECO-191 engagement bookkeeping remain explicitly distinct.

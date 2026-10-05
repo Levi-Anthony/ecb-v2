@@ -52,3 +52,14 @@ Qualification artifacts:
 - [check_line_contract.py](./check_line_contract.py)
 
 Standing: Register-B Shape contract under bounded Move qualification. Line is a versioned continuity/comparison contract `Λ=(K,D,J,I,v)` plus witnessed longitudinal instance `ℓ=(Λ,P,E)`. It is not chronology, capability, Stage, Level, Direction, or a universal scalar maturity axis.
+
+
+## URG Stage — ECO-136 consolidated axis loop
+
+**Current artifact:** [Stage-Formal-Contract-v1.0.md](./Stage-Formal-Contract-v1.0.md)
+
+Qualification artifacts:
+- [stage-fixtures-v1.0.json](./stage-fixtures-v1.0.json)
+- [check_stage_contract.py](./check_stage_contract.py)
+
+Standing: Register-B Shape contract under bounded Move qualification. Stage is a PGO-relevant, Line-indexed projection of warranted Level-bearing organization. Q/Gamma regimes, State changes, Directional events, labels, chronology, and basis revisions cannot create Stage standing independently.
