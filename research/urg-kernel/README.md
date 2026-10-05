@@ -67,3 +67,7 @@ Standing: Register-B Shape contract under bounded Move qualification. Stage is a
 ## Stage closure + next discriminator — 5 October 2026
 
 The consolidated ECO-136 Stage loop is CLOSED / PASS across Sense→Shape→Move→Metabolize. The Stage contract is installed and qualified at 28/28 fixtures. The next URG frontier is deliberately framed as a **Type / Kind / Schema discriminator**, not a presumed new primitive: determine the minimum universal contract needed to situate domain-native type/class/schema/instance systems, and whether that requires a first-class URG Type axis at all.
+
+### Type frontier standing correction
+
+Live ECO-136 source recovery confirms **Types are already in the Principal-locked URG distinction set**. The next Type Sense therefore formalizes that locked distinction; it does not begin by asking whether Type should be removed. The key discriminator is between URG Type's universal structural job and concrete domain-native type/class/schema/definition/usage/instance semantics, which should remain native where possible.

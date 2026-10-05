@@ -1,3 +1,5 @@
+> **TYPE FRONTIER SOURCE-STANDING CORRECTION — 5 October 2026.** ECO-136 explicitly locks **Types** into the working URG distinction set alongside Levels, Quadrants, Directions/Capacities, States, Stages and Lines. The next Sense formalizes Type; it must not confuse Integral/URG Type with software/systems-engineering class/type systems or silently demote the locked distinction because its formal contract is unfinished.
+>
 > **URG STAGE CLOSED — TYPE / KIND / SCHEMA DISCRIMINATOR NEXT — 5 October 2026.** The consolidated ECO-136 Stage loop is CLOSED / PASS. The next Sense must not presume Type is a new URG primitive; it will test whether the universal substrate needs a Type coordinate or only a typed-relation/schema-descent interface for native domain semantics.
 >
 > **URG STAGE — ECO-136 CONSOLIDATED MOVE — 5 October 2026.** Linear's free issue ceiling prevents minting another successor issue, so the Stage SSMM is governed directly under ECO-136. Shape freezes Stage as a PGO-relevant, Line-indexed projection of warranted Level. Bounded artifacts live under [research/urg-kernel](research/urg-kernel/README.md).
