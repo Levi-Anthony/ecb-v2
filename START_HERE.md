@@ -1,3 +1,5 @@
+> **URG STATE — ECO-224 MOVE — 5 October 2026.** Shape has frozen State as a basis-indexed actualized-configuration contract. Bounded qualification artifacts live under [research/urg-kernel](research/urg-kernel/README.md). Observation/evidence, basis/frame change, Direction, Stage, Level, and ECO-191 engagement bookkeeping remain explicitly distinct.
+>
 > **URG CORE FORMALIZATION — LEVEL + QUADRANT + DIRECTION CLOSED — 5 October 2026.** ECO-221 and ECO-222 are CLOSED / PASS. Installed contracts live under [research/urg-kernel](research/urg-kernel/README.md). The next dependency-aware URG axis frontier is **State**; do not reopen Level/Quadrant/Direction absent their recorded reentry conditions.
 >
 > **URG DIRECTIONAL PRESSURES — ECO-222 MOVE — 5 October 2026.** Shape has frozen the four-direction relational-transformation contract as paired-but-nonexclusive partial predicates. Bounded qualification artifacts live under [research/urg-kernel](research/urg-kernel/README.md). No universal scalar axis, automatic Level promotion, or metaphysical exhaustiveness is asserted.

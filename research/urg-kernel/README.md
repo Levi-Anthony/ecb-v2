@@ -30,3 +30,14 @@ Standing: Register-B Shape contract under bounded Move qualification. The four d
 ## Current frontier after ECO-222
 
 ECO-222 is CLOSED / PASS across Sense→Shape→Move→Metabolize. Level, Quadrant, and the four Directional Pressures now have installed Register-B formal contracts. The next dependency-aware URG axis frontier is **State**: define determinate/actualized configuration under declared scope while preserving distinction from observation, representation, Direction, boundary revision, Stage, and ECO-191 engagement-state bookkeeping.
+
+
+## URG State — ECO-224
+
+**Current artifact:** [State-Formal-Contract-v1.0.md](./State-Formal-Contract-v1.0.md)
+
+Qualification artifacts:
+- [state-fixtures-v1.0.json](./state-fixtures-v1.0.json)
+- [check_state_contract.py](./check_state_contract.py)
+
+Standing: Register-B Shape contract under bounded Move qualification. State is a basis-indexed claim about the actualized configuration of R, not observation, evidence, representation, transition, Direction, Stage, Level, or the ECO-191 engagement tuple. Cross-basis/frame comparison requires explicit crosswalks.

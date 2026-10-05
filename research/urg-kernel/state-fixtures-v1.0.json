@@ -1,0 +1,244 @@
+{
+  "schema": "eco224-state-fixtures-v1",
+  "standing": "research qualification fixtures; semantic premises are stipulated",
+  "fixtures": [
+    {
+      "id": "F1-observe-same-state",
+      "operation": "Observe",
+      "same_r": true,
+      "same_b": true,
+      "same_basis": true,
+      "same_frame": true,
+      "state_changed": false,
+      "evidence_changed": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F2-fine-basis-same-coarse-state",
+      "operation": "RefineStateBasis",
+      "same_r": true,
+      "same_b": true,
+      "basis_changed": true,
+      "crosswalk": true,
+      "fine_diff": true,
+      "coarse_equal": true,
+      "state_transition_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F3-hidden-state-same-observation",
+      "operation": "CompareObservation",
+      "visible_equal": true,
+      "hidden_state_diff": true,
+      "state_equal_inferred_from_observation": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F4-epistemic-unknown",
+      "operation": "AssessEvidence",
+      "epistemic_candidates": [
+        "a",
+        "b"
+      ],
+      "coerced_to_ontic_unknown_state": false,
+      "result": "STATE_UNKNOWN",
+      "expected_valid": true
+    },
+    {
+      "id": "F5-native-stochastic-state",
+      "operation": "StateClaim",
+      "native_probability_state": true,
+      "epistemic_candidate_set": false,
+      "actual_state_object": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F6-reversible-cycle",
+      "operation": "StateTransition",
+      "same_r": true,
+      "same_b": true,
+      "same_basis": true,
+      "same_frame": true,
+      "path": [
+        "x0",
+        "x1",
+        "x0"
+      ],
+      "endpoint_equal": true,
+      "history_erased": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F7-state-change-no-direction",
+      "operation": "StateTransition",
+      "same_r": true,
+      "same_b": true,
+      "same_basis": true,
+      "same_frame": true,
+      "state_changed": true,
+      "direction_auto_asserted": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F8-direction-equal-endpoint",
+      "operation": "DirectionalEvent",
+      "same_r": true,
+      "same_b": true,
+      "same_basis": true,
+      "endpoint_equal": true,
+      "directional_semantics_preserved": true,
+      "state_transition_required": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F9-boundary-revision-blocks-direct-equality",
+      "operation": "ReviseBoundary",
+      "boundary_changed": true,
+      "direct_state_equality_claimed": false,
+      "redisclose_state": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F10-frame-transform-not-transition",
+      "operation": "ChangeFrame",
+      "frame_changed": true,
+      "frame_transform": true,
+      "state_transition_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F11-frame-no-transform-incomparable",
+      "operation": "ChangeFrame",
+      "frame_changed": true,
+      "frame_transform": false,
+      "direct_comparison_claimed": false,
+      "result": "STATE_FRAME_INCOMPARABLE",
+      "expected_valid": true
+    },
+    {
+      "id": "F12-eco191-specialized",
+      "operation": "Specialization",
+      "eco191_tuple": true,
+      "universal_state_definition": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F13-long-static-state",
+      "operation": "StateClaim",
+      "duration_class": "long",
+      "state_changed": false,
+      "min_dwell_required": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F14-short-state",
+      "operation": "StateClaim",
+      "duration_class": "short",
+      "state_changed": true,
+      "min_dwell_required": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F15-coarse-equality-fine-difference",
+      "operation": "CompareState",
+      "same_basis": true,
+      "coarse_equal": true,
+      "fine_diff_outside_basis": true,
+      "state_equal_under_basis": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F16-state-space-not-actual-state",
+      "operation": "StateSpace",
+      "possibility_space": [
+        "a",
+        "b",
+        "c"
+      ],
+      "actual_state_claimed_as_space": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F17-basis-change-without-crosswalk-negative",
+      "operation": "RefineStateBasis",
+      "basis_changed": true,
+      "crosswalk": false,
+      "direct_comparison_claimed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F18-unknown-preserved",
+      "operation": "AssessEvidence",
+      "epistemic_candidates": [
+        "a",
+        "b"
+      ],
+      "coerced_to_ontic_unknown_state": false,
+      "result": "STATE_UNKNOWN",
+      "expected_valid": true
+    },
+    {
+      "id": "F19-boundary-smuggled-equality-negative",
+      "operation": "ReviseBoundary",
+      "boundary_changed": true,
+      "direct_state_equality_claimed": true,
+      "redisclose_state": false,
+      "expected_valid": false
+    },
+    {
+      "id": "F20-uncertainty-as-ontic-state-negative",
+      "operation": "AssessEvidence",
+      "epistemic_candidates": [
+        "a",
+        "b"
+      ],
+      "coerced_to_ontic_unknown_state": true,
+      "result": "STATE_UNKNOWN",
+      "expected_valid": false
+    },
+    {
+      "id": "F21-endpoint-erases-history-negative",
+      "operation": "StateTransition",
+      "same_r": true,
+      "same_b": true,
+      "same_basis": true,
+      "endpoint_equal": true,
+      "path": [
+        "x0",
+        "x1",
+        "x0"
+      ],
+      "history_erased": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F22-state-auto-promotes-other-axes-negative",
+      "operation": "StateTransition",
+      "same_r": true,
+      "same_b": true,
+      "same_basis": true,
+      "state_changed": true,
+      "direction_auto_asserted": true,
+      "stage_auto_asserted": true,
+      "level_auto_asserted": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F23-eco191-universal-negative",
+      "operation": "Specialization",
+      "eco191_tuple": true,
+      "universal_state_definition": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F24-possibility-space-as-state-negative",
+      "operation": "StateSpace",
+      "possibility_space": [
+        "a",
+        "b"
+      ],
+      "actual_state_claimed_as_space": true,
+      "expected_valid": false
+    }
+  ]
+}
