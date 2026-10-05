@@ -85,3 +85,7 @@ The GitHub copy is a continuity fallback and provenance carrier, not a substitut
 ## Active frontier — ECO-220 invariant-lattice Sense — 5 October 2026
 
 [ECO-220](https://linear.app/ecos-ops/issue/ECO-220/sense-urg-invariant-lattice-reconcile-axis-definitions-fidelity) is OPEN / Working under ECO-136. It reconciles the already-existing governing invariants, URG axis definitions, ECO-162 fidelity invariants/independent coordinates, ECO-191 transformation laws, and formal witnesses into a source-traceable invariant lattice before proposing any new primitive or definition. Its [Sense-opening mirror](./ECO-220-URG-Invariant-Lattice-Sense-Opening-2026-10-05.md) carries the proximal/grand orientation, governing telos, magic-wand end state, source anchors, and stop boundary. This research does not amend `docs/invariants.md`, promote a mathematical probe, or enter Shape/Move by proximity.
+
+## ECO-220 Move index installed — 5 October 2026
+
+The invariant-lattice excavation is now installed as a durable navigation surface: [ECO-220 Invariant Lattice Index v1.0](./ECO-220-Invariant-Lattice-Index-v1.0.md), with a machine-readable [manifest](./ECO-220-Invariant-Lattice-Manifest-v1.0.json). The index is a reconciled projection, not independent semantic authority. It preserves the six-role lattice, source standing, derivation/non-equivalence edges, supersessions, seven-axis readiness, human-door seam and Level+Quadrant successor handoff.

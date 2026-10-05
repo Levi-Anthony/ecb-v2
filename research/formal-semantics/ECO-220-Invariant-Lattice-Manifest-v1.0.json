@@ -1,0 +1,141 @@
+{
+  "schema": "eco220-invariant-lattice-manifest-v1",
+  "installed_date": "2026-10-05",
+  "standing": "reconciled_projection_not_independent_authority",
+  "owner": "ECO-220",
+  "parent": "ECO-136",
+  "roles": [
+    {
+      "id": "R1",
+      "name": "constitutional_governing_invariants",
+      "source": "docs/invariants.md",
+      "standing": "GOVERNING"
+    },
+    {
+      "id": "R2",
+      "name": "urg_axis_semantics",
+      "members": [
+        "Level",
+        "Quadrant",
+        "DirectionCapacity",
+        "State",
+        "Stage",
+        "Line",
+        "Type"
+      ]
+    },
+    {
+      "id": "R3",
+      "name": "cross_cutting_fidelity",
+      "source": "ECO-162",
+      "members": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8"
+      ]
+    },
+    {
+      "id": "R4",
+      "name": "transition_reconciliation_laws",
+      "source": "ECO-191 Shape"
+    },
+    {
+      "id": "R5",
+      "name": "scoped_axis_local_contracts",
+      "sources": [
+        "Quadrant v0.2",
+        "Quadrant C1-C6",
+        "ECO-51",
+        "ECO-184",
+        "ECO-185"
+      ]
+    },
+    {
+      "id": "R6",
+      "name": "formal_executable_witnesses",
+      "sources": [
+        "ECO-192",
+        "finite checkers"
+      ]
+    }
+  ],
+  "source_ledger": [
+    {
+      "path": "docs/invariants.md",
+      "sha": "72b89a2bf7ccb9b2de484be01e45cf5a62e612b6",
+      "standing": "GOVERNING"
+    },
+    {
+      "path": "research/core-architecture/ECO-162-Integral-Coherence-Architecture-Shape-Return-2026-09-19.md",
+      "sha": "7299cfb7875c1842a2f3d05d07873615e8fd981e",
+      "standing": "Shape PASS"
+    },
+    {
+      "path": "research/quadrant-grammar/SIGMA-ECOS-Quadrant-Grammar-Register-B-Functional-Contract-v0.2.md",
+      "sha": "a61642dfdf5a2abdb4edf0fa81b7842d23e3970f",
+      "standing": "Register-B bounded use"
+    },
+    {
+      "path": "research/quadrant-grammar/Quadrant-Logical-Architecture-Contract-v0.1.md",
+      "sha": "e3d6fef43d1e81190547e6fa453424c0341190a3",
+      "standing": "accepted bounded architecture"
+    },
+    {
+      "path": "research/formal-semantics/ECO-191-Formal-Sense-Return-2026-09-24.md",
+      "sha": "c95636de263288f05f79dec8cfe42050f10637e5",
+      "standing": "source evidence; controlling Shape in Linear"
+    },
+    {
+      "linear_document_id": "a772bbf2-f8f4-4ceb-9fc7-e5cbb20e345e",
+      "standing": "ECO-191 Shape PASS; Move not opened"
+    },
+    {
+      "path": "research/formal-semantics/ECO-192-Translation-Frontier-Probe-2026-09-24.md",
+      "sha": "c386dd9f9819cf31380c5ae6b3bbeb5a517838b9",
+      "standing": "bounded formal witness"
+    },
+    {
+      "linear_issue": "ECO-179",
+      "standing": "completed Sense analysis / axis program"
+    },
+    {
+      "linear_issue": "ECO-184",
+      "linear_document_id": "63b8f1a1-3e22-4e43-ab7c-b0f311fa2e43",
+      "standing": "Principal-accepted, closed loop"
+    },
+    {
+      "linear_document_id": "72cd51d5f51d",
+      "standing": "ECO-185 v0.2 final Register-B repair"
+    },
+    {
+      "linear_issue": "ECO-51",
+      "standing": "written procedure established; mechanization pending"
+    }
+  ],
+  "next_formalization": {
+    "mandatory": [
+      "Level",
+      "Quadrant"
+    ],
+    "conditional": [
+      "DirectionalPressures"
+    ],
+    "direction_gate": [
+      "no_blocking_dependency",
+      "positive_characteristic_function",
+      "bounded_exhaustiveness_or_nonclaim",
+      "testable_transformations_and_counterexamples",
+      "does_not_delay_level_quadrant"
+    ]
+  },
+  "human_door": {
+    "standing": "candidate_interface_invariant_under_reconciliation",
+    "bootstrap": "one_clear_principal_facing_working_document_at_a_time",
+    "no_parallel_truth_silos": true
+  }
+}
