@@ -63,3 +63,7 @@ Qualification artifacts:
 - [check_stage_contract.py](./check_stage_contract.py)
 
 Standing: Register-B Shape contract under bounded Move qualification. Stage is a PGO-relevant, Line-indexed projection of warranted Level-bearing organization. Q/Gamma regimes, State changes, Directional events, labels, chronology, and basis revisions cannot create Stage standing independently.
+
+## Stage closure + next discriminator — 5 October 2026
+
+The consolidated ECO-136 Stage loop is CLOSED / PASS across Sense→Shape→Move→Metabolize. The Stage contract is installed and qualified at 28/28 fixtures. The next URG frontier is deliberately framed as a **Type / Kind / Schema discriminator**, not a presumed new primitive: determine the minimum universal contract needed to situate domain-native type/class/schema/instance systems, and whether that requires a first-class URG Type axis at all.

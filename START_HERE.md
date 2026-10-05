@@ -1,3 +1,5 @@
+> **URG STAGE CLOSED — TYPE / KIND / SCHEMA DISCRIMINATOR NEXT — 5 October 2026.** The consolidated ECO-136 Stage loop is CLOSED / PASS. The next Sense must not presume Type is a new URG primitive; it will test whether the universal substrate needs a Type coordinate or only a typed-relation/schema-descent interface for native domain semantics.
+>
 > **URG STAGE — ECO-136 CONSOLIDATED MOVE — 5 October 2026.** Linear's free issue ceiling prevents minting another successor issue, so the Stage SSMM is governed directly under ECO-136. Shape freezes Stage as a PGO-relevant, Line-indexed projection of warranted Level. Bounded artifacts live under [research/urg-kernel](research/urg-kernel/README.md).
 >
 > **URG LINE — ECO-225 MOVE — 5 October 2026.** Shape has frozen Line as a longitudinal continuity/comparison contract plus witnessed instance graph. Bounded qualification artifacts live under [research/urg-kernel](research/urg-kernel/README.md). Timestamp order, monotonicity, total ordering, Stage labels, and scalar maturity are not URG defaults.
