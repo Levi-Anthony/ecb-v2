@@ -1,0 +1,201 @@
+{
+  "schema": "eco225-line-fixtures-v1",
+  "standing": "research qualification fixtures; semantic premises are stipulated",
+  "fixtures": [
+    {
+      "id": "F1-timestamp-only",
+      "timestamp_order": true,
+      "k_continuity": false,
+      "i_link": false,
+      "j_defined": true,
+      "same_line_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F2-interruption-resume",
+      "interrupted": true,
+      "k_continuity": true,
+      "i_link": true,
+      "dj_stable": true,
+      "same_line_claimed": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F3-same-template-new-episode",
+      "same_contract": true,
+      "same_k_episode": false,
+      "separate_instance": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F4-reversal-same-line",
+      "k_continuity": true,
+      "i_link": true,
+      "dj_stable": true,
+      "j_result": "reversal",
+      "same_line_claimed": true,
+      "monotonicity_required": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F5-repeated-state-distinct-position",
+      "same_state_value": true,
+      "same_position_claimed": false,
+      "k_continuity": true,
+      "i_link": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F6-parallel-lines-same-r",
+      "same_r": true,
+      "different_dj": true,
+      "merged_as_one": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F7-capability-change-line-persists",
+      "capability_changed": true,
+      "k_continuity": true,
+      "i_link": true,
+      "dj_stable": true,
+      "same_line_claimed": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F8-line-without-stage",
+      "line_witnessed": true,
+      "stage_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F9-line-auto-stage-negative",
+      "line_witnessed": true,
+      "stage_auto_asserted": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F10-state-basis-crosswalk",
+      "state_basis_changed": true,
+      "state_crosswalk": true,
+      "dj_stable": true,
+      "k_continuity": true,
+      "i_link": true,
+      "same_line_claimed": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F11-dj-change-no-crosswalk-negative",
+      "dj_changed": true,
+      "line_basis_crosswalk": false,
+      "same_line_claimed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F12-reseat-with-bridge",
+      "r_or_b_changed": true,
+      "reseat_receipt": true,
+      "k_continuity_bridge": true,
+      "state_redisclosed": true,
+      "same_line_claimed": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F13-reseat-no-bridge-negative",
+      "r_or_b_changed": true,
+      "reseat_receipt": true,
+      "k_continuity_bridge": false,
+      "state_redisclosed": true,
+      "same_line_claimed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F14-branch-same-k",
+      "branched": true,
+      "k_continuity": true,
+      "one_instance_claimed": true,
+      "lambda_allows_branch": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F15-split-descendants",
+      "branched": true,
+      "k_split": true,
+      "shared_ancestry": true,
+      "descendant_instances": true,
+      "merged_postfork": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F16-prospective-contract",
+      "line_contract": true,
+      "positions": 0,
+      "witnessed_instance_claimed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F17-partial-j-incomparable",
+      "line_witnessed": true,
+      "j_partial": true,
+      "j_result": "incomparable",
+      "same_line_claimed": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F18-timestamp-no-j-negative",
+      "timestamp_order": true,
+      "k_continuity": true,
+      "i_link": true,
+      "j_defined": false,
+      "line_witnessed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F19-no-default-monotonicity",
+      "line_witnessed": true,
+      "monotonicity_required": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F20-equal-state-different-position",
+      "same_state_value": true,
+      "position_ids": [
+        "p0",
+        "p3"
+      ],
+      "same_position_claimed": false,
+      "line_witnessed": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F21-no-i-link-same-line-negative",
+      "k_continuity": true,
+      "i_link": false,
+      "j_defined": true,
+      "same_line_claimed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F22-template-instance-collapse-negative",
+      "line_contract": true,
+      "positions": 0,
+      "witnessed_instance_claimed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F23-parallel-lines-merge-negative",
+      "same_r": true,
+      "different_dj": true,
+      "merged_as_one": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F24-postfork-merge-negative",
+      "branched": true,
+      "k_split": true,
+      "shared_ancestry": true,
+      "descendant_instances": false,
+      "merged_postfork": true,
+      "expected_valid": false
+    }
+  ]
+}

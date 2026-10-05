@@ -41,3 +41,14 @@ Qualification artifacts:
 - [check_state_contract.py](./check_state_contract.py)
 
 Standing: Register-B Shape contract under bounded Move qualification. State is a basis-indexed claim about the actualized configuration of R, not observation, evidence, representation, transition, Direction, Stage, Level, or the ECO-191 engagement tuple. Cross-basis/frame comparison requires explicit crosswalks.
+
+
+## URG Line — ECO-225
+
+**Current artifact:** [Line-Formal-Contract-v1.0.md](./Line-Formal-Contract-v1.0.md)
+
+Qualification artifacts:
+- [line-fixtures-v1.0.json](./line-fixtures-v1.0.json)
+- [check_line_contract.py](./check_line_contract.py)
+
+Standing: Register-B Shape contract under bounded Move qualification. Line is a versioned continuity/comparison contract `Λ=(K,D,J,I,v)` plus witnessed longitudinal instance `ℓ=(Λ,P,E)`. It is not chronology, capability, Stage, Level, Direction, or a universal scalar maturity axis.
