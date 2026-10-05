@@ -116,3 +116,7 @@ This package is intentionally a discriminated contract surface, not a seven-fiel
 ## ECO-136 Move PASS
 
 The Principal-accepted full core is now canonically implemented as a portable discriminated contract package. See [Move receipt](./URG-Core-Move-Receipt-v1.0.md) and [machine Move manifest](./URG-Core-Move-Manifest-v1.0.json). Exact CI at implementation commit passed typecheck, 21/21 package tests and the 42/42 accepted full-core matrix. No database/MCP/provider physicalization was added.
+
+## SSMM closure + portable-descent qualification
+
+ECO-136 is CLOSED / PASS and ECO-207's outer portable-descent Move has a bounded PASS. See [the combined closure/qualification receipt](./2026-10-05-URG-Core-Closure-and-Portable-Descent-Receipt.md). The next semantic evidence frontier is situated use of the current portable core; hosted worker/provider effects remain separately governed.
