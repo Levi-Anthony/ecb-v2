@@ -82,3 +82,15 @@ Qualification artifacts:
 - [check_type_contract.py](./check_type_contract.py)
 
 Standing: Register-B Shape contract under bounded Move qualification. Type is a schema-indexed classification relation preserving horizontal/categorical differentiation while leaving concrete classifier and membership semantics in the native typology/schema. Type does not imply Level, Stage, State, Line, Quadrant, Direction, role, or referent identity.
+
+
+## URG full-core candidate — ECO-136 Shape finalization
+
+The current integration candidate is [URG-Core-Register-B-Candidate-v1.0.md](./URG-Core-Register-B-Candidate-v1.0.md).
+
+Qualification surfaces:
+- [URG-Core-Source-Manifest-v1.0.json](./URG-Core-Source-Manifest-v1.0.json)
+- [URG-Core-Qualification-Matrix-v1.0.json](./URG-Core-Qualification-Matrix-v1.0.json)
+- [check_urg_core_contract.py](./check_urg_core_contract.py)
+
+This candidate composes stable referents, typed relations, situated bases, the seven locked URG distinctions, domain-semantic descent, fidelity/transition laws, Question Forward and human/agent projection obligations. It is a Shape candidate pending bounded qualification and explicit Principal acceptance; it is not runtime installation or constitutional promotion.

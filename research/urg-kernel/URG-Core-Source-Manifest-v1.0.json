@@ -1,0 +1,60 @@
+{
+  "schema": "urg-core-source-manifest-v1",
+  "generated_on": "2026-10-05",
+  "governing_issue": "ECO-136",
+  "constitutional": {
+    "path": "docs/invariants.md",
+    "blob": "72b89a2bf7ccb9b2de484be01e45cf5a62e612b6",
+    "standing": "governing/frozen"
+  },
+  "invariant_lattice": {
+    "path": "research/formal-semantics/ECO-220-Invariant-Lattice-Index-v1.0.md",
+    "blob": "6cd55c8b09c87e3785a8e5eb3d165f8cd3b4e6ae",
+    "standing": "reconciled index; source does not outrank indexed sources"
+  },
+  "axes": [
+    {
+      "name": "Level+Quadrant",
+      "path": "research/urg-kernel/Level-Quadrant-Formal-Contract-v1.0.md",
+      "blob": "b0b3330d3ed2344282b3f4429671d1b0d8f38f6c"
+    },
+    {
+      "name": "Direction",
+      "path": "research/urg-kernel/Directional-Pressures-Formal-Contract-v1.0.md",
+      "blob": "deaaeb61159cfa2c6b51597cf662e0574cb01039"
+    },
+    {
+      "name": "State",
+      "path": "research/urg-kernel/State-Formal-Contract-v1.0.md",
+      "blob": "f55cf1763ab8861e57d37b66ae0e4bc3b69c5bed"
+    },
+    {
+      "name": "Line",
+      "path": "research/urg-kernel/Line-Formal-Contract-v1.0.md",
+      "blob": "9be8b64811b4754da75049bbf825477dd85a6956"
+    },
+    {
+      "name": "Stage",
+      "path": "research/urg-kernel/Stage-Formal-Contract-v1.0.md",
+      "blob": "e699973da786f218b16c44553bf0796683eb42f6"
+    },
+    {
+      "name": "Type",
+      "path": "research/urg-kernel/Type-Formal-Contract-v1.0.md",
+      "blob": "9586ba69ff7a474d061e41f090999a0685718c23"
+    }
+  ],
+  "cross_cutting": [
+    {
+      "name": "ECO-162 fidelity architecture",
+      "linear_document_id": "3bf5f910-ca37-4619-8dae-99b2e311c9f2",
+      "standing": "closed PASS"
+    },
+    {
+      "name": "ECO-191 indexed change/reconciliation",
+      "linear_document_id": "a772bbf2-f8f4-4ceb-9fc7-e5cbb20e345e",
+      "standing": "Shape contract / current scoped source"
+    }
+  ],
+  "nonclaim": "This manifest resolves source identity/version; it does not promote or replace source authority."
+}

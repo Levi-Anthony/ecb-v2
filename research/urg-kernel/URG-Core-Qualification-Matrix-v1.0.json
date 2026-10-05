@@ -1,0 +1,260 @@
+{
+  "schema": "urg-core-qualification-matrix-v1",
+  "standing": "bounded structural/cold-reader matrix; semantic premises are stipulated",
+  "cases": [
+    {
+      "id": "C1-referent-map",
+      "referent_equals_representation": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C2-mapper-purpose",
+      "mapper_purpose_substituted_for_referent": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C3-pgo-noncreation",
+      "pgo_relevance_implies_existence": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C4-verification-boundary",
+      "verification_implies_truth_authority": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C5-persistence-boundary",
+      "persistence_implies_standing": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C6-currentness-boundary",
+      "newest_implies_current_binding": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C7-phase-boundary",
+      "phase_implies_authority": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C8-boundary-revision",
+      "boundary_revision_treated_as_view_change": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C9-type-level",
+      "type_hierarchy_implies_level": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C10-state-direction",
+      "state_change_implies_direction": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C11-line-chronology",
+      "timestamp_order_implies_line": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C12-stage-regime",
+      "gamma_regime_implies_stage": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C13-type-role",
+      "role_implies_type": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C14-transcendence-level",
+      "transcendence_implies_level": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C15-dissolution-record",
+      "record_deletion_implies_dissolution": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C16-label-classifier",
+      "same_label_implies_classifier_identity": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C17-endpoint-history",
+      "equal_endpoint_erases_history": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C18-state-line-position",
+      "same_state_implies_same_line_position": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C19-native-semantics",
+      "native_semantics_recoverable": true,
+      "expected_valid": true
+    },
+    {
+      "id": "C20-same-rock",
+      "same_referent": true,
+      "pgo_changed": true,
+      "frame_changed": true,
+      "referent_replaced_due_to_pgo": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C21-cell",
+      "state_changed": true,
+      "directions": [
+        "A",
+        "C"
+      ],
+      "stage_auto_asserted": false,
+      "level_auto_asserted": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C22-migration",
+      "directions": [
+        "T",
+        "D"
+      ],
+      "lineage_preserved": true,
+      "level_candidate_separate": true,
+      "auto_level": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C23-dressing-stage",
+      "line_witnessed": true,
+      "pgo_adequate": true,
+      "lawful_seat": true,
+      "level_witnessed": true,
+      "projection_selected": true,
+      "stage_witnessed": true,
+      "expected_valid": true
+    },
+    {
+      "id": "C24-domain-model",
+      "domain_schema_native": true,
+      "definition_usage_preserved": true,
+      "view_equals_model_element": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C25-multi-typology",
+      "multiple_type_schemas": true,
+      "forced_master_type": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C26-observation",
+      "evidence_changed": true,
+      "state_changed_from_observation_alone": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C27-line-resume",
+      "interrupted": true,
+      "continuity_link": true,
+      "same_line_allowed": true,
+      "expected_valid": true
+    },
+    {
+      "id": "C28-schema-rebase",
+      "schema_changed": true,
+      "crosswalk": true,
+      "referent_change_inferred": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C29-self-focus",
+      "contract_becomes_referent": true,
+      "self_pass_confers_authority": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C30-challenge-route",
+      "material_challenge": true,
+      "challenge_route_preserved": true,
+      "filtered_by_pgo_only": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C31-human-agent-door",
+      "human_door": true,
+      "agent_door": true,
+      "reconcilable": true,
+      "latest_writer_implies_authority": false,
+      "expected_valid": true
+    },
+    {
+      "id": "C32-unknown-qf",
+      "unknown_preserved": true,
+      "qf_has_discriminator": true,
+      "qf_has_reentry": true,
+      "unknown_treated_as_absent": false,
+      "expected_valid": true
+    },
+    {
+      "id": "N1-referent-map-collapse",
+      "referent_equals_representation": true,
+      "expected_valid": false
+    },
+    {
+      "id": "N2-verification-promotion",
+      "verification_implies_truth_authority": true,
+      "expected_valid": false
+    },
+    {
+      "id": "N3-type-level-collapse",
+      "type_hierarchy_implies_level": true,
+      "expected_valid": false
+    },
+    {
+      "id": "N4-line-chronology-collapse",
+      "timestamp_order_implies_line": true,
+      "expected_valid": false
+    },
+    {
+      "id": "N5-stage-regime-collapse",
+      "gamma_regime_implies_stage": true,
+      "expected_valid": false
+    },
+    {
+      "id": "N6-native-ontology-capture",
+      "domain_schema_native": true,
+      "native_semantics_recoverable": false,
+      "expected_valid": false
+    },
+    {
+      "id": "N7-self-certification",
+      "contract_becomes_referent": true,
+      "self_pass_confers_authority": true,
+      "expected_valid": false
+    },
+    {
+      "id": "N8-challenge-self-seal",
+      "material_challenge": true,
+      "challenge_route_preserved": false,
+      "filtered_by_pgo_only": true,
+      "expected_valid": false
+    },
+    {
+      "id": "N9-human-agent-silo",
+      "human_door": true,
+      "agent_door": true,
+      "reconcilable": false,
+      "expected_valid": false
+    },
+    {
+      "id": "N10-unknown-erasure",
+      "unknown_preserved": false,
+      "unknown_treated_as_absent": true,
+      "expected_valid": false
+    }
+  ]
+}
