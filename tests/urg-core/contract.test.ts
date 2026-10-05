@@ -66,7 +66,7 @@ test("authority and currentness are independent references, not inferred from qu
 test("Level is a witnessed constitutive relation, not a rank field", () => valid({
   kind:"level", context:ctx, fidelity, result:"LEVEL_WITNESSED",
   constituent_referent_ids:["22222222-2222-4222-8222-222222222222"],
-  organization_ref:"organization:service:v1",
+  organization_ref:"organization:service:v1", dependence_witness_ref:"dependence:service:v1",
 }));
 
 test("witnessed Level without organization is rejected", () => invalid({
@@ -86,17 +86,22 @@ test("Quadrant unknown must retain a QF route", () => invalid({
 test("A+C coactivation is legal", () => valid({
   kind:"direction", context:ctx, fidelity,
   directions:{A:"SUPPORTED",C:"SUPPORTED",T:"NOT_ESTABLISHED",D:"NOT_ESTABLISHED"},
-  mode:"drive", transformation_ref:"event:autoscale:1",
+  mode:"drive", transformation_ref:"transformation:autoscale:1", conditions_ref:"conditions:autoscale:1",
+  direction_witness_refs:{A:"witness:A:1",C:"witness:C:1"},
 }));
 
 test("Transcendence cannot self-promote a composite", () => invalid({
   kind:"direction", context:ctx, fidelity,
   directions:{A:"NOT_ESTABLISHED",C:"NOT_ESTABLISHED",T:"SUPPORTED",D:"NOT_ESTABLISHED"},
+  transformation_ref:"transformation:compose:1", conditions_ref:"conditions:compose:1",
+  direction_witness_refs:{T:"witness:T:1"},
 }, "composite_candidate_ref"));
 
 test("Dissolution requires a constitutive dissolution basis", () => invalid({
   kind:"direction", context:ctx, fidelity,
   directions:{A:"NOT_ESTABLISHED",C:"NOT_ESTABLISHED",T:"NOT_ESTABLISHED",D:"SUPPORTED"},
+  transformation_ref:"transformation:dissolve:1", conditions_ref:"conditions:dissolve:1",
+  direction_witness_refs:{D:"witness:D:1"},
 }, "dissolution_basis_ref"));
 
 test("State makes consequential F independently attributable", () => valid({
@@ -133,26 +138,26 @@ test("chronology-like one-position Line is not witnessed", () => invalid({
 
 test("Stage standing composes Line + G + Level + projection", () => valid({
   kind:"stage", context:ctx, fidelity, stage_basis_ref:"stage-basis:dressing:v1",
-  line_ref:"line-instance:dressing:1", result:"STAGE_LEVEL",
-  stage_key:"dressing:integrated", level_claim_ref:"level-claim:7", projection_ref:"stage-projection:2",
+  line_ref:"line-instance:dressing:1", line_position_ref:"position:dressing:2", result:"STAGE_LEVEL",
+  stage_key:"dressing:integrated", occurrence_ref:"stage-occurrence:2", level_claim_ref:"level-claim:7", projection_ref:"stage-projection:2",
 }));
 
 test("Stage cannot be generated from a regime without G", () => invalid({
   kind:"stage",
   context:{referent_id:ctx.referent_id,boundary_ref:ctx.boundary_ref},
   fidelity, stage_basis_ref:"stage-basis:dressing:v1", line_ref:"line-instance:dressing:1",
-  result:"STAGE_LEVEL", stage_key:"3", level_claim_ref:"level:1", projection_ref:"projection:1",
+  line_position_ref:"position:3", result:"STAGE_LEVEL", stage_key:"3", occurrence_ref:"occurrence:3", level_claim_ref:"level:1", projection_ref:"projection:1",
 }, "governing_orientation_ref"));
 
 test("Type preserves native schema membership semantics", () => valid({
-  kind:"type", context:ctx, fidelity, typology_ref:"sysml:definitions:v2",
+  kind:"type", context:ctx, fidelity, typology_ref:"sysml:definitions:v2", conditions_ref:"classification-context:1",
   result:"TYPE_WITNESSED", classifier_ref:"definition:VoltageConverter",
-  native_relation_kind:"usage-of-definition",
+  native_relation_kind:"usage-of-definition", witness_ref:"witness:type:1",
 }));
 
 test("witnessed Type without native relation meaning is rejected", () => invalid({
-  kind:"type", context:ctx, fidelity, typology_ref:"schema:x",
-  result:"TYPE_WITNESSED", classifier_ref:"type:A",
+  kind:"type", context:ctx, fidelity, typology_ref:"schema:x", conditions_ref:"classification-context:1",
+  result:"TYPE_WITNESSED", classifier_ref:"type:A", witness_ref:"witness:type:1",
 }, "native_relation_kind"));
 
 test("native relations may be n-ary and keep source schema edition", () => valid({
@@ -170,7 +175,7 @@ test("projection exposes mapper, mapping relation, G, frame, access, scope and o
   kind:"projection", projection_id:"view:1", mapped_referent_ids:["r1"],
   mapped_claim_refs:["claim:1"], mapper_ref:"worker:1", mapping_relation_ref:"maps:v1",
   governing_orientation_ref:"pgo:1", frame_ref:"frame:1", access_ref:"access:1",
-  scope_resolution_ref:"resolution:summary", content_ref:"artifact:1",
+  scope_resolution_ref:"resolution:summary", evidence_basis_ref:"evidence-basis:projection:1", content_ref:"artifact:1",
   fidelity:{...fidelity,currentness_ref:"binding:projection:1"}, omissions:["full implementation history"],
 }));
 
@@ -178,14 +183,14 @@ test("projection cannot erase its access path", () => invalid({
   kind:"projection", projection_id:"view:1", mapped_referent_ids:["r1"],
   mapper_ref:"worker:1", mapping_relation_ref:"maps:v1",
   governing_orientation_ref:"pgo:1", frame_ref:"frame:1",
-  scope_resolution_ref:"resolution:summary", content_ref:"artifact:1",
+  scope_resolution_ref:"resolution:summary", evidence_basis_ref:"evidence-basis:projection:1", content_ref:"artifact:1",
   fidelity, omissions:[],
 }, "access_ref"));
 
 test("material change names source, destination, continuity and requalification", () => valid({
   kind:"change", change_kind:"ChangeFrame", subject_referent_id:"r1",
   source_basis_ref:"frame:old", destination_basis_ref:"frame:new",
-  continuity_mode_ref:"crosswalk:old-new", affected_claim_refs:["state:1"],
+  continuity_mode_ref:"crosswalk:old-new", affected_claim_refs:["state:1"], affected_dependency_refs:["dependency:frame-transform"],
   requalify_refs:["state:1","projection:1"], fidelity,
   evidence_refs:["transform:1"],
 }));
@@ -193,13 +198,13 @@ test("material change names source, destination, continuity and requalification"
 test("generic untyped refresh is rejected", () => invalid({
   kind:"change", change_kind:"RefreshContext", subject_referent_id:"r1",
   source_basis_ref:"basis:a", destination_basis_ref:"basis:b",
-  continuity_mode_ref:"unknown", affected_claim_refs:[], requalify_refs:[], fidelity,
+  continuity_mode_ref:"unknown", affected_claim_refs:[], affected_dependency_refs:[], requalify_refs:[], fidelity,
 }, "change_kind"));
 
 test("handoff/reconstruction is an explicit typed change, not currentness by copying", () => valid({
   kind:"change", change_kind:"Handoff", subject_referent_id:"engagement:1",
   source_basis_ref:"worker:a", destination_basis_ref:"worker:b",
-  continuity_mode_ref:"handoff-packet:7", affected_claim_refs:["claim:1"],
+  continuity_mode_ref:"handoff-packet:7", affected_claim_refs:["claim:1"], affected_dependency_refs:["dependency:handoff"],
   requalify_refs:["currentness:engagement:1"], fidelity,
 }));
 
@@ -224,3 +229,48 @@ test("generic need-more-info is not a sufficient Question Forward", () => invali
 test("unknown record kinds are rejected rather than force-fit", () => invalid({
   kind:"mystery_axis", context:ctx,
 }, "kind is unknown"));
+
+test("Level witness preserves the constitutive dependence/asymmetry witness", () => invalid({
+  kind:"level", context:ctx, fidelity, result:"LEVEL_WITNESSED",
+  constituent_referent_ids:["c1"], organization_ref:"organization:1",
+}, "dependence_witness_ref"));
+
+test("every directional account declares transformation and conditions", () => invalid({
+  kind:"direction", context:ctx, fidelity,
+  directions:{A:"UNKNOWN",C:"UNKNOWN",T:"UNKNOWN",D:"UNKNOWN"},
+}, "transformation_ref"));
+
+test("supported Direction requires its own witness rather than status alone", () => invalid({
+  kind:"direction", context:ctx, fidelity,
+  transformation_ref:"transformation:1", conditions_ref:"conditions:1",
+  directions:{A:"SUPPORTED",C:"NOT_ESTABLISHED",T:"NOT_ESTABLISHED",D:"NOT_ESTABLISHED"},
+}, "witness ref: A"));
+
+test("STAGE_LEVEL preserves occurrence identity separately from class", () => invalid({
+  kind:"stage", context:ctx, fidelity, stage_basis_ref:"stage-basis:1",
+  line_ref:"line:1", line_position_ref:"position:1", result:"STAGE_LEVEL",
+  stage_key:"class:a", level_claim_ref:"level:1", projection_ref:"projection:1",
+}, "occurrence_ref"));
+
+test("Type claim remains conditions-indexed", () => invalid({
+  kind:"type", context:ctx, fidelity, typology_ref:"schema:1",
+  result:"TYPE_NOT_ESTABLISHED",
+}, "conditions_ref"));
+
+test("TYPE_WITNESSED requires an explicit witness", () => invalid({
+  kind:"type", context:ctx, fidelity, typology_ref:"schema:1", conditions_ref:"conditions:1",
+  result:"TYPE_WITNESSED", classifier_ref:"classifier:1", native_relation_kind:"instance-of",
+}, "witness_ref"));
+
+test("projection preserves evidence basis independently from content", () => invalid({
+  kind:"projection", projection_id:"view:2", mapped_referent_ids:["r1"],
+  mapper_ref:"mapper:1", mapping_relation_ref:"maps:1", governing_orientation_ref:"pgo:1",
+  frame_ref:"frame:1", access_ref:"access:1", scope_resolution_ref:"scope:1",
+  content_ref:"artifact:2", fidelity, omissions:[],
+}, "evidence_basis_ref"));
+
+test("material change declares affected dependencies as well as claims", () => invalid({
+  kind:"change", change_kind:"Reorient", subject_referent_id:"engagement:1",
+  source_basis_ref:"g:1", destination_basis_ref:"g:2", continuity_mode_ref:"rekey:1",
+  affected_claim_refs:["claim:1"], requalify_refs:["claim:1"], fidelity,
+}, "affected_dependency_refs"));

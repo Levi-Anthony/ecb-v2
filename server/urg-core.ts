@@ -11,7 +11,7 @@
  */
 
 export const URG_CORE_ID = "ecos:urg-core:register-b:v1" as const;
-export const URG_IMPLEMENTATION_REVISION = "1.0.1" as const;
+export const URG_IMPLEMENTATION_REVISION = "1.0.2" as const;
 
 export const URG_RECORD_KINDS = [
   "level",
@@ -96,6 +96,7 @@ export type LevelClaim = {
   result: "LEVEL_WITNESSED" | "LEVEL_NOT_ESTABLISHED" | "LEVEL_UNKNOWN";
   constituent_referent_ids?: string[];
   organization_ref?: string;
+  dependence_witness_ref?: string;
   qf_ref?: string;
 };
 
@@ -122,7 +123,9 @@ export type DirectionClaim = {
     D: DirectionStatus;
   };
   mode?: "tendency" | "capacity" | "drive";
-  transformation_ref?: string;
+  transformation_ref: string;
+  conditions_ref: string;
+  direction_witness_refs?: Partial<Record<"A" | "C" | "T" | "D", string>>;
   realized_event_ref?: string;
   composite_candidate_ref?: string;
   dissolution_basis_ref?: string;
@@ -169,6 +172,7 @@ export type StageClaim = {
   fidelity: FidelityCoordinates;
   stage_basis_ref: string;
   line_ref: string;
+  line_position_ref: string;
   result:
     | "PGO_UNDERENRICHED"
     | "LINE_UNRESOLVED"
@@ -180,6 +184,7 @@ export type StageClaim = {
     | "STAGE_LEVEL"
     | "STAGE_BASIS_INCOMPARABLE";
   stage_key?: string;
+  occurrence_ref?: string;
   level_claim_ref?: string;
   projection_ref?: string;
   qf_ref?: string;
@@ -190,6 +195,7 @@ export type TypeClaim = {
   context: SituatedContext;
   fidelity: FidelityCoordinates;
   typology_ref: string;
+  conditions_ref: string;
   result:
     | "TYPE_WITNESSED"
     | "TYPE_NOT_ESTABLISHED"
@@ -199,6 +205,7 @@ export type TypeClaim = {
     | "TYPE_UNCOVERED";
   classifier_ref?: string;
   native_relation_kind?: string;
+  witness_ref?: string;
   qf_ref?: string;
 };
 
@@ -224,6 +231,7 @@ export type ProjectionRecord = {
   frame_ref: string;
   access_ref: string;
   scope_resolution_ref: string;
+  evidence_basis_ref: string;
   content_ref: string;
   fidelity: FidelityCoordinates;
   omissions: string[];
@@ -238,6 +246,7 @@ export type ChangeRecord = {
   destination_basis_ref: string;
   continuity_mode_ref: string;
   affected_claim_refs: string[];
+  affected_dependency_refs: string[];
   requalify_refs: string[];
   fidelity: FidelityCoordinates;
   evidence_refs?: string[];
@@ -398,6 +407,7 @@ export function validateUrgRecord(value: unknown): ValidationResult {
           errors.push("witnessed Level requires constituent_referent_ids");
         }
         requireText(record, "organization_ref", errors);
+        requireText(record, "dependence_witness_ref", errors);
       }
       if (record.result === "LEVEL_UNKNOWN") requireText(record, "qf_ref", errors);
       break;
@@ -413,6 +423,8 @@ export function validateUrgRecord(value: unknown): ValidationResult {
       break;
     }
     case "direction": {
+      requireText(record, "transformation_ref", errors);
+      requireText(record, "conditions_ref", errors);
       const dirs = object(record.directions);
       if (!dirs) {
         errors.push("directions object is required");
@@ -420,6 +432,12 @@ export function validateUrgRecord(value: unknown): ValidationResult {
       }
       for (const key of ["A","C","T","D"]) {
         if (!directionStatuses.has(dirs[key] as DirectionStatus)) errors.push(`invalid direction status: ${key}`);
+      }
+      const witnesses = object(record.direction_witness_refs);
+      for (const key of ["A","C","T","D"]) {
+        if (dirs[key] === "SUPPORTED" && (!witnesses || !text(witnesses[key]))) {
+          errors.push(`SUPPORTED direction requires witness ref: ${key}`);
+        }
       }
       if (dirs.T === "SUPPORTED" && !text(record.composite_candidate_ref)) {
         errors.push("SUPPORTED Transcendence requires composite_candidate_ref");
@@ -481,6 +499,7 @@ export function validateUrgRecord(value: unknown): ValidationResult {
     case "stage": {
       requireText(record, "stage_basis_ref", errors);
       requireText(record, "line_ref", errors);
+      requireText(record, "line_position_ref", errors);
       const allowed = new Set([
         "PGO_UNDERENRICHED","LINE_UNRESOLVED","LEVEL_UNKNOWN","LEVEL_NOT_ESTABLISHED",
         "REGIME_ONLY","LEVEL_NOT_STAGE_UNDER_PGO","STAGE_UNKNOWN","STAGE_LEVEL",
@@ -495,6 +514,7 @@ export function validateUrgRecord(value: unknown): ValidationResult {
         requireText(record, "level_claim_ref", errors);
         requireText(record, "projection_ref", errors);
         requireText(record, "stage_key", errors);
+        requireText(record, "occurrence_ref", errors);
       }
       if (["PGO_UNDERENRICHED","LINE_UNRESOLVED","LEVEL_UNKNOWN","STAGE_UNKNOWN","STAGE_BASIS_INCOMPARABLE"].includes(String(record.result))
         && !text(record.qf_ref)) {
@@ -504,6 +524,7 @@ export function validateUrgRecord(value: unknown): ValidationResult {
     }
     case "type": {
       requireText(record, "typology_ref", errors);
+      requireText(record, "conditions_ref", errors);
       const allowed = new Set([
         "TYPE_WITNESSED","TYPE_NOT_ESTABLISHED","TYPE_UNKNOWN",
         "TYPE_INAPPLICABLE","TYPE_SCHEMA_INCOMPARABLE","TYPE_UNCOVERED",
@@ -512,6 +533,7 @@ export function validateUrgRecord(value: unknown): ValidationResult {
       if (record.result === "TYPE_WITNESSED") {
         requireText(record, "classifier_ref", errors);
         requireText(record, "native_relation_kind", errors);
+        requireText(record, "witness_ref", errors);
       }
       if (["TYPE_UNKNOWN","TYPE_SCHEMA_INCOMPARABLE","TYPE_UNCOVERED"].includes(String(record.result))
         && !text(record.qf_ref)) {
@@ -539,7 +561,7 @@ export function validateUrgRecord(value: unknown): ValidationResult {
     case "projection": {
       for (const key of [
         "projection_id","mapper_ref","mapping_relation_ref","governing_orientation_ref",
-        "frame_ref","access_ref","scope_resolution_ref","content_ref",
+        "frame_ref","access_ref","scope_resolution_ref","evidence_basis_ref","content_ref",
       ]) requireText(record, key, errors);
       validateFidelity(record.fidelity, errors);
       if (!texts(record.mapped_referent_ids) || record.mapped_referent_ids.length < 1) {
@@ -561,6 +583,7 @@ export function validateUrgRecord(value: unknown): ValidationResult {
         "subject_referent_id","source_basis_ref","destination_basis_ref","continuity_mode_ref",
       ]) requireText(record, key, errors);
       if (!texts(record.affected_claim_refs)) errors.push("affected_claim_refs must contain nonblank references");
+      if (!texts(record.affected_dependency_refs)) errors.push("affected_dependency_refs must contain nonblank references");
       if (!texts(record.requalify_refs)) errors.push("requalify_refs must contain nonblank references");
       if (record.evidence_refs !== undefined && !texts(record.evidence_refs)) {
         errors.push("change.evidence_refs must contain nonblank references");

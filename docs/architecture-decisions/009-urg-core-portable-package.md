@@ -78,3 +78,19 @@ Revision 1.0.1 repairs the implementation by:
 - strengthening projections and Question Forward records to carry the accepted fidelity/reentry information.
 
 This repair changes the implementation representation, not the accepted URG semantics. It is evidence that checker PASS does not self-establish semantic completeness.
+
+
+## Move-time axis witness audit — implementation revision 1.0.2
+
+A second exact-source audit compared the executable envelope against the positive witness/basis requirements of all seven installed formal contracts.
+
+Revision 1.0.2 closes the remaining representation gaps without changing Shape:
+
+- Level now retains the explicit constitutive-dependence/asymmetry witness `d`, not only constituent set `C` and organization `O`;
+- Direction now requires the transformation account `tau`, declared conditions `c`, and a distinct witness reference for every SUPPORTED A/C/T/D classification;
+- Stage now retains the Line position and, for STAGE_LEVEL, a distinct occurrence reference so Stage class does not collapse into occurrence;
+- Type remains conditions-indexed and TYPE_WITNESSED requires a recoverable witness in addition to classifier/native relation semantics;
+- projections retain an explicit evidence-basis reference;
+- typed material change records both affected claims and affected dependencies before naming requalification targets.
+
+The implementation continues to reference the full formal contracts rather than attempting to mechanize their semantic judgments.

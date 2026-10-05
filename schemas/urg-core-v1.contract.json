@@ -3,7 +3,7 @@
   "$id": "https://ecos.invalid/schemas/urg-core-v1.contract.json",
   "title": "SIGMA/ECOS Universal Referent Grammar portable core contract",
   "contract_id": "ecos:urg-core:register-b:v1",
-  "implementation_revision": "1.0.1",
+  "implementation_revision": "1.0.2",
   "standing": "Principal-accepted ECO-136 Shape; Move implementation contract",
   "accepted_on": "2026-10-05",
   "representation_note": "Language-neutral descriptor. The TypeScript discriminated union is the executable structural validator. Neither confers truth, currentness, authority, or domain validity.",
@@ -70,6 +70,7 @@
       "destination_basis_ref",
       "continuity_mode_ref",
       "affected_claim_refs",
+      "affected_dependency_refs",
       "requalify_refs"
     ],
     "rule": "No generic refresh-context transition satisfies the accepted contract."
@@ -109,5 +110,27 @@
       "path": "docs/invariants.md",
       "blob": "72b89a2bf7ccb9b2de484be01e45cf5a62e612b6"
     }
-  }
+  },
+  "axis_witness_surface": {
+    "Level": "constituent basis + identity-relevant organization + warranted constitutive-dependence/asymmetry witness",
+    "Quadrant": "fixed R/B + Seat x Answer-Burden",
+    "Direction": "R/B + transformation + declared conditions + per-supported-direction witness",
+    "State": "R/B + State basis + consequential mapper/frame/access + occasion + actualized/unknown result",
+    "Line": "versioned Line contract + positions + warranted continuity links",
+    "Stage": "Stage basis + witnessed Line + Line position + G + Level witness + projection + distinct occurrence for STAGE_LEVEL",
+    "Type": "typology/schema basis + declared conditions + classifier + native membership relation + witness"
+  },
+  "projection_required": [
+    "mapped referents",
+    "mapper",
+    "mapping relation",
+    "governing orientation",
+    "frame",
+    "access",
+    "scope/resolution",
+    "evidence basis",
+    "content",
+    "fidelity/standing",
+    "omissions"
+  ]
 }
