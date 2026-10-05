@@ -10,13 +10,14 @@ import {
 import { Hono } from 'hono';
 import { z } from 'zod';
 import { contracts as circulationContracts, registerCirculationTools } from './server/circulation/tools.js';
+import { bearerChallenge, oauthEnabled, oauthToolDenial, verifyOAuthToken } from './server/oauth.js';
 
 const SUPABASE_URL = 'https://vezxivrvhakclxuvxzso.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_4mAxzOfWinJcn-98szUEYA_Wh88UdPW';
 const MODEL_ID = 'gte-small';
 const VECTOR_DIMENSIONS = 384;
 const REPAIR_BATCH_LIMIT = 100;
-const CAPABILITY_POLICY_VERSION = 'eco206-preview-v1';
+const CAPABILITY_POLICY_VERSION = 'eco218-ordinary-v1';
 const CAPABILITIES = {
   recover: 'ecb:recover',
   preserve: 'ecb:preserve',
@@ -225,7 +226,7 @@ async function authenticateOrdinaryCredential(request: Request): Promise<AuthInf
   if (compatibility) return {
     token, clientId: 'ordinary-compatibility', scopes: Object.values(CAPABILITIES),
   };
-  if (matches.length !== 1) return null;
+  if (matches.length !== 1) return oauthEnabled() ? verifyOAuthToken(token) : null;
   return {
     token, clientId: matches[0].client_id,
     scopes: [...new Set(matches[0].capabilities.map((capability) => CAPABILITIES[capability]))],
@@ -789,7 +790,7 @@ app.all('/mcp', async (context) => {
       return context.json(
         { error: 'unauthorized' },
         401,
-        { ...corsHeaders, 'WWW-Authenticate': 'Bearer realm="ecb-v2"' },
+        { ...corsHeaders, 'WWW-Authenticate': bearerChallenge() },
       );
     }
   } catch (error) {
@@ -797,7 +798,8 @@ app.all('/mcp', async (context) => {
     return context.json({ error: 'runtime_configuration_failed' }, 503, corsHeaders);
   }
 
-  const response = await mcpHandler.fetch(context.req.raw, { authInfo });
+  const response = await oauthToolDenial(context.req.raw, authInfo)
+    ?? await mcpHandler.fetch(context.req.raw, { authInfo });
   for (const [name, value] of Object.entries(corsHeaders)) response.headers.set(name, value);
   return response;
 });

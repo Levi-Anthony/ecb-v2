@@ -1,5 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/.well-known/oauth-protected-resource/api/mcp", "destination": "/api/metadata" },
+    { "source": "/.well-known/oauth-protected-resource", "destination": "/api/metadata" },
+    { "source": "/oauth/:action", "destination": "/api/oauth/:action" }
+  ],
   "git": {
     "deploymentEnabled": {
       "move/eco-213-semantic-circulation": false

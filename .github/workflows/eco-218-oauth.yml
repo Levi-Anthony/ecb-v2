@@ -1,0 +1,24 @@
+name: ECO-218 ordinary OAuth qualification
+on:
+  push:
+    branches: [main]
+    paths: ['server.ts', 'server/oauth*.ts', 'api/**', 'tests/eco-218/**', 'package*.json', 'vercel.json', '.github/workflows/eco-218-oauth.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ordinary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts
+      - run: npm run typecheck:oauth
+      - run: npm run typecheck:mcp
+      - run: npm run typecheck:circulation
+      - run: npm run test:oauth
+      - run: npm run test:mcp
+      - run: npm run test:circulation

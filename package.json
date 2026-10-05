@@ -6,6 +6,8 @@
     "node": "24.x"
   },
   "scripts": {
+    "typecheck:oauth": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server/oauth.ts server/oauth-consent.ts api/metadata.ts api/oauth/[action].ts tests/eco-218/oauth.test.ts",
+    "test:oauth": "node --import tsx --test tests/eco-218/oauth.test.ts",
     "typecheck:mcp": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server.ts tests/mcp-protocol.test.ts",
     "test:mcp": "node --import tsx tests/mcp-protocol.test.ts",
     "typecheck:circulation": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server.ts server/circulation/worker.ts api/circulation/run.ts scripts/eco-213/commission.ts scripts/eco-213/assimilate.ts",
@@ -17,7 +19,9 @@
   "dependencies": {
     "@huggingface/transformers": "3.8.1",
     "@modelcontextprotocol/server": "2.1.0",
+    "@supabase/supabase-js": "2.117.2",
     "hono": "4.13.7",
+    "jose": "6.2.12",
     "zod": "4.6.5"
   },
   "devDependencies": {
