@@ -11,7 +11,9 @@
     "typecheck:mcp": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server.ts tests/mcp-protocol.test.ts",
     "test:mcp": "node --import tsx tests/mcp-protocol.test.ts",
     "typecheck:circulation": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server.ts server/circulation/worker.ts api/circulation/run.ts scripts/eco-213/commission.ts scripts/eco-213/assimilate.ts",
-    "test:circulation": "node --import tsx --test tests/eco-213/worker.test.ts tests/eco-213/protocol.test.ts tests/eco-213/commission.test.ts tests/eco-213/assimilate.test.ts"
+    "test:circulation": "node --import tsx --test tests/eco-213/worker.test.ts tests/eco-213/protocol.test.ts tests/eco-213/commission.test.ts tests/eco-213/assimilate.test.ts",
+    "typecheck:urg": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server/urg-core.ts tests/urg-core/contract.test.ts",
+    "test:urg": "node --import tsx --test tests/urg-core/contract.test.ts"
   },
   "allowScripts": {
     "onnxruntime-node@1.21.0": true

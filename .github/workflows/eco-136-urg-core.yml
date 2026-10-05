@@ -1,0 +1,35 @@
+name: ECO-136 URG portable core
+
+on:
+  push:
+    paths:
+      - "server/urg-core.ts"
+      - "schemas/urg-core-v1.contract.json"
+      - "tests/urg-core/**"
+      - "research/urg-kernel/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/eco-136-urg-core.yml"
+  pull_request:
+    paths:
+      - "server/urg-core.ts"
+      - "schemas/urg-core-v1.contract.json"
+      - "tests/urg-core/**"
+      - "research/urg-kernel/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/eco-136-urg-core.yml"
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck:urg
+      - run: npm run test:urg
+      - run: python3 research/urg-kernel/check_urg_core_contract.py research/urg-kernel/URG-Core-Qualification-Matrix-v1.0.json

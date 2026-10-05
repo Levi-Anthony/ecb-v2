@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ecos.invalid/schemas/urg-core-v1.contract.json",
+  "title": "SIGMA/ECOS Universal Referent Grammar portable core contract",
+  "contract_id": "ecos:urg-core:register-b:v1",
+  "standing": "Principal-accepted ECO-136 Shape; Move implementation contract",
+  "accepted_on": "2026-10-05",
+  "representation_note": "Machine-consumable descriptor. The TypeScript discriminated union is the executable structural validator. This file does not confer truth, currentness, authority, or domain validity.",
+  "architectural_form": "stable referents + attributable typed relations/claims + explicit situated bases + independently standing URG semantic contracts + domain-schema descent + typed change/requalification + composable projections",
+  "record_kinds": [
+    "level",
+    "quadrant",
+    "direction",
+    "state",
+    "line",
+    "stage",
+    "type",
+    "native_relation",
+    "projection",
+    "question_forward"
+  ],
+  "locked_distinctions": [
+    "Level",
+    "Quadrant",
+    "Direction/Capacity",
+    "State",
+    "Line",
+    "Stage",
+    "Type"
+  ],
+  "shared_context": {
+    "referent_id": "stable focal referent identity",
+    "boundary_ref": "explicit boundary/individuation basis",
+    "pgo_ref": "optional/required-by-contract governing orientation reference",
+    "frame_ref": "optional/required-by-use mapper/reference/access frame",
+    "source_refs": "recoverable source/provenance references"
+  },
+  "anti_collapse": [
+    "referent != representation",
+    "mapper purpose != mapped referent purpose",
+    "verification != truth/authority",
+    "Type hierarchy != Level",
+    "StateTransition != Direction",
+    "Line != chronology",
+    "Stage != Q/Gamma regime",
+    "Direction != Quadrant",
+    "same label != classifier identity",
+    "same endpoint != same history",
+    "native domain semantics != URG ontology"
+  ],
+  "source_receipts": {
+    "shape_acceptance_linear_document": "3c5e6d1f-e792-4e98-b4a1-dc6d6c51cc83",
+    "full_core_candidate": {
+      "path": "research/urg-kernel/URG-Core-Register-B-Candidate-v1.0.md",
+      "blob": "304e10ef3102d2c062eb2f68fcdedd1cc3ee40cf"
+    },
+    "qualification_receipt": {
+      "path": "research/urg-kernel/URG-Core-Shape-Qualification-Receipt-v1.0.md",
+      "blob": "c4fc6f96dff4877ff0dd8c2d04c06c9ac9a4cace"
+    },
+    "constitutional_invariants": {
+      "path": "docs/invariants.md",
+      "blob": "72b89a2bf7ccb9b2de484be01e45cf5a62e612b6"
+    }
+  }
+}

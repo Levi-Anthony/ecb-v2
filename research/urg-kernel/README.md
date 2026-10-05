@@ -98,3 +98,17 @@ This candidate composes stable referents, typed relations, situated bases, the s
 ## Full-core Shape qualification — PASS / Principal Review required
 
 The integrated candidate passed **42 / 42** bounded structural/cold-reader cases using exact committed checker + matrix bytes. See [URG-Core-Shape-Qualification-Receipt-v1.0.md](./URG-Core-Shape-Qualification-Receipt-v1.0.md). This is evidence for ECO-136 Shape review, not self-acceptance or Move authorization.
+
+
+## Canonical Move implementation — ECO-136
+
+Following explicit Principal Shape acceptance, the first canonical executable package is installed at:
+
+- `server/urg-core.ts`
+- `schemas/urg-core-v1.contract.json`
+- `tests/urg-core/contract.test.ts`
+- `.github/workflows/eco-136-urg-core.yml`
+
+Physicalization decision: [ADR-009](../../docs/architecture-decisions/009-urg-core-portable-package.md).
+
+This package is intentionally a discriminated contract surface, not a seven-field database record and not a replacement for native domain schemas. No MCP capability expansion or database ontology widening is part of this Move.
