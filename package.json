@@ -6,8 +6,8 @@
     "node": "24.x"
   },
   "scripts": {
-    "typecheck:mcp": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server.ts tests/mcp-protocol.test.ts",
-    "test:mcp": "node --import tsx tests/mcp-protocol.test.ts",
+    "typecheck:mcp": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server.ts tests/mcp-protocol.test.ts tests/mcp-key-route.test.ts",
+    "test:mcp": "node --import tsx --test tests/mcp-protocol.test.ts tests/mcp-key-route.test.ts",
     "typecheck:circulation": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server.ts server/circulation/worker.ts api/circulation/run.ts scripts/eco-213/commission.ts scripts/eco-213/assimilate.ts",
     "test:circulation": "node --import tsx --test tests/eco-213/worker.test.ts tests/eco-213/protocol.test.ts tests/eco-213/commission.test.ts tests/eco-213/assimilate.test.ts"
   },

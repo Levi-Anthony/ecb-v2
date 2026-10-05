@@ -1,4 +1,5 @@
 import { pipeline } from '@huggingface/transformers';
+import { timingSafeEqual } from 'node:crypto';
 import {
   type AuthInfo,
   type ScopeChallengeHandler,
@@ -230,6 +231,23 @@ async function authenticateOrdinaryCredential(request: Request): Promise<AuthInf
     token, clientId: matches[0].client_id,
     scopes: [...new Set(matches[0].capabilities.map((capability) => CAPABILITIES[capability]))],
   };
+}
+
+async function authenticatePathCredential(token: string): Promise<AuthInfo | null> {
+  // ECO-218 is only for the existing single-operator, six-tool credential.
+  if (!token || process.env.ECB_CIRCULATION_ENABLED === 'true') return null;
+  const expected = requiredEnv('ECB_BRAIN_KEY_SHA256').toLowerCase();
+  if (!/^[0-9a-f]{64}$/.test(expected)) throw new Error('invalid_ecb_brain_key_sha256');
+  const actual = await sha256Hex(token);
+  if (!timingSafeEqual(Buffer.from(actual, 'hex'), Buffer.from(expected, 'hex'))) return null;
+  if (configuredGrants().some((grant) => grant.key_sha256 === expected)) {
+    throw new Error('compatibility_credential_collision');
+  }
+  const workerKey = process.env.ECB_CIRCULATION_WORKER_KEY;
+  if (workerKey && timingSafeEqual(
+    Buffer.from(await sha256Hex(workerKey), 'hex'), Buffer.from(expected, 'hex'),
+  )) return null;
+  return { token, clientId: 'ordinary-compatibility', scopes: Object.values(CAPABILITIES) };
 }
 
 function capabilityCheck(capability: Capability): ScopeChallengeHandler {
@@ -798,6 +816,27 @@ app.all('/mcp', async (context) => {
   }
 
   const response = await mcpHandler.fetch(context.req.raw, { authInfo });
+  for (const [name, value] of Object.entries(corsHeaders)) response.headers.set(name, value);
+  return response;
+});
+
+app.all('/mcp/k/:key', async (context) => {
+  const rejected = validateMcpHostAndOrigin(context.req.raw);
+  if (rejected) return rejected;
+  let authInfo: AuthInfo | null;
+  try {
+    authInfo = await authenticatePathCredential(context.req.param('key'));
+  } catch (error) {
+    logFailure('runtime_configuration_failed', error);
+    return context.json({ error: 'runtime_configuration_failed' }, 503, corsHeaders);
+  }
+  if (!authInfo) return context.json({ error: 'unauthorized' }, 401, corsHeaders);
+
+  // Neither the SDK nor downstream application logs need the connector address.
+  const url = new URL(context.req.url);
+  url.pathname = '/mcp';
+  url.search = '';
+  const response = await mcpHandler.fetch(new Request(url, context.req.raw), { authInfo });
   for (const [name, value] of Object.entries(corsHeaders)) response.headers.set(name, value);
   return response;
 });
