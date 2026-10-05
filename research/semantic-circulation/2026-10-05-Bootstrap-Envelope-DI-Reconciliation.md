@@ -51,6 +51,8 @@ Recover the applicable PGO and Bootstrap Envelope and make the decision-relevant
 
 The Bootstrap Envelope is distinct from a runtime **effect envelope** such as ECO-214's bounded authorization/effect window. One concerns the bounded realization/bootstrapping situation under PGO; the other constrains actual permitted effects. They may interact but must not be collapsed.
 
+**Durability placement:** the existence of an effect envelope does not itself create a Bootstrap scaffold. The Greenfield default is direct realization of the enduring target already earned by Shape. Invoke the Bootstrap Envelope for provisional physicalization only when there is a real reason the target cannot yet be installed directly, and name the target and supersession/replacement condition explicitly.
+
 ## Consequence for the D&I course program
 
 Future systems-engineering comparisons should first test whether an apparently new pattern is already carried by an established SIGMA/ECOS construct before proposing a new architecture concept. Where an external framework supplies a sharper expression, discriminator, formalization or implementation technique, record that as differentiation/integration against the owning ECOS construct rather than re-deriving it as novel.
