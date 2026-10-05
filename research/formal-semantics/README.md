@@ -89,3 +89,7 @@ The GitHub copy is a continuity fallback and provenance carrier, not a substitut
 ## ECO-220 Move index installed — 5 October 2026
 
 The invariant-lattice excavation is now installed as a durable navigation surface: [ECO-220 Invariant Lattice Index v1.0](./ECO-220-Invariant-Lattice-Index-v1.0.md), with a machine-readable [manifest](./ECO-220-Invariant-Lattice-Manifest-v1.0.json). The index is a reconciled projection, not independent semantic authority. It preserves the six-role lattice, source standing, derivation/non-equivalence edges, supersessions, seven-axis readiness, human-door seam and Level+Quadrant successor handoff.
+
+## Current successor — ECO-221 — 5 October 2026
+
+ECO-220 is CLOSED / PASS across the full SSMM excavation loop. ECO-221 is OPEN / Working under ECO-136 to formalize the **Level + Quadrant kernel**, with Directional Pressures admitted only through the recorded readiness gate. Start from the [ECO-220 invariant-lattice index](./ECO-220-Invariant-Lattice-Index-v1.0.md); do not repeat broad source archaeology unless a contradiction or missing source is exposed.

@@ -1,3 +1,5 @@
+> **CURRENT STATUS — ECO-220 CLOSED / ECO-221 OPEN — 5 October 2026.** The excavation loop completed Sense → Shape → Move → Metabolize PASS. This index is now the durable recovery basis. The next active formalization Sense is **ECO-221 — Level + Quadrant composition, optional Direction lane**. Reopen ECO-220 only for lattice/source-standing contradiction, changed dependency structure, or human/agent projection divergence.
+>
 # ECO-220 — URG Invariant Lattice Index v1.0
 
 **Date installed:** 5 October 2026, America/Phoenix  
