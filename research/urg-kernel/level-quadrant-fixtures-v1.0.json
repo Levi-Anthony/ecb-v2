@@ -1,0 +1,160 @@
+{
+  "schema": "eco221-level-quadrant-fixtures-v1",
+  "standing": "research qualification fixtures; semantic premises are stipulated",
+  "fixtures": [
+    {
+      "id": "F1-api-current-use",
+      "kind": "quadrant",
+      "seat": "P",
+      "burden": "D",
+      "expected": "LR"
+    },
+    {
+      "id": "F2-api-compatibility-rule",
+      "kind": "quadrant",
+      "seat": "P",
+      "burden": "G",
+      "expected": "LL"
+    },
+    {
+      "id": "F3-unique-case-governing",
+      "kind": "quadrant",
+      "seat": "C",
+      "burden": "G",
+      "expected": "UL"
+    },
+    {
+      "id": "F4-compound-question",
+      "kind": "quadrant",
+      "compound": true,
+      "expected": "DECOMPOSE"
+    },
+    {
+      "id": "F5-quadrant-unknown",
+      "kind": "quadrant",
+      "seat": "C",
+      "burden": null,
+      "expected": "QUADRANT_UNKNOWN"
+    },
+    {
+      "id": "F6-level-software-service",
+      "kind": "level",
+      "constituency": true,
+      "organization": true,
+      "whole_depends": true,
+      "reverse_constitutive_dep": false,
+      "boundary_explicit": true,
+      "rank_leakage": false,
+      "expected": "LEVEL_WITNESSED"
+    },
+    {
+      "id": "F7-schema-record-not-level",
+      "kind": "level",
+      "constituency": false,
+      "organization": false,
+      "whole_depends": false,
+      "reverse_constitutive_dep": false,
+      "boundary_explicit": true,
+      "rank_leakage": false,
+      "expected": "LEVEL_NOT_ESTABLISHED"
+    },
+    {
+      "id": "F8-mutual-dependence",
+      "kind": "level",
+      "constituency": true,
+      "organization": true,
+      "whole_depends": true,
+      "reverse_constitutive_dep": true,
+      "boundary_explicit": true,
+      "rank_leakage": false,
+      "expected": "LEVEL_NOT_ESTABLISHED"
+    },
+    {
+      "id": "F9-level-unknown",
+      "kind": "level",
+      "constituency": true,
+      "organization": true,
+      "whole_depends": null,
+      "reverse_constitutive_dep": false,
+      "boundary_explicit": true,
+      "rank_leakage": false,
+      "expected": "LEVEL_UNKNOWN"
+    },
+    {
+      "id": "F10-rank-leakage",
+      "kind": "level",
+      "constituency": true,
+      "organization": true,
+      "whole_depends": true,
+      "reverse_constitutive_dep": false,
+      "boundary_explicit": true,
+      "rank_leakage": true,
+      "expected": "LEVEL_NOT_ESTABLISHED"
+    },
+    {
+      "id": "F11-enrichment",
+      "kind": "transition",
+      "operation": "Enrich",
+      "same_r": true,
+      "same_b": true,
+      "boundary_changed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F12-boundary-revision",
+      "kind": "transition",
+      "operation": "ReviseBoundary",
+      "same_r": true,
+      "same_b": false,
+      "boundary_changed": true,
+      "continuity_mode": "same_r_revised_boundary",
+      "redisclose_level": true,
+      "reclassify_quadrant": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F13-boundary-smuggled-as-traversal",
+      "kind": "transition",
+      "operation": "TraverseQ",
+      "same_r": true,
+      "same_b": false,
+      "boundary_changed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F14-reseat",
+      "kind": "transition",
+      "operation": "Reseat",
+      "same_r": false,
+      "same_b": false,
+      "boundary_changed": true,
+      "continuity_mode": "different_existing_r",
+      "redisclose_level": true,
+      "reclassify_quadrant": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F15-endpoint-history-no-auto-restore",
+      "kind": "transition",
+      "operation": "ReturnEndpoint",
+      "endpoint_equal": true,
+      "history_changed": true,
+      "restore_prior_qualification": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F16-level-question-governing",
+      "kind": "quadrant",
+      "seat": "C",
+      "burden": "G",
+      "expected": "UL"
+    },
+    {
+      "id": "F17-level-question-determinate",
+      "kind": "quadrant",
+      "seat": "C",
+      "burden": "D",
+      "expected": "UR"
+    }
+  ]
+}

@@ -93,3 +93,7 @@ The invariant-lattice excavation is now installed as a durable navigation surfac
 ## Current successor — ECO-221 — 5 October 2026
 
 ECO-220 is CLOSED / PASS across the full SSMM excavation loop. ECO-221 is OPEN / Working under ECO-136 to formalize the **Level + Quadrant kernel**, with Directional Pressures admitted only through the recorded readiness gate. Start from the [ECO-220 invariant-lattice index](./ECO-220-Invariant-Lattice-Index-v1.0.md); do not repeat broad source archaeology unless a contradiction or missing source is exposed.
+
+## Level + Quadrant kernel — ECO-221
+
+The current semantic/formal descendant of ECO-220 is under [`research/urg-kernel/`](../urg-kernel/README.md). It freezes a local witnessed Level relation plus fixed-R Quadrant product and a bounded structural checker. Directional pressures remain out of this kernel pending their own formalization lane.
