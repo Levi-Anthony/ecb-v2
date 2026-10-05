@@ -12,6 +12,10 @@ This carries the 30 September Greenfield correction forward. There is no incumbe
 
 **Execution rule:** converge coherent, authorized work into designated `main`; use the enduring Production installation as the evidence-generating substrate; repair forward there. Isolation requires a concrete decision-relevant preservation/safety job, not mature-system habit.
 
+### 5 October durability placement correction
+
+A recurring implementation error is now explicitly superseded: bounded qualification does not authorize bounded-lived physicalization. A bounded cohort is a bounded exercise/evidence envelope over the real installation. A time/request/token/spend ceiling does not imply a temporary host, branch, schema, provider identity, credential, or architecture. The Greenfield default is the durable target already earned by Shape, with external effects and evidence claims bounded independently.
+
 ## Live state recovered in this pass
 
 - Repository `main` before this reconciliation was `1d7819516e6cf5f099b3e691f502be1a875fef76`.
