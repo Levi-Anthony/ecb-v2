@@ -347,3 +347,25 @@ If the remaining Sense excavation produces no material contradiction:
 > **Freeze a versioned invariant-lattice architecture and a formalization-readiness map that makes Level + Quadrant the mandatory successor kernel and Directional Pressures an optional third lane subject to an explicit readiness gate.**
 
 Do not enter that Shape until the remaining lineage/supersession recovery above is complete enough that Shape is not forced to rediscover source standing.
+
+## Human-door / two-door recovery seam
+
+The orientation of <issue id="5b4b31af-016d-474f-b68f-75a70e79b602" href="https://linear.app/ecos-ops/issue/ECO-220/ssmm-excavation-urg-invariant-lattice-recover-reconcile-qualify">ECO-220</issue> does not change.
+
+A source-recovery finding is now recorded:
+
+* The exact original OB1 wording for the “two-door invariant” has not yet been recovered from the connected sources.
+* The Nate Jones lineage in <issue id="f5846e56-7ebb-4d07-938d-1a8fe477b526" href="https://linear.app/ecos-ops/issue/ECO-68/dandi-receipt-nate-jones-five-tests-article-2026-07-20-verdicts-2">ECO-68</issue> and <issue id="0b1934eb-90dd-4a4c-8899-3318dc619151" href="https://linear.app/ecos-ops/issue/ECO-59/skills-dandi-nate-jones-skill-build-method-durable-sigmaecos-build">ECO-59</issue> clearly preserves a **human gate**. Human review was already treated as structural. Drafts and proposals were not allowed to promote themselves.
+* Later ECOS work preserves the same authority distinction: human/Principal judgment creates semantic authority; code can preserve or enforce accepted authority; workers must not reconstruct authority from prose and treat that reconstruction as equivalent.
+* The stronger **human door** is more than a final approval gate. The human needs direct access to the evolving work itself.
+* A useful general form is: **agent door + human door over the same underlying addressable referent system**.
+* “Same underlying system” does not require one physical table or one identical interface.
+* The agent door and the human door may show different views, but they must not become separate truth silos.
+* Human edits must be attributable and visible to agents.
+* Agent changes must be visible to the human without requiring conversation archaeology.
+* Authority does not come from whichever door wrote last.
+* For the current Bootstrap Envelope, **one clear Principal-facing working document at a time** is a reasonable human-door projection.
+* That document is an interface onto the work, not the final ontology or final storage form.
+* External experts can later use the same human-door pattern as scoped participants. Their input should enter as attributable evidence or proposal unless separately promoted.
+* This is a candidate architectural invariant / interface obligation to reconcile during <issue id="5b4b31af-016d-474f-b68f-75a70e79b602" href="https://linear.app/ecos-ops/issue/ECO-220/ssmm-excavation-urg-invariant-lattice-recover-reconcile-qualify">ECO-220</issue>. It is **not** silently added to `docs/invariants.md`.
+* <issue id="5b4b31af-016d-474f-b68f-75a70e79b602" href="https://linear.app/ecos-ops/issue/ECO-220/ssmm-excavation-urg-invariant-lattice-recover-reconcile-qualify">ECO-220</issue> remains focused on excavation of the invariant/definition lattice. This seam is routed into that excavation; it does not replace the current Sense question or next-axis target.
