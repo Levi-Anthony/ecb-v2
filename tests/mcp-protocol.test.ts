@@ -265,7 +265,19 @@ for (const mode of ['modern', 'legacy'] as const) {
         tools.filter((tool) => tool.annotations?.idempotentHint).map((tool) => tool.name),
         ['capture_thought', 'set_thought_disposition', 'create_artifact'],
       );
-      assert.ok(tools.find((tool) => tool.name === 'capture_thought')?.inputSchema.required?.includes('operation_id'));
+      const capture = tools.find((tool) => tool.name === 'capture_thought');
+      const captureSchema = capture?.inputSchema as {
+        required?: string[];
+        properties?: Record<string, { type?: string; format?: string; enum?: string[] }>;
+      };
+      assert.match(capture?.description ?? '', /Contract ecb-v2-capture\/0\.5\.1/);
+      assert.deepEqual([...(captureSchema.required ?? [])].sort(), ['content', 'operation_id', 'source']);
+      assert.equal(captureSchema.properties?.operation_id?.format, 'uuid');
+      assert.equal(captureSchema.properties?.operation_id?.type, 'string');
+      assert.deepEqual(captureSchema.properties?.processing_mode?.enum, ['trusted', 'raw_only']);
+      assert.equal(capture?.annotations?.readOnlyHint, false);
+      assert.equal(capture?.annotations?.destructiveHint, false);
+      assert.equal(capture?.annotations?.idempotentHint, true);
       assert.ok(tools.find((tool) => tool.name === 'set_thought_disposition')?.inputSchema.required?.includes('expected_revision_id'));
       assert.ok(tools.find((tool) => tool.name === 'create_artifact')?.inputSchema.required?.includes('operation_id'));
 
