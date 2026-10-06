@@ -14,6 +14,28 @@ AUTHORITY: Principal instruction, 5 October 2026 America/Phoenix; source contrac
 
 This document is the current working door for this investigation. The fidelity tracker retains its original clauses, porch workshop and prior-art lineage, and points here for the immediate frontier. Repository and Linear pointers identify this same work object. Greenfield v2 BRAIN is the first-class capture destination; Linear is an explicitly authorized downstream continuity destination. Propagation is completed and verified, as recorded below.
 
+## Solution-first disposition — 6 October 2026
+
+The Principal directed: **minimize experiments and maximize solutions**. Live reconciliation against ECO-221, the integrated URG core, ECO-191 and Quadrant v0.2 found that the required semantic machinery is already substantially installed.
+
+The current solution is therefore a **thin orchestration profile over existing contracts**, not a new axis, primitive or Quadrant generator:
+
+[PGO-Directed Situated Referent Orchestration Profile v0.1](./PGO-Directed-Situated-Referent-Orchestration-Profile-v0.1.md)
+
+Its current disposition is **COMPOSE / HARDEN FOR USE**:
+
+- reuse `kappa=(R,B,G,F)`, Level, fixed-R Quadrant, typed transformations, Bootstrap B, reconciliation, Question Forward and F1-F8;
+- make the positive orchestration and accountable exit explicit;
+- treat the Three Goedel-Signals as diagnostic escalation aliases over existing failure/repair routes;
+- keep PGO reorientation and whole/part boundary revision independently addressable;
+- retain the installed ECO-221 Quadrant generator unless a concrete semantic defect earns amendment;
+- add new qualification only where existing controls do not already cover the claimed behavior.
+
+No installed semantic contract is amended by this disposition. The earlier broad hardening agenda remains historical/current research context, but the default next action is solution composition and ordinary-use hardening rather than additional scenario proliferation.
+
+**BRAIN custody:** `34d63866-c640-47d7-ade5-df92c766eef4`.  
+**Installation commit:** `8ce19a765246c97bbf5429953058c11836d59d78`.
+
 ## 1. Governing orientation and ideal end state
 
 The Principal accepted the synthesis joining situated bootstrap, Level, Quadrant, Question Forward, directional pressures, Overshoot and systems-engineering Differentiation & Integration (**D&I**). The instruction is to make that synthesis conspicuous, harden and formalize it through simple invented cases, and foreground two next investigations: competency/Line discovery and dynamic composition with deterministic situated, valenced information/state recall.
