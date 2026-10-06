@@ -7,6 +7,8 @@ DO NOT USE FOR: Treating repository presence, recency, or polish as semantic rat
 
 # Quadrant grammar — architecture continuity chain
 
+> **LEADING STRUCTURAL FRONTIER / BLEEDING EDGE — 5 October 2026.** Reenter current semantic hardening through [Situated Referent Discovery](../formal-semantics/Situated-Referent-Discovery-Frontier.md). The Principal accepted investigation of reciprocal bootstrap, first-person I/It/We/Its disclosure and quadrant-generated decomposition, with architectural Question Forward and Overshoot. Relocating constitutive/participatory and governing/determinate distinctions is a candidate generator change, not an equivalent explanation of v0.2. The dossier also carries competency/Line discovery, dynamic composition, exact situated recall and systems-engineering D&I. Historical qualified contracts and closure receipts below retain their actual standing.
+
 This directory is the shared source of truth for **architectural documentation continuity** for the quadrant branch of ECO-136.
 
 That means downstream architecture documents, qualified handoff packets, architecture Sense/Shape returns, and later physical-design documentation should be persisted here so a cold worker can reconstruct the current architectural lineage without relying on a particular ChatGPT workspace or Library.

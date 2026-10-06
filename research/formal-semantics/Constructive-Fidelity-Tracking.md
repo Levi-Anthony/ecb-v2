@@ -6,15 +6,23 @@ AUTHORITY: Principal-accepted direction; inherited contracts retain their own st
 # Constructive Fidelity — F1–F8 Tracking and F1 Porch Workshop
 
 **Date:** 5 October 2026, America/Phoenix  
-**Working version:** 0.2 — language-priority and internal-prior-art update, 6 October 2026 UTC  
+**Working version:** 0.3 — leading situated-referent discovery frontier, 5 October 2026 America/Phoenix / 6 October UTC  
 **Standing:** Principal-accepted conceptual direction; candidate formulations and unresolved semantic questions retained for situated workshop.  
 **Target:** ECO-162 — Integral Coherence Maintenance, F1–F8 cross-cutting fidelity contract; R3 (cross-cutting preservation) in the ECO-220 invariant lattice.  
 **Register:** B — substrate-independent architectural and semantic work.  
-**Current activity:** clarify the protected holonic commitments through the recovered Level and Quadrant lineage, then apply that language to the F1 porch workshop. Initial continuity installation is complete; its historical receipt remains below.  
-**Primary working surface for this bounded side project:** this file. Linear carries source records and continuity pointers; BRAIN carries direction evidence and source custody.  
+**Current activity:** harden the situated bootstrap/Quadrant discovery synthesis, top-down/bottom-up competency and Line discovery, and dynamic composition with deterministic situated valenced recall. Apply the resulting discriminators to the independent F1 porch workshop. Initial continuity installation is complete; its historical receipt remains below.  
+**Immediate human/agent working door:** [Situated Referent Discovery — Leading Structural Frontier](./Situated-Referent-Discovery-Frontier.md). This file retains the cross-cutting fidelity contract and workshop lineage. Linear carries source records and continuity pointers; BRAIN carries direction evidence and source custody.  
 **Direction receipt:** BRAIN thought c292480c-32a9-48b6-95c0-a44223522857 — durable identity of the Principal-direction continuity record, source `constructive_fidelity_principal_direction_20261005`.
 
 ## 0. Current language priority and recovered prior art
+
+### Leading structural frontier / bleeding edge
+
+The Principal accepted the reciprocal situated-bootstrap and first-person quadrant-discovery synthesis and explicitly requested propagation plus hardening/formalization. The [current frontier dossier](./Situated-Referent-Discovery-Frontier.md) preserves the actual candidate definitions, bootstrap exits, architectural Question Forward, Overshoot signals, invented appearance-control/refrigerator cases, two competency-discovery routes, and exact recall/recomposition responsibilities. It maintains course/current-practice/reconstruction/application separation in the existing systems-engineering D&I ledger.
+
+This is a **structural semantic reentry** into ECO-221's quadrant generator. Constitutive/participatory relation typing and governing/determinate burden typing are proposed across I/It/We/Its inquiries; they are not silently declared an equivalent generator. The earlier installed contract, F1–F8 and their receipts remain recoverable. A sufficiently situated referent is dynamically recomposable rather than an exhaustive crystallized object. A competency list can seed a Line contract but does not establish a witnessed trajectory.
+
+Direction custody: BRAIN record `03ef0cc6-c385-4f77-b54f-a57179ccd4b0` — Principal bleeding-edge direction; `07989e6d-99da-49ca-a146-8bb09a352957` — competency/Line frontier; `2a1691a8-5b1c-4697-ae51-e4b429b18451` — dynamic composition/deterministic recall frontier. Their identifiers are evidence-custody handles, not semantic acceptance beyond the recorded instruction.
 
 The Principal has foregrounded **Level and Quadrant**, requested clean and simple language development, and identified the originating Ken Wilber paraphrases being protected:
 
@@ -30,7 +38,7 @@ The study recovers direct antecedents: every admitted referent is handled as hol
 
 **Immediate language questions:** connect holon with referent without equating their explanatory roles by fiat; preserve the universal source commitment alongside bounded operational scope; explain what it means to *have* quadrants as well as to investigate them; retain the difference between constituency, participation and a witnessed Level relation. The prior art does not establish an architectural absence requiring a new primitive.
 
-**Next discussion:** develop one short source-grounded explanation of holon, referent, Level and Quadrant, then test its meaning in situated examples. The F1 porch, grain, boundary and folding questions below remain active downstream material. Original F1 remains: “Focal identity, grain, and boundary must be recoverable; changing one must not silently mutate the others.”
+**Next discussion:** follow the frontier dossier's hardening agenda: compare the appearance-control affordance with the human viewing episode, explicitly reseating; discriminate UL/UR and LL/LR; reconcile competency discovery in both directions; then exercise exact recall and changed-concern recomposition. The F1 porch, grain, boundary and folding questions below remain active independent material. Original F1 remains: “Focal identity, grain, and boundary must be recoverable; changing one must not silently mutate the others.”
 
 ## 1. Governing orientation and commission
 
@@ -259,7 +267,7 @@ Expected “pass” means the declared contract-relevant distinction survived fo
 
 ## 8. Resume, update and completion discipline
 
-**Resume from here:** begin with §0 and the internal prior art study. Clarify the two protected claims with Level and Quadrant foregrounded, using inherited definitions before proposing new ones. Then situate the first porch variation fully and examine grain, boundary and continuity using the five Question Forward entries. The prior porch-first sequence is retained as the downstream workshop; it is no longer the immediate entry point.
+**Resume from here:** begin with §0's leading-frontier pointer and the candidate dossier's exact next exercise. Recover the internal prior art only as needed to discriminate an actual semantic seam; do not restart broad archaeology. Then use the porch variations to independently check constitution, composition, continuity and folding. The protected universal holonic commitments remain foregrounded alongside each operational definition's standing.
 
 Before consequential use, recover current editions/standing of the consumed source contracts. The source baseline above is provenance, not a permanent claim that all sources remain current.
 

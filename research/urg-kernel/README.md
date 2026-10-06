@@ -1,5 +1,7 @@
 # URG Level + Quadrant Formal Kernel
 
+> **LEADING STRUCTURAL FRONTIER / BLEEDING EDGE — 5 October 2026.** [Situated Referent Discovery](../formal-semantics/Situated-Referent-Discovery-Frontier.md) is the current semantic hardening door. The candidate uses reciprocal situated bootstrap and I/It/We/Its disclosure to generate better decomposition; proposes boundary/relation and claim-burden typing across those inquiries; opens competency/Line discovery from both directions; and specifies dynamic composition separately from deterministic situated information/state/valence recall. This is explicit reentry into ECO-221's generator, not a proved equivalent wording or an installed replacement. Current artifacts below retain their earned standing; the new structural candidate remains under investigation.
+
 **Current artifact:** Level + Quadrant Formal Contract v1.0  
 **Owning issue:** ECO-221  
 **Standing:** Register-B Shape contract under bounded Move qualification. Not a constitutional invariant amendment and not runtime enforcement.

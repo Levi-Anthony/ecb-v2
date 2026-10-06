@@ -8,6 +8,10 @@ AUTHORITY: None independently; promotion routes to governing repo surfaces
 
 # Formal Semantics Research Pipeline
 
+## Leading structural frontier / bleeding edge — 5 October 2026
+
+[Situated Referent Discovery](./Situated-Referent-Discovery-Frontier.md) is the immediate human/agent working door for the Principal-accepted bootstrap/Quadrant discovery synthesis, Lines competency discovery in both directions, and dynamic composition with deterministic situated valenced recall. It develops positive definitions and discriminators with simple invented cases and the ongoing systems-engineering D&I ledger. This is a structural alternative to the installed quadrant generator, not an editorial restatement or a self-promoting probe. [Constructive Fidelity Tracking](./Constructive-Fidelity-Tracking.md) retains original F1–F8 and workshop lineage. Existing closed artifacts below retain source-time standing; the new candidate's semantic qualification remains open.
+
 This pipeline gives mathematical work a durable place without allowing mathematical elegance to become architecture by proximity.
 
 Use it when a probe may sharpen a failure detector, preservation rule, equivalence relation, refinement trigger, or acceptance-test pattern.

@@ -1,5 +1,7 @@
 # Holon Level and Quadrant Internal Prior Art Study
 
+> **CURRENT REENTRY — LEADING STRUCTURAL FRONTIER.** The later Principal-accepted [Situated Referent Discovery](./Situated-Referent-Discovery-Frontier.md) synthesis is the immediate hardening target. This study preserves the earlier contracts and language questions at source-recovery time. The new work explicitly investigates the quadrant generator, reciprocal bootstrap, Lines and dynamic situated recall; it is more than the clarification task described below and does not silently replace the installed source standing.
+
 **Date:** 6 October 2026 UTC  
 **Standing:** Internal source synthesis for the constructive-fidelity workshop. Findings and proposed language below do not amend the accepted semantic contracts.  
 **Primary working surface:** [Constructive Fidelity Tracking](./Constructive-Fidelity-Tracking.md).
