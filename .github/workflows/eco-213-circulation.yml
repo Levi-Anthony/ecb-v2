@@ -1,5 +1,17 @@
 name: ECO-213 native circulation qualification
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'server.ts'
+      - 'server/circulation/**'
+      - 'api/circulation/**'
+      - 'sql/migrations/*eco213*'
+      - 'sql/migrations/*eco214*'
+      - 'tests/eco-213/**'
+      - 'scripts/eco-213/**'
+      - 'package*.json'
+      - '.github/workflows/eco-213-circulation.yml'
   pull_request:
     branches: [main]
     paths:
@@ -7,6 +19,7 @@ on:
       - 'server/circulation/**'
       - 'api/circulation/**'
       - 'sql/migrations/*eco213*'
+      - 'sql/migrations/*eco214*'
       - 'tests/eco-213/**'
       - 'scripts/eco-213/**'
       - 'package*.json'
