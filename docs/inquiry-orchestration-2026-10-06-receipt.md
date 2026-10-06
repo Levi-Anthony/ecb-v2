@@ -1,9 +1,17 @@
-# Ordinary inquiry implementation receipt — 6 October 2026
+# Ordinary inquiry execution report — 6 October 2026
 
 **Authority:** Principal execution commission, BRAIN `6c02e4d4-0d57-4f0e-ab85-fd7fae945a38`.
 **Owner:** [ECO-202](https://linear.app/ecos-ops/issue/ECO-202), Working. Accountable Principal: Levi Anthony. Executor: current Codex worker.
 **Contract and reentry:** [ordinary inquiry orchestration](inquiry-orchestration.md).
 **Installed code:** [main commit 81cd07f](https://github.com/Levi-Anthony/ecb-v2/commit/81cd07f3072cf4b7e43b5830ca689d007160a33d); enduring production READY.
+
+## Executive summary
+
+The commissioned first runtime increment is installed on main and enduring production. It provides a typed inquiry coordinator through the existing BRAIN search/recovery seam, with explicit evidence, situated context, qualification and reentry. All 111 local tests, five TypeScript checks and four main CI workflows passed. Ownership/accountability and receiving continuity handoffs were updated and read back; Levi Anthony remains accountable and the current Codex worker is the executor.
+
+Live-use qualification remains open. The connected BRAIN app returned legacy search on both situated-inquiry attempts, so its new hosted inquiry path has not been exercised through that consumer. ECO-218 owns endpoint/action-snapshot/fresh-chat conformance. ECO-202 remains Working for attributable semantic evaluation/disclosure and ordinary-use efficacy. ECO-214 retains twelve hosted-use obligations and exact-source requalification before a separately recorded successor worker/provider envelope. Structural resurfacing, relational-flow uplift and recallable-compression benefits remain unmeasured.
+
+The execution workspace disconnected before the final consolidated continuity-file append could run. Its prior version is intact; the exact authorized update is preserved in BRAIN with a verified handoff to the runtime owner. This file-delivery residual is documented below.
 
 ## Implemented increment
 
@@ -56,3 +64,14 @@ ECO-202 remains Working for attributable semantic evaluation/disclosure, native 
 ECO-51 retains remaining seating-checker obligations. ECO-136, ECO-221 and ECO-213 stay closed. ECO-214 retains the twelve hosted-use obligations and successor provider/worker release. Its previous envelope expired; this commission does not renew it. The expanded circulation source manifest covers the coordinator, adapter and URG imports: an old compiled/host binding must be requalified against the exact current edition before any worker release. ECO-218/ECO-219/ECO-156 retain authenticated consumer setup, snapshot refresh, instruction projection and fresh-consumer delivery. The frozen connected action schema must reflect the new optional inquiry field and the existing required capture operation identity.
 
 The next semantic handoff must supply an attributable adapter with current inquiry basis, exact candidate digest, independently witnessed Level/seat, typed present relations, standing/currentness and both affected-old/destination-new obligations. Do not substitute a search score, stored operational disposition or recovered edge for that judgment.
+
+
+## Continuity-file delivery and current accountability return
+
+The installed implementation and operational continuity return are durable in main, production, Linear and BRAIN. Current owner readback on 6 October confirms ECO-202 (inquiry runtime) Working; ECO-214 (hosted-use qualification) and ECO-218 (ordinary access/consumer delivery) Needs Input, all assigned to Levi Anthony. Kernel/substrate closure remains as recorded above.
+
+The final local edit of the consolidated `Linear-Continuity-Updates-2026-10-05.md` could not begin because the execution workspace disconnected (`409 environment_offline`). A read-only reconnect attempt did not return. A Library read confirms the report remains at version 2, with the execution commission and initial owner-handoff receipts; it lacks the final installed-return append. This report does not claim that append was saved.
+
+The exact authorized notice and append, file identity/version, source receipts and guarded recovery instructions are preserved and exact-fetched in BRAIN `833a2f16-fb85-44db-91af-4106e3207b28`. The receiving handoff on [ECO-202](https://linear.app/ecos-ops/issue/ECO-202), comment `d267e978-2f36-4259-bdbd-bb8ae3bf98f1`, was saved and read back. Current Codex worker retains this file update: when the execution workspace is connected, materialize the same current file, preserve dated bodies and any intervening changes, apply the saved delta, replace under the observed version guard and apply returned metadata.
+
+Final installed-return custody `57f9d242-4fbd-4e40-ae78-78c1dab07f04`, installation evidence `259e4a5e-d536-4f2e-8111-5bfddddb02be`, release precision `8da60b23-840d-429e-8118-34ac27236392` and D&I project-application trace `30d3ca3c-10dc-43d2-a26c-84c8f021c1f5` were all exact-fetched. D&I means Differentiation & Integration; its source/standing lanes remain independent.
