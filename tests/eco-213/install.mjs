@@ -23,7 +23,7 @@ try {
     await client.query(await readFile(`sql/migrations/${name}`, 'utf8'));
     console.log(`Installed public predecessor: ${name}`);
   }
-  for (const name of (await readdir('sql/migrations')).filter(x => x.includes('_eco213_')).sort()) {
+  for (const name of (await readdir('sql/migrations')).filter(x => x.includes('_eco213_') || x === '20261005223000_eco214_effect_policy_depin.sql').sort()) {
     await client.query(await readFile(`sql/migrations/${name}`, 'utf8'));
     console.log(`Applied candidate: ${name}`);
   }
