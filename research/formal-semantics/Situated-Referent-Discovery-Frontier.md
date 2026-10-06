@@ -12,7 +12,7 @@ AUTHORITY: Principal instruction, 5 October 2026 America/Phoenix; source contrac
 **Adjacent frontiers:** ECO-184 — Direction/Capacity/Capability/Developmental Line architecture; ECO-225 — Line continuity/comparison; ECO-191 — indexed change/reconciliation; ECO-202 — situated navigational discovery; ECO-213 — recursive semantic circulation.  
 **Work disposition:** active Register-B semantic/architectural investigation and continuity installation. Register B denotes substrate-independent work. This is the first-class bleeding edge, ahead of the installed contracts' current semantic formulation.
 
-This document is the current working door for this investigation. The fidelity tracker retains its original clauses, porch workshop and prior-art lineage, and points here for the immediate frontier. Repository and Linear continuity pointers refer to this same work object; they are not competing semantic definitions.
+This document is the current working door for this investigation. The fidelity tracker retains its original clauses, porch workshop and prior-art lineage, and points here for the immediate frontier. Repository pointers and the prepared Linear pointers identify this same work object. Linear propagation remains pending explicit destination authorization, as recorded in the installation status below.
 
 ## 1. Governing orientation and ideal end state
 
@@ -285,4 +285,12 @@ Stop at a significant semantic defect, missing necessary source or Principal dec
 
 **Durable evidence custody:** BRAIN `03ef0cc6-c385-4f77-b54f-a57179ccd4b0` — Principal direction and candidate standing; `07989e6d-99da-49ca-a146-8bb09a352957` — Lines/competency frontier; `2a1691a8-5b1c-4697-ae51-e4b429b18451` — dynamic recall frontier; `b6198533-d642-4b02-8915-a0adf675621a` — D&I ledger entry linked to the existing manifest. These stable identifiers address the respective source/evidence records, not newly ratified semantic definitions.
 
-**Continuity and hardening agenda installed; semantic qualification remains open.** The leading work is jointly bootstrap/Quadrant discovery, Lines competency derivation, and dynamic situated recall. The next result sought is a discriminating positive contract, not another broad source excavation or a cosmetically cleaner quadrant table.
+**Repository/BRAIN continuity and hardening agenda installed; Linear propagation and semantic qualification remain open.** The leading work is jointly bootstrap/Quadrant discovery, Lines competency derivation, and dynamic situated recall. The next result sought is a discriminating positive contract, not another broad source excavation or a cosmetically cleaner quadrant table.
+
+### Installation verification and pending destination
+
+The initial documentation bundle is [main commit 7b59219](https://github.com/Levi-Anthony/ecb-v2/commit/7b5921926a1ec508dbed8a12a07f584764de186b) — the ten-file dossier/continuity installation. All ten committed files were read back and matched the intended local content exactly. The write set contained Markdown only; the governing invariants and installed formal/runtime sources retained their baseline blobs. All eight original fidelity clauses remain present verbatim. Dossier links and source/candidate distinctions were checked. Four new BRAIN direction/frontier/D&I records were fetched and matched their captured source/content exactly.
+
+Automatic approval review rejected both a proposed new Linear issue and the narrower pointer update to the existing ECO-221 document. Its stated reason was sensitive research-derived content being sent to Linear without explicit user authorization naming Linear. No Linear mutation succeeded. The verified account/workspace and earlier broad continuity direction did not satisfy that destination-specific review.
+
+The remaining packet contains five existing-document pointer updates, twelve existing-issue continuity comments, and a raw receipt plus two provisional worked-example body records on the existing ledger. The proposed new issue is excluded. The exact packet is saved as **Linear-Continuity-Updates-2026-10-05.md** for Principal review and explicit destination authorization. The ledger's next example identities must be rechecked at application time. Tooling destination authorization is pending; semantic investigation and the completed repository/BRAIN work retain their stated standing.
