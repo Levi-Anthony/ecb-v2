@@ -6,13 +6,31 @@ AUTHORITY: Principal-accepted direction; inherited contracts retain their own st
 # Constructive Fidelity — F1–F8 Tracking and F1 Porch Workshop
 
 **Date:** 5 October 2026, America/Phoenix  
-**Working version:** 0.1  
+**Working version:** 0.2 — language-priority and internal-prior-art update, 6 October 2026 UTC  
 **Standing:** Principal-accepted conceptual direction; candidate formulations and unresolved semantic questions retained for situated workshop.  
 **Target:** ECO-162 — Integral Coherence Maintenance, F1–F8 cross-cutting fidelity contract; R3 (cross-cutting preservation) in the ECO-220 invariant lattice.  
 **Register:** B — substrate-independent architectural and semantic work.  
-**Current activity:** continuity installation complete when this document, its entry links, and source-linked continuity receipts are durably recoverable. Then continue the F1 porch workshop.  
+**Current activity:** clarify the protected holonic commitments through the recovered Level and Quadrant lineage, then apply that language to the F1 porch workshop. Initial continuity installation is complete; its historical receipt remains below.  
 **Primary working surface for this bounded side project:** this file. Linear carries source records and continuity pointers; BRAIN carries direction evidence and source custody.  
 **Direction receipt:** BRAIN thought c292480c-32a9-48b6-95c0-a44223522857 — durable identity of the Principal-direction continuity record, source `constructive_fidelity_principal_direction_20261005`.
+
+## 0. Current language priority and recovered prior art
+
+The Principal has foregrounded **Level and Quadrant**, requested clean and simple language development, and identified the originating Ken Wilber paraphrases being protected:
+
+> “everything is a holon”
+>
+> “holons have 4 quadrants”
+
+These are supplied paraphrases. Their structural force must remain visible while SIGMA / ECOS's operational definitions, bounded qualification and unresolved philosophical questions are distinguished.
+
+**Internal prior art study:** [Holon Level and Quadrant Internal Prior Art Study](./Holon-Level-Quadrant-Internal-Prior-Art-Study-2026-10-06.md).
+
+The study recovers direct antecedents: every admitted referent is handled as holonically situated; focal identity, constituent organization, wider participation and four quadrant obligations co-arise; Level has a constitutive-dependence discriminator; the current formal contract preserves the same subject through quadrant traversal and makes boundary/referent changes explicit. The study is source synthesis, not new semantic acceptance.
+
+**Immediate language questions:** connect holon with referent without equating their explanatory roles by fiat; preserve the universal source commitment alongside bounded operational scope; explain what it means to *have* quadrants as well as to investigate them; retain the difference between constituency, participation and a witnessed Level relation. The prior art does not establish an architectural absence requiring a new primitive.
+
+**Next discussion:** develop one short source-grounded explanation of holon, referent, Level and Quadrant, then test its meaning in situated examples. The F1 porch, grain, boundary and folding questions below remain active downstream material. Original F1 remains: “Focal identity, grain, and boundary must be recoverable; changing one must not silently mutate the others.”
 
 ## 1. Governing orientation and commission
 
@@ -28,7 +46,7 @@ For this side project, the **PGO — Principal Governing Orientation** is: make 
 
 **Authority for this work:** the Principal requested a bounded exploration, then an idealized F1 prototype or workshop, corrected its framing, and accepted the revised direction. The latest instruction explicitly authorizes continuity updates and a durable tracking document in ecb-v2.
 
-Exact latest instruction:
+Exact continuity-installation instruction:
 
 > Yes. Absolutely agree. Before we continue, please update continuity surfaces and look at creating a durable tracking document in ecb-v2
 
@@ -241,7 +259,7 @@ Expected “pass” means the declared contract-relevant distinction survived fo
 
 ## 8. Resume, update and completion discipline
 
-**Resume from here:** situate the first porch variation fully, then examine grain, boundary and continuity using the five Question Forward entries. Do not restart from an abstract car or polish the positive sentence before forcing the open distinctions through situated use.
+**Resume from here:** begin with §0 and the internal prior art study. Clarify the two protected claims with Level and Quadrant foregrounded, using inherited definitions before proposing new ones. Then situate the first porch variation fully and examine grain, boundary and continuity using the five Question Forward entries. The prior porch-first sequence is retained as the downstream workshop; it is no longer the immediate entry point.
 
 Before consequential use, recover current editions/standing of the consumed source contracts. The source baseline above is provenance, not a permanent claim that all sources remain current.
 
@@ -267,6 +285,8 @@ Keep original clauses and raw specimens recoverable. A rejected mapping does not
 | 5 October 2026 | Porch source recovered; situated F1, boundary/grain alternatives and three representation doors reconstructed. | Revised conceptual direction. |
 | 5 October 2026 | Principal: “Yes. Absolutely agree”; requested continuity updates and ecb-v2 tracking. | Accepted direction and explicit documentation/continuity authorization. |
 | 5 October 2026 | This tracking document and source-linked continuity updates installed on main. | Durable workshop record; semantic probes remain unrun. |
+| 6 October 2026 UTC | Principal foregrounded Level and Quadrant, protected the two originating Wilber paraphrases, and commissioned an internal prior art study. | Current language priority; no automatic semantic amendment. |
+| 6 October 2026 UTC | Internal study recovered universal operational holonic treatment, co-arising quadrant obligations, Level's constitutive discriminator and current formal descendants. | Source-grounded synthesis; next discussion is the explanatory bridge, with the porch workshop retained downstream. |
 
 
 ### Installation verification — 5 October 2026
