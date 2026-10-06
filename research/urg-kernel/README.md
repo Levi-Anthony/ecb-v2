@@ -120,3 +120,8 @@ The Principal-accepted full core is now canonically implemented as a portable di
 ## SSMM closure + portable-descent qualification
 
 ECO-136 is CLOSED / PASS and ECO-207's outer portable-descent Move has a bounded PASS. See [the combined closure/qualification receipt](./2026-10-05-URG-Core-Closure-and-Portable-Descent-Receipt.md). The next semantic evidence frontier is situated use of the current portable core; hosted worker/provider effects remain separately governed.
+
+
+## Adjacent F1 referential-fidelity workshop — 5 October 2026
+
+The Principal-accepted [Constructive Fidelity Tracking](../formal-semantics/Constructive-Fidelity-Tracking.md) develops the existing ECO-162 F1–F8 preservation layer using WEX-002, the Worked Example Ledger's porch case. Its active F1 direction is stable, recoverable identity through nimble situated composition, decomposition, folding/unfolding and boundary revision. Grain, constitutive/task/view boundary discrimination, continuity/new-composite criteria and signifying roles remain tracked questions. Reuse the accepted R/B/G/F inquiry index (G is governing orientation, not grain) and typed contracts; this workshop does not reopen the closed full core or select a persistence topology.

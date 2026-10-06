@@ -101,3 +101,8 @@ The current semantic/formal descendant of ECO-220 is under [`research/urg-kernel
 ## Current invariant-lattice overlay — v1.1
 
 The original ECO-220 v1.0 index remains lineage. Current axis maturity and post-Shape implementation standing are reconciled in [ECO-220 Invariant Lattice Currentness Overlay v1.1](./ECO-220-Invariant-Lattice-Index-v1.1.md).
+
+
+## Constructive fidelity workshop — F1–F8 — 5 October 2026
+
+[Constructive Fidelity Tracking](./Constructive-Fidelity-Tracking.md) is the primary working surface for the Principal-accepted positive/constructive direction at the existing ECO-162 cross-cutting fidelity layer. It retains the exact original clauses, revised F1 porch specimen, definition audit, independently standing human/agent/persistence representations, folded alternatives and Question Forward discriminators. This is a bounded structural workshop; it does not create a parallel invariant system or supersede the inherited clauses. Current URG source standing remains in the v1.1 lattice overlay above.
