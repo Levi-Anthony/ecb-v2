@@ -6,11 +6,11 @@ AUTHORITY: Principal instruction, 5 October 2026 America/Phoenix; source contrac
 # Situated Referent Discovery — Leading Structural Frontier
 
 **Edition:** 0.1, 5 October 2026 America/Phoenix / 6 October UTC.  
-**Immediate reentry:** §8, the discriminating hardening agenda.  
+**Immediate reentry:** the Solution-first disposition below, then [PGO-Directed Situated Referent Orchestration Profile v0.1](./PGO-Directed-Situated-Referent-Orchestration-Profile-v0.1.md). §8 remains the retained research/qualification backlog, not the default next action.  
 **Continuity home:** [Constructive Fidelity Tracking](./Constructive-Fidelity-Tracking.md), developing ECO-162 — Integral Coherence Maintenance and its eight fidelity invariants.  
 **Structural reentry target:** ECO-221 — the installed Level + Quadrant formal kernel.  
 **Adjacent frontiers:** ECO-184 — Direction/Capacity/Capability/Developmental Line architecture; ECO-225 — Line continuity/comparison; ECO-191 — indexed change/reconciliation; ECO-202 — situated navigational discovery; ECO-213 — recursive semantic circulation.  
-**Work disposition:** active Register-B semantic/architectural investigation and continuity installation. Register B denotes substrate-independent work. This is the first-class bleeding edge, ahead of the installed contracts' current semantic formulation.
+**Work disposition:** COMPOSE / HARDEN FOR USE at Register B. The first-class bleeding edge is now solution-first orchestration over installed semantics; retained research questions reopen only on a named semantic defect, unresolved consequential distinction, or required qualification gap. Register B denotes substrate-independent work.
 
 This document is the current working door for this investigation. The fidelity tracker retains its original clauses, porch workshop and prior-art lineage, and points here for the immediate frontier. Repository and Linear pointers identify this same work object. Greenfield v2 BRAIN is the first-class capture destination; Linear is an explicitly authorized downstream continuity destination. Propagation is completed and verified, as recorded below.
 
