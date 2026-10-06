@@ -1,4 +1,4 @@
-> **CURRENT STATUS — ECO-220 CLOSED / ECO-221 OPEN — 5 October 2026.** The excavation loop completed Sense → Shape → Move → Metabolize PASS. This index is now the durable recovery basis. The next active formalization Sense is **ECO-221 — Level + Quadrant composition, optional Direction lane**. Reopen ECO-220 only for lattice/source-standing contradiction, changed dependency structure, or human/agent projection divergence.
+> **CURRENT REENTRY — 6 October 2026, America/Phoenix.** ECO-220 excavation and ECO-221 Level/Quadrant formalization are closed; the portable URG core is revision 1.0.2. [ECO-202 ordinary inquiry runtime](../../docs/inquiry-orchestration.md) implements the installed PGO-directed profile and FR-3 cross-context resurfacing. Principal execution custody: BRAIN `6c02e4d4-0d57-4f0e-ab85-fd7fae945a38`. Reopen ECO-220 only for lattice/source-standing contradiction, changed dependency structure, or human/agent projection divergence; closed kernel work is not the runtime owner.
 >
 # ECO-220 — URG Invariant Lattice Index v1.0
 

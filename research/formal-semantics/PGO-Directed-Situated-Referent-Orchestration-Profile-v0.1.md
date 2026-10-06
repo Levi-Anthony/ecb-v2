@@ -349,3 +349,7 @@ Existing ECO-191/ECO-221 fixtures already cover substantial parts of these contr
 The current problem does not require another axis, another bootstrap primitive, another Quadrant generator, or another exploratory branch.
 
 Use this profile as the positive orchestration surface over the already-installed semantic system. Repair the profile or its source contracts only when a concrete use exposes a named semantic defect.
+
+## 11. Executable realization and ownership
+
+The Principal commissioned implementation on 6 October 2026, America/Phoenix: BRAIN `6c02e4d4-0d57-4f0e-ab85-fd7fae945a38`. [ECO-202 runtime contract and responsibility map](../../docs/inquiry-orchestration.md) is the current execution/reentry door. It consumes this profile, URG revision 1.0.2 and the closed ECO-213 circulation substrate; it does not amend them. FR-3 receipt `13acf55f-0b5e-4b7c-a6f2-e2edf988762f` is first-class requirement custody. Exact recovery, current-use admission, fixed-R/B preflight, two-sided reconciliation and accountable READY/HOLD are one coordinator; semantic judgment remains attributable. ECO-214 hosted/provider release and ECO-218 authenticated consumer setup remain separately owned and unsatisfied.

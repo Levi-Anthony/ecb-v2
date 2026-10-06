@@ -14,6 +14,10 @@ AUTHORITY: Principal-accepted direction; inherited contracts retain their own st
 **Immediate human/agent working door:** [Situated Referent Discovery — Leading Structural Frontier](./Situated-Referent-Discovery-Frontier.md). This file retains the cross-cutting fidelity contract and workshop lineage. Linear carries source records and continuity pointers; BRAIN carries direction evidence and source custody.  
 **Direction receipt:** BRAIN thought c292480c-32a9-48b6-95c0-a44223522857 — durable identity of the Principal-direction continuity record, source `constructive_fidelity_principal_direction_20261005`.
 
+## Current execution reentry — 6 October 2026
+
+[ECO-202 ordinary inquiry runtime](../../docs/inquiry-orchestration.md) now implements the installed solution-first profile, including FR-3 cross-context resurfacing. This is a separately released implementation commission, BRAIN `6c02e4d4-0d57-4f0e-ab85-fd7fae945a38`. F1–F8 and the I/It/We/Its explanatory candidate retain their standing; the latter does not require reopening the installed generator. The older workshop and qualification debt remain below.
+
 ## 0. Current language priority and recovered prior art
 
 ### Leading structural frontier / bleeding edge

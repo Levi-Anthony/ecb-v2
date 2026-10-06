@@ -1,5 +1,7 @@
 # ECO-220 — Invariant Lattice Currentness Overlay v1.1
 
+**Current execution — 6 October 2026, America/Phoenix:** [ECO-202 ordinary inquiry orchestration](../../docs/inquiry-orchestration.md), Working, is the Principal-commissioned runtime owner; accountable Principal Levi Anthony, executor current Codex worker. [Implementation and verification receipt](../../docs/inquiry-orchestration-2026-10-06-receipt.md). BRAIN commission `6c02e4d4-0d57-4f0e-ab85-fd7fae945a38`. Installed URG revision 1.0.2 and closed kernel/substrate standing remain. The following 5 October investigation frontier retains its candidate questions; it no longer defines the runtime release boundary.
+
 **Date:** 5 October 2026, America/Phoenix  
 **Supersedes for current navigation:** the maturity/frontier portions of [v1.0](./ECO-220-Invariant-Lattice-Index-v1.0.md).  
 **Does not supersede:** v1.0 source lineage, six-role taxonomy, historical receipts or source authority.  

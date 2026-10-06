@@ -1,0 +1,35 @@
+name: Ordinary inquiry orchestration
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'server.ts'
+      - 'server/orchestration*.ts'
+      - 'server/urg-core.ts'
+      - 'tests/inquiry/**'
+      - 'package*.json'
+      - '.github/workflows/inquiry-orchestration.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'server.ts'
+      - 'server/orchestration*.ts'
+      - 'server/urg-core.ts'
+      - 'tests/inquiry/**'
+      - 'package*.json'
+      - '.github/workflows/inquiry-orchestration.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts
+      - run: npm run typecheck:inquiry
+      - run: npm run test:inquiry

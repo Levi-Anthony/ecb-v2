@@ -11,6 +11,7 @@ import { Hono } from 'hono';
 import { z } from 'zod';
 import { contracts as circulationContracts, registerCirculationTools } from './server/circulation/tools.js';
 import { bearerChallenge, oauthEnabled, oauthToolDenial, verifyOAuthToken } from './server/oauth.js';
+import { runBrainInquiry } from './server/orchestration-brain.js';
 
 const SUPABASE_URL = 'https://vezxivrvhakclxuvxzso.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_4mAxzOfWinJcn-98szUEYA_Wh88UdPW';
@@ -569,7 +570,7 @@ const runtime = {
 
 function buildServer(): McpServer {
   const server = new McpServer(
-    { name: 'ecb-v2-open-brain', version: '0.5.1' },
+    { name: 'ecb-v2-open-brain', version: '0.6.0' },
     { capabilities: { tools: {} } },
   );
 
@@ -617,16 +618,38 @@ function buildServer(): McpServer {
   server.registerTool('search', {
     title: 'Search Thoughts',
     description:
-      'Search canonical thought evidence through one hybrid retrieval surface. This call can repair missing semantic representations before retrieval. Lexical retrieval remains available when semantic embedding is unavailable; coverage reports whether semantic indexing is complete or degraded.',
+      'Contract ecb-v2-search/0.6.0. Search canonical thought evidence through one hybrid retrieval surface. Optional inquiry context also opens cross-context native/structural discovery, exact candidate recovery and an editioned working projection with explicit qualification/reentry. Similarity creates no standing. This call can repair missing semantic representations; lexical retrieval remains available when embeddings fail, with coverage/degradation reported.',
     // Search repairs missing embeddings before retrieval, so it can write representations.
     annotations: { readOnlyHint: false, destructiveHint: false },
     scopeChallenge: capabilityCheck('recover'),
     inputSchema: {
       query: z.string().trim().min(1),
       limit: z.number().int().min(1).max(100).optional().default(10),
+      inquiry: z.strictObject({
+        intended_use: nonBlankText(),
+        return_route: nonBlankText(),
+        context: z.strictObject({
+          referent_id: nonBlankText().optional(), boundary_ref: nonBlankText().optional(),
+          governing_orientation_ref: nonBlankText().optional(), mapper_ref: nonBlankText().optional(),
+          frame_ref: nonBlankText().optional(), access_ref: nonBlankText().optional(),
+          source_refs: z.array(nonBlankText()).max(50).optional(),
+        }),
+        known_referent_ids: z.array(z.string().uuid()).max(50).optional(),
+        work_id: z.string().uuid().optional(),
+        structural_depth: z.number().int().min(0).max(3).optional(),
+        projection_chars: z.number().int().min(1024).max(100000).optional(),
+      }).optional(),
     },
-  }, async ({ query, limit }) => {
+  }, async ({ query, limit, inquiry }, context) => {
     try {
+      if (inquiry) {
+        const actor = context.http?.authInfo?.clientId;
+        if (!actor) return failure('inquiry_actor_missing');
+        return result(await runBrainInquiry({ query, intended_use: inquiry.intended_use, return_route: inquiry.return_route,
+          context: inquiry.context, actor_ref: actor, known_referent_ids: inquiry.known_referent_ids, work_id: inquiry.work_id,
+          limits: { candidates: Math.min(limit, 50), structural_depth: inquiry.structural_depth, projection_chars: inquiry.projection_chars },
+        }, { searchThoughts: (q, n) => runtime.search(q, n), fetchThought: id => runtime.fetch(id), dispatch: circulationDispatch, embed }, actor));
+      }
       return result(await runtime.search(query, limit));
     } catch (error) {
       return operationFailure(error, 'search_failed');

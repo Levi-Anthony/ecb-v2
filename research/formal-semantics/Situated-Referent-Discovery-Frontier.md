@@ -6,9 +6,9 @@ AUTHORITY: Principal instruction, 5 October 2026 America/Phoenix; source contrac
 # Situated Referent Discovery — Leading Structural Frontier
 
 **Edition:** 0.1, 5 October 2026 America/Phoenix / 6 October UTC.  
-**Immediate reentry:** the Solution-first disposition below, then [PGO-Directed Situated Referent Orchestration Profile v0.1](./PGO-Directed-Situated-Referent-Orchestration-Profile-v0.1.md). §8 remains the retained research/qualification backlog, not the default next action.  
+**Immediate reentry:** [ECO-202 ordinary inquiry runtime contract and ownership](../../docs/inquiry-orchestration.md), implementing the [PGO-Directed Situated Referent Orchestration Profile v0.1](./PGO-Directed-Situated-Referent-Orchestration-Profile-v0.1.md). Principal execution commission: BRAIN `6c02e4d4-0d57-4f0e-ab85-fd7fae945a38`, 6 October 2026 America/Phoenix. §8 remains retained research/qualification debt, not the default next action.
 **Continuity home:** [Constructive Fidelity Tracking](./Constructive-Fidelity-Tracking.md), developing ECO-162 — Integral Coherence Maintenance and its eight fidelity invariants.  
-**Structural reentry target:** ECO-221 — the installed Level + Quadrant formal kernel.  
+**Runtime owner:** ECO-202 — situated inquiry orchestration, Working; accountable Principal Levi Anthony, implementation/verification executor current Codex worker. **Semantic dependency:** ECO-221 — the closed installed Level + Quadrant formal kernel.
 **Adjacent frontiers:** ECO-184 — Direction/Capacity/Capability/Developmental Line architecture; ECO-225 — Line continuity/comparison; ECO-191 — indexed change/reconciliation; ECO-202 — situated navigational discovery; ECO-213 — recursive semantic circulation.  
 **Work disposition:** COMPOSE / HARDEN FOR USE at Register B. The first-class bleeding edge is now solution-first orchestration over installed semantics; retained research questions reopen only on a named semantic defect, unresolved consequential distinction, or required qualification gap. Register B denotes substrate-independent work.
 

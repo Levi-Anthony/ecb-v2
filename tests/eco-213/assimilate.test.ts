@@ -8,7 +8,10 @@ function fixture(){
  const exported={origin:'legacy:lqbrzoicorehwidkdhoi',frozen_at:at,export_basis:{status:'CONSTRUCTED'},
   rows:LEGACY_IDS.map(id=>({id,content:'CONSTRUCTED source',original_content:'different representation',metadata:{},source_id:null,status:'fixture',created_at:at,updated_at:at}))};
  const plan=makeCommission({authority_basis:'CONSTRUCTED fixture',qualified_commit:'0'.repeat(40),code_digest:'0'.repeat(64),
-  launch_artifact_id:randomUUID(),requirements_artifact_id:randomUUID(),frozen_export_artifact_id:randomUUID(),actors:['fixture'],worker:'fixture-worker',qualification:{status:'CONSTRUCTED'},issued_at:at},exported);
+  launch_artifact_id:randomUUID(),requirements_artifact_id:randomUUID(),frozen_export_artifact_id:randomUUID(),actors:['fixture'],worker:'fixture-worker',qualification:{status:'CONSTRUCTED'},issued_at:at,
+  // The installed renderer requires explicitly owned effect controls. These are
+  // constructed dormant fixtures; this supplies no live release or renewal.
+  effect_policy:{expires_at:null,max_requests:null,max_input:null,max_output:null,max_usd:null}},exported);
  const recovery={contract_version:'eco213-v1',work:[{id:plan.ids.corpus_work,remit_revision_id:plan.ids.revision}],
   remits:[{id:plan.ids.revision,enabled:true,expired:false,expires_at:new Date(Date.now()+3600000).toISOString(),allowed_effects:['assimilate'],allowed_sources:[exported.origin],allowed_legacy_ids:LEGACY_IDS}],
   mechanisms:[{id:plan.ids.differentiate,kind:'differentiate',code_digest:'0'.repeat(64)}]};

@@ -4,6 +4,8 @@ on:
     branches: [main]
     paths:
       - 'server.ts'
+      - 'server/orchestration*.ts'
+      - 'server/urg-core.ts'
       - 'server/circulation/**'
       - 'api/circulation/**'
       - 'sql/migrations/*eco213*'
@@ -16,6 +18,8 @@ on:
     branches: [main]
     paths:
       - 'server.ts'
+      - 'server/orchestration*.ts'
+      - 'server/urg-core.ts'
       - 'server/circulation/**'
       - 'api/circulation/**'
       - 'sql/migrations/*eco213*'
