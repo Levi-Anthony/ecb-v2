@@ -29,7 +29,7 @@ try {
   const focal = await artifact('CONSTRUCTED: qualification of circulation, not a live source.');
   await query('insert into ecb_circulation.service_remits(id,label,authority_basis) values($1,$2,$3)',[ids.remit,'constructed test remit','disposable test only']);
   await query(`insert into ecb_circulation.remit_revisions(id,remit_id,authority_basis,allowed_actors,allowed_sources,allowed_legacy_ids,allowed_effects,expires_at,max_requests,max_input,max_output,max_usd)
-    values($1,$2,'constructed test authority',$3,$4,$5,$6,clock_timestamp()+interval '1 hour',100,16000,4000,2)`,[ids.revision,ids.remit,[actor,executor],['native:capture','legacy:lqbrzoicorehwidkdhoi'],[ids.legacy],['capture','process','execute','assimilate','preserve_output','reconcile','observe']]);
+    values($1,$2,'constructed test authority',$3,$4,$5,$6,clock_timestamp()+interval '3 hours',7,20000,6000,0.05)`,[ids.revision,ids.remit,[actor,executor],['native:capture','legacy:lqbrzoicorehwidkdhoi'],[ids.legacy],['capture','process','execute','assimilate','preserve_output','reconcile','observe']]);
   await query('insert into ecb_circulation.remit_heads(remit_id,revision_id,enabled) values($1,$2,true)',[ids.remit,ids.revision]);
   for (const kind of ['differentiate','assess','compose','embed']) {
     const config = kind==='differentiate'?{assessment_mechanism_id:ids.assess}:kind==='assess'?{composition_mechanism_id:ids.compose}:{};
@@ -117,7 +117,7 @@ try {
     await query('select pgmq.set_vt(\'eco213\',(select message_id from ecb_circulation.processing_heads where activity_id=$1),0)',[a.activity.id]);
     await rejects(()=>finish(a,{verdict:'UNKNOWN'}),'stale_fence');
     const resumed=await lease();assert.ok(resumed.fence>a.fence);await rejects(()=>finish(a,{verdict:'UNKNOWN'}),'stale_fence');
-    await check('aggregate remit budget denies a new attempt',()=>rejects(()=>reserve(resumed,3),'budget_denied'));
+    await check('explicit aggregate remit budget denies a new attempt',()=>rejects(()=>reserve(resumed,0.06),'budget_denied'));
     await reserve(resumed);
     await check('partial semantic coverage cannot certify satisfaction',()=>rejects(()=>finish(resumed,
       {verdict:'SATISFIED',coverage:{participants:'SATISFIED'},findings:[],unresolved:[],limitations:[]}), 'assessment_coverage_missing'));
