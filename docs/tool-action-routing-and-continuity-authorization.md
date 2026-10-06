@@ -143,6 +143,22 @@ At minimum verify:
 
 A mismatch between the live validator and the schema presented to the invoking consumer is **contract-degraded**, even when knowledgeable callers can manually supply the hidden field.
 
+## Connected-consumer schema snapshot
+
+OpenAI's current custom-MCP app behavior freezes the approved tool/input snapshot in ChatGPT. Later MCP-server changes do **not** automatically update that connected-consumer schema.
+
+Therefore a live-server / connected-consumer mismatch is repaired at the app-approval surface, not by weakening the server contract:
+
+1. an authorized workspace admin/owner opens the custom app's action controls;
+2. use **Refresh** to pull changed actions/definitions where that control is available;
+3. review the diff and publish/approve the updated action definition;
+4. if the workspace/app state does not support updating the published app, recreate and republish the custom app against the same trusted MCP endpoint;
+5. verify a fresh chat sees `capture_thought.operation_id` as a required UUID before declaring consumer conformance restored.
+
+Until that human-only authenticated UI step is completed, knowledgeable callers may continue supplying the live required `operation_id`, but the connected-consumer surface remains **contract-degraded**.
+
+BRAIN receipt for this exact platform finding: `f656fd8f-73f0-433b-89ab-c11a87d360cd`.
+
 ## Known non-blocking platform defect
 
 An attempted app-specific ChatGPT permission update returned `404 Action not found`.
