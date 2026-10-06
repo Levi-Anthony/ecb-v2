@@ -18,6 +18,40 @@ Define the smallest positive procedure by which a worker can:
 
 This profile composes existing contracts. It is not a replacement ontology, persistence schema, runtime workflow engine, or new Quadrant generator.
 
+## 1.1 Functional-requirement composition
+
+This profile consumes three Principal-established ECOS functional requirements:
+
+- **FR-1 — Situated domain-semantic descent:** descend from the Universal Substrate into discovered/composed/ad hoc domain schema without hard-coding domain semantics into the substrate.
+- **FR-2 — Bidirectional intent-realization-evidence traceability:** maintain traversable provenance-preserving relations among purpose, requirements, realization, implementation, behavior, observations, tests and evidence with situated standing/currentness.
+- **FR-3 — Cross-context structural resurfacing and recomposition:** material captured, derived or composed under one PGO must be able to become discoverable and compositionally active in a future inquiry whose PGO, topic or immediate referent may appear unrelated, when explicit or newly discovered structural/semantic relations make it consequential.
+
+FR-3 is a required observable, not a mandate for one monolithic retrieval subsystem. Its mechanism may emerge from the mutual constraints among stable Referents, typed relations, Level/whole-part structure, participatory relations, provenance/standing/currentness, Question Forward, open-world possibility, semantic discovery, and typed change/requalification.
+
+**BRAIN requirement receipt:** `13acf55f-0b5e-4b7c-a6f2-e2edf988762f`.
+
+### Recall/discovery modes
+
+Keep four jobs distinct:
+
+1. **Exact recall** — recover an explicitly addressed record/edition/as-of basis faithfully.
+2. **Situated recomposition** — revisit known material under a changed PGO/boundary/frame and explicitly requalify.
+3. **Semantic discovery** — propose potentially relevant material/relations where no explicit path is yet established.
+4. **Cross-context structural resurfacing** — activate prior material from a different or apparently unrelated inquiry when a consequential path is established for the current situated use.
+
+Mode 4 may begin with Mode 3, including embeddings or other latent-space similarity, but relied use must finish through the Integral architecture: recover original identity/source/basis/standing, establish the present relation or applicability, and reconcile the new composition.
+
+Dormant/nonconsequential is therefore a current-use disposition, not an archival graveyard.
+
+### Target observables, not yet performance claims
+
+Two desired emergent effects remain explicitly unmeasured:
+
+- **relational flow:** useful information can move across whole/part, participation, Quadrant, PGO, time/state/Line, domain-schema and newly discovered semantic relations while provenance and standing remain recoverable;
+- **high-ratio recallable compression:** compact durable identity/relation/claim structures can reconstruct substantially richer situated understanding for future work without storing exhaustive monolithic historical context blobs.
+
+These are target observables for later measurement. They are not presently established uplift, compression-ratio, or recall-quality claims.
+
 ## 2. Governing source composition
 
 This profile depends on, and remains subordinate to:
@@ -77,6 +111,30 @@ Permitted result:
 - `HOLD` where orientation, identity, access or discrimination is insufficient.
 
 No complete R or G is presumed before bootstrap.
+
+### O1A — Open the discovery aperture
+
+Once enough present inquiry basis exists to avoid generic search, expose candidate prior material through multiple independent sensors:
+
+- explicit Referent/relation traversal;
+- whole/part and participatory neighborhoods;
+- prior compositions, projections, State/Line/Type/domain-schema relations;
+- dormant Question Forward/challenge/reentry conditions;
+- recurrence/reuse observations;
+- embeddings or other latent-space semantic similarity;
+- other domain-native discovery methods where qualified.
+
+A hit is a **candidate**, not evidence that the prior material belongs in the current composition.
+
+For each candidate that could change the present inquiry:
+
+1. recover its exact identity, source, original situated basis and stored standing/currentness;
+2. identify the explicit or proposed path by which it may matter now;
+3. distinguish analogy/similarity from co-reference, constitution, participation, dependency, derivation or other typed relation;
+4. admit, defer, reject, or exteriorize a Question Forward;
+5. if admitted, route any required requalification through O4/O5 before reliance.
+
+Do not restrict discovery to material indexed by the current or original PGO.
 
 ### O2 — Seat and expose holonic structure
 
@@ -253,6 +311,21 @@ This preserves forward motion while retaining the source commitment that holons 
 **None.**
 
 A future semantic amendment is earned only if ordinary use demonstrates a capability that cannot be expressed faithfully through the installed contracts and this composition profile.
+
+## 8.1 FR-3 anti-collapse rules
+
+The discovery aperture must reject these substitutions:
+
+1. embedding similarity = relevance;
+2. relevance = applicability;
+3. applicability = truth/currentness;
+4. repeated resurfacing = standing/authority;
+5. shared topic label = same Referent;
+6. relation-path existence = constitutive membership;
+7. original PGO = required namespace for future retrieval;
+8. dormant/nonconsequential-now = permanently irrelevant;
+9. richly reconstructed projection = exhaustive historical context;
+10. semantic rediscovery = exact record recall.
 
 ## 9. Minimal qualification burden
 
