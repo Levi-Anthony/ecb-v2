@@ -17,7 +17,8 @@ try{
  const plan=makeCommission({authority_basis:'CONSTRUCTED native commissioning qualification only',qualified_commit:'0'.repeat(40),code_digest:manifest.code_digest,
   launch_artifact_id:await artifact('CONSTRUCTED launch; no live authority'),requirements_artifact_id:await artifact('CONSTRUCTED requirements'),
   frozen_export_artifact_id:await artifact(JSON.stringify(exported)),actors:['commission-native-fixture'],worker:'commission-native-worker',
-  qualification:{standing:'CONSTRUCTED deterministic controls'},issued_at:at},exported);
+  qualification:{standing:'CONSTRUCTED deterministic controls'},issued_at:at,
+  effect_policy:{expires_at:null,max_requests:null,max_input:null,max_output:null,max_usd:null}},exported);
  await db.query(plan.sql);
  const state=(await db.query('select ecb_circulation.recover($1) as r',[plan.ids.corpus_work])).rows[0].r;
  assert.equal(state.remits.find((r:any)=>r.id===plan.ids.revision).enabled,false);
