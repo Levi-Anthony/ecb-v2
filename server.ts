@@ -569,14 +569,14 @@ const runtime = {
 
 function buildServer(): McpServer {
   const server = new McpServer(
-    { name: 'ecb-v2-open-brain', version: '0.5.0' },
+    { name: 'ecb-v2-open-brain', version: '0.5.1' },
     { capabilities: { tools: {} } },
   );
 
   server.registerTool('capture_thought', {
     title: 'Capture Thought',
     description:
-      'Preserve exact Thought custody under a stable operation UUID. When circulation is commissioned, default trusted mode atomically admits bounded processing under its separate service remit. raw_only preserves without commissioning continuation. Custody, admission and semantic success are separately reported; no standing is granted.',
+      'Contract ecb-v2-capture/0.5.1. Requires caller-supplied operation_id UUID for stable idempotency. Preserve exact Thought custody under that operation identity. When circulation is commissioned, default trusted mode atomically admits bounded processing under its separate service remit. raw_only preserves without commissioning continuation. Custody, admission and semantic success are separately reported; no standing is granted.',
     annotations: {
       readOnlyHint: false,
       destructiveHint: false,
