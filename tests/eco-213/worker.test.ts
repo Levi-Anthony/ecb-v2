@@ -101,7 +101,7 @@ test('reserve before exactly one request; strict fixed route and price ceiling',
   assert.ok(h.calls.some(x => x.url.endsWith('eco213_finish') && x.body.p_provider.generation_id === 'constructed-generation'));
 });
 test('unbounded tariff denies request', async () => {
-  const h = harness(); h.tariff({ id: MODEL, pricing: { prompt: 'NaN', completion: '1' } });
+  const h = harness(); h.tariff({ id: MODEL, context_length: 128000, top_provider: { max_completion_tokens: 16384 }, pricing: { prompt: 'NaN', completion: '1' } });
   assert.equal((await h.run()).failure_code, 'tariff_unbounded');
   assert.equal(h.calls.some(x => x.url.endsWith('/chat/completions')), false);
 });
@@ -110,10 +110,11 @@ test('reservation replay retains ambiguity and does not dispatch again', async (
   assert.equal((await h.run()).failure_code, 'provider_outcome_ambiguous');
   assert.equal(h.calls.some(x => x.url.endsWith('/chat/completions')), false);
 });
-test('oversized input fails visibly without truncation or provider call', async () => {
+test('explicit remit input fuse fails visibly before provider generation', async () => {
   const h = harness({ source: { carrier_id: carrier, text: 'x'.repeat(17000) } });
   assert.equal((await h.run()).failure_code, 'input_resource_boundary');
-  assert.equal(h.calls.some(x => x.url.includes('openrouter.ai')), false);
+  assert.equal(h.calls.some(x => x.url.endsWith('/chat/completions')), false);
+  assert.equal(h.calls.some(x => x.url.endsWith('eco213_reserve')), false);
 });
 test('bad anchor preserves raw output failure and cannot regenerate', async () => {
   const h = harness(); const bad = structuredClone(bundle); bad.units[0].anchors[0].byte_start = 1;
