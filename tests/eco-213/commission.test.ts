@@ -8,11 +8,13 @@ test('commission binds exact eight envelopes and real mechanism digests while re
  const manifest=await sourceManifest();assert.match(manifest.code_digest,/^[0-9a-f]{64}$/);
  const c={authority_basis:'CONSTRUCTED renderer fixture only',qualified_commit:'0'.repeat(40),code_digest:manifest.code_digest,
   launch_artifact_id:randomUUID(),requirements_artifact_id:randomUUID(),frozen_export_artifact_id:randomUUID(),actors:['constructed-cold'],
-  worker:'constructed-worker',qualification:{status:'CONSTRUCTED'},issued_at:'2026-09-30T16:00:00.000Z'};
+  worker:'constructed-worker',qualification:{status:'CONSTRUCTED'},issued_at:'2026-09-30T16:00:00.000Z',
+  effect_policy:{expires_at:null,max_requests:null,max_input:null,max_output:null,max_usd:null}};
  const exported={origin:'legacy:lqbrzoicorehwidkdhoi',frozen_at:c.issued_at,export_basis:{status:'CONSTRUCTED'},
   rows:LEGACY_IDS.map(id=>({id,content:'CONSTRUCTED carrier',original_content:null,metadata:{},source_id:null,status:'fixture',created_at:c.issued_at,updated_at:c.issued_at}))};
  const p=makeCommission(c,exported);assert.equal(p.manifest.items.length,8);assert.equal(p.host_bindings.ECB_CIRCULATION_ENABLED,'false');
- assert.ok(p.sql.includes('100,16000,4000,2'));assert.ok(p.sql.includes('false'));assert.ok(!p.sql.includes('vault.decrypted_secrets'));
+ assert.ok(p.sql.includes(",NULL,\n NULL,NULL,NULL,NULL);"));assert.ok(p.sql.includes('false'));assert.ok(!p.sql.includes('vault.decrypted_secrets'));
+ assert.ok(!p.sql.includes('100,16000,4000,2'));
  assert.ok(p.missing_custody.includes('worker credential hash'));
  assert.throws(()=>makeCommission(c,{...exported,rows:exported.rows.slice(1)}),/cohort/);
  assert.throws(()=>makeCommission(c,{...exported,rows:exported.rows.map((r,i)=>i===0?{...r,id:randomUUID()}:r)}),/envelope/);
@@ -41,4 +43,18 @@ test('commission binds exact eight envelopes and real mechanism digests while re
   await client.close();globalThis.fetch=savedFetch;
   names.forEach((name,i)=>{if(prior[i]===undefined)delete process.env[name];else process.env[name]=prior[i];});
  }
+});
+
+test('commission carries explicitly owned effect controls without universal phantom ceilings', async () => {
+  const manifest=await sourceManifest();
+  const issued='2026-10-05T18:00:00.000Z';
+  const c={authority_basis:'CONSTRUCTED explicit effect policy',qualified_commit:'0'.repeat(40),code_digest:manifest.code_digest,
+    launch_artifact_id:randomUUID(),requirements_artifact_id:randomUUID(),frozen_export_artifact_id:randomUUID(),actors:['constructed-cold'],
+    worker:'constructed-worker',qualification:{status:'CONSTRUCTED'},issued_at:issued,
+    effect_policy:{expires_at:'2026-10-08T18:00:00.000Z',max_requests:321,max_input:64000,max_output:8192,max_usd:25}};
+  const exported={origin:'legacy:lqbrzoicorehwidkdhoi',frozen_at:issued,export_basis:{status:'CONSTRUCTED'},
+    rows:LEGACY_IDS.map(id=>({id,content:'CONSTRUCTED carrier',original_content:null,metadata:{},source_id:null,status:'fixture',created_at:issued,updated_at:issued}))};
+  const p=makeCommission(c,exported);
+  assert.ok(p.sql.includes('321,64000,8192,25'));
+  assert.ok(p.sql.includes('2026-10-08T18:00:00.000Z'));
 });

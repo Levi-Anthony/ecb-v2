@@ -57,7 +57,8 @@ function harness(overrides: Record<string, unknown> = {}) {
   let modelReply: any = { model: MODEL, provider: 'OpenAI', id: 'constructed-generation', usage: { prompt_tokens: 20, completion_tokens: 20 },
     choices: [{ finish_reason: 'stop', message: { content: JSON.stringify(bundle) } }] };
   let reservation = { dispatch_permitted: true, replayed: false, reservation_id: randomUUID() };
-  let tariff: any = { id: MODEL, pricing: { prompt: '0.00000015', completion: '0.00000060', request: '0' } };
+  let tariff: any = { id: MODEL, context_length: 128000, top_provider: { max_completion_tokens: 16384 },
+    pricing: { prompt: '0.00000015', completion: '0.00000060', request: '0' } };
   let status = 200;
   let metadata: any = { data: { id: 'constructed-generation', model: MODEL, provider_name: 'OpenAI', total_cost: 0.00002 } };
   let metadataStatus = 200;
@@ -205,4 +206,25 @@ test('embedding validates its bound mechanism before compute or index commit',as
  const h=harness({activity:{kind:'embed'},mechanism,missing_representations:[{id:randomUUID(),content:source}]});
  assert.equal((await runStep({env:h.env,fetch:h.fetcher,embed:async()=>Array(384).fill(0.1)})).status,'complete');
  assert.equal(h.calls.some(x=>x.url.includes('openrouter.ai')),false);
+});
+
+test('null remit input/output ceilings defer to provider capability metadata', async () => {
+  const h = harness({ remit: { max_input: null, max_output: null } });
+  await h.run();
+  const call = h.calls.find(x => x.url.endsWith('/chat/completions'))!;
+  assert.equal(call.body.max_tokens, 16384);
+});
+test('provider context is the hard technical boundary when remit input ceiling is absent', async () => {
+  const h = harness({ source: { carrier_id: carrier, text: 'x'.repeat(120000) }, remit: { max_input: null, max_output: null } });
+  h.tariff({ id: MODEL, context_length: 1000, top_provider: { max_completion_tokens: 128 },
+    pricing: { prompt: '0.00000015', completion: '0.00000060', request: '0' } });
+  assert.equal((await h.run()).failure_code, 'provider_context_boundary');
+  assert.equal(h.calls.some(x => x.url.endsWith('/chat/completions')), false);
+});
+test('missing provider resource metadata fails before reservation or generation', async () => {
+  const h = harness({ remit: { max_input: null, max_output: null } });
+  h.tariff({ id: MODEL, pricing: { prompt: '0.00000015', completion: '0.00000060', request: '0' } });
+  assert.equal((await h.run()).failure_code, 'provider_resource_metadata_unavailable');
+  assert.equal(h.calls.some(x => x.url.endsWith('eco213_reserve')), false);
+  assert.equal(h.calls.some(x => x.url.endsWith('/chat/completions')), false);
 });

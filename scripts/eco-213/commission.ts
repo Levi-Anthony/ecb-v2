@@ -12,6 +12,7 @@ const SOURCE_FILES=['server.ts','server/circulation/profile.ts','server/circulat
  'package.json','package-lock.json',
  'api/circulation/run.ts','sql/migrations/20260930155729_eco213_circulation_native.sql',
  'sql/migrations/20260930155734_eco213_circulation_execution.sql','sql/migrations/20260930165122_eco213_circulation_scheduler.sql',
+ 'sql/migrations/20261005223000_eco214_effect_policy_depin.sql',
  'sql/migrations/20260930183100_eco213_recovery_source_parts.sql',
  'sql/migrations/20260930191330_eco213_work_context.sql'];
 const sha=(text:string)=>createHash('sha256').update(text).digest('hex');
@@ -26,6 +27,13 @@ const configSchema=z.strictObject({
  worker_key_sha256:digest.optional(),vault_secret_id:uuid.optional(),
  worker_url:z.string().regex(/^https:\/\/[a-zA-Z0-9.-]+\/api\/circulation\/run$/).optional(),
  qualification:z.record(z.string(),z.unknown()),issued_at:z.string().datetime(),
+ effect_policy:z.strictObject({
+   expires_at:z.string().datetime().nullable(),
+   max_requests:z.number().int().positive().nullable(),
+   max_input:z.number().int().positive().nullable(),
+   max_output:z.number().int().positive().nullable(),
+   max_usd:z.number().positive().nullable(),
+ }),
 });
 export function makeCommission(input:unknown,exported:{origin:string;frozen_at:string;export_basis:unknown;rows:Record<string,unknown>[]}){
  const c=configSchema.parse(input);const expected=new Set(LEGACY_IDS);
@@ -36,18 +44,22 @@ export function makeCommission(input:unknown,exported:{origin:string;frozen_at:s
    ||typeof row.content!=='string'||!(typeof row.original_content==='string'||row.original_content===null))throw new Error('frozen_envelope_mismatch');
   return {id:String(row.id),digest:sha(JSON.stringify(row)),operation_id:corpus_operations[String(row.id)]};
  });if(expected.size)throw new Error('frozen_cohort_missing');
- const issued=new Date(c.issued_at),expires=new Date(issued.getTime()+48*60*60*1000);
+ const issued=new Date(c.issued_at);
  if(!Number.isFinite(issued.getTime()))throw new Error('time_basis_invalid');
+ const expires=c.effect_policy.expires_at===null?null:new Date(c.effect_policy.expires_at);
+ if(expires && (!Number.isFinite(expires.getTime()) || expires<=issued))throw new Error('time_basis_invalid');
+ const sqlValue=(v:number|null)=>v===null?'NULL':String(v);
  const ids=Object.fromEntries(['remit','revision','capture_work','corpus_work','corpus','differentiate','reinspect','assess','compose','embed'].map(k=>[k,randomUUID()]));
  const manifest={schema:'eco213-frozen-manifest-v1',items,export_artifact_id:c.frozen_export_artifact_id,export_basis:exported.export_basis};
  const manifestBytes=JSON.stringify(manifest);const manifestId=randomUUID();
  const sql:string[]=['begin;'];
  sql.push(`insert into public.text_artifacts(id,content) values('${manifestId}',${quote(manifestBytes)});`);
- sql.push(`insert into ecb_circulation.service_remits(id,label,authority_basis) values('${ids.remit}','ECO-213 initial bounded qualification',${quote(c.authority_basis)});`);
+ sql.push(`insert into ecb_circulation.service_remits(id,label,authority_basis) values('${ids.remit}','ECO-213 semantic circulation',${quote(c.authority_basis)});`);
  sql.push(`insert into ecb_circulation.remit_revisions(id,remit_id,authority_basis,allowed_actors,allowed_sources,allowed_legacy_ids,allowed_effects,issued_at,expires_at,max_requests,max_input,max_output,max_usd)
  values('${ids.revision}','${ids.remit}',${quote(c.authority_basis)},${array([...new Set([...c.actors,c.worker])])},
  ${array(['native:capture','native:launch','native:requirements','legacy:lqbrzoicorehwidkdhoi'])},${array(LEGACY_IDS,'uuid')},
- ${array(['capture','process','execute','assimilate','preserve_output','reconcile','observe'])},${quote(issued.toISOString())},${quote(expires.toISOString())},100,16000,4000,2);`);
+ ${array(['capture','process','execute','assimilate','preserve_output','reconcile','observe'])},${quote(issued.toISOString())},${expires?quote(expires.toISOString()):'NULL'},
+ ${sqlValue(c.effect_policy.max_requests)},${sqlValue(c.effect_policy.max_input)},${sqlValue(c.effect_policy.max_output)},${sqlValue(c.effect_policy.max_usd)});`);
  sql.push(`insert into ecb_circulation.remit_heads(remit_id,revision_id,enabled) values('${ids.remit}','${ids.revision}',false);`);
  for(const kind of ['differentiate','reinspect','assess','compose','embed'] as const){
   const stage=kind==='embed'?null:kind;

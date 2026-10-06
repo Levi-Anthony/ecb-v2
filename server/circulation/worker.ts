@@ -62,15 +62,23 @@ export async function runStep(io: WorkerIO) {
     if (!providerKey) throw new StepError('provider_uncommissioned');
     const user = JSON.stringify({ work: lease.work, source: lease.source, prior_outputs: lease.context_outputs,
       native_subjects: lease.context_subjects, context_coverage: lease.context_coverage });
-    // UTF-8 octet count conservatively bounds BPE tokens; schema/instruction overhead
-    // is included, with 512 tokens reserved for provider chat framing. No truncation.
+    // UTF-8 octet count is a conservative upper bound on BPE token count.
+    // It is used only as a pre-dispatch safety estimate; actual provider usage
+    // remains separately recorded. 512 units reserve framing overhead.
     const inputBound = Buffer.byteLength(user + instructions[stage] + JSON.stringify(schema), 'utf8') + 512;
-    const outputBound = lease.remit.max_output;
-    if (inputBound > lease.remit.max_input) throw new StepError('input_resource_boundary');
     const quoted = await io.fetch('https://openrouter.ai/api/v1/models', { signal: AbortSignal.timeout(10000) });
     if (!quoted.ok) throw new StepError('tariff_unavailable');
     const route = (await quoted.json()).data?.find((m: { id: string }) => m.id === MODEL);
     if (!route?.pricing || route.pricing.prompt == null || route.pricing.completion == null) throw new StepError('tariff_unbounded');
+    const contextLength = Number(route.context_length);
+    const providerMaxOutput = Number(route.top_provider?.max_completion_tokens ?? 0);
+    if (!Number.isFinite(contextLength) || contextLength < 1 || !Number.isFinite(providerMaxOutput) || providerMaxOutput < 1)
+      throw new StepError('provider_resource_metadata_unavailable');
+    const configuredOutput = lease.remit.max_output == null ? providerMaxOutput : Number(lease.remit.max_output);
+    if (!Number.isFinite(configuredOutput) || configuredOutput < 1) throw new StepError('output_resource_boundary');
+    const outputBound = Math.min(configuredOutput, providerMaxOutput);
+    if (lease.remit.max_input != null && inputBound > Number(lease.remit.max_input)) throw new StepError('input_resource_boundary');
+    if (inputBound + outputBound > contextLength) throw new StepError('provider_context_boundary');
     const prompt = Number(route.pricing.prompt), completion = Number(route.pricing.completion), request = Number(route.pricing.request ?? 0);
     if (![prompt, completion, request].every(x => Number.isFinite(x) && x >= 0)) throw new StepError('tariff_unbounded');
     const tariff = { model: MODEL, pricing: route.pricing, quote_source: 'https://openrouter.ai/api/v1/models', quoted_at: new Date().toISOString() };
