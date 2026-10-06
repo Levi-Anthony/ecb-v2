@@ -48,6 +48,8 @@ A returned projection is not durable merely because it has a digest. Preservatio
 
 Line and Direction owners retain their source contracts. Discovery of a competency or recurrence does not witness a Line or Level. Systems-engineering Differentiation & Integration ledger `21e58c47-2f40-47ef-8fc8-6e6c4451b6c1` retains four lanes: course source, verified current practice, explanatory reconstruction and project application. This build is independently commissioned project implementation, not a pedagogical promotion.
 
+Project-application implementation trace: BRAIN `30d3ca3c-10dc-43d2-a26c-84c8f021c1f5`. It binds FR-1/FR-2/FR-3 to the installed coordinator while preserving the four source/standing lanes and unmeasured target benefits.
+
 ## Verification and reentry
 
 The [dated implementation receipt](inquiry-orchestration-2026-10-06-receipt.md) records actual verification and installation separately from remaining semantic and hosted-use obligations.
