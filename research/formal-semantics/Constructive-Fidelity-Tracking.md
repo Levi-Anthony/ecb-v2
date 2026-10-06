@@ -267,3 +267,12 @@ Keep original clauses and raw specimens recoverable. A rejected mapping does not
 | 5 October 2026 | Porch source recovered; situated F1, boundary/grain alternatives and three representation doors reconstructed. | Revised conceptual direction. |
 | 5 October 2026 | Principal: “Yes. Absolutely agree”; requested continuity updates and ecb-v2 tracking. | Accepted direction and explicit documentation/continuity authorization. |
 | 5 October 2026 | This tracking document and source-linked continuity updates installed on main. | Durable workshop record; semantic probes remain unrun. |
+
+
+### Installation verification — 5 October 2026
+
+The initial documentation installation is [main commit 94d336b](https://github.com/Levi-Anthony/ecb-v2/commit/94d336b88a814c499a77e5bcf1df67a88865c76e). Its write set is this file plus START_HERE and the formal-semantics/URG-kernel entry links. Exact remote content and internal source targets were verified; all eight inherited clauses are present verbatim. The governing invariants blob remains unchanged at `72b89a2bf7ccb9b2de484be01e45cf5a62e612b6`.
+
+The [automated URG-core workflow](https://github.com/Levi-Anthony/ecb-v2/actions/runs/37394480478) passed all typechecks, 38/38 URG package tests, 42/42 core-matrix cases, 11/11 MCP (Model Context Protocol) tests and 7/7 OAuth (Open Authorization) tests. Its circulation suite passed 27/33; six assimilation tests failed during fixture construction because `tests/eco-213/assimilate.test.ts` omits the newly required `effect_policy` object passed to `makeCommission`.
+
+**Exact mismatch and task consequence:** the inherited commission schema requires explicit effect-policy input; the unchanged assimilation fixture does not provide it. Both files are present at the source-recovery baseline and are outside this documentation commit's write set. These six failures prevent a blanket green-regression claim; they do not test this document's constructive F1 semantics or defeat its verified persistence/navigation. Return the mismatch to circulation test-fixture reconciliation while preserving the current effect-policy semantics. No runtime or test-suite repair is claimed by this continuity task.
