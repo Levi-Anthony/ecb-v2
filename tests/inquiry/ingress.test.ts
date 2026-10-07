@@ -68,3 +68,41 @@ test('caller cannot supply/spoof the authenticated actor in inquiry context', as
     assert.equal(r.isError, true); assert.equal(calls.length, 0);
   });
 });
+
+
+test('ordinary inquiry applies systems-engineering domain admission without a new public tool', async () => {
+  await withClient(async (client) => {
+    const r = await client.callTool({ name: 'search', arguments: {
+      query: 'compare viewpoint semantics without reinventing native systems engineering',
+      inquiry: {
+        ...inquiry,
+        domain_admission: {
+          domain: 'systems-engineering',
+          responsibilities: [{
+            id: 'viewpoint-concern-framing',
+            construct_ref: 'SysML Viewpoint',
+            problem_solved: 'Frame stakeholder concerns for a model view.',
+            source_lane: 'CURRENT_PRACTICE',
+            source_refs: ['https://www.omg.org/spec/SysML/2.0/About-SysML'],
+            native_package_ids: ['se:omg:sysml:2.0'],
+            native_coverage: 'ADEQUATE',
+            relation_type: 'OVERLAP',
+            required_for_current_use: true,
+            prior_art: {
+              checked: true,
+              evidence_refs: ['https://www.omg.org/spec/SysML/2.0/About-SysML'],
+            },
+          }],
+        },
+      },
+    } });
+    assert.equal(r.isError, undefined);
+    const body = JSON.parse((r.content as Array<{ text: string }>)[0].text);
+    assert.equal(body.domain_admission.contract, 'ecos:domain-semantic-admission:0.1.0');
+    assert.equal(body.domain_admission.disposition, 'READY');
+    assert.equal(body.domain_admission.decisions[0].disposition, 'INHERIT');
+    assert.match(body.domain_admission.decisions[0].id, /^sha256:[0-9a-f]{64}$/);
+    assert.equal(body.disposition, 'HOLD'); // the existing semantic relation adapter still holds independently
+    assert(body.domain_admission.ledger_projection.includes('SysML Viewpoint'));
+  });
+});
