@@ -168,13 +168,16 @@ export function createBrainInquiryAdapters(ports: BrainInquiryPorts, actor: stri
 /** Ordinary read/recovery response; full candidate snapshots remain in the internal typed result. */
 export async function runBrainInquiry(request: InquiryRequest, ports: BrainInquiryPorts, actor: string) {
   const result = await orchestrateInquiry({ ...request, actor_ref: actor, context: { ...request.context, actor_ref: actor } }, createBrainInquiryAdapters(ports, actor));
-  return { contract: result.contract, inquiry_basis_ref: result.inquiry_basis_ref, situated_basis: result.situated_basis,
-    intended_use: result.intended_use, disposition: result.disposition, projection: result.projection,
+  const artifactContent = canonical({ contract: result.contract, indexical_binding: result.indexical_binding, projection: result.projection,
+    disposition: result.disposition, reentry: result.reentry });
+  return { contract: result.contract, inquiry_basis_ref: result.inquiry_basis_ref, indexical_binding: result.indexical_binding,
+    situated_basis: result.situated_basis, intended_use: result.intended_use, disposition: result.disposition, projection: result.projection,
     quadrant_coverage: result.quadrant_coverage, discovery_coverage: result.discovery_coverage,
     candidates: result.candidates.map(c => ({ referent_id: c.hit.referent_id, digest: c.evidence?.digest ?? null,
       channels: c.hit.channels, paths: c.hit.paths, original_basis: c.evidence?.original_basis ?? null, decision: c.decision })),
     admitted_relation_count: result.admitted.length, questions_forward: result.questions_forward, signals: result.signals,
     reconciliation: result.reconciliation, reentry: result.reentry,
     preservation: { status: 'NOT_PRESERVED', tool: 'create_artifact', recovery: 'fetch_artifact',
-      content: 'Use projection.content exactly under a caller-controlled preservation operation_id; preservation grants no standing.' } };
+      artifact_content: artifactContent,
+      content: 'Preserve preservation.artifact_content exactly under a caller-controlled operation_id; custody grants no standing or current-use truth.' } };
 }

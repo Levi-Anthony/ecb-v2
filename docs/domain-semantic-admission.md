@@ -21,7 +21,7 @@ This composes FR-1, FR-2 and FR-3. It does not add a URG primitive or reopen ECO
 
 ## Runtime mechanics
 
-The existing ordinary `search` ingress is extended to contract `ecb-v2-search/0.7.0`. Its optional `inquiry.domain_admission` block currently accepts the `systems-engineering` domain.
+The existing ordinary `search` ingress is extended to contract `ecb-v2-search/0.7.1`. Its optional `inquiry.domain_admission` block currently accepts the `systems-engineering` domain.
 
 The execution order is:
 
@@ -95,3 +95,8 @@ Use this boundary for every subsequent Session 4+ construct:
 - **Closed URG/circulation kernel work:** reused; not reopened by this installation.
 
 The next operational frontier is the semantic adapter: automate responsibility atomization and native-prior-art resolution while retaining exact evidence and forcing HOLD wherever native coverage or extension necessity is not attributable.
+
+
+### Indexical-integrity preservation note — 7 October 2026
+
+Domain admission remains downstream of the base inquiry binding and does not redefine relevance. Search `0.7.1` preserves the final Domain-Semantic Admission result inside `preservation.artifact_content` together with the current indexical binding receipt, projection, disposition and reentry. This repairs custody of the admission path; it does not promote declared native coverage/evidence premises into independently verified semantic truth.

@@ -5,6 +5,8 @@
 **Principal direction:** minimize experiments and maximize solutions.  
 **BRAIN custody:** `34d63866-c640-47d7-ade5-df92c766eef4`.
 
+> **Namecrafting notice — 7 October 2026:** the token **PGO** has not undergone final Namecrafting. Earlier text in this profile may expand it as “Principal Governing Orientation”; that expansion is retained as historical wording, not newly canonicalized. Operationally in the current commission, PGO denotes the existing **G-coordinate / purpose-orientation interface** in `kappa=(R,B,G,F)`. Problem Goal Objective, Primary Governing Orientation, Purpose Goal Orientation and other decompressions remain live candidates until separate Namecrafting earns closure.
+
 ## 1. Purpose
 
 Define the smallest positive procedure by which a worker can:

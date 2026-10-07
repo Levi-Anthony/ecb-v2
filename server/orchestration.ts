@@ -5,7 +5,7 @@ import {
   type LevelClaim, type ChangeRecord, type QuestionForward, type ProjectionRecord,
 } from './urg-core.js';
 
-export const INQUIRY_CONTRACT = 'ecos:inquiry-orchestration:0.1.0';
+export const INQUIRY_CONTRACT = 'ecos:inquiry-orchestration:0.1.1';
 export type InquiryRequest = {
   query: string;
   intended_use: string;
@@ -111,9 +111,37 @@ export type WorkingProjection = {
   omissions: string[];
   persistence: 'NOT_PRESERVED';
 };
+/** Derived receipt over the existing inquiry contract; not a new URG primitive or relevance object. */
+export type IndexicalBindingReceipt = {
+  basis_ref: string;
+  query: string;
+  intended_use: string;
+  actor_ref: string;
+  context: Partial<SituatedContext>;
+  discovery_seed_refs: string[];
+  declared_work_ref: string | null;
+  execution: {
+    candidate_limit: number;
+    structural_depth: number;
+    projection_chars: number;
+    return_route: string;
+  };
+};
+export type InquiryProjectionDelta = {
+  source_basis_ref: string;
+  destination_basis_ref: string;
+  changed_coordinates: string[];
+  coordinate_classes: Array<'R_OR_B' | 'G_OR_F'>;
+  semantic_basis_changed: boolean;
+  state_record_changed: boolean;
+  evidence_or_standing_changed: boolean;
+  execution_envelope_changed: boolean;
+  requires_requalification: boolean;
+};
 export type InquiryResult = {
   contract: typeof INQUIRY_CONTRACT;
   inquiry_basis_ref: string;
+  indexical_binding: IndexicalBindingReceipt;
   situated_basis: Partial<SituatedContext>;
   intended_use: string;
   candidates: CandidateAccount[];
@@ -141,6 +169,21 @@ export function canonical(value: unknown): string {
 export function digest(value: unknown): string { return createHash('sha256').update(canonical(value)).digest('hex'); }
 export function inquiryBasisRef(request: InquiryRequest): string {
   return `sha256:${digest({ query: request.query, intended_use: request.intended_use, context: request.context, actor_ref: request.actor_ref })}`;
+}
+export function indexicalBindingReceipt(
+  request: InquiryRequest,
+  execution: { candidate_limit: number; structural_depth: number; projection_chars: number },
+): IndexicalBindingReceipt {
+  return {
+    basis_ref: inquiryBasisRef(request),
+    query: request.query,
+    intended_use: request.intended_use,
+    actor_ref: request.actor_ref,
+    context: structuredClone(request.context),
+    discovery_seed_refs: [...new Set([...(request.known_referent_ids ?? []), request.context.referent_id].filter(nonblank))],
+    declared_work_ref: request.work_id ?? null,
+    execution: { ...execution, return_route: request.return_route },
+  };
 }
 const nonblank = (s: unknown): s is string => typeof s === 'string' && s.trim().length > 0;
 const refs = (v: unknown): v is string[] => Array.isArray(v) && v.length > 0 && v.every(nonblank);
@@ -343,8 +386,14 @@ export async function orchestrateInquiry(input: InquiryRequest, adapters: Inquir
   if (merged.truncated) ask('discovery_limit', 'Qualify omitted candidates or reenter with a discriminating bounded expansion.', 'Resource truncation does not establish ontological or discovery completeness.');
   if (signals.length) ask('diagnostic_escalation', 'Repair the exact signaled layer, then resume from the last supported basis.', 'An unresolved governing diagnostic interrupts downstream reliance.');
   const uniqueQuestions = [...new Map(questions.map(q => [canonical(q), q])).values()];
+  const indexicalBinding = indexicalBindingReceipt(request, {
+    candidate_limit: limit, structural_depth: depth, projection_chars: projectionBudget,
+  });
+  const irreducibleBinding = canonical({ contract: INQUIRY_CONTRACT, indexical_binding: indexicalBinding });
+  if (irreducibleBinding.length + 128 > projectionBudget) throw new Error('inquiry_projection_budget_below_binding_receipt');
   const omitted: string[] = [];
-  const body: Record<string, unknown> = { contract: INQUIRY_CONTRACT, basis_ref: basisRef, context: request.context, intended_use: request.intended_use,
+  const body: Record<string, unknown> = { contract: INQUIRY_CONTRACT, basis_ref: basisRef, indexical_binding: indexicalBinding,
+    context: request.context, intended_use: request.intended_use,
     members: candidates.map(c => ({ referent_id: c.hit.referent_id, digest: c.evidence?.digest ?? null, source_refs: c.evidence?.source_refs ?? [],
       original_basis: c.evidence?.original_basis ?? null, stored_standing: c.evidence?.stored_standing ?? null,
       decision: c.decision, channels: c.hit.channels, paths: c.hit.paths, exact_excerpt: '' })),
@@ -364,16 +413,60 @@ export async function orchestrateInquiry(input: InquiryRequest, adapters: Inquir
   if (projected.length > projectionBudget) {
     omitted.push('Projection metadata exceeds the caller budget; retain full typed result and widen the projection budget at reentry.');
     uniqueQuestions.push(questionForward(request, basisRef, 'projection_limit', 'Recover the full typed account or increase the projection budget.', 'A reduced projection cannot supply READY.'));
-    projected = canonical({ contract: INQUIRY_CONTRACT, basis_ref: basisRef, disposition: 'HOLD', return_route: request.return_route,
+    projected = canonical({ contract: INQUIRY_CONTRACT, basis_ref: basisRef, indexical_binding: indexicalBinding, disposition: 'HOLD',
       candidate_refs: candidates.map(c => c.hit.referent_id), unresolved_refs: [...new Set(uniqueQuestions.map(q => q.unresolved_ref))], omissions: omitted.slice(-1) });
-    if (projected.length > projectionBudget) projected = canonical({ contract: INQUIRY_CONTRACT, basis_ref: basisRef, disposition: 'HOLD', reason: 'projection_budget_exceeded', return_route: request.return_route.slice(0,256) });
+    if (projected.length > projectionBudget) projected = canonical({ contract: INQUIRY_CONTRACT, basis_ref: basisRef,
+      indexical_binding: indexicalBinding, disposition: 'HOLD', reason: 'projection_budget_exceeded' });
+    if (projected.length > projectionBudget) throw new Error('inquiry_projection_budget_below_binding_receipt');
   }
   const unresolved = [...new Set(uniqueQuestions.map(q => q.unresolved_ref))];
-  return { contract: INQUIRY_CONTRACT, inquiry_basis_ref: basisRef, situated_basis: request.context, intended_use: request.intended_use,
+  return { contract: INQUIRY_CONTRACT, inquiry_basis_ref: basisRef, indexical_binding: indexicalBinding,
+    situated_basis: request.context, intended_use: request.intended_use,
     candidates, admitted, quadrant_coverage: quadrants, records, changes: acceptedChanges, reconciliation, discovery_coverage: coverage,
     questions_forward: uniqueQuestions, signals, disposition: uniqueQuestions.length ? 'HOLD' : 'READY',
     projection: { edition: digest(projected), content: projected, source_refs: [...new Set(exact.flatMap(e => e.source_refs))], omissions: omitted, persistence: 'NOT_PRESERVED' },
     reentry: { return_route: request.return_route, unresolved_refs: unresolved, condition: unresolved.length ? 'Resolve the listed discriminators against the exact current basis and editions, then reenter.' : 'Reenter on new evidence, changed PGO/frame/boundary or a current-use challenge.' } };
+}
+
+function relianceSnapshot(result: InquiryResult) {
+  return result.candidates.map(c => ({
+    referent_id: c.hit.referent_id,
+    digest: c.evidence?.digest ?? null,
+    stored_standing: c.evidence?.stored_standing ?? null,
+    evidence_currentness: c.evidence?.currentness ?? 'UNKNOWN',
+    disposition: c.decision.disposition,
+    assessment_ref: c.decision.assessment_ref,
+    current_use: c.decision.current_use ?? null,
+    relation_fidelity: c.decision.relation?.fidelity ?? null,
+  })).sort((a, b) => a.referent_id.localeCompare(b.referent_id));
+}
+/** Derived comparison over two inquiry results; it creates no Change/State/standing by itself. */
+export function projectionDelta(before: InquiryResult, after: InquiryResult): InquiryProjectionDelta {
+  const changedCoordinates = coordinateKeys.filter(k => before.situated_basis[k] !== after.situated_basis[k]);
+  const coordinateClasses: InquiryProjectionDelta['coordinate_classes'] = [];
+  if (changedCoordinates.some(k => ['referent_id', 'boundary_ref'].includes(k))) coordinateClasses.push('R_OR_B');
+  if (changedCoordinates.some(k => ['governing_orientation_ref', 'mapper_ref', 'frame_ref', 'access_ref'].includes(k))) coordinateClasses.push('G_OR_F');
+  const stateRecordChanged = !same(
+    before.records.filter(r => r.record.kind === 'state'),
+    after.records.filter(r => r.record.kind === 'state'),
+  );
+  const evidenceOrStandingChanged = !same(relianceSnapshot(before), relianceSnapshot(after));
+  const executionEnvelopeChanged = !same(
+    { discovery_seed_refs: before.indexical_binding.discovery_seed_refs, declared_work_ref: before.indexical_binding.declared_work_ref, execution: before.indexical_binding.execution },
+    { discovery_seed_refs: after.indexical_binding.discovery_seed_refs, declared_work_ref: after.indexical_binding.declared_work_ref, execution: after.indexical_binding.execution },
+  );
+  const semanticBasisChanged = before.inquiry_basis_ref !== after.inquiry_basis_ref;
+  return {
+    source_basis_ref: before.inquiry_basis_ref,
+    destination_basis_ref: after.inquiry_basis_ref,
+    changed_coordinates: changedCoordinates,
+    coordinate_classes: coordinateClasses,
+    semantic_basis_changed: semanticBasisChanged,
+    state_record_changed: stateRecordChanged,
+    evidence_or_standing_changed: evidenceOrStandingChanged,
+    execution_envelope_changed: executionEnvelopeChanged,
+    requires_requalification: semanticBasisChanged || stateRecordChanged || evidenceOrStandingChanged || executionEnvelopeChanged,
+  };
 }
 
 /** Explicit preservation capability remains with the existing artifact adapter/caller. */
@@ -381,15 +474,16 @@ export async function preserveInquiryProjection(result: InquiryResult, operation
   createArtifact(input: { operationId: string; content: string }): Promise<{ artifact: { id: string; content: string } }>;
   fetchArtifact(id: string): Promise<{ id: string; content: string } | null>;
 }): Promise<{ artifact_id: string; edition: string; record: ProjectionRecord }> {
+  const context = result.situated_basis;
+  if (!coordinateKeys.every(k => nonblank(context[k]))) throw new Error('projection_binding_basis_incomplete');
   const saved = await adapter.createArtifact({ operationId, content: result.projection.content });
   const exact = await adapter.fetchArtifact(saved.artifact.id);
   if (!exact || exact.content !== result.projection.content) throw new Error('projection_custody_mismatch');
-  const context = result.situated_basis;
   const record: ProjectionRecord = { kind: 'projection', projection_id: exact.id,
     mapped_referent_ids: [...new Set([...result.candidates.map(c => c.hit.referent_id), result.situated_basis.referent_id].filter(nonblank))], mapped_claim_refs: result.records.map(r => r.ref),
-    mapper_ref: context.mapper_ref ?? 'ecos:inquiry:mapper-unknown', mapping_relation_ref: INQUIRY_CONTRACT,
-    governing_orientation_ref: context.governing_orientation_ref ?? 'ecos:inquiry:pgo-unknown', frame_ref: context.frame_ref ?? 'ecos:inquiry:frame-unknown',
-    access_ref: context.access_ref ?? 'ecos:inquiry:access-unknown', scope_resolution_ref: result.inquiry_basis_ref,
+    mapper_ref: context.mapper_ref!, mapping_relation_ref: INQUIRY_CONTRACT,
+    governing_orientation_ref: context.governing_orientation_ref!, frame_ref: context.frame_ref!,
+    access_ref: context.access_ref!, scope_resolution_ref: result.inquiry_basis_ref,
     evidence_basis_ref: result.projection.edition, content_ref: exact.id,
     fidelity: { coverage: 'EXAMINED', activation: 'DORMANT', disposition: 'UNRESOLVED', custody_ref: exact.id },
     omissions: result.projection.omissions, source_refs: result.projection.source_refs };

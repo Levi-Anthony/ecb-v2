@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import {
-  orchestrateInquiry, inquiryBasisRef, digest, preserveInquiryProjection,
+  orchestrateInquiry, inquiryBasisRef, digest, preserveInquiryProjection, projectionDelta,
   type InquiryRequest, type InquiryAdapters, type ExactEvidence, type Disclosure, type CandidateDecision,
 } from '../../server/orchestration.ts';
 import type { SituatedContext, LevelClaim, ChangeRecord } from '../../server/urg-core.ts';
@@ -149,4 +149,49 @@ test('projection preservation uses existing immutable artifact custody and exact
   await assert.rejects(preserveInquiryProjection(r, 'fixture:operation', {
     async createArtifact() { return { artifact: { id: prior, content: '' } }; }, async fetchArtifact() { return { id: prior, content: 'corrupted' }; },
   }), /custody_mismatch/);
+});
+
+
+test('indexical binding receipt makes the semantic basis recoverable while keeping execution envelope distinct', async () => {
+  const enriched: InquiryRequest = { ...request, known_referent_ids: [prior], work_id: '00000000-0000-4000-8000-000000000003',
+    limits: { candidates: 7, structural_depth: 2, projection_chars: 9000 } };
+  const r = await orchestrateInquiry(enriched, adapters());
+  assert.equal(r.indexical_binding.basis_ref, r.inquiry_basis_ref);
+  assert.equal(r.indexical_binding.query, enriched.query);
+  assert.equal(r.indexical_binding.actor_ref, enriched.actor_ref);
+  assert.deepEqual([...r.indexical_binding.discovery_seed_refs].sort(), [focal, prior].sort());
+  assert.equal(r.indexical_binding.declared_work_ref, enriched.work_id);
+  assert.equal(r.indexical_binding.execution.return_route, enriched.return_route);
+  const projected = JSON.parse(r.projection.content);
+  assert.deepEqual(projected.indexical_binding, r.indexical_binding);
+  assert.equal(inquiryBasisRef({
+    query: r.indexical_binding.query, intended_use: r.indexical_binding.intended_use,
+    actor_ref: r.indexical_binding.actor_ref, return_route: r.indexical_binding.execution.return_route,
+    context: r.indexical_binding.context,
+  }), r.indexical_binding.basis_ref);
+});
+
+test('projection delta distinguishes R/B change, G/F change and evidence/standing change without creating standing', async () => {
+  const before = await orchestrateInquiry(request, adapters());
+  const reoriented = await orchestrateInquiry({ ...request, context: { ...request.context, governing_orientation_ref: 'fixture:new-purpose' } }, adapters());
+  const g = projectionDelta(before, reoriented);
+  assert(g.coordinate_classes.includes('G_OR_F')); assert(!g.coordinate_classes.includes('R_OR_B'));
+  assert.equal(g.semantic_basis_changed, true); assert.equal(g.requires_requalification, true);
+  const rebound = await orchestrateInquiry({ ...request, context: { ...request.context, boundary_ref: 'fixture:new-boundary' } }, adapters());
+  assert(projectionDelta(before, rebound).coordinate_classes.includes('R_OR_B'));
+  const evidenceShift = structuredClone(before);
+  evidenceShift.candidates[0].evidence!.digest = digest('changed-edition');
+  const e = projectionDelta(before, evidenceShift);
+  assert.equal(e.evidence_or_standing_changed, true); assert.equal(e.requires_requalification, true);
+});
+
+test('URG projection preservation refuses to fabricate missing situated coordinates', async () => {
+  const r = await orchestrateInquiry(request, adapters());
+  const partial = structuredClone(r); delete partial.situated_basis.frame_ref;
+  let writes = 0;
+  await assert.rejects(preserveInquiryProjection(partial, 'fixture:operation', {
+    async createArtifact(input) { writes += 1; return { artifact: { id: prior, content: input.content } }; },
+    async fetchArtifact(id) { return { id, content: partial.projection.content }; },
+  }), /projection_binding_basis_incomplete/);
+  assert.equal(writes, 0);
 });

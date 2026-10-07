@@ -48,6 +48,11 @@ test('no semantic adapter result is fabricated from native edges or embedding hi
   const r = await runBrainInquiry(request, ports(log), 'actual-client');
   assert.equal(r.disposition, 'HOLD'); assert.equal(r.admitted_relation_count, 0);
   assert.equal(r.situated_basis.actor_ref, 'actual-client');
+  assert.equal(r.indexical_binding.actor_ref, 'actual-client');
+  assert.equal(r.indexical_binding.query, request.query);
+  const preserved = JSON.parse(r.preservation.artifact_content);
+  assert.equal(preserved.indexical_binding.basis_ref, r.inquiry_basis_ref);
+  assert.equal(preserved.indexical_binding.query, request.query);
   assert(r.candidates.some(c => c.referent_id === prior && c.original_basis?.context.governing_orientation_ref === 'Warranty responsibility'));
   assert(r.questions_forward.some(q => q.unresolved_ref === prior));
   assert(log.every(c => ['search_structure', 'traverse_structure', 'fetch_referent', 'recover_work'].includes(c.operation)));

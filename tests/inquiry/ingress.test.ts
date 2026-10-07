@@ -104,5 +104,9 @@ test('ordinary inquiry applies systems-engineering domain admission without a ne
     assert.match(body.domain_admission.decisions[0].id, /^sha256:[0-9a-f]{64}$/);
     assert.equal(body.disposition, 'HOLD'); // the existing semantic relation adapter still holds independently
     assert(body.domain_admission.ledger_projection.includes('SysML Viewpoint'));
+    assert.equal(body.indexical_binding.query, 'compare viewpoint semantics without reinventing native systems engineering');
+    const preserved = JSON.parse(body.preservation.artifact_content);
+    assert.equal(preserved.indexical_binding.basis_ref, body.inquiry_basis_ref);
+    assert.equal(preserved.domain_admission.decisions[0].disposition, 'INHERIT');
   });
 });
