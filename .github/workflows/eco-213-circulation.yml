@@ -5,6 +5,8 @@ on:
     paths:
       - 'server.ts'
       - 'server/orchestration*.ts'
+      - 'server/domain-admission.ts'
+      - 'server/native-packages/**'
       - 'server/urg-core.ts'
       - 'server/circulation/**'
       - 'api/circulation/**'
@@ -19,6 +21,8 @@ on:
     paths:
       - 'server.ts'
       - 'server/orchestration*.ts'
+      - 'server/domain-admission.ts'
+      - 'server/native-packages/**'
       - 'server/urg-core.ts'
       - 'server/circulation/**'
       - 'api/circulation/**'
