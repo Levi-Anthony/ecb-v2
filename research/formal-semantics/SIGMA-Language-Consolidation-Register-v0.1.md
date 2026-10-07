@@ -271,14 +271,16 @@ Typed operations must not be flattened into generic verbs when the operation con
 
 ## Claim-status and architecture-status grammar
 
+**D&I note:** `SIGMA-Language-DI-01-Axiom-Invariant-Law-Principle-v0.1.md` supersedes the earlier assumption that axiom, invariant, law, and principle are sibling values on one axis. They classify different dimensions and may co-occur on one claim.
+
 These words describe different burdens. Do not use them as interchangeable markers of confidence.
 
 | Term | Disposition | Use |
 |---|---|---|
-| **axiom** | RETAIN / STRICT | Explicit starting stipulation of the instrument/theory at a declared scope. Does not imply metaphysical truth. Current examples include holonic and Quadrant instrumental axioms. |
-| **invariant** | RETAIN / STRICT | Relation/distinction that must remain preserved across a specified class of transformations or implementations. Scope and transformation class must be named. |
-| **law** | RETAIN / STRICT | Strong derived/governing relation that organizes multiple lower rules and survives the relevant pass/fail burden. Use sparingly. “Local closure without global foreclosure” can function as a governing law. |
-| **principle** | RETAIN | General governing or design rule whose exact enforcement may vary by layer. Weaker than a formal invariant unless separately installed. |
+| **axiom** | PREFERRED on derivation-standing axis / D&I-QUALIFIED | Explicit starting commitment not derived from lower commitments inside the same declared derivation. Does not imply invariant, law, principle, empirical truth, or metaphysical truth. |
+| **invariant** | PREFERRED on checked-preservation axis / D&I-QUALIFIED | Property, distinction, relation, or constraint that must hold across a declared transformation/use class. Must name subject, transformation class, violation sensor, and consequence of violation. |
+| **law** | PREFERRED for qualified relational-form claims / D&I-QUALIFIED | Scoped antecedent→relation/consequence claim with a falsifier or scope-failure condition. A law may be axiomatic or derived and may imply invariants. Do not use as an honorific for an important rule. |
+| **principle** | PREFERRED on heeded/defeasible guidance axis / D&I-QUALIFIED | General orienting/design rule that may be appealed past in a warranted case while remaining inside the same practice. If departure invalidates the realization under the same contract, inspect for invariant/requirement instead. |
 | **contract** | RETAIN / STRICT | Explicit set of obligations, interfaces, allowed changes, forbidden changes, failure conditions, and requalification conditions for a bounded object/operation. |
 | **requirement** | RETAIN | A must-condition under a declared scope/authority. |
 | **obligation** | RETAIN | Required burden placed on inquiry, a worker, or a structure under specified conditions. |
@@ -336,7 +338,7 @@ Do not merge possibility space with possibility structure.
 Do not merge unknown, latent, dormant, uncovered, unexamined, and nonconsequential-now.
 
 ### Preserve formal status distinctions
-Do not call an axiom an invariant unless preservation across a transformation class has been established.
+Do not treat axiom, invariant, law, and principle as mutually exclusive siblings. Ask different questions: derivation standing, invocation contract, and relational form.
 
 Do not call a principle a contract unless explicit obligations/interfaces/failures are specified.
 
@@ -462,7 +464,7 @@ These terms remain part of the project's language history. Their current standin
 | **Filament** | PROVENANCE / SCOPED | Separate holonic/Integral grammar lineage. Do not collapse with FIBERR merely because they share recursive grammar. |
 | **BRIMAR** | PROPOSAL-ONLY | Qualified naming proposal for a narrower orienting-composition projection. Not the deeper mechanism and not adopted. |
 | **BRAID** | PROVENANCE / NO PROMOTION | Structural resonance only. No current promotion. |
-| **Two-Door principle** | RETAIN / SCOPED | Boundary/admission pattern where the exact current artifact invokes it. Do not let the metaphor substitute for the explicit transition/gate contract. |
+| **Two-Door Invariant** | PREFERRED / D&I-QUALIFIED | Prospective label for the checked two-door requirement. A missing required door is a violation, not a discretionary exception. Historical artifacts titled “Two-Door Principle” remain exact provenance. |
 | **Activation Primer** | PROVENANCE / SCOPED | Historical operational artifact. Use the current activation/coverage/disposition grammar for theory-level explanation. |
 | **vibe hazard** | EXPLANATORY ALIAS | Informal failure label for relying on felt elegance/relevance without an operational discriminator. Never a formal status. |
 | **conformal transfer / conformal projection** | SCOPED / CLARIFY | Historical relation-preservation language. Retain where a qualified same-form-across-seat/scale claim is intended; do not use as loose synonym for similarity or transport. |
@@ -595,7 +597,7 @@ Terms such as “high-ratio,” “efficient,” “better recall,” or “impr
 
 **PGO may select and govern. PGO does not manufacture.**
 
-This is a first-class anti-collapse law.
+This is a first-class coordinate-independence invariant across reorientation. A broader law may be derived over the tri-axial system, but the enforcement tooth here is invariant.
 
 PGO may govern:
 - consequential distinctions;
@@ -766,3 +768,33 @@ When one surface form names several legitimate contracts:
 5. promote a vocabulary split only if qualification remains persistently ambiguous or causes operational error.
 
 This is fidelity-preserving disambiguation, not terminological proliferation.
+
+
+---
+
+## D&I-qualified language result 01 — axiom / invariant / law / principle
+
+Source: `SIGMA-Language-DI-01-Axiom-Invariant-Law-Principle-v0.1.md`.
+
+**PASS — FAMILY DECOMPOSED.**
+
+- **Axiom** answers derivation standing.
+- **Invariant** answers checked preservation/compliance across a declared transformation class.
+- **Principle** answers defeasible guidance.
+- **Law** answers relational form.
+
+A single claim may legitimately be axiomatic + invariant, derived + invariant, derived + law, or axiomatic + law.
+
+Installed sensors:
+
+- **Axiom:** Can this be derived from the remaining installed commitments without circularity? If not, is it explicitly accepted as a starting commitment at this scope?
+- **Invariant:** Across what exact transformation/use class must this hold, and what result would count as violation?
+- **Principle:** May a competent participant depart from this in a warranted case while remaining inside the same valid practice?
+- **Law:** Under what antecedent conditions does what relation/consequence follow, and what counterexample would falsify or narrow it?
+
+Prospective supersessions earned by this D&I:
+
+1. **Two-Door Invariant** preferred; **Two-Door Principle** remains exact historical/provenance language.
+2. **PGO non-manufacture invariant** preferred for the Reorient enforcement tooth.
+3. **local closure without global foreclosure** remains a governing law of Binding Infinity; closure/recoverability invariants remain distinct.
+4. **two-part reconciliation law** remains relational form; its implementation invariant gates remain distinct.
