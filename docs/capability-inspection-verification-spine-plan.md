@@ -1,9 +1,10 @@
 # Capability Inspection / Verification Spine — scoped implementation plan
 
 **Date:** 7 October 2026, America/Phoenix  
-**Standing:** PLAN / Shape boundary only. Implementation has **not** started under this artifact.  
+**Standing:** ACCEPTED / Shape closed for this plan. Implementation may proceed only through the scoped sequence below. The two-door / graphical-substrate and vertical-horizontal / consumer-simulation amendments are incorporated; they do not authorize full graphical-substrate construction or correspondence-formalism selection.  
 **Principal instruction:** document and scope the plan first; use the installed PGO-directed URG orchestration procedure, especially fixed-R/B Quadrant traversal, to ensure even coverage for fresh-agent reentry.  
-**BRAIN plan receipt:** `c5871f89-0c51-462d-831b-c90897a95e81`
+**BRAIN plan receipt:** `c5871f89-0c51-462d-831b-c90897a95e81`  
+**Accepted amendment receipt:** `73994c17-d5b5-48d1-9698-fa656c393e91`
 
 ## 1. Focal referent and situated basis
 
@@ -52,6 +53,63 @@ CIVS is **not** the inspected capability and is **not** the D&I ledger. It is a 
 
 All four positions must appear in the first CIR and cold-agent reentry packet. Any omission must be explicit.
 
+### O3A — Vertical decomposition and integration
+
+The fixed-R/B Quadrant pass is necessary but not sufficient. Add a working vertical decomposition without treating these working altitudes as automatically witnessed URG Levels:
+
+1. **Containing meta-architecture:** SIGMA/ECOS telos + universal substrate + two-door invariant.
+2. **Capability altitude:** CIVS as the inspection/verification capability.
+3. **Projection altitude:** a CIR for one inspected capability.
+4. **Sub-capability altitude:** object-connection model, physical-realization map, proof chain, installation ladder, worked trace, consumer simulation, portability/degradation.
+5. **Located-object altitude:** exact source/code/schema/test/CI/deployment/receipt/issue/consumer-observable objects.
+
+Top-down integration carries purpose, constraints, authority, representation requirements and continuity obligations. Bottom-up integration carries located evidence, observations, defects and currentness that can requalify higher claims.
+
+These are working decomposition bands, not global numeric levels. Actual constitution still requires the installed Level witness.
+
+### O3B — Horizontal decomposition and participatory integration
+
+At each relevant altitude, expose consequential participatory neighbors and correspondences rather than treating them as background:
+
+- Principal / human consumer;
+- fresh agent or worker;
+- capability owner;
+- native-domain authority;
+- GitHub / BRAIN / Linear / deployment / MCP surfaces;
+- graphical control/display door;
+- other consumers, adapters and domain services.
+
+Preserve relation type and ownership. Participation does not imply constituency.
+
+### O3C — Hypothesis-based consumer Quadrant simulation
+
+For a hypothesized consumer referent **C** (human or agent) under a declared PGO/use/frame, run a separate four-position simulation instead of treating “fresh reader” as an unmodeled assumption:
+
+| Consumer position | Hypothesis / inspection target |
+|---|---|
+| **UL — Constitutive × Governing** | Intended or hypothesized dependency conditions required for this consumer to orient, understand, trust, decide, retain agency and use the capability legitimately. These remain hypotheses until warranted. |
+| **UR — Constitutive × Determinate** | Hypothesized observable correlates of those dependencies: ability to locate an object, predict a gate result, distinguish premise from proof, distinguish deployed from exposed, recover reentry, and complete a task without hidden-bridge invention. Observables correlate with UL hypotheses; they do not automatically prove them. |
+| **LL — Participatory × Governing** | Shared norms, authority, two-door rules, instruction vocabulary, ownership, support expectations, collaboration/handoff semantics and domain/native standing. |
+| **LR — Participatory × Determinate** | Actual controls, views, APIs, links, logs, annotations, interaction traces, continuity records, latency/failure states, accessible objects and other concrete participatory affordances/effects. |
+
+#### Latent versus located correlates
+
+Each consumer-Quadrant item may be:
+
+- **LATENT** — a hypothesized dependency, correlate or affordance before located evidence; or
+- **LOCATED** — bound to an actual object, observed interaction, test, source or evidence.
+
+Do not overwrite latent hypotheses when evidence appears. Bind and requalify them.
+
+For both latent and located items, record four support dimensions:
+
+1. **Affordance** — what action, perception or navigation the system makes possible.
+2. **Accommodation** — how representation/control adapts to this consumer/frame without changing the underlying truth.
+3. **Continuity** — how the item survives handoff/session/view/state changes and can reenter later work.
+4. **Accountability** — who owns maintenance/verification and what evidence/standing supports it.
+
+The latent↔located binding is itself part of the correspondence frontier and must remain typed and inspectable rather than becoming an untyped payload escape hatch.
+
 ### O4 — Typed transformations during this work
 
 - **Enrich** inspection understanding.
@@ -81,6 +139,25 @@ Planning is sufficient when a fresh worker can identify exact work packages, dep
 
 **PLAN READY / IMPLEMENTATION NOT YET STARTED.**
 
+## 2A. Two-door invariant and graphical projection/control substrate
+
+The standing two-door seam requires consequential shared semantic/work surfaces to preserve both a **human door** and an **agent door** over the same underlying addressable referent/work system. Views may differ, but they must not become separate truth silos. Human edits remain attributable and machine-visible; agent changes remain human-visible; authority does not arise from whichever door wrote last.
+
+Traditional project-management guidance such as “do not build a dashboard until it earns itself” is retained but integrated through SIGMA rather than promoted directly into ECOS as an absolute rule.
+
+The corrected distinction is:
+
+- **Reject:** a bespoke dashboard-first realization whose semantics, data joins or maintenance burden are not earned by the underlying architecture.
+- **Require architecturally:** a first-class graphical human door over the same addressable objects as the agent door.
+- **Magic-wand target:** a universal graphical substrate capable of integrated control and display of traversable/rotatable URG situated-referent cluster systems with unfolding and zooming representation, from which reliable live dashboards can be composed on demand with low babysitting when the underlying architecture is sufficiently structured.
+- **Use-earned persistence:** a particular dashboard/view earns persistence, tuning and optimization through actual recurrence/use.
+- **Projection rule:** graphical views are projections/control surfaces, not new sources of truth.
+- **Control rule:** direct manipulation must resolve to typed, attributable actions or requests with explicit authority/effect boundaries.
+- **Graceful degradation:** text/API inspection and operation remain available when the graphical layer is absent.
+- **Portability:** another renderer/control implementation may replace the current one if it preserves the semantic/object/control contract.
+
+CIVS must therefore produce requirements and object connections that a future universal graphical substrate can consume, but WP0–WP2 do **not** build that substrate.
+
 ## 3. Planned Capability Inspection Record contract
 
 Every CIR should contain:
@@ -109,6 +186,10 @@ Every CIR should contain:
 14. Known cold-reader bridges/wording defects.
 15. Questions Forward, falsifiers and exact reentry.
 16. Verification timestamp and supersession/currentness.
+17. Vertical placement and containing-whole relations, with Level standing explicit rather than inferred.
+18. Participatory neighborhood and relation ownership.
+19. Consumer Quadrant Simulation: hypothesized UL dependencies, correlated UR observables, LL/LR supports, latent/located status, affordance/accommodation/continuity/accountability, observation route and falsifier.
+20. Graphical-door readiness: whether the CIR/object model can be projected into a live human control/display surface without inventing a second truth model.
 
 ## 4. First specimen — Domain-Semantic Admission / D&I Boundary
 
@@ -135,7 +216,7 @@ Repair the `0.6.0`/ `0.7.0` documentation drift and establish exact first-specim
 
 ### WP1 — CIR contract
 
-Define the reusable CIR record/schema and installation-ladder vocabulary. Do **not** build a dashboard yet.
+Define the reusable CIR record/schema and installation-ladder vocabulary, including vertical placement, participatory neighborhood, consumer-simulation fields, and graphical-door readiness. Do **not** build a bespoke dashboard or the full universal graphical substrate in this work package.
 
 ### WP2 — Object-connection model
 
@@ -155,6 +236,14 @@ Define a compact entry procedure:
 
 discover capability → inspect CIR → follow object connections → invoke if exposed → HOLD if unavailable → never infer hidden bridges.
 
+### WP5A — Two-door / consumer projection requirements
+
+Derive the minimal representation and control contract that lets the same CIR/object system serve the agent door and a future human graphical door without truth duplication. Include consumer Quadrant simulation, latent/located correlates, and affordance/accommodation/continuity/accountability.
+
+### WP5B — Universal graphical substrate handoff
+
+Specify—not implement—the requirements for a universal graphical projection/control substrate over traversable/rotatable situated-referent clusters, including unfolding/zooming, typed controls, currentness/standing display, on-demand dashboard composition, and graceful text/API fallback. A particular persisted dashboard must still earn itself through use.
+
 ### WP6 — Portability + graceful degradation
 
 Separate semantic portability from current Node/MCP/Vercel/BRAIN/Linear/GitHub/Supabase realization. Enumerate retained behavior and visible loss when each dependency is missing.
@@ -173,7 +262,7 @@ Cold-reader test with a fresh worker; pointer/currentness checks; one independen
 - **Move the report to GitHub:** changes location, not legibility.
 - **Use `START_HERE.md` as the CIR:** historical strata require too much interpretation.
 - **Use the D&I ledger as the CIR:** the ledger records domain-comparison history; CIR verifies arbitrary capability realization and standing.
-- **Dashboard first:** risks freezing an unqualified information architecture before the contract stabilizes.
+- **Bespoke dashboard first:** rejected because it risks freezing unearned joins/semantics and maintenance burden. This does **not** reject the two-door requirement for a universal graphical projection/control substrate; that requirement is architecturally earned and receives a dedicated specification handoff.
 - **Copy all dependencies inline:** creates drift; CIR should point to independently standing objects.
 - **Installed/not-installed boolean:** hides deployed/exposed/situated-use/sustained distinctions.
 - **Choose correspondence mathematics now:** requirements and falsifiers must precede formalism selection.
@@ -198,7 +287,9 @@ Cold-reader test with a fresh worker; pointer/currentness checks; one independen
 - active hosted circulation/reinspection is not operationally sustained;
 - correspondence mathematics, conformal relationships and isoperformance relevance remain open;
 - semantic-contract portability is stronger than current physical implementation portability;
-- graceful degradation has not yet been systematically specified.
+- graceful degradation has not yet been systematically specified;
+- the two-door invariant has not yet been realized as a universal graphical projection/control substrate;
+- consumer needs are not yet represented through an explicit hypothesis→observable Quadrant simulation with latent/located correlates and affordance/accommodation/continuity/accountability.
 
 ## 9. Fresh-agent acceptance / reentry test
 
@@ -213,8 +304,12 @@ A fresh agent receiving only the CIR entry handle and ordinary authorized source
 7. explain why `Reseat` is one field-change operation rather than the generalized reconstitution architecture;
 8. distinguish portability from graceful degradation;
 9. identify correspondence as an unresolved first-class architecture/research frontier without inventing a chosen formalism;
-10. identify the exact next work package without using this conversation.
+10. recover the vertical containing-whole / constituent decomposition and the horizontal participatory neighborhood without confusing participation with constitution;
+11. explain at least one consumer UL dependency hypothesis, its proposed UR observable correlate, and the difference between LATENT and LOCATED standing;
+12. explain how affordance, accommodation, continuity and accountability are carried for both latent and located consumer correlates;
+13. explain why “no bespoke dashboard first” does not negate the two-door graphical-substrate requirement, and how a live dashboard should be composed from shared objects rather than become another truth store;
+14. identify the exact next work package without using this conversation.
 
 ## 10. Next authorized move
 
-After Principal review/acceptance of this plan: begin **WP0 → WP1 → WP2**, then instantiate the first CIR. Do not begin correspondence-formalism research or runtime-semantic modification as part of that implementation unless separately warranted by the CIR findings.
+Principal acceptance is now recorded subject to the incorporated amendments. Begin **WP0 → WP1 → WP2**, then instantiate the first CIR with the vertical/horizontal, consumer-simulation and two-door requirements included. Do not begin correspondence-formalism selection or full graphical-substrate construction unless separately warranted by CIR-derived requirements/falsifiers.
