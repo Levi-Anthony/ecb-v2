@@ -4,7 +4,6 @@
 **Standing:** Solution-facing composition profile over installed SIGMA / ECOS semantics. This profile introduces no new primitive, does not reopen the Level or Quadrant contracts, and does not amend governing invariants.  
 **Principal direction:** minimize experiments and maximize solutions.  
 **BRAIN custody:** `34d63866-c640-47d7-ade5-df92c766eef4`.
-**Language/standing maintenance:** 6 October 2026 later pass. The edits in this branch clarify independently variable coordinates, currentness/supersession, and research-vs-operational standing. They do not change the profile's installed semantic dependencies.
 
 ## 1. Purpose
 
@@ -40,9 +39,9 @@ Keep four jobs distinct:
 3. **Semantic discovery** — propose potentially relevant material/relations where no explicit path is yet established.
 4. **Cross-context structural resurfacing** — activate prior material from a different or apparently unrelated inquiry when a consequential path is established for the current situated use.
 
-Mode 4 may begin with Mode 3, including embeddings or other latent-space similarity, but relied use must finish through the installed SIGMA/ECOS contract path: recover original identity, source, basis, and standing; establish the present relation or applicability; and reconcile the new composition.
+Mode 4 may begin with Mode 3, including embeddings or other latent-space similarity, but relied use must finish through the Integral architecture: recover original identity/source/basis/standing, establish the present relation or applicability, and reconcile the new composition.
 
-**Dormant** and **NONCONSEQUENTIAL_NOW** must remain distinct. Dormant is an activation state: preserved material is not currently active. NONCONSEQUENTIAL_NOW is a disposition under the active PGO: the examined difference cannot presently change the legitimate Move. Either may apply without implying archival abandonment or permanent irrelevance.
+Dormant/nonconsequential is therefore a current-use disposition, not an archival graveyard.
 
 ### Target observables, not yet performance claims
 
@@ -64,7 +63,7 @@ This profile depends on, and remains subordinate to:
 - `docs/invariants.md`
 - ECO-162 fidelity invariants F1-F8
 
-Where sources differ, explicit governing standing, currentness, and supersession control. Governing invariants remain binding within their authorized scope until explicitly amended or superseded. A later date or later acceptance alone does not establish current control.
+Where standing differs, later accepted sources and governing invariants control.
 
 ## 3. Situated inquiry basis
 
@@ -101,7 +100,7 @@ A relation can become essential to the current inquiry without becoming constitu
 
 ### O1 — Bootstrap / recover orientation
 
-Invoke the existing `Bootstrap B` semantics over encounter/recovery inputs, source provenance, access conditions, and the worker's declared authority/authorization scope.
+Invoke the existing `Bootstrap B` semantics over encounter/recovery inputs, source provenance, access and remit.
 
 Permitted result:
 
@@ -109,7 +108,7 @@ Permitted result:
 - retained candidate set;
 - discriminating Question Forward;
 - `READY` for the declared bounded use;
-- `HOLD` when a missing orientation, identity, access/authority condition, or discrimination prevents the declared use from meeting its stated sufficiency condition.
+- `HOLD` where orientation, identity, access or discrimination is insufficient.
 
 No complete R or G is presumed before bootstrap.
 
@@ -173,19 +172,19 @@ Use the narrowest truthful operation:
 - focal referent changes / new composite is individuated -> `Reseat`
 - governing orientation changes -> `Reorient`
 - mapper/frame/access changes -> `ChangeFrame`
-- evidence, warrant, standing, or applicability changes -> `Requalify`
+- evidence/standing applicability changes -> `Requalify`
 - new typed relation -> `Relate`
 - new organized composite candidate -> `Compose` before any `Reseat`
 
 Do not use prose to hide a coordinate change.
 
-### O5 — Reconcile after consequential change
+### O5 — Reconcile after material change
 
 Apply ECO-191's two-part change obligation:
 
 `Reconcile = CheckAffected(Affected_old(delta)) AND CheckCoverage(Req(new_basis,use), Accounted(new_basis,use))`
 
-Therefore every change capable of affecting relied support, requirements, standing, applicability, lawful transition, or PGO-relative sufficiency must check both:
+Therefore every material change must check both:
 
 1. whether old relied-on support was affected; and
 2. whether the new seat/orientation exposes requirements the old account never covered.
@@ -194,7 +193,7 @@ An unchanged old dependency graph cannot prove new-use adequacy.
 
 ### O6 — Continue only for consequential unresolved differences
 
-Continue traversal only when another available inquiry step could change:
+Continue traversal only when another available inquiry step could plausibly change:
 
 - the legitimate interpretation;
 - the focal/boundary choice;
@@ -213,7 +212,7 @@ Return `READY` for the declared bounded use when:
 1. focal identity and current boundary are recoverable at the required resolution;
 2. consequential constitutive versus participatory relations are discriminated or explicitly unresolved;
 3. all four Quadrant obligations have been considered, with unresolved/nonconsequential positions explicit;
-4. relied-on claims preserve source, evidence, warrant and standing;
+4. relied-on claims preserve source, evidence/warrant and standing;
 5. material coordinate changes have been reconciled;
 6. no presently unresolved distinction can change the legitimate next transition without additional evidence/contact;
 7. reentry, recomposition and historical recovery remain possible.
@@ -266,24 +265,23 @@ This profile makes explicit the following composition laws already supported by 
 4. **A new composite requires explicit individuation and continuity basis.**
 5. **A relation becoming consequential does not make it constitutive.**
 6. **A constitutive witness can itself become Quadrant subject matter without assigning Level permanently to one quadrant.**
-7. **A changed seat or changed orientation does not silently transport old answer standing.** R/B and G may change independently and must be requalified accordingly.
+7. **A changed seat/orientation does not silently transport old answer standing.**
 
 ## 7. Quadrant-generator disposition
 
-The installed ECO-221 generator remains governing for ordinary use of this profile until an authorized successor is installed:
+The installed ECO-221 generator remains governing for this profile:
 
 `{Constitutive, Participatory} x {Governing, Determinate}`
 
-A later Principal direction has authorized a post-language-consolidation research reentry into the Quadrant-generator question. That reentry may compare the installed product with I / It / We / Its and other current generator formulations. Research reentry does not silently change this profile's operational dependency.
+The I / It / We / Its formulation remains a serious explanatory/disclosure candidate in the situated-referent frontier, but this orchestration solution does not require generator replacement.
 
-During the reentry:
+Until a concrete contradiction or lost capability is demonstrated:
 
-- do not silently claim equivalence among competing formulations;
-- do not treat vocabulary preference as structural evidence;
-- keep the installed generator controlling for ordinary use until explicit replacement standing is earned;
-- preserve the source commitment that one referent has four co-arising, inseparable, irreducible Quadrant correlates.
+- do not reopen ECO-221;
+- do not silently claim equivalence;
+- use I / It / We / Its as an explanatory projection only where its source/standing is explicit.
 
-This separates current operational control from authorized theory revision.
+This preserves forward motion while retaining the source commitment that holons have four quadrants.
 
 ## 8. Reuse / clarify / amend disposition
 
@@ -325,10 +323,9 @@ The discovery aperture must reject these substitutions:
 5. shared topic label = same Referent;
 6. relation-path existence = constitutive membership;
 7. original PGO = required namespace for future retrieval;
-8. dormant = permanently irrelevant;
-9. nonconsequential-now = permanently irrelevant;
-10. richly reconstructed projection = exhaustive historical context;
-11. semantic rediscovery = exact record recall.
+8. dormant/nonconsequential-now = permanently irrelevant;
+9. richly reconstructed projection = exhaustive historical context;
+10. semantic rediscovery = exact record recall.
 
 ## 9. Minimal qualification burden
 
@@ -349,7 +346,7 @@ Existing ECO-191/ECO-221 fixtures already cover substantial parts of these contr
 
 **Disposition: COMPOSE / HARDEN FOR USE.**
 
-The current orchestration problem does not require another axis, another bootstrap primitive, or a replacement Quadrant generator in order to operate. The separately authorized theory reentry may still test the Quadrant generator without blocking this profile's current use.
+The current problem does not require another axis, another bootstrap primitive, another Quadrant generator, or another exploratory branch.
 
 Use this profile as the positive orchestration surface over the already-installed semantic system. Repair the profile or its source contracts only when a concrete use exposes a named semantic defect.
 
