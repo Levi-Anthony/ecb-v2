@@ -155,6 +155,30 @@ For each issue, identify the exact target, the demonstrated mismatch under the g
 
 **Consequence:** this audit is durably published in GitHub, and the failed BRAIN capture attempt remains visible evidence. Do not claim BRAIN custody for this audit until the exposed schema and runtime are reconciled. Downstream continuity may record the failure/pointer under the standing BRAIN-first visible-failure envelope; it must not fabricate a BRAIN receipt.
 
+### A19 — START_HERE overstates what Domain-Semantic Admission mechanizes
+
+**Target:** `START_HERE.md` statement that INHERIT/FEDERATE/EXTEND/QUALIFY decisions are “mechanically gated by current native evidence.”
+
+**Mismatch:** the evaluator mechanically checks supplied fields such as `prior_art.checked`, evidence refs, `native_coverage`, correspondence targets, unmet obligation, ECOS mechanism refs and falsifier. It does not fetch authoritative native sources, establish their currentness, determine native coverage or prove semantic adequacy. Those remain attributable semantic-adapter responsibilities.
+
+**Consequence:** current reentry wording must say the structural dispositions are mechanically gated over declared attributable premises/evidence, while native-source currentness and coverage remain semantic responsibilities. Do not let “current native evidence” make the evaluator appear to establish premises it only consumes.
+
+### A20 — Git-linked Production deployment currently couples documentation currentness to runtime deployment identity
+
+**Target:** current ecb-v2 Git-to-Vercel Production behavior.
+
+**Mismatch:** documentation-only commit `752e9c48db1be6be80125a8981331653993dc2f5` changed only `docs/inquiry-orchestration.md`, triggered no inquiry GitHub Actions workflow, yet produced READY Production deployment `dpl_6h9zEsNS5REbjHGgnZrAegEpXBaA` and moved enduring aliases to that deployment. Git comparison from mechanically qualified runtime commit `19de89229c1977048c29b4904843dd29d581b901` through `752e9c48...` shows only documentation additions/edits.
+
+**Consequence:** CIVS must not use “current Production deployment SHA” as shorthand for “current mechanically qualified runtime edition.” Record deployed repository head, runtime-source equivalence, CI-qualified code edition and alias binding separately. The docs-only deployment churn is also an operational coupling worth a separate deployment-policy decision, especially given prior Functions Storage pressure; this audit does not silently change Vercel build/deploy policy.
+
+### A21 — Historical receipts can become currentness traps unless their observation-time scope is explicit at reentry
+
+**Target:** `docs/inquiry-orchestration-2026-10-06-receipt.md`, which accurately records its 6 October observation as “Server/search is 0.6.0; capture remains independently 0.5.1,” plus a source-manifest claim that predates Domain-Semantic Admission imports.
+
+**Mismatch:** preserving historical text is correct, but a cold reader can mistake the dated receipt for the current search contract or current transitive source-completeness statement. Current search is `ecb-v2-search/0.7.0`, and the later WP0 audit found the circulation manifest omits Domain-Semantic Admission imports.
+
+**Consequence:** do not rewrite the historical receipt’s dated body. Current reentry surfaces must identify it as observation-time evidence and point to the later currentness repair/audit. A CIR must bind every historical receipt to its observation basis rather than copy its claims as present state.
+
 ## Reconciliation disposition
 
 The accepted CIVS plan remains intact. These findings constrain implementation rather than introducing new URG primitives or changing the accepted purpose/boundary.
