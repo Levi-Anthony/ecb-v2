@@ -1,4 +1,4 @@
-import type { NativePackageDescriptor } from './domain-admission.js';
+import type { NativePackageDescriptor } from '../domain-admission.js';
 
 export const systemsEngineeringNativePackages: NativePackageDescriptor[] = [
   {
