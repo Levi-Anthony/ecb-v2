@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
 import { evaluateDIBoundary, type DomainAdmissionRequest } from '../../server/domain-admission.ts';
 import { systemsEngineeringNativePackages } from '../../server/native-packages/systems-engineering.ts';
 
@@ -54,4 +55,22 @@ test('contradictory adequate plus unmet atom is forced back to qualification', (
     unmet_obligation: 'Claims a remaining gap.' }]), systemsEngineeringNativePackages);
   assert.equal(result.decisions[0].disposition, 'QUALIFY');
   assert.ok(result.decisions[0].gate_codes.includes('ATOMIZATION_CONFLICT'));
+});
+
+
+test('current systems-engineering D&I corpus compiles through the operational boundary', () => {
+  const corpus = JSON.parse(readFileSync(new URL('../../research/systems-engineering/DI-Native-Package-Boundary-v0.1.json', import.meta.url), 'utf8'));
+  const result = evaluateDIBoundary({
+    domain: corpus.domain,
+    inquiry_basis_ref: corpus.inquiry_basis_ref,
+    package_ids: corpus.package_ids,
+    responsibilities: corpus.responsibilities,
+  }, systemsEngineeringNativePackages);
+  assert.equal(result.disposition, corpus.expected.disposition);
+  for (const decision of result.decisions) {
+    assert.equal(decision.disposition, corpus.expected.decisions[decision.responsibility_id]);
+  }
+  assert.equal(result.decisions.filter((d) => d.disposition === 'EXTEND').length, 3);
+  assert.equal(result.decisions.filter((d) => d.disposition === 'QUALIFY').length, 2);
+  assert.match(result.ledger_projection, /SysML 2\.0 Viewpoint/);
 });
