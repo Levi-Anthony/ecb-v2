@@ -6,31 +6,94 @@ Kind: spec
 
 ---
 
-## Disposition grammar
+## Language + standing grammar
 
-This register governs current-facing terminology. It does not rewrite historical evidence.
+The earlier flat disposition list was malformed. It mixed lifecycle, synonymy, D&I standing, and historical-use restrictions into one pseudo-axis.
 
-**RETAIN** — the term carries unique current work and should remain first-class.
+Current entries in this register that still use labels such as `RETAIN / ALIAS / SCOPED / PROVENANCE-ONLY` are therefore **legacy provisional shorthand** until explicitly reclassified through the four-axis grammar below. They must not be read as proof that a full D&I has already occurred.
 
-**CLARIFY** — retain the term, but narrow or state its contract more explicitly.
+### Axis A — prospective language use
 
-**ALIAS** — keep as a recognized name for another current concept, but do not let both names imply two structures.
+**PREFERRED** — default term for current prospective use at the stated seat.
 
-**MERGE** — two current terms are genuinely redundant at the same seat and should become one term after provenance is preserved.
+**PERMITTED / SCOPED** — may be used prospectively only inside an explicit instrument, contract, layer, or qualified sense.
 
-**RETIRE** — stop new normative use because the term is misleading or its work is fully carried elsewhere.
+**DEPRECATED** — still interpretable and temporarily tolerated, but new use should migrate unless exact compatibility requires it.
 
-**PROVENANCE-ONLY** — preserve in historical sources and references, but do not use as current control language.
+**RETIRED** — do not use prospectively for the former job.
 
-**SCOPED** — retain only inside the named contract, instrument, or layer. Do not generalize it into a global synonym.
+This axis answers: **Should we keep using this term prospectively, and where?**
 
-**OPEN** — the wording or generator is itself part of an unresolved pass/fail seam. Preserve competing formulations without silent substitution.
+### Axis B — relation to neighboring vocabulary
 
-The burden is asymmetric:
+**PRIMARY** — chosen current label for the structure/job.
 
-- merging or retiring requires proof that no independent distinction, constraint, operation, inference, provenance role, or generative question is lost;
-- retaining requires only that the term still performs unique work;
-- difficulty, abstraction, or unfamiliarity are not grounds for retirement.
+**ALIAS** — alternate label for the same structure/job at the same seat.
+
+**PREDECESSOR / SUCCESSOR** — lineage relation across versions or theory development.
+
+**PROJECTION / REPRESENTATION** — a view/materialization of another structure, not an alias for the structure itself.
+
+**NO-EQUIVALENCE ESTABLISHED** — neighboring terms remain distinct or unresolved; shared wording does not license substitution.
+
+**RELATION OPEN** — D&I has not yet established whether the terms are alias, predecessor/successor, projection, sibling, or something else.
+
+This axis answers: **What is this term's relation to nearby terms?**
+
+### Axis C — D&I / structural standing
+
+**D&I-QUALIFIED** — explicit differentiation and integration has established characteristic work, nearest-neighbor boundaries, sensors/discriminators, hostile substitutions, and resulting standing.
+
+**DERIVED FROM QUALIFIED STRUCTURE** — the distinction follows from already-qualified operators/contracts strongly enough for current use, but has not received its own full D&I.
+
+**PROTECTED PENDING D&I** — do not merge or retire yet because plausible independent work would be lost, but irreducibility has not been fully qualified.
+
+**OPEN** — live unresolved semantic/structural question.
+
+**FAILED / COLLAPSED** — dedicated D&I showed the proposed distinction does not survive.
+
+This axis answers: **How strongly has the distinction itself been earned?**
+
+### Axis D — historical-use restriction
+
+**CURRENT-FACING PERMITTED** — may appear in current normative/explanatory language subject to Axis A scope.
+
+**EXACT-SCOPED HISTORICAL USE** — preserve and reuse only when referring to the named historical instrument, API, artifact, procedure, or lineage.
+
+**PROVENANCE-ONLY** — may appear to report historical language or source wording; must not control current prospective language.
+
+This axis answers: **Where may the historical term still legitimately appear?**
+
+### Important consequence: RETIRED and PROVENANCE-ONLY are not siblings
+
+A term can be:
+
+- RETIRED prospectively + PROVENANCE-ONLY historically;
+- RETIRED prospectively + EXACT-SCOPED HISTORICAL USE for compatibility or a named instrument;
+- PREFERRED prospectively + PROVENANCE-ONLY for one obsolete sense;
+- PERMITTED / SCOPED prospectively while an older broader use is retired.
+
+Never encode these as one flat enum.
+
+### Sensor requirement
+
+A state, disposition, qualification, or D&I result is malformed if it cannot answer:
+
+1. **What discriminating question was asked?**
+2. **What observable or attributable answer would move the classification?**
+3. **What nearby alternative would the sensor distinguish?**
+4. **What transition/reentry condition follows from each answer?**
+
+A label without a sensor is descriptive prose, not an operational classification.
+
+### Burden of proof
+
+Merging, retiring, or declaring alias-equivalence requires proof that no independent distinction, constraint, typed operation, inference, provenance role, sensor, or generative question is lost.
+
+Protective retention is not proof of irreducibility.
+
+Difficulty, abstraction, unfamiliarity, or stylistic preference are not grounds for retirement.
+
 
 ## Core theory terms
 
