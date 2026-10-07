@@ -5,6 +5,10 @@ on:
     paths:
       - 'server.ts'
       - 'server/orchestration*.ts'
+      - 'server/domain-admission.ts'
+      - 'server/native-packages/**'
+      - 'server/domain-admission.ts'
+      - 'server/native-packages/**'
       - 'server/urg-core.ts'
       - 'tests/inquiry/**'
       - 'package*.json'
