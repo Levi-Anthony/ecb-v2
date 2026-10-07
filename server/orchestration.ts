@@ -413,10 +413,16 @@ export async function orchestrateInquiry(input: InquiryRequest, adapters: Inquir
   if (projected.length > projectionBudget) {
     omitted.push('Projection metadata exceeds the caller budget; retain full typed result and widen the projection budget at reentry.');
     uniqueQuestions.push(questionForward(request, basisRef, 'projection_limit', 'Recover the full typed account or increase the projection budget.', 'A reduced projection cannot supply READY.'));
+    const candidateEditions = candidates.map(c => ({
+      referent_id: c.hit.referent_id,
+      digest: c.evidence?.digest ?? null,
+      source_refs: c.evidence?.source_refs ?? [],
+    }));
     projected = canonical({ contract: INQUIRY_CONTRACT, basis_ref: basisRef, indexical_binding: indexicalBinding, disposition: 'HOLD',
-      candidate_refs: candidates.map(c => c.hit.referent_id), unresolved_refs: [...new Set(uniqueQuestions.map(q => q.unresolved_ref))], omissions: omitted.slice(-1) });
+      candidate_editions: candidateEditions, unresolved_refs: [...new Set(uniqueQuestions.map(q => q.unresolved_ref))], omissions: omitted.slice(-1) });
     if (projected.length > projectionBudget) projected = canonical({ contract: INQUIRY_CONTRACT, basis_ref: basisRef,
-      indexical_binding: indexicalBinding, disposition: 'HOLD', reason: 'projection_budget_exceeded' });
+      indexical_binding: indexicalBinding, disposition: 'HOLD', reason: 'projection_budget_exceeded',
+      candidate_editions: candidateEditions.map(c => ({ referent_id: c.referent_id, digest: c.digest })) });
     if (projected.length > projectionBudget) throw new Error('inquiry_projection_budget_below_binding_receipt');
   }
   const unresolved = [...new Set(uniqueQuestions.map(q => q.unresolved_ref))];

@@ -66,3 +66,10 @@ Constructed tests can establish receipt determinism, actor/basis preservation, F
 ## Mind-changers retained
 
 Reopen only if ordinary use demonstrates that relevance needs an independently governed lifecycle/identity; simultaneous or uncertain G coordinates cannot be represented without distortion; truthful delta requires additional semantic-judgment custody; or existing URG/persistence machinery cannot preserve the required distinctions. Until then, indexical relevance remains a **situated, derivable relation whose basis is recoverable**, not a new thing the ontology must contain.
+
+
+## Qualification repair — compact projection edition retention
+
+The first inquiry CI run for commit `b5e36d000e25c251c846de2cf1ef629dd3c97232` passed TypeScript and 32/33 inquiry tests but failed the existing compact-projection invariant: adding the indexical receipt caused the 7,000-character specimen to enter the fallback representation, whose legacy fallback retained candidate IDs but not exact edition digests.
+
+This is treated as an implementation defect, not a test problem. The forward repair retains candidate `referent_id` + exact recovered `digest` in every compact fallback, with source refs retained in the first compact tier. If even the irreducible binding plus candidate edition identities cannot fit the caller budget, the path fails explicitly rather than claim a recoverable compact projection.
