@@ -147,6 +147,14 @@ For each issue, identify the exact target, the demonstrated mismatch under the g
 
 **Consequence:** bind exposure observations to consumer, action/schema snapshot, observation time and route. Do not generalize one missing field to all consumers or to backend capability.
 
+### A18 — BRAIN advertised capture contract still drifts from runtime validation
+
+**Target:** connected ECB-v2-BRAIN `capture_thought` action used for first-class continuity.
+
+**Mismatch:** the currently advertised tool schema accepts `content`, `source` and optional `captured_at`, but a fresh audit-custody attempt was rejected with `INVALID_ARGUMENT` because runtime validation requires a string `operation_id`. The advertised caller surface therefore cannot construct a schema-valid request that satisfies the runtime contract.
+
+**Consequence:** this audit is durably published in GitHub, and the failed BRAIN capture attempt remains visible evidence. Do not claim BRAIN custody for this audit until the exposed schema and runtime are reconciled. Downstream continuity may record the failure/pointer under the standing BRAIN-first visible-failure envelope; it must not fabricate a BRAIN receipt.
+
 ## Reconciliation disposition
 
 The accepted CIVS plan remains intact. These findings constrain implementation rather than introducing new URG primitives or changing the accepted purpose/boundary.
