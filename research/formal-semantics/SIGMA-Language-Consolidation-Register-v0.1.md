@@ -604,3 +604,102 @@ The current audit found these repair classes:
 9. target observables such as relational flow and high-ratio recallable compression remain unmeasured until explicit comparators and measurements exist.
 
 BRAIN fixture-audit receipt: `bd695ef7-ddc1-4df3-8acb-d8a02f5bae34`.
+
+
+---
+
+## Polysemy control — overloaded load-bearing terms
+
+Some terms legitimately appear in more than one contract. Do not solve this by deleting the term. Qualify the use so the active contract is explicit.
+
+### constitutive
+Retain three distinct uses:
+
+1. **constitutive layer** — SIGMA's layer of reusable conceptual relations and constraints;
+2. **constitutive relation / constituency** — what composes a designated whole as that whole;
+3. **Quadrant Constitutive** — the installed ECO-221 Quadrant seat, pending generator reentry.
+
+Do not use bare **constitutive** where more than one of these readings is plausible.
+
+### governing
+Retain distinct uses:
+
+1. **governing orientation / PGO** — telic/consequential orientation of the engagement;
+2. **governing invariant / governing rule** — currently controlling normative rule under authorized standing;
+3. **Quadrant Governing** — the installed ECO-221 Quadrant burden/position;
+4. **governing law** — a theory-level relation only where law-standing is actually claimed.
+
+Do not infer relation among these merely from the shared adjective.
+
+### binding
+Retain only with a qualifier:
+
+- **Binding Infinity** — theory-level relation between open possibility and finite work;
+- **Current Binding** — scoped currentness/reliance state;
+- **binding transition** — operation that establishes or changes current reliance/currentness;
+- **Shape binding / binding pressure** — progressive increase of constraint and action-readiness inside SSMM.
+
+These are related by theory but not interchangeable.
+
+### State / state
+Reserve capitalized **State** for the qualified URG developmental/configurational contract.
+
+Use lowercase **state** only for generic system condition, activation state, binding state, or other explicitly qualified state variables.
+
+Do not let lowercase implementation state silently inherit URG State semantics.
+
+### orientation
+Prefer:
+- **PGO / Governing Orientation** for the governing/telic coordinate;
+- **Orientation Resolution** for a representation/materialization of one governing composition;
+- **reorientation / Reorient** for the typed operation changing PGO;
+- **oriented opening** only as a descriptive SSMM phrase.
+
+Do not use **orientation** alone when it is unclear whether the object is PGO, a representation, or a process.
+
+### basis
+**Basis** is retained but should normally be qualified:
+- situated inquiry basis;
+- qualification basis;
+- as-of basis;
+- continuity basis;
+- evidence basis;
+- comparison basis.
+
+A bare “basis changed” is insufficient when different kinds of basis would trigger different requalification.
+
+### semantic
+Retain **semantic** where meaning, reference, representation, interpretation, or domain semantics are genuinely at issue.
+
+Prefer qualified forms:
+- semantic discovery;
+- semantic relation;
+- domain semantics;
+- semantic standing;
+- semantic transformation.
+
+Do not use semantic as a prestige adjective for anything conceptual.
+
+### current / currentness
+**Currentness** names the independent dimension.
+
+Use **current** only with a recoverable scope: current for which referent, artifact, use, engagement, binding, or authority surface?
+
+Current never means newest by default.
+
+### standing
+**Standing** remains the primary term for what a claim/result/record is currently entitled to support.
+
+Always identify the object whose standing is being discussed. Do not let “standing” absorb warrant, confidence, authority, qualification, or currentness.
+
+## Polysemy rule
+
+When one surface form names several legitimate contracts:
+
+1. retain the term if each use is established and useful;
+2. qualify each use at first occurrence;
+3. do not infer equivalence from shared wording;
+4. do not create a new synonym solely to avoid repetition;
+5. promote a vocabulary split only if qualification remains persistently ambiguous or causes operational error.
+
+This is fidelity-preserving disambiguation, not terminological proliferation.
