@@ -1,3 +1,5 @@
+import { createHash } from 'node:crypto';
+
 export const DOMAIN_ADMISSION_CONTRACT = 'ecos:domain-semantic-admission:0.1.0' as const;
 
 export type SourceLane = 'COURSE' | 'CURRENT_PRACTICE' | 'EXPLANATORY_RECONSTRUCTION' | 'PROJECT_APPLICATION';
@@ -102,15 +104,7 @@ const canonical = (value: unknown): string => {
     .map(([k, v]) => `${JSON.stringify(k)}:${canonical(v)}`).join(',')}}`;
   return JSON.stringify(value) ?? 'null';
 };
-const decisionId = (value: unknown) => {
-  const text = canonical(value);
-  let hash = 2166136261;
-  for (let i = 0; i < text.length; i++) {
-    hash ^= text.charCodeAt(i);
-    hash = Math.imul(hash, 16777619);
-  }
-  return 'fnv1a32:' + (hash >>> 0).toString(16).padStart(8, '0');
-};
+const decisionId = (value: unknown) => `sha256:${createHash('sha256').update(canonical(value)).digest('hex')}`;
 
 function packageMap(packages: NativePackageDescriptor[]) {
   const map = new Map<string, NativePackageDescriptor>();
