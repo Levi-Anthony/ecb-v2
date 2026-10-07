@@ -1,0 +1,251 @@
+{
+  "contract": "ecos:di-boundary-corpus:0.1.0",
+  "domain": "systems-engineering",
+  "ledger_manifest": "21e58c47-2f40-47ef-8fc8-6e6c4451b6c1",
+  "inquiry_basis_ref": "BRAIN:39929c53-8908-42e5-a2ca-e4898025d651",
+  "package_ids": [
+    "se:omg:sysml:2.0",
+    "se:omg:systems-modeling-api:1.0",
+    "se:iso:42010:2022",
+    "se:nasa:hdbk-1009a:2025"
+  ],
+  "responsibilities": [
+    {
+      "id": "sysml-viewpoint-concern",
+      "construct_ref": "SysML 2.0 Viewpoint",
+      "problem_solved": "Frame stakeholder concerns for concern-specific architecture/model representations.",
+      "source_lane": "CURRENT_PRACTICE",
+      "source_refs": [
+        "https://www.omg.org/spec/SysML/2.0/About-SysML",
+        "BRAIN:27900061-ff39-45e0-a752-3e86932ce9f7"
+      ],
+      "native_package_ids": [
+        "se:omg:sysml:2.0",
+        "se:iso:42010:2022"
+      ],
+      "native_coverage": "ADEQUATE",
+      "relation_type": "OVERLAP",
+      "prior_art": {
+        "checked": true,
+        "evidence_refs": [
+          "https://www.omg.org/spec/SysML/2.0/About-SysML",
+          "https://www.iso.org/standard/74393.html"
+        ]
+      },
+      "receiving_owner": "FR-1/native systems-engineering package"
+    },
+    {
+      "id": "model-version-addressing",
+      "construct_ref": "Systems Modeling API project/commit/element addressing",
+      "problem_solved": "Recover an explicitly version-selected engineering model element and its relationships.",
+      "source_lane": "CURRENT_PRACTICE",
+      "source_refs": [
+        "https://www.omg.org/spec/SystemsModelingAPI/1.0",
+        "BRAIN:27900061-ff39-45e0-a752-3e86932ce9f7"
+      ],
+      "native_package_ids": [
+        "se:omg:systems-modeling-api:1.0"
+      ],
+      "native_coverage": "ADEQUATE",
+      "relation_type": "OVERLAP",
+      "prior_art": {
+        "checked": true,
+        "evidence_refs": [
+          "https://www.omg.org/spec/SystemsModelingAPI/1.0"
+        ]
+      },
+      "receiving_owner": "FR-1/native systems-engineering package"
+    },
+    {
+      "id": "native-to-ecos-correspondence",
+      "construct_ref": "SysML native model element ↔ ECOS referent/claim correspondence",
+      "problem_solved": "Relate a native engineering semantic object to independently owned cross-domain ECOS referents without flattening native meaning.",
+      "source_lane": "PROJECT_APPLICATION",
+      "source_refs": [
+        "BRAIN:dd3e9a2c-f99f-4a1d-a981-ea337be5f779",
+        "BRAIN:56cddf4e-c00f-4179-af5f-b0b9b9ac6faf"
+      ],
+      "native_package_ids": [
+        "se:omg:sysml:2.0",
+        "se:omg:systems-modeling-api:1.0"
+      ],
+      "native_coverage": "ADEQUATE",
+      "relation_type": "GENERALIZATION",
+      "requires_cross_domain_correspondence": true,
+      "correspondence_targets": [
+        "ECOS:Referent",
+        "ECOS:Claim"
+      ],
+      "prior_art": {
+        "checked": true,
+        "evidence_refs": [
+          "https://www.omg.org/spec/SysML/2.0/About-SysML",
+          "https://www.omg.org/spec/SystemsModelingAPI/1.0"
+        ]
+      },
+      "receiving_owner": "ECO-202/domain correspondence adapter"
+    },
+    {
+      "id": "explicit-focal-reseat",
+      "construct_ref": "URG Reseat",
+      "problem_solved": "Make replacement of the focal referent explicit rather than treating a changed representation or concern as the same semantic coordinate.",
+      "source_lane": "PROJECT_APPLICATION",
+      "source_refs": [
+        "BRAIN:28091dd3-d088-437d-9ab0-323d007a440b",
+        "BRAIN:d9205850-5d51-4c8b-825b-c08ec1e0ecef"
+      ],
+      "native_package_ids": [
+        "se:omg:sysml:2.0",
+        "se:iso:42010:2022"
+      ],
+      "native_coverage": "PARTIAL",
+      "relation_type": "GENERALIZATION",
+      "unmet_obligation": "Preserve a typed distinction between concern/view change and focal-referent replacement across heterogeneous domains.",
+      "ecos_mechanism_refs": [
+        "URG:Reseat",
+        "URG:ChangeRecord"
+      ],
+      "prior_art": {
+        "checked": true,
+        "evidence_refs": [
+          "https://www.omg.org/spec/SysML/2.0/About-SysML",
+          "https://www.iso.org/standard/74393.html"
+        ]
+      },
+      "falsifier": "Demote if current native practice provides an equivalent cross-domain typed focal-referent transition with preserved old/new basis and standing.",
+      "receiving_owner": "ECO-202"
+    },
+    {
+      "id": "pgo-reorientation",
+      "construct_ref": "PGO / URG Reorient",
+      "problem_solved": "Change governing purpose/relevance and sufficiency without silently changing referent identity or manufacturing ontology.",
+      "source_lane": "PROJECT_APPLICATION",
+      "source_refs": [
+        "BRAIN:28091dd3-d088-437d-9ab0-323d007a440b",
+        "BRAIN:56cddf4e-c00f-4179-af5f-b0b9b9ac6faf"
+      ],
+      "native_package_ids": [
+        "se:iso:42010:2022",
+        "se:nasa:hdbk-1009a:2025"
+      ],
+      "native_coverage": "PARTIAL",
+      "relation_type": "GENERALIZATION",
+      "unmet_obligation": "Represent changed governing orientation as a typed semantic coordinate change whose relevance effects do not manufacture identity, constitution or standing.",
+      "ecos_mechanism_refs": [
+        "ECOS:PGO",
+        "URG:Reorient"
+      ],
+      "prior_art": {
+        "checked": true,
+        "evidence_refs": [
+          "https://www.iso.org/standard/74393.html",
+          "https://standards.nasa.gov/standard/NASA/NASA-HDBK-1009"
+        ]
+      },
+      "falsifier": "Demote if native practice supplies an equivalent domain-independent orientation-indexed semantic composition and requalification contract.",
+      "receiving_owner": "ECO-202"
+    },
+    {
+      "id": "fr3-cross-context-resurfacing",
+      "construct_ref": "FR-3 cross-context structural resurfacing and recomposition",
+      "problem_solved": "Allow material from an apparently unrelated prior PGO to re-enter present work through a consequential path with exact source recovery and current-use requalification.",
+      "source_lane": "PROJECT_APPLICATION",
+      "source_refs": [
+        "BRAIN:13acf55f-0b5e-4b7c-a6f2-e2edf988762f",
+        "BRAIN:7ef77804-a1ae-4d4a-a6d6-c02c24cf43e8"
+      ],
+      "native_package_ids": [
+        "se:omg:systems-modeling-api:1.0",
+        "se:nasa:hdbk-1009a:2025"
+      ],
+      "native_coverage": "PARTIAL",
+      "relation_type": "GENERALIZATION",
+      "unmet_obligation": "Cross-context discovery must recover original identity/basis/standing and explicitly requalify applicability under a new apparently unrelated inquiry before reliance.",
+      "ecos_mechanism_refs": [
+        "ECOS:FR-3",
+        "ECO-202:discovery-aperture",
+        "URG:Requalify"
+      ],
+      "prior_art": {
+        "checked": true,
+        "evidence_refs": [
+          "https://www.omg.org/spec/SystemsModelingAPI/1.0",
+          "https://standards.nasa.gov/standard/NASA/NASA-HDBK-1009"
+        ]
+      },
+      "falsifier": "Demote if current systems-engineering practice supplies an equivalent cross-context semantic resurfacing plus present-use requalification contract across heterogeneous domains.",
+      "receiving_owner": "ECO-202"
+    },
+    {
+      "id": "fr3-uplift",
+      "construct_ref": "FR-3 relational-flow / high-ratio recallable-compression benefit",
+      "problem_solved": "Determine whether structurally conditioned resurfacing measurably improves useful recall and context reconstruction versus current alternatives.",
+      "source_lane": "PROJECT_APPLICATION",
+      "source_refs": [
+        "BRAIN:13acf55f-0b5e-4b7c-a6f2-e2edf988762f",
+        "BRAIN:d9205850-5d51-4c8b-825b-c08ec1e0ecef"
+      ],
+      "native_package_ids": [
+        "se:omg:systems-modeling-api:1.0",
+        "se:nasa:hdbk-1009a:2025"
+      ],
+      "native_coverage": "UNKNOWN",
+      "relation_type": "UNKNOWN",
+      "prior_art": {
+        "checked": true,
+        "evidence_refs": [
+          "https://www.omg.org/spec/SystemsModelingAPI/1.0",
+          "https://standards.nasa.gov/standard/NASA/NASA-HDBK-1009"
+        ]
+      },
+      "question_forward": {
+        "question": "Does FR-3 produce useful cross-context recall/reconstruction uplift after accounting for false resurfacing and requalification cost?",
+        "decision_consequence": "Do not claim relational-flow or recallable-compression superiority until measured.",
+        "reentry_condition": "Reopen after ordinary longitudinal use yields comparative recall, false-positive, reconstruction and downstream-benefit evidence."
+      },
+      "receiving_owner": "ECO-214 / ECO-202 qualification"
+    },
+    {
+      "id": "quadrant-universal-value",
+      "construct_ref": "URG four-Quadrant obligation set",
+      "problem_solved": "Determine whether fixed-R/B constitutive/participatory × governing/determinate traversal finds consequential omissions beyond mature concern/viewpoint practice.",
+      "source_lane": "PROJECT_APPLICATION",
+      "source_refs": [
+        "BRAIN:28091dd3-d088-437d-9ab0-323d007a440b",
+        "BRAIN:d9205850-5d51-4c8b-825b-c08ec1e0ecef"
+      ],
+      "native_package_ids": [
+        "se:omg:sysml:2.0",
+        "se:iso:42010:2022"
+      ],
+      "native_coverage": "UNKNOWN",
+      "relation_type": "ORTHOGONAL",
+      "prior_art": {
+        "checked": true,
+        "evidence_refs": [
+          "https://www.omg.org/spec/SysML/2.0/About-SysML",
+          "https://www.iso.org/standard/74393.html"
+        ]
+      },
+      "question_forward": {
+        "question": "Does the installed four-Quadrant obligation set reliably expose consequential omissions not already covered by fit-for-purpose engineering concerns/viewpoints?",
+        "decision_consequence": "Preserve the installed generator but do not claim superiority over mature viewpoint practice.",
+        "reentry_condition": "Reopen on ordinary comparative cases with predeclared consequential omissions and independent evaluation."
+      },
+      "receiving_owner": "ECO-202 / D&I qualification"
+    }
+  ],
+  "expected": {
+    "disposition": "READY",
+    "decisions": {
+      "sysml-viewpoint-concern": "INHERIT",
+      "model-version-addressing": "INHERIT",
+      "native-to-ecos-correspondence": "FEDERATE",
+      "explicit-focal-reseat": "EXTEND",
+      "pgo-reorientation": "EXTEND",
+      "fr3-cross-context-resurfacing": "EXTEND",
+      "fr3-uplift": "QUALIFY",
+      "quadrant-universal-value": "QUALIFY"
+    }
+  }
+}
