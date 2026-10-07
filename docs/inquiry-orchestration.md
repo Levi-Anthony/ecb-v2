@@ -35,6 +35,12 @@ Semantic evaluation is an explicit adapter responsibility. Code can reject a mis
 
 A returned projection is not durable merely because it has a digest. Preservation uses the existing immutable `create_artifact` operation under preservation capability, followed by exact `fetch_artifact`; the coordinator never grants a recover-only caller preservation or transition capability. The prior projection remains immutable when a later PGO produces another edition.
 
+## Domain-semantic admission boundary
+
+The [domain-semantic admission contract](domain-semantic-admission.md) operationalizes the Systems Engineering Native Package / ECOS Extension Boundary through this same inquiry path. It adds no public tool and no URG primitive. The optional `inquiry.domain_admission` block binds atomic responsibilities to the current inquiry basis and returns INHERIT / FEDERATE / EXTEND / QUALIFY decisions with anti-reinvention gates. A blocking QUALIFY result forces the combined inquiry to HOLD.
+
+The first registered native domain is systems engineering. Additional domains require explicit Native Package descriptors before ingress support is widened.
+
 ## Ownership and remaining obligations
 
 | Surface | Responsibility and consequence |
