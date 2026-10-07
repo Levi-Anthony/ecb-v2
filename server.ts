@@ -12,6 +12,8 @@ import { z } from 'zod';
 import { contracts as circulationContracts, registerCirculationTools } from './server/circulation/tools.js';
 import { bearerChallenge, oauthEnabled, oauthToolDenial, verifyOAuthToken } from './server/oauth.js';
 import { runBrainInquiry } from './server/orchestration-brain.js';
+import { evaluateDIBoundary } from './server/domain-admission.js';
+import { systemsEngineeringNativePackages } from './server/native-packages/systems-engineering.js';
 
 const SUPABASE_URL = 'https://vezxivrvhakclxuvxzso.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_4mAxzOfWinJcn-98szUEYA_Wh88UdPW';
@@ -618,7 +620,7 @@ function buildServer(): McpServer {
   server.registerTool('search', {
     title: 'Search Thoughts',
     description:
-      'Contract ecb-v2-search/0.6.0. Search canonical thought evidence through one hybrid retrieval surface. Optional inquiry context also opens cross-context native/structural discovery, exact candidate recovery and an editioned working projection with explicit qualification/reentry. Similarity creates no standing. This call can repair missing semantic representations; lexical retrieval remains available when embeddings fail, with coverage/degradation reported.',
+      'Contract ecb-v2-search/0.7.0. Search canonical thought evidence through one hybrid retrieval surface. Optional inquiry context also opens cross-context native/structural discovery, exact candidate recovery and an editioned working projection with explicit qualification/reentry. Similarity creates no standing. This call can repair missing semantic representations; lexical retrieval remains available when embeddings fail, with coverage/degradation reported.',
     // Search repairs missing embeddings before retrieval, so it can write representations.
     annotations: { readOnlyHint: false, destructiveHint: false },
     scopeChallenge: capabilityCheck('recover'),
@@ -638,6 +640,31 @@ function buildServer(): McpServer {
         work_id: z.string().uuid().optional(),
         structural_depth: z.number().int().min(0).max(3).optional(),
         projection_chars: z.number().int().min(1024).max(100000).optional(),
+        domain_admission: z.strictObject({
+          domain: z.literal('systems-engineering'),
+          package_ids: z.array(nonBlankText()).min(1).max(25).optional(),
+          responsibilities: z.array(z.strictObject({
+            id: nonBlankText(), construct_ref: nonBlankText(), problem_solved: nonBlankText(),
+            source_lane: z.enum(['COURSE', 'CURRENT_PRACTICE', 'EXPLANATORY_RECONSTRUCTION', 'PROJECT_APPLICATION']),
+            source_refs: z.array(nonBlankText()).min(1).max(50),
+            native_package_ids: z.array(nonBlankText()).min(1).max(25),
+            native_coverage: z.enum(['ADEQUATE', 'PARTIAL', 'NONE', 'UNKNOWN', 'UNAVAILABLE']),
+            relation_type: z.enum(['SAME', 'OVERLAP', 'GENERALIZATION', 'ORTHOGONAL', 'TENSION', 'MISSING', 'UNKNOWN']),
+            required_for_current_use: z.boolean().optional(),
+            requires_cross_domain_correspondence: z.boolean().optional(),
+            correspondence_targets: z.array(nonBlankText()).max(50).optional(),
+            unmet_obligation: nonBlankText().optional(),
+            ecos_mechanism_refs: z.array(nonBlankText()).max(50).optional(),
+            prior_art: z.strictObject({
+              checked: z.boolean(), evidence_refs: z.array(nonBlankText()).max(50),
+              unavailable_reason: nonBlankText().optional(),
+            }),
+            falsifier: nonBlankText().optional(), receiving_owner: nonBlankText().optional(),
+            question_forward: z.strictObject({
+              question: nonBlankText(), decision_consequence: nonBlankText(), reentry_condition: nonBlankText(),
+            }).optional(),
+          })).min(1).max(50),
+        }).optional(),
       }).optional(),
     },
   }, async ({ query, limit, inquiry }, context) => {
@@ -645,10 +672,32 @@ function buildServer(): McpServer {
       if (inquiry) {
         const actor = context.http?.authInfo?.clientId;
         if (!actor) return failure('inquiry_actor_missing');
-        return result(await runBrainInquiry({ query, intended_use: inquiry.intended_use, return_route: inquiry.return_route,
+        const inquiryResult = await runBrainInquiry({ query, intended_use: inquiry.intended_use, return_route: inquiry.return_route,
           context: inquiry.context, actor_ref: actor, known_referent_ids: inquiry.known_referent_ids, work_id: inquiry.work_id,
           limits: { candidates: Math.min(limit, 50), structural_depth: inquiry.structural_depth, projection_chars: inquiry.projection_chars },
-        }, { searchThoughts: (q, n) => runtime.search(q, n), fetchThought: id => runtime.fetch(id), dispatch: circulationDispatch, embed }, actor));
+        }, { searchThoughts: (q, n) => runtime.search(q, n), fetchThought: id => runtime.fetch(id), dispatch: circulationDispatch, embed }, actor);
+        if (!inquiry.domain_admission) return result(inquiryResult);
+        const packageIds = inquiry.domain_admission.package_ids
+          ?? systemsEngineeringNativePackages.filter(p => p.domain === inquiry.domain_admission!.domain).map(p => p.id);
+        const domainAdmission = evaluateDIBoundary({
+          domain: inquiry.domain_admission.domain, inquiry_basis_ref: inquiryResult.inquiry_basis_ref,
+          package_ids: packageIds, responsibilities: inquiry.domain_admission.responsibilities,
+        }, systemsEngineeringNativePackages);
+        const unresolved = [...new Set([
+          ...inquiryResult.reentry.unresolved_refs,
+          ...domainAdmission.unresolved_refs.map(ref => 'domain_admission:' + ref),
+        ])];
+        return result({
+          ...inquiryResult,
+          domain_admission: domainAdmission,
+          disposition: inquiryResult.disposition === 'HOLD' || domainAdmission.disposition === 'HOLD' ? 'HOLD' : 'READY',
+          reentry: {
+            ...inquiryResult.reentry, unresolved_refs: unresolved,
+            condition: domainAdmission.disposition === 'HOLD'
+              ? 'Resolve domain-semantic admission qualification gates, then ' + inquiryResult.reentry.condition
+              : inquiryResult.reentry.condition,
+          },
+        });
       }
       return result(await runtime.search(query, limit));
     } catch (error) {
