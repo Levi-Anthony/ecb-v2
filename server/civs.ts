@@ -101,6 +101,24 @@ export type CivsPortabilityMatrix = {
   cross_case_invariants: string[]; source_refs: string[]; omissions: string[];
 };
 
+export const CIVS_CORRESPONDENCE_HANDOFF_ID = 'ecos:civs-correspondence-requirements-handoff:0.1.0' as const;
+export type CivsCorrespondenceRequirementStatus = 'OPEN' | 'SATISFIED' | 'DEFERRED';
+export type CivsCorrespondenceRequirement = {
+  id: string; label: string; status: CivsCorrespondenceRequirementStatus; question: string; required_for: string[];
+  evidence_needed: string[]; falsifier: string; failure_consequence: string; basis_refs: string[]; limits: string[];
+};
+export type CivsCorrespondenceHandoff = {
+  contract: typeof CIVS_CORRESPONDENCE_HANDOFF_ID; handoff_id: string; cir_ref: string; correspondence_ref: string;
+  subject_ref: string; basis_refs: string[]; current_known: string[]; non_claims: string[];
+  requirements: CivsCorrespondenceRequirement[];
+  formalism_gate: {
+    status: 'NOT_EARNED' | 'EARNED'; selected_formalism: string | null; admission_triggers: string[];
+    must_preserve: string[]; stop_conditions: string[]; mind_changers: string[];
+  };
+  next_reentry: { work_package_ref: string; route: string; condition: string; evidence_required: string[] };
+  source_refs: string[]; omissions: string[];
+};
+
 export type InstallationAssessment = {
   kind: InstallationKind;
   proposition: string;
@@ -667,6 +685,32 @@ export function validateCivPortabilityMatrix(matrix: CivsPortabilityMatrix): Civ
   return errors.length ? {valid:false,errors} : {valid:true,errors:[]};
 }
 
+export type CivsCorrespondenceHandoffValidationResult =
+  | { valid: true; errors: [] }
+  | { valid: false; errors: string[] };
+
+export function validateCivCorrespondenceHandoff(h: CivsCorrespondenceHandoff): CivsCorrespondenceHandoffValidationResult {
+  const errors:string[]=[];
+  if (h.contract !== CIVS_CORRESPONDENCE_HANDOFF_ID) errors.push('correspondence handoff contract mismatch');
+  for (const [k,v] of Object.entries({handoff_id:h.handoff_id,cir_ref:h.cir_ref,correspondence_ref:h.correspondence_ref,subject_ref:h.subject_ref})) if(!text(v)) errors.push(`${k} is required`);
+  if(!texts(h.basis_refs)||!texts(h.current_known)||!texts(h.non_claims)||!texts(h.source_refs)) errors.push('handoff basis/current/nonclaims/source refs must be nonempty');
+  const seen=new Set<string>();
+  if(!Array.isArray(h.requirements)||h.requirements.length===0) errors.push('requirements must not be empty');
+  for(const [i,r] of (h.requirements??[]).entries()){
+    if(!text(r.id)||seen.has(r.id)) errors.push(`requirements[${i}].id missing or duplicate`); else seen.add(r.id);
+    if(!text(r.label)||!text(r.question)||!['OPEN','SATISFIED','DEFERRED'].includes(r.status)) errors.push(`requirements[${i}] identity/status invalid`);
+    for(const key of ['required_for','evidence_needed','basis_refs'] as const) if(!texts(r[key])) errors.push(`requirements[${i}].${key} must not be empty`);
+    if(!text(r.falsifier)||!text(r.failure_consequence)||!Array.isArray(r.limits)||!r.limits.every(text)) errors.push(`requirements[${i}] falsifier/consequence/limits invalid`);
+  }
+  const g=h.formalism_gate;
+  if(!g||!['NOT_EARNED','EARNED'].includes(g.status)||!texts(g.admission_triggers)||!texts(g.must_preserve)||!texts(g.stop_conditions)||!texts(g.mind_changers)) errors.push('formalism_gate invalid');
+  if(g?.status==='NOT_EARNED' && g.selected_formalism!==null) errors.push('formalism must be null while gate NOT_EARNED');
+  if(g?.status==='EARNED' && !text(g.selected_formalism)) errors.push('earned formalism requires selected_formalism');
+  if(!h.next_reentry||![h.next_reentry.work_package_ref,h.next_reentry.route,h.next_reentry.condition].every(text)||!texts(h.next_reentry.evidence_required)) errors.push('next_reentry invalid');
+  if(!Array.isArray(h.omissions)||!h.omissions.every(text)) errors.push('handoff omissions invalid');
+  return errors.length?{valid:false,errors}:{valid:true,errors:[]};
+}
+
 const standingMark: Record<CivsAssessmentStanding,string> = {
   SUPPORTED: 'SUPPORTED',
   NOT_ESTABLISHED: 'NOT ESTABLISHED',
@@ -698,6 +742,36 @@ export function renderCivPortabilityMatrix(matrix: CivsPortabilityMatrix): strin
     '## Cross-case invariants','',...matrix.cross_case_invariants.map(x=>`- ${x}`),'',
     '## Omissions','',...matrix.omissions.map(x=>`- ${x}`),'',
     '> A dependency outage may lower availability, observability, currentness, or qualification. It never upgrades semantic standing.',''
+  ];
+  return lines.join('\n');
+}
+
+export function renderCivCorrespondenceHandoff(h: CivsCorrespondenceHandoff): string {
+  const validation=validateCivCorrespondenceHandoff(h);
+  if(!validation.valid) throw new Error(`civs_correspondence_handoff_invalid: ${validation.errors.join('; ')}`);
+  const lines=[
+    `# CIVS correspondence requirements handoff — ${h.subject_ref}`,'',
+    `**Contract:** \`${h.contract}\`  `,`**Handoff:** \`${h.handoff_id}\`  `,
+    `**Source CIR:** \`${h.cir_ref}\`  `,`**Correspondence:** \`${h.correspondence_ref}\``,'',
+    '> This handoff derives requirements and falsifiers from the inspected case. It does not select a correspondence formalism or upgrade FEDERATE into semantic truth.','',
+    '## Current known','',...h.current_known.map(x=>`- ${x}`),'',
+    '## Explicit non-claims','',...h.non_claims.map(x=>`- ${x}`),'',
+    '## Requirements','',
+    ...h.requirements.flatMap(r=>[
+      `### ${r.id} — ${r.label} — ${r.status}`,r.question,
+      `Required for: ${r.required_for.join('; ')}`,`Evidence needed: ${r.evidence_needed.join('; ')}`,
+      `Falsifier: ${r.falsifier}`,`Failure consequence: ${r.failure_consequence}`,`Limits: ${r.limits.join('; ')}`,''
+    ]),
+    '## Formalism-selection gate','',
+    `Status: **${h.formalism_gate.status}**. Selected formalism: **${h.formalism_gate.selected_formalism ?? 'NONE'}**.`,'',
+    'Admission triggers:',...h.formalism_gate.admission_triggers.map(x=>`- ${x}`),'',
+    'Any candidate must preserve:',...h.formalism_gate.must_preserve.map(x=>`- ${x}`),'',
+    'Stop / do-not-formalize conditions:',...h.formalism_gate.stop_conditions.map(x=>`- ${x}`),'',
+    'Mind-changers:',...h.formalism_gate.mind_changers.map(x=>`- ${x}`),'',
+    '## Next reentry','',
+    `Next work package: **${h.next_reentry.work_package_ref}**.`,`Route: ${h.next_reentry.route}`,`Condition: ${h.next_reentry.condition}`,
+    `Evidence required: ${h.next_reentry.evidence_required.join('; ')}`,'',
+    '## Omissions','',...h.omissions.map(x=>`- ${x}`),''
   ];
   return lines.join('\n');
 }

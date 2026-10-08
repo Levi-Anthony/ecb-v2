@@ -1,0 +1,430 @@
+{
+  "contract": "ecos:civs-correspondence-requirements-handoff:0.1.0",
+  "handoff_id": "ecos:civs:domain-semantic-admission:correspondence-handoff:2026-10-07:v0.1",
+  "cir_ref": "ecos:cir:domain-semantic-admission:2026-10-07:v1.2",
+  "correspondence_ref": "civs:correspondence:native-to-ecos",
+  "subject_ref": "SysML native model element ↔ ECOS Referent/Claim correspondence",
+  "basis_refs": [
+    "research/civs/domain-semantic-admission.cir.json#correspondence_inspections/civs:correspondence:native-to-ecos",
+    "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json#native-to-ecos-correspondence",
+    "tests/civs/contract.test.ts#first-federate-negative-control",
+    "BRAIN:06b3ca69-0805-45aa-8ab9-cc75d618894b"
+  ],
+  "current_known": [
+    "The installed Domain-Semantic Admission evaluator routes the inspected responsibility to FEDERATE when supplied ADEQUATE native coverage, checked prior art, requires_cross_domain_correspondence=true, and explicit ECOS correspondence targets.",
+    "Removing correspondence_targets changes the structural result to QUALIFY with CORRESPONDENCE_TARGET_REQUIRED.",
+    "The source native semantics remain owned by OMG/other native authorities; ECOS semantics remain separately owned.",
+    "The CIR records correspondence standing as NOT_ESTABLISHED and semantic enforcement as SEMANTIC.",
+    "The current inspected direction is native-to-ECOS and cardinality remains unresolved.",
+    "CIVS already preserves exact source/target/basis/currentness/semantic-owner fields sufficient to investigate the problem without choosing mathematics."
+  ],
+  "non_claims": [
+    "FEDERATE is not proof of co-reference, equivalence, semantic adequacy, constitution, or mapping truth.",
+    "Bidirectional navigation does not imply invertibility.",
+    "A GENERALIZATION label in the D&I corpus does not supply a composition or inversion law.",
+    "Indexical relevance is not the correspondence relation; relevance-to-current-use and semantic mapping are separate jobs.",
+    "Persistence of a mapping claim would not confer standing or currentness.",
+    "No category-theoretic, relation-algebraic, lens-like, graph-morphism, ontology-alignment, or other mathematical formalism is selected by this handoff."
+  ],
+  "requirements": [
+    {
+      "id": "CR-01",
+      "label": "Identity and relation-kind semantics",
+      "status": "OPEN",
+      "question": "What exact semantic relation is being asserted between a native element and an ECOS Referent/Claim, and which identity distinctions must remain non-collapsible?",
+      "required_for": [
+        "any relied cross-domain mapping",
+        "co-reference/equivalence/generalization claims"
+      ],
+      "evidence_needed": [
+        "exact source/target identities and editions",
+        "native and ECOS semantic definitions",
+        "attributable relation-kind judgment"
+      ],
+      "falsifier": "Two distinct native elements or meanings are collapsed by the proposed relation without an explicit many-to-one judgment.",
+      "failure_consequence": "Keep correspondence NOT_ESTABLISHED; retain FEDERATE only as routing.",
+      "basis_refs": [
+        "civs:correspondence:native-to-ecos"
+      ],
+      "limits": [
+        "Do not infer relation kind from names or structural similarity."
+      ]
+    },
+    {
+      "id": "CR-02",
+      "label": "Directionality",
+      "status": "OPEN",
+      "question": "Is the relied relation native→ECOS, ECOS→native, bidirectional navigation, or a pair of independently warranted directional relations?",
+      "required_for": [
+        "lookup/traversal semantics",
+        "update propagation",
+        "consumer explanations"
+      ],
+      "evidence_needed": [
+        "directional worked cases",
+        "semantic-owner judgment",
+        "failure cases for reverse lookup"
+      ],
+      "falsifier": "Reverse traversal yields a semantically invalid or non-unique result while the model treats direction as symmetric.",
+      "failure_consequence": "Keep reverse direction unavailable/unqualified.",
+      "basis_refs": [
+        "civs:correspondence:native-to-ecos"
+      ],
+      "limits": [
+        "Direction is not implied by a stored edge."
+      ]
+    },
+    {
+      "id": "CR-03",
+      "label": "Cardinality",
+      "status": "OPEN",
+      "question": "What cardinalities are valid for each relation kind and use: 1:1, 1:N, N:1, N:M, or context-dependent?",
+      "required_for": [
+        "deterministic lookup",
+        "uniqueness claims",
+        "composition"
+      ],
+      "evidence_needed": [
+        "ordinary examples for each allowed cardinality",
+        "collision/ambiguity cases",
+        "declared uniqueness constraints"
+      ],
+      "falsifier": "An ordinary case requires multiple valid targets where the contract asserted uniqueness.",
+      "failure_consequence": "Do not provide a unique lookup contract; surface ambiguity.",
+      "basis_refs": [
+        "civs:correspondence:native-to-ecos"
+      ],
+      "limits": [
+        "Unknown cardinality must remain explicit."
+      ]
+    },
+    {
+      "id": "CR-04",
+      "label": "Partiality and undefined cases",
+      "status": "OPEN",
+      "question": "Can correspondence legitimately be undefined for some source/target elements, and how is absence distinguished from not-yet-qualified or failed lookup?",
+      "required_for": [
+        "safe lookup",
+        "graceful degradation",
+        "extension decisions"
+      ],
+      "evidence_needed": [
+        "positive mapping cases",
+        "legitimate no-mapping cases",
+        "qualification-pending cases"
+      ],
+      "falsifier": "The mechanism fabricates a target or extension merely because no mapping is found.",
+      "failure_consequence": "Represent partiality/unknown explicitly; HOLD affected promotion.",
+      "basis_refs": [
+        "civs:correspondence:native-to-ecos",
+        "wp6:d:native-source-down"
+      ],
+      "limits": [
+        "Do not totalize the mapping by convenience."
+      ]
+    },
+    {
+      "id": "CR-05",
+      "label": "Composition",
+      "status": "OPEN",
+      "question": "When A↔B and B↔C relations exist, under what conditions may A↔C be derived, and what proof/evidence must travel with the composition?",
+      "required_for": [
+        "multi-hop navigation",
+        "derived correspondence",
+        "high-confidence structural resurfacing"
+      ],
+      "evidence_needed": [
+        "at least two real multi-hop cases",
+        "counterexample where composition fails",
+        "evidence/currentness propagation rule"
+      ],
+      "falsifier": "Composed result changes meaning or standing even though individual links appear valid.",
+      "failure_consequence": "Do not compose automatically; preserve explicit hops.",
+      "basis_refs": [
+        "civs:correspondence:native-to-ecos"
+      ],
+      "limits": [
+        "A need for composition must be demonstrated before algebra is selected."
+      ]
+    },
+    {
+      "id": "CR-06",
+      "label": "Inversion and equivalence",
+      "status": "OPEN",
+      "question": "What conditions, if any, warrant an inverse relation or equivalence rather than merely reverse navigation?",
+      "required_for": [
+        "round-trip updates",
+        "equivalence claims",
+        "bidirectional synchronization"
+      ],
+      "evidence_needed": [
+        "round-trip cases",
+        "lossiness demonstration",
+        "semantic-owner equivalence judgment"
+      ],
+      "falsifier": "Round-trip loses information, produces multiple targets, or changes semantic scope.",
+      "failure_consequence": "Treat inverse/equivalence as NOT_ESTABLISHED.",
+      "basis_refs": [
+        "civs:correspondence:native-to-ecos"
+      ],
+      "limits": [
+        "No inverse follows from FEDERATE."
+      ]
+    },
+    {
+      "id": "CR-07",
+      "label": "Standing and currentness",
+      "status": "OPEN",
+      "question": "What independent standing/currentness belongs to the mapping claim, separate from standing/currentness of source and target objects?",
+      "required_for": [
+        "present-use reliance",
+        "audit/reentry",
+        "consumer trust"
+      ],
+      "evidence_needed": [
+        "mapping judgment receipt",
+        "source/target edition refs",
+        "currentness/requalification rule"
+      ],
+      "falsifier": "One side changes edition while the mapping remains silently CURRENT.",
+      "failure_consequence": "Mark mapping stale/unknown and requalify.",
+      "basis_refs": [
+        "research/civs/domain-semantic-admission.cir.json#verification"
+      ],
+      "limits": [
+        "Persistence is not currentness."
+      ]
+    },
+    {
+      "id": "CR-08",
+      "label": "Edition change and field reconstitution",
+      "status": "OPEN",
+      "question": "Which source/target changes invalidate, preserve, or require recomputation of correspondence, and which typed changes/requalification paths result?",
+      "required_for": [
+        "schema evolution",
+        "source upgrades",
+        "field reconstitution"
+      ],
+      "evidence_needed": [
+        "edition-change cases",
+        "dependency map",
+        "requalification outcome"
+      ],
+      "falsifier": "A consequential source/target edition change leaves relied mapping unchanged without an attributable reconciliation.",
+      "failure_consequence": "Trigger dependency/requalification review; do not hide coordinate change.",
+      "basis_refs": [
+        "research/civs/domain-semantic-admission.cir.json#field_reconstitution"
+      ],
+      "limits": [
+        "Reseat is only one possible downstream typed change."
+      ]
+    },
+    {
+      "id": "CR-09",
+      "label": "Indexical use-basis separation",
+      "status": "OPEN",
+      "question": "How is a semantically valid mapping distinguished from its relevance/applicability under the current R/B/G/F and intended use?",
+      "required_for": [
+        "cross-context resurfacing",
+        "projection delta",
+        "current-use admission"
+      ],
+      "evidence_needed": [
+        "same mapping under at least two different G/F/use bases",
+        "case where mapping exists but is not consequential"
+      ],
+      "falsifier": "Stored mapping is automatically promoted into present relevance/standing.",
+      "failure_consequence": "Keep mapping dormant/candidate until current-use qualification.",
+      "basis_refs": [
+        "BRAIN:b7e633f7-a063-4ead-a521-c22e0d060c3e",
+        "server/orchestration.ts"
+      ],
+      "limits": [
+        "Indexical relevance remains a derived situated relation, not a mapping primitive."
+      ]
+    },
+    {
+      "id": "CR-10",
+      "label": "Semantic ownership and authority",
+      "status": "OPEN",
+      "question": "Who may assert/revise/reject the mapping semantics, and how are native authority, ECOS governance, coordination, custody, and action authority kept separate?",
+      "required_for": [
+        "governance",
+        "conflict resolution",
+        "future automated updates"
+      ],
+      "evidence_needed": [
+        "role-specific authority refs",
+        "conflict/escalation case",
+        "custody versus semantic-owner distinction"
+      ],
+      "falsifier": "A repository owner, assignee, or automated worker silently becomes semantic authority.",
+      "failure_consequence": "HOLD semantic mutation; route to named semantic/Principal authority.",
+      "basis_refs": [
+        "research/civs/domain-semantic-admission.cir.json#role_assignments"
+      ],
+      "limits": [
+        "Assignment and custody do not confer semantic authority."
+      ]
+    },
+    {
+      "id": "CR-11",
+      "label": "Evidence and falsifiability",
+      "status": "OPEN",
+      "question": "What evidence is sufficient for each mapping claim, and which observations would falsify or narrow it?",
+      "required_for": [
+        "qualification",
+        "machine checking",
+        "cold-reader verification"
+      ],
+      "evidence_needed": [
+        "positive worked cases",
+        "hostile/negative controls",
+        "evidence sensitivity refs"
+      ],
+      "falsifier": "Mapping survives a targeted negative case that should change its disposition or scope.",
+      "failure_consequence": "Downgrade/revise mapping and affected dependent claims.",
+      "basis_refs": [
+        "tests/civs/contract.test.ts",
+        "docs/civs-reentry.md"
+      ],
+      "limits": [
+        "Structural tests cannot substitute for semantic evidence."
+      ]
+    },
+    {
+      "id": "CR-12",
+      "label": "Multiplicity and uncertainty",
+      "status": "OPEN",
+      "question": "Can multiple incompatible/provisional mappings coexist, and how are confidence/uncertainty and decision consequences represented without scalar truth collapse?",
+      "required_for": [
+        "open research/frontier cases",
+        "multiple frameworks/editions",
+        "consumer agency"
+      ],
+      "evidence_needed": [
+        "case with competing mappings",
+        "routing rule for unresolved alternatives",
+        "explicit decision consequence"
+      ],
+      "falsifier": "System silently chooses one plausible mapping where evidence supports multiple alternatives.",
+      "failure_consequence": "Preserve alternatives/QF; do not collapse to one mapping.",
+      "basis_refs": [
+        "BRAIN:06b3ca69-0805-45aa-8ab9-cc75d618894b"
+      ],
+      "limits": [
+        "Do not introduce probabilistic machinery until an ordinary case earns it."
+      ]
+    },
+    {
+      "id": "CR-13",
+      "label": "Update propagation",
+      "status": "OPEN",
+      "question": "If a mapping is used to propagate edits or generated objects, what may propagate, in which direction, under whose authority, and how are conflicts/rollback handled?",
+      "required_for": [
+        "future graphical controls",
+        "bidirectional model synchronization",
+        "machine action"
+      ],
+      "evidence_needed": [
+        "authorized update case",
+        "conflict case",
+        "rollback/audit evidence"
+      ],
+      "falsifier": "A correspondence causes unauthorized or semantically lossy mutation.",
+      "failure_consequence": "No propagation; mapping remains read/navigate-only.",
+      "basis_refs": [
+        "docs/capability-inspection-verification-spine-plan.md#two-door"
+      ],
+      "limits": [
+        "Current CIVS work does not authorize bidirectional semantic mutation."
+      ]
+    },
+    {
+      "id": "CR-14",
+      "label": "Consumer legibility",
+      "status": "OPEN",
+      "question": "What minimum mapping/proof/currentness information must human and agent consumers see to understand why a cross-domain result is safe to rely on?",
+      "required_for": [
+        "two-door substrate",
+        "cold reentry",
+        "future dashboards"
+      ],
+      "evidence_needed": [
+        "fresh-reader case",
+        "consumer simulation falsifier",
+        "omission visibility test"
+      ],
+      "falsifier": "Consumer interprets FEDERATE or visual adjacency as equivalence/truth.",
+      "failure_consequence": "Expose relation kind, standing/currentness, evidence, omissions and QF; HOLD reliance if hidden.",
+      "basis_refs": [
+        "docs/civs-reentry.md",
+        "research/civs/domain-semantic-admission.cir.json#consumer_simulations"
+      ],
+      "limits": [
+        "Consumer accommodation does not define mapping truth."
+      ]
+    }
+  ],
+  "formalism_gate": {
+    "status": "NOT_EARNED",
+    "selected_formalism": null,
+    "admission_triggers": [
+      "At least two ordinary cases require machine-checkable multi-hop composition, inversion, partial mapping, cardinality, or update-propagation behavior that the current typed relation + evidence/currentness contract cannot express without ad hoc hidden logic.",
+      "A demonstrated correctness/reentry failure is attributable to missing mapping semantics rather than missing evidence, currentness, authority, or consumer exposure.",
+      "The required behavior is reusable across more than one specific native construct/domain case and has explicit falsifiers."
+    ],
+    "must_preserve": [
+      "exact source/target identity and editions",
+      "native semantic ownership separate from ECOS governance",
+      "partiality and unresolved alternatives",
+      "direction/cardinality without forced symmetry",
+      "mapping standing/currentness separate from object standing",
+      "attributable evidence and semantic owner",
+      "typed change/requalification on consequential edition/basis change",
+      "human/agent legibility and exact reentry",
+      "no standing by persistence or mathematical elegance",
+      "separation of correspondence from indexical relevance"
+    ],
+    "stop_conditions": [
+      "If typed URG native_relation plus explicit correspondence-inspection fields and evidence are sufficient for current ordinary cases, do not add a mathematical formalism.",
+      "If the perceived problem is actually missing native evidence, consumer exposure, authority, or currentness, repair that layer instead of formalizing correspondence.",
+      "If a candidate would require reopening the URG Level/Quadrant kernel, inventing a universal primitive, or reifying indexical relevance, return the demonstrated blocker before mutation."
+    ],
+    "mind_changers": [
+      "Repeated ordinary multi-hop composition cases may earn explicit compositional machinery.",
+      "A real bidirectional synchronized-update case with loss/conflict behavior may earn an invertible/partial update formalism.",
+      "Persistent competing/uncertain mappings may earn richer mapping-state/uncertainty custody.",
+      "An authoritative native API may already provide mapping identity/version semantics that ECOS should inherit/federate instead of re-deriving."
+    ]
+  },
+  "next_reentry": {
+    "work_package_ref": "CIVS:WP8:qualification",
+    "route": "Use docs/civs-reentry.md plus this handoff and the current CIR to prepare/run cold-reader, pointer/currentness, independent worked-trace, and degradation checks.",
+    "condition": "Do not mark correspondence formalism selected or fresh-agent behavior qualified until independent evidence exists.",
+    "evidence_required": [
+      "fresh cold-reader return over the fourteen-item contract",
+      "pointer/currentness recovery on exact refs",
+      "independent reproduction of worked FEDERATE trace and negative control",
+      "WP6 degradation-route checks",
+      "visible record of any HOLD/failure"
+    ]
+  },
+  "source_refs": [
+    "research/civs/domain-semantic-admission.cir.json",
+    "research/civs/domain-semantic-admission-portability-v0.1.json",
+    "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json",
+    "server/domain-admission.ts",
+    "tests/civs/contract.test.ts",
+    "docs/civs-reentry.md",
+    "BRAIN:06b3ca69-0805-45aa-8ab9-cc75d618894b",
+    "BRAIN:b7e633f7-a063-4ead-a521-c22e0d060c3e"
+  ],
+  "omissions": [
+    "No correspondence formalism is selected.",
+    "No semantic correspondence claim is promoted to SUPPORTED.",
+    "No bidirectional update/action behavior is authorized.",
+    "No new URG primitive or mapping persistence lifecycle is installed.",
+    "No fresh-agent qualification is performed by this handoff."
+  ]
+}
