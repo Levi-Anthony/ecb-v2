@@ -97,3 +97,10 @@ Current exact mechanical evidence is rebound to main `b9d04a5122769b9d92d30a97a7
 WP8 mechanical/currentness qualification `ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2` is now an explicit CIR projection. Run `37712149843` supports the bounded pointer/currentness/independent-trace/ladder/degradation/correspondence checks.
 
 The overall CIVS qualification remains **PARTIAL_HOLD**. Independent fresh-reader behavioral evidence is still absent and is carried as `civs:qf:wp8:fresh-reader`; connected consumer use and operational sustainment remain separately open. No self-evaluation is promoted to cold-reader evidence.
+
+
+## WP8 fresh-reader attempt 01 — contaminated diagnostic return
+
+The first externally run cold-reader attempt returned all fourteen required items and successfully traversed the durable source system, but declared **CONTAMINATED** because consequential prior SIGMA/ECOS project memory was injected before source inspection. It is therefore admissible as defect-discovery/source-audit evidence only, not as behavioral qualification.
+
+Repairs earned by the return: explicit repository identity/path resolution; canonical BRAIN identity versus connector-resolution semantics; historical-support versus present-currentness/precedence rules; explicit responsibility-level QUALIFY versus request-level HOLD semantics; and an explicit contamination fail-visible route. Qualification advances to `...qualification...:v0.3` but remains **PARTIAL_HOLD** pending an uncontaminated attempt.

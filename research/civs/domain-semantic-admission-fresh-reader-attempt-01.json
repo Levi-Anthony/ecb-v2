@@ -1,0 +1,90 @@
+{
+  "contract": "ecos:civs-fresh-reader-attempt:0.1.0",
+  "attempt_id": "ecos:civs:domain-semantic-admission:fresh-reader-attempt:2026-10-07:01",
+  "cir_ref": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4",
+  "procedure_ref": "ecos:civs-cold-reentry:0.1.0",
+  "repository_ref": "github:Levi-Anthony/ecb-v2",
+  "test_status": "CONTAMINATED",
+  "source_entry_success": true,
+  "required_items_returned": 14,
+  "currentness_basis": {
+    "cir_as_of_ref": "github:Levi-Anthony/ecb-v2:2fcc0d6e7b4358c9804f9f90ac79af61557ce839",
+    "cir_observed_at_ref": "GitHubActions:37712149843:SUCCESS",
+    "independently_observed_repository_head": "github:Levi-Anthony/ecb-v2:dc5fbe112c6a36f923cc644ae7d9d5dc53e8e40b"
+  },
+  "evidence_admissibility": {
+    "fresh_reader_behavior": false,
+    "source_audit": true,
+    "defect_discovery": true,
+    "reason": "Consequential prior SIGMA/ECOS project memory was injected before source inspection."
+  },
+  "contamination": {
+    "consequential": true,
+    "declared_categories": [
+      "prior SIGMA/ECOS project summaries/memories",
+      "PGO terminology and historical expansion cues",
+      "URG/Quadrant interpretations",
+      "standing/authority distinctions",
+      "source-custody history",
+      "ECO-202/ECO-214/ECO-218 role context"
+    ],
+    "consequence": "The attempt cannot establish memory-free cold-reader transfer even though its claims were subsequently grounded in durable sources."
+  },
+  "diagnostic_findings": [
+    {
+      "id": "attempt01:defect:repository-identity",
+      "classification": "CIVS_TRANSFER_DEFECT",
+      "finding": "Repository-relative entry handles lacked an explicit repository identity; local lookup and generic GitHub search did not self-resolve the intended files.",
+      "repair": "Add github:Levi-Anthony/ecb-v2 identity and path-resolution rule to the reentry procedure."
+    },
+    {
+      "id": "attempt01:defect:brain-resolution",
+      "classification": "CIVS_TRANSFER_DEFECT",
+      "finding": "BRAIN:<UUID> identified canonical records but the available BRAIN connector failed to resolve governing records that were recoverable from the authorized canonical Supabase-backed substrate.",
+      "repair": "Separate canonical BRAIN identity from adapter implementation; allow exact-UUID recovery through an authorized adapter to the same canonical substrate while reporting connector degradation."
+    },
+    {
+      "id": "attempt01:defect:currentness-generations",
+      "classification": "CIVS_LEGIBILITY_DEFECT",
+      "finding": "Current CIR evidence spans multiple historical deployments/CI generations whose ACTIVE/RELIED labels can be mistaken for newest-current evidence.",
+      "repair": "Add explicit historical-support versus present-currentness/precedence rules; ACTIVE does not mean newest."
+    },
+    {
+      "id": "attempt01:defect:qualification-lineage",
+      "classification": "CIVS_LEGIBILITY_DEFECT",
+      "finding": "CIR v1.4 points to WP8 qualification v0.2 from the prior qualification lineage; the lineage is valid but easy to flatten.",
+      "repair": "Create qualification v0.3 against CIR v1.4 and record attempt 01 without claiming fresh-reader success."
+    },
+    {
+      "id": "attempt01:defect:qualify-vs-hold",
+      "classification": "CIVS_SEMANTIC_LEGIBILITY_DEFECT",
+      "finding": "QUALIFY at responsibility level does not necessarily imply request-level HOLD; the distinction depends on current-use blocking.",
+      "repair": "Make responsibility decision versus request result explicit in reentry and test both nonblocking and blocking negative controls."
+    },
+    {
+      "id": "attempt01:defect:historical-governance-cues",
+      "classification": "CIVS_CURRENTNESS_DEFECT",
+      "finding": "Historical sources can contain older PGO expansions, stale next-action language, and expired authority envelopes that remain easy to overread.",
+      "repair": "Add governing precedence/currentness rule: later explicit OPEN/superseding records control current use; expired envelopes remain historical evidence only."
+    }
+  ],
+  "correctly_preserved_nondefects": [
+    "Connected consumer exposure/use remains NOT_ESTABLISHED under ECO-218.",
+    "Operational sustainment/hosted-use remains NOT_ESTABLISHED under ECO-214.",
+    "Semantic correspondence/formalism remains unresolved.",
+    "URG Level is not inferred from CIVS working-band placement.",
+    "PGO Namecrafting remains OPEN.",
+    "Indexical relevance remains reconciliation/binding behavior, not a new primitive."
+  ],
+  "unavailable_or_unqualified_surfaces": [
+    "Exact historical connected:ECB-v2-BRAIN action snapshot as an independently inspectable artifact.",
+    "Currently exposed connected consumer advertising inquiry.domain_admission.",
+    "Historical original WP0 39-object manifest.",
+    "Uncontaminated independent fresh-reader behavioral observation."
+  ],
+  "reentry_route": "civs:qf:wp8:fresh-reader -> wp8:gate:fresh-reader -> CIVS:WP8:fresh-reader-qualification",
+  "limits": [
+    "This record summarizes the supplied worker return; it does not promote the contaminated run to behavioral qualification.",
+    "No hosted effects, consumer refresh, correspondence formalism, or provider failover is authorized by this record."
+  ]
+}

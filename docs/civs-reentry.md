@@ -1,9 +1,12 @@
 # CIVS cold-agent reentry procedure
 
-**Procedure edition:** `ecos:civs-cold-reentry:0.1.0`  
-**Authoritative entry handle:** `research/civs/domain-semantic-admission.cir.json`  
-**Human projection:** `docs/civs-domain-semantic-admission.md`  
+**Procedure edition:** `ecos:civs-cold-reentry:0.1.1`  
+**Repository identity:** `github:Levi-Anthony/ecb-v2`  
+**Authoritative entry handle:** `research/civs/domain-semantic-admission.cir.json` within that repository  
+**Human projection:** `docs/civs-domain-semantic-admission.md` within that repository  
 **Governing CIVS plan:** BRAIN `c5871f89-0c51-462d-831b-c90897a95e81` + accepted amendment `73994c17-d5b5-48d1-9698-fa656c393e91`.
+
+Repository-relative paths in this procedure resolve inside `Levi-Anthony/ecb-v2`. If the current repository head is newer than the CIR's `verification.as_of_ref`, inspect the delta before relying on "current" claims. A later inspection-only/documentation delta may be recorded as such; a consequential runtime/semantic/authority delta requires requalification.
 
 This is an **instruction projection** over the Capability Inspection Record (CIR). It does not create a new semantic primitive, capability registry, truth store, standing, or authority surface.
 
@@ -15,6 +18,37 @@ This is an **instruction projection** over the Capability Inspection Record (CIR
 - **Commission custody:** BRAIN is first-class commission custody. Persistence never confers truth or standing.
 - **Correspondence:** no mathematical formalism is selected. FEDERATE is structural admission under declared premises only.
 - **Two-door invariant:** the machine CIR is the shared inspected record; the Markdown is a human projection from that same record, not a second truth model.
+
+## Qualification-isolation preflight
+
+When this procedure is used for the WP8 independent fresh-reader qualification, the evaluation environment is itself part of the evidence boundary.
+
+- If prior SIGMA/ECOS conversation history, project summaries, saved/project memory, or other consequential project context is injected before source inspection, return **CONTAMINATED**.
+- A contaminated worker may continue a read-only diagnostic audit and report defects, but its performance MUST NOT upgrade `wp8:gate:fresh-reader`.
+- Tool-interface documentation and generic connector/skill instructions are not project evidence unless they themselves contain project-specific conclusions.
+- Preserve the exact contamination source/category in the return.
+
+For ordinary non-qualification reentry, available authorized context may be used, but source standing/currentness still governs claims.
+
+## Source identity and resolver rules
+
+- A repository-relative path is not globally self-resolving: pair it with `github:Levi-Anthony/ecb-v2`.
+- A `BRAIN:<UUID>` reference names the canonical BRAIN record; it does **not** name one mandatory connector implementation.
+- Preferred BRAIN resolution is exact fetch/read by canonical UUID through the BRAIN interface.
+- If that adapter cannot resolve the record but an authorized adapter to the same canonical BRAIN substrate is available, recover the **same UUID** through that substrate, report the connector as degraded, and preserve BRAIN as the custody identity.
+- Do not conclude that a BRAIN record is absent merely because one connector cannot resolve it. If the canonical record cannot be recovered through any authorized route, return `SOURCE_UNAVAILABLE`.
+- Do not replace BRAIN custody with GitHub, Linear, or an arbitrary database row merely because those surfaces are reachable.
+
+## Currentness and precedence rules
+
+Historical evidence may remain addressable and relied upon for the proposition it originally established. That does not make it the latest current surface.
+
+- `activation: ACTIVE` means the relation/object remains active in the current inspection graph; it does **not** mean "newest deployment" or "currently authoritative".
+- Determine present applicability from the claim's standing, `currentness_ref`, supersession/verification basis, and any newer consequential delta.
+- When a current CIR retains older deployment/CI/source references, distinguish **historical support** from the **current readback** rather than flattening them.
+- An explicit later governing record that leaves a matter OPEN (for example PGO Namecrafting) controls current use over older convenient expansions.
+- An expired effect envelope or stale "current next action" heading remains historical evidence; it does not revive authority.
+- If source generations conflict and no precedence/currentness rule resolves them, return `QUESTION_FORWARD_OPEN` or `AUTHORITY_NOT_ESTABLISHED` as applicable.
 
 ## Reentry algorithm
 
@@ -99,6 +133,8 @@ Required proof boundary:
 
 No verification link inherits support merely because it is adjacent to another link.
 
+Keep the **responsibility-level decision** separate from the **request-level result**. In Domain-Semantic Admission, a responsibility may return `QUALIFY` while the request remains `READY` when that responsibility is not required for current use. A request-level `HOLD` is earned only when a blocking condition applies, such as `required_for_current_use=true` on a qualification-required responsibility. Do not translate every `QUALIFY` into request-level HOLD.
+
 ### 7 — Inspect field reconstitution without inventing a generic Change
 
 Read `field_reconstitution`.
@@ -165,6 +201,7 @@ Return HOLD with the exact reason when any consequential bridge is unavailable o
 - **AUTHORITY_NOT_ESTABLISHED:** the desired action exceeds the located authorization/effect boundary.
 - **QUESTION_FORWARD_OPEN:** the requested conclusion depends on an unresolved discriminator.
 - **CORRESPONDENCE_NOT_ESTABLISHED:** structural FEDERATE evidence is being asked to carry semantic/mathematical correspondence truth.
+- **FRESH_READER_CONTAMINATED:** the WP8 qualification environment exposed consequential project context outside the allowed durable entry surfaces. Continue only as a diagnostic audit; do not upgrade behavioral qualification.
 
 A HOLD is a usable reentry result, not a generic failure.
 
@@ -208,7 +245,7 @@ If any answer cannot be supported, return the corresponding HOLD rather than inv
 
 ## Qualification standing
 
-WP8 mechanical/currentness qualification is now installed at `research/civs/domain-semantic-admission-qualification-v0.2.json` with overall disposition **PARTIAL_HOLD**.
+WP8 qualification is now current at `research/civs/domain-semantic-admission-qualification-v0.3.json` with overall disposition **PARTIAL_HOLD**. Attempt 01 is recorded at `research/civs/domain-semantic-admission-fresh-reader-attempt-01.json` as **CONTAMINATED**: it completed a useful source audit and returned all fourteen items, but it is not admissible evidence of memory-free fresh-reader behavior.
 
 Supported in that qualification: repository pointer integrity; bounded external currentness readback; an independently derived FEDERATE/QUALIFY worked trace; installation-ladder separation; WP6 degradation routes; and the WP7 correspondence/non-formalization gate.
 

@@ -5,7 +5,8 @@ import { evaluateDIBoundary, type AtomicResponsibility, type BoundaryDisposition
 import { systemsEngineeringNativePackages } from '../../server/native-packages/systems-engineering.ts';
 import { renderCivsQualificationRecord, validateCivsQualificationRecord, type CivsQualificationRecord } from '../../server/civs-qualification.ts';
 
-const q=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission-qualification-v0.2.json',import.meta.url),'utf8')) as CivsQualificationRecord;
+const q=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission-qualification-v0.3.json',import.meta.url),'utf8')) as CivsQualificationRecord;
+const attempt01=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission-fresh-reader-attempt-01.json',import.meta.url),'utf8'));
 const cir=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission.cir.json',import.meta.url),'utf8'));
 const matrix=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission-portability-v0.1.json',import.meta.url),'utf8'));
 const handoff=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission-correspondence-handoff-v0.1.json',import.meta.url),'utf8'));
@@ -128,4 +129,31 @@ test('CIR v1.4 binds WP8 partial qualification and exposes fresh-reader Question
   const reentry=readFileSync(new URL('../../docs/civs-reentry.md',import.meta.url),'utf8');
   assert.match(reentry,/PARTIAL_HOLD/);
   assert.match(reentry,/civs:qf:wp8:fresh-reader/);
+});
+
+
+test('contaminated attempt 01 is diagnostic evidence, not behavioral qualification',()=>{
+  assert.equal(attempt01.test_status,'CONTAMINATED');
+  assert.equal(attempt01.source_entry_success,true);
+  assert.equal(attempt01.required_items_returned,14);
+  assert.equal(attempt01.evidence_admissibility.fresh_reader_behavior,false);
+  assert.equal(attempt01.evidence_admissibility.defect_discovery,true);
+  assert.equal(q.cir_ref,'ecos:cir:domain-semantic-admission:2026-10-07:v1.4');
+  assert.equal(q.qualification_id,'ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.3');
+  assert.equal(q.checks.find(x=>x.id==='wp8:check:fresh-reader')?.standing,'NOT_ESTABLISHED');
+  assert.equal(q.checks.find(x=>x.id==='wp8:check:fresh-reader-attempt-01-diagnostic')?.standing,'SUPPORTED');
+  assert(q.residual_gates.some(x=>x.id==='wp8:gate:fresh-reader'&&x.standing==='HOLD'));
+});
+
+test('worked trace distinguishes responsibility QUALIFY from request-level HOLD',()=>{
+  const corpus=JSON.parse(readFileSync(new URL('../../research/systems-engineering/DI-Native-Package-Boundary-v0.1.json',import.meta.url),'utf8'));
+  const base=JSON.parse(JSON.stringify(corpus.responsibilities.find((x:{id:string})=>x.id==='native-to-ecos-correspondence'))) as AtomicResponsibility;
+  const noTargets=JSON.parse(JSON.stringify(base)) as AtomicResponsibility; noTargets.correspondence_targets=[]; noTargets.required_for_current_use=false;
+  const nonblocking=evaluateDIBoundary({domain:corpus.domain,inquiry_basis_ref:corpus.inquiry_basis_ref,package_ids:corpus.package_ids,responsibilities:[noTargets]},systemsEngineeringNativePackages);
+  assert.equal(nonblocking.decisions[0].disposition,'QUALIFY');
+  assert.equal(nonblocking.result,'READY');
+  const required=JSON.parse(JSON.stringify(noTargets)) as AtomicResponsibility; required.required_for_current_use=true;
+  const blocking=evaluateDIBoundary({domain:corpus.domain,inquiry_basis_ref:corpus.inquiry_basis_ref,package_ids:corpus.package_ids,responsibilities:[required]},systemsEngineeringNativePackages);
+  assert.equal(blocking.decisions[0].disposition,'QUALIFY');
+  assert.equal(blocking.result,'HOLD');
 });

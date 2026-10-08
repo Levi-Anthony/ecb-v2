@@ -1,0 +1,356 @@
+{
+  "contract": "ecos:civs-qualification-record:0.1.0",
+  "qualification_id": "ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.3",
+  "cir_ref": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4",
+  "basis_ref": "BRAIN:c5871f89-0c51-462d-831b-c90897a95e81#WP8",
+  "observed_baseline_ref": "github:Levi-Anthony/ecb-v2:dc5fbe112c6a36f923cc644ae7d9d5dc53e8e40b",
+  "overall_disposition": "PARTIAL_HOLD",
+  "checks": [
+    {
+      "id": "wp8:check:pointer-integrity",
+      "label": "Repository pointer integrity",
+      "standing": "SUPPORTED",
+      "enforcement_mode": "STRUCTURAL",
+      "proposition": "All consequential local file pointers reachable from the CIR/WP6/WP7 qualification aperture resolve to existing repository objects.",
+      "method_ref": "tests/civs/qualification.test.ts#pointer-integrity",
+      "evidence_refs": [
+        "GitHubActions:37711971500",
+        "tests/civs/qualification.test.ts#pointer-integrity"
+      ],
+      "limits": [
+        "External service identifiers are checked separately by currentness readback."
+      ],
+      "currentness_ref": "github:commit:a2dc514dfac8d532bda9660a18249dc2117e053e"
+    },
+    {
+      "id": "wp8:check:currentness-readback",
+      "label": "External currentness readback",
+      "standing": "SUPPORTED",
+      "enforcement_mode": "OBSERVATIONAL",
+      "proposition": "WP8 re-read current main/CI, exact Production deployment, Linear coordination state, Supabase project health, connected consumer exposure, and the BRAIN capture-contract seam without silently repairing or promoting any degraded surface.",
+      "method_ref": "WP8:live-readback:GitHub+Vercel+Linear+Supabase+BRAIN",
+      "evidence_refs": [
+        "github:main@1835eeba0ae4b1accf6d7c0db5fa6087f6dae6cf",
+        "GitHubActions:37711351516",
+        "Vercel:dpl_8hC8ba3Zj3dtNuSQpM8BJekm3NZq:READY@1835eeba0ae4b1accf6d7c0db5fa6087f6dae6cf",
+        "Linear:ECO-202@2026-10-08T00:34:30.956Z",
+        "Linear:ECO-218@2026-10-07T18:41:37.809Z",
+        "Linear:ECO-214@2026-10-07T18:33:38.164Z",
+        "Linear:ECO-51@2026-10-07T18:33:42.599Z",
+        "Supabase:vezxivrvhakclxuvxzso:ACTIVE_HEALTHY",
+        "connected:ECB-v2-BRAIN:search-schema:query+limit-only:2026-10-07",
+        "BRAIN:capture_thought:INVALID_ARGUMENT:operation_id-required:2026-10-07"
+      ],
+      "currentness_ref": "WP8:live-readback:2026-10-07T17:45-07:00",
+      "limits": [
+        "This is a time-bounded external observation, not longitudinal sustainment.",
+        "Consumer/capture degradation remains distinct from backend or canonical BRAIN substrate availability."
+      ]
+    },
+    {
+      "id": "wp8:check:independent-trace",
+      "label": "Independent worked FEDERATE/QUALIFY trace",
+      "standing": "SUPPORTED",
+      "enforcement_mode": "STRUCTURAL",
+      "proposition": "A test-local derivation from the documented gate rules independently predicts FEDERATE for the exact corpus atom and QUALIFY/CORRESPONDENCE_TARGET_REQUIRED when targets are removed, then agrees with the installed evaluator.",
+      "method_ref": "tests/civs/qualification.test.ts#independent-trace",
+      "evidence_refs": [
+        "GitHubActions:37711971500",
+        "tests/civs/qualification.test.ts#independent-trace",
+        "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json",
+        "server/domain-admission.ts"
+      ],
+      "limits": [
+        "Independence is from evaluator implementation logic, not from the repository or semantic premises."
+      ],
+      "currentness_ref": "github:commit:a2dc514dfac8d532bda9660a18249dc2117e053e"
+    },
+    {
+      "id": "wp8:check:installation-ladder",
+      "label": "Installation-ladder audit",
+      "standing": "SUPPORTED",
+      "enforcement_mode": "STRUCTURAL",
+      "proposition": "The qualification preserves the independent ladder: specified/implemented/mechanically-qualified/integrated/deployed supported at bounded scope while connected exposed/situated-use-qualified/operationally-sustained remain not established.",
+      "method_ref": "tests/civs/qualification.test.ts#installation-ladder",
+      "evidence_refs": [
+        "GitHubActions:37711971500",
+        "tests/civs/qualification.test.ts#installation-ladder",
+        "research/civs/domain-semantic-admission.cir.json",
+        "Vercel:dpl_8hC8ba3Zj3dtNuSQpM8BJekm3NZq"
+      ],
+      "limits": [
+        "A correct audit does not itself upgrade any rung."
+      ],
+      "currentness_ref": "github:commit:a2dc514dfac8d532bda9660a18249dc2117e053e"
+    },
+    {
+      "id": "wp8:check:degradation-routes",
+      "label": "WP6 degradation-route audit",
+      "standing": "SUPPORTED",
+      "enforcement_mode": "STRUCTURAL",
+      "proposition": "Key degradation cases retain visible HOLD/DEGRADE/CONTINUE behavior and never promote semantic standing.",
+      "method_ref": "tests/civs/qualification.test.ts#degradation-routes",
+      "evidence_refs": [
+        "GitHubActions:37711971500",
+        "tests/civs/qualification.test.ts#degradation-routes",
+        "research/civs/domain-semantic-admission-portability-v0.1.json"
+      ],
+      "limits": [
+        "Predicted provider outages remain unexecuted."
+      ],
+      "currentness_ref": "github:commit:a2dc514dfac8d532bda9660a18249dc2117e053e"
+    },
+    {
+      "id": "wp8:check:correspondence-gate",
+      "label": "WP7 correspondence non-formalization gate",
+      "standing": "SUPPORTED",
+      "enforcement_mode": "STRUCTURAL",
+      "proposition": "CR-01..CR-14 remain present, semantic correspondence remains unestablished, and formalism selection remains NOT_EARNED/NONE.",
+      "method_ref": "tests/civs/qualification.test.ts#correspondence-gate",
+      "evidence_refs": [
+        "GitHubActions:37711971500",
+        "tests/civs/qualification.test.ts#correspondence-gate",
+        "research/civs/domain-semantic-admission-correspondence-handoff-v0.1.json"
+      ],
+      "limits": [
+        "Requirements completeness is not semantic mapping truth."
+      ],
+      "currentness_ref": "github:commit:a2dc514dfac8d532bda9660a18249dc2117e053e"
+    },
+    {
+      "id": "wp8:check:fresh-reader",
+      "label": "Independent fresh-reader behavioral qualification",
+      "standing": "NOT_ESTABLISHED",
+      "enforcement_mode": "OBSERVATIONAL",
+      "proposition": "A genuinely separate fresh authorized agent, given only the CIR/reentry handle and ordinary source access, returns the fourteen required distinctions without conversational bridges.",
+      "method_ref": "research/civs/domain-semantic-admission-fresh-reader-attempt-01.json",
+      "evidence_refs": [
+        "research/civs/domain-semantic-admission-fresh-reader-attempt-01.json"
+      ],
+      "limits": [
+        "Attempt 01 returned all fourteen required items but was CONTAMINATED by consequential prior project memory.",
+        "Its source audit/defect findings are admissible diagnostic evidence; its behavioral performance is not admissible as memory-free cold-reader qualification."
+      ]
+    },
+    {
+      "id": "wp8:check:fresh-reader-attempt-01-diagnostic",
+      "label": "Fresh-reader attempt 01 diagnostic audit",
+      "standing": "SUPPORTED",
+      "enforcement_mode": "OBSERVATIONAL",
+      "proposition": "Attempt 01 successfully entered the durable source system, returned all fourteen required items, preserved relevant HOLDs, and exposed transfer/currentness defects, while explicitly declaring contamination and refusing to claim fresh-reader qualification.",
+      "method_ref": "research/civs/domain-semantic-admission-fresh-reader-attempt-01.json",
+      "evidence_refs": [
+        "research/civs/domain-semantic-admission-fresh-reader-attempt-01.json"
+      ],
+      "currentness_ref": "github:main@dc5fbe112c6a36f923cc644ae7d9d5dc53e8e40b",
+      "limits": [
+        "SUPPORTED only as a diagnostic audit outcome.",
+        "Does not establish isolation from prior memory or close wp8:gate:fresh-reader."
+      ]
+    }
+  ],
+  "currentness_observations": [
+    {
+      "id": "wp8:obs:main",
+      "surface": "GitHub main",
+      "observation": "main is 1835eeba0ae4b1accf6d7c0db5fa6087f6dae6cf and CIVS run 37711351516 is SUCCESS.",
+      "standing": "OBSERVED",
+      "evidence_refs": [
+        "github:commit:1835eeba0ae4b1accf6d7c0db5fa6087f6dae6cf",
+        "GitHubActions:37711351516"
+      ],
+      "currentness_ref": "github:main@1835eeba0ae4b1accf6d7c0db5fa6087f6dae6cf",
+      "consequence": "WP8 uses CIR v1.3 as its exact qualification source.",
+      "limits": [
+        "The CIR's internal evidence basis is b9d04a5; b9d→1835 changes only CIR/docs/test reconciliation objects."
+      ]
+    },
+    {
+      "id": "wp8:obs:source-equivalence",
+      "surface": "Runtime source delta",
+      "observation": "b9d04a5→1835eeb changes only docs/civs-contract.md, docs/civs-domain-semantic-admission.md, research/civs/domain-semantic-admission.cir.json, and tests/civs/correspondence.test.ts.",
+      "standing": "OBSERVED",
+      "evidence_refs": [
+        "GitHubCompare:b9d04a5122769b9d92d30a97a762466f341fc1ea...1835eeba0ae4b1accf6d7c0db5fa6087f6dae6cf"
+      ],
+      "currentness_ref": "github:commit:1835eeba0ae4b1accf6d7c0db5fa6087f6dae6cf",
+      "consequence": "No Domain-Semantic Admission runtime-source change is hidden by the CIR installation commit.",
+      "limits": [
+        "This is source-scope equivalence, not a claim that every external surface is unchanged."
+      ]
+    },
+    {
+      "id": "wp8:obs:deployment",
+      "surface": "Vercel Production",
+      "observation": "dpl_8hC8ba3Zj3dtNuSQpM8BJekm3NZq is READY at exact 1835eeba0ae4b1accf6d7c0db5fa6087f6dae6cf.",
+      "standing": "OBSERVED",
+      "evidence_refs": [
+        "Vercel:dpl_8hC8ba3Zj3dtNuSQpM8BJekm3NZq"
+      ],
+      "currentness_ref": "Vercel:dpl_8hC8ba3Zj3dtNuSQpM8BJekm3NZq:READY@1835eeba0ae4b1accf6d7c0db5fa6087f6dae6cf",
+      "consequence": "Deployment currentness is independently current; connected exposure/use remain separate.",
+      "limits": [
+        "READY does not prove authenticated execution, exposure, situated use, or sustainment."
+      ]
+    },
+    {
+      "id": "wp8:obs:linear",
+      "surface": "Linear coordination",
+      "observation": "ECO-202 Working/Levi; ECO-218 Needs Input/Levi; ECO-214 Needs Input/Levi; ECO-51 Backlog/unassigned.",
+      "standing": "OBSERVED",
+      "evidence_refs": [
+        "Linear:ECO-202@2026-10-08T00:34:30.956Z",
+        "Linear:ECO-218@2026-10-07T18:41:37.809Z",
+        "Linear:ECO-214@2026-10-07T18:33:38.164Z",
+        "Linear:ECO-51@2026-10-07T18:33:42.599Z"
+      ],
+      "currentness_ref": "Linear:WP8-readback:2026-10-07T17:45-07:00",
+      "consequence": "Consumer exposure, hosted sustainment and Level/seating remain open downstream obligations; coordination is not authority.",
+      "limits": [
+        "Issue status is coordination evidence, not semantic standing."
+      ]
+    },
+    {
+      "id": "wp8:obs:supabase",
+      "surface": "Supabase/BRAIN substrate",
+      "observation": "Project vezxivrvhakclxuvxzso is ACTIVE_HEALTHY on Postgres 17.6.1.166.",
+      "standing": "OBSERVED",
+      "evidence_refs": [
+        "Supabase:vezxivrvhakclxuvxzso:ACTIVE_HEALTHY"
+      ],
+      "currentness_ref": "Supabase:WP8-readback:2026-10-07",
+      "consequence": "Canonical BRAIN persistence/retrieval substrate is available at this observation.",
+      "limits": [
+        "Project health does not prove every connected adapter contract is current."
+      ]
+    },
+    {
+      "id": "wp8:obs:consumer-search",
+      "surface": "Connected BRAIN search action",
+      "observation": "The connected search action advertises query + limit only; inquiry.domain_admission is not advertised.",
+      "standing": "DEGRADED",
+      "evidence_refs": [
+        "connected:ECB-v2-BRAIN:search-schema:query+limit-only:2026-10-07",
+        "Linear:ECO-218:Needs-Input"
+      ],
+      "currentness_ref": "connected:consumer-schema:2026-10-07",
+      "consequence": "exposed and situated-use-qualified remain NOT_ESTABLISHED.",
+      "limits": [
+        "Consumer-snapshot degradation is not backend absence."
+      ]
+    },
+    {
+      "id": "wp8:obs:brain-capture",
+      "surface": "Connected BRAIN capture action",
+      "observation": "The action schema cannot express runtime-required operation_id; BRAIN-first completion capture previously failed INVALID_ARGUMENT.",
+      "standing": "DEGRADED",
+      "evidence_refs": [
+        "BRAIN:capture_thought:INVALID_ARGUMENT:operation_id-required:2026-10-07",
+        "Linear:ECO-202#d9df996a-77dd-4a5b-b68f-3a4ac1cf2318"
+      ],
+      "currentness_ref": "connected:BRAIN-capture-schema:2026-10-07",
+      "consequence": "No new BRAIN WP8/completion receipt is claimed through this adapter until contract reconciliation.",
+      "limits": [
+        "Canonical BRAIN storage/search availability remains distinct from the capture adapter defect."
+      ]
+    },
+    {
+      "id": "wp8:obs:fresh-reader-attempt-01",
+      "surface": "Independent fresh-reader attempt 01",
+      "observation": "Worker entered CIR v1.4, returned all fourteen required items and declared CONTAMINATED because consequential prior project memory was exposed before source inspection.",
+      "standing": "DEGRADED",
+      "evidence_refs": [
+        "research/civs/domain-semantic-admission-fresh-reader-attempt-01.json"
+      ],
+      "currentness_ref": "attempt:2026-10-07:01",
+      "consequence": "Use the return for defect discovery/source-audit evidence only; retain fresh-reader HOLD.",
+      "limits": [
+        "A contaminated run cannot establish memory-free behavioral transfer."
+      ]
+    }
+  ],
+  "residual_gates": [
+    {
+      "id": "wp8:gate:fresh-reader",
+      "proposition": "Independent fresh-agent behavioral qualification remains unestablished: attempt 01 was contaminated before source inspection.",
+      "standing": "HOLD",
+      "reentry_condition": "Run attempt 02 in an environment with consequential SIGMA/ECOS conversation/project memory disabled or otherwise excluded; give only docs/civs-reentry.md + the CIR entry handle and ordinary authorized source access, preserve the input boundary, then compare all fourteen items/HOLDs.",
+      "evidence_refs": [
+        "runtime-capability-observation:no-independent-worker-spawn-surface:2026-10-07",
+        "research/civs/domain-semantic-admission-fresh-reader-attempt-01.json"
+      ],
+      "limits": [
+        "Do not substitute the contaminated attempt, this orchestrator's self-evaluation, or project memory for independent cold-reader evidence."
+      ]
+    },
+    {
+      "id": "wp8:gate:connected-exposure",
+      "proposition": "Ordinary connected consumer exposure/use remains unqualified.",
+      "standing": "NOT_ESTABLISHED",
+      "reentry_condition": "ECO-218 refresh/review/publish + fresh-consumer conformance.",
+      "evidence_refs": [
+        "Linear:ECO-218:Needs-Input",
+        "connected:ECB-v2-BRAIN:search-schema:query+limit-only:2026-10-07"
+      ],
+      "limits": [
+        "Deployment cannot satisfy this gate."
+      ]
+    },
+    {
+      "id": "wp8:gate:sustainment",
+      "proposition": "Operational sustainment/hosted-use remains unqualified.",
+      "standing": "NOT_ESTABLISHED",
+      "reentry_condition": "Repair source-complete circulation binding and establish separately valid ECO-214 effect authority before hosted-use qualification.",
+      "evidence_refs": [
+        "Linear:ECO-214:Needs-Input",
+        "scripts/eco-213/commission.ts#SOURCE_FILES"
+      ],
+      "limits": [
+        "No hosted activation is authorized by WP8."
+      ]
+    }
+  ],
+  "no_promotion_rules": [
+    "A WP8 mechanical PASS proves only the bounded check it executes; it does not establish semantic premise truth.",
+    "READY Production never substitutes for connected-consumer exposure or situated use.",
+    "Fresh-reader behavior remains NOT_ESTABLISHED until a separate worker actually performs the cold-read.",
+    "WP6 degradation-route qualification does not qualify alternate-provider portability.",
+    "WP7 correspondence requirements do not select a mathematical formalism or establish semantic correspondence.",
+    "BRAIN capture adapter failure is visible evidence; Linear continuity never becomes BRAIN custody.",
+    "PGO Namecrafting remains open and indexical relevance remains reconciliation/binding behavior, not a new primitive.",
+    "A contaminated fresh-reader attempt may support defect discovery/source-audit claims but never fresh-reader behavioral qualification.",
+    "BRAIN connector failure does not establish BRAIN record absence when the same canonical UUID is recoverable through an authorized adapter to the canonical substrate.",
+    "QUALIFY at responsibility level does not automatically imply request-level HOLD; blocking must be independently established."
+  ],
+  "source_refs": [
+    "research/civs/domain-semantic-admission.cir.json",
+    "docs/civs-domain-semantic-admission.md",
+    "docs/civs-reentry.md",
+    "research/civs/domain-semantic-admission-portability-v0.1.json",
+    "research/civs/domain-semantic-admission-correspondence-handoff-v0.1.json",
+    "server/domain-admission.ts",
+    "tests/inquiry/domain-admission.test.ts",
+    "tests/civs/qualification.test.ts",
+    "BRAIN:c5871f89-0c51-462d-831b-c90897a95e81",
+    "BRAIN:b7e633f7-a063-4ead-a521-c22e0d060c3e",
+    "Linear:ECO-202",
+    "Linear:ECO-218",
+    "Linear:ECO-214",
+    "Linear:ECO-51",
+    "Vercel:dpl_8hC8ba3Zj3dtNuSQpM8BJekm3NZq",
+    "Supabase:vezxivrvhakclxuvxzso",
+    "GitHubActions:37711971500",
+    "github:commit:a2dc514dfac8d532bda9660a18249dc2117e053e",
+    "research/civs/domain-semantic-admission-fresh-reader-attempt-01.json",
+    "github:commit:dc5fbe112c6a36f923cc644ae7d9d5dc53e8e40b",
+    "GitHubActions:37712640110",
+    "Vercel:dpl_31E7D5Q7dSZQ2JJT8BsSaCfaesrw"
+  ],
+  "omissions": [
+    "No uncontaminated independent fresh-agent behavioral run has yet been performed; attempt 01 is CONTAMINATED and does not close the gate.",
+    "No connected consumer schema refresh/publish is performed.",
+    "No hosted circulation activation or effect-authority renewal is performed.",
+    "No correspondence formalism is selected.",
+    "No alternate provider/runtime portability is qualified."
+  ]
+}

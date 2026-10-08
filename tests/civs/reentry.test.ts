@@ -24,7 +24,7 @@ test('cold reentry procedure covers all independent installation assessments', (
 test('cold reentry procedure carries all required fail-visible HOLD routes', () => {
   for (const code of [
     'CIR_UNAVAILABLE','CIR_INVALID','PROJECTION_DRIFT','SOURCE_UNAVAILABLE','BASIS_CHANGE_UNRECONCILED',
-    'EXPOSURE_NOT_ESTABLISHED','AUTHORITY_NOT_ESTABLISHED','QUESTION_FORWARD_OPEN','CORRESPONDENCE_NOT_ESTABLISHED',
+    'EXPOSURE_NOT_ESTABLISHED','AUTHORITY_NOT_ESTABLISHED','QUESTION_FORWARD_OPEN','CORRESPONDENCE_NOT_ESTABLISHED','FRESH_READER_CONTAMINATED',
   ]) assert(procedure.includes(code), code);
 });
 
@@ -43,4 +43,23 @@ test('machine CIR directly projects to the cold reentry procedure', () => {
   assert(relation.record.participants.some(p => p.role === 'projection' && p.referent_id === 'ecos:civs-cold-reentry:0.1.0'));
   assert(cir.cold_reader_bridges.some(x => x.answer_route_refs.includes('docs/civs-reentry.md')));
   assert(cir.verification_links.some(x => x.ref === 'civs:verify:cold-reentry-structure' && x.standing === 'SUPPORTED'));
+});
+
+
+test('cold reentry is self-locating and preserves canonical-source resolver semantics',()=>{
+  assert(procedure.includes('github:Levi-Anthony/ecb-v2'));
+  assert(procedure.includes('BRAIN:<UUID>'));
+  assert(procedure.includes('does **not** name one mandatory connector implementation'));
+  assert(procedure.includes('activation: ACTIVE'));
+  assert(procedure.includes('does **not** mean "newest deployment"'));
+});
+
+test('cold reentry rejects contaminated behavioral qualification and distinguishes QUALIFY from request HOLD',()=>{
+  assert(procedure.includes('return **CONTAMINATED**'));
+  assert(procedure.includes('FRESH_READER_CONTAMINATED'));
+  assert(procedure.includes('responsibility-level decision'));
+  assert(procedure.includes('request-level result'));
+  assert(procedure.includes('Do not translate every `QUALIFY` into request-level HOLD'));
+  assert(procedure.includes('expired effect envelope'));
+  assert(procedure.includes('PGO Namecrafting'));
 });
