@@ -5,6 +5,9 @@ AUTHORITY: Principal instruction, 5 October 2026 America/Phoenix; source contrac
 
 # Situated Referent Discovery — Leading Structural Frontier
 
+**PRINCIPAL FOURFOLD + CONSTRUCTIVE-METHOD CURRENTNESS — 8 October 2026.** The [proper-fact / Quadrant constructive delta](./Proper-Fact-Quadrant-Constructive-Delta-2026-10-08.md) carries the Principal's universal four-disclosure axiom, exact UL vantage-anchor definition, independently derived properness/model-closure insights, and next positive UR/LL/LR work. The [standing collaboration disposition](../../docs/working-preferences-constructive-di.md) corrects the repeated failure to substitute weak paraphrases, generic skepticism, or already-established ECOS invariants for constructive D&I. Earlier I/It/We/Its wording in this file is historical candidate language, **not** current canonical Quadrant labeling. ECO-221 remains installed for its bounded duties; its implementation does not by itself close the abstract fourfold-characteristic-function question. This is source/working continuity only, not a semantic-contract amendment or new implementation release.
+
+
 **Edition:** 0.1, 5 October 2026 America/Phoenix / 6 October UTC.  
 **Immediate reentry:** [ECO-202 ordinary inquiry runtime contract and ownership](../../docs/inquiry-orchestration.md), implementing the [PGO-Directed Situated Referent Orchestration Profile v0.1](./PGO-Directed-Situated-Referent-Orchestration-Profile-v0.1.md). Principal execution commission: BRAIN `6c02e4d4-0d57-4f0e-ab85-fd7fae945a38`, 6 October 2026 America/Phoenix. §8 remains retained research/qualification debt, not the default next action.
 **Continuity home:** [Constructive Fidelity Tracking](./Constructive-Fidelity-Tracking.md), developing ECO-162 — Integral Coherence Maintenance and its eight fidelity invariants.  
