@@ -53,7 +53,7 @@ export const CIVS_RELATION_KINDS = [
   'projects_to',
   'supersedes',
 ] as const;
-export type CिवsRelationKind = typeof CIVS_RELATION_KINDS[number];
+export type CivsRelationKind = typeof CIVS_RELATION_KINDS[number];
 
 export const CIVS_ENFORCEMENT_MODES = [
   'STRUCTURAL',
@@ -61,7 +61,7 @@ export const CIVS_ENFORCEMENT_MODES = [
   'AUTHORITY',
   'OBSERVATIONAL',
 ] as const;
-export type CिवsEnforcementMode = typeof CIVS_ENFORCEMENT_MODES[number];
+export type CivsEnforcementMode = typeof CIVS_ENFORCEMENT_MODES[number];
 
 export const CIVS_GRAPHICAL_OBLIGATIONS = [
   'shared_object_identity',
@@ -74,7 +74,7 @@ export const CIVS_GRAPHICAL_OBLIGATIONS = [
 ] as const;
 export type GraphicalObligation = typeof CIVS_GRAPHICAL_OBLIGATIONS[number];
 
-export type CिवsAssessmentStanding =
+export type CivsAssessmentStanding =
   | 'SUPPORTED'
   | 'NOT_ESTABLISHED'
   | 'UNKNOWN'
@@ -84,7 +84,7 @@ export type CिवsAssessmentStanding =
 export type InstallationAssessment = {
   kind: InstallationKind;
   proposition: string;
-  standing: CिवsAssessmentStanding;
+  standing: CivsAssessmentStanding;
   evidence_refs: string[];
   currentness_ref?: string;
   sensitivity_refs: string[];
@@ -107,7 +107,7 @@ export type PhysicalCoordinate = {
 
 export type EnforcementInspection = {
   requirement_ref: string;
-  modes: CिवsEnforcementMode[];
+  modes: CivsEnforcementMode[];
   surface_refs: string[];
   evidence_refs: string[];
   limits: string[];
@@ -118,7 +118,7 @@ export type VerificationLink = {
   proposition: string;
   method_ref: string;
   evidence_refs: string[];
-  standing: CिवsAssessmentStanding;
+  standing: CivsAssessmentStanding;
   sensitivity_refs: string[];
   limits: string[];
 };
@@ -140,7 +140,7 @@ export type RoleAssignment = {
 
 export type BoundedAssessment = {
   proposition: string;
-  standing: CिवsAssessmentStanding;
+  standing: CivsAssessmentStanding;
   evidence_refs: string[];
   limits: string[];
 };
@@ -154,7 +154,7 @@ export type CorrespondenceInspection = {
   semantic_owner_ref: string;
   direction: string;
   cardinality?: string;
-  standing: CिवsAssessmentStanding;
+  standing: CivsAssessmentStanding;
   evidence_refs: string[];
   currentness_ref?: string;
   composition_expectation?: string;
@@ -206,7 +206,7 @@ export type GraphicalDoorAssessment = {
   obligations: Array<{
     kind: GraphicalObligation;
     proposition: string;
-    standing: CिवsAssessmentStanding;
+    standing: CivsAssessmentStanding;
     evidence_refs: string[];
     limits: string[];
   }>;
@@ -241,7 +241,7 @@ export type CapabilityInspectionRecord = {
     typed_change_refs: string[];
     affected_dependency_refs: string[];
     requalification_refs: string[];
-    standing: CिवsAssessmentStanding;
+    standing: CivsAssessmentStanding;
     evidence_refs: string[];
     limits: string[];
   };
@@ -284,7 +284,7 @@ export type CapabilityInspectionRecord = {
   omissions: string[];
 };
 
-export type CिवsValidationResult =
+export type CivsValidationResult =
   | { valid: true; errors: [] }
   | { valid: false; errors: string[] };
 
@@ -292,9 +292,9 @@ type UnknownRecord = Record<string, unknown>;
 const object = (x: unknown): UnknownRecord | null => x !== null && typeof x === 'object' && !Array.isArray(x) ? x as UnknownRecord : null;
 const text = (x: unknown): x is string => typeof x === 'string' && x.trim().length > 0;
 const texts = (x: unknown): x is string[] => Array.isArray(x) && x.every(text);
-const standings = new Set<CिवsAssessmentStanding>(['SUPPORTED','NOT_ESTABLISHED','UNKNOWN','NOT_APPLICABLE','CONTRADICTED']);
+const standings = new Set<CivsAssessmentStanding>(['SUPPORTED','NOT_ESTABLISHED','UNKNOWN','NOT_APPLICABLE','CONTRADICTED']);
 
-export const CIVS_RELATION_DEFINITIONS: Record<CिवsRelationKind, { roles: readonly string[]; meaning: string }> = {
+export const CIVS_RELATION_DEFINITIONS: Record<CivsRelationKind, { roles: readonly string[]; meaning: string }> = {
   specifies: { roles: ['specification','specified_subject'], meaning: 'A bounded specification states obligations for the specified subject.' },
   implements: { roles: ['implementation','implemented_contract'], meaning: 'An implementation is claimed to realize a bounded contract.' },
   tests: { roles: ['test','tested_subject'], meaning: 'A test exercises a bounded proposition about a subject.' },
@@ -310,7 +310,7 @@ export const CIVS_RELATION_DEFINITIONS: Record<CिवsRelationKind, { roles: re
 };
 
 export function makeCivsRelation(
-  kind: CिवsRelationKind,
+  kind: CivsRelationKind,
   participants: Array<{ role: string; referent_id: string }>,
   situatedBasisRef: string,
   fidelity: FidelityCoordinates,
@@ -337,7 +337,7 @@ export function makeCivsRelation(
 function validateAssessment(value: unknown, path: string, errors: string[]): void {
   const a = object(value);
   if (!a) { errors.push(`${path} must be an object`); return; }
-  if (!standings.has(a.standing as CिवsAssessmentStanding)) errors.push(`${path}.standing is invalid`);
+  if (!standings.has(a.standing as CivsAssessmentStanding)) errors.push(`${path}.standing is invalid`);
   if (!text(a.proposition)) errors.push(`${path}.proposition is required`);
   if (!Array.isArray(a.evidence_refs) || !a.evidence_refs.every(text)) errors.push(`${path}.evidence_refs must be references`);
   if (!Array.isArray(a.limits) || !a.limits.every(text)) errors.push(`${path}.limits must be text`);
@@ -346,7 +346,7 @@ function validateAssessment(value: unknown, path: string, errors: string[]): voi
   }
 }
 
-export function validateCapabilityInspectionRecord(value: unknown): CिवsValidationResult {
+export function validateCapabilityInspectionRecord(value: unknown): CivsValidationResult {
   const errors: string[] = [];
   const record = object(value);
   if (!record) return { valid: false, errors: ['record must be an object'] };
@@ -383,7 +383,7 @@ export function validateCapabilityInspectionRecord(value: unknown): CिवsVali
       continue;
     }
     const prefix = `${CIVS_RELATION_SCHEMA_ID}:`;
-    const kind = String(relation.relation_kind_ref).startsWith(prefix) ? String(relation.relation_kind_ref).slice(prefix.length) as CिवsRelationKind : null;
+    const kind = String(relation.relation_kind_ref).startsWith(prefix) ? String(relation.relation_kind_ref).slice(prefix.length) as CivsRelationKind : null;
     if (!kind || !CIVS_RELATION_KINDS.includes(kind)) errors.push(`object_connections[${i}] relation kind is not declared`);
     else {
       const roles = Array.isArray(relation.participants) ? relation.participants.map(p => object(p)?.role).filter(text).sort() : [];
@@ -466,7 +466,7 @@ export function validateCapabilityInspectionRecord(value: unknown): CिवsVali
   return errors.length ? { valid: false, errors } : { valid: true, errors: [] };
 }
 
-const standingMark: Record<CिवsAssessmentStanding,string> = {
+const standingMark: Record<CivsAssessmentStanding,string> = {
   SUPPORTED: 'SUPPORTED',
   NOT_ESTABLISHED: 'NOT ESTABLISHED',
   UNKNOWN: 'UNKNOWN',
