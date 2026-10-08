@@ -1,3 +1,4 @@
+import { QUADRANT_DISCLOSURE_CONTRACT } from '../../server/urg-core.ts';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
@@ -78,11 +79,11 @@ function specimen(): CapabilityInspectionRecord {
     vertical_placement: { working_band: 'projection', containing_whole_refs: ['fixture:civs'] },
     participatory_neighborhood: { relation_refs: ['fixture:implements'], role_assignment_refs: ['fixture:principal','fixture:coordination'] },
     consumer_simulations: [{
-      ref: 'fixture:consumer-sim', consumer_basis: { consumer_referent_ref: 'fixture:consumer', boundary_ref: 'fixture:consumer-boundary',
+      ref: 'fixture:consumer-sim', disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT, consumer_basis: { consumer_referent_ref: 'fixture:consumer', boundary_ref: 'fixture:consumer-boundary',
         governing_orientation_ref: 'fixture:consumer-g', mapper_ref: 'fixture:consumer-mapper', frame_ref: 'fixture:consumer-frame',
         access_ref: 'fixture:consumer-access', declared_use: 'Cold-read the fixture.' },
       items: [{
-        ref: 'fixture:ul', quadrant: 'UL', entry_kind: 'DEPENDENCY_HYPOTHESIS', binding_status: 'LATENT', statement: 'Hypothesis: consumer must distinguish premise from proof.',
+        ref: 'fixture:ul', quadrant: 'UL', entry_kind: 'PROPER_DETERMINATION', characterization_ref:'fixture:proper-determination', binding_status: 'LATENT', statement: 'Hypothesis about a prospective consumer occurrence: its own proper determination of uncertainty is distinct from the report and modeled response.',
         observation_refs: [], observation_route: 'future cold-reader trial', falsifier: 'Consumer succeeds without this distinction or another dependency explains the result.',
         support: {
           affordance: { claim: 'Inspection can surface proof boundaries.', standing: 'NOT_ESTABLISHED', enforcement_mode: 'STRUCTURAL', evidence_refs: [], accountability_ref: 'fixture:coordination', limits: ['Hypothesis only.'] },
@@ -101,7 +102,7 @@ function specimen(): CapabilityInspectionRecord {
 }
 
 test('portable CIVS vocabulary mirrors executable constants', () => {
-  const vocabulary = JSON.parse(readFileSync(new URL('../../schemas/civs-v0.1.contract.json', import.meta.url), 'utf8'));
+  const vocabulary = JSON.parse(readFileSync(new URL('../../schemas/civs-v0.2.contract.json', import.meta.url), 'utf8'));
   assert.equal(vocabulary.cir_contract, CIVS_CONTRACT_ID);
   assert.deepEqual(vocabulary.installation_assessments, CIVS_INSTALLATION_KINDS);
   assert.deepEqual(vocabulary.working_bands, CIVS_WORKING_BANDS);
@@ -156,13 +157,13 @@ test('graphical readiness remains decomposed and projection is a URG Projection 
       evidence_refs: ['fixture:cir-edition'], currentness_ref: basis },
   });
   assert.equal(projection.kind, 'projection');
-  assert.equal(projection.mapping_relation_ref, 'ecos:civs-human-projection:0.1.1');
+  assert.equal(projection.mapping_relation_ref, 'ecos:civs-human-projection:0.2.0');
 });
 
 
 test('consumer quadrant job is explicit and cannot bleed across UL/UR/LL/LR', () => {
   const cir = specimen();
-  cir.consumer_simulations[0].items[0].entry_kind = 'OBSERVABLE_CORRELATE';
+  cir.consumer_simulations[0].items[0].entry_kind = 'DETERMINATE_MANIFESTATION';
   const result = validateCapabilityInspectionRecord(cir);
   assert.equal(result.valid, false);
   if (!result.valid) assert(result.errors.some(e => e.includes('entry_kind does not match quadrant job')));
@@ -269,8 +270,17 @@ test('human URG Projection maps object connections, verification links and Quest
     fidelity: { coverage: 'EXAMINED', activation: 'ACTIVE', disposition: 'RELIED_FOR_DECLARED_USE',
       evidence_refs: ['research/civs/domain-semantic-admission.cir.json'], currentness_ref: cir.verification.as_of_ref },
   });
-  assert.equal(p.mapping_relation_ref, 'ecos:civs-human-projection:0.1.1');
+  assert.equal(p.mapping_relation_ref, 'ecos:civs-human-projection:0.2.0');
   assert(p.mapped_claim_refs?.includes(cir.object_connections[0].ref));
   assert(p.mapped_claim_refs?.includes(cir.verification_links[0].ref));
   assert(p.mapped_claim_refs?.includes(cir.questions_forward[0].ref));
+});
+
+test('successor reclassifies the historical dependency hypothesis and keeps UL unresolved', () => {
+  const cir = JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission.cir.json', import.meta.url), 'utf8')) as CapabilityInspectionRecord;
+  const historical = cir.consumer_simulations[0].items.find(x => x.ref === 'civs:consumer:UL:premise-proof');
+  assert.equal(historical?.quadrant, 'LL');
+  assert.equal(historical?.entry_kind, 'FIELD_ARTICULATION');
+  assert(cir.questions_forward.some(x => x.ref === 'civs:qf:consumer-proper-determination-v2'));
+  assert(cir.consumer_simulations.every(x => x.disclosure_contract === QUADRANT_DISCLOSURE_CONTRACT));
 });

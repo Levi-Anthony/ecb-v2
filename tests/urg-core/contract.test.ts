@@ -5,6 +5,8 @@ import {
   URG_CORE_ID,
   URG_IMPLEMENTATION_REVISION,
   URG_RECORD_KINDS,
+  QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_DISCLOSURES,
+  LEGACY_QUADRANT_CONTRACT, validateLegacyQuadrantRecord,
   validateUrgRecord,
 } from "../../server/urg-core.ts";
 
@@ -38,7 +40,7 @@ function invalid(record: unknown, contains?: string) {
 }
 
 test("machine descriptor and executable module agree", () => {
-  const path = new URL("../../schemas/urg-core-v1.contract.json", import.meta.url);
+  const path = new URL("../../schemas/urg-core-v2.contract.json", import.meta.url);
   const descriptor = JSON.parse(readFileSync(path, "utf8"));
   assert.equal(descriptor.contract_id, URG_CORE_ID);
   assert.equal(descriptor.implementation_revision, URG_IMPLEMENTATION_REVISION);
@@ -74,13 +76,15 @@ test("witnessed Level without organization is rejected", () => invalid({
   constituent_referent_ids:["22222222-2222-4222-8222-222222222222"],
 }, "organization_ref"));
 
-test("Quadrant preserves seat and answer-burden as distinct generators", () => valid({
+test("actual proper determination is UL regardless of determinate burden", () => valid({
   kind:"quadrant", context:ctx, fidelity, result:"QUADRANT_POSITION",
-  seat:"Participatory", burden:"Governing",
+  disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT, disclosure:"UL",
+  content_ref:"proper-state:1", characterization_ref:"instantiation-only:1", conditions_ref:"occasion:1",
+  qualifiers:{seat:"Constitutive", burden:"Determinate"},
 }));
 
 test("Quadrant unknown must retain a QF route", () => invalid({
-  kind:"quadrant", context:ctx, fidelity, result:"QUADRANT_UNKNOWN",
+  kind:"quadrant", context:ctx, fidelity, disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT, result:"QUADRANT_UNKNOWN",
 }, "qf_ref"));
 
 test("A+C coactivation is legal", () => valid({
@@ -274,3 +278,33 @@ test("material change declares affected dependencies as well as claims", () => i
   source_basis_ref:"g:1", destination_basis_ref:"g:2", continuity_mode_ref:"rekey:1",
   affected_claim_refs:["claim:1"], requalify_refs:["claim:1"], fidelity,
 }, "affected_dependency_refs"));
+
+
+test("retained qualifiers cannot select, erase or change any disclosure", () => {
+  for (const disclosure of QUADRANT_DISCLOSURES) for (const seat of ["Constitutive", "Participatory"]) for (const burden of ["Governing", "Determinate"]) {
+    valid({kind:"quadrant", context:ctx, fidelity, result:"QUADRANT_POSITION",
+      disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT, disclosure,
+      content_ref:"content:1", characterization_ref:"semantic-assessment:1", conditions_ref:"conditions:1",
+      qualifiers:{seat, burden}});
+  }
+});
+test("historical records remain interpretable but cannot enter current disclosure coverage", () => {
+  const old = {kind:"quadrant", context:ctx, fidelity, result:"QUADRANT_POSITION", seat:"Constitutive", burden:"Determinate"};
+  assert.equal(validateLegacyQuadrantRecord(old, LEGACY_QUADRANT_CONTRACT).valid, true);
+  assert.equal(validateLegacyQuadrantRecord(old, QUADRANT_DISCLOSURE_CONTRACT).valid, false);
+  invalid(old, "disclosure_contract");
+  invalid({...old, disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT, disclosure:"UL"}, "qualifiers");
+});
+test("a disclosure label without its positive account and characterization cannot pass", () => {
+  invalid({kind:"quadrant",context:ctx,fidelity,result:"QUADRANT_POSITION",
+    disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT,disclosure:"LL"}, "characterization_ref");
+});
+test("compound inquiries require distinct recoverable components", () => {
+  const base = {kind:"quadrant",context:ctx,fidelity,result:"DECOMPOSE",disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT};
+  invalid({...base,component_refs:["same","same"]}, "component_refs");
+  valid({...base,component_refs:["proper-account","manifest-account"]});
+});
+test("unknown content preserves an identified disclosure without manufacturing a result", () => valid({
+  kind:"quadrant",context:ctx,fidelity:{coverage:"EXAMINED",activation:"ACTIVE",disposition:"UNRESOLVED"},
+  result:"QUADRANT_UNKNOWN",disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT,disclosure:"UL",qf_ref:"question:proper-account",
+}));

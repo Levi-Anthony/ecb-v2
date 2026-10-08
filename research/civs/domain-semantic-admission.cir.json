@@ -1,6 +1,6 @@
 {
-  "contract": "ecos:capability-inspection-record:0.1.1",
-  "cir_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4",
+  "contract": "ecos:capability-inspection-record:0.2.0",
+  "cir_id": "ecos:cir:domain-semantic-admission:2026-10-08:v1.5",
   "subject_ref": "ecos:domain-semantic-admission:0.1.0",
   "subject_label": "Domain-Semantic Admission / D&I Boundary",
   "purpose": {
@@ -475,7 +475,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-08:v1.5"
           },
           {
             "role": "projection",
@@ -505,7 +505,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-08:v1.5"
           },
           {
             "role": "projection",
@@ -536,7 +536,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-08:v1.5"
           },
           {
             "role": "projection",
@@ -568,7 +568,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-08:v1.5"
           },
           {
             "role": "projection",
@@ -599,7 +599,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-08:v1.5"
           },
           {
             "role": "projection",
@@ -1202,7 +1202,7 @@
         "BRAIN:0f654aaa-f3e8-4733-afed-cec7fcd66284"
       ],
       "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
-      "scope": "WP0→WP1→WP2 and first CIR within accepted boundary; hosted effects/formalism selection remain excluded."
+      "scope": "WP0\u2192WP1\u2192WP2 and first CIR within accepted boundary; hosted effects/formalism selection remain excluded."
     }
   ],
   "alternatives": [
@@ -1341,7 +1341,7 @@
         "unresolved_ref": "civs:qf:domain-admission:correspondence-truth",
         "basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
         "current_standing_ref": "NOT_ESTABLISHED:structural-FEDERATE-only",
-        "discriminator_question": "What attributable relation or mapping law warrants the native SysML element ↔ ECOS Referent/Claim correspondence beyond structural admission?",
+        "discriminator_question": "What attributable relation or mapping law warrants the native SysML element \u2194 ECOS Referent/Claim correspondence beyond structural admission?",
         "paired_signal_scenario": "A qualified mapping account establishes the bounded semantic correspondence; otherwise FEDERATE remains only a routing disposition.",
         "evidence_change_criteria": "Recover explicit source/target semantics, semantic owner, mapping basis, and evidence sufficient to test composition/partiality/inversion requirements where consequential.",
         "alternative_signal_routing": "If no such warrant is available, retain correspondence as unresolved and do not select a mathematical formalism by analogy.",
@@ -1396,6 +1396,22 @@
         "decision_consequence": "Do not claim fresh-agent behavioral qualification or full WP8 closure until independent evidence exists.",
         "return_route": "CIVS:WP8:fresh-reader-qualification",
         "reentry_condition": "Reenter when a genuinely separate authorized worker can be run from only the durable CIVS entry surfaces."
+      }
+    },
+    {
+      "ref": "civs:qf:consumer-proper-determination-v2",
+      "record": {
+        "kind": "question_forward",
+        "unresolved_ref": "civs:consumer-sim:fresh-agent-domain-admission:UL",
+        "basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "current_standing_ref": "ecos:quadrant-disclosure:v2:unresolved",
+        "discriminator_question": "What proper determination of the prospective consumer occurrence is consequential here, and what account can be supported without substituting its report or performance?",
+        "paired_signal_scenario": "A qualified mapping account establishes the bounded semantic correspondence; otherwise FEDERATE remains only a routing disposition.",
+        "evidence_change_criteria": "Recover explicit source/target semantics, semantic owner, mapping basis, and evidence sufficient to test composition/partiality/inversion requirements where consequential.",
+        "alternative_signal_routing": "If no such warrant is available, retain correspondence as unresolved and do not select a mathematical formalism by analogy.",
+        "decision_consequence": "Consumer proper determination remains unresolved; existing observed behavior cannot count as instantiation-only acquaintance.",
+        "return_route": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md",
+        "reentry_condition": "Reenter when attributable cross-domain mapping evidence or a falsifying native equivalent is available."
       }
     }
   ],
@@ -1476,10 +1492,10 @@
       "items": [
         {
           "ref": "civs:consumer:UL:premise-proof",
-          "quadrant": "UL",
-          "entry_kind": "DEPENDENCY_HYPOTHESIS",
+          "quadrant": "LL",
+          "entry_kind": "FIELD_ARTICULATION",
           "binding_status": "LATENT",
-          "statement": "Hypothesis: legitimate use requires the consumer to distinguish supplied semantic premises from what the structural evaluator actually proves, and to distinguish deployment from connected exposure.",
+          "statement": "Hypothesis about the consumer\u2019s participation in an articulated field: distinctions between semantic premise and structural proof, and between deployment and exposure, organize what its conclusions count as. Hypothesis: legitimate use requires the consumer to distinguish supplied semantic premises from what the structural evaluator actually proves, and to distinguish deployment from connected exposure.",
           "observation_refs": [],
           "observation_route": "future fresh-agent cold-read qualification",
           "falsifier": "A cold consumer can reliably orient, predict the gate, preserve authority/currentness and avoid proof inflation without this dependency, or another dependency explains performance.",
@@ -1524,12 +1540,13 @@
                 "Hypothesis remains latent."
               ]
             }
-          }
+          },
+          "characterization_ref": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md#positive-characteristic-functions"
         },
         {
           "ref": "civs:consumer:UR:predict-gate",
           "quadrant": "UR",
-          "entry_kind": "OBSERVABLE_CORRELATE",
+          "entry_kind": "DETERMINATE_MANIFESTATION",
           "binding_status": "LOCATED",
           "statement": "Observable correlate: a bounded test can predict FEDERATE for the exact corpus atom and detect removal of correspondence targets by routing to QUALIFY.",
           "observation_refs": [
@@ -1597,12 +1614,13 @@
                 "CI is not semantic authority."
               ]
             }
-          }
+          },
+          "characterization_ref": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md#positive-characteristic-functions"
         },
         {
           "ref": "civs:consumer:LL:norms-authority",
           "quadrant": "LL",
-          "entry_kind": "SHARED_NORM",
+          "entry_kind": "FIELD_ARTICULATION",
           "binding_status": "LOCATED",
           "statement": "Shared governing support includes no silent promotion, two-door reconciliation, native-domain ownership, distinct action/semantic/verification roles and no-invention reentry rules.",
           "observation_refs": [
@@ -1665,12 +1683,13 @@
                 "No authority by latest writer."
               ]
             }
-          }
+          },
+          "characterization_ref": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md#positive-characteristic-functions"
         },
         {
           "ref": "civs:consumer:LR:located-surfaces",
           "quadrant": "LR",
-          "entry_kind": "SUPPORT_SURFACE",
+          "entry_kind": "ENACTED_ORGANIZATION",
           "binding_status": "LOCATED",
           "statement": "Concrete participatory surfaces include exact GitHub objects/CI, Vercel deployment metadata, Linear coordination state and the connected BRAIN action-schema snapshot with its degraded exposure.",
           "observation_refs": [
@@ -1734,12 +1753,15 @@
                 "External service authority remains separate."
               ]
             }
-          }
+          },
+          "characterization_ref": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md#positive-characteristic-functions"
         }
       ],
       "limits": [
-        "This is hypothesis-based consumer simulation. No fresh-agent behavioral qualification has yet converted the UL dependency hypothesis into an observed consumer fact."
-      ]
+        "This is hypothesis-based consumer simulation. No fresh-agent behavioral qualification has yet converted the UL dependency hypothesis into an observed consumer fact.",
+        "8 October successor interpretation: the historical UL dependency-hypothesis item is reassessed as LL field articulation. Its original reference is retained for lineage, not interpreted as current coordinate identity. Proper determination remains an explicit unresolved consumer disclosure; historical observations do not establish it."
+      ],
+      "disclosure_contract": "ecos:quadrant-disclosure:v2"
     }
   ],
   "graphical_door": {
@@ -1757,7 +1779,7 @@
         ],
         "currentness_ref": "github:commit:58b1d065d0ad9ce09db185a75e1ecda6a15f53ad",
         "limits": [
-          "Exact machine-record → human-projection equality is mechanically checked; bidirectional graphical controls remain NOT ESTABLISHED."
+          "Exact machine-record \u2192 human-projection equality is mechanically checked; bidirectional graphical controls remain NOT ESTABLISHED."
         ]
       },
       {
@@ -1867,7 +1889,8 @@
     "GitHubActions:37712149843",
     "ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2",
     "Vercel:dpl_8EeP8R6TNE6APZy7FpqEmHJ1kVgk",
-    "github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839"
+    "github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839",
+    "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md"
   ],
   "omissions": [
     "No connected-consumer invocation proving inquiry.domain_admission exposure.",
@@ -1883,6 +1906,7 @@
     "Predicted provider-outage cases are not destructive failover experiments and must not be reported as observed behavior.",
     "WP8 overall disposition is PARTIAL_HOLD because an independent fresh-agent behavioral run has not been performed.",
     "The current orchestrator's own successful reentry/qualification work is not evidence for the fresh-reader behavioral gate.",
-    "Connected-consumer exposure/use and operational sustainment remain separately unqualified after WP8."
+    "Connected-consumer exposure/use and operational sustainment remain separately unqualified after WP8.",
+    "Quadrant successor migration changes the current CIR contract and consumer disclosure interpretation; prior WP8/deployment observations retain their exact historical scope and do not qualify successor hosted use."
   ]
 }

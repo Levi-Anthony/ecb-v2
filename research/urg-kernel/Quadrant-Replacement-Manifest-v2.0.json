@@ -1,0 +1,240 @@
+{
+  "contract": "ecos:quadrant-disclosure:v2",
+  "implementation_revision": "2.0.0",
+  "baseline_commit": "d89b3681f9bbd328c21465451011114257a37a88",
+  "origin": "Principal discovered the compression defect; UL and subsequent fourfold hardening followed. Assistant comparison corroborates this lineage.",
+  "change": {
+    "kind": "change",
+    "change_kind": "GrammarChange",
+    "subject_referent_id": "ecos:urg:quadrant",
+    "source_basis_ref": "ecos:quadrant-seat-burden:v1",
+    "destination_basis_ref": "ecos:quadrant-disclosure:v2",
+    "continuity_mode_ref": "same semantic family; successor disclosure generator with explicit historical interpretation",
+    "affected_claim_refs": [
+      "research/urg-kernel/Level-Quadrant-Formal-Contract-v1.0.md#4-quadrant-contract",
+      "civs:consumer:UL:premise-proof"
+    ],
+    "affected_dependency_refs": [
+      "server/urg-core.ts",
+      "server/orchestration.ts",
+      "server/civs.ts",
+      "research/urg-kernel/check_level_quadrant_contract.py"
+    ],
+    "requalify_refs": [
+      "tests/urg-core/contract.test.ts",
+      "tests/inquiry/orchestration.test.ts",
+      "tests/civs/contract.test.ts",
+      "scripts/qualify-quadrant-disclosure.ts"
+    ],
+    "fidelity": {
+      "coverage": "EXAMINED",
+      "activation": "ACTIVE",
+      "disposition": "RELIED_FOR_DECLARED_USE",
+      "evidence_refs": [
+        "research/urg-kernel/Quadrant-Disclosure-Replacement-Receipt-2026-10-08.md"
+      ],
+      "currentness_ref": "ecos:quadrant-disclosure:v2"
+    }
+  },
+  "sources": [
+    {
+      "path": ".github/workflows/eco-136-urg-core.yml",
+      "sha256": "00ddc2cf9d7ead2ae3ec45ba35f56811180f7df44a9eaa76606844c158e36605",
+      "git_blob": "201448a092162a2bfac1eb9edfcfbb3fbc34c8bb"
+    },
+    {
+      "path": "docs/architecture-decisions/009-urg-core-portable-package.md",
+      "sha256": "5f174c2c95b8f0083986c9826c7be4e733a855027b47769018263c02056f13e8",
+      "git_blob": "b5f62ed390dc78562ae6c3dea24123ecd7ba0bd9"
+    },
+    {
+      "path": "docs/capability-inspection-verification-spine-plan.md",
+      "sha256": "8228fab3b2ef0958f51231af3b8b0a4dc514198d450b99b6cf1e1f60482798c9",
+      "git_blob": "e06346e5542e2410d3b4915298599fc7faf2829c"
+    },
+    {
+      "path": "docs/civs-contract.md",
+      "sha256": "5d630259c094c8f55dab2634455d257cc6864d15763193f0b2620f3b3d2bceae",
+      "git_blob": "982d3f921bae1aa5f60173502913c26e8b4cb2d2"
+    },
+    {
+      "path": "docs/civs-domain-semantic-admission.md",
+      "sha256": "a900a3929151b73186158742aff0c1992b659e6cb5be878edd4d5ef8950148c8",
+      "git_blob": "d368d605e422dc0c0fe0038c73ef73a1c09491ba"
+    },
+    {
+      "path": "docs/civs-reentry.md",
+      "sha256": "98ecdfcc0488423dc928701499a4d33c9416648273e17a1c064016eebd069edf",
+      "git_blob": "81861da48ea414e67f440b000e08ff5e301ee82e"
+    },
+    {
+      "path": "docs/inquiry-orchestration.md",
+      "sha256": "44a13cd180eafba0020daf1d8e6d1d2f459bb9ff88867a409c660a5b26c473fa",
+      "git_blob": "8d90682c17215683d81a247e4b7f51863d58c9b5"
+    },
+    {
+      "path": "docs/working-preferences-constructive-di.md",
+      "sha256": "1bdbb769d945f755013698e6c9413a8d7b3ce5e9dd958e8e8e8d5728fff25397",
+      "git_blob": "7341951aab9047eaca58a4d502cb2d0305b8319d"
+    },
+    {
+      "path": "package.json",
+      "sha256": "9c3e3504a5ef62b8da906cddc4f26cd2794f1eb106f978a05aba910557fd2839",
+      "git_blob": "c3d8a2e3f0635225bc60f5aa42eb9472b53d32f8"
+    },
+    {
+      "path": "research/civs/domain-semantic-admission.cir.json",
+      "sha256": "0c40fd6c56a0db1395c3e3ad42985c67fd9ad55ae7234f2152162ddf3498ea81",
+      "git_blob": "8d5dfd6316a3ffa21e3052497fd83e46d583e997"
+    },
+    {
+      "path": "research/formal-semantics/Constructive-Fidelity-Tracking.md",
+      "sha256": "ca5bff548f29dd770ae32e00f40b18f2a518533abecf2194cd59eb8a69a6b001",
+      "git_blob": "9a51e9878631417916b2ffde20e8f10ac609ff3c"
+    },
+    {
+      "path": "research/formal-semantics/ECO-220-Invariant-Lattice-Index-v1.1.md",
+      "sha256": "ad2924e9affe64154a8e891a6aad43d02f9a9aaa1c9d25cf4c49827d0eafc126",
+      "git_blob": "6d831dfa47e1d8112c40edb6791bbc74abbcc348"
+    },
+    {
+      "path": "research/formal-semantics/PGO-Directed-Situated-Referent-Orchestration-Profile-v0.1.md",
+      "sha256": "0af0e8762d83b6b5844fef6dce5692144efe16e53492522bf0e3ee25aad6446f",
+      "git_blob": "9879a9305af971ea93106039cbbac0fed89382ea"
+    },
+    {
+      "path": "research/formal-semantics/Proper-Fact-Quadrant-Constructive-Delta-2026-10-08.md",
+      "sha256": "f8fffbe8f54439ff4e24f1127e34cd7490c5420a57ea7a5082a5997072f39115",
+      "git_blob": "6df2fcd7df4f554517519b763e369edd69395a9d"
+    },
+    {
+      "path": "research/formal-semantics/Situated-Referent-Discovery-Frontier.md",
+      "sha256": "ff4d052fd9cb7bfba7b4aa2091a4948659a7d4435045e59e0882f6b5293d4b6b",
+      "git_blob": "3cd701c1d08ed0ea73db0049690a06e3766e82eb"
+    },
+    {
+      "path": "research/quadrant-grammar/README.md",
+      "sha256": "75b394f5a37aa615460955d9f11f1b3137aeb10818fa3c29ee4253af7c1f522f",
+      "git_blob": "28b8c0c9475adc1c3fca4e7af74c5f92a36eebfd"
+    },
+    {
+      "path": "research/quadrant-grammar/SIGMA-ECOS-Quadrant-Grammar-Register-B-Functional-Contract-v0.2.md",
+      "sha256": "7ea2fcba7917ccb36c0d1850e3a573f0e8155c3b5b05e00a7496b890e1732252",
+      "git_blob": "e75d86bad65465a949873705172d18e29ea4f419"
+    },
+    {
+      "path": "research/urg-kernel/Directional-Pressures-Formal-Contract-v1.0.md",
+      "sha256": "ff3c43b39f8024ecc232d90180cd8b3472e5f3058e420aca6a222a52658fe0b2",
+      "git_blob": "5668d9085d03d674e0e59b41951c23d37dde7539"
+    },
+    {
+      "path": "research/urg-kernel/Level-Quadrant-Formal-Contract-v1.0.md",
+      "sha256": "bfa44ac36bc5f34a8de8be47934807dc9a6313890472116e9e8cead5ca77f6e7",
+      "git_blob": "ffb3eb9a8ee4d51f3f713b807edcabb1c8256fb3"
+    },
+    {
+      "path": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md",
+      "sha256": "3632964dee14951da57e68cb3dac24b4ac37fe43af7edb5780090a9910e5b3d1",
+      "git_blob": "ccd5bc6f852ad66b2fc452b93f39175ad83a8fc0"
+    },
+    {
+      "path": "research/urg-kernel/README.md",
+      "sha256": "49dfc21f07963b58fc94048d0ec0d580fc25df6491a2aa40c615f5d5ad0857a9",
+      "git_blob": "2981ebf0595766e87e3b105630cd3ccd21b0dbf4"
+    },
+    {
+      "path": "research/urg-kernel/URG-Core-Register-B-Candidate-v1.0.md",
+      "sha256": "b138cf9956bad657d1ca64f87446ec50ca506b2b5fcc38f87feb6051315b76f2",
+      "git_blob": "84871284ffe0dc7bd4b794aa7c877cbc4c84cae0"
+    },
+    {
+      "path": "research/urg-kernel/check_level_quadrant_contract.py",
+      "sha256": "c7542d9aa26764dc654a298d5a47ea99172cf12bb653d3552a47d83b14519d19",
+      "git_blob": "c14e6876155203a43b7d078f9d919ec20870a614"
+    },
+    {
+      "path": "research/urg-kernel/level-quadrant-fixtures-v2.0.json",
+      "sha256": "3cb1c627c814917c0df71fc6b40544b1d93ac26c1ae24dcebcafc763fe8d1741",
+      "git_blob": "c64a20e1784f6496d9e3a95084a71e63d2329ef3"
+    },
+    {
+      "path": "schemas/README.md",
+      "sha256": "aa095e9681add3edc18f580e10e1375473deaef09fb0ec279a5fc3d05b933f44",
+      "git_blob": "15a3f39f551d35986d983dced445b37a6601a3f9"
+    },
+    {
+      "path": "schemas/civs-v0.2.contract.json",
+      "sha256": "f2e058481eb90c21d98febf192fe25f9044c87b5779fb352c1dc4b610e8a030a",
+      "git_blob": "a9c9f93ab7b0f828db7b92dcb36898245d688855"
+    },
+    {
+      "path": "schemas/urg-core-v2.contract.json",
+      "sha256": "01bddfcfa53082835be3e4327c149e3e0426b20a409a7223776ed03bc675ea5d",
+      "git_blob": "c322b4466e5d8d9c0695ac183af001577dc9e9dd"
+    },
+    {
+      "path": "scripts/qualify-quadrant-disclosure.ts",
+      "sha256": "3604b63798b8ef3336daef567bff7025f975886f076eadd3dc87ea76198c9dd1",
+      "git_blob": "94e513f76ef496e7716fe48565335a887c0ccb1e"
+    },
+    {
+      "path": "server/civs.ts",
+      "sha256": "be35b9e29462626ee60e31ebcfb5eea8bfc1dbc50338f8d83d968656ec0bf441",
+      "git_blob": "86f294b5cdb5591d686a21933499e9d791fb9701"
+    },
+    {
+      "path": "server/orchestration-brain.ts",
+      "sha256": "d4048e8407d9bd6596362b4cd274ea08900251ecace23f78ab6037717b42a919",
+      "git_blob": "81d9b5056d0504e7e6e450c9103dcdc40ce3e122"
+    },
+    {
+      "path": "server/orchestration.ts",
+      "sha256": "69288ed0dab68c9d6882b4cd3d81fbe9035328b390089b298cfd16d25f16e284",
+      "git_blob": "a6e6d87a03997cc129b4daa603f8c2d1a5bce503"
+    },
+    {
+      "path": "server/urg-core.ts",
+      "sha256": "0d6c1176a8d2185107f5d64e4fa9e34aaa90145b9a98b0eb093cd679b0380cde",
+      "git_blob": "c32e40fe5ea35330343c21a272a8c370158ea8a8"
+    },
+    {
+      "path": "tests/civs/contract.test.ts",
+      "sha256": "344a71aa6ba047ade348f5dab6e2e40903122116eb3929393fc750bfe2ef82df",
+      "git_blob": "9c1f43f16d191f13db38fbfd56b8f50b311fb90f"
+    },
+    {
+      "path": "tests/civs/correspondence.test.ts",
+      "sha256": "599df57e08952bae7b79fd0d972f2fd40dd09442a3c413e41cbdb3ba717bf1b7",
+      "git_blob": "1c1d2cfe594360e37ed6aadfe8d640ef6fd002b0"
+    },
+    {
+      "path": "tests/civs/qualification.test.ts",
+      "sha256": "a37b3e41b7a535d0f38cd8f3ae2ad97540681d395db66a70cf82acf9a5d633c8",
+      "git_blob": "b295a368d8788d3f37e3d59c171f5074eedfb24f"
+    },
+    {
+      "path": "tests/inquiry/orchestration.test.ts",
+      "sha256": "36809436b83107472a0537690fad709b65545adf04c764982ba34da0ee5fb3e5",
+      "git_blob": "efe4092b14a9d7a442e805f1f8994cbbeaff1330"
+    },
+    {
+      "path": "tests/urg-core/contract.test.ts",
+      "sha256": "c618b96ea53c6067de070f0126305f5d38e72b8eb62cb0294804f48a6962d0e9",
+      "git_blob": "40f51de256a41a1042269032dd857d4c8f76fbcf"
+    }
+  ],
+  "historical_only": [
+    "schemas/urg-core-v1.contract.json",
+    "schemas/civs-v0.1.contract.json",
+    "research/urg-kernel/level-quadrant-fixtures-v1.0.json",
+    "sql/migrations/20260918233000_eco149_quadrant_integrated_slice.sql",
+    "sql/migrations/20260919054000_eco159_quadrant_exact_reliance_binding.sql",
+    "server/build-7/qualification.mjs"
+  ],
+  "residuals": [
+    "BRAIN capture schema lacks runtime-required operation_id; no receipt claimed.",
+    "Hosted successor deployment/consumer behavior must be observed separately.",
+    "Semantic adapter judgments remain attributable; classifiers do not infer domain truth.",
+    "CIVS consumer UL is explicitly unresolved; prior empirical observations do not fill it."
+  ]
+}

@@ -1,6 +1,8 @@
+> **Current — 8 October 2026:** Consumer simulations now declare `ecos:quadrant-disclosure:v2`, a positive function and an attributable characterization reference. UL proper determination, UR determinate manifestation, LL field articulation and LR enacted organization replace the historical local mapping. The dependency-hypothesis item in the first specimen is reassessed as LL; its missing proper-determination account is explicitly unresolved. See [successor contract](../research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md). Older qualification/deployment observations below retain their exact source scope.
+
 # Capability Inspection Record contract — WP1/WP2
 
-**Contract:** `ecos:capability-inspection-record:0.1.1`  
+**Contract:** `ecos:capability-inspection-record:0.2.0`  
 **Relation schema:** `ecos:civs-object-relations:0.1.0`  
 **Scope:** reusable CIVS inspection record + typed object connections. This does not add a URG primitive or correspondence formalism.
 
@@ -48,7 +50,7 @@ After this contract mechanically qualifies, instantiate Domain-Semantic Admissio
 
 Before the first specimen, the reusable contract was tightened against the accepted audit:
 
-- every consumer Quadrant item now declares its local job explicitly: UL dependency hypothesis, UR observable correlate, LL shared norm, LR support surface;
+- the historical 0.1 consumer mapping used UL dependency hypothesis / UR observable correlate / LL shared norm / LR support surface; that mapping is superseded by the 8 October positive disclosure contract;
 - LOCATED requires attributable observation references and an observation route; it still does not mean true or sufficient;
 - installation, verification, field-reconstitution, correspondence, portability/degradation, graphical-door and consumer-support claims carry STRUCTURAL / SEMANTIC / AUTHORITY / OBSERVATIONAL enforcement mode;
 - role assignments carry an explicit currentness reference;

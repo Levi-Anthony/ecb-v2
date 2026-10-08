@@ -1,3 +1,5 @@
+> **GOVERNING QUADRANT UPDATE — 8 October 2026:** [Positive disclosure contract v2.0](../urg-kernel/Quadrant-Disclosure-Contract-v2.0.md) supersedes the constitutive/participatory × governing/determinate Quadrant generator and historical consumer-job mappings for current use. The Principal identified the compression defect, initiating UL and subsequent fourfold hardening; the assistant's comparison corroborated that diagnosis. Current functions are UL proper determination, UR determinate manifestation, LL field articulation and LR enacted organization. The old dimensions remain independent qualifiers. Earlier retention/no-replacement directives and I/It/We/Its candidate wording below are historical for this superseded scope. Level, typed changes, source editions and independent qualification claims retain their own standing. Current executable package: `server/urg-core.ts` revision 2.0.0; current inquiry contract: 0.2.0. See the successor receipt for the exact installation/evidence boundary.
+
 # PGO-Directed Situated Referent Orchestration Profile v0.1
 
 **Date:** 6 October 2026, America/Phoenix  

@@ -3,9 +3,10 @@ import { createHash } from 'node:crypto';
 import {
   validateUrgRecord, type UrgRecord, type SituatedContext, type NativeRelationClaim,
   type LevelClaim, type ChangeRecord, type QuestionForward, type ProjectionRecord,
+  QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_QUESTIONS, type QuadrantDisclosure,
 } from './urg-core.js';
 
-export const INQUIRY_CONTRACT = 'ecos:inquiry-orchestration:0.1.1';
+export const INQUIRY_CONTRACT = 'ecos:inquiry-orchestration:0.2.0';
 export type InquiryRequest = {
   query: string;
   intended_use: string;
@@ -140,6 +141,7 @@ export type InquiryProjectionDelta = {
 };
 export type InquiryResult = {
   contract: typeof INQUIRY_CONTRACT;
+  disclosure_contract: typeof QUADRANT_DISCLOSURE_CONTRACT;
   inquiry_basis_ref: string;
   indexical_binding: IndexicalBindingReceipt;
   situated_basis: Partial<SituatedContext>;
@@ -300,7 +302,7 @@ export async function orchestrateInquiry(input: InquiryRequest, adapters: Inquir
     records.push(entry);
     if (entry.record.kind === 'question_forward') questions.push(entry.record);
     if (entry.record.kind === 'quadrant' && entry.record.result === 'QUADRANT_POSITION' && entry.record.fidelity.coverage === 'EXAMINED') {
-      const key = `${entry.record.seat === 'Constitutive' ? 'U' : 'L'}${entry.record.burden === 'Governing' ? 'L' : 'R'}` as keyof QuadrantCoverage;
+      const key = entry.record.disclosure!;
       quadrants[key].status = 'EXAMINED'; quadrants[key].refs.push(entry.ref);
       if (['UNRESOLVED', 'CONDITIONAL_SENSORED'].includes(entry.record.fidelity.disposition ?? ''))
         ask(entry.ref, 'What consequential uncertainty remains at this quadrant position?', 'Resolve the declared disclosure before READY.');
@@ -379,7 +381,7 @@ export async function orchestrateInquiry(input: InquiryRequest, adapters: Inquir
   }
   admitted = candidates.filter(c => c.decision.disposition === 'ADMIT');
   if (!coordinateKeys.every(k => nonblank(request.context[k]))) ask('situated_basis', 'Establish focal identity, boundary, PGO, mapper, frame and access at the declared-use resolution.', 'Partial seating cannot manufacture sufficiency.');
-  for (const [key, q] of Object.entries(quadrants)) if (q.status === 'UNEXAMINED') ask(`quadrant:${key}`, 'Examine this installed quadrant obligation over the same referent and boundary.', 'Omission does not erase the disclosure obligation.');
+  for (const [key, q] of Object.entries(quadrants)) if (q.status === 'UNEXAMINED') ask(`quadrant:${key}`, QUADRANT_QUESTIONS[key as QuadrantDisclosure], 'Examine the positive disclosure over the same referent and boundary; qualifiers cannot substitute for it.');
   if (!disclosure.sufficiency.satisfied || disclosure.sufficiency.inquiry_basis_ref !== basisRef || !nonblank(disclosure.sufficiency.assessment_ref)
     || disclosure.sufficiency.unresolved_refs.length > 0) ask('sufficiency', 'Supply the attributable declared-use sufficiency assessment and decision-changing unknowns.', 'READY requires earned stopping, not a resource limit or coherent generated text.');
   if (coverage.some(c => c.status !== 'AVAILABLE')) ask('discovery_coverage', 'Repair degraded channels or qualify why their missing coverage cannot change this declared use.', 'Discovery failures must remain visible.');
@@ -389,10 +391,10 @@ export async function orchestrateInquiry(input: InquiryRequest, adapters: Inquir
   const indexicalBinding = indexicalBindingReceipt(request, {
     candidate_limit: limit, structural_depth: depth, projection_chars: projectionBudget,
   });
-  const irreducibleBinding = canonical({ contract: INQUIRY_CONTRACT, indexical_binding: indexicalBinding });
+  const irreducibleBinding = canonical({ contract: INQUIRY_CONTRACT, disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT, indexical_binding: indexicalBinding });
   if (irreducibleBinding.length + 128 > projectionBudget) throw new Error('inquiry_projection_budget_below_binding_receipt');
   const omitted: string[] = [];
-  const body: Record<string, unknown> = { contract: INQUIRY_CONTRACT, basis_ref: basisRef, indexical_binding: indexicalBinding,
+  const body: Record<string, unknown> = { contract: INQUIRY_CONTRACT, disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT, basis_ref: basisRef, indexical_binding: indexicalBinding,
     context: request.context, intended_use: request.intended_use,
     members: candidates.map(c => ({ referent_id: c.hit.referent_id, digest: c.evidence?.digest ?? null, source_refs: c.evidence?.source_refs ?? [],
       original_basis: c.evidence?.original_basis ?? null, stored_standing: c.evidence?.stored_standing ?? null,
@@ -418,15 +420,15 @@ export async function orchestrateInquiry(input: InquiryRequest, adapters: Inquir
       digest: c.evidence?.digest ?? null,
       source_refs: c.evidence?.source_refs ?? [],
     }));
-    projected = canonical({ contract: INQUIRY_CONTRACT, basis_ref: basisRef, indexical_binding: indexicalBinding, disposition: 'HOLD',
+    projected = canonical({ contract: INQUIRY_CONTRACT, disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT, basis_ref: basisRef, indexical_binding: indexicalBinding, disposition: 'HOLD',
       candidate_editions: candidateEditions, unresolved_refs: [...new Set(uniqueQuestions.map(q => q.unresolved_ref))], omissions: omitted.slice(-1) });
-    if (projected.length > projectionBudget) projected = canonical({ contract: INQUIRY_CONTRACT, basis_ref: basisRef,
+    if (projected.length > projectionBudget) projected = canonical({ contract: INQUIRY_CONTRACT, disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT, basis_ref: basisRef,
       indexical_binding: indexicalBinding, disposition: 'HOLD', reason: 'projection_budget_exceeded',
       candidate_editions: candidateEditions.map(c => ({ referent_id: c.referent_id, digest: c.digest })) });
     if (projected.length > projectionBudget) throw new Error('inquiry_projection_budget_below_binding_receipt');
   }
   const unresolved = [...new Set(uniqueQuestions.map(q => q.unresolved_ref))];
-  return { contract: INQUIRY_CONTRACT, inquiry_basis_ref: basisRef, indexical_binding: indexicalBinding,
+  return { contract: INQUIRY_CONTRACT, disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT, inquiry_basis_ref: basisRef, indexical_binding: indexicalBinding,
     situated_basis: request.context, intended_use: request.intended_use,
     candidates, admitted, quadrant_coverage: quadrants, records, changes: acceptedChanges, reconciliation, discovery_coverage: coverage,
     questions_forward: uniqueQuestions, signals, disposition: uniqueQuestions.length ? 'HOLD' : 'READY',

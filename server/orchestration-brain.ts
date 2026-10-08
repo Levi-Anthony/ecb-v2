@@ -172,7 +172,7 @@ export async function runBrainInquiry(request: InquiryRequest, ports: BrainInqui
     disposition: result.disposition, reentry: result.reentry });
   return { contract: result.contract, inquiry_basis_ref: result.inquiry_basis_ref, indexical_binding: result.indexical_binding,
     situated_basis: result.situated_basis, intended_use: result.intended_use, disposition: result.disposition, projection: result.projection,
-    quadrant_coverage: result.quadrant_coverage, discovery_coverage: result.discovery_coverage,
+    disclosure_contract: result.disclosure_contract, quadrant_coverage: result.quadrant_coverage, discovery_coverage: result.discovery_coverage,
     candidates: result.candidates.map(c => ({ referent_id: c.hit.referent_id, digest: c.evidence?.digest ?? null,
       channels: c.hit.channels, paths: c.hit.paths, original_basis: c.evidence?.original_basis ?? null, decision: c.decision })),
     admitted_relation_count: result.admitted.length, questions_forward: result.questions_forward, signals: result.signals,

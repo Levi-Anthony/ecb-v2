@@ -12,7 +12,7 @@ test('next route is WP8 qualification, not automatic formalism installation',()=
 
 test('first CIR v1.3 reconciles qualified WP6 and WP7 without portability/correspondence promotion',()=>{
   const cir=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission.cir.json',import.meta.url),'utf8'));
-  assert.equal(cir.cir_id,'ecos:cir:domain-semantic-admission:2026-10-07:v1.4');
+  assert.equal(cir.cir_id,'ecos:cir:domain-semantic-admission:2026-10-08:v1.5');
   assert.equal(cir.portability.standing,'NOT_ESTABLISHED');
   assert.equal(cir.graceful_degradation.standing,'SUPPORTED');
   assert.equal(cir.correspondence_inspections.find((x:any)=>x.ref==='civs:correspondence:native-to-ecos')?.standing,'NOT_ESTABLISHED');

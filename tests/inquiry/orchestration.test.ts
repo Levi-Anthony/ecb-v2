@@ -4,7 +4,7 @@ import {
   orchestrateInquiry, inquiryBasisRef, digest, preserveInquiryProjection, projectionDelta,
   type InquiryRequest, type InquiryAdapters, type ExactEvidence, type Disclosure, type CandidateDecision,
 } from '../../server/orchestration.ts';
-import type { SituatedContext, LevelClaim, ChangeRecord } from '../../server/urg-core.ts';
+import { QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_DISCLOSURES, type SituatedContext, type LevelClaim, type ChangeRecord } from '../../server/urg-core.ts';
 
 // Constructed semantic evaluations test coordination and denial, not empirical semantic adequacy.
 const focal = '00000000-0000-4000-8000-000000000001', prior = '00000000-0000-4000-8000-000000000002';
@@ -16,11 +16,13 @@ const evidence = (id: string): ExactEvidence => ({ referent_id: id, digest: dige
   source_refs: [`fixture:source:${id}`], custody_ref: id, currentness: 'CURRENT', stored_standing: 'fixture:source-claim',
   original_basis: { context: { referent_id: prior, boundary_ref: 'fixture:refrigerator', governing_orientation_ref: 'fixture:warranty-responsibility' }, basis_ref: 'fixture:original-work' } });
 function disclosure(r: InquiryRequest): Disclosure {
-  return { records: (['Constitutive', 'Participatory'] as const).flatMap(seat => (['Governing', 'Determinate'] as const).map(burden => ({
-    ref: `fixture:${seat}:${burden}`, record: { kind: 'quadrant' as const, result: 'QUADRANT_POSITION' as const,
-      context: r.context as SituatedContext, seat, burden,
+  return { records: QUADRANT_DISCLOSURES.map(disclosure => ({
+    ref: `fixture:${disclosure}`, record: { kind: 'quadrant' as const, result: 'QUADRANT_POSITION' as const,
+      disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT, disclosure,
+      content_ref: `fixture:content:${disclosure}`, characterization_ref: `fixture:characterization:${disclosure}`, conditions_ref:'fixture:conditions',
+      context: r.context as SituatedContext,
       fidelity: { coverage: 'EXAMINED' as const, activation: 'DORMANT' as const, disposition: 'NONCONSEQUENTIAL_NOW' as const } },
-  }))), changes: [], sufficiency: { inquiry_basis_ref: inquiryBasisRef(r), assessment_ref: 'fixture:use-review', satisfied: true, unresolved_refs: [] } };
+  })), changes: [], sufficiency: { inquiry_basis_ref: inquiryBasisRef(r), assessment_ref: 'fixture:use-review', satisfied: true, unresolved_refs: [] } };
 }
 function decision(r: InquiryRequest, id: string): CandidateDecision {
   const basis = inquiryBasisRef(r);
@@ -194,4 +196,23 @@ test('URG projection preservation refuses to fabricate missing situated coordina
     async fetchArtifact(id) { return { id, content: partial.projection.content }; },
   }), /projection_binding_basis_incomplete/);
   assert.equal(writes, 0);
+});
+
+
+test('coverage follows positive disclosure even when every claim has the same old qualifiers', async () => {
+  const a=adapters(); a.disclose=async r=> {const d=disclosure(r); for(const x of d.records) if(x.record.kind==='quadrant')
+    x.record.qualifiers={seat:'Constitutive',burden:'Determinate'}; return d;};
+  const r=await orchestrateInquiry(request,a);
+  assert.equal(r.disposition,'READY');
+  assert.equal(r.disclosure_contract,QUADRANT_DISCLOSURE_CONTRACT);
+  for(const q of QUADRANT_DISCLOSURES) assert.equal(r.quadrant_coverage[q].status,'EXAMINED');
+});
+test('old four-cell coverage cannot impersonate the successor four disclosures', async () => {
+  const a=adapters(); a.disclose=async r=> {const d=disclosure(r); d.records=(['Constitutive','Participatory']).flatMap(seat=>['Governing','Determinate'].map(burden=>({
+    ref:`legacy:${seat}:${burden}`,record:{kind:'quadrant',result:'QUADRANT_POSITION',context:r.context,seat,burden,
+    fidelity:{coverage:'EXAMINED',activation:'ACTIVE',disposition:'NONCONSEQUENTIAL_NOW'}}}))) as unknown as Disclosure['records']; return d;};
+  const r=await orchestrateInquiry(request,a);
+  assert.equal(r.disposition,'HOLD');
+  for(const q of QUADRANT_DISCLOSURES) assert.equal(r.quadrant_coverage[q].status,'UNEXAMINED');
+  assert(r.questions_forward.some(q=>q.discriminator_question.includes('instantiation')));
 });

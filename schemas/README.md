@@ -9,3 +9,5 @@ This directory now contains shared machine-consumable contract surfaces earned b
 - `urg-core-v1.contract.json` — ECO-136 Register-B portable URG core descriptor.
 
 A schema/descriptor is a representation of an accepted semantic contract. It does not independently confer truth, currentness, authority, or domain validity. Native domain schemas remain native and should be referenced/composed rather than silently replaced.
+
+Current Quadrant replacement: `urg-core-v2.contract.json` and `civs-v0.2.contract.json` govern successor consumers. The v1 / v0.1 descriptors are retained historical editions; they do not generate current coverage.

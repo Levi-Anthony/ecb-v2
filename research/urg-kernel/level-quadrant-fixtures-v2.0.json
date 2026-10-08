@@ -1,0 +1,217 @@
+{
+  "schema": "level-quadrant-disclosure-fixtures-v2",
+  "standing": "Declared semantic premises; bounded structural checks only. Historical Level/transition fixtures retained.",
+  "fixtures": [
+    {
+      "id": "F6-level-software-service",
+      "kind": "level",
+      "constituency": true,
+      "organization": true,
+      "whole_depends": true,
+      "reverse_constitutive_dep": false,
+      "boundary_explicit": true,
+      "rank_leakage": false,
+      "expected": "LEVEL_WITNESSED"
+    },
+    {
+      "id": "F7-schema-record-not-level",
+      "kind": "level",
+      "constituency": false,
+      "organization": false,
+      "whole_depends": false,
+      "reverse_constitutive_dep": false,
+      "boundary_explicit": true,
+      "rank_leakage": false,
+      "expected": "LEVEL_NOT_ESTABLISHED"
+    },
+    {
+      "id": "F8-mutual-dependence",
+      "kind": "level",
+      "constituency": true,
+      "organization": true,
+      "whole_depends": true,
+      "reverse_constitutive_dep": true,
+      "boundary_explicit": true,
+      "rank_leakage": false,
+      "expected": "LEVEL_NOT_ESTABLISHED"
+    },
+    {
+      "id": "F9-level-unknown",
+      "kind": "level",
+      "constituency": true,
+      "organization": true,
+      "whole_depends": null,
+      "reverse_constitutive_dep": false,
+      "boundary_explicit": true,
+      "rank_leakage": false,
+      "expected": "LEVEL_UNKNOWN"
+    },
+    {
+      "id": "F10-rank-leakage",
+      "kind": "level",
+      "constituency": true,
+      "organization": true,
+      "whole_depends": true,
+      "reverse_constitutive_dep": false,
+      "boundary_explicit": true,
+      "rank_leakage": true,
+      "expected": "LEVEL_NOT_ESTABLISHED"
+    },
+    {
+      "id": "F11-enrichment",
+      "kind": "transition",
+      "operation": "Enrich",
+      "same_r": true,
+      "same_b": true,
+      "boundary_changed": false,
+      "expected_valid": true
+    },
+    {
+      "id": "F12-boundary-revision",
+      "kind": "transition",
+      "operation": "ReviseBoundary",
+      "same_r": true,
+      "same_b": false,
+      "boundary_changed": true,
+      "continuity_mode": "same_r_revised_boundary",
+      "redisclose_level": true,
+      "reclassify_quadrant": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F13-boundary-smuggled-as-traversal",
+      "kind": "transition",
+      "operation": "TraverseQ",
+      "same_r": true,
+      "same_b": false,
+      "boundary_changed": true,
+      "expected_valid": false
+    },
+    {
+      "id": "F14-reseat",
+      "kind": "transition",
+      "operation": "Reseat",
+      "same_r": false,
+      "same_b": false,
+      "boundary_changed": true,
+      "continuity_mode": "different_existing_r",
+      "redisclose_level": true,
+      "reclassify_quadrant": true,
+      "expected_valid": true
+    },
+    {
+      "id": "F15-endpoint-history-no-auto-restore",
+      "kind": "transition",
+      "operation": "ReturnEndpoint",
+      "endpoint_equal": true,
+      "history_changed": true,
+      "restore_prior_qualification": true,
+      "expected_valid": false
+    },
+    {
+      "kind": "quadrant",
+      "disclosure_contract": "ecos:quadrant-disclosure:v2",
+      "content_ref": "authored:content",
+      "characterization_ref": "authored:discrimination",
+      "conditions_ref": "authored:conditions",
+      "id": "positive-UL-same-old-qualifiers",
+      "disclosure": "UL",
+      "qualifiers": {
+        "seat": "C",
+        "burden": "D"
+      },
+      "expected": "UL"
+    },
+    {
+      "kind": "quadrant",
+      "disclosure_contract": "ecos:quadrant-disclosure:v2",
+      "content_ref": "authored:content",
+      "characterization_ref": "authored:discrimination",
+      "conditions_ref": "authored:conditions",
+      "id": "positive-UR-same-old-qualifiers",
+      "disclosure": "UR",
+      "qualifiers": {
+        "seat": "C",
+        "burden": "D"
+      },
+      "expected": "UR"
+    },
+    {
+      "kind": "quadrant",
+      "disclosure_contract": "ecos:quadrant-disclosure:v2",
+      "content_ref": "authored:content",
+      "characterization_ref": "authored:discrimination",
+      "conditions_ref": "authored:conditions",
+      "id": "positive-LL-same-old-qualifiers",
+      "disclosure": "LL",
+      "qualifiers": {
+        "seat": "C",
+        "burden": "D"
+      },
+      "expected": "LL"
+    },
+    {
+      "kind": "quadrant",
+      "disclosure_contract": "ecos:quadrant-disclosure:v2",
+      "content_ref": "authored:content",
+      "characterization_ref": "authored:discrimination",
+      "conditions_ref": "authored:conditions",
+      "id": "positive-LR-same-old-qualifiers",
+      "disclosure": "LR",
+      "qualifiers": {
+        "seat": "C",
+        "burden": "D"
+      },
+      "expected": "LR"
+    },
+    {
+      "kind": "quadrant",
+      "disclosure_contract": "ecos:quadrant-seat-burden:v1",
+      "content_ref": "authored:content",
+      "characterization_ref": "authored:discrimination",
+      "conditions_ref": "authored:conditions",
+      "id": "legacy-not-current",
+      "seat": "C",
+      "burden": "D",
+      "expected": "CONTRACT_MISMATCH"
+    },
+    {
+      "kind": "quadrant",
+      "disclosure_contract": "ecos:quadrant-disclosure:v2",
+      "content_ref": "authored:content",
+      "characterization_ref": null,
+      "conditions_ref": "authored:conditions",
+      "id": "label-without-characterization",
+      "disclosure": "LL",
+      "expected": "QUADRANT_UNKNOWN"
+    },
+    {
+      "kind": "quadrant",
+      "disclosure_contract": "ecos:quadrant-disclosure:v2",
+      "content_ref": "authored:content",
+      "characterization_ref": "authored:discrimination",
+      "conditions_ref": "authored:conditions",
+      "id": "compound-retains-components",
+      "compound": true,
+      "component_refs": [
+        "proper",
+        "manifest"
+      ],
+      "expected": "DECOMPOSE"
+    },
+    {
+      "kind": "quadrant",
+      "disclosure_contract": "ecos:quadrant-disclosure:v2",
+      "content_ref": "authored:content",
+      "characterization_ref": "authored:discrimination",
+      "conditions_ref": "authored:conditions",
+      "id": "compound-not-self-duplication",
+      "compound": true,
+      "component_refs": [
+        "proper",
+        "proper"
+      ],
+      "expected": "QUADRANT_UNKNOWN"
+    }
+  ]
+}

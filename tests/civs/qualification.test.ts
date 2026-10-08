@@ -120,7 +120,7 @@ test('WP8 promotion supports every executed check but preserves fresh-reader HOL
 
 test('CIR v1.4 binds WP8 partial qualification and exposes fresh-reader Question Forward',()=>{
   const cir=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission.cir.json',import.meta.url),'utf8'));
-  assert.equal(cir.cir_id,'ecos:cir:domain-semantic-admission:2026-10-07:v1.4');
+  assert.equal(cir.cir_id,'ecos:cir:domain-semantic-admission:2026-10-08:v1.5');
   assert(cir.object_connections.some((x:any)=>x.ref==='civs:rel:projects-to-wp8-qualification'));
   assert(cir.verification_links.some((x:any)=>x.ref==='civs:verify:wp8-mechanical-qualification'&&x.standing==='SUPPORTED'));
   assert(cir.questions_forward.some((x:any)=>x.ref==='civs:qf:wp8:fresh-reader'));

@@ -1,3 +1,5 @@
+> **GOVERNING QUADRANT UPDATE — 8 October 2026:** [Positive disclosure contract v2.0](../research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md) supersedes the constitutive/participatory × governing/determinate Quadrant generator and historical consumer-job mappings for current use. The Principal identified the compression defect, initiating UL and subsequent fourfold hardening; the assistant's comparison corroborated that diagnosis. Current functions are UL proper determination, UR determinate manifestation, LL field articulation and LR enacted organization. The old dimensions remain independent qualifiers. Earlier retention/no-replacement directives and I/It/We/Its candidate wording below are historical for this superseded scope. Level, typed changes, source editions and independent qualification claims retain their own standing. Current executable package: `server/urg-core.ts` revision 2.0.0; current inquiry contract: 0.2.0. See the successor receipt for the exact installation/evidence boundary.
+
 # Ordinary inquiry orchestration
 
 **Owner:** ECO-202 — situated inquiry orchestration.  
@@ -9,7 +11,7 @@
 
 ECO-202 remains the active execution owner for the current Register B work front. The next default work is **ordinary-use hardening of the installed situated inquiry path**, not another broad experiment program and not closure of CIVS cold-reader qualification.
 
-Within ECO-202, the leading semantic concern is PGO-directed referent / whole-part / Quadrant decomposition mapping: recover/seat R/B under the current G/F basis, distinguish constitutive from participatory relations, traverse the installed fixed-R/B Quadrant obligations, preserve source/standing/currentness, and apply typed change plus two-sided reconciliation when the basis changes. The ECO-221 Level/Quadrant kernel remains closed/governing unless a concrete ordinary-use failure demonstrates a semantic defect.
+Within ECO-202, the leading semantic concern is PGO-directed referent / whole-part / Quadrant decomposition mapping: recover/seat R/B under the current G/F basis, distinguish constitutive from participatory relations, traverse the installed fixed-R/B Quadrant obligations, preserve source/standing/currentness, and apply typed change plus two-sided reconciliation when the basis changes. The user-identified compression defect is repaired by the successor positive disclosure contract; the inherited Level contract remains governing.
 
 Indexical relevance is already reconciled here as a derived recoverable binding receipt; PGO Namecrafting remains OPEN; CIVS cold-transfer is parallel verification. ECO-51 should be pulled forward when an ordinary inquiry reaches a concrete seating/Level checker gap. ECO-218 consumer exposure and ECO-214 hosted sustainment remain separately owned and do not block source/runtime hardening inside ECO-202.
 
@@ -17,7 +19,7 @@ Indexical relevance is already reconciled here as a derived recoverable binding 
 
 Compose the installed Universal Referent Grammar (URG) and circulation substrate into one query-time path. The PGO token (long-form Namecrafting OPEN) denotes the installed G-coordinate / purpose-orientation interface and directs activation, while stored material remains recoverable without its original PGO, topic or a remembered identifier. This implements the discovery aperture for FR-3 — cross-context structural resurfacing and recomposition — alongside FR-1 situated domain-semantic descent and FR-2 bidirectional intent/realization/evidence traceability. FR-3 custody: `13acf55f-0b5e-4b7c-a6f2-e2edf988762f`.
 
-The coordinator composes primitives; it does not own their identity, evidence, standing or semantics. `server/urg-core.ts` remains revision 1.0.2. The [installed orchestration profile](../research/formal-semantics/PGO-Directed-Situated-Referent-Orchestration-Profile-v0.1.md), Level witness, fixed-referent/boundary Quadrant generator, typed changes, Question Forward and ECO-191 reconciliation law remain unchanged.
+The coordinator composes primitives; it does not own their identity, evidence, standing or semantics. `server/urg-core.ts` is revision 2.0.0. The [installed orchestration profile](../research/formal-semantics/PGO-Directed-Situated-Referent-Orchestration-Profile-v0.1.md), Level witness, typed changes, Question Forward and ECO-191 reconciliation law remain inherited; fixed-referent/boundary Quadrant coverage now consumes explicit positive disclosure identity.
 
 ## Execution contract
 

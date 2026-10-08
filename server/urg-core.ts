@@ -1,5 +1,5 @@
 /**
- * ECO-136 URG portable core, Register-B v1.
+ * ECO-136 URG portable core, Register-B v2.
  *
  * Machine-consumable structural contract for the Principal-accepted Shape.
  * It is deliberately a discriminated grammar, not one record with seven
@@ -10,8 +10,24 @@
  * exhaustiveness, or correct domain classification.
  */
 
-export const URG_CORE_ID = "ecos:urg-core:register-b:v1" as const;
-export const URG_IMPLEMENTATION_REVISION = "1.0.2" as const;
+export const URG_CORE_ID = "ecos:urg-core:register-b:v2" as const;
+export const URG_IMPLEMENTATION_REVISION = "2.0.0" as const;
+export const QUADRANT_DISCLOSURE_CONTRACT = "ecos:quadrant-disclosure:v2" as const;
+export const LEGACY_QUADRANT_CONTRACT = "ecos:quadrant-seat-burden:v1" as const;
+export const QUADRANT_DISCLOSURES = ["UL", "UR", "LL", "LR"] as const;
+export type QuadrantDisclosure = typeof QUADRANT_DISCLOSURES[number];
+/** Working handles; the positive definitions live in Quadrant-Disclosure-Contract-v2.0.md. */
+export const QUADRANT_FUNCTIONS = {
+  UL: "PROPER_DETERMINATION", UR: "DETERMINATE_MANIFESTATION",
+  LL: "FIELD_ARTICULATION", LR: "ENACTED_ORGANIZATION",
+} as const;
+export type QuadrantFunction = typeof QUADRANT_FUNCTIONS[QuadrantDisclosure];
+export const QUADRANT_QUESTIONS: Record<QuadrantDisclosure, string> = {
+  UL: "What obtains in/as this instantiation, with acquaintance by instantiation distinct from information about it?",
+  UR: "What differentiated configuration, variation or response does this referent manifest under the stated conditions?",
+  LL: "What organized distinctions and relations give this referent significance in its field?",
+  LR: "What actual organization of participation carries, sustains or transforms this referent and its effects?",
+};
 
 export const URG_RECORD_KINDS = [
   "level",
@@ -104,9 +120,19 @@ export type QuadrantClaim = {
   kind: "quadrant";
   context: SituatedContext;
   fidelity: FidelityCoordinates;
+  disclosure_contract: typeof QUADRANT_DISCLOSURE_CONTRACT;
   result: "QUADRANT_POSITION" | "DECOMPOSE" | "QUADRANT_UNKNOWN";
-  seat?: "Constitutive" | "Participatory";
-  burden?: "Governing" | "Determinate";
+  disclosure?: QuadrantDisclosure;
+  content_ref?: string;
+  characterization_ref?: string;
+  conditions_ref?: string;
+  qualifiers?: {
+    seat?: "Constitutive" | "Participatory";
+    burden?: "Governing" | "Determinate";
+  };
+  component_refs?: string[];
+  /** References to independently standing native relation claims, not inferred edges. */
+  relation_refs?: string[];
   qf_ref?: string;
 };
 
@@ -384,6 +410,23 @@ function validateCommon(record: UnknownRecord, errors: string[]) {
   validateFidelity(record.fidelity, errors);
 }
 
+/** Historical interpretation only. Never supplies current disclosure coverage or migration. */
+export function validateLegacyQuadrantRecord(value: unknown, sourceContract: string): { valid: boolean; errors: string[] } {
+  const errors: string[] = [];
+  const record = object(value);
+  if (sourceContract !== LEGACY_QUADRANT_CONTRACT) errors.push("exact legacy source contract is required");
+  if (!record || record.kind !== "quadrant") return { valid: false, errors: [...errors, "legacy quadrant record is required"] };
+  validateCommon(record, errors);
+  if (record.disclosure_contract !== undefined || record.disclosure !== undefined) errors.push("successor disclosure cannot be interpreted as legacy");
+  if (!["QUADRANT_POSITION", "DECOMPOSE", "QUADRANT_UNKNOWN"].includes(String(record.result))) errors.push("invalid legacy quadrant result");
+  if (record.result === "QUADRANT_POSITION") {
+    if (!["Constitutive", "Participatory"].includes(String(record.seat))) errors.push("legacy seat is required");
+    if (!["Governing", "Determinate"].includes(String(record.burden))) errors.push("legacy burden is required");
+  }
+  if (record.result === "QUADRANT_UNKNOWN") requireText(record, "qf_ref", errors);
+  return { valid: errors.length === 0, errors };
+}
+
 export function validateUrgRecord(value: unknown): ValidationResult {
   const errors: string[] = [];
   const record = object(value);
@@ -415,10 +458,23 @@ export function validateUrgRecord(value: unknown): ValidationResult {
     case "quadrant": {
       const allowed = new Set(["QUADRANT_POSITION","DECOMPOSE","QUADRANT_UNKNOWN"]);
       if (!allowed.has(String(record.result))) errors.push("invalid quadrant result");
+      if (record.disclosure_contract !== QUADRANT_DISCLOSURE_CONTRACT) errors.push("current quadrant disclosure_contract is required; legacy records require explicit historical interpretation");
+      if (record.seat !== undefined || record.burden !== undefined) errors.push("seat/burden belong in qualifiers and do not generate disclosure identity");
+      if (record.disclosure !== undefined && !QUADRANT_DISCLOSURES.includes(record.disclosure as QuadrantDisclosure)) errors.push("invalid quadrant disclosure");
       if (record.result === "QUADRANT_POSITION") {
-        if (!["Constitutive","Participatory"].includes(String(record.seat))) errors.push("quadrant seat is required");
-        if (!["Governing","Determinate"].includes(String(record.burden))) errors.push("quadrant burden is required");
+        if (!QUADRANT_DISCLOSURES.includes(record.disclosure as QuadrantDisclosure)) errors.push("quadrant disclosure is required");
+        for (const key of ["content_ref", "characterization_ref", "conditions_ref"]) requireText(record, key, errors);
       }
+      if (record.qualifiers !== undefined) {
+        const q = object(record.qualifiers);
+        if (!q) errors.push("quadrant qualifiers must be an object");
+        else {
+          if (q.seat !== undefined && !["Constitutive","Participatory"].includes(String(q.seat))) errors.push("invalid quadrant seat qualifier");
+          if (q.burden !== undefined && !["Governing","Determinate"].includes(String(q.burden))) errors.push("invalid quadrant burden qualifier");
+        }
+      }
+      if (record.result === "DECOMPOSE" && (!texts(record.component_refs) || new Set(record.component_refs).size < 2)) errors.push("DECOMPOSE requires at least two distinct component_refs");
+      if (record.relation_refs !== undefined && !texts(record.relation_refs)) errors.push("relation_refs must contain nonblank references");
       if (record.result === "QUADRANT_UNKNOWN") requireText(record, "qf_ref", errors);
       break;
     }

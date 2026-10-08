@@ -1,0 +1,54 @@
+{
+  "result": "PASS",
+  "checks": [
+    "source-grounded coordinator READY",
+    "all four disclosures under identical old qualifiers",
+    "legacy coverage HOLD",
+    "stale original-seat records HOLD",
+    "explicitly new model inquiry READY"
+  ],
+  "semantic_standing": "Authored premise/discriminator cases; no automated or independent semantic classification claim.",
+  "source_editions": [
+    {
+      "path": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md",
+      "digest": "bc720217337a19cbe4fa3e4d0c0641ee62eedcf98d8e853752f4af9dad89c977"
+    },
+    {
+      "path": "server/urg-core.ts",
+      "digest": "5129a00955f124a867da911e78063371deacac266e09d31b52f5a49d84c9c9ce"
+    },
+    {
+      "path": "server/orchestration.ts",
+      "digest": "269ed7fad97add975458db94c9602c728a54e0cbe317f1d4d44a8d0afac75e26"
+    }
+  ],
+  "projection_digest": "2784ad5e3a5cbc5d48d7ebd52dc6455af50c02fee30352be43dd02635c32ea10",
+  "limits": [
+    "Local coordinator integration, not hosted provider deployment/use.",
+    "Model inquiry is explicitly new; no claim that boundary changes automatically establish Level.",
+    "Generative relationships remain attributable domain-native relation claims, not mechanically inferred."
+  ],
+  "tests": {
+    "urg": 43,
+    "inquiry": 35,
+    "civs": 43,
+    "mcp": 11,
+    "oauth": 7,
+    "circulation": 33
+  },
+  "total_tests": 172,
+  "typechecks": [
+    "urg",
+    "inquiry",
+    "civs",
+    "mcp",
+    "oauth",
+    "circulation"
+  ],
+  "fixture_checks": {
+    "successor_level_quadrant": 18,
+    "historical_level_quadrant_replay": 17,
+    "inherited_full_core": 42
+  },
+  "origin": "Principal-identified compression defect -> UL hardening -> positive fourfold successor; assistant corroboration and implementation."
+}

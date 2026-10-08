@@ -1,8 +1,8 @@
 # Capability Inspection Record — Domain-Semantic Admission / D&I Boundary
 
-**CIR:** `ecos:cir:domain-semantic-admission:2026-10-07:v1.4`  
+**CIR:** `ecos:cir:domain-semantic-admission:2026-10-08:v1.5`  
 **Subject:** `ecos:domain-semantic-admission:0.1.0`  
-**Contract:** `ecos:capability-inspection-record:0.1.1`  
+**Contract:** `ecos:capability-inspection-record:0.2.0`  
 **As-of:** `github:Levi-Anthony/ecb-v2:2fcc0d6e7b4358c9804f9f90ac79af61557ce839`
 
 > This document is a generated human projection of the machine-readable CIR. It is not a second source of truth.
@@ -37,11 +37,11 @@ Given caller-declared atomic responsibilities, registered Native Package descrip
 - **civs:rel:depends-on-native-packages:** ecos:civs-object-relations:depends_on; dependent=`ecos:domain-semantic-admission:0.1.0`; dependency=`server/native-packages/systems-engineering.ts`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:ci-evidence-for-mechanical:** ecos:civs-object-relations:evidence_for; evidence=`GitHubActions:37706155075`; claim_or_assessment=`civs:assessment:mechanically_qualified`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:qf-correspondence:** ecos:civs-object-relations:question_forward_for; question_forward=`civs:qf:domain-admission:correspondence-truth`; unresolved_subject=`ecos:domain-semantic-admission:0.1.0`; standing UNRESOLVED.
-- **civs:rel:projects-to-human:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.4`; projection=`civs:projection:domain-semantic-admission:human`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:projects-to-cold-reentry:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.4`; projection=`ecos:civs-cold-reentry:0.1.0`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:projects-to-portability:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.4`; projection=`ecos:civs:domain-semantic-admission:portability-degradation:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:projects-to-correspondence-handoff:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.4`; projection=`ecos:civs:domain-semantic-admission:correspondence-handoff:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:projects-to-wp8-qualification:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.4`; projection=`ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-human:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-08:v1.5`; projection=`civs:projection:domain-semantic-admission:human`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-cold-reentry:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-08:v1.5`; projection=`ecos:civs-cold-reentry:0.1.0`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-portability:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-08:v1.5`; projection=`ecos:civs:domain-semantic-admission:portability-degradation:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-correspondence-handoff:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-08:v1.5`; projection=`ecos:civs:domain-semantic-admission:correspondence-handoff:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-wp8-qualification:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-08:v1.5`; projection=`ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:qf-fresh-reader:** ecos:civs-object-relations:question_forward_for; question_forward=`civs:qf:wp8:fresh-reader`; unresolved_subject=`wp8:gate:fresh-reader`; standing UNRESOLVED.
 
 ## Physical realization
@@ -130,10 +130,10 @@ Participatory relations: `civs:rel:specifies-domain-admission`, `civs:rel:implem
 
 ### civs:consumer-sim:fresh-agent-domain-admission
 Consumer: `ecos:consumer:fresh-agent`; use: Recover what Domain-Semantic Admission does, predict a structural gate, locate physical realization, distinguish premise from proof and deployed from connected exposure, and recover reentry without hidden-bridge invention..
-- **UL / DEPENDENCY_HYPOTHESIS / LATENT:** Hypothesis: legitimate use requires the consumer to distinguish supplied semantic premises from what the structural evaluator actually proves, and to distinguish deployment from connected exposure. Observation route: future fresh-agent cold-read qualification. Falsifier: A cold consumer can reliably orient, predict the gate, preserve authority/currentness and avoid proof inflation without this dependency, or another dependency explains performance.
-- **UR / OBSERVABLE_CORRELATE / LOCATED:** Observable correlate: a bounded test can predict FEDERATE for the exact corpus atom and detect removal of correspondence targets by routing to QUALIFY. Observation route: run the first-specimen CIVS CI test and inspect its exact positive/negative dispositions. Falsifier: The exact negative control fails to change the disposition or a future cold consumer cannot use the located evidence to predict the gate.
-- **LL / SHARED_NORM / LOCATED:** Shared governing support includes no silent promotion, two-door reconciliation, native-domain ownership, distinct action/semantic/verification roles and no-invention reentry rules. Observation route: recover governing source precedence and role scopes from exact linked records. Falsifier: A consequential governing rule cannot be recovered or the CIR collapses coordination/verification into semantic/action authority.
-- **LR / SUPPORT_SURFACE / LOCATED:** Concrete participatory surfaces include exact GitHub objects/CI, Vercel deployment metadata, Linear coordination state and the connected BRAIN action-schema snapshot with its degraded exposure. Observation route: follow exact identifiers to each external surface and compare present state with this CIR as-of basis. Falsifier: A named surface cannot be recovered/currently located or its observed behavior contradicts the CIR description.
+- **LL / FIELD_ARTICULATION / LATENT:** Hypothesis about the consumer’s participation in an articulated field: distinctions between semantic premise and structural proof, and between deployment and exposure, organize what its conclusions count as. Hypothesis: legitimate use requires the consumer to distinguish supplied semantic premises from what the structural evaluator actually proves, and to distinguish deployment from connected exposure. Observation route: future fresh-agent cold-read qualification. Falsifier: A cold consumer can reliably orient, predict the gate, preserve authority/currentness and avoid proof inflation without this dependency, or another dependency explains performance.
+- **UR / DETERMINATE_MANIFESTATION / LOCATED:** Observable correlate: a bounded test can predict FEDERATE for the exact corpus atom and detect removal of correspondence targets by routing to QUALIFY. Observation route: run the first-specimen CIVS CI test and inspect its exact positive/negative dispositions. Falsifier: The exact negative control fails to change the disposition or a future cold consumer cannot use the located evidence to predict the gate.
+- **LL / FIELD_ARTICULATION / LOCATED:** Shared governing support includes no silent promotion, two-door reconciliation, native-domain ownership, distinct action/semantic/verification roles and no-invention reentry rules. Observation route: recover governing source precedence and role scopes from exact linked records. Falsifier: A consequential governing rule cannot be recovered or the CIR collapses coordination/verification into semantic/action authority.
+- **LR / ENACTED_ORGANIZATION / LOCATED:** Concrete participatory surfaces include exact GitHub objects/CI, Vercel deployment metadata, Linear coordination state and the connected BRAIN action-schema snapshot with its degraded exposure. Observation route: follow exact identifiers to each external surface and compare present state with this CIR as-of basis. Falsifier: A named surface cannot be recovered/currently located or its observed behavior contradicts the CIR description.
 
 ## Graphical-door obligations
 
@@ -151,6 +151,7 @@ Consumer: `ecos:consumer:fresh-agent`; use: Recover what Domain-Semantic Admissi
 - **civs:qf:domain-admission:connected-consumer-exposure:** Does a refreshed connected consumer advertise and successfully invoke search.inquiry.domain_admission against the enduring endpoint? — Reentry: Reenter after connected action refresh/publish or a new consumer snapshot.
 - **civs:qf:domain-admission:hosted-sustainment:** Can the exact source-complete current circulation edition run the twelve hosted-use obligations under a separately valid effect envelope? — Reentry: Reenter after source-complete binding and separately authorized hosted-use qualification.
 - **civs:qf:wp8:fresh-reader:** Can a genuinely separate fresh authorized agent, given only docs/civs-reentry.md plus the CIR entry handle and ordinary source access, recover the fourteen required distinctions without conversational bridges? — Reentry: Reenter when a genuinely separate authorized worker can be run from only the durable CIVS entry surfaces.
+- **civs:qf:consumer-proper-determination-v2:** What proper determination of the prospective consumer occurrence is consequential here, and what account can be supported without substituting its report or performance? — Reentry: Reenter when attributable cross-domain mapping evidence or a falsifying native equivalent is available.
 
 ## Source refs
 
@@ -186,6 +187,7 @@ Consumer: `ecos:consumer:fresh-agent`; use: Recover what Domain-Semantic Admissi
 - `ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2`
 - `Vercel:dpl_8EeP8R6TNE6APZy7FpqEmHJ1kVgk`
 - `github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839`
+- `research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md`
 
 ## Omissions
 
@@ -203,3 +205,4 @@ Consumer: `ecos:consumer:fresh-agent`; use: Recover what Domain-Semantic Admissi
 - WP8 overall disposition is PARTIAL_HOLD because an independent fresh-agent behavioral run has not been performed.
 - The current orchestrator's own successful reentry/qualification work is not evidence for the fresh-reader behavioral gate.
 - Connected-consumer exposure/use and operational sustainment remain separately unqualified after WP8.
+- Quadrant successor migration changes the current CIR contract and consumer disclosure interpretation; prior WP8/deployment observations retain their exact historical scope and do not qualify successor hosted use.

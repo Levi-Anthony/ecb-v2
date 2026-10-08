@@ -14,10 +14,11 @@
     "test:mcp": "node --import tsx tests/mcp-protocol.test.ts",
     "typecheck:circulation": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server.ts server/circulation/worker.ts api/circulation/run.ts scripts/eco-213/commission.ts scripts/eco-213/assimilate.ts",
     "test:circulation": "node --import tsx --test tests/eco-213/worker.test.ts tests/eco-213/protocol.test.ts tests/eco-213/commission.test.ts tests/eco-213/assimilate.test.ts",
-    "typecheck:urg": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server/urg-core.ts tests/urg-core/contract.test.ts",
+    "typecheck:urg": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server/urg-core.ts tests/urg-core/contract.test.ts scripts/qualify-quadrant-disclosure.ts",
     "test:urg": "node --import tsx --test tests/urg-core/contract.test.ts",
     "typecheck:civs": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server/civs.ts server/urg-core.ts tests/civs/contract.test.ts tests/civs/reentry.test.ts tests/civs/portability.test.ts tests/civs/correspondence.test.ts",
-    "test:civs": "node --import tsx --test tests/civs/*.test.ts"
+    "test:civs": "node --import tsx --test tests/civs/*.test.ts",
+    "qualify:quadrant": "node --import tsx scripts/qualify-quadrant-disclosure.ts"
   },
   "allowScripts": {
     "onnxruntime-node@1.21.0": true

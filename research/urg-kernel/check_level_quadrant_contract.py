@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded structural checker for ECO-221 Level + Quadrant contract.
+"""Bounded structural checker for Level + positive Quadrant disclosure; explicit v1 replay retained.
 
 Validates declared fixture structure only. It does not infer semantic truth,
 referent boundaries, constitutive relations, natural-language quadrant burden,
@@ -23,13 +23,22 @@ def check_level(f):
         return "LEVEL_WITNESSED"
     return "LEVEL_NOT_ESTABLISHED"
 
-def check_quadrant(f):
+def check_legacy_quadrant(f):
     if f.get("compound"):
         return "DECOMPOSE"
     seat, burden = f.get("seat"), f.get("burden")
     if seat is None or burden is None:
         return "QUADRANT_UNKNOWN"
     return POSITIONS.get((seat, burden), "QUADRANT_UNKNOWN")
+
+def check_quadrant(f):
+    if f.get("disclosure_contract") != "ecos:quadrant-disclosure:v2":
+        return "CONTRACT_MISMATCH"
+    if f.get("compound"):
+        return "DECOMPOSE" if len(set(f.get("component_refs", []))) >= 2 else "QUADRANT_UNKNOWN"
+    if not all(f.get(k) for k in ("content_ref", "characterization_ref", "conditions_ref")):
+        return "QUADRANT_UNKNOWN"
+    return f.get("disclosure") if f.get("disclosure") in {"UL", "UR", "LL", "LR"} else "QUADRANT_UNKNOWN"
 
 def check_transition(f):
     op = f.get("operation")
@@ -54,12 +63,16 @@ def check_transition(f):
 
 def main(path):
     data = json.loads(Path(path).read_text())
+    legacy = data.get("schema") == "eco221-level-quadrant-fixtures-v1"
+    if not legacy and data.get("schema") != "level-quadrant-disclosure-fixtures-v2":
+        print("UNKNOWN FIXTURE CONTRACT"); return 1
+    print("HISTORICAL v1 REPLAY ONLY" if legacy else "CURRENT positive disclosure v2")
     failures = []
     for f in data["fixtures"]:
         if f["kind"] == "level":
             actual, expected = check_level(f), f["expected"]
         elif f["kind"] == "quadrant":
-            actual, expected = check_quadrant(f), f["expected"]
+            actual, expected = (check_legacy_quadrant(f) if legacy else check_quadrant(f)), f["expected"]
         elif f["kind"] == "transition":
             actual, expected = check_transition(f), f["expected_valid"]
         else:
@@ -76,5 +89,5 @@ def main(path):
     return 0
 
 if __name__ == "__main__":
-    p = sys.argv[1] if len(sys.argv) > 1 else Path(__file__).with_name("level-quadrant-fixtures-v1.0.json")
+    p = sys.argv[1] if len(sys.argv) > 1 else Path(__file__).with_name("level-quadrant-fixtures-v2.0.json")
     raise SystemExit(main(p))

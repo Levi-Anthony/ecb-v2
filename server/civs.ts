@@ -7,16 +7,18 @@
  */
 import {
   validateUrgRecord,
+  QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_FUNCTIONS,
+  type QuadrantFunction,
   type FidelityCoordinates,
   type NativeRelationClaim,
   type ProjectionRecord,
   type QuestionForward,
 } from './urg-core.js';
 
-export const CIVS_CONTRACT_ID = 'ecos:capability-inspection-record:0.1.1' as const;
+export const CIVS_CONTRACT_ID = 'ecos:capability-inspection-record:0.2.0' as const;
 export const CIVS_RELATION_SCHEMA_ID = 'ecos:civs-object-relations' as const;
 export const CIVS_RELATION_SCHEMA_EDITION = '0.1.0' as const;
-export const CIVS_HUMAN_PROJECTION_ID = 'ecos:civs-human-projection:0.1.1' as const;
+export const CIVS_HUMAN_PROJECTION_ID = 'ecos:civs-human-projection:0.2.0' as const;
 
 export const CIVS_INSTALLATION_KINDS = [
   'specified',
@@ -222,7 +224,8 @@ export type SupportClaim = {
 export type ConsumerSimulationItem = {
   ref: string;
   quadrant: 'UL' | 'UR' | 'LL' | 'LR';
-  entry_kind: 'DEPENDENCY_HYPOTHESIS' | 'OBSERVABLE_CORRELATE' | 'SHARED_NORM' | 'SUPPORT_SURFACE';
+  entry_kind: QuadrantFunction;
+  characterization_ref: string;
   binding_status: 'LATENT' | 'LOCATED';
   statement: string;
   observation_refs: string[];
@@ -239,6 +242,7 @@ export type ConsumerSimulationItem = {
 
 export type ConsumerSimulation = {
   ref: string;
+  disclosure_contract: typeof QUADRANT_DISCLOSURE_CONTRACT;
   consumer_basis: {
     consumer_referent_ref: string;
     boundary_ref: string;
@@ -592,14 +596,16 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
   for (const [i, raw] of simulations.entries()) {
     const simulation = object(raw), basis = object(simulation?.consumer_basis);
     if (!simulation || !text(simulation.ref) || !basis) { errors.push(`consumer_simulations[${i}] is incomplete`); continue; }
+    if (simulation.disclosure_contract !== QUADRANT_DISCLOSURE_CONTRACT) errors.push(`consumer_simulations[${i}].disclosure_contract must identify the current positive disclosure contract`);
     for (const key of ['consumer_referent_ref','boundary_ref','governing_orientation_ref','mapper_ref','frame_ref','access_ref','declared_use']) {
       if (!text(basis[key])) errors.push(`consumer_simulations[${i}].consumer_basis.${key} is required`);
     }
     for (const [j, itemRaw] of (Array.isArray(simulation.items) ? simulation.items : []).entries()) {
       const item = object(itemRaw);
       if (!item || !['UL','UR','LL','LR'].includes(String(item.quadrant))) errors.push(`consumer_simulations[${i}].items[${j}].quadrant is invalid`);
-      const expectedKind: Record<string,string> = { UL: 'DEPENDENCY_HYPOTHESIS', UR: 'OBSERVABLE_CORRELATE', LL: 'SHARED_NORM', LR: 'SUPPORT_SURFACE' };
+      const expectedKind: Record<string,string> = QUADRANT_FUNCTIONS;
       if (item && expectedKind[String(item.quadrant)] !== String(item.entry_kind)) errors.push(`consumer_simulations[${i}].items[${j}].entry_kind does not match quadrant job`);
+      if (!item || !text(item.characterization_ref)) errors.push(`consumer_simulations[${i}].items[${j}].characterization_ref is required`);
       if (!item || !['LATENT','LOCATED'].includes(String(item.binding_status))) errors.push(`consumer_simulations[${i}].items[${j}].binding_status is invalid`);
       if (!item || !text(item.statement) || !text(item.observation_route) || !text(item.falsifier)) errors.push(`consumer_simulations[${i}].items[${j}] requires statement, observation_route and falsifier`);
       if (item && (!Array.isArray(item.observation_refs) || !item.observation_refs.every(text))) errors.push(`consumer_simulations[${i}].items[${j}].observation_refs are invalid`);
