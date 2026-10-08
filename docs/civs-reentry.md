@@ -133,7 +133,7 @@ Required proof boundary:
 
 No verification link inherits support merely because it is adjacent to another link.
 
-Keep the **responsibility-level decision** separate from the **request-level result**. In Domain-Semantic Admission, a responsibility may return `QUALIFY` while the request remains `READY` when that responsibility is not required for current use. A request-level `HOLD` is earned only when a blocking condition applies, such as `required_for_current_use=true` on a qualification-required responsibility. Do not translate every `QUALIFY` into request-level HOLD.
+Keep the **responsibility-level decision** separate from the **request-level disposition/result**. In Domain-Semantic Admission, a responsibility may return `QUALIFY` while the request remains `READY` when that responsibility is not required for current use. A request-level `HOLD` is earned only when a blocking condition applies, such as `required_for_current_use=true` on a qualification-required responsibility. Do not translate every `QUALIFY` into request-level HOLD.
 
 ### 7 — Inspect field reconstitution without inventing a generic Change
 

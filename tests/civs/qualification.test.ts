@@ -151,9 +151,9 @@ test('worked trace distinguishes responsibility QUALIFY from request-level HOLD'
   const noTargets=JSON.parse(JSON.stringify(base)) as AtomicResponsibility; noTargets.correspondence_targets=[]; noTargets.required_for_current_use=false;
   const nonblocking=evaluateDIBoundary({domain:corpus.domain,inquiry_basis_ref:corpus.inquiry_basis_ref,package_ids:corpus.package_ids,responsibilities:[noTargets]},systemsEngineeringNativePackages);
   assert.equal(nonblocking.decisions[0].disposition,'QUALIFY');
-  assert.equal(nonblocking.result,'READY');
+  assert.equal(nonblocking.disposition,'READY');
   const required=JSON.parse(JSON.stringify(noTargets)) as AtomicResponsibility; required.required_for_current_use=true;
   const blocking=evaluateDIBoundary({domain:corpus.domain,inquiry_basis_ref:corpus.inquiry_basis_ref,package_ids:corpus.package_ids,responsibilities:[required]},systemsEngineeringNativePackages);
   assert.equal(blocking.decisions[0].disposition,'QUALIFY');
-  assert.equal(blocking.result,'HOLD');
+  assert.equal(blocking.disposition,'HOLD');
 });
