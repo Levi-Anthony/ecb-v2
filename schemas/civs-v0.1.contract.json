@@ -1,0 +1,72 @@
+{
+  "contract": "ecos:civs-contract-vocabulary:0.1.0",
+  "cir_contract": "ecos:capability-inspection-record:0.1.0",
+  "canonical_validator": "server/civs.ts#validateCapabilityInspectionRecord",
+  "relation_schema": {
+    "id": "ecos:civs-object-relations",
+    "edition": "0.1.0",
+    "kinds": [
+      "specifies",
+      "implements",
+      "tests",
+      "qualifies",
+      "deploys",
+      "exposes",
+      "coordinates",
+      "depends_on",
+      "evidence_for",
+      "question_forward_for",
+      "projects_to",
+      "supersedes"
+    ]
+  },
+  "installation_assessments": [
+    "specified",
+    "implemented",
+    "mechanically_qualified",
+    "integrated",
+    "deployed",
+    "exposed",
+    "situated_use_qualified",
+    "operationally_sustained"
+  ],
+  "working_bands": [
+    "containing_meta_architecture",
+    "capability",
+    "projection",
+    "sub_capability",
+    "located_object"
+  ],
+  "local_assessment_standing": [
+    "SUPPORTED",
+    "NOT_ESTABLISHED",
+    "UNKNOWN",
+    "NOT_APPLICABLE",
+    "CONTRADICTED"
+  ],
+  "enforcement_modes": [
+    "STRUCTURAL",
+    "SEMANTIC",
+    "AUTHORITY",
+    "OBSERVATIONAL"
+  ],
+  "graphical_door_obligations": [
+    "shared_object_identity",
+    "typed_controls",
+    "standing_currentness_visibility",
+    "change_history_visibility",
+    "projection_omissions_visibility",
+    "human_agent_reconciliation",
+    "text_api_graceful_fallback"
+  ],
+  "nonpromotion_rules": [
+    "installation assessments are independent; no ordinal promotion",
+    "working_band is not URG Level",
+    "LATENT/LOCATED are consumer-simulation binding statuses only",
+    "CIVS relations are scoped native_relation records, not generic graph edges",
+    "generic owner fields are prohibited where role differences matter",
+    "verification support does not transitively prove semantic premises, authority, exposure, or use",
+    "graphical-door readiness is decomposed; no convenience boolean",
+    "field reconstitution is not a new Change primitive"
+  ]
+}

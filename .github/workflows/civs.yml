@@ -1,0 +1,37 @@
+name: Capability inspection verification spine
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'server/civs.ts'
+      - 'schemas/civs-*.json'
+      - 'tests/civs/**'
+      - 'research/civs/**'
+      - 'docs/civs-*.md'
+      - 'package*.json'
+      - '.github/workflows/civs.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'server/civs.ts'
+      - 'schemas/civs-*.json'
+      - 'tests/civs/**'
+      - 'research/civs/**'
+      - 'docs/civs-*.md'
+      - 'package*.json'
+      - '.github/workflows/civs.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm ci --ignore-scripts
+      - run: npm run typecheck:civs
+      - run: npm run test:civs
