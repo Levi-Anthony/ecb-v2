@@ -1,9 +1,9 @@
 # Capability Inspection Record — Domain-Semantic Admission / D&I Boundary
 
-**CIR:** `ecos:cir:domain-semantic-admission:2026-10-07:v1`  
+**CIR:** `ecos:cir:domain-semantic-admission:2026-10-07:v1.1`  
 **Subject:** `ecos:domain-semantic-admission:0.1.0`  
 **Contract:** `ecos:capability-inspection-record:0.1.1`  
-**As-of:** `github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce`
+**As-of:** `github:Levi-Anthony/ecb-v2:58b1d065d0ad9ce09db185a75e1ecda6a15f53ad`
 
 > This document is a generated human projection of the machine-readable CIR. It is not a second source of truth.
 
@@ -38,7 +38,7 @@ Given caller-declared atomic responsibilities, registered Native Package descrip
 ## Verification links
 
 - **civs:verify:domain-admission-contract-tests — SUPPORTED:** The evaluator enforces the declared INHERIT/FEDERATE/EXTEND/QUALIFY structural gates on tested inputs. Limits: No semantic premise truth or authority is established.
-- **civs:verify:first-federate-negative-control — NOT ESTABLISHED:** The first specimen FEDERATE trace changes to QUALIFY when correspondence_targets are removed. Limits: Becomes SUPPORTED only after the first-specimen CI run passes.
+- **civs:verify:first-federate-negative-control — SUPPORTED:** The first specimen FEDERATE trace changes to QUALIFY when correspondence_targets are removed. Limits: Proves only structural sensitivity to explicit correspondence targets under supplied premises; correspondence truth remains NOT ESTABLISHED.
 - **civs:verify:ingress-composition — SUPPORTED:** Ordinary search composes situated inquiry with systems-engineering Domain-Semantic Admission without adding a public tool. Limits: Connected frozen action snapshots are a separate exposure boundary.
 - **civs:verify:civs-contract — SUPPORTED:** The reusable CIR contract rejects scalar installation status, generic owner, inferred Level, generic relation roles, cross-quadrant consumer-job bleed, empty located observations and graphical readiness boolean. Limits: Generic contract qualification does not by itself qualify this first specimen's empirical consumer hypotheses.
 

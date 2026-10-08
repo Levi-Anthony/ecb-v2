@@ -1,6 +1,6 @@
 {
   "contract": "ecos:capability-inspection-record:0.1.1",
-  "cir_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1",
+  "cir_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.1",
   "subject_ref": "ecos:domain-semantic-admission:0.1.0",
   "subject_label": "Domain-Semantic Admission / D&I Boundary",
   "purpose": {
@@ -699,15 +699,18 @@
       "method_ref": "tests/civs/contract.test.ts",
       "enforcement_mode": "STRUCTURAL",
       "evidence_refs": [
+        "GitHubActions:37707770436",
         "tests/civs/contract.test.ts#first-FEDERATE-trace"
       ],
-      "standing": "NOT_ESTABLISHED",
+      "standing": "SUPPORTED",
       "sensitivity_refs": [
-        "planned:remove-correspondence-targets"
+        "first-specimen:positive:FEDERATE",
+        "first-specimen:negative:QUALIFY/CORRESPONDENCE_TARGET_REQUIRED"
       ],
       "limits": [
-        "Becomes SUPPORTED only after the first-specimen CI run passes."
-      ]
+        "Proves only structural sensitivity to explicit correspondence targets under supplied premises; correspondence truth remains NOT ESTABLISHED."
+      ],
+      "currentness_ref": "github:commit:58b1d065d0ad9ce09db185a75e1ecda6a15f53ad"
     },
     {
       "ref": "civs:verify:ingress-composition",
@@ -1050,14 +1053,17 @@
     }
   ],
   "verification": {
-    "observed_at_ref": "CIVS:first-specimen:after-GitHubActions:37707382882",
-    "as_of_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+    "observed_at_ref": "GitHubActions:37707770436:SUCCESS",
+    "as_of_ref": "github:Levi-Anthony/ecb-v2:58b1d065d0ad9ce09db185a75e1ecda6a15f53ad",
     "currentness_refs": [
       "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
       "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ:READY",
       "Linear:ECO-202:Working",
-      "connected:ECB-v2-BRAIN:search-schema-snapshot"
-    ]
+      "connected:ECB-v2-BRAIN:search-schema-snapshot",
+      "GitHubActions:37707770436:SUCCESS",
+      "github:commit:58b1d065d0ad9ce09db185a75e1ecda6a15f53ad"
+    ],
+    "supersedes_ref": "github:Levi-Anthony/ecb-v2:58b1d065d0ad9ce09db185a75e1ecda6a15f53ad:research/civs/domain-semantic-admission.cir.json"
   },
   "vertical_placement": {
     "working_band": "projection",
@@ -1162,7 +1168,8 @@
           "statement": "Observable correlate: a bounded test can predict FEDERATE for the exact corpus atom and detect removal of correspondence targets by routing to QUALIFY.",
           "observation_refs": [
             "tests/civs/contract.test.ts#first-FEDERATE-trace",
-            "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json#native-to-ecos-correspondence"
+            "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json#native-to-ecos-correspondence",
+            "GitHubActions:37707770436"
           ],
           "observation_route": "run the first-specimen CIVS CI test and inspect its exact positive/negative dispositions",
           "correlation_ref": "civs:consumer:UL:premise-proof",
@@ -1173,9 +1180,10 @@
               "standing": "SUPPORTED",
               "enforcement_mode": "STRUCTURAL",
               "evidence_refs": [
-                "tests/civs/contract.test.ts"
+                "tests/civs/contract.test.ts",
+                "GitHubActions:37707770436"
               ],
-              "currentness_ref": "GitHubActions:37707382882@6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "currentness_ref": "github:commit:58b1d065d0ad9ce09db185a75e1ecda6a15f53ad",
               "accountability_ref": "civs:role:verification",
               "limits": [
                 "Human/agent consumer behavior still requires separate observation."
@@ -1186,9 +1194,10 @@
               "standing": "SUPPORTED",
               "enforcement_mode": "STRUCTURAL",
               "evidence_refs": [
-                "server/civs.ts"
+                "server/civs.ts",
+                "GitHubActions:37707770436"
               ],
-              "currentness_ref": "GitHubActions:37707382882@6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "currentness_ref": "github:commit:58b1d065d0ad9ce09db185a75e1ecda6a15f53ad",
               "accountability_ref": "civs:role:maintenance",
               "limits": [
                 "Text projection only."
@@ -1199,9 +1208,10 @@
               "standing": "SUPPORTED",
               "enforcement_mode": "STRUCTURAL",
               "evidence_refs": [
-                "docs/civs-wp0-current-inventory-2026-10-07.json"
+                "docs/civs-wp0-current-inventory-2026-10-07.json",
+                "GitHubActions:37707770436"
               ],
-              "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "currentness_ref": "github:commit:58b1d065d0ad9ce09db185a75e1ecda6a15f53ad",
               "accountability_ref": "civs:role:custody-git",
               "limits": [
                 "Future editions require requalification."
@@ -1212,9 +1222,10 @@
               "standing": "SUPPORTED",
               "enforcement_mode": "AUTHORITY",
               "evidence_refs": [
-                "GitHubActions:37706155075"
+                "GitHubActions:37706155075",
+                "GitHubActions:37707770436"
               ],
-              "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "currentness_ref": "github:commit:58b1d065d0ad9ce09db185a75e1ecda6a15f53ad",
               "accountability_ref": "civs:role:verification",
               "limits": [
                 "CI is not semantic authority."
@@ -1373,12 +1384,14 @@
         "standing": "SUPPORTED",
         "enforcement_mode": "STRUCTURAL",
         "evidence_refs": [
+          "GitHubActions:37707770436",
           "server/civs.ts",
-          "GitHubActions:37707382882@6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          "research/civs/domain-semantic-admission.cir.json",
+          "docs/civs-domain-semantic-admission.md"
         ],
-        "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "currentness_ref": "github:commit:58b1d065d0ad9ce09db185a75e1ecda6a15f53ad",
         "limits": [
-          "The exact first-specimen file equality receives an additional CI check on publication."
+          "Exact machine-record → human-projection equality is mechanically checked; bidirectional graphical controls remain NOT ESTABLISHED."
         ]
       },
       {
