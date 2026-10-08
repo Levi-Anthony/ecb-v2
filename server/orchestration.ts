@@ -6,7 +6,7 @@ import {
   QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_QUESTIONS, type QuadrantDisclosure,
 } from './urg-core.js';
 
-export const INQUIRY_CONTRACT = 'ecos:inquiry-orchestration:0.2.0';
+export const INQUIRY_CONTRACT = 'ecos:inquiry-orchestration:0.3.0';
 export type InquiryRequest = {
   query: string;
   intended_use: string;
@@ -77,6 +77,8 @@ export type CoordinateChange = { before: SituatedContext; after: SituatedContext
 export type Disclosure = {
   records: LocatedUrgRecord[];
   changes: CoordinateChange[];
+  /** Writer-selected exact editions; the consumer resolves them independently. */
+  account_editions?: Array<{ ref: string; digest: string }>;
   sufficiency: { inquiry_basis_ref: string; assessment_ref: string; satisfied: boolean; unresolved_refs: string[] };
   signals?: SemanticSignal[];
 };
@@ -114,6 +116,8 @@ export type WorkingProjection = {
 };
 /** Derived receipt over the existing inquiry contract; not a new URG primitive or relevance object. */
 export type IndexicalBindingReceipt = {
+  contract: typeof INQUIRY_CONTRACT;
+  disclosure_contract: typeof QUADRANT_DISCLOSURE_CONTRACT;
   basis_ref: string;
   query: string;
   intended_use: string;
@@ -150,6 +154,7 @@ export type InquiryResult = {
   admitted: CandidateAccount[];
   quadrant_coverage: QuadrantCoverage;
   records: LocatedUrgRecord[];
+  disclosure_accounts: ExactEvidence[];
   changes: CoordinateChange[];
   reconciliation: Reconciliation;
   discovery_coverage: ChannelCoverage[];
@@ -170,13 +175,14 @@ export function canonical(value: unknown): string {
 }
 export function digest(value: unknown): string { return createHash('sha256').update(canonical(value)).digest('hex'); }
 export function inquiryBasisRef(request: InquiryRequest): string {
-  return `sha256:${digest({ query: request.query, intended_use: request.intended_use, context: request.context, actor_ref: request.actor_ref })}`;
+  return `sha256:${digest({ contract: INQUIRY_CONTRACT, disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT, query: request.query, intended_use: request.intended_use, context: request.context, actor_ref: request.actor_ref })}`;
 }
 export function indexicalBindingReceipt(
   request: InquiryRequest,
   execution: { candidate_limit: number; structural_depth: number; projection_chars: number },
 ): IndexicalBindingReceipt {
   return {
+    contract: INQUIRY_CONTRACT, disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT,
     basis_ref: inquiryBasisRef(request),
     query: request.query,
     intended_use: request.intended_use,
@@ -287,9 +293,24 @@ export async function orchestrateInquiry(input: InquiryRequest, adapters: Inquir
   for (const s of disclosure.signals ?? []) if (validatedSignal(s)) signals.push(s);
   const records: LocatedUrgRecord[] = [];
   const quadrants: QuadrantCoverage = { UL: { status: 'UNEXAMINED', refs: [] }, UR: { status: 'UNEXAMINED', refs: [] }, LL: { status: 'UNEXAMINED', refs: [] }, LR: { status: 'UNEXAMINED', refs: [] } };
+  const disclosureAccounts = new Map<string, ExactEvidence>();
+  const accountEditions = disclosure.account_editions ?? [];
+  const duplicateRecords = new Set(disclosure.records.filter((entry, i, all) => all.findIndex(x => x.ref === entry.ref) !== i).map(x => x.ref));
+  async function recoverAccount(ref: string): Promise<boolean> {
+    const editions = accountEditions.filter(e => e.ref === ref);
+    if (editions.length !== 1 || !nonblank(editions[0].digest)) return false;
+    if (disclosureAccounts.has(ref)) return true;
+    try {
+      const e = await adapters.fetchEvidence(ref);
+      if (!e || e.referent_id !== ref || e.digest !== editions[0].digest || !nonblank(e.content)
+        || !refs(e.source_refs) || !nonblank(e.custody_ref) || e.currentness !== 'CURRENT') return false;
+      disclosureAccounts.set(ref, structuredClone(e));
+      return true;
+    } catch { return false; }
+  }
   // Mechanical seating tooth runs before any record is admitted as quadrant coverage.
   for (const entry of [...disclosure.records].sort((a, b) => Number(b.record.kind === 'level') - Number(a.record.kind === 'level'))) {
-    if (!nonblank(entry.ref) || !validateUrgRecord(entry.record).valid
+    if (!nonblank(entry.ref) || duplicateRecords.has(entry.ref) || !validateUrgRecord(entry.record).valid
       || ('context' in entry.record && !sameSeat(entry.record.context, request.context))) {
       ask(entry.ref || 'urg_record', 'Recover a conforming record over the same seated referent, boundary and inquiry coordinates.', 'This record cannot count as present-use disclosure.');
       continue;
@@ -299,13 +320,30 @@ export async function orchestrateInquiry(input: InquiryRequest, adapters: Inquir
       ask(entry.ref, 'What exact evidence and current-use basis warrant reliance on this disclosed record?', 'Structural validation alone does not qualify standing.');
       continue;
     }
+    if (entry.record.kind === 'quadrant') {
+      if (entry.record.result === 'QUADRANT_UNKNOWN')
+        ask(entry.ref, `Resolve the disclosed unknown through ${entry.record.qf_ref}.`, 'An extra unknown remains an obligation even when all four positions have coverage.');
+      if (entry.record.result === 'DECOMPOSE')
+        ask(entry.ref, `Disclose the component inquiries separately: ${(entry.record.component_refs ?? []).join(', ')}.`, 'Compound disclosure cannot disappear behind aggregate coverage.');
+      if (entry.record.result === 'QUADRANT_POSITION') {
+        if (entry.record.fidelity.coverage !== 'EXAMINED')
+          ask(entry.ref, 'Examine this individually declared disclosure account.', 'Other records covering the same position cannot discharge an unexamined account.');
+        const required = [entry.record.content_ref!, entry.record.characterization_ref!, entry.record.conditions_ref!];
+        let recovered = true;
+        for (const ref of new Set(required)) if (!await recoverAccount(ref)) {
+          recovered = false;
+          ask(ref, 'Recover the writer-selected disclosure account edition with attributable content, custody and currentness.', 'An unresolved, stale, mismatched or unversioned account cannot supply disclosure coverage.');
+        }
+        if (!recovered) continue;
+      }
+    }
+    if ('fidelity' in entry.record && ['UNRESOLVED', 'CONDITIONAL_SENSORED'].includes(entry.record.fidelity.disposition ?? ''))
+      ask(entry.ref, 'What consequential uncertainty remains in this disclosed record?', 'Resolve its declared obligation before READY, independently of aggregate coverage.');
     records.push(entry);
     if (entry.record.kind === 'question_forward') questions.push(entry.record);
     if (entry.record.kind === 'quadrant' && entry.record.result === 'QUADRANT_POSITION' && entry.record.fidelity.coverage === 'EXAMINED') {
       const key = entry.record.disclosure!;
       quadrants[key].status = 'EXAMINED'; quadrants[key].refs.push(entry.ref);
-      if (['UNRESOLVED', 'CONDITIONAL_SENSORED'].includes(entry.record.fidelity.disposition ?? ''))
-        ask(entry.ref, 'What consequential uncertainty remains at this quadrant position?', 'Resolve the declared disclosure before READY.');
     }
   }
   const candidates: CandidateAccount[] = [];
@@ -379,6 +417,12 @@ export async function orchestrateInquiry(input: InquiryRequest, adapters: Inquir
       ask(member.hit.referent_id, 'Requalify the relied input after its edition/currentness changed or became unavailable.', 'Current-use carryover cannot survive a stale or unknown exit check.');
     }
   }
+  for (const [ref, snapshot] of disclosureAccounts) {
+    let latest: ExactEvidence | null = null;
+    try { latest = await adapters.fetchEvidence(ref); } catch { /* explicit obligation below */ }
+    if (!latest || !same(latest, snapshot))
+      ask(ref, 'Recover and reassess the disclosure account after it changed or became unavailable during this pass.', 'A changed account cannot retain current-use qualification.');
+  }
   admitted = candidates.filter(c => c.decision.disposition === 'ADMIT');
   if (!coordinateKeys.every(k => nonblank(request.context[k]))) ask('situated_basis', 'Establish focal identity, boundary, PGO, mapper, frame and access at the declared-use resolution.', 'Partial seating cannot manufacture sufficiency.');
   for (const [key, q] of Object.entries(quadrants)) if (q.status === 'UNEXAMINED') ask(`quadrant:${key}`, QUADRANT_QUESTIONS[key as QuadrantDisclosure], 'Examine the positive disclosure over the same referent and boundary; qualifiers cannot substitute for it.');
@@ -395,11 +439,11 @@ export async function orchestrateInquiry(input: InquiryRequest, adapters: Inquir
   if (irreducibleBinding.length + 128 > projectionBudget) throw new Error('inquiry_projection_budget_below_binding_receipt');
   const omitted: string[] = [];
   const body: Record<string, unknown> = { contract: INQUIRY_CONTRACT, disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT, basis_ref: basisRef, indexical_binding: indexicalBinding,
-    context: request.context, intended_use: request.intended_use,
+    context: request.context, intended_use: request.intended_use, disposition: uniqueQuestions.length ? 'HOLD' : 'READY',
     members: candidates.map(c => ({ referent_id: c.hit.referent_id, digest: c.evidence?.digest ?? null, source_refs: c.evidence?.source_refs ?? [],
       original_basis: c.evidence?.original_basis ?? null, stored_standing: c.evidence?.stored_standing ?? null,
       decision: c.decision, channels: c.hit.channels, paths: c.hit.paths, exact_excerpt: '' })),
-    quadrant_coverage: quadrants, records, changes: acceptedChanges, reconciliation, discovery_coverage: coverage,
+    quadrant_coverage: quadrants, records, disclosure_accounts: [...disclosureAccounts.values()], changes: acceptedChanges, reconciliation, discovery_coverage: coverage,
     questions_forward: uniqueQuestions, signals };
   // Exact excerpts are expendable projection content; metadata is never silently cut.
   const members = body.members as Array<Record<string, unknown>>;
@@ -430,9 +474,9 @@ export async function orchestrateInquiry(input: InquiryRequest, adapters: Inquir
   const unresolved = [...new Set(uniqueQuestions.map(q => q.unresolved_ref))];
   return { contract: INQUIRY_CONTRACT, disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT, inquiry_basis_ref: basisRef, indexical_binding: indexicalBinding,
     situated_basis: request.context, intended_use: request.intended_use,
-    candidates, admitted, quadrant_coverage: quadrants, records, changes: acceptedChanges, reconciliation, discovery_coverage: coverage,
+    candidates, admitted, quadrant_coverage: quadrants, records, disclosure_accounts: [...disclosureAccounts.values()], changes: acceptedChanges, reconciliation, discovery_coverage: coverage,
     questions_forward: uniqueQuestions, signals, disposition: uniqueQuestions.length ? 'HOLD' : 'READY',
-    projection: { edition: digest(projected), content: projected, source_refs: [...new Set(exact.flatMap(e => e.source_refs))], omissions: omitted, persistence: 'NOT_PRESERVED' },
+    projection: { edition: digest(projected), content: projected, source_refs: [...new Set([...exact, ...disclosureAccounts.values()].flatMap(e => e.source_refs))], omissions: omitted, persistence: 'NOT_PRESERVED' },
     reentry: { return_route: request.return_route, unresolved_refs: unresolved, condition: unresolved.length ? 'Resolve the listed discriminators against the exact current basis and editions, then reenter.' : 'Reenter on new evidence, changed PGO/frame/boundary or a current-use challenge.' } };
 }
 
@@ -458,12 +502,14 @@ export function projectionDelta(before: InquiryResult, after: InquiryResult): In
     before.records.filter(r => r.record.kind === 'state'),
     after.records.filter(r => r.record.kind === 'state'),
   );
-  const evidenceOrStandingChanged = !same(relianceSnapshot(before), relianceSnapshot(after));
+  const evidenceOrStandingChanged = !same(relianceSnapshot(before), relianceSnapshot(after))
+    || !same(before.disclosure_accounts, after.disclosure_accounts) || !same(before.records, after.records);
   const executionEnvelopeChanged = !same(
     { discovery_seed_refs: before.indexical_binding.discovery_seed_refs, declared_work_ref: before.indexical_binding.declared_work_ref, execution: before.indexical_binding.execution },
     { discovery_seed_refs: after.indexical_binding.discovery_seed_refs, declared_work_ref: after.indexical_binding.declared_work_ref, execution: after.indexical_binding.execution },
   );
-  const semanticBasisChanged = before.inquiry_basis_ref !== after.inquiry_basis_ref;
+  const semanticBasisChanged = before.inquiry_basis_ref !== after.inquiry_basis_ref
+    || before.contract !== after.contract || before.disclosure_contract !== after.disclosure_contract;
   return {
     source_basis_ref: before.inquiry_basis_ref,
     destination_basis_ref: after.inquiry_basis_ref,
@@ -482,6 +528,37 @@ export async function preserveInquiryProjection(result: InquiryResult, operation
   createArtifact(input: { operationId: string; content: string }): Promise<{ artifact: { id: string; content: string } }>;
   fetchArtifact(id: string): Promise<{ id: string; content: string } | null>;
 }): Promise<{ artifact_id: string; edition: string; record: ProjectionRecord }> {
+  if (!coordinateKeys.every(k => nonblank(result.situated_basis[k]))) throw new Error('projection_binding_basis_incomplete');
+  if (result.contract !== INQUIRY_CONTRACT || result.disclosure_contract !== QUADRANT_DISCLOSURE_CONTRACT)
+    throw new Error('projection_contract_mismatch');
+  const projected = JSON.parse(result.projection.content);
+  const fullFields: Record<string, unknown> = { context: result.situated_basis, intended_use: result.intended_use,
+    records: result.records, disclosure_accounts: result.disclosure_accounts, quadrant_coverage: result.quadrant_coverage,
+    changes: result.changes, reconciliation: result.reconciliation, discovery_coverage: result.discovery_coverage,
+    questions_forward: result.questions_forward, signals: result.signals };
+  const fullProjection = projected.records !== undefined;
+  const fullFieldsMatch = Object.entries(fullFields).every(([key, value]) => same(projected[key], value));
+  const contradictoryFields = Object.entries(fullFields).some(([key, value]) => key in projected && !same(projected[key], value));
+  const expectedMembers = result.candidates.map(c => ({ referent_id: c.hit.referent_id, digest: c.evidence?.digest ?? null,
+    source_refs: c.evidence?.source_refs ?? [], original_basis: c.evidence?.original_basis ?? null,
+    stored_standing: c.evidence?.stored_standing ?? null, decision: c.decision, channels: c.hit.channels, paths: c.hit.paths }));
+  const projectedMembers = Array.isArray(projected.members)
+    ? projected.members.map(({ exact_excerpt: _excerpt, ...member }: Record<string, unknown>) => member) : null;
+  if (digest(result.projection.content) !== result.projection.edition
+    || projected.contract !== result.contract || projected.disclosure_contract !== result.disclosure_contract
+    || projected.basis_ref !== result.inquiry_basis_ref || !same(projected.indexical_binding, result.indexical_binding)
+    || projected.disposition !== result.disposition
+    || contradictoryFields
+    || (fullProjection && (!fullFieldsMatch || !same(projectedMembers, expectedMembers)
+      || projected.members.some((member: { exact_excerpt: unknown }, i: number) => typeof member.exact_excerpt !== 'string'
+        || !(result.candidates[i].evidence?.content ?? '').startsWith(member.exact_excerpt))))
+    || (projected.records === undefined && result.disposition !== 'HOLD')
+    || result.indexical_binding.contract !== result.contract || result.indexical_binding.disclosure_contract !== result.disclosure_contract
+    || !same(result.indexical_binding.context, result.situated_basis)
+    || result.indexical_binding.intended_use !== result.intended_use
+    || result.indexical_binding.basis_ref !== result.inquiry_basis_ref
+    || inquiryBasisRef({ ...result.indexical_binding, return_route: result.reentry.return_route }) !== result.inquiry_basis_ref)
+    throw new Error('projection_binding_mismatch');
   const context = result.situated_basis;
   if (!coordinateKeys.every(k => nonblank(context[k]))) throw new Error('projection_binding_basis_incomplete');
   const saved = await adapter.createArtifact({ operationId, content: result.projection.content });

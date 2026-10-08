@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "server/urg-core.ts"
+      - "server/orchestration*.ts"
       - "schemas/urg-core-v*.contract.json"
       - "tests/urg-core/**"
       - "scripts/qualify-quadrant-disclosure.ts"
@@ -14,6 +15,7 @@ on:
   pull_request:
     paths:
       - "server/urg-core.ts"
+      - "server/orchestration*.ts"
       - "schemas/urg-core-v*.contract.json"
       - "tests/urg-core/**"
       - "scripts/qualify-quadrant-disclosure.ts"

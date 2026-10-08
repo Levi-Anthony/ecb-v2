@@ -9,6 +9,8 @@ on:
       - 'server/native-packages/**'
       - 'server/urg-core.ts'
       - 'tests/inquiry/**'
+      - 'scripts/qualify-quadrant-disclosure.ts'
+      - 'research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md'
       - 'package*.json'
       - '.github/workflows/inquiry-orchestration.yml'
   pull_request:
@@ -20,6 +22,8 @@ on:
       - 'server/native-packages/**'
       - 'server/urg-core.ts'
       - 'tests/inquiry/**'
+      - 'scripts/qualify-quadrant-disclosure.ts'
+      - 'research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md'
       - 'package*.json'
       - '.github/workflows/inquiry-orchestration.yml'
   workflow_dispatch:
@@ -37,3 +41,4 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm run typecheck:inquiry
       - run: npm run test:inquiry
+      - run: npm run qualify:quadrant

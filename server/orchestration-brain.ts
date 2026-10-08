@@ -168,7 +168,7 @@ export function createBrainInquiryAdapters(ports: BrainInquiryPorts, actor: stri
 /** Ordinary read/recovery response; full candidate snapshots remain in the internal typed result. */
 export async function runBrainInquiry(request: InquiryRequest, ports: BrainInquiryPorts, actor: string) {
   const result = await orchestrateInquiry({ ...request, actor_ref: actor, context: { ...request.context, actor_ref: actor } }, createBrainInquiryAdapters(ports, actor));
-  const artifactContent = canonical({ contract: result.contract, indexical_binding: result.indexical_binding, projection: result.projection,
+  const artifactContent = canonical({ contract: result.contract, disclosure_contract: result.disclosure_contract, indexical_binding: result.indexical_binding, projection: result.projection,
     disposition: result.disposition, reentry: result.reentry });
   return { contract: result.contract, inquiry_basis_ref: result.inquiry_basis_ref, indexical_binding: result.indexical_binding,
     situated_basis: result.situated_basis, intended_use: result.intended_use, disposition: result.disposition, projection: result.projection,

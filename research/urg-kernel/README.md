@@ -1,10 +1,24 @@
-> **GOVERNING QUADRANT UPDATE — 8 October 2026:** [Positive disclosure contract v2.0](Quadrant-Disclosure-Contract-v2.0.md) supersedes the constitutive/participatory × governing/determinate Quadrant generator and historical consumer-job mappings for current use. The Principal identified the compression defect, initiating UL and subsequent fourfold hardening; the assistant's comparison corroborated that diagnosis. Current functions are UL proper determination, UR determinate manifestation, LL field articulation and LR enacted organization. The old dimensions remain independent qualifiers. Earlier retention/no-replacement directives and I/It/We/Its candidate wording below are historical for this superseded scope. Level, typed changes, source editions and independent qualification claims retain their own standing. Current executable package: `server/urg-core.ts` revision 2.0.0; current inquiry contract: 0.2.0. See the successor receipt for the exact installation/evidence boundary.
+> **GOVERNING QUADRANT UPDATE — 8 October 2026:** [Positive disclosure contract v2.0](Quadrant-Disclosure-Contract-v2.0.md) supersedes the constitutive/participatory × governing/determinate Quadrant generator and historical consumer-job mappings for current use. The Principal identified the compression defect, initiating UL and subsequent fourfold hardening; the assistant's comparison corroborated that diagnosis. Current functions are UL proper determination, UR determinate manifestation, LL field articulation and LR enacted organization. The old dimensions remain independent qualifiers. Earlier retention/no-replacement directives and I/It/We/Its candidate wording below are historical for this superseded scope. Level, typed changes, source editions and independent qualification claims retain their own standing. Current executable package: `server/urg-core.ts` revision 2.0.0; current inquiry contract: 0.3.0. See the [completion audit](Quadrant-Replacement-Completion-Audit-2026-10-08.md) for implementation, evidence and remaining work.
 
 # URG Level + Quadrant Formal Kernel
 
+## Current entry — 8 October 2026
+
+The four disclosures ask distinct questions of the same focal thing or occurrence: its own proper determination (UL), its determinate manifestation (UR), its field of meaningful distinctions (LL), and its enacted organization (LR). A report or model can become the next focal referent; explicitly change the seat before applying all four again.
+
+- Meaning and normalized coordinates: [positive disclosure contract](Quadrant-Disclosure-Contract-v2.0.md).
+- Executable core: `server/urg-core.ts` 2.0.0 and `schemas/urg-core-v2.contract.json`; inquiry consumption: `server/orchestration.ts` 0.3.0.
+- Replacement history: [initial installation receipt](Quadrant-Disclosure-Replacement-Receipt-2026-10-08.md); current repair evidence and owners: [completion audit](Quadrant-Replacement-Completion-Audit-2026-10-08.md).
+- Replay: `npm run test:inquiry`, `npm run qualify:quadrant`, and `python3 research/urg-kernel/check_level_quadrant_contract.py`. The local READY case uses disclosed, recoverable authored premises.
+- Ordinary BRAIN ingress still has no attributable semantic producer. Its default returns HOLD. ECO-202 owns that unfinished writer path; ECO-218 owns connected-app schema refresh and fresh-consumer verification. Neither is established by local adapter success.
+
+## Historical development and independently scoped contracts
+
+The dated chronology below preserves earlier decisions and qualification. Its Quadrant generator, package revision and installation claims are historical; use the current entry above for their successor. Independently scoped Level, Direction, State and other contracts retain their stated standing.
+
 > **LEADING STRUCTURAL FRONTIER / BLEEDING EDGE — 5 October 2026.** [Situated Referent Discovery](../formal-semantics/Situated-Referent-Discovery-Frontier.md) is the current semantic hardening door. The candidate uses reciprocal situated bootstrap and I/It/We/Its disclosure to generate better decomposition; proposes boundary/relation and claim-burden typing across those inquiries; opens competency/Line discovery from both directions; and specifies dynamic composition separately from deterministic situated information/state/valence recall. This is explicit reentry into ECO-221's generator, not a proved equivalent wording or an installed replacement. Current artifacts below retain their earned standing; the new structural candidate remains under investigation.
 
-**Current artifact:** Level + Quadrant Formal Contract v1.0  
+**Historical artifact:** Level + Quadrant Formal Contract v1.0
 **Owning issue:** ECO-221  
 **Standing:** Register-B Shape contract under bounded Move qualification. Not a constitutional invariant amendment and not runtime enforcement.
 
@@ -104,7 +118,7 @@ This candidate composes stable referents, typed relations, situated bases, the s
 The integrated candidate passed **42 / 42** bounded structural/cold-reader cases using exact committed checker + matrix bytes. See [URG-Core-Shape-Qualification-Receipt-v1.0.md](./URG-Core-Shape-Qualification-Receipt-v1.0.md). This is evidence for ECO-136 Shape review, not self-acceptance or Move authorization.
 
 
-## Canonical Move implementation — ECO-136
+## Historical first Move implementation — ECO-136
 
 Following explicit Principal Shape acceptance, the first canonical executable package is installed at:
 
@@ -117,9 +131,9 @@ Physicalization decision: [ADR-009](../../docs/architecture-decisions/009-urg-co
 
 This package is intentionally a discriminated contract surface, not a seven-field database record and not a replacement for native domain schemas. No MCP capability expansion or database ontology widening is part of this Move.
 
-## ECO-136 Move PASS
+## Historical ECO-136 Move PASS
 
-The Principal-accepted full core is now canonically implemented as a portable discriminated contract package. See [current Move receipt v1.1](./URG-Core-Move-Receipt-v1.1.md) and [machine Move manifest v1.1](./URG-Core-Move-Manifest-v1.1.json). The initial v1.0 receipt remains historical. Current implementation revision 1.0.2 passed 38/38 URG package tests, the 42/42 accepted full-core matrix, plus MCP/OAuth/circulation regressions. No database/MCP/provider physicalization was added.
+The Principal-accepted full core is now canonically implemented as a portable discriminated contract package. See [historical Move receipt v1.1](./URG-Core-Move-Receipt-v1.1.md) and [machine Move manifest v1.1](./URG-Core-Move-Manifest-v1.1.json). The initial v1.0 receipt remains historical. Then-current implementation revision 1.0.2 passed 38/38 URG package tests, the 42/42 accepted full-core matrix, plus MCP/OAuth/circulation regressions. No database/MCP/provider physicalization was added.
 
 ## SSMM closure + portable-descent qualification
 

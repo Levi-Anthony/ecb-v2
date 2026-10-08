@@ -55,7 +55,7 @@ A current `kind: quadrant` record declares `disclosure_contract: ecos:quadrant-d
 
 Optional `qualifiers` hold seat and burden. Optional `relation_refs` point to existing native-relation claims. No new generic edge or universal transformation algebra is introduced. The same referent/situation and independently standing source/claim envelopes are maintained.
 
-Structural validation verifies the explicit contract, fields and lawful context. It does not perform semantic classification, dereference content, determine correct domain articulation, certify acquaintance, or establish semantic truth. Semantic adapters remain responsible for attributable judgments. Current inquiry coverage consumes the explicit disclosure field only after structural and same-situation checks.
+Structural validation verifies the explicit contract, fields and lawful context. It does not perform semantic classification, dereference content, determine correct domain articulation, certify acquaintance, or establish semantic truth. Semantic adapters remain responsible for attributable judgments. Current inquiry coverage consumes the explicit disclosure field only after structural, same-situation and exact account-recovery checks described below.
 
 ## Mutually generative relations
 
@@ -87,3 +87,12 @@ There is no automatic mapping of old UL to new UL. Recover the old content and s
 5. Capability inspection: a dependency hypothesis is not automatically UL. Reassess its content, retain its history and distinguish hypothesis from observed consumer behavior.
 
 These authored semantic cases establish stated distinctions and design consequences. Executable checks establish bounded mechanical behavior. Neither is reported as independent empirical or hosted-use qualification.
+
+
+## Consumer enforcement — inquiry 0.3.0
+
+The semantic disclosure contract remains v2. The inquiry producer/consumer protocol advances to 0.3.0 because its assessment basis now includes both contract editions and requires exact account recovery. `Disclosure.account_editions` declares one expected native digest per referenced content, characterization and conditions account. `fetchEvidence` independently recovers each account with identity, nonempty content, source/custody and CURRENT standing. Missing, ambiguous, stale or mismatched accounts do not supply coverage. Exact consumed accounts are retained in the full typed result and full projection; a reduced projection explicitly returns HOLD. Exit recovery rejects changed content or metadata even when an upstream digest incorrectly remains unchanged.
+
+This verifies that the consumer receives the writer's declared account, not that the account's semantic interpretation is true. The attributable evaluator remains responsible for domain validity and the account's declared-use standing. The ordinary BRAIN adapter has no such producer yet; its HOLD is unfinished functionality, not a successful semantic execution. Local qualification supplies authored accounts explicitly and does not infer acquaintance from them.
+
+Unknowns and compound records carry their own obligations irrespective of other coverage. Duplicate record identities cannot be counted. Preservation checks contract, edition and binding before writing; historical projections require their own historical reader and cannot be relabeled as current. These checks apply afresh when the model, report, receiver or transformation becomes focal.

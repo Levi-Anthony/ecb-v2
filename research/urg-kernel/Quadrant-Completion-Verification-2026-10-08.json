@@ -1,0 +1,176 @@
+{
+  "baseline_commit": "c4fad7797ed9c9b46c9ffa16b14369b549f3f992",
+  "inquiry_contract": "ecos:inquiry-orchestration:0.3.0",
+  "disclosure_contract": "ecos:quadrant-disclosure:v2",
+  "scope": "local repair qualification; remote states are in the release return",
+  "checks": [
+    {
+      "command": "npm run typecheck:urg",
+      "exit_code": 0,
+      "summary": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n> typecheck:urg\n> tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server/urg-core.ts tests/urg-core/contract.test.ts scripts/qualify-quadrant-disclosure.ts\n"
+    },
+    {
+      "command": "npm run typecheck:inquiry",
+      "exit_code": 0,
+      "summary": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n> typecheck:inquiry\n> tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server.ts server/orchestration.ts server/orchestration-brain.ts server/domain-admission.ts server/native-packages/systems-engineering.ts tests/inquiry/orchestration.test.ts tests/inquiry/brain.test.ts tests/inquiry/ingress.test.ts tests/inquiry/domain-admission.test.ts\n"
+    },
+    {
+      "command": "npm run typecheck:civs",
+      "exit_code": 0,
+      "summary": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n> typecheck:civs\n> tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server/civs.ts server/urg-core.ts tests/civs/contract.test.ts tests/civs/reentry.test.ts tests/civs/portability.test.ts tests/civs/correspondence.test.ts\n"
+    },
+    {
+      "command": "npm run typecheck:mcp",
+      "exit_code": 0,
+      "summary": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n> typecheck:mcp\n> tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server.ts tests/mcp-protocol.test.ts\n"
+    },
+    {
+      "command": "npm run typecheck:oauth",
+      "exit_code": 0,
+      "summary": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n> typecheck:oauth\n> tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server/oauth.ts server/oauth-consent.ts api/metadata.ts api/oauth/[action].ts tests/eco-218/oauth.test.ts\n"
+    },
+    {
+      "command": "npm run typecheck:circulation",
+      "exit_code": 0,
+      "summary": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n> typecheck:circulation\n> tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server.ts server/circulation/worker.ts api/circulation/run.ts scripts/eco-213/commission.ts scripts/eco-213/assimilate.ts\n"
+    },
+    {
+      "command": "npm run test:urg",
+      "exit_code": 0,
+      "summary": "\u2139 tests 43\n\u2139 suites 0\n\u2139 pass 43\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 261.831386"
+    },
+    {
+      "command": "npm run test:inquiry",
+      "exit_code": 0,
+      "summary": "\u2139 tests 55\n\u2139 suites 0\n\u2139 pass 55\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 1008.050524"
+    },
+    {
+      "command": "npm run test:civs",
+      "exit_code": 0,
+      "summary": "\u2139 tests 43\n\u2139 suites 0\n\u2139 pass 43\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 394.803198"
+    },
+    {
+      "command": "npm run test:mcp",
+      "exit_code": 0,
+      "summary": "\u2139 tests 11\n\u2139 suites 0\n\u2139 pass 11\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 584.872117"
+    },
+    {
+      "command": "npm run test:oauth",
+      "exit_code": 0,
+      "summary": "\u2139 tests 7\n\u2139 suites 0\n\u2139 pass 7\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 405.578091"
+    },
+    {
+      "command": "npm run test:circulation",
+      "exit_code": 0,
+      "summary": "\u2139 tests 33\n\u2139 suites 0\n\u2139 pass 33\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 1474.956286"
+    },
+    {
+      "command": "python3 research/urg-kernel/check_level_quadrant_contract.py",
+      "exit_code": 0,
+      "summary": "PASS positive-LR-same-old-qualifiers: expected='LR' actual='LR'\nPASS legacy-not-current: expected='CONTRACT_MISMATCH' actual='CONTRACT_MISMATCH'\nPASS label-without-characterization: expected='QUADRANT_UNKNOWN' actual='QUADRANT_UNKNOWN'\nPASS compound-retains-components: expected='DECOMPOSE' actual='DECOMPOSE'\nPASS compound-not-self-duplication: expected='QUADRANT_UNKNOWN' actual='QUADRANT_UNKNOWN'\n\nNONCLAIMS: this checker validates declared contract fields only; it does not infer semantic truth, boundaries, constitutive dependence, natural-language quadrant position, authority, or currentness.\nRESULT: PASS (18 fixtures)"
+    },
+    {
+      "command": "python3 research/urg-kernel/check_level_quadrant_contract.py research/urg-kernel/level-quadrant-fixtures-v1.0.json",
+      "exit_code": 0,
+      "summary": "PASS F13-boundary-smuggled-as-traversal: expected=False actual=False\nPASS F14-reseat: expected=True actual=True\nPASS F15-endpoint-history-no-auto-restore: expected=False actual=False\nPASS F16-level-question-governing: expected='UL' actual='UL'\nPASS F17-level-question-determinate: expected='UR' actual='UR'\n\nNONCLAIMS: this checker validates declared contract fields only; it does not infer semantic truth, boundaries, constitutive dependence, natural-language quadrant position, authority, or currentness.\nRESULT: PASS (17 fixtures)"
+    },
+    {
+      "command": "python3 research/urg-kernel/check_urg_core_contract.py research/urg-kernel/URG-Core-Qualification-Matrix-v1.0.json",
+      "exit_code": 0,
+      "summary": "PASS N6-native-ontology-capture: expected_valid=False actual_valid=False reasons=['native domain semantics must remain recoverable']\nPASS N7-self-certification: expected_valid=False actual_valid=False reasons=['forbidden promotion/collapse: self_pass_confers_authority']\nPASS N8-challenge-self-seal: expected_valid=False actual_valid=False reasons=['forbidden promotion/collapse: filtered_by_pgo_only', 'material challenge requires bounded F8 route']\nPASS N9-human-agent-silo: expected_valid=False actual_valid=False reasons=['human and agent doors cannot become truth silos']\nPASS N10-unknown-erasure: expected_valid=False actual_valid=False reasons=['forbidden promotion/collapse: unknown_treated_as_absent', 'unknown cannot be treated as absent']\n\nNONCLAIMS: structural non-collapse/composition checks only; no semantic truth, authority, empirical exhaustiveness, or automatic axis classification is established.\nRESULT: PASS (42 cases)"
+    },
+    {
+      "command": "npm run qualify:quadrant",
+      "exit_code": 0,
+      "summary": "  ],\n  \"projection_digest\": \"08d1fa0049cd803983d7f26239bcc316e510a140e4448120f2551f1b84de7afc\",\n  \"limits\": [\n    \"Local coordinator integration, not hosted provider deployment/use.\",\n    \"Model inquiry is explicitly new; no claim that boundary changes automatically establish Level.\",\n    \"Generative relationships remain attributable domain-native relation claims, not mechanically inferred.\"\n  ]\n}"
+    }
+  ],
+  "qualification": {
+    "result": "PASS",
+    "checks": [
+      "source-grounded coordinator READY",
+      "all four disclosures under identical old qualifiers",
+      "legacy coverage HOLD",
+      "stale original-seat records HOLD",
+      "explicitly new model inquiry READY",
+      "writer account recovery and projection roundtrip",
+      "missing account HOLD",
+      "changed account HOLD"
+    ],
+    "semantic_standing": "Authored premise/discriminator cases; no automated or independent semantic classification claim.",
+    "source_editions": [
+      {
+        "path": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md",
+        "digest": "52b4c766e4a735e88b376aa82f307b3fe79c5c14efb418d8cb8d0f4c106a1438"
+      },
+      {
+        "path": "server/urg-core.ts",
+        "digest": "5129a00955f124a867da911e78063371deacac266e09d31b52f5a49d84c9c9ce"
+      },
+      {
+        "path": "server/orchestration.ts",
+        "digest": "b61500e62a2c50b8e0f443b1c22140f2b8276d618265740fbc0927a664f59ffa"
+      }
+    ],
+    "projection_digest": "08d1fa0049cd803983d7f26239bcc316e510a140e4448120f2551f1b84de7afc",
+    "limits": [
+      "Local coordinator integration, not hosted provider deployment/use.",
+      "Model inquiry is explicitly new; no claim that boundary changes automatically establish Level.",
+      "Generative relationships remain attributable domain-native relation claims, not mechanically inferred."
+    ]
+  },
+  "files": [
+    {
+      "path": ".github/workflows/civs.yml",
+      "sha256": "ddd353a7ffe8aa7c767ce8fe6d41f6a4dd81ffa846e4a056472885f1c800b0f0"
+    },
+    {
+      "path": ".github/workflows/eco-136-urg-core.yml",
+      "sha256": "fcdb8b66825bfb8f7874b3a58153d84bf942444aac4217367b5ae03ba8ab9e11"
+    },
+    {
+      "path": ".github/workflows/inquiry-orchestration.yml",
+      "sha256": "41dfdfe7df3f58e63180750077f110a25b84ba4edcf4beb2e95794368449d3bf"
+    },
+    {
+      "path": "docs/inquiry-orchestration.md",
+      "sha256": "95b807e467a8fd63aa1f1a679ee83cd9e517f877408779bcc4df9b9d6eb65848"
+    },
+    {
+      "path": "docs/working-preferences-constructive-di.md",
+      "sha256": "0994086f9ad3e069b2a3c4b5fbfe7517d3ece022dd60f4c39d1b7c83da82787f"
+    },
+    {
+      "path": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md",
+      "sha256": "06970a4f911e2d2d719c51ebd5af43a60b67bc7cef5f8991d396c151b0d5693e"
+    },
+    {
+      "path": "research/urg-kernel/Quadrant-Disclosure-Replacement-Receipt-2026-10-08.md",
+      "sha256": "a8fe50f531bb97861ed085cb85812f55e76a3e5d60e8f32fc93e16ff4c6dcd38"
+    },
+    {
+      "path": "research/urg-kernel/Quadrant-Replacement-Completion-Audit-2026-10-08.md",
+      "sha256": "600fefcdd418b13f00a24c215224fb67c0da8d4ec9778dcbec7434520008cf40"
+    },
+    {
+      "path": "research/urg-kernel/README.md",
+      "sha256": "b9df2cc6a120f7a5718ecb06cb9f06893e43211a9620520b10122f9fa5467394"
+    },
+    {
+      "path": "scripts/qualify-quadrant-disclosure.ts",
+      "sha256": "0ccd949453b8325b4a07122f7d107640191d6e229752e6ac33262da528ff2177"
+    },
+    {
+      "path": "server/orchestration-brain.ts",
+      "sha256": "c439c8c5bc9088c261dd6cc364019aaffd47bc56a48d2e755904221b427c61fd"
+    },
+    {
+      "path": "server/orchestration.ts",
+      "sha256": "d3385517af63cd3a2bd85ebb0435df95aebb5f055f289847790da55e565f7329"
+    },
+    {
+      "path": "tests/inquiry/orchestration.test.ts",
+      "sha256": "b7667c2eff88f6485cdd574ee60441ef4a479497ecc73613febbb152a4ef3dc7"
+    }
+  ]
+}

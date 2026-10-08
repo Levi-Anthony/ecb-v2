@@ -22,7 +22,7 @@ function disclosure(r: InquiryRequest): Disclosure {
       content_ref: `fixture:content:${disclosure}`, characterization_ref: `fixture:characterization:${disclosure}`, conditions_ref:'fixture:conditions',
       context: r.context as SituatedContext,
       fidelity: { coverage: 'EXAMINED' as const, activation: 'DORMANT' as const, disposition: 'NONCONSEQUENTIAL_NOW' as const } },
-  })), changes: [], sufficiency: { inquiry_basis_ref: inquiryBasisRef(r), assessment_ref: 'fixture:use-review', satisfied: true, unresolved_refs: [] } };
+  })), account_editions: [...QUADRANT_DISCLOSURES.flatMap(q => [`fixture:content:${q}`, `fixture:characterization:${q}`]), 'fixture:conditions'].map(ref => ({ ref, digest: evidence(ref).digest })), changes: [], sufficiency: { inquiry_basis_ref: inquiryBasisRef(r), assessment_ref: 'fixture:use-review', satisfied: true, unresolved_refs: [] } };
 }
 function decision(r: InquiryRequest, id: string): CandidateDecision {
   const basis = inquiryBasisRef(r);
@@ -216,3 +216,107 @@ test('old four-cell coverage cannot impersonate the successor four disclosures',
   for(const q of QUADRANT_DISCLOSURES) assert.equal(r.quadrant_coverage[q].status,'UNEXAMINED');
   assert(r.questions_forward.some(q=>q.discriminator_question.includes('instantiation')));
 });
+
+test('semantic contract edition changes the assessment identity', () => {
+  const legacyBasis = `sha256:${digest({query:request.query,intended_use:request.intended_use,context:request.context,actor_ref:request.actor_ref})}`;
+  assert.notEqual(inquiryBasisRef(request),legacyBasis);
+});
+test('grammar-only change requires requalification even with equal legacy basis handles', async () => {
+  const before=await orchestrateInquiry(request,adapters()), after=structuredClone(before);
+  (before as unknown as {disclosure_contract:string}).disclosure_contract='ecos:quadrant-seat-burden:v1';
+  assert.equal(projectionDelta(before,after).requires_requalification,true);
+});
+test('an unresolved extra record cannot disappear behind four examined positions', async () => {
+  const a=adapters();a.disclose=async r=>{const d=disclosure(r);d.records.push({ref:'fixture:extra-unknown',record:{
+    kind:'quadrant',context:r.context as SituatedContext,disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT,
+    result:'QUADRANT_UNKNOWN',disclosure:'UL',qf_ref:'fixture:missing-proper-account',
+    fidelity:{coverage:'EXAMINED',activation:'ACTIVE',disposition:'UNRESOLVED'}}});return d;};
+  const r=await orchestrateInquiry(request,a);assert.equal(r.disposition,'HOLD');
+  assert(r.questions_forward.some(q=>q.unresolved_ref==='fixture:extra-unknown'));
+});
+test('a compound extra inquiry cannot disappear behind four examined positions', async () => {
+  const a=adapters();a.disclose=async r=>{const d=disclosure(r);d.records.push({ref:'fixture:extra-compound',record:{
+    kind:'quadrant',context:r.context as SituatedContext,disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT,
+    result:'DECOMPOSE',component_refs:['fixture:part-a','fixture:part-b'],
+    fidelity:{coverage:'EXAMINED',activation:'ACTIVE',disposition:'UNRESOLVED'}}});return d;};
+  const r=await orchestrateInquiry(request,a);assert.equal(r.disposition,'HOLD');
+  assert(r.questions_forward.some(q=>q.unresolved_ref==='fixture:extra-compound'));
+});
+test('preservation refuses a projection relabeled under a different contract', async () => {
+  const r=await orchestrateInquiry(request,adapters()); const bad=structuredClone(r);
+  (bad as unknown as {contract:string}).contract='ecos:inquiry-orchestration:0.1.1';let writes=0;
+  await assert.rejects(preserveInquiryProjection(bad,'fixture:operation',{
+    async createArtifact(input){writes++;return {artifact:{id:prior,content:input.content}};},
+    async fetchArtifact(id){return {id,content:bad.projection.content};},
+  }));assert.equal(writes,0);
+});
+
+for (const defect of ['missing', 'misbound', 'stale', 'unversioned', 'exit-drift'] as const) {
+  test(`disclosure account ${defect} cannot count as complete current disclosure`, async () => {
+    const a = adapters(), fetch = a.fetchEvidence;
+    const target = 'fixture:content:UL'; let reads = 0;
+    a.fetchEvidence = async id => {
+      const e = await fetch(id); if (id !== target || !e) return e;
+      reads++;
+      if (defect === 'missing') return null;
+      if (defect === 'misbound') return { ...e, referent_id: 'fixture:other' };
+      if (defect === 'stale') return { ...e, currentness: 'STALE' };
+      if (defect === 'exit-drift' && reads > 1) return { ...e, content: 'changed without updating advertised digest' };
+      return e;
+    };
+    if (defect === 'unversioned') a.disclose = async r => { const d = disclosure(r); delete d.account_editions; return d; };
+    const result = await orchestrateInquiry(request, a);
+    assert.equal(result.disposition, 'HOLD');
+    assert(result.questions_forward.some(q => q.unresolved_ref === target));
+  });
+}
+test('conflicting duplicate record identities cannot supply coverage', async () => {
+  const a = adapters(); a.disclose = async r => { const d = disclosure(r); const other = structuredClone(d.records[0]);
+    if (other.record.kind === 'quadrant') other.record.content_ref = 'fixture:other-content';
+    d.records.push(other); return d; };
+  const result = await orchestrateInquiry(request, a);
+  assert.equal(result.disposition, 'HOLD'); assert.equal(result.quadrant_coverage.UL.status, 'UNEXAMINED');
+});
+test('resolved writer accounts survive projection preservation and exact readback', async () => {
+  const result = await orchestrateInquiry(request, adapters());
+  assert.equal(result.disclosure_accounts.length, 9);
+  let stored = '';
+  const saved = await preserveInquiryProjection(result, 'fixture:resolved-account-preservation', {
+    async createArtifact({ content }) { stored = content; return { artifact: { id: 'fixture:artifact', content } }; },
+    async fetchArtifact(id) { return { id, content: stored }; },
+  });
+  assert.equal(saved.edition, digest(stored));
+  assert.deepEqual(JSON.parse(stored).disclosure_accounts, result.disclosure_accounts);
+});
+test('tampered projection binding is rejected before any preservation write', async () => {
+  const result = await orchestrateInquiry(request, adapters()); let writes = 0;
+  const body = JSON.parse(result.projection.content); body.indexical_binding.actor_ref = 'other:actor';
+  result.projection.content = JSON.stringify(body); result.projection.edition = digest(result.projection.content);
+  await assert.rejects(preserveInquiryProjection(result, 'fixture:tampered', {
+    async createArtifact({ content }) { writes++; return { artifact: { id: 'unexpected', content } }; },
+    async fetchArtifact() { return null; },
+  }), /projection_binding_mismatch/);
+  assert.equal(writes, 0);
+});
+test('unexamined extra record without a disposition cannot hide behind examined coverage', async () => {
+  const a = adapters(); a.disclose = async r => { const d = disclosure(r); const extra = structuredClone(d.records[0]);
+    extra.ref = 'fixture:extra-unexamined';
+    if (extra.record.kind === 'quadrant') extra.record.fidelity = { coverage: 'UNEXAMINED', activation: 'DORMANT' };
+    d.records.push(extra); return d; };
+  const result = await orchestrateInquiry(request, a);
+  assert.equal(result.disposition, 'HOLD');
+  assert(result.questions_forward.some(q => q.unresolved_ref === 'fixture:extra-unexamined'));
+});
+
+for (const field of ['context', 'questions_forward', 'quadrant_coverage', 'reconciliation', 'signals', 'members'] as const) {
+  test(`preservation rejects contradictory ${field} before writing`, async () => {
+    const result = await orchestrateInquiry(request, adapters()); let writes = 0;
+    const body = JSON.parse(result.projection.content); body[field] = { contradictory: true };
+    result.projection.content = JSON.stringify(body); result.projection.edition = digest(result.projection.content);
+    await assert.rejects(preserveInquiryProjection(result, 'fixture:contradictory-projection', {
+      async createArtifact({ content }) { writes++; return { artifact: { id: 'unexpected', content } }; },
+      async fetchArtifact() { return null; },
+    }), /projection_binding_mismatch/);
+    assert.equal(writes, 0);
+  });
+}

@@ -52,3 +52,12 @@ During the 7–8 October Quadrant/proper-fact discussion the assistant repeatedl
 This is guidance for collaboration and analysis, not a replacement semantic contract. The companion source-position packet is [Proper Fact / Quadrant Constructive Delta](../research/formal-semantics/Proper-Fact-Quadrant-Constructive-Delta-2026-10-08.md), with its current frontier in [Situated Referent Discovery](../research/formal-semantics/Situated-Referent-Discovery-Frontier.md). Installed Level/Quadrant contracts and constitutional invariants remain unchanged. Principal's PGO long-form Namecrafting remains open.
 
 BRAIN-first capture of the current-episode summary was attempted on 8 October 2026 through the connected capture_thought action but rejected before storage because its exposed schema lacks the runtime-required operation_id. No BRAIN custody receipt is claimed; this GitHub source and its downstream Linear pointer are fallback continuity, with the missing BRAIN capture explicitly unresolved.
+
+
+## Generalized completion instruction — 8 October 2026
+
+The Principal asks for a rubric first, then consequential implementation and propagation: infer helpful unstated requirements, double-check both writer and consumer, use independent cold reading, remove wasteful repetition, repair signposting, and leave no escape hatches. Apply these instructions across adjacent cases rather than requiring them to be repeated for each artifact.
+
+Operational consequences derived in the Quadrant replacement audit: version changes must invalidate assessment reuse; coverage cannot erase unresolved obligations; written references need a real consuming recovery path; success and failure cases must cross the same handoff; current entrypoints must distinguish historical evidence; recursive products inherit the same checks. These are task-derived requirements, not new universal custody/authority invariants. Redundancy is useful when it detects drift at an actual use point; duplicated prose alone is not verification. Explicitly naming a missing capability does not complete it. Preserve the exact owner and next discriminating action when an external boundary remains.
+
+Evidence and reusable rubric: `research/urg-kernel/Quadrant-Replacement-Completion-Audit-2026-10-08.md`. The Principal identified the original compression defect; assistant comparison and later tests corroborate and repair its consequences.

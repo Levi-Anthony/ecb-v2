@@ -1,3 +1,5 @@
+> **Historical initial replacement receipt.** Initial implementation commit: `c4fad7797ed9c9b46c9ffa16b14369b549f3f992`. The [completion audit](Quadrant-Replacement-Completion-Audit-2026-10-08.md) records subsequently discovered defects and their repairs under inquiry 0.3.0. In this initial edition, “recoverable content/characterization/conditions” below described required references, but consumption enforced only reference syntax. Actual resolution and exit revalidation were added by the audit repair. Its verification file and manifest remain evidence for the original source bytes, not current bytes.
+
 # Quadrant disclosure replacement — source implementation and qualification receipt
 
 Date: 8 October 2026, America/Phoenix.
