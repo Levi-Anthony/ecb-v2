@@ -5,7 +5,7 @@ import { evaluateDIBoundary, type AtomicResponsibility, type BoundaryDisposition
 import { systemsEngineeringNativePackages } from '../../server/native-packages/systems-engineering.ts';
 import { renderCivsQualificationRecord, validateCivsQualificationRecord, type CivsQualificationRecord } from '../../server/civs-qualification.ts';
 
-const q=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission-qualification-v0.1.json',import.meta.url),'utf8')) as CivsQualificationRecord;
+const q=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission-qualification-v0.2.json',import.meta.url),'utf8')) as CivsQualificationRecord;
 const cir=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission.cir.json',import.meta.url),'utf8'));
 const matrix=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission-portability-v0.1.json',import.meta.url),'utf8'));
 const handoff=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission-correspondence-handoff-v0.1.json',import.meta.url),'utf8'));
@@ -14,7 +14,7 @@ const human=readFileSync(new URL('../../docs/civs-domain-semantic-admission-qual
 test('WP8 qualification record validates and human projection is exact',()=>{
   assert.deepEqual(validateCivsQualificationRecord(q),{valid:true,errors:[]});
   assert.equal(renderCivsQualificationRecord(q),human);
-  assert.equal(q.overall_disposition,'IN_PROGRESS');
+  assert.equal(q.overall_disposition,'PARTIAL_HOLD');
 });
 
 const localPath=(ref:string):string|null=>{
@@ -98,5 +98,20 @@ test('correspondence gate keeps all requirements open and formalism unselected',
 test('fresh-reader evidence is not simulated by the orchestrator',()=>{
   const check=q.checks.find(x=>x.id==='wp8:check:fresh-reader')!;
   assert.equal(check.standing,'NOT_ESTABLISHED');
+  assert(q.residual_gates.some(x=>x.id==='wp8:gate:fresh-reader'&&x.standing==='HOLD'));
+});
+
+
+test('WP8 promotion supports every executed check but preserves fresh-reader HOLD',()=>{
+  for(const id of [
+    'wp8:check:pointer-integrity',
+    'wp8:check:currentness-readback',
+    'wp8:check:independent-trace',
+    'wp8:check:installation-ladder',
+    'wp8:check:degradation-routes',
+    'wp8:check:correspondence-gate',
+  ]) assert.equal(q.checks.find(x=>x.id===id)?.standing,'SUPPORTED',id);
+  assert.equal(q.checks.find(x=>x.id==='wp8:check:fresh-reader')?.standing,'NOT_ESTABLISHED');
+  assert.equal(q.overall_disposition,'PARTIAL_HOLD');
   assert(q.residual_gates.some(x=>x.id==='wp8:gate:fresh-reader'&&x.standing==='HOLD'));
 });

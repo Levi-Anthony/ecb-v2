@@ -1,11 +1,11 @@
 # CIVS WP8 qualification record
 
-**Qualification:** `ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.1`  
+**Qualification:** `ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2`  
 **Contract:** `ecos:civs-qualification-record:0.1.0`  
 **Source CIR:** `ecos:cir:domain-semantic-admission:2026-10-07:v1.3`  
 **Basis:** `BRAIN:c5871f89-0c51-462d-831b-c90897a95e81#WP8`  
 **Observed baseline:** `github:Levi-Anthony/ecb-v2:1835eeba0ae4b1accf6d7c0db5fa6087f6dae6cf`  
-**Overall disposition:** **IN_PROGRESS**
+**Overall disposition:** **PARTIAL_HOLD**
 
 > This record qualifies bounded CIVS inspection behavior. It does not manufacture independent fresh-agent evidence, semantic correspondence truth, consumer exposure, or alternate-provider portability.
 
@@ -13,11 +13,12 @@
 
 | Check | Mode | Standing | Proposition | Limits |
 |---|---|---|---|---|
-| Repository pointer integrity | STRUCTURAL | PENDING | All consequential local file pointers reachable from the CIR/WP6/WP7 qualification aperture resolve to existing repository objects. | External service identifiers are checked separately by currentness readback. |
-| Independent worked FEDERATE/QUALIFY trace | STRUCTURAL | PENDING | A test-local derivation from the documented gate rules independently predicts FEDERATE for the exact corpus atom and QUALIFY/CORRESPONDENCE_TARGET_REQUIRED when targets are removed, then agrees with the installed evaluator. | Independence is from evaluator implementation logic, not from the repository or semantic premises. |
-| Installation-ladder audit | STRUCTURAL | PENDING | The qualification preserves the independent ladder: specified/implemented/mechanically-qualified/integrated/deployed supported at bounded scope while connected exposed/situated-use-qualified/operationally-sustained remain not established. | A correct audit does not itself upgrade any rung. |
-| WP6 degradation-route audit | STRUCTURAL | PENDING | Key degradation cases retain visible HOLD/DEGRADE/CONTINUE behavior and never promote semantic standing. | Predicted provider outages remain unexecuted. |
-| WP7 correspondence non-formalization gate | STRUCTURAL | PENDING | CR-01..CR-14 remain present, semantic correspondence remains unestablished, and formalism selection remains NOT_EARNED/NONE. | Requirements completeness is not semantic mapping truth. |
+| Repository pointer integrity | STRUCTURAL | SUPPORTED | All consequential local file pointers reachable from the CIR/WP6/WP7 qualification aperture resolve to existing repository objects. | External service identifiers are checked separately by currentness readback. |
+| External currentness readback | OBSERVATIONAL | SUPPORTED | WP8 re-read current main/CI, exact Production deployment, Linear coordination state, Supabase project health, connected consumer exposure, and the BRAIN capture-contract seam without silently repairing or promoting any degraded surface. | This is a time-bounded external observation, not longitudinal sustainment.; Consumer/capture degradation remains distinct from backend or canonical BRAIN substrate availability. |
+| Independent worked FEDERATE/QUALIFY trace | STRUCTURAL | SUPPORTED | A test-local derivation from the documented gate rules independently predicts FEDERATE for the exact corpus atom and QUALIFY/CORRESPONDENCE_TARGET_REQUIRED when targets are removed, then agrees with the installed evaluator. | Independence is from evaluator implementation logic, not from the repository or semantic premises. |
+| Installation-ladder audit | STRUCTURAL | SUPPORTED | The qualification preserves the independent ladder: specified/implemented/mechanically-qualified/integrated/deployed supported at bounded scope while connected exposed/situated-use-qualified/operationally-sustained remain not established. | A correct audit does not itself upgrade any rung. |
+| WP6 degradation-route audit | STRUCTURAL | SUPPORTED | Key degradation cases retain visible HOLD/DEGRADE/CONTINUE behavior and never promote semantic standing. | Predicted provider outages remain unexecuted. |
+| WP7 correspondence non-formalization gate | STRUCTURAL | SUPPORTED | CR-01..CR-14 remain present, semantic correspondence remains unestablished, and formalism selection remains NOT_EARNED/NONE. | Requirements completeness is not semantic mapping truth. |
 | Independent fresh-reader behavioral qualification | OBSERVATIONAL | NOT_ESTABLISHED | A genuinely separate fresh authorized agent, given only the CIR/reentry handle and ordinary source access, returns the fourteen required distinctions without conversational bridges. | No independent worker-spawn surface is available in this execution environment; self-evaluation is not substituted. |
 
 ## Currentness observations
@@ -48,7 +49,7 @@
 
 ## Omissions
 
-- No independent fresh-agent behavioral run is performed in v0.1.
+- No independent fresh-agent behavioral run is performed in v0.2; this is the remaining WP8 qualification gate.
 - No connected consumer schema refresh/publish is performed.
 - No hosted circulation activation or effect-authority renewal is performed.
 - No correspondence formalism is selected.
