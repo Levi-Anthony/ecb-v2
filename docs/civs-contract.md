@@ -62,3 +62,10 @@ These are inspection-contract refinements only. They add no URG primitive, no ne
 The first hardening CI exposed a shared validator defect: the reference-list helper treated an empty array as satisfying “has references.” This could weaken SUPPORTED / OBSERVED / LOCATED checks even when the surrounding contract intended attributable evidence.
 
 CIR `0.1.1` corrects that predicate so relied reference sets are nonempty, and makes currentness explicit for SUPPORTED field-reconstitution and correspondence claims. Because the hardening introduced mandatory claim structure, the CIR contract edition is bumped rather than silently changing `0.1.0` semantics.
+
+
+## Human-door projection completeness repair
+
+First-specimen readback showed that the machine CIR was mechanically valid while its generated Markdown omitted consequential sections. Human projection contract `ecos:civs-human-projection:0.1.1` now renders object connections, enforcement inspection, field reconstitution, portability/degradation, role distinctions, alternatives, cold-reader bridges, vertical/participatory placement, source refs and omissions from the same machine record.
+
+The URG Projection mapping also carries typed object-connection refs and Questions Forward in addition to verification refs. No machine CIR semantics, URG primitive or second truth store is introduced.

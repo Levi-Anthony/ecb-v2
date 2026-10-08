@@ -239,3 +239,38 @@ test('first FEDERATE trace proves structural sensitivity to explicit corresponde
   assert.equal(routed.decisions[0].disposition, 'QUALIFY');
   assert(routed.decisions[0].gate_codes.includes('CORRESPONDENCE_TARGET_REQUIRED'));
 });
+
+
+test('first CIR human projection exposes consequential machine sections', () => {
+  const cir = JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission.cir.json', import.meta.url), 'utf8')) as CapabilityInspectionRecord;
+  const human = renderCapabilityInspectionRecord(cir);
+  const headings = [
+    '## Object connections',
+    '## Enforcement inspection',
+    '## Field reconstitution',
+    '## Portability and graceful degradation',
+    '## Role assignments',
+    '## Alternatives',
+    '## Cold-reader bridges',
+    '## Vertical placement and participatory neighborhood',
+    '## Source refs',
+  ];
+  for (const heading of headings) assert(human.includes(heading), heading);
+  assert(human.includes('STRUCTURAL / SUPPORTED'));
+  assert(human.includes('URG Level claim: **NOT ESTABLISHED**'));
+});
+
+test('human URG Projection maps object connections, verification links and Questions Forward', () => {
+  const cir = JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission.cir.json', import.meta.url), 'utf8')) as CapabilityInspectionRecord;
+  const p = makeCivHumanProjectionRecord(cir, {
+    projection_id: 'fixture:first-cir-human', content_ref: 'docs/civs-domain-semantic-admission.md',
+    mapper_ref: 'fixture:civs-renderer', frame_ref: 'fixture:human-inspection', access_ref: 'fixture:github-read',
+    evidence_basis_ref: cir.verification.as_of_ref,
+    fidelity: { coverage: 'EXAMINED', activation: 'ACTIVE', disposition: 'RELIED_FOR_DECLARED_USE',
+      evidence_refs: ['research/civs/domain-semantic-admission.cir.json'], currentness_ref: cir.verification.as_of_ref },
+  });
+  assert.equal(p.mapping_relation_ref, 'ecos:civs-human-projection:0.1.1');
+  assert(p.mapped_claim_refs?.includes(cir.object_connections[0].ref));
+  assert(p.mapped_claim_refs?.includes(cir.verification_links[0].ref));
+  assert(p.mapped_claim_refs?.includes(cir.questions_forward[0].ref));
+});
