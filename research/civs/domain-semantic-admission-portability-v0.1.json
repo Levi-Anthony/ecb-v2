@@ -1,0 +1,718 @@
+{
+  "contract": "ecos:civs-portability-degradation-matrix:0.1.0",
+  "matrix_id": "ecos:civs:domain-semantic-admission:portability-degradation:2026-10-07:v0.1",
+  "cir_ref": "ecos:cir:domain-semantic-admission:2026-10-07:v1.2",
+  "subject_ref": "ecos:domain-semantic-admission:0.1.0",
+  "basis_ref": "BRAIN:c5871f89-0c51-462d-831b-c90897a95e81#WP6",
+  "observed_at_ref": "github:Levi-Anthony/ecb-v2:1b37fbbf210e5470f0de8bf71143079155f695e3",
+  "portable_contract": {
+    "proposition": "The bounded decision contract can be specified independently of the current Vercel, Linear, BRAIN, graphical, and connected-consumer realizations; no alternate evaluator/runtime/host has yet been independently qualified for equivalent behavior.",
+    "standing": "NOT_ESTABLISHED",
+    "enforcement_mode": "STRUCTURAL",
+    "evidence_refs": [
+      "server/domain-admission.ts",
+      "tests/inquiry/domain-admission.test.ts",
+      "docs/domain-semantic-admission.md"
+    ],
+    "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+    "limits": [
+      "Current decision identity uses Node SHA-256.",
+      "Substitution requirements are not substitute proof.",
+      "Native semantic ownership/currentness remains external."
+    ]
+  },
+  "realizations": [
+    {
+      "ref": "wp6:r:evaluator",
+      "dependency_class": "SEMANTIC_EVALUATOR",
+      "dependency_ref": "server/domain-admission.ts",
+      "role": "Apply INHERIT/FEDERATE/EXTEND/QUALIFY gates.",
+      "current_realization": "TypeScript evaluator with canonical ordering + node:crypto SHA-256.",
+      "portability_standing": "NOT_ESTABLISHED",
+      "substitution_requirements": [
+        "preserve gate/input/output semantics",
+        "reconcile deterministic decision identity",
+        "pass positive/negative domain controls"
+      ],
+      "evidence_refs": [
+        "server/domain-admission.ts",
+        "GitHubActions:37709285796"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "limits": [
+        "No independent reimplementation/non-Node evaluator qualified."
+      ]
+    },
+    {
+      "ref": "wp6:r:native-registry",
+      "dependency_class": "NATIVE_PACKAGE_REGISTRY",
+      "dependency_ref": "server/native-packages/systems-engineering.ts",
+      "role": "Carry native identities/authorities/editions/routes.",
+      "current_realization": "Static TypeScript descriptors for OMG/ISO/NASA packages.",
+      "portability_standing": "UNKNOWN",
+      "substitution_requirements": [
+        "preserve native identity/authority/edition",
+        "preserve validation/currentness routes",
+        "do not absorb native semantic ownership into ECOS"
+      ],
+      "evidence_refs": [
+        "server/native-packages/systems-engineering.ts"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "limits": [
+        "No dynamic/alternate-domain registry qualified."
+      ]
+    },
+    {
+      "ref": "wp6:r:runtime",
+      "dependency_class": "EXECUTION_RUNTIME",
+      "dependency_ref": "Node.js 24.x",
+      "role": "Execute installed evaluator/MCP implementation.",
+      "current_realization": "Node 24.x in package/CI/Vercel.",
+      "portability_standing": "NOT_ESTABLISHED",
+      "substitution_requirements": [
+        "equivalent crypto/module semantics",
+        "full current mechanical suite",
+        "explicit decision-ID reconciliation"
+      ],
+      "evidence_refs": [
+        "package.json",
+        "GitHubActions:37709285796"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "limits": [
+        "TypeScript source does not prove runtime portability."
+      ]
+    },
+    {
+      "ref": "wp6:r:brain",
+      "dependency_class": "CANONICAL_RECOVERY",
+      "dependency_ref": "ECB-v2 BRAIN",
+      "role": "Provide ordinary inquiry recovery/original basis/commission reads.",
+      "current_realization": "Supabase-backed BRAIN with connected read/search.",
+      "portability_standing": "UNKNOWN",
+      "substitution_requirements": [
+        "exact referent/custody identity",
+        "standing/currentness separation",
+        "fail-visible recovery/provenance"
+      ],
+      "evidence_refs": [
+        "server/orchestration-brain.ts",
+        "BRAIN:c5871f89-0c51-462d-831b-c90897a95e81"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "limits": [
+        "Pure evaluator can receive explicit inputs; integrated inquiry cannot silently substitute missing recovery."
+      ]
+    },
+    {
+      "ref": "wp6:r:retrieval",
+      "dependency_class": "RETRIEVAL_CHANNEL",
+      "dependency_ref": "Supabase/gte-small semantic retrieval",
+      "role": "Propose cross-context candidates.",
+      "current_realization": "Embedding-assisted retrieval plus lexical/native fallback.",
+      "portability_standing": "UNKNOWN",
+      "substitution_requirements": [
+        "candidate-only standing",
+        "visible degradation/fallback",
+        "no similarity-to-applicability promotion"
+      ],
+      "evidence_refs": [
+        "server/orchestration-brain.ts",
+        "tests/inquiry/brain.test.ts"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "limits": [
+        "No retrieval uplift/recall claim."
+      ]
+    },
+    {
+      "ref": "wp6:r:host",
+      "dependency_class": "DEPLOYMENT_HOST",
+      "dependency_ref": "Vercel Production",
+      "role": "Host ordinary MCP/runtime ingress.",
+      "current_realization": "dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa READY at current main.",
+      "portability_standing": "UNKNOWN",
+      "substitution_requirements": [
+        "bind exact qualified source",
+        "preserve runtime/env contracts",
+        "re-run mechanical/authenticated ingress checks",
+        "separate deploy/expose/use"
+      ],
+      "evidence_refs": [
+        "Vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "limits": [
+        "No alternate host qualified."
+      ]
+    },
+    {
+      "ref": "wp6:r:source",
+      "dependency_class": "SOURCE_CUSTODY",
+      "dependency_ref": "GitHub Levi-Anthony/ecb-v2",
+      "role": "Hold exact source/history/tests/CIR artifacts.",
+      "current_realization": "GitHub main at 1b37fbbf210e5470f0de8bf71143079155f695e3.",
+      "portability_standing": "UNKNOWN",
+      "substitution_requirements": [
+        "exact edition/history/object identity",
+        "addressable tests/docs/CIR",
+        "supersession evidence"
+      ],
+      "evidence_refs": [
+        "github:commit:1b37fbbf210e5470f0de8bf71143079155f695e3"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "limits": [
+        "No custody replacement/mirror qualified."
+      ]
+    },
+    {
+      "ref": "wp6:r:ci",
+      "dependency_class": "MECHANICAL_VERIFICATION",
+      "dependency_ref": "GitHub Actions",
+      "role": "Run exact typecheck/tests and retain evidence.",
+      "current_realization": "CIVS 37709566698 + inquiry 37709285796 successful.",
+      "portability_standing": "UNKNOWN",
+      "substitution_requirements": [
+        "equivalent commands on exact source",
+        "logs/sensitivity evidence",
+        "mechanical/semantic separation"
+      ],
+      "evidence_refs": [
+        "GitHubActions:37709566698",
+        "GitHubActions:37709285796"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "limits": [
+        "No alternate CI executor qualified."
+      ]
+    },
+    {
+      "ref": "wp6:r:linear",
+      "dependency_class": "COORDINATION_SURFACE",
+      "dependency_ref": "Linear ECO issues",
+      "role": "Current coordination/handoffs/downstream continuity.",
+      "current_realization": "ECO-202/218/214/51/219.",
+      "portability_standing": "UNKNOWN",
+      "substitution_requirements": [
+        "preserve issue/history/role semantics",
+        "do not promote assignment to authority",
+        "retain BRAIN-first custody distinction"
+      ],
+      "evidence_refs": [
+        "Linear:ECO-202",
+        "Linear:ECO-218",
+        "Linear:ECO-214"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "limits": [
+        "Runtime semantics do not require Linear; coordinated reentry does."
+      ]
+    },
+    {
+      "ref": "wp6:r:brain-custody",
+      "dependency_class": "COMMISSION_CUSTODY",
+      "dependency_ref": "BRAIN capture/records",
+      "role": "First-class commission/evidence custody.",
+      "current_realization": "Governing records readable; connected capture cannot express runtime-required operation_id.",
+      "portability_standing": "NOT_ESTABLISHED",
+      "substitution_requirements": [
+        "immutable/idempotent custody",
+        "BRAIN-first ordering",
+        "visible failure rather than fabricated custody"
+      ],
+      "evidence_refs": [
+        "BRAIN:b7e633f7-a063-4ead-a521-c22e0d060c3e",
+        "Linear:ECO-202#BRAIN-FIRST-CONTINUITY-FAILURE"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "limits": [
+        "No replacement custody surface authorized."
+      ]
+    },
+    {
+      "ref": "wp6:r:consumer",
+      "dependency_class": "CONSUMER_SURFACE",
+      "dependency_ref": "connected ECB-v2-BRAIN action snapshot",
+      "role": "Expose ordinary search/domain_admission.",
+      "current_realization": "Observed search snapshot advertises query + limit only.",
+      "portability_standing": "NOT_APPLICABLE",
+      "substitution_requirements": [
+        "refresh/review/publish exact schema",
+        "fresh-consumer invocation without authority widening"
+      ],
+      "evidence_refs": [
+        "connected:ECB-v2-BRAIN:search-schema-snapshot",
+        "Linear:ECO-218"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "limits": [
+        "Snapshot-specific; backend deployment is separate."
+      ]
+    },
+    {
+      "ref": "wp6:r:human",
+      "dependency_class": "HUMAN_PROJECTION",
+      "dependency_ref": "CIVS Markdown/reentry surfaces",
+      "role": "Human-readable door over same CIR/source objects.",
+      "current_realization": "Generated checked CIR Markdown + docs/civs-reentry.md; no graphical control substrate.",
+      "portability_standing": "SUPPORTED",
+      "substitution_requirements": [
+        "machine CIR remains source",
+        "preserve standing/currentness/omissions",
+        "retain text/API fallback"
+      ],
+      "evidence_refs": [
+        "docs/civs-domain-semantic-admission.md",
+        "docs/civs-reentry.md",
+        "GitHubActions:37709566698"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "limits": [
+        "Supported only for text/API inspection."
+      ]
+    },
+    {
+      "ref": "wp6:r:native",
+      "dependency_class": "NATIVE_AUTHORITY",
+      "dependency_ref": "OMG / ISO / NASA sources",
+      "role": "Own native semantics/editions/currentness.",
+      "current_realization": "External authority refs in Native Package descriptors.",
+      "portability_standing": "NOT_APPLICABLE",
+      "substitution_requirements": [
+        "retain authority/edition provenance",
+        "do not transfer native standing to ECOS",
+        "route unavailability to qualification"
+      ],
+      "evidence_refs": [
+        "server/native-packages/systems-engineering.ts",
+        "tests/inquiry/domain-admission.test.ts"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "limits": [
+        "No claim every external source is currently reachable."
+      ]
+    }
+  ],
+  "degradation_cases": [
+    {
+      "ref": "wp6:d:no-graphics",
+      "dependency_class": "HUMAN_PROJECTION",
+      "unavailable_ref": "graphical projection/control substrate",
+      "trigger": "No graphical substrate is available.",
+      "affected_claim_refs": [
+        "graphical:typed_controls",
+        "graphical:human_agent_reconciliation"
+      ],
+      "retained_capabilities": [
+        "machine CIR",
+        "generated Markdown",
+        "cold reentry",
+        "text/API navigation"
+      ],
+      "lost_capabilities": [
+        "graphical traversal/control/reconciliation"
+      ],
+      "visible_signals": [
+        "unimplemented graphical obligations remain NOT_ESTABLISHED",
+        "text/API fallback remains available"
+      ],
+      "disposition": "CONTINUE",
+      "reentry_route": "Continue inspection through CIR/text/API; reenter graphical work only when separately earned/commissioned.",
+      "evidence_refs": [
+        "docs/civs-reentry.md",
+        "GitHubActions:37709566698"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "falsifier": "A consequential CIR distinction cannot be recovered without graphics.",
+      "limits": [
+        "CONTINUE is inspection-only; graphical obligations remain open."
+      ]
+    },
+    {
+      "ref": "wp6:d:stale-consumer",
+      "dependency_class": "CONSUMER_SURFACE",
+      "unavailable_ref": "connected inquiry/domain_admission reflection",
+      "trigger": "Connected snapshot omits inquiry/domain_admission.",
+      "affected_claim_refs": [
+        "installation:exposed",
+        "installation:situated_use_qualified"
+      ],
+      "retained_capabilities": [
+        "backend implementation",
+        "mechanical qualification",
+        "Production deployment",
+        "CIR inspection"
+      ],
+      "lost_capabilities": [
+        "connected invocation via that snapshot",
+        "fresh-consumer evidence"
+      ],
+      "visible_signals": [
+        "search schema shows query+limit only",
+        "exposed remains NOT_ESTABLISHED"
+      ],
+      "disposition": "HOLD",
+      "reentry_route": "ECO-218 refresh/review/publish + fresh-consumer conformance; never infer exposure from deployment.",
+      "evidence_refs": [
+        "connected:ECB-v2-BRAIN:search-schema-snapshot",
+        "Linear:ECO-218",
+        "server.ts"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "falsifier": "A fresh connected snapshot exposes and successfully invokes the optional field.",
+      "limits": [
+        "Consumer-specific snapshot, not backend absence."
+      ]
+    },
+    {
+      "ref": "wp6:d:host-down",
+      "dependency_class": "DEPLOYMENT_HOST",
+      "unavailable_ref": "Vercel Production",
+      "trigger": "Current host/deployment is unavailable.",
+      "affected_claim_refs": [
+        "installation:deployed",
+        "installation:exposed",
+        "installation:situated_use_qualified"
+      ],
+      "retained_capabilities": [
+        "source/CIR/tests",
+        "pure evaluator semantics for separately qualified runtime"
+      ],
+      "lost_capabilities": [
+        "Production service",
+        "host ingress",
+        "new Production use evidence"
+      ],
+      "visible_signals": [
+        "deployment not READY/unavailable",
+        "deployed currentness cannot remain supported"
+      ],
+      "disposition": "HOLD",
+      "reentry_route": "Restore host or qualify substitute host against exact source/runtime/env; then separately re-establish deploy/expose/use.",
+      "evidence_refs": [
+        "Vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "falsifier": "A separately qualified deployment provides equivalent bounded runtime/ingress behavior.",
+      "limits": [
+        "Source portability alone does not qualify host substitution."
+      ]
+    },
+    {
+      "ref": "wp6:d:brain-down",
+      "dependency_class": "CANONICAL_RECOVERY",
+      "unavailable_ref": "BRAIN canonical recovery",
+      "trigger": "Ordinary inquiry cannot search/fetch exact canonical evidence.",
+      "affected_claim_refs": [
+        "ordinary discovery",
+        "original-basis recovery",
+        "current-use evidence"
+      ],
+      "retained_capabilities": [
+        "pure evaluator on complete explicit input",
+        "repo CIR/docs/tests",
+        "already-held historical evidence"
+      ],
+      "lost_capabilities": [
+        "integrated discovery/exact recovery",
+        "new current evidence recovery"
+      ],
+      "visible_signals": [
+        "recovery channel unavailable/degraded",
+        "cold reentry SOURCE_UNAVAILABLE where consequential"
+      ],
+      "disposition": "HOLD",
+      "reentry_route": "Restore canonical recovery or provide independently attributable exact current input/evidence; requalify current use.",
+      "evidence_refs": [
+        "server/orchestration-brain.ts",
+        "docs/civs-reentry.md"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "falsifier": "Declared use can be completed with exact attributable current evidence without BRAIN recovery.",
+      "limits": [
+        "Pure evaluator survival is not integrated-capability survival."
+      ]
+    },
+    {
+      "ref": "wp6:d:embedding-down",
+      "dependency_class": "RETRIEVAL_CHANNEL",
+      "unavailable_ref": "semantic embedding/query channel",
+      "trigger": "Embedding generation/query fails.",
+      "affected_claim_refs": [
+        "semantic candidate discovery coverage"
+      ],
+      "retained_capabilities": [
+        "lexical retrieval",
+        "native structural discovery where available",
+        "exact fetch",
+        "coverage reporting"
+      ],
+      "lost_capabilities": [
+        "semantic-vector candidate channel",
+        "complete-aperture claim"
+      ],
+      "visible_signals": [
+        "semantic coverage degraded/unavailable",
+        "no empty-result completeness inference"
+      ],
+      "disposition": "DEGRADE",
+      "reentry_route": "Continue only if missing semantic coverage cannot change the declared decision, otherwise repair/requalify discovery.",
+      "evidence_refs": [
+        "server/orchestration-brain.ts",
+        "tests/inquiry/brain.test.ts",
+        "GitHubActions:37709285796"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "falsifier": "Attributable comparison shows no decision-relevant coverage difference for the declared use.",
+      "limits": [
+        "No retrieval-quality uplift claim."
+      ]
+    },
+    {
+      "ref": "wp6:d:ci-down",
+      "dependency_class": "MECHANICAL_VERIFICATION",
+      "unavailable_ref": "GitHub Actions",
+      "trigger": "Current CI cannot execute/recover evidence.",
+      "affected_claim_refs": [
+        "installation:mechanically_qualified",
+        "verification currentness"
+      ],
+      "retained_capabilities": [
+        "source",
+        "last historical CI receipts",
+        "runtime may continue"
+      ],
+      "lost_capabilities": [
+        "new current qualification",
+        "fresh sensitivity evidence"
+      ],
+      "visible_signals": [
+        "CI receipt unavailable",
+        "changed source cannot inherit old PASS"
+      ],
+      "disposition": "DEGRADE",
+      "reentry_route": "Restore CI or use equivalent evidenced executor on exact source/tests; bind results to source edition.",
+      "evidence_refs": [
+        "GitHubActions:37709566698",
+        "GitHubActions:37709285796"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "falsifier": "Alternative executor produces attributable equivalent results on same source/tests.",
+      "limits": [
+        "Historical PASS remains historical."
+      ]
+    },
+    {
+      "ref": "wp6:d:source-down",
+      "dependency_class": "SOURCE_CUSTODY",
+      "unavailable_ref": "GitHub source/history",
+      "trigger": "Exact current source cannot be recovered.",
+      "affected_claim_refs": [
+        "implementation currentness",
+        "proof traceability",
+        "cold-reader source inspection"
+      ],
+      "retained_capabilities": [
+        "deployed runtime may remain",
+        "previously materialized CIR/evidence"
+      ],
+      "lost_capabilities": [
+        "exact source inspection",
+        "Git object/current comparison",
+        "new source-bound qualification"
+      ],
+      "visible_signals": [
+        "SOURCE_UNAVAILABLE",
+        "source equivalence cannot be demonstrated"
+      ],
+      "disposition": "DEGRADE",
+      "reentry_route": "Restore exact source custody or independently verified mirror; HOLD promotion of source-dependent claims.",
+      "evidence_refs": [
+        "github:commit:1b37fbbf210e5470f0de8bf71143079155f695e3",
+        "docs/civs-reentry.md"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "falsifier": "Verified mirror supplies exact edition/history/object identity.",
+      "limits": [
+        "Runtime availability does not repair source-currentness loss."
+      ]
+    },
+    {
+      "ref": "wp6:d:linear-down",
+      "dependency_class": "COORDINATION_SURFACE",
+      "unavailable_ref": "Linear ECO coordination",
+      "trigger": "Current issue/status/assignee cannot be read.",
+      "affected_claim_refs": [
+        "coordination currentness",
+        "downstream continuity routing"
+      ],
+      "retained_capabilities": [
+        "runtime semantics",
+        "GitHub/BRAIN evidence",
+        "historical role records"
+      ],
+      "lost_capabilities": [
+        "current issue status/assignment",
+        "new Linear continuity writes"
+      ],
+      "visible_signals": [
+        "role currentness becomes UNKNOWN",
+        "authority does not transfer automatically"
+      ],
+      "disposition": "DEGRADE",
+      "reentry_route": "Restore Linear or separately authorized continuity while preserving BRAIN-first custody and role limits.",
+      "evidence_refs": [
+        "Linear:ECO-202",
+        "BRAIN:2a315af0-0ed6-44c8-bed1-b34d7b4c3d02"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "falsifier": "Authorized replacement preserves issue/history/role semantics without authority collapse.",
+      "limits": [
+        "Linear loss is not runtime-semantic failure."
+      ]
+    },
+    {
+      "ref": "wp6:d:brain-capture-drift",
+      "dependency_class": "COMMISSION_CUSTODY",
+      "unavailable_ref": "connected capture_thought operation_id",
+      "trigger": "Connector cannot express runtime-required operation_id.",
+      "affected_claim_refs": [
+        "new BRAIN execution-receipt custody"
+      ],
+      "retained_capabilities": [
+        "existing governing BRAIN reads",
+        "GitHub durable source",
+        "visible downstream Linear continuity"
+      ],
+      "lost_capabilities": [
+        "new capture via current connector",
+        "claim of new BRAIN receipt"
+      ],
+      "visible_signals": [
+        "INVALID_ARGUMENT missing operation_id",
+        "Linear records BRAIN-first failure"
+      ],
+      "disposition": "DEGRADE",
+      "reentry_route": "Repair/refresh exposed capture contract while preserving idempotent operation identity; retry only after operation_id is expressible.",
+      "evidence_refs": [
+        "BRAIN:b7e633f7-a063-4ead-a521-c22e0d060c3e",
+        "Linear:ECO-202#BRAIN-FIRST-CONTINUITY-FAILURE"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "falsifier": "Connected capture exposes operation_id and exact idempotent capture succeeds/re-fetches.",
+      "limits": [
+        "Never weaken runtime idempotency to fit stale connector."
+      ]
+    },
+    {
+      "ref": "wp6:d:native-source-down",
+      "dependency_class": "NATIVE_AUTHORITY",
+      "unavailable_ref": "authoritative native source",
+      "trigger": "Responsibility needs native requalification but authority source is unavailable.",
+      "affected_claim_refs": [
+        "native coverage/currentness",
+        "INHERIT/FEDERATE/EXTEND premise"
+      ],
+      "retained_capabilities": [
+        "structural evaluator",
+        "historical evidence",
+        "explicit QUALIFY routing"
+      ],
+      "lost_capabilities": [
+        "current native semantic qualification",
+        "legitimate extension/admission promotion"
+      ],
+      "visible_signals": [
+        "native_coverage=UNAVAILABLE",
+        "NATIVE_SOURCE_UNAVAILABLE",
+        "blocking responsibility HOLD"
+      ],
+      "disposition": "HOLD",
+      "reentry_route": "Recover authoritative source/current edition or accepted authoritative substitute; rerun responsibility qualification.",
+      "evidence_refs": [
+        "server/domain-admission.ts",
+        "tests/inquiry/domain-admission.test.ts",
+        "server/native-packages/systems-engineering.ts"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "falsifier": "Relevant native semantics/currentness are independently established from another accepted authority route.",
+      "limits": [
+        "Unavailability never defaults to EXTEND."
+      ]
+    },
+    {
+      "ref": "wp6:d:runtime-down",
+      "dependency_class": "EXECUTION_RUNTIME",
+      "unavailable_ref": "Node-compatible runtime",
+      "trigger": "Node 24/equivalent crypto/module semantics unavailable.",
+      "affected_claim_refs": [
+        "implementation execution",
+        "decision identity",
+        "ordinary ingress"
+      ],
+      "retained_capabilities": [
+        "spec/source/CIR",
+        "native descriptors",
+        "test definitions"
+      ],
+      "lost_capabilities": [
+        "evaluator execution",
+        "installed decision IDs",
+        "MCP execution"
+      ],
+      "visible_signals": [
+        "runtime fails before bounded result",
+        "source remains distinct from executable availability"
+      ],
+      "disposition": "HOLD",
+      "reentry_route": "Restore Node-compatible runtime or qualify substitute against gate/canonicalization/identity/ingress tests.",
+      "evidence_refs": [
+        "package.json",
+        "server/domain-admission.ts",
+        "GitHubActions:37709285796"
+      ],
+      "currentness_ref": "github:main@1b37fbbf210e5470f0de8bf71143079155f695e3;civs-ci:37709566698;inquiry-ci:37709285796;vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa:READY",
+      "falsifier": "Substitute passes full bounded suite with reconciled decision-identity semantics.",
+      "limits": [
+        "TypeScript readability is not runtime portability proof."
+      ]
+    }
+  ],
+  "cross_case_invariants": [
+    "A dependency outage may lower availability, observability, currentness, or qualification; it never upgrades semantic standing.",
+    "Pure Domain-Semantic Admission and the integrated ordinary inquiry path are distinct portability units.",
+    "Historical evidence remains historical when its currentness surface is unavailable; present use must requalify.",
+    "No substitute inherits standing until bound to exact requirements and independently qualified.",
+    "Assignment, custody, deployment, CI and consumer exposure remain distinct under degradation.",
+    "Native-source unavailability routes to QUALIFY/HOLD, never automatic ECOS extension.",
+    "Graceful degradation must expose the missing channel and retained fallback; silent fallback is a defect.",
+    "No degradation route selects correspondence mathematics or creates a new URG primitive."
+  ],
+  "source_refs": [
+    "research/civs/domain-semantic-admission.cir.json",
+    "docs/civs-reentry.md",
+    "server/domain-admission.ts",
+    "server/orchestration-brain.ts",
+    "server/native-packages/systems-engineering.ts",
+    "server.ts",
+    "package.json",
+    "GitHubActions:37709566698",
+    "GitHubActions:37709285796",
+    "Vercel:dpl_5Yb2gNbzRj1ZkNnAPaPhre3V47pa",
+    "BRAIN:c5871f89-0c51-462d-831b-c90897a95e81",
+    "BRAIN:b7e633f7-a063-4ead-a521-c22e0d060c3e",
+    "Linear:ECO-202",
+    "Linear:ECO-218",
+    "Linear:ECO-214"
+  ],
+  "omissions": [
+    "No alternate evaluator/runtime/host/CI/source-custody/coordination/BRAIN replacement is qualified.",
+    "No quantitative provider reliability/latency comparison is claimed.",
+    "No hosted ordinary-use evidence is added by this matrix.",
+    "No consumer-schema refresh or hosted circulation activation is performed.",
+    "No correspondence mathematical formalism is selected.",
+    "The current dependency set is inspected, not asserted eternally complete."
+  ]
+}

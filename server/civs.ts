@@ -81,6 +81,26 @@ export type CivsAssessmentStanding =
   | 'NOT_APPLICABLE'
   | 'CONTRADICTED';
 
+export const CIVS_PORTABILITY_MATRIX_ID = 'ecos:civs-portability-degradation-matrix:0.1.0' as const;
+export type CivsDegradationDisposition = 'CONTINUE' | 'DEGRADE' | 'HOLD';
+export type CivsPortabilityRealization = {
+  ref: string; dependency_class: string; dependency_ref: string; role: string; current_realization: string;
+  portability_standing: CivsAssessmentStanding; substitution_requirements: string[]; evidence_refs: string[];
+  currentness_ref?: string; limits: string[];
+};
+export type CivsDegradationCase = {
+  ref: string; dependency_class: string; unavailable_ref: string; trigger: string; affected_claim_refs: string[];
+  retained_capabilities: string[]; lost_capabilities: string[]; visible_signals: string[];
+  disposition: CivsDegradationDisposition; reentry_route: string; evidence_refs: string[]; currentness_ref?: string;
+  falsifier: string; limits: string[];
+};
+export type CivsPortabilityMatrix = {
+  contract: typeof CIVS_PORTABILITY_MATRIX_ID; matrix_id: string; cir_ref: string; subject_ref: string;
+  basis_ref: string; observed_at_ref: string; portable_contract: BoundedAssessment;
+  realizations: CivsPortabilityRealization[]; degradation_cases: CivsDegradationCase[];
+  cross_case_invariants: string[]; source_refs: string[]; omissions: string[];
+};
+
 export type InstallationAssessment = {
   kind: InstallationKind;
   proposition: string;
@@ -604,6 +624,49 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
   return errors.length ? { valid: false, errors } : { valid: true, errors: [] };
 }
 
+export type CivsPortabilityValidationResult =
+  | { valid: true; errors: [] }
+  | { valid: false; errors: string[] };
+
+export function validateCivPortabilityMatrix(matrix: CivsPortabilityMatrix): CivsPortabilityValidationResult {
+  const errors: string[] = [];
+  if (matrix.contract !== CIVS_PORTABILITY_MATRIX_ID) errors.push('portability contract mismatch');
+  for (const [k,v] of Object.entries({matrix_id:matrix.matrix_id,cir_ref:matrix.cir_ref,subject_ref:matrix.subject_ref,basis_ref:matrix.basis_ref,observed_at_ref:matrix.observed_at_ref})) {
+    if (!text(v)) errors.push(`${k} is required`);
+  }
+  const p=object(matrix.portable_contract);
+  if (!p || !text(p.proposition) || !standings.has(p.standing as CivsAssessmentStanding)
+    || !CIVS_ENFORCEMENT_MODES.includes(p.enforcement_mode as CivsEnforcementMode)) errors.push('portable_contract is invalid');
+  if (p?.standing === 'SUPPORTED' && (!texts(p.evidence_refs) || !text(p.currentness_ref))) errors.push('portable_contract SUPPORTED requires evidence/currentness');
+
+  const seenR=new Set<string>();
+  if (!Array.isArray(matrix.realizations) || matrix.realizations.length===0) errors.push('realizations must not be empty');
+  for (const [i,r] of (matrix.realizations ?? []).entries()) {
+    if (!text(r.ref) || seenR.has(r.ref)) errors.push(`realizations[${i}].ref is missing or duplicate`); else seenR.add(r.ref);
+    if (![r.dependency_class,r.dependency_ref,r.role,r.current_realization].every(text)) errors.push(`realizations[${i}] identity/role incomplete`);
+    if (!standings.has(r.portability_standing)) errors.push(`realizations[${i}].portability_standing invalid`);
+    if (!texts(r.substitution_requirements)) errors.push(`realizations[${i}] substitution_requirements must not be empty`);
+    if (!Array.isArray(r.evidence_refs) || !r.evidence_refs.every(text) || !Array.isArray(r.limits) || !r.limits.every(text)) errors.push(`realizations[${i}] evidence/limits invalid`);
+    if (r.evidence_refs.length && !text(r.currentness_ref)) errors.push(`realizations[${i}] evidence requires currentness_ref`);
+  }
+
+  const seenC=new Set<string>();
+  if (!Array.isArray(matrix.degradation_cases) || matrix.degradation_cases.length===0) errors.push('degradation_cases must not be empty');
+  for (const [i,c] of (matrix.degradation_cases ?? []).entries()) {
+    if (!text(c.ref) || seenC.has(c.ref)) errors.push(`degradation_cases[${i}].ref is missing or duplicate`); else seenC.add(c.ref);
+    if (![c.dependency_class,c.unavailable_ref,c.trigger,c.reentry_route,c.falsifier].every(text)) errors.push(`degradation_cases[${i}] route/trigger incomplete`);
+    if (!['CONTINUE','DEGRADE','HOLD'].includes(c.disposition)) errors.push(`degradation_cases[${i}].disposition invalid`);
+    for (const key of ['affected_claim_refs','retained_capabilities','lost_capabilities','visible_signals'] as const) if (!texts(c[key])) errors.push(`degradation_cases[${i}].${key} must not be empty`);
+    if (!Array.isArray(c.evidence_refs) || !c.evidence_refs.every(text) || !Array.isArray(c.limits) || !c.limits.every(text)) errors.push(`degradation_cases[${i}] evidence/limits invalid`);
+    if (c.evidence_refs.length && !text(c.currentness_ref)) errors.push(`degradation_cases[${i}] evidence requires currentness_ref`);
+  }
+  if (!texts(matrix.cross_case_invariants)) errors.push('cross_case_invariants must not be empty');
+  if (!texts(matrix.source_refs)) errors.push('source_refs must not be empty');
+  if (!Array.isArray(matrix.omissions) || !matrix.omissions.every(text)) errors.push('omissions must be text array');
+  if ('portable' in (matrix as unknown as UnknownRecord)) errors.push('scalar portable boolean is prohibited');
+  return errors.length ? {valid:false,errors} : {valid:true,errors:[]};
+}
+
 const standingMark: Record<CivsAssessmentStanding,string> = {
   SUPPORTED: 'SUPPORTED',
   NOT_ESTABLISHED: 'NOT ESTABLISHED',
@@ -611,6 +674,33 @@ const standingMark: Record<CivsAssessmentStanding,string> = {
   NOT_APPLICABLE: 'NOT APPLICABLE',
   CONTRADICTED: 'CONTRADICTED',
 };
+
+export function renderCivPortabilityMatrix(matrix: CivsPortabilityMatrix): string {
+  const validation=validateCivPortabilityMatrix(matrix);
+  if (!validation.valid) throw new Error(`civs_portability_matrix_invalid: ${validation.errors.join('; ')}`);
+  const lines=[
+    `# CIVS portability + graceful-degradation matrix — ${matrix.subject_ref}`,'',
+    `**Contract:** \`${matrix.contract}\`  `,`**Matrix:** \`${matrix.matrix_id}\`  `,
+    `**Source CIR:** \`${matrix.cir_ref}\`  `,`**Basis:** \`${matrix.basis_ref}\`  `,`**Observed:** \`${matrix.observed_at_ref}\``,'',
+    '> Portability and graceful degradation are separate inspection questions. Describing substitution requirements does not qualify a substitute implementation/provider.','',
+    '## Portable-contract assessment','',
+    `**${matrix.portable_contract.enforcement_mode} / ${standingMark[matrix.portable_contract.standing]}:** ${matrix.portable_contract.proposition}`,'',
+    `Limits: ${matrix.portable_contract.limits.join('; ')}`,'',
+    '## Current realization and substitution requirements','',
+    '| Dependency class | Current realization | Portability standing | Substitution requirements |','|---|---|---|---|',
+    ...matrix.realizations.map(r=>`| ${r.dependency_class} | ${r.current_realization.replaceAll('|','\\|')} | ${standingMark[r.portability_standing]} | ${r.substitution_requirements.join('; ').replaceAll('|','\\|')} |`),'',
+    '## Degradation cases','',
+    ...matrix.degradation_cases.flatMap(c=>[
+      `### ${c.ref} — ${c.disposition}`,`Trigger: ${c.trigger}`,`Unavailable: \`${c.unavailable_ref}\``,
+      `Retained: ${c.retained_capabilities.join('; ')}`,`Lost/degraded: ${c.lost_capabilities.join('; ')}`,
+      `Visible signals: ${c.visible_signals.join('; ')}`,`Reentry: ${c.reentry_route}`,`Falsifier: ${c.falsifier}`,`Limits: ${c.limits.join('; ')}`,''
+    ]),
+    '## Cross-case invariants','',...matrix.cross_case_invariants.map(x=>`- ${x}`),'',
+    '## Omissions','',...matrix.omissions.map(x=>`- ${x}`),'',
+    '> A dependency outage may lower availability, observability, currentness, or qualification. It never upgrades semantic standing.',''
+  ];
+  return lines.join('\n');
+}
 
 export function renderCapabilityInspectionRecord(cir: CapabilityInspectionRecord): string {
   const validation = validateCapabilityInspectionRecord(cir);
