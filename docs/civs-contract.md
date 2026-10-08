@@ -69,3 +69,10 @@ CIR `0.1.1` corrects that predicate so relied reference sets are nonempty, and m
 First-specimen readback showed that the machine CIR was mechanically valid while its generated Markdown omitted consequential sections. Human projection contract `ecos:civs-human-projection:0.1.1` now renders object connections, enforcement inspection, field reconstitution, portability/degradation, role distinctions, alternatives, cold-reader bridges, vertical/participatory placement, source refs and omissions from the same machine record.
 
 The URG Projection mapping also carries typed object-connection refs and Questions Forward in addition to verification refs. No machine CIR semantics, URG primitive or second truth store is introduced.
+
+
+## WP5 — cold-agent reentry instruction projection
+
+`docs/civs-reentry.md` is the compact reentry procedure over the machine CIR. It does not duplicate current capability state. It defines the inspection order, fail-visible HOLD routes, no-invention rules and fourteen-item cold-reader return.
+
+A dedicated test binds the procedure to the machine CIR handle and core nonpromotion rules. Passing that test establishes instruction-surface structure only; an independent fresh-worker behavioral run remains a later qualification obligation.
