@@ -1,0 +1,556 @@
+{
+  "contract": "ecos:civs-wp0-current-inventory:0.1.0",
+  "title": "CIVS WP0 current inventory reconstruction",
+  "date": "2026-10-07",
+  "timezone": "America/Phoenix",
+  "reconstruction": {
+    "is_reconstruction": true,
+    "source_baseline_commit": "751e644dda692dfd3622fc9052392b70307204bb",
+    "source_tree_sha": "17dac39f34e7290741a652a52f48c1e475ab9fb3",
+    "predecessor_summary_ref": "BRAIN:9d473ecf-4239-46cd-83c4-383292ed6442",
+    "predecessor_limit": "The predecessor says 39 repository objects were inventoried, but its exact enumerated manifest is not durably recoverable. This edition is a new current reconstruction and does not claim identity with that list.",
+    "identity_rule": "Repository identity is commit SHA + Git blob SHA + path. SHA-256 is not claimed here because the connected GitHub evidence surface directly exposes Git object identity, not an independently recomputed SHA-256.",
+    "scope_rule": "Only objects consequential to CIVS and the first Domain-Semantic Admission / D&I Boundary specimen are enumerated. Count is descriptive, not a completeness target."
+  },
+  "repository_objects": [
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:START_HERE.md",
+      "path": "START_HERE.md",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "17d697a5dcd330a7b2feb828067426ebab05cb82",
+      "bytes": 36028,
+      "role": "reentry",
+      "standing_note": "current reentry projection; not independent semantic authority",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:docs/invariants.md",
+      "path": "docs/invariants.md",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "72b89a2bf7ccb9b2de484be01e45cf5a62e612b6",
+      "bytes": 11822,
+      "role": "governance",
+      "standing_note": "governing constitutive non-collapse constraints",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:docs/capability-inspection-verification-spine-plan.md",
+      "path": "docs/capability-inspection-verification-spine-plan.md",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "473ae1ee54f7c404a2b3cb563a5b45d6bbf9543e",
+      "bytes": 22024,
+      "role": "civs-governance",
+      "standing_note": "accepted CIVS plan with amendment integrated",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:docs/capability-inspection-verification-spine-audit-2026-10-07.md",
+      "path": "docs/capability-inspection-verification-spine-audit-2026-10-07.md",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "7e2ae6763105b02fd49fb93b6e39b3d6087e80a6",
+      "bytes": 18614,
+      "role": "civs-governance",
+      "standing_note": "current implementation constraints from reification/drift audit",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:docs/indexical-relevance-integrity-reconciliation-2026-10-07.md",
+      "path": "docs/indexical-relevance-integrity-reconciliation-2026-10-07.md",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "8cdb5c91b5512e7d9926ed78e8f05d3969f7f76d",
+      "bytes": 6748,
+      "role": "civs-governance",
+      "standing_note": "current indexical-integrity reconciliation and bounded repair record",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:docs/inquiry-orchestration.md",
+      "path": "docs/inquiry-orchestration.md",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "4d4f1263e8dcf6974d2ce89591046b11829f5e27",
+      "bytes": 12804,
+      "role": "runtime-contract",
+      "standing_note": "current human-readable inquiry runtime contract",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:docs/inquiry-orchestration-2026-10-06-receipt.md",
+      "path": "docs/inquiry-orchestration-2026-10-06-receipt.md",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "39776d28f8f657b655a1f7d015ab8803f4f07e8b",
+      "bytes": 10668,
+      "role": "historical-receipt",
+      "standing_note": "historical observation-time installation receipt; not current contract state",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:docs/domain-semantic-admission.md",
+      "path": "docs/domain-semantic-admission.md",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "669a543f466d1a3400b760fd94dd272c1ddf16b5",
+      "bytes": 6309,
+      "role": "runtime-contract",
+      "standing_note": "current Domain-Semantic Admission contract/explanation",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:research/formal-semantics/PGO-Directed-Situated-Referent-Orchestration-Profile-v0.1.md",
+      "path": "research/formal-semantics/PGO-Directed-Situated-Referent-Orchestration-Profile-v0.1.md",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "348dde7972d6da81d4a5970675bb022df80f97f0",
+      "bytes": 18016,
+      "role": "semantic-profile",
+      "standing_note": "installed orchestration profile; PGO long-form Namecrafting remains open",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:research/urg-kernel/URG-Core-Register-B-Candidate-v1.0.md",
+      "path": "research/urg-kernel/URG-Core-Register-B-Candidate-v1.0.md",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "304e10ef3102d2c062eb2f68fcdedd1cc3ee40cf",
+      "bytes": 15747,
+      "role": "semantic-source",
+      "standing_note": "accepted URG full-core source despite historical Candidate filename",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:research/urg-kernel/Level-Quadrant-Formal-Contract-v1.0.md",
+      "path": "research/urg-kernel/Level-Quadrant-Formal-Contract-v1.0.md",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "b0b3330d3ed2344282b3f4429671d1b0d8f38f6c",
+      "bytes": 10751,
+      "role": "semantic-source",
+      "standing_note": "Level and Quadrant formal contract",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:server/urg-core.ts",
+      "path": "server/urg-core.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "cb1139a0b63d383d8a9883b80418811e8d23717b",
+      "bytes": 20691,
+      "role": "runtime-semantic-contract",
+      "standing_note": "machine-consumable URG core revision 1.0.2",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:schemas/urg-core-v1.contract.json",
+      "path": "schemas/urg-core-v1.contract.json",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "5d739296b5e02833859681bc97baf0bc25285975",
+      "bytes": 4715,
+      "role": "schema",
+      "standing_note": "portable URG contract schema",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:server/orchestration.ts",
+      "path": "server/orchestration.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "1a591a4a3c860106b503bd4265fe075007cd86f1",
+      "bytes": 34460,
+      "role": "runtime-implementation",
+      "standing_note": "inquiry orchestration 0.1.1 including indexical binding receipt and delta",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:server/orchestration-brain.ts",
+      "path": "server/orchestration-brain.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "8534dcfbaf8d3ecc13b0e30971fedd522471a1cf",
+      "bytes": 13278,
+      "role": "runtime-adapter",
+      "standing_note": "BRAIN/circulation recovery adapter; source work/PGO is provenance not retrieval namespace",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:server/domain-admission.ts",
+      "path": "server/domain-admission.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "5cce49ca54ab95c2ca07eed8145cef1710eb97d3",
+      "bytes": 11471,
+      "role": "runtime-implementation",
+      "standing_note": "Domain-Semantic Admission evaluator 0.1.0",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:server/native-packages/systems-engineering.ts",
+      "path": "server/native-packages/systems-engineering.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "e9aec3249174c39a72e409e081303061771eba1a",
+      "bytes": 2958,
+      "role": "native-adapter",
+      "standing_note": "systems-engineering Native Package descriptors",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:server.ts",
+      "path": "server.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "1c8e3ce3609138da9d3be911ee945ce54c726cf9",
+      "bytes": 34226,
+      "role": "runtime-ingress",
+      "standing_note": "ordinary MCP ingress; search 0.7.1, server identity 0.6.0, capture 0.5.1",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:research/systems-engineering/DI-Native-Package-Boundary-v0.1.json",
+      "path": "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "277aad8605153781fedae9a5a38f7fc2f7601913",
+      "bytes": 10369,
+      "role": "specimen-corpus",
+      "standing_note": "first systems-engineering D&I boundary corpus and expected structural dispositions",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:tests/inquiry/orchestration.test.ts",
+      "path": "tests/inquiry/orchestration.test.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "eb15e6cd2c47fd3e7498f3b3e8c9fd762800c2f1",
+      "bytes": 16630,
+      "role": "mechanical-test",
+      "standing_note": "inquiry orchestration and indexical-integrity controls",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:tests/inquiry/brain.test.ts",
+      "path": "tests/inquiry/brain.test.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "f8b771cf2342ee912416f68ade2e0738a6d1c32a",
+      "bytes": 6533,
+      "role": "mechanical-test",
+      "standing_note": "BRAIN adapter recovery and non-promotion controls",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:tests/inquiry/ingress.test.ts",
+      "path": "tests/inquiry/ingress.test.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "a4f6fca4b5c3d50a736426d3e78d2f882d464ee5",
+      "bytes": 8015,
+      "role": "mechanical-test",
+      "standing_note": "ordinary MCP inquiry/domain-admission ingress controls",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:tests/inquiry/domain-admission.test.ts",
+      "path": "tests/inquiry/domain-admission.test.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "8b164caa0f5a5fbbf78214021272a7147af3159f",
+      "bytes": 5093,
+      "role": "mechanical-test",
+      "standing_note": "Domain-Semantic Admission structural gate tests",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:tests/urg-core/contract.test.ts",
+      "path": "tests/urg-core/contract.test.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "926912334b4db73cae8ecd143e211bbf04223bf2",
+      "bytes": 13594,
+      "role": "mechanical-test",
+      "standing_note": "URG portable-core contract tests",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:.github/workflows/inquiry-orchestration.yml",
+      "path": ".github/workflows/inquiry-orchestration.yml",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "5a75178718cafa486e2b6f59bd7518a510778154",
+      "bytes": 1006,
+      "role": "ci-definition",
+      "standing_note": "inquiry typecheck/test workflow",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:.github/workflows/eco-213-circulation.yml",
+      "path": ".github/workflows/eco-213-circulation.yml",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "752e42b96da548a2c60e840d75c6d82644bfcb2e",
+      "bytes": 3167,
+      "role": "ci-definition",
+      "standing_note": "circulation qualification workflow",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:.github/workflows/eco-218-oauth.yml",
+      "path": ".github/workflows/eco-218-oauth.yml",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "c1471e9dfb69b4d2b39ac50eb3c708018549907e",
+      "bytes": 777,
+      "role": "ci-definition",
+      "standing_note": "ordinary OAuth qualification workflow",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:.github/workflows/eco-136-urg-core.yml",
+      "path": ".github/workflows/eco-136-urg-core.yml",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "87381fb110f605c4aa89f8b7a8a01e9f449d5508",
+      "bytes": 1438,
+      "role": "ci-definition",
+      "standing_note": "URG core qualification workflow",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:scripts/eco-213/commission.ts",
+      "path": "scripts/eco-213/commission.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "0182d1f900d69a54ee1355efdf86467ce2fb1b18",
+      "bytes": 10662,
+      "role": "circulation-binding",
+      "standing_note": "circulation commission/source binding; known source-manifest omission remains",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:server/circulation/worker.ts",
+      "path": "server/circulation/worker.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "a91610946422f23ca7eaf6cb7443a92acbe27ea7",
+      "bytes": 10325,
+      "role": "circulation-runtime",
+      "standing_note": "dormant/hosted circulation worker implementation",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:server/circulation/tools.ts",
+      "path": "server/circulation/tools.ts",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "c354fa6db2b94b4b2781fd1846060cc00f8fcbff",
+      "bytes": 8898,
+      "role": "circulation-runtime",
+      "standing_note": "circulation MCP/tool contract surface",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:package.json",
+      "path": "package.json",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "0ad3d8bc192540372932e637544b3de3476f6078",
+      "bytes": 2332,
+      "role": "build-definition",
+      "standing_note": "runtime scripts/dependencies and exact test/typecheck commands",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    },
+    {
+      "object_ref": "github:Levi-Anthony/ecb-v2:751e644dda692dfd3622fc9052392b70307204bb:vercel.json",
+      "path": "vercel.json",
+      "commit_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "git_blob_sha": "c5a81d6983166e7480633d49ca013d7166de890b",
+      "bytes": 438,
+      "role": "deployment-definition",
+      "standing_note": "Vercel runtime/deployment routing configuration",
+      "currentness_basis": "exact object at reconstruction baseline commit"
+    }
+  ],
+  "external_evidence": [
+    {
+      "system": "BRAIN",
+      "ref": "c5871f89-0c51-462d-831b-c90897a95e81",
+      "role": "CIVS governing plan",
+      "source": "capability_inspection_verification_spine_plan_20261007",
+      "captured_at": "2026-10-07T19:55:02.238687+00:00",
+      "standing": "plan source; read with accepted amendment"
+    },
+    {
+      "system": "BRAIN",
+      "ref": "73994c17-d5b5-48d1-9698-fa656c393e91",
+      "role": "accepted two-door / vertical-horizontal / consumer-simulation amendment",
+      "source": "capability_inspection_plan_amendment_two_door_vertical_horizontal_20261007",
+      "captured_at": "2026-10-07T20:25:41.294106+00:00",
+      "standing": "accepted Shape amendment"
+    },
+    {
+      "system": "BRAIN",
+      "ref": "06b3ca69-0805-45aa-8ab9-cc75d618894b",
+      "role": "active CIVS Questions Forward",
+      "source": "capability_inspection_open_questions_20261007",
+      "captured_at": "2026-10-07T19:50:18.979385+00:00",
+      "standing": "open questions; not resolved conclusions"
+    },
+    {
+      "system": "BRAIN",
+      "ref": "0f654aaa-f3e8-4733-afed-cec7fcd66284",
+      "role": "WP0 reentry commission",
+      "source": "civs_wp0_reentry_commission_20261007",
+      "captured_at": "2026-10-07T21:01:38.842743+00:00",
+      "standing": "implementation reentry evidence"
+    },
+    {
+      "system": "BRAIN",
+      "ref": "9d473ecf-4239-46cd-83c4-383292ed6442",
+      "role": "prior WP0 findings summary",
+      "source": "civs_wp0_currentness_findings_20261007",
+      "captured_at": "2026-10-07T21:07:24.016355+00:00",
+      "standing": "historical summary; exact 39-object manifest unavailable"
+    },
+    {
+      "system": "BRAIN",
+      "ref": "b7e633f7-a063-4ead-a521-c22e0d060c3e",
+      "role": "indexical relevance reconciliation commission",
+      "source": "principal_authorized_indexical_relevance_reconciliation_commission_20261007",
+      "captured_at": "2026-10-07T23:15:55.298523+00:00",
+      "standing": "active commission custody; PGO Namecrafting open"
+    },
+    {
+      "system": "BRAIN",
+      "ref": "2a315af0-0ed6-44c8-bed1-b34d7b4c3d02",
+      "role": "tool-safety / BRAIN-first Linear downstream continuity authorization",
+      "source": "principal_tool_safety_solution_commission_20261006",
+      "captured_at": "2026-10-06T09:14:58.018497+00:00",
+      "standing": "standing bounded continuity authorization; governance/destructive actions separately gated"
+    },
+    {
+      "system": "Linear",
+      "ref": "ECO-202",
+      "role": "execution coordination",
+      "status": "Working",
+      "assignee": "Levi Anthony",
+      "updated_at": "2026-10-07T23:56:16.236Z",
+      "standing_limit": "assignee/status are coordination facts, not semantic authority or action authorization"
+    },
+    {
+      "system": "Linear",
+      "ref": "ECO-218",
+      "role": "ordinary authenticated consumer delivery/qualification",
+      "status": "Needs Input",
+      "assignee": "Levi Anthony",
+      "updated_at": "2026-10-07T18:41:37.809Z",
+      "standing_limit": "connected-consumer refresh/qualification remains open"
+    },
+    {
+      "system": "Linear",
+      "ref": "ECO-219",
+      "role": "instruction-surface projection",
+      "status": "Working",
+      "assignee": null,
+      "updated_at": "2026-10-07T20:06:47.048Z",
+      "standing_limit": "unassigned coordination surface"
+    },
+    {
+      "system": "Linear",
+      "ref": "ECO-214",
+      "role": "hosted circulation / twelve ordinary-use obligations",
+      "status": "Needs Input",
+      "assignee": "Levi Anthony",
+      "updated_at": "2026-10-07T18:33:38.164Z",
+      "standing_limit": "no active worker/provider release inferred"
+    },
+    {
+      "system": "Linear",
+      "ref": "ECO-51",
+      "role": "mechanized Level/referent seating checker",
+      "status": "Backlog",
+      "assignee": null,
+      "updated_at": "2026-10-07T18:33:42.599Z",
+      "standing_limit": "written procedure exists; mechanization pending"
+    },
+    {
+      "system": "GitHub Actions",
+      "ref": "37704663545",
+      "role": "ordinary inquiry mechanical qualification",
+      "head_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "status": "completed",
+      "conclusion": "success",
+      "updated_at": "2026-10-07T23:52:25Z",
+      "standing_limit": "bounded typecheck/tests; not semantic truth, consumer exposure, or ordinary-use efficacy"
+    },
+    {
+      "system": "GitHub Actions",
+      "ref": "37704663562",
+      "role": "circulation mechanical qualification",
+      "head_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "status": "completed",
+      "conclusion": "success",
+      "updated_at": "2026-10-07T23:52:50Z",
+      "standing_limit": "does not cure known source-manifest incompleteness for future source-complete worker binding"
+    },
+    {
+      "system": "GitHub Actions",
+      "ref": "37704508741",
+      "role": "ordinary OAuth qualification",
+      "head_sha": "b5e36d000e25c251c846de2cf1ef629dd3c97232",
+      "status": "completed",
+      "conclusion": "success",
+      "updated_at": "2026-10-07T23:50:52Z",
+      "standing_limit": "nearby predecessor commit; exact-current OAuth source equivalence is not promoted here without a separate comparison"
+    },
+    {
+      "system": "Vercel",
+      "ref": "dpl_2sUsXSjPDtaHFJrt2fEhKH8FpTMJ",
+      "role": "current Production deployment",
+      "head_sha": "751e644dda692dfd3622fc9052392b70307204bb",
+      "state": "READY",
+      "alias": "ecb-v2-eight.vercel.app",
+      "region": "iad1",
+      "alias_error": null,
+      "ready_at_epoch_ms": 1791417197280,
+      "standing_limit": "deployment metadata is not authenticated execution, connected-consumer exposure, or situated-use qualification"
+    },
+    {
+      "system": "connected ECB-v2-BRAIN action schema",
+      "ref": "search",
+      "role": "consumer exposure observation",
+      "observed_schema": "query + optional limit only",
+      "standing": "CONTRACT_DEGRADED",
+      "standing_limit": "does not advertise search.inquiry or inquiry.domain_admission; observation is consumer/action-snapshot specific"
+    },
+    {
+      "system": "connected ECB-v2-BRAIN action schema",
+      "ref": "capture_thought",
+      "role": "consumer exposure observation",
+      "observed_schema": "content + source + optional captured_at; operation_id absent",
+      "standing": "CONTRACT_DEGRADED",
+      "standing_limit": "runtime has rejected calls without required operation_id; do not infer backend capture absence or fabricate receipt"
+    }
+  ],
+  "known_defects_and_open_limits": [
+    {
+      "id": "inventory-predecessor-loss",
+      "statement": "The earlier 39-object inventory is not durably enumerated.",
+      "route": "This reconstruction supersedes only the need for a current explicit inventory; it does not rewrite the historical BRAIN summary."
+    },
+    {
+      "id": "circulation-source-manifest-incomplete",
+      "statement": "scripts/eco-213/commission.ts SOURCE_FILES omits server/domain-admission.ts and server/native-packages/systems-engineering.ts.",
+      "route": "ECO-202/ECO-214; do not claim source-complete worker binding or release from the existing digest."
+    },
+    {
+      "id": "brain-capture-contract-drift",
+      "statement": "Connected capture_thought schema omits runtime-required operation_id.",
+      "route": "tool-safety / ECO-218 consumer-boundary repair; BRAIN-first failures remain visible."
+    },
+    {
+      "id": "consumer-search-contract-drift",
+      "statement": "Connected BRAIN search schema does not advertise optional inquiry/domain_admission fields.",
+      "route": "ECO-218 connected action refresh/review/publish and fresh-consumer qualification."
+    },
+    {
+      "id": "connected-consumer-use-unqualified",
+      "statement": "Backend implementation/mechanical qualification/deployment are not connected-consumer exposure or situated-use qualification.",
+      "route": "ECO-218 and ECO-214."
+    },
+    {
+      "id": "pgo-namecrafting-open",
+      "statement": "PGO long-form naming is intentionally unresolved.",
+      "route": "preserve functional G-coordinate role; do not canonicalize an expansion in CIVS."
+    },
+    {
+      "id": "correspondence-formalism-open",
+      "statement": "FEDERATE structural admission does not establish cross-domain correspondence truth or a mathematical formalism.",
+      "route": "retain CIVS Question Forward; no formalism selection in WP0-WP2."
+    },
+    {
+      "id": "production-deployment-ci-separation",
+      "statement": "Production deployment currentness and mechanical qualification are separate claims.",
+      "route": "CIR installation assessments must keep deployment, CI, exposure, use, and sustainment independent."
+    }
+  ],
+  "counts": {
+    "repository_objects": 33,
+    "external_evidence": 18,
+    "known_defects_and_open_limits": 8
+  },
+  "next_reentry": "Use this reconstruction as WP0 current inventory input to WP1 CIR contract and WP2 typed object connections. Do not infer original Astra manifest identity from count similarity."
+}
