@@ -14,6 +14,22 @@ AUTHORITY: Principal instruction, 5 October 2026 America/Phoenix; source contrac
 
 This document is the current working door for this investigation. The fidelity tracker retains its original clauses, porch workshop and prior-art lineage, and points here for the immediate frontier. Repository and Linear pointers identify this same work object. Greenfield v2 BRAIN is the first-class capture destination; Linear is an explicitly authorized downstream continuity destination. Propagation is completed and verified, as recorded below.
 
+## True work-front reconciliation — 7 October 2026
+
+**Active execution front:** ECO-202 ordinary situated inquiry orchestration, using the installed PGO-directed profile and current indexical-integrity repair on the enduring main/runtime path.
+
+**Leading semantic concern inside that execution front:** PGO-directed referent / whole-part / Quadrant decomposition mapping. This means ordinary use should continue to test whether the current basis correctly individuates R/B, distinguishes constitution from participation, preserves fixed-R/B Quadrant traversal, routes consequential changes through typed transformations, and reconciles old support plus destination-new obligations. The installed ECO-221 Level + Quadrant generator remains governing. Do **not** reopen or replace it unless ordinary use exposes a named semantic defect with consequence.
+
+**PGO Namecrafting:** OPEN. The token `PGO` is used operationally for the existing G-coordinate / purpose-orientation interface in `kappa=(R,B,G,F)`; no long-form expansion is canonical here.
+
+**Indexical relevance:** reconciliation + bounded forward installation is complete enough for current use under ECO-202. It remains a situated, recoverable binding relation/receipt over installed machinery, not a new primitive or ontology. Reopen only on the explicit mind-changers in BRAIN `b7e633f7-a063-4ead-a521-c22e0d060c3e`.
+
+**CIVS / cold-reader qualification:** parallel verification, not the Register B implementation critical path. The earlier Register B reorientation explicitly deferred cold-transfer independence evidence out of the Register B critical path into future Register A qualification (BRAIN `eb1384f1-48bb-45cb-9c19-b01ee80e7b7e`). CIVS defects can still improve transfer legibility, but a clean cold-reader result is not required before continuing Register B ordinary-use hardening.
+
+**Adjacent retained frontiers, not current blockers:** competency/Line discovery; dynamic composition and deterministic situated valenced recall; the I/It/We/Its explanatory/disclosure candidate; the §8 paper qualification agenda; graphical substrate realization; correspondence formalism. These become active when ordinary use produces a consequential distinction, a named semantic defect, or a separately commissioned qualification need.
+
+**Next proximal move:** exercise the actual ECO-202 path against real ordinary inquiries and inspect the first accountable HOLDs or incorrect READYs at the semantic-adapter boundary. Repair the minimum demonstrated problem in seating/Level preflight, fixed-R/B Quadrant disclosure, admission/requalification, currentness/standing, or two-sided reconciliation. Prefer source-grounded ordinary-use evidence over additional scenario proliferation. ECO-51 mechanization remains a dependency to call when a concrete Level/seating need reaches it; ECO-218 and ECO-214 remain separate consumer-exposure and hosted-sustainment fronts.
+
 ## Solution-first disposition — 6 October 2026
 
 The Principal directed: **minimize experiments and maximize solutions**. Live reconciliation against ECO-221, the integrated URG core, ECO-191 and Quadrant v0.2 found that the required semantic machinery is already substantially installed.
@@ -42,7 +58,7 @@ The Principal accepted the synthesis joining situated bootstrap, Level, Quadrant
 
 The protected originating commitments remain the Principal's Ken Wilber paraphrases: **“everything is a holon”** and **“holons have 4 quadrants.”** They are universal structural commitments under investigation, not replacements for the narrower claim that a tool can classify supplied records. Operational scope, philosophical standing and bounded qualification remain separately stated.
 
-**PGO — Principal Governing Orientation:** make consequential referents discoverable, sufficiently situated, dynamically composable and exactly recoverable so that understanding and future work accumulate without losing identity, source, evidence basis, state, uncertainty or standing.
+**PGO token / G-coordinate interface — Namecrafting OPEN:** orient the inquiry so consequential referents can be discovered, sufficiently situated, dynamically composed and exactly recovered without losing identity, source, evidence basis, state, uncertainty or standing. This sentence states the current functional job of G; it does not settle PGO's long-form expansion.
 
 **Magic-wand end state:** from an adequately scoped contact, a worker can discover and reciprocally stabilize the referent's situation, identity, holarchic relations and four disclosures; expose consequential neighbors and competencies; rapidly compose, decompose and recompose as the concern changes; and recover exact prior situated information, state and evaluative relations without having to invent them again. The account remains open to new discovery and can disclose why earlier information does or does not support the present use.
 
@@ -243,7 +259,7 @@ The current formalization target is a **versioned positive disclosure/discovery 
 | What remains deterministic when compositions change? | Recover a pinned claim/composition/state/valence, reorient, recompose and return. Introduce ambiguity, conflicting valence and a missing record. | Exact history/lookup, explicit current-selection basis, local invalidation and source preservation; no silent model-filled facts. |
 | Which modern engineering machinery is reusable? | Apply the D&I mappings in §9 to one source-preserving case and name the mismatch before adapting. | Earned reuse of native semantics; no forced quadrant equivalence or new parallel machinery. |
 
-**Next proximal exercise:** return to the appearance-control affordance, compare it explicitly with the human user's episode, and isolate the UL/UR and LL/LR discriminators before polishing wording. Continue the same specimen into top-down/bottom-up competency reconciliation and a pinned-record/recomposition walk. Bring the inherited porch case back as an independent whole/part/fidelity check.
+**Retained proximal research exercise (not the default execution front):** if ordinary-use evidence exposes a Quadrant/disclosure ambiguity that the installed generator and orchestration profile cannot resolve, return to the appearance-control affordance versus the human viewing episode, isolate UL/UR and LL/LR discriminators, then continue into competency reconciliation and a pinned-record/recomposition walk. Otherwise remain on ECO-202 ordinary-use hardening and preserve this exercise as qualification debt.
 
 **Shape-facing closure criteria:** exact positive definitions; nearest collisions and hostile cases; structurally located bootstrap sufficiency/exit; justified relocation or retention of the installed generator's distinctions; competency/Line bridge; deterministic and semantic responsibilities; bounded source/standing/currentness behavior; and exact unresolved decisions. A finite structural checker can witness declared bookkeeping obligations after the semantic alternatives are settled. It cannot choose the governing interpretation by validating its own tags.
 

@@ -10,9 +10,17 @@ AUTHORITY: Principal-accepted direction; inherited contracts retain their own st
 **Standing:** Principal-accepted conceptual direction; candidate formulations and unresolved semantic questions retained for situated workshop.  
 **Target:** ECO-162 — Integral Coherence Maintenance, F1–F8 cross-cutting fidelity contract; R3 (cross-cutting preservation) in the ECO-220 invariant lattice.  
 **Register:** B — substrate-independent architectural and semantic work.  
-**Current activity:** harden the situated bootstrap/Quadrant discovery synthesis, top-down/bottom-up competency and Line discovery, and dynamic composition with deterministic situated valenced recall. Apply the resulting discriminators to the independent F1 porch workshop. Initial continuity installation is complete; its historical receipt remains below.  
+**Current activity:** ECO-202 ordinary-use hardening of the installed PGO-directed situated-referent orchestration path. The leading semantic concern is PGO-directed referent / whole-part / Quadrant decomposition mapping under the existing ECO-221 kernel. Competency/Line discovery, dynamic composition/recall, the I/It/We/Its explanatory candidate and the porch workshop remain adjacent retained frontiers rather than default next actions. PGO Namecrafting remains OPEN.  
 **Immediate human/agent working door:** [Situated Referent Discovery — Leading Structural Frontier](./Situated-Referent-Discovery-Frontier.md). This file retains the cross-cutting fidelity contract and workshop lineage. Linear carries source records and continuity pointers; BRAIN carries direction evidence and source custody.  
 **Direction receipt:** BRAIN thought c292480c-32a9-48b6-95c0-a44223522857 — durable identity of the Principal-direction continuity record, source `constructive_fidelity_principal_direction_20261005`.
+
+## Work-front reconciliation — 7 October 2026
+
+The cold-reader/CIVS qualification branch is **parallel verification**, not a blocker on Register B progression. BRAIN `eb1384f1-48bb-45cb-9c19-b01ee80e7b7e` explicitly deferred Register B cold-transfer independence evidence from the implementation critical path into future Register A qualification.
+
+Current Register B execution therefore remains ECO-202 ordinary-use hardening over the installed orchestration profile. Indexical relevance has been reconciled as a bounded binding/receipt concern under BRAIN `b7e633f7-a063-4ead-a521-c22e0d060c3e`; it is not a new primitive. The next semantic work is evidence-driven: inspect real ECO-202 READY/HOLD behavior and repair only demonstrated defects in referent/boundary seating, Level witness, fixed-R/B Quadrant disclosure, typed change/reconciliation, standing/currentness or admission. The installed Level/Quadrant generator remains governing absent such a defect.
+
+PGO Namecrafting remains OPEN; use PGO operationally as the G-coordinate / purpose-orientation interface without canonicalizing a long form.
 
 ## Current execution reentry — 6 October 2026
 
