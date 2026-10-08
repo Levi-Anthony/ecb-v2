@@ -58,7 +58,7 @@ function specimen(): CapabilityInspectionRecord {
       method_ref: 'fixture:test', enforcement_mode: 'STRUCTURAL', evidence_refs: ['fixture:evidence'], standing: 'SUPPORTED', currentness_ref: 'fixture:current', sensitivity_refs: ['fixture:negative-control'], limits: ['No semantic truth or authority.'] }],
     field_reconstitution: { proposition: 'Typed changes route dependency/requalification review.', typed_change_refs: ['URG:Reorient'],
       affected_dependency_refs: ['fixture:dependency'], requalification_refs: ['fixture:review'], standing: 'SUPPORTED', enforcement_mode: 'STRUCTURAL',
-      evidence_refs: ['fixture:evidence'], limits: ['No generic FieldReconstitution Change kind.'] },
+      evidence_refs: ['fixture:evidence'], currentness_ref: 'fixture:current', limits: ['No generic FieldReconstitution Change kind.'] },
     correspondence_inspections: [{ ref: 'fixture:correspondence', relation_kind_ref: 'fixture:cross-domain', source_ref: 'fixture:native',
       target_ref: 'fixture:ecos', basis_ref: basis, semantic_owner_ref: 'fixture:native-owner', direction: 'native-to-ecos',
       standing: 'NOT_ESTABLISHED', enforcement_mode: 'SEMANTIC', evidence_refs: [], unresolved_mathematical_requirements: ['mapping law', 'composition behavior'],
@@ -184,5 +184,33 @@ test('executable inspection claims require explicit enforcement mode', () => {
   if (!result.valid) {
     assert(result.errors.some(e => e.includes('installation_assessments[0].enforcement_mode')));
     assert(result.errors.some(e => e.includes('verification_links[0]')));
+  }
+});
+
+
+test('empty reference arrays do not satisfy relied evidence or located observation requirements', () => {
+  const cir = specimen();
+  cir.installation_assessments[0].evidence_refs = [];
+  cir.consumer_simulations[0].items[0].binding_status = 'LOCATED';
+  cir.consumer_simulations[0].items[0].observation_refs = [];
+  const result = validateCapabilityInspectionRecord(cir);
+  assert.equal(result.valid, false);
+  if (!result.valid) {
+    assert(result.errors.some(e => e.includes('SUPPORTED requires evidence_refs and currentness_ref')));
+    assert(result.errors.some(e => e.includes('LOCATED requires observation_refs')));
+  }
+});
+
+test('SUPPORTED field-reconstitution and correspondence claims require currentness', () => {
+  const cir = specimen();
+  delete cir.field_reconstitution.currentness_ref;
+  cir.correspondence_inspections[0].standing = 'SUPPORTED';
+  cir.correspondence_inspections[0].evidence_refs = ['fixture:evidence'];
+  delete cir.correspondence_inspections[0].currentness_ref;
+  const result = validateCapabilityInspectionRecord(cir);
+  assert.equal(result.valid, false);
+  if (!result.valid) {
+    assert(result.errors.some(e => e.includes('field_reconstitution SUPPORTED requires evidence/currentness')));
+    assert(result.errors.some(e => e.includes('correspondence_inspections[0] SUPPORTED requires evidence/currentness')));
   }
 });

@@ -13,7 +13,7 @@ import {
   type QuestionForward,
 } from './urg-core.js';
 
-export const CIVS_CONTRACT_ID = 'ecos:capability-inspection-record:0.1.0' as const;
+export const CIVS_CONTRACT_ID = 'ecos:capability-inspection-record:0.1.1' as const;
 export const CIVS_RELATION_SCHEMA_ID = 'ecos:civs-object-relations' as const;
 export const CIVS_RELATION_SCHEMA_EDITION = '0.1.0' as const;
 export const CIVS_HUMAN_PROJECTION_ID = 'ecos:civs-human-projection:0.1.0' as const;
@@ -258,6 +258,7 @@ export type CapabilityInspectionRecord = {
     standing: CivsAssessmentStanding;
     enforcement_mode: CivsEnforcementMode;
     evidence_refs: string[];
+    currentness_ref?: string;
     limits: string[];
   };
   correspondence_inspections: CorrespondenceInspection[];
@@ -306,7 +307,7 @@ export type CivsValidationResult =
 type UnknownRecord = Record<string, unknown>;
 const object = (x: unknown): UnknownRecord | null => x !== null && typeof x === 'object' && !Array.isArray(x) ? x as UnknownRecord : null;
 const text = (x: unknown): x is string => typeof x === 'string' && x.trim().length > 0;
-const texts = (x: unknown): x is string[] => Array.isArray(x) && x.every(text);
+const texts = (x: unknown): x is string[] => Array.isArray(x) && x.length > 0 && x.every(text);
 const standings = new Set<CivsAssessmentStanding>(['SUPPORTED','NOT_ESTABLISHED','UNKNOWN','NOT_APPLICABLE','CONTRADICTED']);
 
 export const CIVS_RELATION_DEFINITIONS: Record<CivsRelationKind, { roles: readonly string[]; meaning: string }> = {
@@ -467,7 +468,7 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
     for (const key of ['typed_change_refs','affected_dependency_refs','requalification_refs','evidence_refs','limits']) {
       if (!Array.isArray(reconstitution[key]) || !(reconstitution[key] as unknown[]).every(text)) errors.push(`field_reconstitution.${key} must be text/reference array`);
     }
-    if (reconstitution.standing === 'SUPPORTED' && !texts(reconstitution.evidence_refs)) errors.push('field_reconstitution SUPPORTED requires evidence');
+    if (reconstitution.standing === 'SUPPORTED' && (!texts(reconstitution.evidence_refs) || !text(reconstitution.currentness_ref))) errors.push('field_reconstitution SUPPORTED requires evidence/currentness');
   }
 
   const correspondence = Array.isArray(record.correspondence_inspections) ? record.correspondence_inspections : [];
@@ -479,6 +480,7 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
     }
     if (!standings.has(x.standing as CivsAssessmentStanding)) errors.push(`correspondence_inspections[${i}].standing is invalid`);
     if (!CIVS_ENFORCEMENT_MODES.includes(x.enforcement_mode as CivsEnforcementMode)) errors.push(`correspondence_inspections[${i}].enforcement_mode is invalid`);
+    if (x.standing === 'SUPPORTED' && (!texts(x.evidence_refs) || !text(x.currentness_ref))) errors.push(`correspondence_inspections[${i}] SUPPORTED requires evidence/currentness`);
     for (const key of ['evidence_refs','unresolved_mathematical_requirements','question_forward_refs']) if (!Array.isArray(x[key]) || !(x[key] as unknown[]).every(text)) {
       errors.push(`correspondence_inspections[${i}].${key} must be text/reference array`);
     }

@@ -1,6 +1,6 @@
 # Capability Inspection Record contract — WP1/WP2
 
-**Contract:** `ecos:capability-inspection-record:0.1.0`  
+**Contract:** `ecos:capability-inspection-record:0.1.1`  
 **Relation schema:** `ecos:civs-object-relations:0.1.0`  
 **Scope:** reusable CIVS inspection record + typed object connections. This does not add a URG primitive or correspondence formalism.
 
@@ -55,3 +55,10 @@ Before the first specimen, the reusable contract was tightened against the accep
 - consumer support dimensions carry bounded standing/currentness rather than inheriting support from the quadrant label.
 
 These are inspection-contract refinements only. They add no URG primitive, no new universal axis, and no correspondence formalism.
+
+
+## Qualification repair — nonempty evidence/currentness semantics
+
+The first hardening CI exposed a shared validator defect: the reference-list helper treated an empty array as satisfying “has references.” This could weaken SUPPORTED / OBSERVED / LOCATED checks even when the surrounding contract intended attributable evidence.
+
+CIR `0.1.1` corrects that predicate so relied reference sets are nonempty, and makes currentness explicit for SUPPORTED field-reconstitution and correspondence claims. Because the hardening introduced mandatory claim structure, the CIR contract edition is bumped rather than silently changing `0.1.0` semantics.

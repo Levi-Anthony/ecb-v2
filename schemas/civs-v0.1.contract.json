@@ -1,6 +1,6 @@
 {
   "contract": "ecos:civs-contract-vocabulary:0.1.1",
-  "cir_contract": "ecos:capability-inspection-record:0.1.0",
+  "cir_contract": "ecos:capability-inspection-record:0.1.1",
   "canonical_validator": "server/civs.ts#validateCapabilityInspectionRecord",
   "relation_schema": {
     "id": "ecos:civs-object-relations",
@@ -70,7 +70,9 @@
     "field reconstitution is not a new Change primitive",
     "UL/UR/LL/LR consumer labels do not silently define their job; dependency hypothesis / observable correlate / shared norm / support surface is explicit",
     "LOCATED consumer binding requires an attributable observation reference and route",
-    "SUPPORTED executable claims carry currentness and do not inherit truth/authority from mechanical execution"
+    "SUPPORTED executable claims carry currentness and do not inherit truth/authority from mechanical execution",
+    "empty reference arrays do not satisfy SUPPORTED / OBSERVED / LOCATED evidence requirements",
+    "SUPPORTED field-reconstitution and correspondence claims require currentness"
   ],
   "consumer_simulation_item_kinds": {
     "UL": "DEPENDENCY_HYPOTHESIS",
