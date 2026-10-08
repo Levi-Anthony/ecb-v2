@@ -119,6 +119,7 @@ export type VerificationLink = {
   method_ref: string;
   evidence_refs: string[];
   standing: CivsAssessmentStanding;
+  currentness_ref?: string;
   sensitivity_refs: string[];
   limits: string[];
 };
@@ -208,6 +209,7 @@ export type GraphicalDoorAssessment = {
     proposition: string;
     standing: CivsAssessmentStanding;
     evidence_refs: string[];
+    currentness_ref?: string;
     limits: string[];
   }>;
 };
@@ -410,6 +412,69 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
     if (!physicalKinds.has(kind)) errors.push(`missing physical realization coordinate: ${kind}`);
   }
 
+  const enforcement = Array.isArray(record.enforcement_inspection) ? record.enforcement_inspection : [];
+  if (enforcement.length === 0) errors.push('enforcement_inspection must not be empty');
+  for (const [i, raw] of enforcement.entries()) {
+    const e = object(raw);
+    if (!e || !text(e.requirement_ref)) errors.push(`enforcement_inspection[${i}].requirement_ref is required`);
+    if (!e || !Array.isArray(e.modes) || e.modes.length === 0 || !e.modes.every(m => CIVS_ENFORCEMENT_MODES.includes(m as CivsEnforcementMode))) {
+      errors.push(`enforcement_inspection[${i}].modes are invalid`);
+    }
+    for (const key of ['surface_refs','evidence_refs','limits']) if (!e || !Array.isArray(e[key]) || !(e[key] as unknown[]).every(text)) {
+      errors.push(`enforcement_inspection[${i}].${key} must be text/reference array`);
+    }
+  }
+
+  const trace = object(record.worked_trace);
+  if (!trace || !text(trace.claim) || !text(trace.output_ref) || !text(trace.proof_boundary)) errors.push('worked_trace is incomplete');
+  if (trace && (!texts(trace.input_refs) || !texts(trace.step_refs))) errors.push('worked_trace requires input_refs and step_refs');
+
+  const verificationLinks = Array.isArray(record.verification_links) ? record.verification_links : [];
+  if (verificationLinks.length === 0) errors.push('verification_links must not be empty');
+  for (const [i, raw] of verificationLinks.entries()) {
+    const v = object(raw);
+    if (!v || !text(v.ref) || !text(v.proposition) || !text(v.method_ref) || !standings.has(v.standing as CivsAssessmentStanding)) {
+      errors.push(`verification_links[${i}] is incomplete`); continue;
+    }
+    for (const key of ['evidence_refs','sensitivity_refs','limits']) if (!Array.isArray(v[key]) || !(v[key] as unknown[]).every(text)) {
+      errors.push(`verification_links[${i}].${key} must be text/reference array`);
+    }
+    if (v.standing === 'SUPPORTED' && (!texts(v.evidence_refs) || !texts(v.sensitivity_refs) || !text(v.currentness_ref))) {
+      errors.push(`verification_links[${i}] SUPPORTED requires evidence, sensitivity and currentness`);
+    }
+  }
+
+  const reconstitution = object(record.field_reconstitution);
+  if (!reconstitution || !text(reconstitution.proposition) || !standings.has(reconstitution.standing as CivsAssessmentStanding)) {
+    errors.push('field_reconstitution is incomplete');
+  } else {
+    for (const key of ['typed_change_refs','affected_dependency_refs','requalification_refs','evidence_refs','limits']) {
+      if (!Array.isArray(reconstitution[key]) || !(reconstitution[key] as unknown[]).every(text)) errors.push(`field_reconstitution.${key} must be text/reference array`);
+    }
+    if (reconstitution.standing === 'SUPPORTED' && !texts(reconstitution.evidence_refs)) errors.push('field_reconstitution SUPPORTED requires evidence');
+  }
+
+  const correspondence = Array.isArray(record.correspondence_inspections) ? record.correspondence_inspections : [];
+  for (const [i, raw] of correspondence.entries()) {
+    const x = object(raw);
+    if (!x) { errors.push(`correspondence_inspections[${i}] must be an object`); continue; }
+    for (const key of ['ref','relation_kind_ref','source_ref','target_ref','basis_ref','semantic_owner_ref','direction']) if (!text(x[key])) {
+      errors.push(`correspondence_inspections[${i}].${key} is required`);
+    }
+    if (!standings.has(x.standing as CivsAssessmentStanding)) errors.push(`correspondence_inspections[${i}].standing is invalid`);
+    for (const key of ['evidence_refs','unresolved_mathematical_requirements','question_forward_refs']) if (!Array.isArray(x[key]) || !(x[key] as unknown[]).every(text)) {
+      errors.push(`correspondence_inspections[${i}].${key} must be text/reference array`);
+    }
+  }
+
+  for (const key of ['portability','graceful_degradation']) {
+    const a = object(record[key]);
+    if (!a || !text(a.proposition) || !standings.has(a.standing as CivsAssessmentStanding)) errors.push(`${key} is incomplete`);
+    else {
+      for (const list of ['evidence_refs','limits']) if (!Array.isArray(a[list]) || !(a[list] as unknown[]).every(text)) errors.push(`${key}.${list} must be text/reference array`);
+    }
+  }
+
   const roles = Array.isArray(record.role_assignments) ? record.role_assignments : [];
   for (const [i, raw] of roles.entries()) {
     const r = object(raw);
@@ -419,11 +484,46 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
     }
   }
 
-  const vertical = object(record.vertical_placement);
+  const roleRefs = new Set<string>();
+  for (const raw of roles) { const r = object(raw); if (r && text(r.ref)) roleRefs.add(r.ref); }
+  const relationRefs = new Set<string>();
+  for (const raw of connections) { const r = object(raw); if (r && text(r.ref)) relationRefs.add(r.ref); }
+
+  const alternatives = Array.isArray(record.alternatives) ? record.alternatives : [];
+  for (const [i, raw] of alternatives.entries()) {
+    const a = object(raw);
+    if (!a || !text(a.ref) || !text(a.description) || !['RETAINED','REJECTED','SUPERSEDED','UNRESOLVED'].includes(String(a.standing))) {
+      errors.push(`alternatives[${i}] is invalid`);
+    }
+    if (a && (!Array.isArray(a.evidence_refs) || !a.evidence_refs.every(text))) errors.push(`alternatives[${i}].evidence_refs are invalid`);
+  }
+
+  const bridges = Array.isArray(record.cold_reader_bridges) ? record.cold_reader_bridges : [];
+  if (bridges.length === 0) errors.push('cold_reader_bridges must not be empty');
+  for (const [i, raw] of bridges.entries()) {
+    const b = object(raw);
+    if (!b || !text(b.ref) || !text(b.question) || !text(b.no_invention_rule) || !texts(b.answer_route_refs)) errors.push(`cold_reader_bridges[${i}] is incomplete`);
+  }
+
+  const verification = object(record.verification);
+  if (!verification || !text(verification.observed_at_ref) || !text(verification.as_of_ref) || !texts(verification.currentness_refs)) errors.push('verification currentness block is incomplete');
+
+    const vertical = object(record.vertical_placement);
   if (!vertical || !CIVS_WORKING_BANDS.includes(vertical.working_band as WorkingBand)) errors.push('vertical_placement.working_band is invalid');
   if (vertical && 'level' in vertical) errors.push('vertical placement may not infer a Level; use level_claim_ref');
 
-  const qfs = Array.isArray(record.questions_forward) ? record.questions_forward : [];
+  if (vertical && (!Array.isArray(vertical.containing_whole_refs) || !vertical.containing_whole_refs.every(text))) errors.push('vertical_placement.containing_whole_refs are invalid');
+
+  const neighborhood = object(record.participatory_neighborhood);
+  if (!neighborhood) errors.push('participatory_neighborhood is required');
+  else {
+    if (!Array.isArray(neighborhood.relation_refs) || !neighborhood.relation_refs.every(text)) errors.push('participatory_neighborhood.relation_refs are invalid');
+    else for (const ref of neighborhood.relation_refs as string[]) if (!relationRefs.has(ref)) errors.push(`participatory_neighborhood relation ref is not located: ${ref}`);
+    if (!Array.isArray(neighborhood.role_assignment_refs) || !neighborhood.role_assignment_refs.every(text)) errors.push('participatory_neighborhood.role_assignment_refs are invalid');
+    else for (const ref of neighborhood.role_assignment_refs as string[]) if (!roleRefs.has(ref)) errors.push(`participatory_neighborhood role ref is not located: ${ref}`);
+  }
+
+    const qfs = Array.isArray(record.questions_forward) ? record.questions_forward : [];
   for (const [i, raw] of qfs.entries()) {
     const q = object(raw);
     if (!q || !text(q.ref) || !validateUrgRecord(q.record).valid || object(q.record)?.kind !== 'question_forward') errors.push(`questions_forward[${i}] is invalid`);
@@ -441,9 +541,16 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
       if (!item || !['UL','UR','LL','LR'].includes(String(item.quadrant))) errors.push(`consumer_simulations[${i}].items[${j}].quadrant is invalid`);
       if (!item || !['LATENT','LOCATED'].includes(String(item.binding_status))) errors.push(`consumer_simulations[${i}].items[${j}].binding_status is invalid`);
       if (!item || !text(item.statement) || !text(item.falsifier)) errors.push(`consumer_simulations[${i}].items[${j}] requires statement and falsifier`);
+      if (item && (!Array.isArray(item.observation_refs) || !item.observation_refs.every(text))) errors.push(`consumer_simulations[${i}].items[${j}].observation_refs are invalid`);
+      if (item?.binding_status === 'LOCATED' && (!texts(item.observation_refs))) errors.push(`consumer_simulations[${i}].items[${j}] LOCATED requires observation_refs`);
       const support = object(item?.support);
-      for (const key of ['affordance','accommodation','continuity','accountability']) if (!object(support?.[key])) {
-        errors.push(`consumer_simulations[${i}].items[${j}].support.${key} is required`);
+      for (const key of ['affordance','accommodation','continuity','accountability']) {
+        const claim = object(support?.[key]);
+        if (!claim || !text(claim.claim) || !text(claim.accountability_ref)
+          || !Array.isArray(claim.evidence_refs) || !claim.evidence_refs.every(text)
+          || !Array.isArray(claim.limits) || !claim.limits.every(text)) {
+          errors.push(`consumer_simulations[${i}].items[${j}].support.${key} is invalid`);
+        }
       }
     }
   }
@@ -457,12 +564,14 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
     for (const [i, raw] of obligations.entries()) {
       const a = object(raw); validateAssessment(raw, `graphical_door.obligations[${i}]`, errors);
       if (!a || !CIVS_GRAPHICAL_OBLIGATIONS.includes(a.kind as GraphicalObligation)) errors.push(`graphical_door.obligations[${i}].kind is invalid`);
+      if (a?.standing === 'SUPPORTED' && !text(a.currentness_ref)) errors.push(`graphical_door.obligations[${i}] SUPPORTED requires currentness_ref`);
       else seen.add(String(a.kind));
     }
     for (const kind of CIVS_GRAPHICAL_OBLIGATIONS) if (!seen.has(kind)) errors.push(`missing graphical-door obligation: ${kind}`);
   }
 
-  for (const key of ['source_refs','omissions']) if (!Array.isArray(record[key]) || !(record[key] as unknown[]).every(text)) errors.push(`${key} must be text/reference array`);
+  if (!texts(record.source_refs)) errors.push('source_refs must contain at least one reference');
+  if (!Array.isArray(record.omissions) || !(record.omissions as unknown[]).every(text)) errors.push('omissions must be text array');
   return errors.length ? { valid: false, errors } : { valid: true, errors: [] };
 }
 
