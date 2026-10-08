@@ -58,7 +58,7 @@ test('cold reentry rejects contaminated behavioral qualification and distinguish
   assert(procedure.includes('return **CONTAMINATED**'));
   assert(procedure.includes('FRESH_READER_CONTAMINATED'));
   assert(procedure.includes('responsibility-level decision'));
-  assert(procedure.includes('request-level result'));
+  assert(procedure.includes('request-level disposition/result'));
   assert(procedure.includes('Do not translate every `QUALIFY` into request-level HOLD'));
   assert(procedure.includes('expired effect envelope'));
   assert(procedure.includes('PGO Namecrafting'));
