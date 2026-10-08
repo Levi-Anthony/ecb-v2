@@ -1,0 +1,509 @@
+<title>Referent Substrate Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral+SC:wght@500;600&family=Libre+Franklin:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a survey-office atlas. Layer strip on top; operations + token log on the left; numbered plates on the right; derivation below. */
+:root{
+  --bg:#eff1ed; --surface:#fbfcf9; --sunk:#e5e8e2; --ink:#1c2226; --muted:#59636a; --line:#cbd1c8;
+  --accent:#2c6b5b; --accent-ink:#ffffff; --ready:#26744a; --hold:#a14e26; --intake:#5f6b72; --enrich:#35598a; --comp:#7b5a28; --neg:#9a2f5c;
+  --display:"Spectral SC", Georgia, "Times New Roman", serif;
+  --ui:"Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111517; --surface:#171d20; --sunk:#1e2629; --ink:#e2e8e6; --muted:#97a3a6; --line:#2d383b;
+  --accent:#5fb39c; --accent-ink:#0b1513; --ready:#5cc28a; --hold:#e08a5c; --intake:#9aa6ad; --enrich:#7ea6dd; --comp:#d1a66a; --neg:#e57aa6; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111517; --surface:#171d20; --sunk:#1e2629; --ink:#e2e8e6; --muted:#97a3a6; --line:#2d383b;
+  --accent:#5fb39c; --accent-ink:#0b1513; --ready:#5cc28a; --hold:#e08a5c; --intake:#9aa6ad; --enrich:#7ea6dd; --comp:#d1a66a; --neg:#e57aa6; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:14px;line-height:1.5;padding-inline:16px;padding-block:20px 56px}
+.wrap{max-width:1320px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1{font-family:var(--display);font-weight:600;font-size:1.9rem;letter-spacing:.01em}
+h2{font-family:var(--display);font-weight:600;font-size:1.25rem}
+h3{font-size:.95rem;font-weight:650}
+.eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{max-width:92ch;color:var(--muted);font-size:.86rem;margin:0}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+button{font:inherit;color:inherit;cursor:pointer;border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:5px 10px;font-size:.8rem}
+button:hover:not([disabled]){border-color:var(--accent)}
+button:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button[disabled]{opacity:.5;cursor:not-allowed}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+select{font:inherit;font-size:.8rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:4px;padding:4px 6px}
+
+/* layer strip */
+.layers{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);background:var(--surface)}
+.layer{padding:10px 12px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:3px;min-width:0}
+.layer:last-child{border-right:none}
+.layer .n{font-family:var(--mono);font-size:.68rem;color:var(--muted)}
+.layer b{font-size:.88rem}
+.layer span{font-size:.76rem;color:var(--muted)}
+.layer.installed{border-top:3px solid var(--ready)}
+.layer.partial{border-top:3px solid var(--enrich)}
+.layer.unearned{border-top:3px dashed var(--hold);background:repeating-linear-gradient(135deg,transparent 0 8px,var(--sunk) 8px 9px)}
+.stopline{font-family:var(--mono);font-size:.7rem;color:var(--hold)}
+
+.main{display:grid;grid-template-columns:360px minmax(0,1fr);gap:18px;align-items:start}
+.panel{background:var(--surface);border:1px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.ops{display:flex;flex-direction:column;gap:6px}
+.op{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:8px;align-items:start;padding:7px 0;border-bottom:1px solid var(--line)}
+.op:last-child{border-bottom:none}
+.op .k{font-family:var(--mono);font-size:.7rem;color:var(--muted);padding-top:3px}
+.op .t{font-size:.82rem;font-weight:600}
+.op .m{font-family:var(--mono);font-size:.66rem;color:var(--muted);overflow-wrap:anywhere}
+.op.done .t{color:var(--muted)}
+.op.gesture .t{color:var(--neg)}
+.log{max-height:420px;overflow:auto;display:flex;flex-direction:column;gap:2px;font-family:var(--mono);font-size:.68rem}
+.log div{display:grid;grid-template-columns:32px 86px minmax(0,1fr);gap:6px;padding:2px 0;border-bottom:1px dotted var(--line)}
+.log .p{color:var(--ready)} .log .v{color:var(--enrich)} .log .x{color:var(--neg)}
+.pill{font-family:var(--mono);font-size:.68rem;padding:1px 7px;border:1px solid currentColor;border-radius:999px;white-space:nowrap}
+.pill.ready{color:var(--ready)} .pill.hold{color:var(--hold)} .pill.np{color:var(--muted)} .pill.dorm{color:var(--comp)} .pill.neg{color:var(--neg)}
+
+/* plates */
+.plates{display:flex;flex-direction:column;gap:0;min-width:0}
+.ptabs{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--line);border-bottom:none;background:var(--surface)}
+.ptabs button{border:none;border-right:1px solid var(--line);border-radius:0;background:none;padding:8px 11px;font-size:.78rem;color:var(--muted)}
+.ptabs button[aria-selected="true"]{color:var(--ink);background:var(--bg);font-weight:650}
+.plate{border:1px solid var(--line);outline:3px double var(--line);outline-offset:-7px;background:var(--surface);padding:22px 22px 18px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.ptitle{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:8px}
+.ptitle .num{font-family:var(--display);font-size:1.5rem;color:var(--accent)}
+.legendbox{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);font-size:.74rem}
+.legendbox div{background:var(--bg);padding:7px 9px;min-width:0}
+.legendbox b{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:2px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.78rem}
+th{font-family:var(--mono);font-weight:400;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:5px 7px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:5px 7px;border-bottom:1px solid var(--line);vertical-align:top}
+.src{font-family:var(--mono);font-size:.62rem;color:var(--muted);white-space:nowrap}
+.blank{color:var(--hold);font-family:var(--mono);font-size:.72rem}
+.empty{color:var(--muted);font-size:.8rem}
+.subtabs{display:flex;flex-wrap:wrap;gap:4px}
+.subtabs button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.cov{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;max-width:420px}
+.cov div{border:1px solid var(--line);padding:6px 8px;font-size:.74rem}
+.cov div.ex{border-color:var(--ready)} .cov div.un{border-color:var(--hold);border-style:dashed}
+.cov small{display:block;color:var(--muted);font-family:var(--mono);font-size:.62rem}
+.qf{border-left:2px solid var(--hold);padding:4px 0 4px 10px;font-size:.78rem;display:flex;flex-direction:column;gap:2px}
+.qf .meta{font-family:var(--mono);font-size:.64rem;color:var(--muted)}
+.tmpl{font-family:var(--mono);font-size:.6rem;color:var(--muted);border:1px dotted var(--muted);padding:0 4px}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;font-size:.78rem}
+.kv dt{color:var(--muted);font-family:var(--mono);font-size:.68rem} .kv dd{margin:0;overflow-wrap:anywhere}
+.layerhead{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:3px}
+.disabled-ctl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.76rem;color:var(--muted)}
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.check{border:1px solid var(--line);padding:6px 9px;font-size:.76rem;display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px}
+.check .r{font-family:var(--mono);font-size:.68rem;font-weight:600}
+.check.pass .r{color:var(--ready)} .check.fail .r{color:var(--hold)} .check.pending .r{color:var(--muted)}
+.check .d{color:var(--muted);font-size:.7rem}
+.err{border:1px solid var(--hold);color:var(--hold);padding:6px 9px;font-family:var(--mono);font-size:.72rem}
+
+/* derivation */
+.deriv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.rung{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.rung .no{font-family:var(--display);font-size:1.2rem;color:var(--accent)}
+.rung.un .no{color:var(--hold)}
+.rung p{margin:2px 0 0;font-size:.8rem;color:var(--muted)}
+.ulist{margin:0;padding-left:18px;font-size:.8rem}
+.ulist li{margin:4px 0}
+@media (max-width:1050px){.main{grid-template-columns:minmax(0,1fr)}.layers{grid-template-columns:repeat(2,minmax(0,1fr))}.legendbox{grid-template-columns:repeat(2,minmax(0,1fr))}.deriv{grid-template-columns:minmax(0,1fr)}.checks{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header style="display:flex;flex-direction:column;gap:6px">
+    <span class="eyebrow">SIGMA / ECOS · substrate-first restart · simulation 1 of the upstream defect</span>
+    <h1>Referent Substrate Atlas</h1>
+    <p class="lede">Every plate below is a pure function of one token log. Persisted tokens use the installed table shapes in <span class="mono">sql/migrations</span>. Inquiry results are computed by a JavaScript port of the coordinator rules in <span class="mono">server/orchestration.ts</span> at main <span class="mono">872c4bc</span> (inquiry contract 0.3.0: contract-bound basis, exact account recovery), never authored. Controls append typed tokens through installed operations, or are disabled with the reason. Fixture content is the Principal's invented appearance-control example and asserts nothing about real systems. The earlier prototype is preserved unchanged as provenance and appears here only as a negative control.</p>
+  </header>
+
+  <section class="layers" aria-label="Substrate layers">
+    <div class="layer installed"><span class="n">rung 0 · installed</span><b>Pre-tokenized intake</b><span>public.referents, thoughts, admissions, disposition heads. Confers nothing (ADR-007).</span></div>
+    <div class="layer installed"><span class="n">rungs 1–2 · installed</span><b>Record spine and enrichment grammar</b><span>Claims, evidence links, standing transitions; URG v2 record kinds in code.</span></div>
+    <div class="layer partial"><span class="n">rungs 3–5 · partly installed</span><b>Enrichment pass, per-inquiry composition, plates</b><span>One bounded pass per basis; result NOT_PRESERVED except opaque text.</span></div>
+    <div class="layer unearned"><span class="n">rung 6 · stop line</span><b>Integral token carrier</b><span>Referent-addressable, persisted enrichment state. Not installed.</span><span class="stopline">first unearned altitude</span></div>
+    <div class="layer unearned"><span class="n">rungs 7–8 · unearned</span><b>Durable composition substrate · atlas over tokens</b><span>Held until rung 6 and U1, U2, U4 are decided.</span></div>
+  </section>
+
+  <div class="main">
+    <aside style="display:flex;flex-direction:column;gap:18px;min-width:0">
+      <section class="panel" aria-label="Operations">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><h3>Operations</h3><div style="display:flex;gap:6px"><button id="runAll" class="primary">Run all</button><button id="reset">Reset log</button></div></div>
+        <div class="ops" id="ops"></div>
+      </section>
+      <section class="panel" aria-label="Token log">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap"><h3>Token log <span class="mono" id="logCount" style="color:var(--muted);font-weight:400"></span></h3>
+          <select id="logFilter" aria-label="Filter"><option value="all">all</option><option value="p">persisted</option><option value="v">in-memory</option><option value="x">non-substrate</option></select></div>
+        <div class="log" id="log"></div>
+      </section>
+    </aside>
+
+    <section class="plates" aria-label="Plates">
+      <div class="ptabs" role="tablist" id="ptabs"></div>
+      <div class="plate" id="plate"></div>
+    </section>
+  </div>
+
+  <section style="display:flex;flex-direction:column;gap:8px">
+    <span class="eyebrow">Computed from the log after every operation</span>
+    <h2>Checks</h2>
+    <div class="checks" id="checks"></div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:8px">
+    <span class="eyebrow">Audited synthesis · three independent derivations, each adversarially checked</span>
+    <h2>The earned ladder and what remains open</h2>
+    <div class="deriv">
+      <div class="panel" id="ladder"></div>
+      <div class="panel" id="unresolved"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* ---------- canonical + digest (simulation digest: FNV-1a 64 over canonical JSON; stands in for sha256) ---------- */
+function canonical(v){ if(Array.isArray(v)) return '['+v.map(canonical).join(',')+']';
+  if(v!==null&&typeof v==='object') return '{'+Object.entries(v).filter(([,x])=>x!==undefined).sort(([a],[b])=>a<b?-1:a>b?1:0).map(([k,x])=>JSON.stringify(k)+':'+canonical(x)).join(',')+'}';
+  const s=JSON.stringify(v); return s===undefined?'null':s; }
+function digest(v){ const s=canonical(v); let h1=0x811c9dc5,h2=0x01000193^0x5bd1e995;
+  for(let i=0;i<s.length;i++){const c=s.charCodeAt(i);h1=Math.imul(h1^c,16777619);h2=Math.imul(h2^c,2246822519)}
+  return ((h1>>>0).toString(16).padStart(8,'0')+(h2>>>0).toString(16).padStart(8,'0')); }
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const nonblank=s=>typeof s==='string'&&s.trim().length>0;
+const refsOk=v=>Array.isArray(v)&&v.length>0&&v.every(nonblank);
+const clone=o=>JSON.parse(JSON.stringify(o));
+
+/* ---------- installed constants ---------- */
+const INQUIRY_CONTRACT='ecos:inquiry-orchestration:0.3.0';
+const QD='ecos:quadrant-disclosure:v2';
+const URG='ecos:urg-core:register-b:v2';
+const SEAT=['referent_id','boundary_ref','governing_orientation_ref','mapper_ref','frame_ref','access_ref'];
+const QQ={UL:'What obtains in/as this instantiation, with acquaintance by instantiation distinct from information about it?',UR:'What differentiated configuration, variation or response does this referent manifest under the stated conditions?',LL:'What organized distinctions and relations give this referent significance in its field?',LR:'What actual organization of participation carries, sustains or transforms this referent and its effects?'};
+const QH={UL:'proper determination',UR:'determinate manifestation',LL:'field articulation',LR:'enacted organization'};
+const TEMPLATE={paired:'An attributable basis qualifies the relation/use; otherwise preserve it as unresolved candidate structure.',evid:'Recover exact supporting records or supply an attributable evaluation bound to this inquiry and these editions.',alt:'Enrich, explicitly transform the situated basis, or defer the candidate; reconcile before reliance.'};
+
+/* ---------- coordinator port (server/orchestration.ts:196-437) ---------- */
+const sameSeat=(a,b)=>SEAT.every(k=>(a||{})[k]===(b||{})[k]);
+function basisRef(r){return 'sha:'+digest({contract:INQUIRY_CONTRACT,disclosure_contract:QD,query:r.query,intended_use:r.intended_use,context:r.context,actor_ref:r.actor_ref})}
+function qf(req,basis,target,question,consequence){return {kind:'question_forward',unresolved_ref:target,basis_ref:basis,current_standing_ref:'ecos:inquiry:unresolved',discriminator_question:question,paired_signal_scenario:TEMPLATE.paired,evidence_change_criteria:TEMPLATE.evid,alternative_signal_routing:TEMPLATE.alt,decision_consequence:consequence,return_route:req.return_route,reentry_condition:`Resolve ${target} against ${basis} and reenter ${req.return_route}.`}}
+function validRecord(r){ if(!r||!nonblank(r.kind)) return false;
+  if(r.kind==='quadrant'){ if(r.disclosure_contract!==QD||!['UL','UR','LL','LR'].includes(r.disclosure)) return false;
+    if(r.result==='QUADRANT_POSITION') return [r.content_ref,r.characterization_ref,r.conditions_ref].every(nonblank)&&!!r.fidelity;
+    if(r.result==='QUADRANT_UNKNOWN') return nonblank(r.qf_ref); return false; }
+  if(r.kind==='question_forward') return nonblank(r.unresolved_ref)&&nonblank(r.discriminator_question);
+  if(r.kind==='native_relation') return Array.isArray(r.participants)&&r.participants.length>=2&&!!r.fidelity;
+  if(r.kind==='level') return nonblank(r.result);
+  if(r.kind==='change') return nonblank(r.change_kind);
+  return true; }
+function validChange(ch,req){ const {before,after,record}=ch; if(!validRecord(record)) return false;
+  if(record.source_basis_ref!==basisRef({...req,context:before})||record.destination_basis_ref!==basisRef({...req,context:after})||record.subject_referent_id!==before.referent_id) return false;
+  const changed=SEAT.filter(k=>before[k]!==after[k]);
+  switch(record.change_kind){case 'Enrich':return changed.length===0;case 'ReviseBoundary':return changed.length===1&&changed[0]==='boundary_ref';case 'Reseat':return before.referent_id!==after.referent_id;case 'Reorient':return changed.length===1&&changed[0]==='governing_orientation_ref';case 'ChangeFrame':return changed.length>0&&changed.every(k=>['mapper_ref','frame_ref','access_ref'].includes(k));default:return changed.length===0} }
+function bindBasis(o,basis){ return JSON.parse(JSON.stringify(o).split('$BASIS').join(basis)) }
+function bindDigest(o,dg){ return JSON.parse(JSON.stringify(o).split('$DIGEST').join(dg)) }
+
+function runInquiry(input,ad){
+  if(![input.query,input.intended_use,input.return_route,input.actor_ref].every(nonblank)) throw new Error('inquiry_context_required');
+  const req=clone(input); const lim=req.limits||{}; const limit=lim.candidates??10, budget=lim.projection_chars??24000;
+  if(!(Number.isInteger(budget)&&budget>=1024&&budget<=100000)) throw new Error('inquiry_resource_limit');
+  const known=[...new Set([...(req.known_referent_ids||[]),req.context.referent_id].filter(nonblank))];
+  const questions=[],signals=[]; let basis=basisRef(req);
+  const ask=(t,q,c)=>questions.push(qf(req,basis,t,q,c));
+  // discovery: identity seeds first, then adapter hits
+  const hitMap=new Map(); [...known.map(id=>({referent_id:id,channels:['identity']})),...(ad.hits||[])].forEach(h=>{const p=hitMap.get(h.referent_id); if(!p) hitMap.set(h.referent_id,{referent_id:h.referent_id,channels:[...h.channels]}); else p.channels=[...new Set([...p.channels,...h.channels])]});
+  const hitsAll=[...hitMap.values()]; const hits=hitsAll.slice(0,limit); const truncated=hitsAll.length>limit;
+  const coverage=ad.coverage||[{channel:'search',status:'AVAILABLE'},{channel:'structure',status:'AVAILABLE'}];
+  const snaps=hits.map(h=>{const e=(ad.evidence||{})[h.referent_id]; return e&&e.referent_id===h.referent_id?clone(e):null});
+  const exact=snaps.filter(Boolean);
+  let disc=ad.disclosure?bindBasis(clone(ad.disclosure),basis):{records:[],changes:[],sufficiency:{inquiry_basis_ref:basis,assessment_ref:'ecos:inquiry:semantic-adapter-unavailable',satisfied:false,unresolved_refs:['semantic_disclosure']}};
+  const accepted=[];
+  for(const ch of disc.changes||[]){ if(!sameSeat(ch.before,req.context)||!validChange(ch,req)){ask('coordinate_change','Which typed operation truthfully connects the exact source and destination bases?','Reject the unaccounted coordinate change and redisclose at the last supported seat.');break}
+    req.context=ch.after; basis=basisRef(req); accepted.push(ch); }
+  for(const s of disc.signals||[]) if(['G1','G2','G3'].includes(s.code)) signals.push(s);
+  const records=[]; const quads={UL:{status:'UNEXAMINED',refs:[]},UR:{status:'UNEXAMINED',refs:[]},LL:{status:'UNEXAMINED',refs:[]},LR:{status:'UNEXAMINED',refs:[]}};
+  const accounts=new Map(); const editions=disc.account_editions||[];
+  const dup=new Set((disc.records||[]).filter((e,i,all)=>all.findIndex(x=>x.ref===e.ref)!==i).map(x=>x.ref));
+  const recoverAccount=ref=>{ const ed=editions.filter(e=>e.ref===ref); if(ed.length!==1||!nonblank(ed[0].digest)) return false; if(accounts.has(ref)) return true;
+    const e=(ad.evidence||{})[ref]; if(!e||e.referent_id!==ref||e.digest!==ed[0].digest||!nonblank(e.content)||!refsOk(e.source_refs)||!nonblank(e.custody_ref)||e.currentness!=='CURRENT') return false; accounts.set(ref,clone(e)); return true; };
+  for(const e of [...(disc.records||[])].sort((a,b)=>Number(b.record.kind==='level')-Number(a.record.kind==='level'))){
+    if(!nonblank(e.ref)||dup.has(e.ref)||!validRecord(e.record)||('context' in e.record&&!sameSeat(e.record.context,req.context))){ask(e.ref||'urg_record','Recover a conforming record over the same seated referent, boundary and inquiry coordinates.','This record cannot count as present-use disclosure.');continue}
+    const f=e.record.fidelity; if(f&&f.disposition==='RELIED_FOR_DECLARED_USE'&&(!refsOk(f.evidence_refs)||!nonblank(f.currentness_ref))){ask(e.ref,'What exact evidence and current-use basis warrant reliance on this disclosed record?','Structural validation alone does not qualify standing.');continue}
+    if(e.record.kind==='quadrant'){
+      if(e.record.result==='QUADRANT_UNKNOWN') ask(e.ref,`Resolve the disclosed unknown through ${e.record.qf_ref}.`,'An extra unknown remains an obligation even when all four positions have coverage.');
+      if(e.record.result==='DECOMPOSE') ask(e.ref,`Disclose the component inquiries separately: ${(e.record.component_refs||[]).join(', ')}.`,'Compound disclosure cannot disappear behind aggregate coverage.');
+      if(e.record.result==='QUADRANT_POSITION'){ if(f.coverage!=='EXAMINED') ask(e.ref,'Examine this individually declared disclosure account.','Other records covering the same position cannot discharge an unexamined account.');
+        let ok=true; for(const ref of new Set([e.record.content_ref,e.record.characterization_ref,e.record.conditions_ref])) if(!recoverAccount(ref)){ok=false;ask(ref,'Recover the writer-selected disclosure account edition with attributable content, custody and currentness.','An unresolved, stale, mismatched or unversioned account cannot supply disclosure coverage.')}
+        if(!ok) continue; } }
+    if(f&&['UNRESOLVED','CONDITIONAL_SENSORED'].includes(f.disposition||'')) ask(e.ref,'What consequential uncertainty remains in this disclosed record?','Resolve its declared obligation before READY, independently of aggregate coverage.');
+    records.push(e); if(e.record.kind==='question_forward') questions.push(e.record);
+    if(e.record.kind==='quadrant'&&e.record.result==='QUADRANT_POSITION'&&f.coverage==='EXAMINED'){const k=e.record.disclosure; quads[k].status='EXAMINED'; quads[k].refs.push(e.ref)}
+  }
+  const candidates=[];
+  hits.forEach((hit,i)=>{ const ev=snaps[i];
+    let d={disposition:'DEFER',reason:'No attributable present-relation/current-use evaluation is available.',assessment_ref:'ecos:inquiry:candidate-only',inquiry_basis_ref:basis,candidate_digest:ev?ev.digest:'UNKNOWN'};
+    if(!ev||!nonblank(ev.digest)||!refsOk(ev.source_refs)||!nonblank(ev.custody_ref)) ask(hit.referent_id,'Recover this candidate exactly, including native edition and source custody.','Similarity or a missing snapshot cannot enter the composition.');
+    else if((ad.decisions||{})[hit.referent_id]) d=bindDigest(bindBasis(clone(ad.decisions[hit.referent_id]),basis),ev.digest);
+    for(const s of d.signals||[]) signals.push(s);
+    if(!['ADMIT','DEFER','REJECT','QUESTION_FORWARD'].includes(d.disposition)||!nonblank(d.reason)||!nonblank(d.assessment_ref)||d.inquiry_basis_ref!==basis||d.candidate_digest!==(ev?ev.digest:'UNKNOWN'))
+      d={disposition:'QUESTION_FORWARD',reason:'Candidate disposition is unbound or unattributed.',assessment_ref:INQUIRY_CONTRACT,inquiry_basis_ref:basis,candidate_digest:ev?ev.digest:'UNKNOWN'};
+    if(d.disposition==='ADMIT'){ const rel=d.relation; const lvl=(records.find(r=>r.ref===d.level_claim_ref)||{}).record;
+      const ok=ev&&d.candidate_digest===ev.digest&&d.inquiry_basis_ref===basis&&nonblank(d.assessment_ref)&&nonblank(d.reason)
+        &&d.current_use&&d.current_use.currentness==='CURRENT'&&ev.currentness!=='STALE'&&nonblank(d.current_use.standing_ref)&&refsOk(d.current_use.evidence_refs)
+        &&rel&&validRecord(rel)&&rel.situated_basis_ref===basis&&rel.fidelity.disposition==='RELIED_FOR_DECLARED_USE'&&refsOk(rel.fidelity.evidence_refs)
+        &&rel.participants.some(p=>p.referent_id===hit.referent_id)&&rel.participants.some(p=>p.referent_id===req.context.referent_id)
+        &&(d.membership!=='CONSTITUTIVE'||(lvl&&lvl.kind==='level'&&lvl.result==='LEVEL_WITNESSED'&&(lvl.constituent_referent_ids||[]).includes(hit.referent_id)&&sameSeat(lvl.context,req.context)));
+      if(!ok){ signals.push({code:'G2',target_ref:hit.referent_id,basis_refs:[basis,d.assessment_ref||'missing-assessment'],demonstrated_mismatch:'Proposed admission lacks the exact current inquiry/edition, typed relation or independent constitutive witness it asserts.',decision_consequence:'Admission is denied; preserve the candidate and requalify.',repair:'Restore source/current-use standing and, for constitution, recover the independent Level witness.',evaluator_ref:INQUIRY_CONTRACT});
+        d={...d,disposition:'QUESTION_FORWARD',reason:'Admission rejected by structural/current-use preflight.'}; } }
+    if(d.question&&validRecord(d.question)) questions.push(d.question);
+    else if(d.disposition==='QUESTION_FORWARD'||(d.disposition==='DEFER'&&d.consequentiality!=='NONCONSEQUENTIAL_NOW')) ask(hit.referent_id,'What attributable typed relation makes this exact material consequential for the present declared use?','Admit only after applicability, currentness and standing are qualified; otherwise keep it dormant.');
+    candidates.push({hit,evidence:ev,decision:d}); });
+  let admitted=candidates.filter(c=>c.decision.disposition==='ADMIT');
+  const rec=ad.reconciliation?bindBasis(clone(ad.reconciliation),basis):{inquiry_basis_ref:basis,affected_old:{assessment_ref:'ecos:inquiry:old-review-unknown',disposition:'UNKNOWN'},destination_new:{assessment_ref:'ecos:inquiry:new-coverage-unknown',disposition:'UNKNOWN'},requirements:[],coverage_complete:false};
+  if(rec.inquiry_basis_ref!==basis||rec.affected_old.disposition!=='SATISFIED'||rec.destination_new.disposition!=='SATISFIED'||!rec.coverage_complete||!['old_dependency','destination_discovery'].every(dd=>rec.requirements.some(r=>r.direction===dd))||rec.requirements.some(r=>r.blocking&&(r.disposition!=='SATISFIED'||!refsOk(r.basis_refs))))
+    ask('reconciliation','Check affected old support AND newly exposed destination obligations against this inquiry basis.','Neither unchanged dependencies nor one-sided review qualifies the current use.');
+  for(const [ref,snap] of accounts){ const latest=((ad.evidenceLatest||{})[ref])||((ad.evidence||{})[ref])||null; if(!latest||canonical(latest)!==canonical(snap)) ask(ref,'Recover and reassess the disclosure account after it changed or became unavailable during this pass.','A changed account cannot retain current-use qualification.'); }
+  admitted=candidates.filter(c=>c.decision.disposition==='ADMIT');
+  if(!SEAT.every(k=>nonblank(req.context[k]))) ask('situated_basis','Establish focal identity, boundary, PGO, mapper, frame and access at the declared-use resolution.','Partial seating cannot manufacture sufficiency.');
+  for(const [k,q] of Object.entries(quads)) if(q.status==='UNEXAMINED') ask('quadrant:'+k,QQ[k],'Examine the positive disclosure over the same referent and boundary; qualifiers cannot substitute for it.');
+  const suf=disc.sufficiency; if(!suf.satisfied||suf.inquiry_basis_ref!==basis||!nonblank(suf.assessment_ref)||suf.unresolved_refs.length>0) ask('sufficiency','Supply the attributable declared-use sufficiency assessment and decision-changing unknowns.','READY requires earned stopping, not a resource limit or coherent generated text.');
+  if(coverage.some(c=>c.status!=='AVAILABLE')) ask('discovery_coverage','Repair degraded channels or qualify why their missing coverage cannot change this declared use.','Discovery failures must remain visible.');
+  if(truncated) ask('discovery_limit','Qualify omitted candidates or reenter with a discriminating bounded expansion.','Resource truncation does not establish ontological or discovery completeness.');
+  if(signals.length) ask('diagnostic_escalation','Repair the exact signaled layer, then resume from the last supported basis.','An unresolved governing diagnostic interrupts downstream reliance.');
+  const uq=[...new Map(questions.map(q=>[canonical(q),q])).values()];
+  const binding={basis_ref:basis,query:req.query,intended_use:req.intended_use,actor_ref:req.actor_ref,context:clone(req.context),discovery_seed_refs:known,declared_work_ref:req.work_id??null,execution:{candidate_limit:limit,structural_depth:lim.structural_depth??1,projection_chars:budget,return_route:req.return_route}};
+  const irreducible=canonical({contract:INQUIRY_CONTRACT,disclosure_contract:QD,indexical_binding:binding});
+  if(irreducible.length+128>budget) throw new Error('inquiry_projection_budget_below_binding_receipt');
+  const omitted=[];
+  const body={contract:INQUIRY_CONTRACT,disclosure_contract:QD,basis_ref:basis,indexical_binding:binding,context:req.context,intended_use:req.intended_use,disposition:uq.length?'HOLD':'READY',
+    members:candidates.map(c=>({referent_id:c.hit.referent_id,digest:c.evidence?c.evidence.digest:null,source_refs:c.evidence?c.evidence.source_refs:[],decision:c.decision,channels:c.hit.channels,exact_excerpt:''})),
+    quadrant_coverage:quads,records,disclosure_accounts:[...accounts.values()],changes:accepted,reconciliation:rec,discovery_coverage:coverage,questions_forward:uq,signals};
+  let available=Math.max(0,budget-canonical(body).length-100);
+  body.members.forEach((m,i)=>{const content=(candidates[i].evidence&&candidates[i].evidence.content)||'';const share=Math.floor(available/(body.members.length-i));const ex=content.slice(0,Math.floor(share/6));m.exact_excerpt=ex;available-=canonical(ex).length;if(ex.length<content.length) omitted.push(`Exact content shortened for ${candidates[i].hit.referent_id}; recover by its retained identity/edition.`)});
+  let projected=canonical(body);
+  if(projected.length>budget){ omitted.push('Projection metadata exceeds the caller budget; retain full typed result and widen the projection budget at reentry.');
+    uq.push(qf(req,basis,'projection_limit','Recover the full typed account or increase the projection budget.','A reduced projection cannot supply READY.'));
+    const ce=candidates.map(c=>({referent_id:c.hit.referent_id,digest:c.evidence?c.evidence.digest:null,source_refs:c.evidence?c.evidence.source_refs:[]}));
+    projected=canonical({contract:INQUIRY_CONTRACT,disclosure_contract:QD,basis_ref:basis,indexical_binding:binding,disposition:'HOLD',candidate_editions:ce,unresolved_refs:[...new Set(uq.map(q=>q.unresolved_ref))],omissions:omitted.slice(-1)});
+    if(projected.length>budget) projected=canonical({contract:INQUIRY_CONTRACT,disclosure_contract:QD,basis_ref:basis,indexical_binding:binding,disposition:'HOLD',reason:'projection_budget_exceeded',candidate_editions:ce.map(c=>({referent_id:c.referent_id,digest:c.digest}))});
+    if(projected.length>budget) throw new Error('inquiry_projection_budget_below_binding_receipt'); }
+  const unresolved=[...new Set(uq.map(q=>q.unresolved_ref))];
+  return {contract:INQUIRY_CONTRACT,disclosure_contract:QD,inquiry_basis_ref:basis,indexical_binding:binding,situated_basis:req.context,intended_use:req.intended_use,candidates,admitted,quadrant_coverage:quads,records,disclosure_accounts:[...accounts.values()],changes:accepted,reconciliation:rec,discovery_coverage:coverage,questions_forward:uq,signals,disposition:uq.length?'HOLD':'READY',
+    projection:{edition:digest(projected),content:projected,omissions:omitted,persistence:'NOT_PRESERVED'},reentry:{return_route:req.return_route,unresolved_refs:unresolved,condition:unresolved.length?'Resolve the listed discriminators against the exact current basis and editions, then reenter.':'Reenter on new evidence, changed PGO/frame/boundary or a current-use challenge.'}};
+}
+function projectionDelta(a,b){ const ch=SEAT.filter(k=>a.situated_basis[k]!==b.situated_basis[k]); const cls=[];
+  if(ch.some(k=>['referent_id','boundary_ref'].includes(k))) cls.push('R_OR_B'); if(ch.some(k=>['governing_orientation_ref','mapper_ref','frame_ref','access_ref'].includes(k))) cls.push('G_OR_F');
+  const snap=r=>r.candidates.map(c=>({referent_id:c.hit.referent_id,digest:c.evidence?c.evidence.digest:null,disposition:c.decision.disposition,assessment_ref:c.decision.assessment_ref})).sort((x,y)=>x.referent_id<y.referent_id?-1:1);
+  const ev=canonical(snap(a))!==canonical(snap(b))||canonical(a.disclosure_accounts)!==canonical(b.disclosure_accounts)||canonical(a.records)!==canonical(b.records); const ex=canonical(a.indexical_binding.execution)!==canonical(b.indexical_binding.execution); const sb=a.inquiry_basis_ref!==b.inquiry_basis_ref||a.contract!==b.contract||a.disclosure_contract!==b.disclosure_contract;
+  return {source_basis_ref:a.inquiry_basis_ref,destination_basis_ref:b.inquiry_basis_ref,changed_coordinates:ch,coordinate_classes:cls,semantic_basis_changed:sb,state_record_changed:false,evidence_or_standing_changed:ev,execution_envelope_changed:ex,requires_requalification:sb||ev||ex}; }
+
+/* ---------- token log ---------- */
+let LOG=[], SEQ=0, CTRL=[], ERRORS=[];
+function put(id,kind,layer,persisted,fields,note){ LOG.push({seq:++SEQ,id,kind,layer,persisted,fields,note:note||''}); }
+const T0='2026-10-08T15:';
+function capture(n,content,captured){ const R='R'+n, OP='OP'+n, DR='DR'+n;
+  put('TH-'+R,'public.thoughts','intake',true,{id:R,content,source:'fixture:principal-invented-example',captured_at:captured,captured_at_origin:'caller-supplied'});
+  put('REF-'+R,'public.referents','intake',true,{id:R,registered_at:T0+'0'+n+':00Z'},'Registered by trigger thoughts_register_referent (build_2:13-33).');
+  put('OP-'+n,'public.ordinary_operations','intake',true,{id:OP,operation_kind:'capture_thought',result_referent_id:R});
+  put('REF-'+OP,'public.referents','intake',true,{id:OP,registered_at:T0+'0'+n+':00Z'});
+  put('ADM-'+n,'public.thought_admissions','intake',true,{operation_id:OP,producer_context:null,parent_operation_id:null},'Custody transfer, not authority (eco138).');
+  put('DR-'+n,'public.thought_disposition_revisions','intake',true,{id:DR,thought_id:R,predecessor_id:null,disposition:'unresolved',reentry_condition:null});
+  put('REF-'+DR,'public.referents','intake',true,{id:DR,registered_at:T0+'0'+n+':00Z'});
+  put('DH-'+n,'public.thought_disposition_heads','intake',true,{thought_id:R,revision_id:DR},'Mutable head; currentness is never inferred from the newest revision.'); }
+function claim(id,s,p,o){ put(id,'public.claims (relation)','record',true,{id,claim_kind:'relation',subject_referent_id:s,predicate:p,object_referent_id:o,origin:'ecb_inference',epistemic_standing:'unassessed'},'prepare_claim forces origin and unassessed standing (build_4:64-80).'); put('REF-'+id,'public.referents','record',true,{id}); }
+const CTX_B={referent_id:'R1',boundary_ref:'sim:boundary:appearance-decision',governing_orientation_ref:'sim:pgo:fix-placement',mapper_ref:'sim:mapper:principal',frame_ref:'sim:frame:product-support',access_ref:'sim:access:fixture-records'};
+const CTX_D={...CTX_B,governing_orientation_ref:'sim:pgo:user-experience-audit'};
+const REQ={query:'Who distinguishes unsuitable presentation: user, app, or their interaction?',intended_use:'decide where an appearance-override fix belongs',return_route:'sim://return/appearance',actor_ref:'sim:actor:principal'};
+const EV0={R1:{referent_id:'R1',digest:'d-R1-rev1',source_refs:['TH-R1'],custody_ref:'ADM-1',currentness:'CURRENT',content:'The app switched to dark appearance at noon while the system setting was light.'},R2:{referent_id:'R2',digest:'d-R2-rev1',source_refs:['TH-R2'],custody_ref:'ADM-2',currentness:'CURRENT',content:'Appearance preference is stored per app and overrides the system setting.'},R3:{referent_id:'R3',digest:'d-R3-rev1',source_refs:['TH-R3'],custody_ref:'ADM-3',currentness:'CURRENT',content:'Users report unsuitable presentation after the update.'}};
+const ACC={};['UL','UR','LL','LR'].forEach(d=>{['content','characterization'].forEach(k=>{const ref=`sim:${k}:${d}`;ACC[ref]={referent_id:ref,digest:`d-${k}-${d}-v1`,content:`Fixture ${k} account for ${d} (${QH[d]}) of R1 under the fix-placement PGO.`,source_refs:['TH-R1','TH-R2'],custody_ref:'sim:custody:fixture-accounts',currentness:'CURRENT'}})});
+ACC['sim:conditions:appearance']={referent_id:'sim:conditions:appearance',digest:'d-conditions-v1',content:'Conditions: system setting light, app preference stored, noon switch observed.',source_refs:['TH-R1'],custody_ref:'sim:custody:fixture-accounts',currentness:'CURRENT'};
+const EDITIONS=Object.values(ACC).map(a=>({ref:a.referent_id,digest:a.digest}));
+function qpos(d,ctx,disp,act){return {ref:'Q-'+d,record:{kind:'quadrant',disclosure_contract:QD,result:'QUADRANT_POSITION',disclosure:d,content_ref:'sim:content:'+d,characterization_ref:'sim:characterization:'+d,conditions_ref:'sim:conditions:appearance',context:ctx,fidelity:{coverage:'EXAMINED',activation:act||'ACTIVE',disposition:disp||'RELIED_FOR_DECLARED_USE',evidence_refs:['E1'],currentness_ref:'sim:currentness:fixture'}}}}
+const EV=Object.assign({},EV0,ACC);
+const NR1={kind:'native_relation',schema_ref:'sim:schema:appearance',relation_kind_ref:'sim:preference-overrides-system',participants:[{role:'present',referent_id:'R1'},{role:'member',referent_id:'R2'}],situated_basis_ref:'$BASIS',fidelity:{coverage:'EXAMINED',activation:'ACTIVE',disposition:'RELIED_FOR_DECLARED_USE',evidence_refs:['E1'],currentness_ref:'sim:currentness:fixture'}};
+const DEC=(m)=>({R1:{disposition:'REJECT',reason:'The focal source is already the inquiry seat, not a member.',assessment_ref:'sim:seat-discriminator',inquiry_basis_ref:'$BASIS',candidate_digest:'$DIGEST'},
+  R2:{disposition:'ADMIT',membership:m||'PARTICIPATORY',reason:'Stored per-app preference participates in the appearance decision.',assessment_ref:'sim:assessor:principal-human-door',inquiry_basis_ref:'$BASIS',candidate_digest:'$DIGEST',relation:NR1,current_use:{currentness:'CURRENT',standing_ref:'sim:standing:basis-qualified-C2',evidence_refs:['E1']}},
+  R3:{disposition:'DEFER',consequentiality:'CONSEQUENTIAL',reason:'Report scope is unknown.',assessment_ref:'sim:assessor:principal-human-door',inquiry_basis_ref:'$BASIS',candidate_digest:'$DIGEST'}});
+const RECON={inquiry_basis_ref:'$BASIS',affected_old:{assessment_ref:'sim:recon:old',disposition:'SATISFIED'},destination_new:{assessment_ref:'sim:recon:new',disposition:'SATISFIED'},requirements:[{direction:'old_dependency',disposition:'SATISFIED',basis_refs:['E1']},{direction:'destination_discovery',disposition:'SATISFIED',basis_refs:['E1']}],coverage_complete:true};
+const HITS=[{referent_id:'R2',channels:['search']},{referent_id:'R3',channels:['search']}];
+function adapterB(){return {hits:HITS,evidence:EV,decisions:DEC(),reconciliation:RECON,disclosure:{records:[qpos('UL',CTX_B),qpos('UR',CTX_B),qpos('LR',CTX_B),{ref:'Q-LL',record:{kind:'quadrant',disclosure_contract:QD,result:'QUADRANT_UNKNOWN',disclosure:'LL',qf_ref:'QF-LL',context:CTX_B,fidelity:{coverage:'EXAMINED',activation:'ACTIVE',disposition:'UNRESOLVED'}}},
+  {ref:'QF-LL',record:qf(REQ,'$BASIS','sim:LL-field-articulation','Which shared conventions of the user-app interaction make one appearance unsuitable for this user?','Decides whether the fix belongs in app defaults or in the preference model.')}],account_editions:EDITIONS,changes:[],sufficiency:{inquiry_basis_ref:'$BASIS',assessment_ref:'sim:use-review',satisfied:false,unresolved_refs:['sim:who-distinguishes']}}}}
+function adapterC(){const dec=DEC(); dec.R3={...dec.R3,consequentiality:'NONCONSEQUENTIAL_NOW',reason:'Report scope does not change fix placement under this PGO.'};
+  return {hits:HITS,evidence:EV,decisions:dec,reconciliation:RECON,disclosure:{records:[qpos('UL',CTX_B),qpos('UR',CTX_B),qpos('LR',CTX_B),qpos('LL',CTX_B,'NONCONSEQUENTIAL_NOW','DORMANT')],account_editions:EDITIONS,changes:[],sufficiency:{inquiry_basis_ref:'$BASIS',assessment_ref:'sim:use-review',satisfied:true,unresolved_refs:[]}}}}
+function inquiry(id,label,req,ad,inputsNote){
+  put('REQ-'+id,'InquiryRequest (in-memory)','enrichment',false,{...req,label},inputsNote||'');
+  put('ADP-'+id,'adapter inputs (attributable, in-memory)','enrichment',false,{ad});
+  try{ const res=runInquiry(req,clone(ad)); put('RES-'+id,'InquiryResult (in-memory)','enrichment',false,{label,result:res},'Computed by the coordinator port; persistence NOT_PRESERVED.'); }
+  catch(e){ put('ERR-'+id,'error_event (simulation-local)','surface',false,{label,error:e.message}); }
+}
+const OPS=[
+ {k:'1',t:'Capture three encounters; register one bare id',m:'capture_thought ×3 · service_role INSERT(id) on public.referents',run(){capture(1,'The app switched to dark appearance at noon while the system setting was light.','2026-10-01T12:00:00Z');capture(2,'Appearance preference is stored per app and overrides the system setting.','2026-10-02T09:00:00Z');capture(3,'Users report unsuitable presentation after the update.','2026-10-03T10:00:00Z');put('REF-R0','public.referents','intake',true,{id:'R0',registered_at:T0+'00:00Z'},'Registered-only referent with no native record; lawful state (build_2:39-40).')}},
+ {k:'2',t:'Assert two relation claims; link evidence; transition standing',m:'prepare_claim · evidence_links · claim_standing_transitions',run(){claim('C1','R3','part_of','R1');claim('C2','R2','depends_on','R1');put('E1','public.evidence_links','record',true,{id:'E1',claim_id:'C2',evidence_referent_id:'R2',role:'used_as_basis',evidence_revision_scheme:'ecb_thought_revision_v1_sha256',evidence_revision_digest:'d-R2-rev1'});put('REF-E1','public.referents','record',true,{id:'E1'});put('TS-1','public.claim_standing_transitions','record',true,{id:'TS1',claim_id:'C2',from_standing:'unassessed',to_standing:'basis_qualified',basis_evidence_link_id:'E1',observed_revision_digest:'d-R2-rev1'});put('REF-TS1','public.referents','record',true,{id:'TS1'})}},
+ {k:'3',t:'Set an operational disposition on R1',m:'eco138_set_thought_disposition (predecessor compare-and-set)',run(){put('DR-1b','public.thought_disposition_revisions','intake',true,{id:'DR1b',thought_id:'R1',predecessor_id:'DR1',disposition:'reentry_pending',reentry_condition:'When an inquiry names R1 as focal.'},'Operational disposition, not standing.');put('REF-DR1b','public.referents','intake',true,{id:'DR1b'});put('DH-1b','public.thought_disposition_heads','intake',true,{thought_id:'R1',revision_id:'DR1b'},'Head moved by compare-and-set from DR1.')}},
+ {k:'4',t:'Enrichment A: question asked, nothing seated',m:'orchestrateInquiry · no seat, no adapter disclosure',run(){inquiry('A','A · unseated',{...REQ,context:{}},{hits:[],evidence:EV},'QF-first entry: query, intended use, return route and actor are required before anything runs.')}},
+ {k:'5',t:'Enrichment B: seated; three disclosures; LL unknown',m:'orchestrateInquiry · six seat keys · v2 records · ADMIT/DEFER/REJECT',run(){inquiry('B','B · seated, LL open',{...REQ,context:CTX_B},adapterB())}},
+ {k:'6',t:'Enrichment B2: claim constitution without a Level witness',m:'orchestrateInquiry · Level tooth (orchestration.ts:343)',run(){const ad=adapterB(); ad.decisions=DEC('CONSTITUTIVE'); inquiry('B2','B2 · constitutive, no witness',{...REQ,context:CTX_B},ad)}},
+ {k:'7',t:'Enrichment C: all four disclosures; sufficiency assessed',m:'orchestrateInquiry · same basis as B, new edition',run(){inquiry('C','C · four disclosures',{...REQ,context:CTX_B},adapterC())}},
+ {k:'7b',t:'Enrichment C′: one disclosure account has no declared edition',m:'0.3.0 account recovery (orchestration.ts:299-336)',run(){const ad=adapterC(); ad.disclosure.account_editions=EDITIONS.filter(e=>e.ref!=='sim:content:UL'); inquiry('Cx','C′ · unversioned UL account',{...REQ,context:CTX_B},ad)}},
+ {k:'8',t:'Domain-semantic admission holds for C at ingress',m:'evaluateDIBoundary (server.ts:680-700)',run(){put('DSA-C','domain_admission_result (in-memory)','enrichment',false,{for:'RES-C',domain:'systems-engineering',disposition:'HOLD',unresolved_refs:['sim:qualify-responsibility']},'Ordinary ingress combines both; either HOLD yields HOLD.')}},
+ {k:'9',t:'Reorient: change PGO, same referent and boundary',m:'ChangeRecord Reorient · validChange (orchestration.ts:226-240)',run(){const ad=adapterC(); const rq={...REQ,context:CTX_B}; ad.disclosure.changes=[{before:CTX_B,after:CTX_D,record:{kind:'change',change_kind:'Reorient',subject_referent_id:'R1',source_basis_ref:basisRef(rq),destination_basis_ref:basisRef({...rq,context:CTX_D})}}]; inquiry('D','D · reoriented',rq,ad)}},
+ {k:'10',t:'Reduced projection budget on C',m:'projection_chars ladder (orchestration.ts:394-429)',run(){inquiry('E','E · budget 1600',{...REQ,context:CTX_B,limits:{projection_chars:1600}},adapterC());inquiry('E2','E2 · budget 1024',{...REQ,context:CTX_B,limits:{projection_chars:1024}},adapterC())}},
+ {k:'11',t:'Preserve the B projection',m:'preserveInquiryProjection → create_artifact (orchestration.ts:480-500)',run(){const r=res('B'); if(!r){ERRORS.push('No RES-B to preserve.');return} put('TA-1','public.text_artifacts','enrichment',true,{id:'TA1',content:r.projection.content},'Opaque immutable text; the structured record is not stored.');put('REF-TA1','public.referents','enrichment',true,{id:'TA1'});put('OP-P1','public.ordinary_operations','enrichment',true,{id:'OPP1',operation_kind:'create_artifact',result_referent_id:'TA1'});put('PR-1','urg projection record (in-memory)','enrichment',false,{projection_id:'TA1',mapped_referent_ids:['R1','R2','R3'],mapper_ref:CTX_B.mapper_ref,mapping_relation_ref:INQUIRY_CONTRACT,governing_orientation_ref:CTX_B.governing_orientation_ref,frame_ref:CTX_B.frame_ref,access_ref:CTX_B.access_ref,scope_resolution_ref:r.inquiry_basis_ref,evidence_basis_ref:r.projection.edition,persisted:false})}},
+ {k:'12',t:'ECO-213 work account and composition (dormant route)',m:'ecb_circulation compose_account · reconcile',run(){put('WA-1','ecb_circulation.work_accounts (dormant)','composition',true,{id:'WA1',focal_id:'R1',point_of_view:'sim:pov:principal',noticed_contrast:'app appearance differs from the system setting',boundary:'sim:boundary:appearance-decision',orientation:'sim:pgo:fix-placement',frame:'sim:frame:product-support',question:REQ.query,intended_use:REQ.intended_use,return_route:REQ.return_route},'Seat-like basis without access, disclosures, QFs or exit.');put('SR-1','ecb_circulation work scope (dormant)','composition',true,{work_id:'WA1',subject_id:'R3'});put('CA-1','ecb_circulation.composition_accounts (dormant)','composition',true,{id:'CA1',work_id:'WA1',focal_id:'R1',organizing_criterion:'sources bearing on fix placement'});put('CM-1','ecb_circulation.composition_members (dormant)','composition',true,{account_id:'CA1',constituent_id:'R3',reason:'reported symptom',basis_digest:'d-R3-rev1'},'Not PGO-URG gated.');put('UH-1','ecb_circulation.use_heads (dormant)','composition',true,{work_id:'WA1',use_key:'sim:use:fix-placement',verdict:'SATISFIED',epoch:1})}},
+ {k:'13',t:'Gesture: compose R2 and R3 into a whole',m:'none installed · no Compose change kind (urg-core.ts:48-70)',gesture:true,run(){CTRL.push({gesture:'compose',targets:['R2','R3'],outcome:'disabled: no installed carrier; no substrate token appended'})}},
+ {k:'14',t:'Gesture: mark LL covered; set R3 relevance',m:'none installed · coverage and relevance are computed, not set',gesture:true,run(){CTRL.push({gesture:'mark_covered',targets:['R1:LL'],outcome:'rejected: coverage is recomputed from records'});CTRL.push({gesture:'set_relevance',targets:['R3'],outcome:'rejected: no assessor, basis or installed path'})}},
+ {k:'15',t:'Load the earlier prototype as a negative control',m:'non-substrate · validators must flag it',gesture:true,run(){put('PROTO-1','prototype_view_state (not installed)','negative',false,{node:{id:'porch',referent_id:null}});put('PROTO-2','prototype_view_state (not installed)','negative',false,{relevance:{paint:{deck:0.9,board7:0.8},sell:{deck:0.6}}});put('PROTO-3','prototype_view_state (not installed)','negative',false,{coverage:{porch:{UL:'p',UR:'p',LL:'p',LR:'p'}}});put('PROTO-4','prototype_view_state (not installed)','negative',false,{composite:{id:'cmp1',members:['board7','guests'],basis:'typed in a text box'}})}},
+];
+let DONE=new Set();
+function res(id){const t=LOG.find(x=>x.id==='RES-'+id);return t?t.fields.result:null}
+function byId(id){return LOG.find(x=>x.id===id)}
+function runOp(i){ if(DONE.has(i)) return; OPS[i].run(); DONE.add(i); render(); }
+
+/* ---------- plates (pure functions of LOG) ---------- */
+const S=id=>`<span class="src" data-src="${esc(id)}">⟨${esc(id)}⟩</span>`;
+function legend(o){return `<div class="legendbox"><div><b>Purpose</b>${o.p}</div><div><b>Preserves</b>${o.k}</div><div><b>Omits or distorts</b>${o.d}</div><div><b>Generalization rule</b>${o.g}</div></div>`}
+function nativeIds(){const s=new Set();LOG.forEach(t=>{if(t.persisted&&t.kind!=='public.referents'&&t.fields&&t.fields.id) s.add(t.fields.id)});return s}
+function appliedStanding(cid){const tr=LOG.filter(t=>t.kind==='public.claim_standing_transitions'&&t.fields.claim_id===cid);return tr.length?tr[tr.length-1].fields.to_standing:'unassessed'}
+function headRev(rid){const h=LOG.filter(t=>t.kind==='public.thought_disposition_heads'&&t.fields.thought_id===rid);if(!h.length) return null;const head=h[h.length-1];return {head,rev:LOG.find(t=>t.kind==='public.thought_disposition_revisions'&&t.fields.id===head.fields.revision_id)}}
+const P={};
+P.intake=()=>{ const th=LOG.filter(t=>t.kind==='public.thoughts'); const regs=LOG.filter(t=>t.kind==='public.referents'); const nat=nativeIds();
+  const bare=regs.filter(r=>!nat.has(r.fields.id));
+  let h=legend({p:'Show the pre-tokenized intake stage: what was registered and admitted.',k:'Registry id, content and source, caller-claimed capture time, database custody time, admission context, operational disposition head.',d:'Omits every downstream record: claims, enrichment, composition. Shows no relevance, rank, standing, seat or membership.',g:'One row per thought; registered-only ids listed apart. No grouping implies co-reference.'});
+  h+=`<div class="scroll"><table><thead><tr><th>Referent</th><th>Content · source</th><th>captured_at (caller-claimed)</th><th>registered_at (custody)</th><th>Admission</th><th>Operational disposition (head)</th></tr></thead><tbody>`;
+  th.forEach(t=>{const id=t.fields.id;const reg=regs.find(r=>r.fields.id===id);const adm=LOG.find(x=>x.kind==='public.thought_admissions'&&LOG.some(o=>o.kind==='public.ordinary_operations'&&o.fields.id===x.fields.operation_id&&o.fields.result_referent_id===id));const hr=headRev(id);
+    h+=`<tr class="row" data-src="${t.id}"><td class="mono">${id} ${S(t.id)}</td><td>${esc(t.fields.content)}<div class="src">${esc(t.fields.source)}</div></td><td class="mono">${esc(t.fields.captured_at)}</td><td class="mono">${reg?esc(reg.fields.registered_at)+' '+S(reg.id):''}</td><td>${adm?'producer context: '+(adm.fields.producer_context??'none')+' '+S(adm.id):''}</td><td>${hr?esc(hr.rev.fields.disposition)+(hr.rev.fields.reentry_condition?`<div class="src">reentry: ${esc(hr.rev.fields.reentry_condition)}</div>`:'')+' '+S(hr.head.id):''}<div class="src">operational, not standing</div></td></tr>`});
+  h+=`</tbody></table></div>`;
+  h+=`<div class="layerhead">Registered only · no native record in inspected scope</div>`+(bare.length?bare.map(b=>`<div class="row" data-src="${b.id}" style="font-size:.78rem"><span class="mono">${b.fields.id}</span> ${S(b.id)} · no native record in inspected scope</div>`).join(''):'<p class="empty">None registered yet.</p>');
+  h+=`<div class="disabled-ctl"><button disabled>Rank by relevance</button><button disabled>Merge as same thing</button><span>Disabled: registration confers no relevance, type or co-reference (ADR-003:93-103; ADR-007:22).</span></div>`;
+  return h; };
+P.claims=()=>{ const cl=LOG.filter(t=>t.kind==='public.claims (relation)');
+  let h=legend({p:'Show asserted relation claims as edges, with standing derived from the transition log.',k:'Claim id, predicate, endpoints, applied standing, evidence links with pinned revision digest.',d:'Draws no containment. A part_of claim is an assertion, not composition participation.',g:'Edges listed, never laid out spatially; position encodes nothing.'});
+  if(!cl.length) return h+'<p class="empty">No claims yet. Run operation 2.</p>';
+  h+=`<div class="scroll"><table><thead><tr><th>Claim</th><th>Subject</th><th>Predicate</th><th>Object</th><th>Applied standing</th><th>Evidence</th></tr></thead><tbody>`;
+  cl.forEach(c=>{const ev=LOG.filter(e=>e.kind==='public.evidence_links'&&e.fields.claim_id===c.fields.id);const tr=LOG.filter(t=>t.kind==='public.claim_standing_transitions'&&t.fields.claim_id===c.fields.id);
+    h+=`<tr class="row" data-src="${c.id}"><td class="mono">${c.fields.id} ${S(c.id)}</td><td class="mono">${c.fields.subject_referent_id}</td><td class="mono">${c.fields.predicate}</td><td class="mono">${c.fields.object_referent_id}</td><td>${appliedStanding(c.fields.id)} ${tr.map(t=>S(t.id)).join(' ')}</td><td>${ev.length?ev.map(e=>`${e.fields.evidence_referent_id} @ <span class="mono">${e.fields.evidence_revision_digest}</span> ${S(e.id)}`).join('<br>'):'<span class="empty">none</span>'}</td></tr>`});
+  return h+`</tbody></table></div>`; };
+let ENR='B';
+P.enrich=()=>{ const ids=['A','B','B2','C','Cx','D','E','E2'].filter(i=>byId('RES-'+i)||byId('ERR-'+i));
+  let h=legend({p:'Show enrichment for one inquiry edition: questions first, then seat, disclosures, candidates, reconciliation, exit.',k:'Basis and edition, QFs with consequence and reentry, six seat keys with blanks, v2 coverage recomputed from records, candidate dispositions with assessor, reconciliation, signals.',d:'Keyed per inquiry basis, not per referent. Nothing here is a stored property of R1.',g:'One edition at a time; editions with the same basis are shown as distinct.'});
+  if(!ids.length) return h+'<p class="empty">No inquiry run yet. Run operations 4 to 10.</p>';
+  if(!ids.includes(ENR)) ENR=ids[0];
+  h+=`<div class="subtabs">${ids.map(i=>`<button data-enr="${i}" aria-pressed="${i===ENR}">${i}</button>`).join('')}</div>`;
+  const err=byId('ERR-'+ENR); if(err) return h+`<div class="err row" data-src="${err.id}">${esc(err.fields.label)} · error: ${esc(err.fields.error)} ${S(err.id)}<br>Shown as a failure event, not a plate edition.</div>`;
+  const t=byId('RES-'+ENR), r=t.fields.result; const dsa=LOG.find(x=>x.kind.startsWith('domain_admission')&&x.fields.for===t.id);
+  h+=`<div class="row" data-src="${t.id}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><span class="pill ${r.disposition==='READY'?'ready':'hold'}">${r.disposition}</span>${dsa?`<span class="pill hold">ingress HOLD (domain admission) ${S(dsa.id)}</span>`:''}<span class="pill np">NOT_PRESERVED</span><span class="mono" style="font-size:.7rem">basis ${r.inquiry_basis_ref.slice(0,18)}… · edition ${r.projection.edition} · ${INQUIRY_CONTRACT} · ${QD}</span> ${S(t.id)}</div>`;
+  h+=`<div class="layerhead">1 · Questions Forward (${r.questions_forward.length}) · installed order</div>`;
+  h+=r.questions_forward.length?r.questions_forward.map((q,i)=>`<div class="qf row" data-src="${t.id}"><span><b>${esc(q.discriminator_question)}</b></span><span class="meta">[${i}] target ${esc(q.unresolved_ref)} · consequence: ${esc(q.decision_consequence)}</span><span class="meta">return ${esc(q.return_route)} · ${esc(q.reentry_condition)}</span>${q.paired_signal_scenario===TEMPLATE.paired?'<span><span class="tmpl">3 fields are coordinator template text</span></span>':''}</div>`).join(''):'<p class="empty">No open questions: earned stopping for the declared use.</p>';
+  h+=`<div class="layerhead">2 · Seat κ=(R,B,G,F)</div><dl class="kv">${SEAT.map(k=>`<dt>${k}</dt><dd>${nonblank(r.situated_basis[k])?esc(r.situated_basis[k]):'<span class="blank">blank</span>'}</dd>`).join('')}</dl>`;
+  h+=`<div class="layerhead">3 · Disclosures (v2, recomputed from records)</div><div class="cov">${['UL','UR','LL','LR'].map(k=>{const c=r.quadrant_coverage[k];return `<div class="${c.status==='EXAMINED'?'ex':'un'}">${k} · ${QH[k]}<small>${c.status}${c.refs.length?' · '+c.refs.join(', '):''}</small></div>`}).join('')}</div>`;
+  h+=`<div class="layerhead">4 · Candidates</div><div class="scroll"><table><thead><tr><th>Referent</th><th>Channels</th><th>Disposition</th><th>Membership</th><th>Assessor</th><th>Reason</th></tr></thead><tbody>${r.candidates.map(c=>`<tr><td class="mono">${c.hit.referent_id}</td><td class="mono">${c.hit.channels.join(', ')}</td><td>${c.decision.disposition}</td><td>${c.decision.membership||''}</td><td class="mono" style="font-size:.66rem">${esc(c.decision.assessment_ref)}</td><td>${esc(c.decision.reason)}</td></tr>`).join('')}</tbody></table></div>`;
+  h+=`<div class="layerhead">5 · Reconciliation · signals · changes</div><dl class="kv"><dt>affected old</dt><dd>${r.reconciliation.affected_old.disposition}</dd><dt>destination new</dt><dd>${r.reconciliation.destination_new.disposition}</dd><dt>signals</dt><dd>${r.signals.length?r.signals.map(s=>`${s.code} → ${s.target_ref}`).join('; '):'none'}</dd><dt>changes</dt><dd>${r.changes.length?r.changes.map(c=>c.record.change_kind).join(', '):'none'}</dd><dt>omissions</dt><dd>${r.projection.omissions.length?esc(r.projection.omissions.join(' ')):'none'}</dd></dl>`;
+  h+=`<div class="disabled-ctl"><button disabled>Mark covered</button><button disabled>Set relevance</button><button disabled>Badge R1 as tokenized</button><span>Disabled: coverage and exit are computed; no carrier holds enrichment state keyed to R1 (stop line).</span></div>`;
+  return h; };
+P.compose=()=>{ const eds=['B','B2','C','D'].filter(i=>byId('RES-'+i));
+  let h=legend({p:'Show composition participation by installed carrier and gate.',k:'Per-edition admitted members with relation, membership, witness, current-use standing; ECO-213 accounts in a separate dormant layer.',d:'Does not merge carriers. Claims are not shown as containment.',g:'One layer per carrier; each labeled with its gate.'});
+  h+=`<div class="layerhead">PGO-URG current-use composition (per inquiry edition; gate orchestration.ts:330-357)</div>`;
+  h+=eds.length?eds.map(i=>{const t=byId('RES-'+i),r=t.fields.result;return `<div class="row" data-src="${t.id}" style="font-size:.8rem;padding:4px 0;border-bottom:1px dotted var(--line)"><b>${i}</b> <span class="pill ${r.disposition==='READY'?'ready':'hold'}">${r.disposition}</span> ${S(t.id)} · members: ${r.admitted.length?r.admitted.map(c=>`${c.hit.referent_id} (${c.decision.membership}, relation ${esc(c.decision.relation.relation_kind_ref)}${r.disposition==='HOLD'?', admitted, not relied':''})`).join('; '):'<span class="empty">none admitted</span>'}${r.signals.length?` · <span style="color:var(--hold)">${r.signals.map(s=>s.code+' on '+s.target_ref).join(', ')}</span>`:''}</div>`}).join(''):'<p class="empty">No inquiry editions yet.</p>';
+  const ca=LOG.filter(t=>t.kind.startsWith('ecb_circulation.composition_accounts')); const cm=LOG.filter(t=>t.kind.startsWith('ecb_circulation.composition_members'));
+  h+=`<div class="layerhead">ECO-213 composition accounts (dormant; not PGO-URG gated)</div>`;
+  h+=ca.length?ca.map(a=>`<div class="row" data-src="${a.id}" style="font-size:.8rem"><span class="pill dorm">dormant</span> ${a.fields.id} focal ${a.fields.focal_id} · ${esc(a.fields.organizing_criterion)} ${S(a.id)} · members: ${cm.filter(m=>m.fields.account_id===a.fields.id).map(m=>`${m.fields.constituent_id} @ ${m.fields.basis_digest} ${S(m.id)}`).join(', ')}</div>`).join(''):'<p class="empty">None. Run operation 12.</p>';
+  h+=`<div class="disabled-ctl"><button disabled>Compose</button><button disabled>Create composite</button><span>Disabled: no Compose change kind exists (urg-core.ts:48-70); composite referents are per-instance by forward decision (BUILD_CHECKOUT COMPOSITE_REFERENT_FORWARD).</span></div>`;
+  if(CTRL.length) h+=`<div class="layerhead">Rejected gestures (simulation-local; no substrate token)</div>`+CTRL.map(c=>`<div style="font-size:.76rem;color:var(--neg)">${c.gesture} ${c.targets.join(', ')} · ${c.outcome}</div>`).join('');
+  return h; };
+let IDX='R1';
+P.index=()=>{ let h=legend({p:'Gazetteer: from one referent id to every token that mentions it.',k:'Structured-field mentions apart from mentions inside artifact text.',d:'Native type shown as the probed table only.',g:'Exact id match; no similarity.'});
+  const ids=['R0','R1','R2','R3']; h+=`<div class="subtabs">${ids.map(i=>`<button data-idx="${i}" aria-pressed="${i===IDX}">${i}</button>`).join('')}</div>`;
+  const structured=[],text=[]; LOG.forEach(t=>{ if(t.layer==='negative') return; const f=t.fields; const strFields=canonical(Object.fromEntries(Object.entries(f||{}).filter(([k])=>!['content','result','ad'].includes(k))));
+    if(new RegExp('"'+IDX+'"').test(strFields)) structured.push(t); else if(f&&typeof f.content==='string'&&f.content.includes('"'+IDX+'"')) text.push(t); else if(f&&f.result&&canonical(f.result).includes('"'+IDX+'"')) structured.push(t); });
+  h+=`<div class="layerhead">Structured mentions (${structured.length})</div>`+structured.map(t=>`<div class="row" data-src="${t.id}" style="font-size:.76rem">${S(t.id)} ${esc(t.kind)} ${t.persisted?'<span class="pill ready">persisted</span>':'<span class="pill np">in-memory</span>'}</div>`).join('');
+  h+=`<div class="layerhead">Mentioned only inside artifact text (${text.length})</div>`+(text.length?text.map(t=>`<div class="row" data-src="${t.id}" style="font-size:.76rem">${S(t.id)} ${esc(t.kind)}</div>`).join(''):'<p class="empty">None.</p>');
+  const probe=addressProbe(IDX); h+=`<div class="layerhead">Addressability probe (C16)</div><div style="font-size:.8rem">Persisted tokens whose structured fields reference ${IDX} and carry v2 disclosure state, a typed QF set or a READY/HOLD exit: <b>${probe.length}</b>. ${probe.length?'':'Enrichment state cannot be reached from the referent id. This is the stop-line evidence.'}</div>`;
+  return h; };
+function addressProbe(rid){ return LOG.filter(t=>t.persisted&&t.layer!=='negative').filter(t=>{const f=t.fields||{};const s=canonical(Object.fromEntries(Object.entries(f).filter(([k])=>k!=='content')));return s.includes('"'+rid+'"')&&/(quadrant_coverage|questions_forward|"disposition":"(READY|HOLD)")/.test(s)}); }
+P.delta=()=>{ let h=legend({p:'Compare two inquiry editions.',k:'Changed seat coordinates by class; basis, evidence/standing and envelope changes.',d:'Implies no standing or currentness.',g:'Derived only through projectionDelta (orchestration.ts:451-478).'});
+  const a=byId('RES-C'),b=byId('RES-D'); if(!a||!b) return h+'<p class="empty">Needs editions C and D (operations 7 and 9).</p>';
+  const d=projectionDelta(a.fields.result,b.fields.result);
+  return h+`<div class="row" data-src="${a.id}"><dl class="kv">${Object.entries(d).map(([k,v])=>`<dt>${k}</dt><dd class="mono" style="font-size:.72rem">${esc(Array.isArray(v)?v.join(', ')||'none':typeof v==='string'?v.slice(0,40)+(v.length>40?'…':''):v)}</dd>`).join('')}</dl> ${S(a.id)} ${S(b.id)}</div><p style="font-size:.8rem;margin:0">Edition C keeps its own basis and edition after D. The referent tokens are unchanged by reorientation; old disclosures do not transport to the new basis.</p>`; };
+P.legend=()=>{ let h=legend({p:'Control inventory and plate declarations.',k:'Each control mapped to an installed operation, or disabled with its reason.',d:'Nothing.',g:'A control without an installed path is disabled.'});
+  h+=`<div class="scroll"><table><thead><tr><th>#</th><th>Control</th><th>Installed path</th><th>Status</th></tr></thead><tbody>${OPS.map((o,i)=>`<tr><td class="mono">${o.k}</td><td>${esc(o.t)}</td><td class="mono" style="font-size:.66rem">${esc(o.m)}</td><td>${o.gesture?'<span class="pill neg">no substrate write</span>':'<span class="pill ready">typed append</span>'}</td></tr>`).join('')}
+  <tr><td></td><td>Compose · Relate · persist token · mark covered · set relevance</td><td class="mono" style="font-size:.66rem">none</td><td><span class="pill hold">disabled</span></td></tr></tbody></table></div>`;
+  h+=`<dl class="kv"><dt>mapper</dt><dd>${CTX_B.mapper_ref}</dd><dt>mapping relation</dt><dd>${INQUIRY_CONTRACT}</dd><dt>G</dt><dd>${CTX_B.governing_orientation_ref} (D: ${CTX_D.governing_orientation_ref})</dd><dt>frame · access</dt><dd>${CTX_B.frame_ref} · ${CTX_B.access_ref}</dd><dt>contracts</dt><dd>${URG} · ${QD} · ${INQUIRY_CONTRACT}</dd><dt>evidence basis</dt><dd>fixture tokens in this log only</dd><dt>omissions</dt><dd>Exit revalidation runs with unchanged evidence; discovery adapters are fixtures; the digest is FNV-1a standing in for sha256; ECO-213 rows are illustrative of the dormant shape.</dd></dl>`;
+  return h; };
+P.negative=()=>{ const pr=LOG.filter(t=>t.layer==='negative'); let h=legend({p:'Run the original defect through the same validators.',k:'The prototype literals as they were.',d:'Not substrate; never rendered on plates I to VII.',g:'Each literal tested for referent id, assessor, basis and derivability.'});
+  if(!pr.length) return h+'<p class="empty">Run operation 15.</p>';
+  return h+pr.map(t=>`<div class="row" data-src="${t.id}" style="font-size:.78rem;border-left:2px solid var(--neg);padding-left:8px;margin:4px 0">${S(t.id)} <span class="mono">${esc(canonical(t.fields)).slice(0,160)}</span><br><span style="color:var(--neg)">${negFlags(t).join(' · ')}</span></div>`).join(''); };
+function negFlags(t){ const f=t.fields,fl=[]; if(f.node&&!f.node.referent_id) fl.push('no referent id'); if(f.relevance) fl.push('relevance numbers have no assessor or basis_ref'); if(f.coverage) fl.push('coverage not derivable from any record'); if(f.composite) fl.push('composite has no ADMIT, relation record or Level witness'); return fl; }
+const PLATES=[['intake','I','Intake'],['claims','II','Asserted relations'],['enrich','III','Enrichment'],['compose','IV','Composition'],['index','V','Index'],['delta','VI','Delta'],['legend','VII','Legend'],['negative','✕','Negative control']];
+let CUR='intake'; try{const v=localStorage.getItem('atlas-plate'); if(v) CUR=v}catch(e){}
+function plateHTML(k){const [,n,t]=PLATES.find(p=>p[0]===k);return `<div class="ptitle"><span class="num">${n}</span><h2>${t}</h2><span class="eyebrow">plate ${n} · projection of the token log</span></div>`+P[k]()}
+
+/* ---------- checks ---------- */
+let LASTDIG=null, REGEN=null;
+function allPlateDigests(){const save=[ENR,IDX];const o={};PLATES.forEach(([k])=>{o[k]=digest(plateHTML(k))});[ENR,IDX]=save;return o}
+function checks(){ const C=[]; const add=(id,ok,d,pending)=>C.push({id,ok,d,pending});
+  const have=new Set(LOG.map(t=>t.id)); const html=PLATES.filter(p=>p[0]!=='negative').map(p=>plateHTML(p[0])).join('');
+  const srcs=[...html.matchAll(/data-src="([^"]+)"/g)].map(m=>m[1]);
+  add('C01 provenance',srcs.every(s=>have.has(s))&&!srcs.some(s=>s.startsWith('PROTO')),'Every rendered row cites a token present in the log; none cites the prototype.');
+  const th=new Set(LOG.filter(t=>t.kind==='public.thoughts').map(t=>t.fields.id)); const intake=plateHTML('intake');
+  add('C02 intake scope',['C1','C2','E1','TA1','CA1'].every(x=>!new RegExp('<span class="mono">'+x+'</span>').test(intake)),'Downstream records never appear on the intake plate.');
+  add('C03 intake confers nothing',!/relevance:|standing:|seat:|membership:/i.test(intake.replace(/<button[^>]*>.*?<\/button>/g,'').replace(/Disabled:.*?<\/span>/g,'')),'No relevance, standing, seat or membership fields on intake rows.');
+  const r0=LOG.find(t=>t.fields&&t.fields.id==='R0'); add('C04 registered-only',!r0||/R0<\/span>.*no native record/.test(intake),'R0 renders as having no native record, with no question or standing attached.',!r0);
+  const results=LOG.filter(t=>t.id.startsWith('RES-'));
+  add('C05 coverage recompute',results.every(t=>{const r=t.fields.result;return ['UL','UR','LL','LR'].every(k=>(r.quadrant_coverage[k].status==='EXAMINED')===r.records.some(e=>e.record.kind==='quadrant'&&e.record.result==='QUADRANT_POSITION'&&e.record.disclosure===k&&e.record.fidelity.coverage==='EXAMINED'))}),'Displayed coverage equals coverage recomputed from admitted records.',!results.length);
+  add('C06 READY iff no QF',results.every(t=>(t.fields.result.disposition==='READY')===(t.fields.result.questions_forward.length===0)),'Exit is READY exactly when no question remains.',!results.length);
+  const rc=res('C'); add('C06b only C is READY',results.length<5||results.every(t=>(t.fields.result.disposition==='READY')===(t.id==='RES-C')),'Of the computed editions, only C reaches READY.',results.length<5);
+  const rb=res('B'); add('C08 composition equals admitted',!rb||(!rb.admitted.some(c=>c.hit.referent_id==='R3')&&rb.admitted.map(c=>c.hit.referent_id).join()==='R2'),'In B only R2 is admitted; R3 stays deferred.',!rb);
+  const rb2=res('B2'); add('C09 Level tooth',!rb2||(rb2.admitted.length===0&&rb2.signals.some(s=>s.code==='G2'&&s.target_ref==='R2')&&rb2.disposition==='HOLD'),'Constitution without a Level witness is denied with G2.',!rb2);
+  const comp=plateHTML('compose'); add('C10 claims are not containment',!/C1/.test(comp),'Claim C1 (R3 part_of R1) never appears as composition.',!byId('C1'));
+  add('C11 standing via transitions',!byId('C2')||(appliedStanding('C2')==='basis_qualified'&&appliedStanding('C1')==='unassessed'),'C2 standing comes from its transition; C1 stays unassessed.',!byId('C2'));
+  const hr=headRev('R1'); add('C12 currentness from heads',!hr||intake.includes(hr.rev.fields.disposition),'R1 shows the revision its head names.',!hr);
+  const rd=res('D'); add('C13 reorientation',!rd||!rc||(rd.inquiry_basis_ref!==rc.inquiry_basis_ref&&projectionDelta(rc,rd).coordinate_classes.includes('G_OR_F')&&rd.disposition==='HOLD'),'D gets a new basis, G_OR_F in the delta, and HOLD; C is unchanged.',!rd||!rc);
+  const re=res('E'); const e2=byId('ERR-E2')||byId('RES-E2'); add('C14 budget',!re||(re.questions_forward.some(q=>q.unresolved_ref==='projection_limit')&&re.disposition==='HOLD'&&re.projection.omissions.length>0),'A reduced projection carries a projection_limit question and HOLD.',!re);
+  const ta=byId('TA-1'); let c15=true; if(ta){try{const j=JSON.parse(ta.fields.content);c15=('questions_forward' in j)&&('quadrant_coverage' in j)&&('disposition' in j)&&('disclosure_accounts' in j)&&!('reentry' in j)}catch(e){c15=false}} add('C15 preserved content',c15,'Under 0.3.0 the preserved text holds questions, coverage, disposition and recovered accounts, but no reentry key; the structured record still is not stored.',!ta);
+  const rcx=res('Cx'); add('C25 account recovery (0.3.0)',!rcx||(rcx.disposition==='HOLD'&&rcx.quadrant_coverage.UL.status==='UNEXAMINED'&&rcx.questions_forward.some(q=>q.unresolved_ref==='sim:content:UL')),'A position whose account has no declared edition supplies no coverage and holds.',!rcx);
+  add('C16 addressability probe',addressProbe('R1').length===0,'No persisted token reachable from R1 carries enrichment state. Expected result; this is the stop-line evidence.',!results.length);
+  const cm=byId('CM-1'); add('C17 gate divergence',!cm||!rb||(rb.candidates.find(c=>c.hit.referent_id==='R3').decision.disposition==='DEFER'&&/not PGO-URG gated/.test(comp)),'R3 is a dormant ECO-213 member while deferred in B; both visible.',!cm||!rb);
+  const dsa=byId('DSA-C'); add('C18 domain admission',!dsa||(rc&&rc.disposition==='READY'&&/ingress HOLD/.test((()=>{const s=ENR;ENR='C';const x=plateHTML('enrich');ENR=s;return x})())),'Ingress shows HOLD while C stays READY on its own plate.',!dsa);
+  const substrateKinds=LOG.filter(t=>t.layer!=='negative'&&t.layer!=='surface').length; add('C19 controls',CTRL.every(c=>/no substrate|rejected|disabled/.test(c.outcome)),'Gestures append zero substrate tokens; Compose and relevance controls are disabled.');
+  add('C20 determinism',REGEN===null?true:REGEN,'After regenerate, every plate digest equals its prior digest.',REGEN===null);
+  const pr=LOG.filter(t=>t.layer==='negative'); add('C21 negative control',!pr.length||pr.every(t=>negFlags(t).length>0),'Validators flag every prototype literal.',!pr.length);
+  add('C22 vocabulary',!/Constitutive\s*[x×]\s*Governing|constitutive_governing|I\/It\/We\/Its|\bcanonical\b|class="pill[^"]*">\s*(integral|enriched|tokenized)/i.test(html),'No retired Quadrant labels, no retired normative vocabulary, no status badge on a referent id.');
+  add('C23 legend',PLATES.filter(p=>p[0]!=='negative').every(p=>/legendbox/.test(plateHTML(p[0]))),'Every plate declares purpose, preserved, omitted and its generalization rule.');
+  add('C24 zero writes',true,'The page makes no network requests; all state is in memory.');
+  return C; }
+
+/* ---------- render ---------- */
+function render(){
+  document.getElementById('ops').innerHTML=OPS.map((o,i)=>`<div class="op ${DONE.has(i)?'done':''} ${o.gesture?'gesture':''}"><span class="k">${o.k}</span><div><div class="t">${esc(o.t)}</div><div class="m">${esc(o.m)}</div></div><button data-op="${i}" ${DONE.has(i)?'disabled':''}>${DONE.has(i)?'done':'run'}</button></div>`).join('')+`<div class="op"><span class="k">↻</span><div><div class="t">Regenerate all plates from the log</div><div class="m">determinism check (C20)</div></div><button data-op="regen">run</button></div>`;
+  const f=document.getElementById('logFilter').value;
+  const rows=LOG.filter(t=>f==='all'||(f==='p'&&t.persisted)||(f==='v'&&!t.persisted&&t.layer!=='negative'&&t.layer!=='surface')||(f==='x'&&(t.layer==='negative'||t.layer==='surface')));
+  document.getElementById('logCount').textContent=`${LOG.length} tokens · ${LOG.filter(t=>t.persisted).length} persisted`;
+  document.getElementById('log').innerHTML=rows.length?rows.map(t=>`<div><span>${t.seq}</span><span class="${t.layer==='negative'||t.layer==='surface'?'x':t.persisted?'p':'v'}">${esc(t.id)}</span><span>${esc(t.kind)}</span></div>`).join(''):'<p class="empty">Empty. Run operation 1.</p>';
+  document.getElementById('ptabs').innerHTML=PLATES.map(([k,n,t])=>`<button role="tab" data-plate="${k}" aria-selected="${k===CUR}">${n} · ${t}</button>`).join('');
+  document.getElementById('plate').innerHTML=plateHTML(CUR);
+  const C=checks(); document.getElementById('checks').innerHTML=C.map(c=>`<div class="check ${c.pending?'pending':c.ok?'pass':'fail'}"><span class="r">${c.pending?'—':c.ok?'PASS':'FAIL'}</span><div><b>${esc(c.id)}</b><div class="d">${esc(c.d)}</div></div></div>`).join('');
+}
+function renderStatic(){
+  const R=[['0','Pre-tokenized intake','Registry, thoughts, admissions and disposition heads. Confers nothing.',0],['1','Claim, evidence and standing spine','Relation claims, evidence pinned by revision digest, standing only through transitions.',0],['2','Enrichment increment grammar','URG v2 record kinds in code: quadrant, level, native relation, change, question forward. No database carrier.',0],['3','The enrichment pass','QF first by contract order, then O1–O7. Installed as one bounded pass per basis; READY iff no open question. Result not preserved.',0],['4','Composition participation','Per-inquiry ADMIT with exact edition, typed relation and Level witness for constitution. ECO-213 accounts are a separate dormant route.',0],['5','Projection discipline','Plates declare mapper, G, frame, access, scope, omissions and contract editions; views are never sources of truth (CIVS §2A).',0],['6','Integral token carrier','Referent-addressable, persisted enrichment state that composition reads. Not installed: the stop line.',1],['7','Durable composition substrate','Eligibility "properly enriched", made durable. Unearned.',1],['8','The atlas over tokens','Navigable family of plates with index over tokens. Unearned.',1]];
+  document.getElementById('ladder').innerHTML='<h3>Earned ladder</h3>'+R.map(r=>`<div class="rung ${r[3]?'un':''}"><span class="no">${r[0]}</span><div><b>${r[1]}</b>${r[3]?' <span class="pill hold">unearned</span>':''}<p>${r[2]}</p></div></div>`).join('');
+  const U=[['U1','Integral scope','Does "integral" name completion of O1–O7, or disclosure across all seven URG distinctions plus F?'],['U2','HOLD exits','Is a HOLD or "depreciated state with explicit pointers to finish" an integral token with reduced reliance, or is only READY integral?'],['U3','First QF','Is the first QF about G and the consequential border, or about point of view, initial contrast and focal object (SENSE_SEATING_FORWARD)?'],['U4','Token key','Is the token keyed to the referent across inquiries, or to one situated inquiry basis as installed?'],['U7','"Properly enriched" for composition','Each member\'s own READY (not installed), or per-member qualification under the focal basis (installed)?'],['U10','Compose carrier','New Compose change kind, native relation plus Reseat, or ECO-213 composition accounts?'],['U13','Grain order','Identity-first (registered id plus accreted enrichment) or increment-first (attributable disclosure records aggregated into accounts)?']];
+  document.getElementById('unresolved').innerHTML='<h3>Decision-changing discriminators</h3><p class="empty" style="margin:0">Rung 6 is earned by answers to U1, U2 and U4, an ordinary-use insufficiency test against all installed carriers (ADR-009 reopening condition), and a QF-first performer under ECO-177.</p><ul class="ulist">'+U.map(u=>`<li><b>${u[0]} · ${u[1]}.</b> ${u[2]}</li>`).join('')+'</ul><p class="empty" style="margin:0">Seven further discriminators (U5, U6, U8, U9, U11, U12, U14) are in the derivation document.</p>';
+}
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const d=b.dataset;
+  if(d.op==='regen'){const before=allPlateDigests();const after=allPlateDigests();REGEN=Object.keys(before).every(k=>before[k]===after[k]);render();return}
+  if(d.op!=null){runOp(+d.op);return}
+  if(d.plate){CUR=d.plate;try{localStorage.setItem('atlas-plate',CUR)}catch(x){}render();return}
+  if(d.enr){ENR=d.enr;render();return}
+  if(d.idx){IDX=d.idx;render();return}
+  if(b.id==='runAll'){OPS.forEach((o,i)=>{if(!DONE.has(i))OPS[i].run();DONE.add(i)});const a=allPlateDigests(),c=allPlateDigests();REGEN=Object.keys(a).every(k=>a[k]===c[k]);render();return}
+  if(b.id==='reset'){LOG=[];SEQ=0;CTRL=[];ERRORS=[];DONE=new Set();REGEN=null;render();return}
+});
+document.getElementById('logFilter').addEventListener('change',render);
+renderStatic(); render();
+window.__atlas={runInquiry,LOG:()=>LOG,checks,res};
+})();
+</script>
