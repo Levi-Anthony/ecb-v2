@@ -55,7 +55,7 @@ function specimen(): CapabilityInspectionRecord {
     worked_trace: { claim: 'Given declared premises, the structural gate returns the expected disposition.', input_refs: ['fixture:input'],
       step_refs: ['fixture:evaluator'], output_ref: 'fixture:output', proof_boundary: 'Does not prove supplied semantic premises.' },
     verification_links: [{ ref: 'fixture:verification', proposition: 'Fixture deterministic gate is sensitive to its declared negative control.',
-      method_ref: 'fixture:test', evidence_refs: ['fixture:evidence'], standing: 'SUPPORTED', sensitivity_refs: ['fixture:negative-control'], limits: ['No semantic truth or authority.'] }],
+      method_ref: 'fixture:test', evidence_refs: ['fixture:evidence'], standing: 'SUPPORTED', currentness_ref: 'fixture:current', sensitivity_refs: ['fixture:negative-control'], limits: ['No semantic truth or authority.'] }],
     field_reconstitution: { proposition: 'Typed changes route dependency/requalification review.', typed_change_refs: ['URG:Reorient'],
       affected_dependency_refs: ['fixture:dependency'], requalification_refs: ['fixture:review'], standing: 'SUPPORTED',
       evidence_refs: ['fixture:evidence'], limits: ['No generic FieldReconstitution Change kind.'] },
