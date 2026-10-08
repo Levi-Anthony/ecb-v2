@@ -212,6 +212,6 @@ WP8 mechanical/currentness qualification is now installed at `research/civs/doma
 
 Supported in that qualification: repository pointer integrity; bounded external currentness readback; an independently derived FEDERATE/QUALIFY worked trace; installation-ladder separation; WP6 degradation routes; and the WP7 correspondence/non-formalization gate.
 
-**Fresh-agent behavioral success remains NOT ESTABLISHED.** Exact reentry: `civs:qf:wp8:fresh-reader` / `wp8:gate:fresh-reader`. A genuinely separate authorized worker must receive only this procedure, the CIR entry handle, and ordinary source access, then return the fourteen required items. The present orchestrator's own successful use of CIVS is not a substitute.
+**Fresh-agent behavioral success is NOT ESTABLISHED.** Exact reentry: `civs:qf:wp8:fresh-reader` / `wp8:gate:fresh-reader`. A genuinely separate authorized worker must receive only this procedure, the CIR entry handle, and ordinary source access, then return the fourteen required items. The present orchestrator's own successful use of CIVS is not a substitute.
 
 Connected-consumer exposure/use and operational sustainment also remain separately open under ECO-218 and ECO-214.
