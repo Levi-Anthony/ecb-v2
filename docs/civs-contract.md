@@ -42,3 +42,16 @@ This is deliberately **not** a generic edge bag. A `source -> target` pair with 
 ## First specimen
 
 After this contract mechanically qualifies, instantiate Domain-Semantic Admission / D&I Boundary from the exact WP0 reconstruction and current live evidence. Its FEDERATE trace must prove only structural admissibility under declared premises—not correspondence truth.
+
+
+## WP1/WP2 hardening — explicit consumer jobs and enforcement modes
+
+Before the first specimen, the reusable contract was tightened against the accepted audit:
+
+- every consumer Quadrant item now declares its local job explicitly: UL dependency hypothesis, UR observable correlate, LL shared norm, LR support surface;
+- LOCATED requires attributable observation references and an observation route; it still does not mean true or sufficient;
+- installation, verification, field-reconstitution, correspondence, portability/degradation, graphical-door and consumer-support claims carry STRUCTURAL / SEMANTIC / AUTHORITY / OBSERVATIONAL enforcement mode;
+- role assignments carry an explicit currentness reference;
+- consumer support dimensions carry bounded standing/currentness rather than inheriting support from the quadrant label.
+
+These are inspection-contract refinements only. They add no URG primitive, no new universal axis, and no correspondence formalism.

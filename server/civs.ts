@@ -85,6 +85,7 @@ export type InstallationAssessment = {
   kind: InstallationKind;
   proposition: string;
   standing: CivsAssessmentStanding;
+  enforcement_mode: CivsEnforcementMode;
   evidence_refs: string[];
   currentness_ref?: string;
   sensitivity_refs: string[];
@@ -117,6 +118,7 @@ export type VerificationLink = {
   ref: string;
   proposition: string;
   method_ref: string;
+  enforcement_mode: CivsEnforcementMode;
   evidence_refs: string[];
   standing: CivsAssessmentStanding;
   currentness_ref?: string;
@@ -136,13 +138,16 @@ export type RoleAssignment = {
     | 'verification_responsibility';
   subject_ref: string;
   evidence_refs: string[];
+  currentness_ref: string;
   scope: string;
 };
 
 export type BoundedAssessment = {
   proposition: string;
   standing: CivsAssessmentStanding;
+  enforcement_mode: CivsEnforcementMode;
   evidence_refs: string[];
+  currentness_ref?: string;
   limits: string[];
 };
 
@@ -156,6 +161,7 @@ export type CorrespondenceInspection = {
   direction: string;
   cardinality?: string;
   standing: CivsAssessmentStanding;
+  enforcement_mode: CivsEnforcementMode;
   evidence_refs: string[];
   currentness_ref?: string;
   composition_expectation?: string;
@@ -167,7 +173,10 @@ export type CorrespondenceInspection = {
 
 export type SupportClaim = {
   claim: string;
+  standing: CivsAssessmentStanding;
+  enforcement_mode: CivsEnforcementMode;
   evidence_refs: string[];
+  currentness_ref?: string;
   accountability_ref: string;
   limits: string[];
 };
@@ -175,9 +184,11 @@ export type SupportClaim = {
 export type ConsumerSimulationItem = {
   ref: string;
   quadrant: 'UL' | 'UR' | 'LL' | 'LR';
+  entry_kind: 'DEPENDENCY_HYPOTHESIS' | 'OBSERVABLE_CORRELATE' | 'SHARED_NORM' | 'SUPPORT_SURFACE';
   binding_status: 'LATENT' | 'LOCATED';
   statement: string;
   observation_refs: string[];
+  observation_route: string;
   correlation_ref?: string;
   falsifier: string;
   support: {
@@ -208,6 +219,7 @@ export type GraphicalDoorAssessment = {
     kind: GraphicalObligation;
     proposition: string;
     standing: CivsAssessmentStanding;
+    enforcement_mode: CivsEnforcementMode;
     evidence_refs: string[];
     currentness_ref?: string;
     limits: string[];
@@ -244,6 +256,7 @@ export type CapabilityInspectionRecord = {
     affected_dependency_refs: string[];
     requalification_refs: string[];
     standing: CivsAssessmentStanding;
+    enforcement_mode: CivsEnforcementMode;
     evidence_refs: string[];
     limits: string[];
   };
@@ -340,6 +353,7 @@ function validateAssessment(value: unknown, path: string, errors: string[]): voi
   const a = object(value);
   if (!a) { errors.push(`${path} must be an object`); return; }
   if (!standings.has(a.standing as CivsAssessmentStanding)) errors.push(`${path}.standing is invalid`);
+  if (!CIVS_ENFORCEMENT_MODES.includes(a.enforcement_mode as CivsEnforcementMode)) errors.push(`${path}.enforcement_mode is invalid`);
   if (!text(a.proposition)) errors.push(`${path}.proposition is required`);
   if (!Array.isArray(a.evidence_refs) || !a.evidence_refs.every(text)) errors.push(`${path}.evidence_refs must be references`);
   if (!Array.isArray(a.limits) || !a.limits.every(text)) errors.push(`${path}.limits must be text`);
@@ -433,7 +447,8 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
   if (verificationLinks.length === 0) errors.push('verification_links must not be empty');
   for (const [i, raw] of verificationLinks.entries()) {
     const v = object(raw);
-    if (!v || !text(v.ref) || !text(v.proposition) || !text(v.method_ref) || !standings.has(v.standing as CivsAssessmentStanding)) {
+    if (!v || !text(v.ref) || !text(v.proposition) || !text(v.method_ref) || !standings.has(v.standing as CivsAssessmentStanding)
+      || !CIVS_ENFORCEMENT_MODES.includes(v.enforcement_mode as CivsEnforcementMode)) {
       errors.push(`verification_links[${i}] is incomplete`); continue;
     }
     for (const key of ['evidence_refs','sensitivity_refs','limits']) if (!Array.isArray(v[key]) || !(v[key] as unknown[]).every(text)) {
@@ -445,7 +460,8 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
   }
 
   const reconstitution = object(record.field_reconstitution);
-  if (!reconstitution || !text(reconstitution.proposition) || !standings.has(reconstitution.standing as CivsAssessmentStanding)) {
+  if (!reconstitution || !text(reconstitution.proposition) || !standings.has(reconstitution.standing as CivsAssessmentStanding)
+    || !CIVS_ENFORCEMENT_MODES.includes(reconstitution.enforcement_mode as CivsEnforcementMode)) {
     errors.push('field_reconstitution is incomplete');
   } else {
     for (const key of ['typed_change_refs','affected_dependency_refs','requalification_refs','evidence_refs','limits']) {
@@ -462,6 +478,7 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
       errors.push(`correspondence_inspections[${i}].${key} is required`);
     }
     if (!standings.has(x.standing as CivsAssessmentStanding)) errors.push(`correspondence_inspections[${i}].standing is invalid`);
+    if (!CIVS_ENFORCEMENT_MODES.includes(x.enforcement_mode as CivsEnforcementMode)) errors.push(`correspondence_inspections[${i}].enforcement_mode is invalid`);
     for (const key of ['evidence_refs','unresolved_mathematical_requirements','question_forward_refs']) if (!Array.isArray(x[key]) || !(x[key] as unknown[]).every(text)) {
       errors.push(`correspondence_inspections[${i}].${key} must be text/reference array`);
     }
@@ -469,16 +486,18 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
 
   for (const key of ['portability','graceful_degradation']) {
     const a = object(record[key]);
-    if (!a || !text(a.proposition) || !standings.has(a.standing as CivsAssessmentStanding)) errors.push(`${key} is incomplete`);
+    if (!a || !text(a.proposition) || !standings.has(a.standing as CivsAssessmentStanding)
+      || !CIVS_ENFORCEMENT_MODES.includes(a.enforcement_mode as CivsEnforcementMode)) errors.push(`${key} is incomplete`);
     else {
       for (const list of ['evidence_refs','limits']) if (!Array.isArray(a[list]) || !(a[list] as unknown[]).every(text)) errors.push(`${key}.${list} must be text/reference array`);
+      if (a.standing === 'SUPPORTED' && (!texts(a.evidence_refs) || !text(a.currentness_ref))) errors.push(`${key} SUPPORTED requires evidence/currentness`);
     }
   }
 
   const roles = Array.isArray(record.role_assignments) ? record.role_assignments : [];
   for (const [i, raw] of roles.entries()) {
     const r = object(raw);
-    if (!r || !text(r.ref) || !text(r.subject_ref) || !text(r.scope)) errors.push(`role_assignments[${i}] is incomplete`);
+    if (!r || !text(r.ref) || !text(r.subject_ref) || !text(r.currentness_ref) || !text(r.scope)) errors.push(`role_assignments[${i}] is incomplete`);
     if (r?.role_kind === 'owner' || !['principal_accountability','coordination_assignment','semantic_authority','maintenance_responsibility','custody','action_authority','verification_responsibility'].includes(String(r?.role_kind))) {
       errors.push(`role_assignments[${i}].role_kind is invalid`);
     }
@@ -539,17 +558,25 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
     for (const [j, itemRaw] of (Array.isArray(simulation.items) ? simulation.items : []).entries()) {
       const item = object(itemRaw);
       if (!item || !['UL','UR','LL','LR'].includes(String(item.quadrant))) errors.push(`consumer_simulations[${i}].items[${j}].quadrant is invalid`);
+      const expectedKind: Record<string,string> = { UL: 'DEPENDENCY_HYPOTHESIS', UR: 'OBSERVABLE_CORRELATE', LL: 'SHARED_NORM', LR: 'SUPPORT_SURFACE' };
+      if (item && expectedKind[String(item.quadrant)] !== String(item.entry_kind)) errors.push(`consumer_simulations[${i}].items[${j}].entry_kind does not match quadrant job`);
       if (!item || !['LATENT','LOCATED'].includes(String(item.binding_status))) errors.push(`consumer_simulations[${i}].items[${j}].binding_status is invalid`);
-      if (!item || !text(item.statement) || !text(item.falsifier)) errors.push(`consumer_simulations[${i}].items[${j}] requires statement and falsifier`);
+      if (!item || !text(item.statement) || !text(item.observation_route) || !text(item.falsifier)) errors.push(`consumer_simulations[${i}].items[${j}] requires statement, observation_route and falsifier`);
       if (item && (!Array.isArray(item.observation_refs) || !item.observation_refs.every(text))) errors.push(`consumer_simulations[${i}].items[${j}].observation_refs are invalid`);
       if (item?.binding_status === 'LOCATED' && (!texts(item.observation_refs))) errors.push(`consumer_simulations[${i}].items[${j}] LOCATED requires observation_refs`);
       const support = object(item?.support);
       for (const key of ['affordance','accommodation','continuity','accountability']) {
         const claim = object(support?.[key]);
         if (!claim || !text(claim.claim) || !text(claim.accountability_ref)
+          || !standings.has(claim.standing as CivsAssessmentStanding)
+          || !CIVS_ENFORCEMENT_MODES.includes(claim.enforcement_mode as CivsEnforcementMode)
           || !Array.isArray(claim.evidence_refs) || !claim.evidence_refs.every(text)
           || !Array.isArray(claim.limits) || !claim.limits.every(text)) {
           errors.push(`consumer_simulations[${i}].items[${j}].support.${key} is invalid`);
+          continue;
+        }
+        if (claim.standing === 'SUPPORTED' && (!texts(claim.evidence_refs) || !text(claim.currentness_ref))) {
+          errors.push(`consumer_simulations[${i}].items[${j}].support.${key} SUPPORTED requires evidence/currentness`);
         }
       }
     }
@@ -629,7 +656,7 @@ export function renderCapabilityInspectionRecord(cir: CapabilityInspectionRecord
     ...cir.consumer_simulations.flatMap(s => [
       `### ${s.ref}`,
       `Consumer: \`${s.consumer_basis.consumer_referent_ref}\`; use: ${s.consumer_basis.declared_use}.`,
-      ...s.items.map(i => `- **${i.quadrant} / ${i.binding_status}:** ${i.statement}`),
+      ...s.items.map(i => `- **${i.quadrant} / ${i.entry_kind} / ${i.binding_status}:** ${i.statement}`),
       '',
     ]),
     '## Graphical-door obligations',

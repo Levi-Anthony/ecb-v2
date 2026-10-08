@@ -1,5 +1,5 @@
 {
-  "contract": "ecos:civs-contract-vocabulary:0.1.0",
+  "contract": "ecos:civs-contract-vocabulary:0.1.1",
   "cir_contract": "ecos:capability-inspection-record:0.1.0",
   "canonical_validator": "server/civs.ts#validateCapabilityInspectionRecord",
   "relation_schema": {
@@ -67,6 +67,16 @@
     "generic owner fields are prohibited where role differences matter",
     "verification support does not transitively prove semantic premises, authority, exposure, or use",
     "graphical-door readiness is decomposed; no convenience boolean",
-    "field reconstitution is not a new Change primitive"
-  ]
+    "field reconstitution is not a new Change primitive",
+    "UL/UR/LL/LR consumer labels do not silently define their job; dependency hypothesis / observable correlate / shared norm / support surface is explicit",
+    "LOCATED consumer binding requires an attributable observation reference and route",
+    "SUPPORTED executable claims carry currentness and do not inherit truth/authority from mechanical execution"
+  ],
+  "consumer_simulation_item_kinds": {
+    "UL": "DEPENDENCY_HYPOTHESIS",
+    "UR": "OBSERVABLE_CORRELATE",
+    "LL": "SHARED_NORM",
+    "LR": "SUPPORT_SURFACE"
+  },
+  "executable_claim_enforcement": "Installation, verification, correspondence, portability/degradation, graphical-door and consumer-support claims carry STRUCTURAL/SEMANTIC/AUTHORITY/OBSERVATIONAL mode."
 }
