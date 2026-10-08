@@ -1,0 +1,1481 @@
+{
+  "contract": "ecos:capability-inspection-record:0.1.1",
+  "cir_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1",
+  "subject_ref": "ecos:domain-semantic-admission:0.1.0",
+  "subject_label": "Domain-Semantic Admission / D&I Boundary",
+  "purpose": {
+    "bounded_claim": "Given caller-declared atomic responsibilities, registered Native Package descriptors and attributable evidence references, the installed evaluator returns structurally admissible INHERIT / FEDERATE / EXTEND / QUALIFY dispositions under explicit gates. This CIR does not prove the supplied native-coverage or prior-art premises, cross-domain correspondence truth, refreshed connected-consumer exposure, hosted ordinary-use efficacy, or operational sustainment.",
+    "boundary_ref": "BRAIN:c5871f89-0c51-462d-831b-c90897a95e81#first-specimen-boundary",
+    "governing_orientation_ref": "BRAIN:c5871f89-0c51-462d-831b-c90897a95e81#G",
+    "frame_ref": "civs:frame:principal+fresh-agent-inspection",
+    "access_ref": "docs/civs-wp0-current-inventory-2026-10-07.json"
+  },
+  "installation_assessments": [
+    {
+      "kind": "specified",
+      "proposition": "The Domain-Semantic Admission responsibility/disposition contract is explicitly documented and bounded.",
+      "standing": "SUPPORTED",
+      "enforcement_mode": "STRUCTURAL",
+      "evidence_refs": [
+        "docs/domain-semantic-admission.md",
+        "BRAIN:c5871f89-0c51-462d-831b-c90897a95e81"
+      ],
+      "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "sensitivity_refs": [],
+      "limits": [
+        "Specification does not establish implementation or semantic truth."
+      ]
+    },
+    {
+      "kind": "implemented",
+      "proposition": "The evaluator, systems-engineering Native Package registry and ordinary search ingress are implemented on main.",
+      "standing": "SUPPORTED",
+      "enforcement_mode": "STRUCTURAL",
+      "evidence_refs": [
+        "server/domain-admission.ts",
+        "server/native-packages/systems-engineering.ts",
+        "server.ts"
+      ],
+      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "sensitivity_refs": [],
+      "limits": [
+        "Implementation presence does not prove current native premises or consumer exposure."
+      ]
+    },
+    {
+      "kind": "mechanically_qualified",
+      "proposition": "Deterministic inquiry/domain-admission tests pass on a source-equivalent edition of the inspected runtime.",
+      "standing": "SUPPORTED",
+      "enforcement_mode": "STRUCTURAL",
+      "evidence_refs": [
+        "GitHubActions:37706155075",
+        "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+      ],
+      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "sensitivity_refs": [
+        "tests/inquiry/domain-admission.test.ts#adequate-native-coverage-is-inherited",
+        "tests/inquiry/domain-admission.test.ts#adequate-native-semantics-plus-cross-domain-targets-federate"
+      ],
+      "limits": [
+        "PASS is bounded to tested structural propositions; it does not establish supplied semantic premises."
+      ]
+    },
+    {
+      "kind": "integrated",
+      "proposition": "The evaluator is composed into ordinary search ingress after situated inquiry orchestration and before final return.",
+      "standing": "SUPPORTED",
+      "enforcement_mode": "STRUCTURAL",
+      "evidence_refs": [
+        "server.ts",
+        "tests/inquiry/ingress.test.ts",
+        "GitHubActions:37706155075"
+      ],
+      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "sensitivity_refs": [],
+      "limits": [
+        "Integration does not establish connected action-schema reflection."
+      ]
+    },
+    {
+      "kind": "deployed",
+      "proposition": "A source-equivalent edition containing the inspected runtime is READY on the enduring Vercel Production service.",
+      "standing": "SUPPORTED",
+      "enforcement_mode": "OBSERVATIONAL",
+      "evidence_refs": [
+        "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ",
+        "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+      ],
+      "currentness_ref": "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ:READY",
+      "sensitivity_refs": [],
+      "limits": [
+        "Deployment metadata does not prove authenticated execution, consumer exposure, or use."
+      ]
+    },
+    {
+      "kind": "exposed",
+      "proposition": "A refreshed connected ordinary consumer advertises and can invoke inquiry.domain_admission.",
+      "standing": "NOT_ESTABLISHED",
+      "enforcement_mode": "OBSERVATIONAL",
+      "evidence_refs": [
+        "connected:ECB-v2-BRAIN:search-schema-snapshot"
+      ],
+      "sensitivity_refs": [],
+      "limits": [
+        "Observed connected search action advertises query + limit only; this is consumer-snapshot evidence, not backend absence."
+      ]
+    },
+    {
+      "kind": "situated_use_qualified",
+      "proposition": "A real connected consumer has successfully used Domain-Semantic Admission in an ordinary situated task with proof/standing distinctions preserved.",
+      "standing": "NOT_ESTABLISHED",
+      "enforcement_mode": "OBSERVATIONAL",
+      "evidence_refs": [
+        "Linear:ECO-218"
+      ],
+      "sensitivity_refs": [],
+      "limits": [
+        "Constructed tests and backend deployment are not ordinary consumer use."
+      ]
+    },
+    {
+      "kind": "operationally_sustained",
+      "proposition": "The capability has longitudinal hosted-use evidence and source-complete circulation binding under valid effect authority.",
+      "standing": "NOT_ESTABLISHED",
+      "enforcement_mode": "OBSERVATIONAL",
+      "evidence_refs": [
+        "Linear:ECO-214",
+        "scripts/eco-213/commission.ts"
+      ],
+      "sensitivity_refs": [],
+      "limits": [
+        "The circulation source manifest omits Domain-Semantic Admission imports and the twelve hosted-use obligations remain open."
+      ]
+    }
+  ],
+  "object_connections": [
+    {
+      "ref": "civs:rel:specifies-domain-admission",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:specifies",
+        "participants": [
+          {
+            "role": "specification",
+            "referent_id": "docs/domain-semantic-admission.md"
+          },
+          {
+            "role": "specified_subject",
+            "referent_id": "ecos:domain-semantic-admission:0.1.0"
+          }
+        ],
+        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "docs/domain-semantic-admission.md"
+          ],
+          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:implements-evaluator",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:implements",
+        "participants": [
+          {
+            "role": "implementation",
+            "referent_id": "server/domain-admission.ts"
+          },
+          {
+            "role": "implemented_contract",
+            "referent_id": "ecos:domain-semantic-admission:0.1.0"
+          }
+        ],
+        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "server/domain-admission.ts"
+          ],
+          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:implements-ingress",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:implements",
+        "participants": [
+          {
+            "role": "implementation",
+            "referent_id": "server.ts#search"
+          },
+          {
+            "role": "implemented_contract",
+            "referent_id": "ecb-v2-search/0.7.1"
+          }
+        ],
+        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "server.ts"
+          ],
+          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:tests-domain-admission",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:tests",
+        "participants": [
+          {
+            "role": "test",
+            "referent_id": "tests/inquiry/domain-admission.test.ts"
+          },
+          {
+            "role": "tested_subject",
+            "referent_id": "server/domain-admission.ts"
+          }
+        ],
+        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "GitHubActions:37706155075"
+          ],
+          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:qualifies-domain-admission",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:qualifies",
+        "participants": [
+          {
+            "role": "qualification",
+            "referent_id": "GitHubActions:37706155075"
+          },
+          {
+            "role": "qualified_subject",
+            "referent_id": "ecos:domain-semantic-admission:0.1.0"
+          }
+        ],
+        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "GitHubActions:37706155075"
+          ],
+          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:deploys-source-edition",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:deploys",
+        "participants": [
+          {
+            "role": "deployment",
+            "referent_id": "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ"
+          },
+          {
+            "role": "deployed_edition",
+            "referent_id": "github:commit:77f6ab2b1a443f48e7808aaacef352365373ed9e"
+          }
+        ],
+        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ"
+          ],
+          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:backend-exposes-domain-admission",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:exposes",
+        "participants": [
+          {
+            "role": "exposure_surface",
+            "referent_id": "server.ts#ordinary-search-ingress"
+          },
+          {
+            "role": "exposed_capability",
+            "referent_id": "ecos:domain-semantic-admission:0.1.0"
+          }
+        ],
+        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "server.ts",
+            "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ"
+          ],
+          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:eco202-coordinates",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:coordinates",
+        "participants": [
+          {
+            "role": "coordination_surface",
+            "referent_id": "Linear:ECO-202"
+          },
+          {
+            "role": "coordinated_work",
+            "referent_id": "ecos:domain-semantic-admission:0.1.0"
+          }
+        ],
+        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "Linear:ECO-202"
+          ],
+          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:depends-on-native-packages",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:depends_on",
+        "participants": [
+          {
+            "role": "dependent",
+            "referent_id": "ecos:domain-semantic-admission:0.1.0"
+          },
+          {
+            "role": "dependency",
+            "referent_id": "server/native-packages/systems-engineering.ts"
+          }
+        ],
+        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "server/native-packages/systems-engineering.ts"
+          ],
+          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:ci-evidence-for-mechanical",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:evidence_for",
+        "participants": [
+          {
+            "role": "evidence",
+            "referent_id": "GitHubActions:37706155075"
+          },
+          {
+            "role": "claim_or_assessment",
+            "referent_id": "civs:assessment:mechanically_qualified"
+          }
+        ],
+        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "GitHubActions:37706155075"
+          ],
+          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:qf-correspondence",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:question_forward_for",
+        "participants": [
+          {
+            "role": "question_forward",
+            "referent_id": "civs:qf:domain-admission:correspondence-truth"
+          },
+          {
+            "role": "unresolved_subject",
+            "referent_id": "ecos:domain-semantic-admission:0.1.0"
+          }
+        ],
+        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "UNRESOLVED",
+          "evidence_refs": [
+            "BRAIN:06b3ca69-0805-45aa-8ab9-cc75d618894b"
+          ],
+          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:projects-to-human",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:projects_to",
+        "participants": [
+          {
+            "role": "source",
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1"
+          },
+          {
+            "role": "projection",
+            "referent_id": "civs:projection:domain-semantic-admission:human"
+          }
+        ],
+        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "server/civs.ts",
+            "GitHubActions:37707382882@6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          ],
+          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        }
+      }
+    }
+  ],
+  "physical_realization": [
+    {
+      "kind": "repository",
+      "object_ref": "github:Levi-Anthony/ecb-v2",
+      "observation": "OBSERVED",
+      "evidence_refs": [
+        "docs/civs-wp0-current-inventory-2026-10-07.json"
+      ],
+      "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "limits": [
+        "Repository identity is not runtime execution."
+      ]
+    },
+    {
+      "kind": "module_runtime",
+      "object_ref": "server.ts + server/domain-admission.ts + server/native-packages/systems-engineering.ts",
+      "observation": "OBSERVED",
+      "evidence_refs": [
+        "server.ts",
+        "server/domain-admission.ts",
+        "GitHubActions:37706155075"
+      ],
+      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "limits": [
+        "Loaded module path is not consumer exposure."
+      ]
+    },
+    {
+      "kind": "deployment",
+      "object_ref": "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ",
+      "observation": "OBSERVED",
+      "evidence_refs": [
+        "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ"
+      ],
+      "currentness_ref": "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ:READY",
+      "limits": [
+        "READY metadata is not authenticated invocation evidence."
+      ]
+    },
+    {
+      "kind": "ingress",
+      "object_ref": "ecb-v2-search/0.7.1:ordinary-search",
+      "observation": "OBSERVED",
+      "evidence_refs": [
+        "server.ts",
+        "tests/inquiry/ingress.test.ts"
+      ],
+      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "limits": [
+        "Backend ingress does not establish frozen connected action-schema reflection."
+      ]
+    },
+    {
+      "kind": "persistence",
+      "object_ref": "BRAIN / immutable Artifact / D&I ledger custody surfaces",
+      "observation": "OBSERVED",
+      "evidence_refs": [
+        "docs/domain-semantic-admission.md",
+        "docs/indexical-relevance-integrity-reconciliation-2026-10-07.md"
+      ],
+      "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "limits": [
+        "Domain-admission decisions are not automatically durable merely because a working projection was returned."
+      ]
+    },
+    {
+      "kind": "consumer_surface",
+      "object_ref": "connected:ECB-v2-BRAIN:search-action-snapshot",
+      "observation": "OBSERVED",
+      "evidence_refs": [
+        "connected:ECB-v2-BRAIN:search-schema-snapshot"
+      ],
+      "currentness_ref": "consumer-snapshot:2026-10-07",
+      "limits": [
+        "Observed schema advertises query + limit only; inquiry.domain_admission exposure is NOT ESTABLISHED."
+      ]
+    }
+  ],
+  "enforcement_inspection": [
+    {
+      "requirement_ref": "domain-admission:prior-art-checked",
+      "modes": [
+        "STRUCTURAL",
+        "SEMANTIC"
+      ],
+      "surface_refs": [
+        "server/domain-admission.ts"
+      ],
+      "evidence_refs": [
+        "tests/inquiry/domain-admission.test.ts"
+      ],
+      "limits": [
+        "Code checks declared prior_art.checked/evidence fields; it does not perform the semantic prior-art investigation."
+      ]
+    },
+    {
+      "requirement_ref": "domain-admission:FEDERATE-targets",
+      "modes": [
+        "STRUCTURAL"
+      ],
+      "surface_refs": [
+        "server/domain-admission.ts"
+      ],
+      "evidence_refs": [
+        "tests/inquiry/domain-admission.test.ts",
+        "tests/civs/contract.test.ts"
+      ],
+      "limits": [
+        "Structural target presence does not prove correspondence truth."
+      ]
+    },
+    {
+      "requirement_ref": "domain-admission:EXTEND-burden",
+      "modes": [
+        "STRUCTURAL",
+        "SEMANTIC"
+      ],
+      "surface_refs": [
+        "server/domain-admission.ts"
+      ],
+      "evidence_refs": [
+        "tests/inquiry/domain-admission.test.ts"
+      ],
+      "limits": [
+        "Named unmet obligation/mechanism/falsifier are structurally required; substantive truth remains semantic."
+      ]
+    },
+    {
+      "requirement_ref": "domain-admission:blocking-QUALIFY-HOLD",
+      "modes": [
+        "STRUCTURAL"
+      ],
+      "surface_refs": [
+        "server/domain-admission.ts",
+        "server.ts"
+      ],
+      "evidence_refs": [
+        "tests/inquiry/domain-admission.test.ts",
+        "tests/inquiry/ingress.test.ts"
+      ],
+      "limits": [
+        "HOLD routing is structural; it does not decide the unresolved semantic question."
+      ]
+    },
+    {
+      "requirement_ref": "ordinary-ingress:authenticated-recover",
+      "modes": [
+        "AUTHORITY"
+      ],
+      "surface_refs": [
+        "server.ts"
+      ],
+      "evidence_refs": [
+        "tests/inquiry/ingress.test.ts",
+        "GitHubActions:37706155075"
+      ],
+      "limits": [
+        "Capability access does not confer semantic authority or hosted effect authorization."
+      ]
+    },
+    {
+      "requirement_ref": "native-source-currentness",
+      "modes": [
+        "OBSERVATIONAL",
+        "SEMANTIC"
+      ],
+      "surface_refs": [
+        "server/native-packages/systems-engineering.ts"
+      ],
+      "evidence_refs": [
+        "docs/domain-semantic-admission.md"
+      ],
+      "limits": [
+        "Descriptors point to native currentness routes; current coverage judgments are supplied premises until independently requalified."
+      ]
+    }
+  ],
+  "worked_trace": {
+    "claim": "For the corpus responsibility native-to-ecos-correspondence, declared ADEQUATE native coverage plus requires_cross_domain_correspondence=true and explicit correspondence_targets structurally returns FEDERATE; removing the targets routes the same atom to QUALIFY/CORRESPONDENCE_TARGET_REQUIRED.",
+    "input_refs": [
+      "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json#native-to-ecos-correspondence"
+    ],
+    "step_refs": [
+      "server/domain-admission.ts#evaluateDIBoundary",
+      "tests/civs/contract.test.ts#first-FEDERATE-trace"
+    ],
+    "output_ref": "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json#expected.decisions.native-to-ecos-correspondence",
+    "proof_boundary": "This proves the deterministic structural gate is sensitive to declared correspondence targets under the supplied coverage/evidence premises. It does not prove native coverage, semantic correspondence, equivalence, invertibility, compositionality, or a correspondence mathematics."
+  },
+  "verification_links": [
+    {
+      "ref": "civs:verify:domain-admission-contract-tests",
+      "proposition": "The evaluator enforces the declared INHERIT/FEDERATE/EXTEND/QUALIFY structural gates on tested inputs.",
+      "method_ref": "tests/inquiry/domain-admission.test.ts",
+      "enforcement_mode": "STRUCTURAL",
+      "evidence_refs": [
+        "GitHubActions:37706155075"
+      ],
+      "standing": "SUPPORTED",
+      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "sensitivity_refs": [
+        "test:adequate-native-coverage-is-inherited",
+        "test:adequate-native-semantics-plus-cross-domain-targets-federate",
+        "test:unchecked-native-prior-art-blocks"
+      ],
+      "limits": [
+        "No semantic premise truth or authority is established."
+      ]
+    },
+    {
+      "ref": "civs:verify:first-federate-negative-control",
+      "proposition": "The first specimen FEDERATE trace changes to QUALIFY when correspondence_targets are removed.",
+      "method_ref": "tests/civs/contract.test.ts",
+      "enforcement_mode": "STRUCTURAL",
+      "evidence_refs": [
+        "tests/civs/contract.test.ts#first-FEDERATE-trace"
+      ],
+      "standing": "NOT_ESTABLISHED",
+      "sensitivity_refs": [
+        "planned:remove-correspondence-targets"
+      ],
+      "limits": [
+        "Becomes SUPPORTED only after the first-specimen CI run passes."
+      ]
+    },
+    {
+      "ref": "civs:verify:ingress-composition",
+      "proposition": "Ordinary search composes situated inquiry with systems-engineering Domain-Semantic Admission without adding a public tool.",
+      "method_ref": "tests/inquiry/ingress.test.ts",
+      "enforcement_mode": "STRUCTURAL",
+      "evidence_refs": [
+        "GitHubActions:37706155075"
+      ],
+      "standing": "SUPPORTED",
+      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "sensitivity_refs": [
+        "test:query-only-search-preserves-prior-contract"
+      ],
+      "limits": [
+        "Connected frozen action snapshots are a separate exposure boundary."
+      ]
+    },
+    {
+      "ref": "civs:verify:civs-contract",
+      "proposition": "The reusable CIR contract rejects scalar installation status, generic owner, inferred Level, generic relation roles, cross-quadrant consumer-job bleed, empty located observations and graphical readiness boolean.",
+      "method_ref": "tests/civs/contract.test.ts",
+      "enforcement_mode": "STRUCTURAL",
+      "evidence_refs": [
+        "GitHubActions:37707382882@6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+      ],
+      "standing": "SUPPORTED",
+      "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "sensitivity_refs": [
+        "test:installation-assessment-is-not-scalar",
+        "test:generic-owner-and-inferred-Level-are-rejected",
+        "test:CIVS-object-connection-refuses-generic-participant-roles",
+        "test:consumer-quadrant-job-is-explicit",
+        "test:empty-reference-arrays-do-not-satisfy-relied-evidence"
+      ],
+      "limits": [
+        "Generic contract qualification does not by itself qualify this first specimen's empirical consumer hypotheses."
+      ]
+    }
+  ],
+  "field_reconstitution": {
+    "proposition": "Consequential changes in R/B/G/F, evidence/currentness or execution envelope are surfaced through existing typed changes/delta and routed to dependency/requalification review rather than a generic refresh or new FieldReconstitution primitive.",
+    "typed_change_refs": [
+      "URG:ReviseBoundary",
+      "URG:Reseat",
+      "URG:ChangeFrame",
+      "URG:Reorient",
+      "URG:RequalifyStanding",
+      "ECO-202:projectionDelta"
+    ],
+    "affected_dependency_refs": [
+      "ecos:domain-semantic-admission:0.1.0",
+      "server/native-packages/systems-engineering.ts",
+      "connected-consumer-schema"
+    ],
+    "requalification_refs": [
+      "ECO-202",
+      "ECO-218",
+      "ECO-214"
+    ],
+    "standing": "SUPPORTED",
+    "enforcement_mode": "STRUCTURAL",
+    "evidence_refs": [
+      "server/orchestration.ts",
+      "docs/indexical-relevance-integrity-reconciliation-2026-10-07.md",
+      "GitHubActions:37704663545"
+    ],
+    "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+    "limits": [
+      "projectionDelta is descriptive evidence, not a Change/State/standing record; semantic consequence remains attributable."
+    ]
+  },
+  "correspondence_inspections": [
+    {
+      "ref": "civs:correspondence:native-to-ecos",
+      "relation_kind_ref": "cross-domain semantic correspondence",
+      "source_ref": "SysML native model element",
+      "target_ref": "ECOS Referent/Claim",
+      "basis_ref": "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json#native-to-ecos-correspondence",
+      "semantic_owner_ref": "OMG SysML / Systems Modeling API native semantics + ECOS separately owned semantics",
+      "direction": "native-to-ECOS",
+      "cardinality": "UNRESOLVED",
+      "standing": "NOT_ESTABLISHED",
+      "enforcement_mode": "SEMANTIC",
+      "evidence_refs": [
+        "server/domain-admission.ts",
+        "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json"
+      ],
+      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "composition_expectation": "Must preserve native meaning across any composed cross-domain mapping.",
+      "inversion_expectation": "Not established.",
+      "partiality_expectation": "Likely partial; exact contract unresolved.",
+      "unresolved_mathematical_requirements": [
+        "relation kind semantics",
+        "composition law where consequential",
+        "partiality",
+        "invertibility requirements if any",
+        "schema/edition change behavior"
+      ],
+      "question_forward_refs": [
+        "civs:qf:domain-admission:correspondence-truth"
+      ]
+    }
+  ],
+  "portability": {
+    "proposition": "A different runtime/renderer can realize the same Domain-Semantic Admission and CIR semantic contracts without changing native ownership or inspection truth.",
+    "standing": "UNKNOWN",
+    "enforcement_mode": "STRUCTURAL",
+    "evidence_refs": [],
+    "limits": [
+      "No substitute implementation has been qualified."
+    ]
+  },
+  "graceful_degradation": {
+    "proposition": "The capability and CIR remain inspectable through text/API surfaces when no graphical substrate is present.",
+    "standing": "SUPPORTED",
+    "enforcement_mode": "OBSERVATIONAL",
+    "evidence_refs": [
+      "docs/domain-semantic-admission.md",
+      "server.ts",
+      "docs/civs-contract.md"
+    ],
+    "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+    "limits": [
+      "Does not prove graceful degradation when BRAIN, Linear, deployment metadata or native sources are unavailable."
+    ]
+  },
+  "role_assignments": [
+    {
+      "ref": "civs:role:principal",
+      "role_kind": "principal_accountability",
+      "subject_ref": "principal:Levi-Anthony",
+      "evidence_refs": [
+        "BRAIN:c5871f89-0c51-462d-831b-c90897a95e81",
+        "BRAIN:73994c17-d5b5-48d1-9698-fa656c393e91"
+      ],
+      "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "scope": "Acceptance/commission and Principal decisions; not native-domain semantic authority."
+    },
+    {
+      "ref": "civs:role:coordination",
+      "role_kind": "coordination_assignment",
+      "subject_ref": "Linear:ECO-202:assignee:Levi-Anthony",
+      "evidence_refs": [
+        "Linear:ECO-202"
+      ],
+      "currentness_ref": "Linear:ECO-202:Working@2026-10-07T23:56:16.236Z",
+      "scope": "Execution coordination for inquiry/Domain-Semantic Admission; assignment does not confer native semantic authority."
+    },
+    {
+      "ref": "civs:role:native-semantic",
+      "role_kind": "semantic_authority",
+      "subject_ref": "native-authorities:OMG+ISO+NASA",
+      "evidence_refs": [
+        "server/native-packages/systems-engineering.ts"
+      ],
+      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "scope": "Native systems-engineering semantics/editions within their own sources; not ECOS governance."
+    },
+    {
+      "ref": "civs:role:maintenance",
+      "role_kind": "maintenance_responsibility",
+      "subject_ref": "Linear:ECO-202",
+      "evidence_refs": [
+        "docs/domain-semantic-admission.md",
+        "Linear:ECO-202"
+      ],
+      "currentness_ref": "Linear:ECO-202:Working@2026-10-07T23:56:16.236Z",
+      "scope": "Evaluator integration/current projection maintenance."
+    },
+    {
+      "ref": "civs:role:custody-git",
+      "role_kind": "custody",
+      "subject_ref": "GitHub:Levi-Anthony/ecb-v2",
+      "evidence_refs": [
+        "docs/civs-wp0-current-inventory-2026-10-07.json"
+      ],
+      "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "scope": "Repository source and machine/human CIR files; custody does not confer semantic standing."
+    },
+    {
+      "ref": "civs:role:verification",
+      "role_kind": "verification_responsibility",
+      "subject_ref": "GitHubActions:inquiry+civs",
+      "evidence_refs": [
+        "GitHubActions:37706155075",
+        "GitHubActions:37707382882@6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+      ],
+      "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "scope": "Mechanical checks only; verification does not confer truth/authority beyond checked propositions."
+    },
+    {
+      "ref": "civs:role:action-authority",
+      "role_kind": "action_authority",
+      "subject_ref": "BRAIN:CIVS-accepted-implementation-commission",
+      "evidence_refs": [
+        "BRAIN:0f654aaa-f3e8-4733-afed-cec7fcd66284"
+      ],
+      "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "scope": "WP0→WP1→WP2 and first CIR within accepted boundary; hosted effects/formalism selection remain excluded."
+    }
+  ],
+  "alternatives": [
+    {
+      "ref": "civs:alt:start-here-as-cir",
+      "description": "Use START_HERE.md as the CIR.",
+      "standing": "REJECTED",
+      "evidence_refs": [
+        "docs/capability-inspection-verification-spine-plan.md"
+      ],
+      "reentry_condition": "None under current architecture; it is a reentry projection, not the inspection record."
+    },
+    {
+      "ref": "civs:alt:di-ledger-as-cir",
+      "description": "Use the Systems Engineering D&I ledger as the CIR.",
+      "standing": "REJECTED",
+      "evidence_refs": [
+        "docs/capability-inspection-verification-spine-plan.md"
+      ],
+      "reentry_condition": "Only revisit if the generic capability-inspection job collapses into domain-comparison history, which is not current standing."
+    },
+    {
+      "ref": "civs:alt:scalar-installed",
+      "description": "Collapse installation to one installed/not-installed state.",
+      "standing": "REJECTED",
+      "evidence_refs": [
+        "docs/capability-inspection-verification-spine-audit-2026-10-07.md",
+        "server/civs.ts"
+      ]
+    },
+    {
+      "ref": "civs:alt:generic-edge-bag",
+      "description": "Represent object connections as generic source/target edges.",
+      "standing": "REJECTED",
+      "evidence_refs": [
+        "research/urg-kernel/URG-Core-Register-B-Candidate-v1.0.md",
+        "server/civs.ts"
+      ]
+    },
+    {
+      "ref": "civs:alt:dashboard-first",
+      "description": "Build a bespoke persisted dashboard before shared-object semantics/control obligations are earned.",
+      "standing": "REJECTED",
+      "evidence_refs": [
+        "BRAIN:73994c17-d5b5-48d1-9698-fa656c393e91"
+      ]
+    }
+  ],
+  "cold_reader_bridges": [
+    {
+      "ref": "civs:bridge:what",
+      "question": "What exactly does Domain-Semantic Admission decide?",
+      "answer_route_refs": [
+        "docs/domain-semantic-admission.md",
+        "server/domain-admission.ts",
+        "civs:verify:domain-admission-contract-tests"
+      ],
+      "no_invention_rule": "Read the bounded claim and gate code; do not promote structural disposition into semantic truth."
+    },
+    {
+      "ref": "civs:bridge:where",
+      "question": "Where does the capability physically exist?",
+      "answer_route_refs": [
+        "physical:repository",
+        "physical:module_runtime",
+        "physical:deployment",
+        "physical:ingress",
+        "physical:persistence",
+        "physical:consumer_surface"
+      ],
+      "no_invention_rule": "Treat each coordinate independently; a repository path is not a server and deployment is not exposure."
+    },
+    {
+      "ref": "civs:bridge:federate",
+      "question": "What does FEDERATE prove in the first worked trace?",
+      "answer_route_refs": [
+        "civs:verify:first-federate-negative-control",
+        "civs:qf:domain-admission:correspondence-truth"
+      ],
+      "no_invention_rule": "FEDERATE proves only structural routing under declared premises; correspondence truth remains open."
+    },
+    {
+      "ref": "civs:bridge:consumer",
+      "question": "Can a connected consumer use this now?",
+      "answer_route_refs": [
+        "civs:qf:domain-admission:connected-consumer-exposure",
+        "Linear:ECO-218"
+      ],
+      "no_invention_rule": "Do not infer connected exposure from backend code or Production READY metadata."
+    }
+  ],
+  "questions_forward": [
+    {
+      "ref": "civs:qf:domain-admission:correspondence-truth",
+      "record": {
+        "kind": "question_forward",
+        "unresolved_ref": "civs:qf:domain-admission:correspondence-truth",
+        "basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "current_standing_ref": "NOT_ESTABLISHED:structural-FEDERATE-only",
+        "discriminator_question": "What attributable relation or mapping law warrants the native SysML element ↔ ECOS Referent/Claim correspondence beyond structural admission?",
+        "paired_signal_scenario": "A qualified mapping account establishes the bounded semantic correspondence; otherwise FEDERATE remains only a routing disposition.",
+        "evidence_change_criteria": "Recover explicit source/target semantics, semantic owner, mapping basis, and evidence sufficient to test composition/partiality/inversion requirements where consequential.",
+        "alternative_signal_routing": "If no such warrant is available, retain correspondence as unresolved and do not select a mathematical formalism by analogy.",
+        "decision_consequence": "Do not promote FEDERATE into correspondence truth, equivalence, invertibility, or a chosen formalism.",
+        "return_route": "CIVS correspondence inspection / ECO-202",
+        "reentry_condition": "Reenter when attributable cross-domain mapping evidence or a falsifying native equivalent is available."
+      }
+    },
+    {
+      "ref": "civs:qf:domain-admission:connected-consumer-exposure",
+      "record": {
+        "kind": "question_forward",
+        "unresolved_ref": "civs:qf:domain-admission:connected-consumer-exposure",
+        "basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "current_standing_ref": "NOT_ESTABLISHED:connected-action-snapshot",
+        "discriminator_question": "Does a refreshed connected consumer advertise and successfully invoke search.inquiry.domain_admission against the enduring endpoint?",
+        "paired_signal_scenario": "A fresh consumer schema exposes the field and an authenticated call returns the 0.7.1/indexical-integrity result; otherwise the consumer boundary remains degraded.",
+        "evidence_change_criteria": "Refresh/review/publish the action snapshot and perform fresh-consumer conformance with exact endpoint/schema evidence.",
+        "alternative_signal_routing": "If the backend remains current but the consumer still omits the field, route repair to ECO-218 without changing semantic standing.",
+        "decision_consequence": "Do not call connected-consumer exposure or situated use qualified.",
+        "return_route": "ECO-218",
+        "reentry_condition": "Reenter after connected action refresh/publish or a new consumer snapshot."
+      }
+    },
+    {
+      "ref": "civs:qf:domain-admission:hosted-sustainment",
+      "record": {
+        "kind": "question_forward",
+        "unresolved_ref": "civs:qf:domain-admission:hosted-sustainment",
+        "basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "current_standing_ref": "NOT_ESTABLISHED:ECO-214-needs-input",
+        "discriminator_question": "Can the exact source-complete current circulation edition run the twelve hosted-use obligations under a separately valid effect envelope?",
+        "paired_signal_scenario": "A source-complete binding plus bounded hosted runs satisfy the declared obligations; otherwise sustainment remains unqualified.",
+        "evidence_change_criteria": "Repair the circulation source manifest, rebind the exact current edition, establish valid custody/effect authority, and run the owned obligations.",
+        "alternative_signal_routing": "If binding or authority is incomplete, remain dormant and preserve the blocking evidence.",
+        "decision_consequence": "Do not infer operational sustainment from deterministic CI or deployment readiness.",
+        "return_route": "ECO-214",
+        "reentry_condition": "Reenter after source-complete binding and separately authorized hosted-use qualification."
+      }
+    }
+  ],
+  "verification": {
+    "observed_at_ref": "CIVS:first-specimen:after-GitHubActions:37707382882",
+    "as_of_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+    "currentness_refs": [
+      "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ:READY",
+      "Linear:ECO-202:Working",
+      "connected:ECB-v2-BRAIN:search-schema-snapshot"
+    ]
+  },
+  "vertical_placement": {
+    "working_band": "projection",
+    "containing_whole_refs": [
+      "ecos:civs",
+      "sigma-ecos:meta-architecture"
+    ]
+  },
+  "participatory_neighborhood": {
+    "relation_refs": [
+      "civs:rel:specifies-domain-admission",
+      "civs:rel:implements-evaluator",
+      "civs:rel:tests-domain-admission",
+      "civs:rel:qualifies-domain-admission",
+      "civs:rel:deploys-source-edition",
+      "civs:rel:backend-exposes-domain-admission",
+      "civs:rel:eco202-coordinates",
+      "civs:rel:depends-on-native-packages",
+      "civs:rel:qf-correspondence",
+      "civs:rel:projects-to-human"
+    ],
+    "role_assignment_refs": [
+      "civs:role:principal",
+      "civs:role:coordination",
+      "civs:role:native-semantic",
+      "civs:role:maintenance",
+      "civs:role:custody-git",
+      "civs:role:verification",
+      "civs:role:action-authority"
+    ]
+  },
+  "consumer_simulations": [
+    {
+      "ref": "civs:consumer-sim:fresh-agent-domain-admission",
+      "consumer_basis": {
+        "consumer_referent_ref": "ecos:consumer:fresh-agent",
+        "boundary_ref": "civs:consumer-boundary:domain-admission-cold-read",
+        "governing_orientation_ref": "civs:use:independent-cold-inspection",
+        "mapper_ref": "civs:mapper:fresh-agent",
+        "frame_ref": "civs:frame:cold-reader",
+        "access_ref": "github+BRAIN+Linear+Vercel:read",
+        "declared_use": "Recover what Domain-Semantic Admission does, predict a structural gate, locate physical realization, distinguish premise from proof and deployed from connected exposure, and recover reentry without hidden-bridge invention."
+      },
+      "items": [
+        {
+          "ref": "civs:consumer:UL:premise-proof",
+          "quadrant": "UL",
+          "entry_kind": "DEPENDENCY_HYPOTHESIS",
+          "binding_status": "LATENT",
+          "statement": "Hypothesis: legitimate use requires the consumer to distinguish supplied semantic premises from what the structural evaluator actually proves, and to distinguish deployment from connected exposure.",
+          "observation_refs": [],
+          "observation_route": "future fresh-agent cold-read qualification",
+          "falsifier": "A cold consumer can reliably orient, predict the gate, preserve authority/currentness and avoid proof inflation without this dependency, or another dependency explains performance.",
+          "support": {
+            "affordance": {
+              "claim": "CIR exposes bounded claim, installation assessments and proof boundary.",
+              "standing": "NOT_ESTABLISHED",
+              "enforcement_mode": "STRUCTURAL",
+              "evidence_refs": [],
+              "accountability_ref": "civs:role:verification",
+              "limits": [
+                "Consumer behavior not yet observed."
+              ]
+            },
+            "accommodation": {
+              "claim": "Generated human projection explains the same machine CIR in a cold-readable form.",
+              "standing": "NOT_ESTABLISHED",
+              "enforcement_mode": "STRUCTURAL",
+              "evidence_refs": [],
+              "accountability_ref": "civs:role:maintenance",
+              "limits": [
+                "No graphical renderer/control substrate."
+              ]
+            },
+            "continuity": {
+              "claim": "Question Forward and exact refs preserve unresolved correspondence/exposure for reentry.",
+              "standing": "NOT_ESTABLISHED",
+              "enforcement_mode": "STRUCTURAL",
+              "evidence_refs": [],
+              "accountability_ref": "civs:role:maintenance",
+              "limits": [
+                "Fresh-agent transfer not yet independently qualified."
+              ]
+            },
+            "accountability": {
+              "claim": "Principal, coordination, native-semantic and verification roles remain distinct.",
+              "standing": "NOT_ESTABLISHED",
+              "enforcement_mode": "AUTHORITY",
+              "evidence_refs": [],
+              "accountability_ref": "civs:role:principal",
+              "limits": [
+                "Hypothesis remains latent."
+              ]
+            }
+          }
+        },
+        {
+          "ref": "civs:consumer:UR:predict-gate",
+          "quadrant": "UR",
+          "entry_kind": "OBSERVABLE_CORRELATE",
+          "binding_status": "LOCATED",
+          "statement": "Observable correlate: a bounded test can predict FEDERATE for the exact corpus atom and detect removal of correspondence targets by routing to QUALIFY.",
+          "observation_refs": [
+            "tests/civs/contract.test.ts#first-FEDERATE-trace",
+            "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json#native-to-ecos-correspondence"
+          ],
+          "observation_route": "run the first-specimen CIVS CI test and inspect its exact positive/negative dispositions",
+          "correlation_ref": "civs:consumer:UL:premise-proof",
+          "falsifier": "The exact negative control fails to change the disposition or a future cold consumer cannot use the located evidence to predict the gate.",
+          "support": {
+            "affordance": {
+              "claim": "Exact corpus/code/test refs permit deterministic gate traversal.",
+              "standing": "SUPPORTED",
+              "enforcement_mode": "STRUCTURAL",
+              "evidence_refs": [
+                "tests/civs/contract.test.ts"
+              ],
+              "currentness_ref": "GitHubActions:37707382882@6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "accountability_ref": "civs:role:verification",
+              "limits": [
+                "Human/agent consumer behavior still requires separate observation."
+              ]
+            },
+            "accommodation": {
+              "claim": "Human projection states the worked trace and proof boundary.",
+              "standing": "SUPPORTED",
+              "enforcement_mode": "STRUCTURAL",
+              "evidence_refs": [
+                "server/civs.ts"
+              ],
+              "currentness_ref": "GitHubActions:37707382882@6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "accountability_ref": "civs:role:maintenance",
+              "limits": [
+                "Text projection only."
+              ]
+            },
+            "continuity": {
+              "claim": "The trace is source-linked to exact corpus and evaluator refs.",
+              "standing": "SUPPORTED",
+              "enforcement_mode": "STRUCTURAL",
+              "evidence_refs": [
+                "docs/civs-wp0-current-inventory-2026-10-07.json"
+              ],
+              "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "accountability_ref": "civs:role:custody-git",
+              "limits": [
+                "Future editions require requalification."
+              ]
+            },
+            "accountability": {
+              "claim": "Mechanical gate verification is owned by CIVS/inquiry CI, not by native semantic authority.",
+              "standing": "SUPPORTED",
+              "enforcement_mode": "AUTHORITY",
+              "evidence_refs": [
+                "GitHubActions:37706155075"
+              ],
+              "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "accountability_ref": "civs:role:verification",
+              "limits": [
+                "CI is not semantic authority."
+              ]
+            }
+          }
+        },
+        {
+          "ref": "civs:consumer:LL:norms-authority",
+          "quadrant": "LL",
+          "entry_kind": "SHARED_NORM",
+          "binding_status": "LOCATED",
+          "statement": "Shared governing support includes no silent promotion, two-door reconciliation, native-domain ownership, distinct action/semantic/verification roles and no-invention reentry rules.",
+          "observation_refs": [
+            "docs/invariants.md",
+            "BRAIN:73994c17-d5b5-48d1-9698-fa656c393e91",
+            "docs/civs-contract.md"
+          ],
+          "observation_route": "recover governing source precedence and role scopes from exact linked records",
+          "falsifier": "A consequential governing rule cannot be recovered or the CIR collapses coordination/verification into semantic/action authority.",
+          "support": {
+            "affordance": {
+              "claim": "Role-specific assignments and source precedence make legitimate reliance inspectable.",
+              "standing": "SUPPORTED",
+              "enforcement_mode": "AUTHORITY",
+              "evidence_refs": [
+                "docs/invariants.md"
+              ],
+              "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "accountability_ref": "civs:role:principal",
+              "limits": [
+                "Does not guarantee a consumer reads them correctly."
+              ]
+            },
+            "accommodation": {
+              "claim": "Vocabulary is expanded in human projection while machine refs remain stable.",
+              "standing": "SUPPORTED",
+              "enforcement_mode": "STRUCTURAL",
+              "evidence_refs": [
+                "docs/civs-contract.md"
+              ],
+              "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "accountability_ref": "civs:role:maintenance",
+              "limits": [
+                "PGO long-form Namecrafting remains open."
+              ]
+            },
+            "continuity": {
+              "claim": "Governing BRAIN/GitHub refs survive handoff independently of the projection.",
+              "standing": "SUPPORTED",
+              "enforcement_mode": "STRUCTURAL",
+              "evidence_refs": [
+                "BRAIN:c5871f89-0c51-462d-831b-c90897a95e81"
+              ],
+              "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "accountability_ref": "civs:role:custody-git",
+              "limits": [
+                "Currentness must still be checked."
+              ]
+            },
+            "accountability": {
+              "claim": "Principal and native semantic authorities retain separate scopes.",
+              "standing": "SUPPORTED",
+              "enforcement_mode": "AUTHORITY",
+              "evidence_refs": [
+                "server/native-packages/systems-engineering.ts"
+              ],
+              "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "accountability_ref": "civs:role:principal",
+              "limits": [
+                "No authority by latest writer."
+              ]
+            }
+          }
+        },
+        {
+          "ref": "civs:consumer:LR:located-surfaces",
+          "quadrant": "LR",
+          "entry_kind": "SUPPORT_SURFACE",
+          "binding_status": "LOCATED",
+          "statement": "Concrete participatory surfaces include exact GitHub objects/CI, Vercel deployment metadata, Linear coordination state and the connected BRAIN action-schema snapshot with its degraded exposure.",
+          "observation_refs": [
+            "docs/civs-wp0-current-inventory-2026-10-07.json",
+            "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ",
+            "Linear:ECO-202",
+            "connected:ECB-v2-BRAIN:search-schema-snapshot"
+          ],
+          "observation_route": "follow exact identifiers to each external surface and compare present state with this CIR as-of basis",
+          "falsifier": "A named surface cannot be recovered/currently located or its observed behavior contradicts the CIR description.",
+          "support": {
+            "affordance": {
+              "claim": "A reader can traverse from claim to code/test/deployment/consumer surface.",
+              "standing": "SUPPORTED",
+              "enforcement_mode": "STRUCTURAL",
+              "evidence_refs": [
+                "docs/civs-wp0-current-inventory-2026-10-07.json"
+              ],
+              "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "accountability_ref": "civs:role:maintenance",
+              "limits": [
+                "Some external surfaces are snapshot/currentness-sensitive."
+              ]
+            },
+            "accommodation": {
+              "claim": "Text/API inspection remains possible without the future graphical substrate.",
+              "standing": "SUPPORTED",
+              "enforcement_mode": "STRUCTURAL",
+              "evidence_refs": [
+                "docs/civs-contract.md"
+              ],
+              "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "accountability_ref": "civs:role:maintenance",
+              "limits": [
+                "No direct graphical controls."
+              ]
+            },
+            "continuity": {
+              "claim": "Exact IDs/commits/runs and QFs provide reentry after session changes.",
+              "standing": "SUPPORTED",
+              "enforcement_mode": "STRUCTURAL",
+              "evidence_refs": [
+                "docs/civs-wp0-current-inventory-2026-10-07.json"
+              ],
+              "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "accountability_ref": "civs:role:custody-git",
+              "limits": [
+                "External state may change after this CIR."
+              ]
+            },
+            "accountability": {
+              "claim": "Each surface carries its own coordination/custody/verification role rather than generic owner.",
+              "standing": "SUPPORTED",
+              "enforcement_mode": "AUTHORITY",
+              "evidence_refs": [
+                "server/civs.ts"
+              ],
+              "currentness_ref": "GitHubActions:37707382882@6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+              "accountability_ref": "civs:role:coordination",
+              "limits": [
+                "External service authority remains separate."
+              ]
+            }
+          }
+        }
+      ],
+      "limits": [
+        "This is hypothesis-based consumer simulation. No fresh-agent behavioral qualification has yet converted the UL dependency hypothesis into an observed consumer fact."
+      ]
+    }
+  ],
+  "graphical_door": {
+    "obligations": [
+      {
+        "kind": "shared_object_identity",
+        "proposition": "Machine CIR and human view are produced by one renderer over the same record contract.",
+        "standing": "SUPPORTED",
+        "enforcement_mode": "STRUCTURAL",
+        "evidence_refs": [
+          "server/civs.ts",
+          "GitHubActions:37707382882@6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        ],
+        "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "limits": [
+          "The exact first-specimen file equality receives an additional CI check on publication."
+        ]
+      },
+      {
+        "kind": "typed_controls",
+        "proposition": "A graphical control substrate exposes typed attributable controls over shared objects.",
+        "standing": "NOT_ESTABLISHED",
+        "enforcement_mode": "STRUCTURAL",
+        "evidence_refs": [],
+        "limits": [
+          "Full graphical substrate is explicitly outside WP0-WP2."
+        ]
+      },
+      {
+        "kind": "standing_currentness_visibility",
+        "proposition": "Human CIR projection visibly reports independent standing and as-of/currentness references.",
+        "standing": "SUPPORTED",
+        "enforcement_mode": "STRUCTURAL",
+        "evidence_refs": [
+          "server/civs.ts",
+          "docs/civs-contract.md"
+        ],
+        "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "limits": [
+          "No live auto-refresh is claimed."
+        ]
+      },
+      {
+        "kind": "change_history_visibility",
+        "proposition": "A graphical view exposes traversable change history for the same objects.",
+        "standing": "NOT_ESTABLISHED",
+        "enforcement_mode": "STRUCTURAL",
+        "evidence_refs": [],
+        "limits": [
+          "Typed changes exist, but no graphical history surface is implemented."
+        ]
+      },
+      {
+        "kind": "projection_omissions_visibility",
+        "proposition": "The human projection explicitly renders CIR omissions.",
+        "standing": "SUPPORTED",
+        "enforcement_mode": "STRUCTURAL",
+        "evidence_refs": [
+          "server/civs.ts",
+          "GitHubActions:37707382882@6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        ],
+        "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "limits": [
+          "Only declared CIR omissions are rendered."
+        ]
+      },
+      {
+        "kind": "human_agent_reconciliation",
+        "proposition": "Human edits and agent changes reconcile through the same live CIR/object controls.",
+        "standing": "NOT_ESTABLISHED",
+        "enforcement_mode": "STRUCTURAL",
+        "evidence_refs": [],
+        "limits": [
+          "The current human view is generated/read-only; no bidirectional graphical control surface exists."
+        ]
+      },
+      {
+        "kind": "text_api_graceful_fallback",
+        "proposition": "Inspection remains possible through machine JSON, generated Markdown and existing API/source surfaces without graphics.",
+        "standing": "SUPPORTED",
+        "enforcement_mode": "OBSERVATIONAL",
+        "evidence_refs": [
+          "server/civs.ts",
+          "docs/civs-contract.md",
+          "server.ts"
+        ],
+        "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "limits": [
+          "Does not prove graceful degradation for loss of external evidence providers."
+        ]
+      }
+    ]
+  },
+  "source_refs": [
+    "docs/civs-wp0-current-inventory-2026-10-07.json",
+    "docs/capability-inspection-verification-spine-plan.md",
+    "docs/capability-inspection-verification-spine-audit-2026-10-07.md",
+    "docs/domain-semantic-admission.md",
+    "server/domain-admission.ts",
+    "server.ts",
+    "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json",
+    "BRAIN:c5871f89-0c51-462d-831b-c90897a95e81",
+    "BRAIN:73994c17-d5b5-48d1-9698-fa656c393e91",
+    "BRAIN:06b3ca69-0805-45aa-8ab9-cc75d618894b"
+  ],
+  "omissions": [
+    "No connected-consumer invocation proving inquiry.domain_admission exposure.",
+    "No ordinary hosted-use or longitudinal sustainment evidence.",
+    "No source-complete circulation binding for Domain-Semantic Admission imports.",
+    "No proof that supplied native_coverage or prior_art judgments are semantically correct/current.",
+    "No cross-domain correspondence truth, equivalence, invertibility or selected mathematics.",
+    "No fresh-agent behavioral cold-read qualification yet.",
+    "No universal graphical projection/control substrate or bidirectional human control surface.",
+    "PGO long-form Namecrafting remains open."
+  ]
+}

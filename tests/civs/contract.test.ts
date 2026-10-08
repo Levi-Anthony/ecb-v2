@@ -7,6 +7,8 @@ import {
   validateCapabilityInspectionRecord, type CapabilityInspectionRecord,
 } from '../../server/civs.ts';
 import type { QuestionForward } from '../../server/urg-core.ts';
+import { evaluateDIBoundary, type DomainAdmissionRequest } from '../../server/domain-admission.ts';
+import { systemsEngineeringNativePackages } from '../../server/native-packages/systems-engineering.ts';
 
 const basis = 'fixture:civs-basis';
 const relation = (kind: Parameters<typeof makeCivsRelation>[0], participants: Parameters<typeof makeCivsRelation>[1]) =>
@@ -213,4 +215,27 @@ test('SUPPORTED field-reconstitution and correspondence claims require currentne
     assert(result.errors.some(e => e.includes('field_reconstitution SUPPORTED requires evidence/currentness')));
     assert(result.errors.some(e => e.includes('correspondence_inspections[0] SUPPORTED requires evidence/currentness')));
   }
+});
+
+
+test('first Domain-Semantic Admission CIR validates and its human file is the exact generated projection', () => {
+  const cir = JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission.cir.json', import.meta.url), 'utf8')) as CapabilityInspectionRecord;
+  assert.deepEqual(validateCapabilityInspectionRecord(cir), { valid: true, errors: [] });
+  const human = readFileSync(new URL('../../docs/civs-domain-semantic-admission.md', import.meta.url), 'utf8');
+  assert.equal(human, renderCapabilityInspectionRecord(cir));
+});
+
+test('first FEDERATE trace proves structural sensitivity to explicit correspondence targets, not correspondence truth', () => {
+  const corpus = JSON.parse(readFileSync(new URL('../../research/systems-engineering/DI-Native-Package-Boundary-v0.1.json', import.meta.url), 'utf8'));
+  const responsibility = structuredClone(corpus.responsibilities.find((r: { id: string }) => r.id === 'native-to-ecos-correspondence'));
+  assert(responsibility);
+  const request: DomainAdmissionRequest = { domain: corpus.domain, inquiry_basis_ref: corpus.inquiry_basis_ref,
+    package_ids: corpus.package_ids, responsibilities: [responsibility] };
+  const positive = evaluateDIBoundary(request, systemsEngineeringNativePackages);
+  assert.equal(positive.decisions[0].disposition, 'FEDERATE');
+  const negative = structuredClone(responsibility);
+  negative.correspondence_targets = [];
+  const routed = evaluateDIBoundary({ ...request, responsibilities: [negative] }, systemsEngineeringNativePackages);
+  assert.equal(routed.decisions[0].disposition, 'QUALIFY');
+  assert(routed.decisions[0].gate_codes.includes('CORRESPONDENCE_TARGET_REQUIRED'));
 });
