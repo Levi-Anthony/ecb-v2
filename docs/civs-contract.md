@@ -76,3 +76,10 @@ The URG Projection mapping also carries typed object-connection refs and Questio
 `docs/civs-reentry.md` is the compact reentry procedure over the machine CIR. It does not duplicate current capability state. It defines the inspection order, fail-visible HOLD routes, no-invention rules and fourteen-item cold-reader return.
 
 A dedicated test binds the procedure to the machine CIR handle and core nonpromotion rules. Passing that test establishes instruction-surface structure only; an independent fresh-worker behavioral run remains a later qualification obligation.
+
+
+## WP5 promotion into the first CIR
+
+After the reentry procedure passed CIVS plus cross-cutting inquiry/URG/OAuth/circulation regressions at commit `4b8aed051ff107ce71ebc4b1f2f718d7374aedba`, the first CIR is versioned to `v1.2` and directly projects to `ecos:civs-cold-reentry:0.1.0`.
+
+The CIR now carries the procedure's structural qualification link and cold-reader bridge. Fresh-agent behavioral success remains explicitly NOT ESTABLISHED; this promotion removes a hidden discovery bridge, not the need for later independent qualification.

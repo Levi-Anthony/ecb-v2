@@ -33,3 +33,14 @@ test('cold reentry procedure requires the full fourteen-item return without clai
   assert(procedure.includes('Fresh-agent behavioral success is NOT ESTABLISHED'));
   assert(procedure.includes('exact open Questions Forward and next reentry route'));
 });
+
+
+test('machine CIR directly projects to the cold reentry procedure', () => {
+  const relation = cir.object_connections.find(x => x.ref === 'civs:rel:projects-to-cold-reentry');
+  assert(relation);
+  assert.equal(relation.record.relation_kind_ref, 'ecos:civs-object-relations:projects_to');
+  assert(relation.record.participants.some(p => p.role === 'source' && p.referent_id === cir.cir_id));
+  assert(relation.record.participants.some(p => p.role === 'projection' && p.referent_id === 'ecos:civs-cold-reentry:0.1.0'));
+  assert(cir.cold_reader_bridges.some(x => x.answer_route_refs.includes('docs/civs-reentry.md')));
+  assert(cir.verification_links.some(x => x.ref === 'civs:verify:cold-reentry-structure' && x.standing === 'SUPPORTED'));
+});

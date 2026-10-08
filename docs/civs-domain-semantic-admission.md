@@ -1,9 +1,9 @@
 # Capability Inspection Record — Domain-Semantic Admission / D&I Boundary
 
-**CIR:** `ecos:cir:domain-semantic-admission:2026-10-07:v1.1`  
+**CIR:** `ecos:cir:domain-semantic-admission:2026-10-07:v1.2`  
 **Subject:** `ecos:domain-semantic-admission:0.1.0`  
 **Contract:** `ecos:capability-inspection-record:0.1.1`  
-**As-of:** `github:Levi-Anthony/ecb-v2:58b1d065d0ad9ce09db185a75e1ecda6a15f53ad`
+**As-of:** `github:Levi-Anthony/ecb-v2:4b8aed051ff107ce71ebc4b1f2f718d7374aedba`
 
 > This document is a generated human projection of the machine-readable CIR. It is not a second source of truth.
 
@@ -37,7 +37,8 @@ Given caller-declared atomic responsibilities, registered Native Package descrip
 - **civs:rel:depends-on-native-packages:** ecos:civs-object-relations:depends_on; dependent=`ecos:domain-semantic-admission:0.1.0`; dependency=`server/native-packages/systems-engineering.ts`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:ci-evidence-for-mechanical:** ecos:civs-object-relations:evidence_for; evidence=`GitHubActions:37706155075`; claim_or_assessment=`civs:assessment:mechanically_qualified`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:qf-correspondence:** ecos:civs-object-relations:question_forward_for; question_forward=`civs:qf:domain-admission:correspondence-truth`; unresolved_subject=`ecos:domain-semantic-admission:0.1.0`; standing UNRESOLVED.
-- **civs:rel:projects-to-human:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1`; projection=`civs:projection:domain-semantic-admission:human`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-human:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.2`; projection=`civs:projection:domain-semantic-admission:human`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-cold-reentry:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.2`; projection=`ecos:civs-cold-reentry:0.1.0`; standing RELIED_FOR_DECLARED_USE.
 
 ## Physical realization
 
@@ -65,6 +66,7 @@ Given caller-declared atomic responsibilities, registered Native Package descrip
 - **civs:verify:first-federate-negative-control — STRUCTURAL / SUPPORTED:** The first specimen FEDERATE trace changes to QUALIFY when correspondence_targets are removed. Limits: Proves only structural sensitivity to explicit correspondence targets under supplied premises; correspondence truth remains NOT ESTABLISHED.
 - **civs:verify:ingress-composition — STRUCTURAL / SUPPORTED:** Ordinary search composes situated inquiry with systems-engineering Domain-Semantic Admission without adding a public tool. Limits: Connected frozen action snapshots are a separate exposure boundary.
 - **civs:verify:civs-contract — STRUCTURAL / SUPPORTED:** The reusable CIR contract rejects scalar installation status, generic owner, inferred Level, generic relation roles, cross-quadrant consumer-job bleed, empty located observations and graphical readiness boolean. Limits: Generic contract qualification does not by itself qualify this first specimen's empirical consumer hypotheses.
+- **civs:verify:cold-reentry-structure — STRUCTURAL / SUPPORTED:** The WP5 cold-agent procedure points to the machine CIR, preserves governing nonpromotion rules, exposes fail-visible HOLD routes, covers all eight independent installation assessments, and requires the fourteen-item cold-reader return. Limits: This establishes instruction-surface structure and drift resistance only; fresh-agent behavioral success remains NOT ESTABLISHED.
 
 ## Worked trace
 
@@ -107,6 +109,7 @@ For the corpus responsibility native-to-ecos-correspondence, declared ADEQUATE n
 - **Where does the capability physically exist?** Route: `physical:repository`, `physical:module_runtime`, `physical:deployment`, `physical:ingress`, `physical:persistence`, `physical:consumer_surface`. Rule: Treat each coordinate independently; a repository path is not a server and deployment is not exposure.
 - **What does FEDERATE prove in the first worked trace?** Route: `civs:verify:first-federate-negative-control`, `civs:qf:domain-admission:correspondence-truth`. Rule: FEDERATE proves only structural routing under declared premises; correspondence truth remains open.
 - **Can a connected consumer use this now?** Route: `civs:qf:domain-admission:connected-consumer-exposure`, `Linear:ECO-218`. Rule: Do not infer connected exposure from backend code or Production READY metadata.
+- **How should a fresh authorized agent inspect this capability from the CIR handle without hidden conversational bridges?** Route: `docs/civs-reentry.md`, `research/civs/domain-semantic-admission.cir.json`. Rule: Follow the cold-agent procedure; return an exact HOLD for unsupported bridges rather than inferring missing standing, exposure, authority, Level, correspondence truth, or PGO naming.
 
 ## Vertical placement and participatory neighborhood
 
@@ -150,6 +153,10 @@ Consumer: `ecos:consumer:fresh-agent`; use: Recover what Domain-Semantic Admissi
 - `BRAIN:c5871f89-0c51-462d-831b-c90897a95e81`
 - `BRAIN:73994c17-d5b5-48d1-9698-fa656c393e91`
 - `BRAIN:06b3ca69-0805-45aa-8ab9-cc75d618894b`
+- `docs/civs-reentry.md`
+- `tests/civs/reentry.test.ts`
+- `GitHubActions:37709285781`
+- `github:commit:4b8aed051ff107ce71ebc4b1f2f718d7374aedba`
 
 ## Omissions
 
