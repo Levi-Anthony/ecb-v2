@@ -208,4 +208,10 @@ If any answer cannot be supported, return the corresponding HOLD rather than inv
 
 ## Qualification standing
 
-This procedure is structurally inspectable and can be drift-tested. **Fresh-agent behavioral success is NOT ESTABLISHED by publication of the procedure itself.** That evidence belongs to the later CIVS cold-reader/qualification work package.
+WP8 mechanical/currentness qualification is now installed at `research/civs/domain-semantic-admission-qualification-v0.2.json` with overall disposition **PARTIAL_HOLD**.
+
+Supported in that qualification: repository pointer integrity; bounded external currentness readback; an independently derived FEDERATE/QUALIFY worked trace; installation-ladder separation; WP6 degradation routes; and the WP7 correspondence/non-formalization gate.
+
+**Fresh-agent behavioral success remains NOT ESTABLISHED.** Exact reentry: `civs:qf:wp8:fresh-reader` / `wp8:gate:fresh-reader`. A genuinely separate authorized worker must receive only this procedure, the CIR entry handle, and ordinary source access, then return the fourteen required items. The present orchestrator's own successful use of CIVS is not a substitute.
+
+Connected-consumer exposure/use and operational sustainment also remain separately open under ECO-218 and ECO-214.

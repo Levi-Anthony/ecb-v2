@@ -115,3 +115,17 @@ test('WP8 promotion supports every executed check but preserves fresh-reader HOL
   assert.equal(q.overall_disposition,'PARTIAL_HOLD');
   assert(q.residual_gates.some(x=>x.id==='wp8:gate:fresh-reader'&&x.standing==='HOLD'));
 });
+
+
+test('CIR v1.4 binds WP8 partial qualification and exposes fresh-reader Question Forward',()=>{
+  const cir=JSON.parse(readFileSync(new URL('../../research/civs/domain-semantic-admission.cir.json',import.meta.url),'utf8'));
+  assert.equal(cir.cir_id,'ecos:cir:domain-semantic-admission:2026-10-07:v1.4');
+  assert(cir.object_connections.some((x:any)=>x.ref==='civs:rel:projects-to-wp8-qualification'));
+  assert(cir.verification_links.some((x:any)=>x.ref==='civs:verify:wp8-mechanical-qualification'&&x.standing==='SUPPORTED'));
+  assert(cir.questions_forward.some((x:any)=>x.ref==='civs:qf:wp8:fresh-reader'));
+  assert.equal(cir.installation_assessments.find((x:any)=>x.kind==='situated_use_qualified')?.standing,'NOT_ESTABLISHED');
+  assert.equal(cir.installation_assessments.find((x:any)=>x.kind==='operationally_sustained')?.standing,'NOT_ESTABLISHED');
+  const reentry=readFileSync(new URL('../../docs/civs-reentry.md',import.meta.url),'utf8');
+  assert.match(reentry,/PARTIAL_HOLD/);
+  assert.match(reentry,/civs:qf:wp8:fresh-reader/);
+});

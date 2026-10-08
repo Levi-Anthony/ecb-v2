@@ -90,3 +90,10 @@ The CIR now carries the procedure's structural qualification link and cold-reade
 The first CIR now directly projects to the qualified WP6 portability/degradation matrix and WP7 correspondence-requirements handoff. The promotion is intentionally non-promotional: alternate-provider portability remains **NOT ESTABLISHED**; semantic correspondence remains **NOT ESTABLISHED**; formalism selection remains **NOT_EARNED / NONE**.
 
 Current exact mechanical evidence is rebound to main `b9d04a5122769b9d92d30a97a762466f341fc1ea` (inquiry `37710751014`, CIVS `37710751082`), and Production `dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP` is READY at that same source edition. Deployment remains separate from connected-consumer exposure and use.
+
+
+## CIR v1.4 — WP8 qualification reconciliation
+
+WP8 mechanical/currentness qualification `ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2` is now an explicit CIR projection. Run `37712149843` supports the bounded pointer/currentness/independent-trace/ladder/degradation/correspondence checks.
+
+The overall CIVS qualification remains **PARTIAL_HOLD**. Independent fresh-reader behavioral evidence is still absent and is carried as `civs:qf:wp8:fresh-reader`; connected consumer use and operational sustainment remain separately open. No self-evaluation is promoted to cold-reader evidence.

@@ -1,9 +1,9 @@
 # Capability Inspection Record — Domain-Semantic Admission / D&I Boundary
 
-**CIR:** `ecos:cir:domain-semantic-admission:2026-10-07:v1.3`  
+**CIR:** `ecos:cir:domain-semantic-admission:2026-10-07:v1.4`  
 **Subject:** `ecos:domain-semantic-admission:0.1.0`  
 **Contract:** `ecos:capability-inspection-record:0.1.1`  
-**As-of:** `github:Levi-Anthony/ecb-v2:b9d04a5122769b9d92d30a97a762466f341fc1ea`
+**As-of:** `github:Levi-Anthony/ecb-v2:2fcc0d6e7b4358c9804f9f90ac79af61557ce839`
 
 > This document is a generated human projection of the machine-readable CIR. It is not a second source of truth.
 
@@ -19,7 +19,7 @@ Given caller-declared atomic responsibilities, registered Native Package descrip
 | implemented | STRUCTURAL | SUPPORTED | The evaluator, systems-engineering Native Package registry and ordinary search ingress are implemented on main. | Implementation presence does not prove current native premises or consumer exposure. |
 | mechanically_qualified | STRUCTURAL | SUPPORTED | The current main edition passes the ordinary inquiry/domain-admission mechanical qualification suite, including the first-specimen FEDERATE/QUALIFY sensitivity checks. | PASS is bounded to tested structural propositions; it does not establish supplied semantic premises. |
 | integrated | STRUCTURAL | SUPPORTED | The evaluator is composed into ordinary search ingress after situated inquiry orchestration and before final return. | Integration does not establish connected action-schema reflection. |
-| deployed | OBSERVATIONAL | SUPPORTED | The current main edition is READY on the enduring Vercel Production service. | Deployment metadata does not prove connected-consumer exposure, situated use, semantic truth, or operational sustainment. |
+| deployed | OBSERVATIONAL | SUPPORTED | The WP8-qualified source edition is READY on the enduring Vercel Production service; subsequent CIR reconciliation is an inspection-only delta over the same runtime source. | READY/deployed does not establish connected-consumer exposure, situated use, semantic truth, fresh-reader behavior, or operational sustainment. |
 | exposed | OBSERVATIONAL | NOT ESTABLISHED | A refreshed connected ordinary consumer advertises and can invoke inquiry.domain_admission. | Observed connected search action advertises query + limit only; this is consumer-snapshot evidence, not backend absence. |
 | situated_use_qualified | OBSERVATIONAL | NOT ESTABLISHED | A real connected consumer has successfully used Domain-Semantic Admission in an ordinary situated task with proof/standing distinctions preserved. | Constructed tests and backend deployment are not ordinary consumer use. |
 | operationally_sustained | OBSERVATIONAL | NOT ESTABLISHED | The capability has longitudinal hosted-use evidence and source-complete circulation binding under valid effect authority. | The circulation source manifest omits Domain-Semantic Admission imports and the twelve hosted-use obligations remain open. |
@@ -37,10 +37,12 @@ Given caller-declared atomic responsibilities, registered Native Package descrip
 - **civs:rel:depends-on-native-packages:** ecos:civs-object-relations:depends_on; dependent=`ecos:domain-semantic-admission:0.1.0`; dependency=`server/native-packages/systems-engineering.ts`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:ci-evidence-for-mechanical:** ecos:civs-object-relations:evidence_for; evidence=`GitHubActions:37706155075`; claim_or_assessment=`civs:assessment:mechanically_qualified`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:qf-correspondence:** ecos:civs-object-relations:question_forward_for; question_forward=`civs:qf:domain-admission:correspondence-truth`; unresolved_subject=`ecos:domain-semantic-admission:0.1.0`; standing UNRESOLVED.
-- **civs:rel:projects-to-human:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.3`; projection=`civs:projection:domain-semantic-admission:human`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:projects-to-cold-reentry:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.3`; projection=`ecos:civs-cold-reentry:0.1.0`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:projects-to-portability:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.3`; projection=`ecos:civs:domain-semantic-admission:portability-degradation:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:projects-to-correspondence-handoff:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.3`; projection=`ecos:civs:domain-semantic-admission:correspondence-handoff:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-human:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.4`; projection=`civs:projection:domain-semantic-admission:human`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-cold-reentry:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.4`; projection=`ecos:civs-cold-reentry:0.1.0`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-portability:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.4`; projection=`ecos:civs:domain-semantic-admission:portability-degradation:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-correspondence-handoff:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.4`; projection=`ecos:civs:domain-semantic-admission:correspondence-handoff:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-wp8-qualification:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.4`; projection=`ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:qf-fresh-reader:** ecos:civs-object-relations:question_forward_for; question_forward=`civs:qf:wp8:fresh-reader`; unresolved_subject=`wp8:gate:fresh-reader`; standing UNRESOLVED.
 
 ## Physical realization
 
@@ -48,7 +50,7 @@ Given caller-declared atomic responsibilities, registered Native Package descrip
 |---|---|---|---|
 | repository | OBSERVED | `github:Levi-Anthony/ecb-v2` | Repository identity is not runtime execution. |
 | module_runtime | OBSERVED | `server.ts + server/domain-admission.ts + server/native-packages/systems-engineering.ts` | Loaded module path is not consumer exposure. |
-| deployment | OBSERVED | `Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP` | READY metadata is not authenticated invocation evidence. |
+| deployment | OBSERVED | `Vercel:dpl_8EeP8R6TNE6APZy7FpqEmHJ1kVgk` | Exact WP8 promotion baseline is READY; later CIR-only reconciliation does not upgrade exposure/use/sustainment. |
 | ingress | OBSERVED | `ecb-v2-search/0.7.1:ordinary-search` | Backend ingress does not establish frozen connected action-schema reflection. |
 | persistence | OBSERVED | `BRAIN / immutable Artifact / D&I ledger custody surfaces` | Domain-admission decisions are not automatically durable merely because a working projection was returned. |
 | consumer_surface | OBSERVED | `connected:ECB-v2-BRAIN:search-action-snapshot` | Observed schema advertises query + limit only; inquiry.domain_admission exposure is NOT ESTABLISHED. |
@@ -71,6 +73,7 @@ Given caller-declared atomic responsibilities, registered Native Package descrip
 - **civs:verify:cold-reentry-structure — STRUCTURAL / SUPPORTED:** The WP5 cold-agent procedure points to the machine CIR, preserves governing nonpromotion rules, exposes fail-visible HOLD routes, covers all eight independent installation assessments, and requires the fourteen-item cold-reader return. Limits: This establishes instruction-surface structure and drift resistance only; fresh-agent behavioral success remains NOT ESTABLISHED.
 - **civs:verify:wp6-portability-degradation — STRUCTURAL / SUPPORTED:** The WP6 matrix keeps alternate portability NOT_ESTABLISHED, separates pure evaluator from integrated ordinary-use dependencies, and requires each degradation case to expose retained/lost capability and an exact reentry route without standing promotion. Limits: This qualifies degradation characterization, not any alternate implementation/provider.; Predicted outage cases remain hypotheses until observed or independently simulated.
 - **civs:verify:wp7-correspondence-handoff — STRUCTURAL / SUPPORTED:** The WP7 handoff derives fourteen explicit correspondence requirements/falsifiers from the first specimen while keeping formalism selection NOT_EARNED and semantic correspondence NOT_ESTABLISHED. Limits: A complete requirements handoff is not semantic correspondence truth.; No mathematical formalism or bidirectional mutation is selected/authorized.
+- **civs:verify:wp8-mechanical-qualification — STRUCTURAL / SUPPORTED:** WP8 mechanically qualifies repository pointer integrity, an independently derived FEDERATE/QUALIFY trace, installation-ladder separation, WP6 degradation routes, WP7 non-formalization, and a bounded external currentness readback; overall qualification remains PARTIAL_HOLD because independent fresh-reader behavior is unrun. Limits: The supported check is WP8 mechanical/observational qualification, not independent fresh-agent behavioral success.; Connected-consumer exposure, situated use and operational sustainment remain NOT_ESTABLISHED.; No correspondence formalism or alternate-provider portability is qualified.
 
 ## Worked trace
 
@@ -116,11 +119,12 @@ For the corpus responsibility native-to-ecos-correspondence, declared ADEQUATE n
 - **How should a fresh authorized agent inspect this capability from the CIR handle without hidden conversational bridges?** Route: `docs/civs-reentry.md`, `research/civs/domain-semantic-admission.cir.json`. Rule: Follow the cold-agent procedure; return an exact HOLD for unsupported bridges rather than inferring missing standing, exposure, authority, Level, correspondence truth, or PGO naming.
 - **What survives, what is lost, and where should work reenter when a current dependency is unavailable?** Route: `research/civs/domain-semantic-admission-portability-v0.1.json`, `docs/civs-domain-semantic-admission-portability.md`, `docs/civs-reentry.md`. Rule: Use the exact WP6 case for the missing surface; do not infer substitute portability, exposure, authority, or semantic truth from retained capability.
 - **What correspondence semantics are now required, and has a mathematical formalism been earned?** Route: `research/civs/domain-semantic-admission-correspondence-handoff-v0.1.json`, `docs/civs-domain-semantic-admission-correspondence-handoff.md`, `civs:qf:domain-admission:correspondence-truth`. Rule: Recover CR-01 through CR-14 and the formalism gate. Current standing is NOT_EARNED/NONE; do not select algebra from analogy or from FEDERATE.
+- **What has WP8 actually qualified, and what remains before CIVS can claim independent cold-reader success?** Route: `research/civs/domain-semantic-admission-qualification-v0.2.json`, `docs/civs-domain-semantic-admission-qualification.md`, `civs:qf:wp8:fresh-reader`. Rule: Treat WP8 v0.2 as PARTIAL_HOLD: executed mechanical/currentness checks are supported; fresh-reader behavior, connected exposure/use, and sustainment remain separately unresolved.
 
 ## Vertical placement and participatory neighborhood
 
 Working band: **projection**. Containing wholes: `ecos:civs`, `sigma-ecos:meta-architecture`. URG Level claim: **NOT ESTABLISHED**.
-Participatory relations: `civs:rel:specifies-domain-admission`, `civs:rel:implements-evaluator`, `civs:rel:tests-domain-admission`, `civs:rel:qualifies-domain-admission`, `civs:rel:deploys-source-edition`, `civs:rel:backend-exposes-domain-admission`, `civs:rel:eco202-coordinates`, `civs:rel:depends-on-native-packages`, `civs:rel:qf-correspondence`, `civs:rel:projects-to-human`, `civs:rel:projects-to-portability`, `civs:rel:projects-to-correspondence-handoff`. Role assignments: `civs:role:principal`, `civs:role:coordination`, `civs:role:native-semantic`, `civs:role:maintenance`, `civs:role:custody-git`, `civs:role:verification`, `civs:role:action-authority`.
+Participatory relations: `civs:rel:specifies-domain-admission`, `civs:rel:implements-evaluator`, `civs:rel:tests-domain-admission`, `civs:rel:qualifies-domain-admission`, `civs:rel:deploys-source-edition`, `civs:rel:backend-exposes-domain-admission`, `civs:rel:eco202-coordinates`, `civs:rel:depends-on-native-packages`, `civs:rel:qf-correspondence`, `civs:rel:projects-to-human`, `civs:rel:projects-to-portability`, `civs:rel:projects-to-correspondence-handoff`, `civs:rel:projects-to-wp8-qualification`, `civs:rel:qf-fresh-reader`. Role assignments: `civs:role:principal`, `civs:role:coordination`, `civs:role:native-semantic`, `civs:role:maintenance`, `civs:role:custody-git`, `civs:role:verification`, `civs:role:action-authority`.
 
 ## Consumer simulations
 
@@ -146,6 +150,7 @@ Consumer: `ecos:consumer:fresh-agent`; use: Recover what Domain-Semantic Admissi
 - **civs:qf:domain-admission:correspondence-truth:** What attributable relation or mapping law warrants the native SysML element ↔ ECOS Referent/Claim correspondence beyond structural admission? — Reentry: Reenter when attributable cross-domain mapping evidence or a falsifying native equivalent is available.
 - **civs:qf:domain-admission:connected-consumer-exposure:** Does a refreshed connected consumer advertise and successfully invoke search.inquiry.domain_admission against the enduring endpoint? — Reentry: Reenter after connected action refresh/publish or a new consumer snapshot.
 - **civs:qf:domain-admission:hosted-sustainment:** Can the exact source-complete current circulation edition run the twelve hosted-use obligations under a separately valid effect envelope? — Reentry: Reenter after source-complete binding and separately authorized hosted-use qualification.
+- **civs:qf:wp8:fresh-reader:** Can a genuinely separate fresh authorized agent, given only docs/civs-reentry.md plus the CIR entry handle and ordinary source access, recover the fourteen required distinctions without conversational bridges? — Reentry: Reenter when a genuinely separate authorized worker can be run from only the durable CIVS entry surfaces.
 
 ## Source refs
 
@@ -174,6 +179,13 @@ Consumer: `ecos:consumer:fresh-agent`; use: Recover what Domain-Semantic Admissi
 - `GitHubActions:37710751014`
 - `github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea`
 - `Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP`
+- `research/civs/domain-semantic-admission-qualification-v0.2.json`
+- `docs/civs-domain-semantic-admission-qualification.md`
+- `tests/civs/qualification.test.ts`
+- `GitHubActions:37712149843`
+- `ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2`
+- `Vercel:dpl_8EeP8R6TNE6APZy7FpqEmHJ1kVgk`
+- `github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839`
 
 ## Omissions
 
@@ -188,3 +200,6 @@ Consumer: `ecos:consumer:fresh-agent`; use: Recover what Domain-Semantic Admissi
 - WP6 does not qualify any alternate evaluator/runtime/host/provider; alternate portability remains NOT ESTABLISHED.
 - WP7 selects no correspondence formalism; formalism status remains NOT_EARNED and semantic correspondence remains NOT_ESTABLISHED.
 - Predicted provider-outage cases are not destructive failover experiments and must not be reported as observed behavior.
+- WP8 overall disposition is PARTIAL_HOLD because an independent fresh-agent behavioral run has not been performed.
+- The current orchestrator's own successful reentry/qualification work is not evidence for the fresh-reader behavioral gate.
+- Connected-consumer exposure/use and operational sustainment remain separately unqualified after WP8.

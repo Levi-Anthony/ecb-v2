@@ -1,6 +1,6 @@
 {
   "contract": "ecos:capability-inspection-record:0.1.1",
-  "cir_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.3",
+  "cir_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4",
   "subject_ref": "ecos:domain-semantic-admission:0.1.0",
   "subject_label": "Domain-Semantic Admission / D&I Boundary",
   "purpose": {
@@ -84,20 +84,22 @@
     },
     {
       "kind": "deployed",
-      "proposition": "The current main edition is READY on the enduring Vercel Production service.",
+      "proposition": "The WP8-qualified source edition is READY on the enduring Vercel Production service; subsequent CIR reconciliation is an inspection-only delta over the same runtime source.",
       "standing": "SUPPORTED",
       "enforcement_mode": "OBSERVATIONAL",
       "evidence_refs": [
-        "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP",
-        "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
+        "Vercel:dpl_8EeP8R6TNE6APZy7FpqEmHJ1kVgk",
+        "github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839",
+        "GitHubCompare:b9d04a5122769b9d92d30a97a762466f341fc1ea...2fcc0d6e7b4358c9804f9f90ac79af61557ce839:CIVS-only"
       ],
-      "currentness_ref": "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP:READY@b9d04a5122769b9d92d30a97a762466f341fc1ea",
+      "currentness_ref": "Vercel:dpl_8EeP8R6TNE6APZy7FpqEmHJ1kVgk:READY@2fcc0d6e7b4358c9804f9f90ac79af61557ce839",
       "sensitivity_refs": [
         "deployment-ready-state",
-        "deployment-git-sha"
+        "deployment-git-sha",
+        "runtime-source-delta"
       ],
       "limits": [
-        "Deployment metadata does not prove connected-consumer exposure, situated use, semantic truth, or operational sustainment."
+        "READY/deployed does not establish connected-consumer exposure, situated use, semantic truth, fresh-reader behavior, or operational sustainment."
       ]
     },
     {
@@ -473,7 +475,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.3"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4"
           },
           {
             "role": "projection",
@@ -503,7 +505,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.3"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4"
           },
           {
             "role": "projection",
@@ -534,7 +536,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.3"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4"
           },
           {
             "role": "projection",
@@ -566,7 +568,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.3"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4"
           },
           {
             "role": "projection",
@@ -584,6 +586,67 @@
             "GitHubActions:37710751082"
           ],
           "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:projects-to-wp8-qualification",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:projects_to",
+        "participants": [
+          {
+            "role": "source",
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.4"
+          },
+          {
+            "role": "projection",
+            "referent_id": "ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2"
+          }
+        ],
+        "situated_basis_ref": "github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "research/civs/domain-semantic-admission-qualification-v0.2.json",
+            "tests/civs/qualification.test.ts",
+            "GitHubActions:37712149843"
+          ],
+          "currentness_ref": "github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:qf-fresh-reader",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:question_forward_for",
+        "participants": [
+          {
+            "role": "question_forward",
+            "referent_id": "civs:qf:wp8:fresh-reader"
+          },
+          {
+            "role": "unresolved_subject",
+            "referent_id": "wp8:gate:fresh-reader"
+          }
+        ],
+        "situated_basis_ref": "github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "DORMANT",
+          "disposition": "UNRESOLVED",
+          "evidence_refs": [
+            "research/civs/domain-semantic-admission-qualification-v0.2.json",
+            "docs/civs-reentry.md"
+          ],
+          "currentness_ref": "github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839"
         }
       }
     }
@@ -617,14 +680,14 @@
     },
     {
       "kind": "deployment",
-      "object_ref": "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP",
+      "object_ref": "Vercel:dpl_8EeP8R6TNE6APZy7FpqEmHJ1kVgk",
       "observation": "OBSERVED",
       "evidence_refs": [
-        "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP"
+        "Vercel:dpl_8EeP8R6TNE6APZy7FpqEmHJ1kVgk"
       ],
-      "currentness_ref": "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP:READY@b9d04a5122769b9d92d30a97a762466f341fc1ea",
+      "currentness_ref": "Vercel:dpl_8EeP8R6TNE6APZy7FpqEmHJ1kVgk:READY@2fcc0d6e7b4358c9804f9f90ac79af61557ce839",
       "limits": [
-        "READY metadata is not authenticated invocation evidence."
+        "Exact WP8 promotion baseline is READY; later CIR-only reconciliation does not upgrade exposure/use/sustainment."
       ]
     },
     {
@@ -922,6 +985,33 @@
       "limits": [
         "A complete requirements handoff is not semantic correspondence truth.",
         "No mathematical formalism or bidirectional mutation is selected/authorized."
+      ]
+    },
+    {
+      "ref": "civs:verify:wp8-mechanical-qualification",
+      "proposition": "WP8 mechanically qualifies repository pointer integrity, an independently derived FEDERATE/QUALIFY trace, installation-ladder separation, WP6 degradation routes, WP7 non-formalization, and a bounded external currentness readback; overall qualification remains PARTIAL_HOLD because independent fresh-reader behavior is unrun.",
+      "method_ref": "tests/civs/qualification.test.ts",
+      "enforcement_mode": "STRUCTURAL",
+      "evidence_refs": [
+        "GitHubActions:37712149843",
+        "research/civs/domain-semantic-admission-qualification-v0.2.json",
+        "docs/civs-domain-semantic-admission-qualification.md",
+        "tests/civs/qualification.test.ts"
+      ],
+      "standing": "SUPPORTED",
+      "currentness_ref": "github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839",
+      "sensitivity_refs": [
+        "test:pointer-integrity",
+        "test:independent-trace",
+        "test:installation-ladder",
+        "test:degradation-routes",
+        "test:correspondence-gate",
+        "test:WP8-promotion-preserves-fresh-reader-HOLD"
+      ],
+      "limits": [
+        "The supported check is WP8 mechanical/observational qualification, not independent fresh-agent behavioral success.",
+        "Connected-consumer exposure, situated use and operational sustainment remain NOT_ESTABLISHED.",
+        "No correspondence formalism or alternate-provider portability is qualified."
       ]
     }
   ],
@@ -1231,6 +1321,16 @@
         "civs:qf:domain-admission:correspondence-truth"
       ],
       "no_invention_rule": "Recover CR-01 through CR-14 and the formalism gate. Current standing is NOT_EARNED/NONE; do not select algebra from analogy or from FEDERATE."
+    },
+    {
+      "ref": "civs:bridge:wp8-qualification",
+      "question": "What has WP8 actually qualified, and what remains before CIVS can claim independent cold-reader success?",
+      "answer_route_refs": [
+        "research/civs/domain-semantic-admission-qualification-v0.2.json",
+        "docs/civs-domain-semantic-admission-qualification.md",
+        "civs:qf:wp8:fresh-reader"
+      ],
+      "no_invention_rule": "Treat WP8 v0.2 as PARTIAL_HOLD: executed mechanical/currentness checks are supported; fresh-reader behavior, connected exposure/use, and sustainment remain separately unresolved."
     }
   ],
   "questions_forward": [
@@ -1281,11 +1381,27 @@
         "return_route": "ECO-214",
         "reentry_condition": "Reenter after source-complete binding and separately authorized hosted-use qualification."
       }
+    },
+    {
+      "ref": "civs:qf:wp8:fresh-reader",
+      "record": {
+        "kind": "question_forward",
+        "unresolved_ref": "wp8:gate:fresh-reader",
+        "basis_ref": "ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2",
+        "current_standing_ref": "NOT_ESTABLISHED:independent-fresh-reader-unrun",
+        "discriminator_question": "Can a genuinely separate fresh authorized agent, given only docs/civs-reentry.md plus the CIR entry handle and ordinary source access, recover the fourteen required distinctions without conversational bridges?",
+        "paired_signal_scenario": "A separate worker returns all fourteen items with attributable source routes and correct HOLD behavior where support is absent; otherwise the failure localizes the remaining CIVS reentry defect.",
+        "evidence_change_criteria": "Run an actually independent worker/agent surface, preserve its prompt/input boundary, capture its return, and compare each required item plus any HOLDs against the CIR/reentry contract.",
+        "alternative_signal_routing": "If no independent worker surface is available, preserve PARTIAL_HOLD and do not substitute the current orchestrator's self-evaluation.",
+        "decision_consequence": "Do not claim fresh-agent behavioral qualification or full WP8 closure until independent evidence exists.",
+        "return_route": "CIVS:WP8:fresh-reader-qualification",
+        "reentry_condition": "Reenter when a genuinely separate authorized worker can be run from only the durable CIVS entry surfaces."
+      }
     }
   ],
   "verification": {
-    "observed_at_ref": "GitHubActions:37710751082:SUCCESS",
-    "as_of_ref": "github:Levi-Anthony/ecb-v2:b9d04a5122769b9d92d30a97a762466f341fc1ea",
+    "observed_at_ref": "GitHubActions:37712149843:SUCCESS",
+    "as_of_ref": "github:Levi-Anthony/ecb-v2:2fcc0d6e7b4358c9804f9f90ac79af61557ce839",
     "currentness_refs": [
       "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
       "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ:READY",
@@ -1303,9 +1419,13 @@
       "GitHubActions:37710751014",
       "GitHubActions:37710751082",
       "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP:READY",
-      "GitHubActions:37710329869"
+      "GitHubActions:37710329869",
+      "github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839",
+      "GitHubActions:37712149843",
+      "Vercel:dpl_8EeP8R6TNE6APZy7FpqEmHJ1kVgk:READY",
+      "ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2"
     ],
-    "supersedes_ref": "github:Levi-Anthony/ecb-v2:b9d04a5122769b9d92d30a97a762466f341fc1ea:research/civs/domain-semantic-admission.cir.json#v1.2"
+    "supersedes_ref": "github:Levi-Anthony/ecb-v2:1835eeba0ae4b1accf6d7c0db5fa6087f6dae6cf:research/civs/domain-semantic-admission.cir.json#v1.3"
   },
   "vertical_placement": {
     "working_band": "projection",
@@ -1327,7 +1447,9 @@
       "civs:rel:qf-correspondence",
       "civs:rel:projects-to-human",
       "civs:rel:projects-to-portability",
-      "civs:rel:projects-to-correspondence-handoff"
+      "civs:rel:projects-to-correspondence-handoff",
+      "civs:rel:projects-to-wp8-qualification",
+      "civs:rel:qf-fresh-reader"
     ],
     "role_assignment_refs": [
       "civs:role:principal",
@@ -1738,7 +1860,14 @@
     "GitHubActions:37710751082",
     "GitHubActions:37710751014",
     "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
-    "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP"
+    "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP",
+    "research/civs/domain-semantic-admission-qualification-v0.2.json",
+    "docs/civs-domain-semantic-admission-qualification.md",
+    "tests/civs/qualification.test.ts",
+    "GitHubActions:37712149843",
+    "ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2",
+    "Vercel:dpl_8EeP8R6TNE6APZy7FpqEmHJ1kVgk",
+    "github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839"
   ],
   "omissions": [
     "No connected-consumer invocation proving inquiry.domain_admission exposure.",
@@ -1751,6 +1880,9 @@
     "PGO long-form Namecrafting remains open.",
     "WP6 does not qualify any alternate evaluator/runtime/host/provider; alternate portability remains NOT ESTABLISHED.",
     "WP7 selects no correspondence formalism; formalism status remains NOT_EARNED and semantic correspondence remains NOT_ESTABLISHED.",
-    "Predicted provider-outage cases are not destructive failover experiments and must not be reported as observed behavior."
+    "Predicted provider-outage cases are not destructive failover experiments and must not be reported as observed behavior.",
+    "WP8 overall disposition is PARTIAL_HOLD because an independent fresh-agent behavioral run has not been performed.",
+    "The current orchestrator's own successful reentry/qualification work is not evidence for the fresh-reader behavioral gate.",
+    "Connected-consumer exposure/use and operational sustainment remain separately unqualified after WP8."
   ]
 }
