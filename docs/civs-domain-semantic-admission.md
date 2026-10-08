@@ -1,9 +1,9 @@
 # Capability Inspection Record — Domain-Semantic Admission / D&I Boundary
 
-**CIR:** `ecos:cir:domain-semantic-admission:2026-10-07:v1.2`  
+**CIR:** `ecos:cir:domain-semantic-admission:2026-10-07:v1.3`  
 **Subject:** `ecos:domain-semantic-admission:0.1.0`  
 **Contract:** `ecos:capability-inspection-record:0.1.1`  
-**As-of:** `github:Levi-Anthony/ecb-v2:4b8aed051ff107ce71ebc4b1f2f718d7374aedba`
+**As-of:** `github:Levi-Anthony/ecb-v2:b9d04a5122769b9d92d30a97a762466f341fc1ea`
 
 > This document is a generated human projection of the machine-readable CIR. It is not a second source of truth.
 
@@ -17,9 +17,9 @@ Given caller-declared atomic responsibilities, registered Native Package descrip
 |---|---|---|---|---|
 | specified | STRUCTURAL | SUPPORTED | The Domain-Semantic Admission responsibility/disposition contract is explicitly documented and bounded. | Specification does not establish implementation or semantic truth. |
 | implemented | STRUCTURAL | SUPPORTED | The evaluator, systems-engineering Native Package registry and ordinary search ingress are implemented on main. | Implementation presence does not prove current native premises or consumer exposure. |
-| mechanically_qualified | STRUCTURAL | SUPPORTED | Deterministic inquiry/domain-admission tests pass on a source-equivalent edition of the inspected runtime. | PASS is bounded to tested structural propositions; it does not establish supplied semantic premises. |
+| mechanically_qualified | STRUCTURAL | SUPPORTED | The current main edition passes the ordinary inquiry/domain-admission mechanical qualification suite, including the first-specimen FEDERATE/QUALIFY sensitivity checks. | PASS is bounded to tested structural propositions; it does not establish supplied semantic premises. |
 | integrated | STRUCTURAL | SUPPORTED | The evaluator is composed into ordinary search ingress after situated inquiry orchestration and before final return. | Integration does not establish connected action-schema reflection. |
-| deployed | OBSERVATIONAL | SUPPORTED | A source-equivalent edition containing the inspected runtime is READY on the enduring Vercel Production service. | Deployment metadata does not prove authenticated execution, consumer exposure, or use. |
+| deployed | OBSERVATIONAL | SUPPORTED | The current main edition is READY on the enduring Vercel Production service. | Deployment metadata does not prove connected-consumer exposure, situated use, semantic truth, or operational sustainment. |
 | exposed | OBSERVATIONAL | NOT ESTABLISHED | A refreshed connected ordinary consumer advertises and can invoke inquiry.domain_admission. | Observed connected search action advertises query + limit only; this is consumer-snapshot evidence, not backend absence. |
 | situated_use_qualified | OBSERVATIONAL | NOT ESTABLISHED | A real connected consumer has successfully used Domain-Semantic Admission in an ordinary situated task with proof/standing distinctions preserved. | Constructed tests and backend deployment are not ordinary consumer use. |
 | operationally_sustained | OBSERVATIONAL | NOT ESTABLISHED | The capability has longitudinal hosted-use evidence and source-complete circulation binding under valid effect authority. | The circulation source manifest omits Domain-Semantic Admission imports and the twelve hosted-use obligations remain open. |
@@ -30,15 +30,17 @@ Given caller-declared atomic responsibilities, registered Native Package descrip
 - **civs:rel:implements-evaluator:** ecos:civs-object-relations:implements; implementation=`server/domain-admission.ts`; implemented_contract=`ecos:domain-semantic-admission:0.1.0`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:implements-ingress:** ecos:civs-object-relations:implements; implementation=`server.ts#search`; implemented_contract=`ecb-v2-search/0.7.1`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:tests-domain-admission:** ecos:civs-object-relations:tests; test=`tests/inquiry/domain-admission.test.ts`; tested_subject=`server/domain-admission.ts`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:qualifies-domain-admission:** ecos:civs-object-relations:qualifies; qualification=`GitHubActions:37706155075`; qualified_subject=`ecos:domain-semantic-admission:0.1.0`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:deploys-source-edition:** ecos:civs-object-relations:deploys; deployment=`Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ`; deployed_edition=`github:commit:77f6ab2b1a443f48e7808aaacef352365373ed9e`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:qualifies-domain-admission:** ecos:civs-object-relations:qualifies; qualification=`GitHubActions:37710751014`; qualified_subject=`ecos:domain-semantic-admission:0.1.0`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:deploys-source-edition:** ecos:civs-object-relations:deploys; deployment=`Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP`; deployed_edition=`github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:backend-exposes-domain-admission:** ecos:civs-object-relations:exposes; exposure_surface=`server.ts#ordinary-search-ingress`; exposed_capability=`ecos:domain-semantic-admission:0.1.0`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:eco202-coordinates:** ecos:civs-object-relations:coordinates; coordination_surface=`Linear:ECO-202`; coordinated_work=`ecos:domain-semantic-admission:0.1.0`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:depends-on-native-packages:** ecos:civs-object-relations:depends_on; dependent=`ecos:domain-semantic-admission:0.1.0`; dependency=`server/native-packages/systems-engineering.ts`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:ci-evidence-for-mechanical:** ecos:civs-object-relations:evidence_for; evidence=`GitHubActions:37706155075`; claim_or_assessment=`civs:assessment:mechanically_qualified`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:qf-correspondence:** ecos:civs-object-relations:question_forward_for; question_forward=`civs:qf:domain-admission:correspondence-truth`; unresolved_subject=`ecos:domain-semantic-admission:0.1.0`; standing UNRESOLVED.
-- **civs:rel:projects-to-human:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.2`; projection=`civs:projection:domain-semantic-admission:human`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:projects-to-cold-reentry:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.2`; projection=`ecos:civs-cold-reentry:0.1.0`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-human:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.3`; projection=`civs:projection:domain-semantic-admission:human`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-cold-reentry:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.3`; projection=`ecos:civs-cold-reentry:0.1.0`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-portability:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.3`; projection=`ecos:civs:domain-semantic-admission:portability-degradation:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-correspondence-handoff:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-07:v1.3`; projection=`ecos:civs:domain-semantic-admission:correspondence-handoff:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
 
 ## Physical realization
 
@@ -46,7 +48,7 @@ Given caller-declared atomic responsibilities, registered Native Package descrip
 |---|---|---|---|
 | repository | OBSERVED | `github:Levi-Anthony/ecb-v2` | Repository identity is not runtime execution. |
 | module_runtime | OBSERVED | `server.ts + server/domain-admission.ts + server/native-packages/systems-engineering.ts` | Loaded module path is not consumer exposure. |
-| deployment | OBSERVED | `Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ` | READY metadata is not authenticated invocation evidence. |
+| deployment | OBSERVED | `Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP` | READY metadata is not authenticated invocation evidence. |
 | ingress | OBSERVED | `ecb-v2-search/0.7.1:ordinary-search` | Backend ingress does not establish frozen connected action-schema reflection. |
 | persistence | OBSERVED | `BRAIN / immutable Artifact / D&I ledger custody surfaces` | Domain-admission decisions are not automatically durable merely because a working projection was returned. |
 | consumer_surface | OBSERVED | `connected:ECB-v2-BRAIN:search-action-snapshot` | Observed schema advertises query + limit only; inquiry.domain_admission exposure is NOT ESTABLISHED. |
@@ -67,6 +69,8 @@ Given caller-declared atomic responsibilities, registered Native Package descrip
 - **civs:verify:ingress-composition — STRUCTURAL / SUPPORTED:** Ordinary search composes situated inquiry with systems-engineering Domain-Semantic Admission without adding a public tool. Limits: Connected frozen action snapshots are a separate exposure boundary.
 - **civs:verify:civs-contract — STRUCTURAL / SUPPORTED:** The reusable CIR contract rejects scalar installation status, generic owner, inferred Level, generic relation roles, cross-quadrant consumer-job bleed, empty located observations and graphical readiness boolean. Limits: Generic contract qualification does not by itself qualify this first specimen's empirical consumer hypotheses.
 - **civs:verify:cold-reentry-structure — STRUCTURAL / SUPPORTED:** The WP5 cold-agent procedure points to the machine CIR, preserves governing nonpromotion rules, exposes fail-visible HOLD routes, covers all eight independent installation assessments, and requires the fourteen-item cold-reader return. Limits: This establishes instruction-surface structure and drift resistance only; fresh-agent behavioral success remains NOT ESTABLISHED.
+- **civs:verify:wp6-portability-degradation — STRUCTURAL / SUPPORTED:** The WP6 matrix keeps alternate portability NOT_ESTABLISHED, separates pure evaluator from integrated ordinary-use dependencies, and requires each degradation case to expose retained/lost capability and an exact reentry route without standing promotion. Limits: This qualifies degradation characterization, not any alternate implementation/provider.; Predicted outage cases remain hypotheses until observed or independently simulated.
+- **civs:verify:wp7-correspondence-handoff — STRUCTURAL / SUPPORTED:** The WP7 handoff derives fourteen explicit correspondence requirements/falsifiers from the first specimen while keeping formalism selection NOT_EARNED and semantic correspondence NOT_ESTABLISHED. Limits: A complete requirements handoff is not semantic correspondence truth.; No mathematical formalism or bidirectional mutation is selected/authorized.
 
 ## Worked trace
 
@@ -78,12 +82,12 @@ For the corpus responsibility native-to-ecos-correspondence, declared ADEQUATE n
 
 ## Correspondence
 
-- **civs:correspondence:native-to-ecos — SEMANTIC / NOT ESTABLISHED:** SysML native model element → ECOS Referent/Claim. Open mathematical requirements: relation kind semantics; composition law where consequential; partiality; invertibility requirements if any; schema/edition change behavior
+- **civs:correspondence:native-to-ecos — SEMANTIC / NOT ESTABLISHED:** SysML native model element → ECOS Referent/Claim. Open mathematical requirements: relation kind semantics; composition law where consequential; partiality; invertibility requirements if any; schema/edition change behavior; relation-kind/identity semantics; directionality; cardinality; partiality/undefined cases; composition evidence propagation; inversion/equivalence conditions; mapping standing/currentness across editions; multiplicity/uncertainty; authorized update propagation; consumer legibility
 
 ## Portability and graceful degradation
 
-- **Portability — STRUCTURAL / UNKNOWN:** A different runtime/renderer can realize the same Domain-Semantic Admission and CIR semantic contracts without changing native ownership or inspection truth. Limits: No substitute implementation has been qualified.
-- **Graceful degradation — OBSERVATIONAL / SUPPORTED:** The capability and CIR remain inspectable through text/API surfaces when no graphical substrate is present. Limits: Does not prove graceful degradation when BRAIN, Linear, deployment metadata or native sources are unavailable.
+- **Portability — STRUCTURAL / NOT ESTABLISHED:** WP6 structurally separates the bounded Domain-Semantic Admission contract from its current evaluator/runtime/host/recovery/consumer/coordination realizations and names substitution requirements; no alternate evaluator, runtime, host, persistence/recovery provider, source-custody provider, coordination surface, or consumer adapter has been independently qualified for equivalent behavior. Limits: Substitution requirements are not substitute proof.; Current decision identity uses Node SHA-256 and requires explicit reconciliation in a replacement runtime.; Predicted provider-outage behavior is not an observed failover result.; Native semantic ownership/currentness remains external.
+- **Graceful degradation — STRUCTURAL / SUPPORTED:** WP6 qualifies a dependency-specific degradation inspection: each case states retained and lost capability, visible signals, disposition, falsifier, and reentry route without upgrading semantic standing. Limits: Support applies to the inspected matrix structure and its evidenced/simulated cases; predicted provider outages remain untested.; Graceful degradation never upgrades semantic standing, exposure, action authority, or substitute portability.; No destructive outage experiment was performed.
 
 ## Role assignments
 
@@ -110,11 +114,13 @@ For the corpus responsibility native-to-ecos-correspondence, declared ADEQUATE n
 - **What does FEDERATE prove in the first worked trace?** Route: `civs:verify:first-federate-negative-control`, `civs:qf:domain-admission:correspondence-truth`. Rule: FEDERATE proves only structural routing under declared premises; correspondence truth remains open.
 - **Can a connected consumer use this now?** Route: `civs:qf:domain-admission:connected-consumer-exposure`, `Linear:ECO-218`. Rule: Do not infer connected exposure from backend code or Production READY metadata.
 - **How should a fresh authorized agent inspect this capability from the CIR handle without hidden conversational bridges?** Route: `docs/civs-reentry.md`, `research/civs/domain-semantic-admission.cir.json`. Rule: Follow the cold-agent procedure; return an exact HOLD for unsupported bridges rather than inferring missing standing, exposure, authority, Level, correspondence truth, or PGO naming.
+- **What survives, what is lost, and where should work reenter when a current dependency is unavailable?** Route: `research/civs/domain-semantic-admission-portability-v0.1.json`, `docs/civs-domain-semantic-admission-portability.md`, `docs/civs-reentry.md`. Rule: Use the exact WP6 case for the missing surface; do not infer substitute portability, exposure, authority, or semantic truth from retained capability.
+- **What correspondence semantics are now required, and has a mathematical formalism been earned?** Route: `research/civs/domain-semantic-admission-correspondence-handoff-v0.1.json`, `docs/civs-domain-semantic-admission-correspondence-handoff.md`, `civs:qf:domain-admission:correspondence-truth`. Rule: Recover CR-01 through CR-14 and the formalism gate. Current standing is NOT_EARNED/NONE; do not select algebra from analogy or from FEDERATE.
 
 ## Vertical placement and participatory neighborhood
 
 Working band: **projection**. Containing wholes: `ecos:civs`, `sigma-ecos:meta-architecture`. URG Level claim: **NOT ESTABLISHED**.
-Participatory relations: `civs:rel:specifies-domain-admission`, `civs:rel:implements-evaluator`, `civs:rel:tests-domain-admission`, `civs:rel:qualifies-domain-admission`, `civs:rel:deploys-source-edition`, `civs:rel:backend-exposes-domain-admission`, `civs:rel:eco202-coordinates`, `civs:rel:depends-on-native-packages`, `civs:rel:qf-correspondence`, `civs:rel:projects-to-human`. Role assignments: `civs:role:principal`, `civs:role:coordination`, `civs:role:native-semantic`, `civs:role:maintenance`, `civs:role:custody-git`, `civs:role:verification`, `civs:role:action-authority`.
+Participatory relations: `civs:rel:specifies-domain-admission`, `civs:rel:implements-evaluator`, `civs:rel:tests-domain-admission`, `civs:rel:qualifies-domain-admission`, `civs:rel:deploys-source-edition`, `civs:rel:backend-exposes-domain-admission`, `civs:rel:eco202-coordinates`, `civs:rel:depends-on-native-packages`, `civs:rel:qf-correspondence`, `civs:rel:projects-to-human`, `civs:rel:projects-to-portability`, `civs:rel:projects-to-correspondence-handoff`. Role assignments: `civs:role:principal`, `civs:role:coordination`, `civs:role:native-semantic`, `civs:role:maintenance`, `civs:role:custody-git`, `civs:role:verification`, `civs:role:action-authority`.
 
 ## Consumer simulations
 
@@ -157,6 +163,17 @@ Consumer: `ecos:consumer:fresh-agent`; use: Recover what Domain-Semantic Admissi
 - `tests/civs/reentry.test.ts`
 - `GitHubActions:37709285781`
 - `github:commit:4b8aed051ff107ce71ebc4b1f2f718d7374aedba`
+- `research/civs/domain-semantic-admission-portability-v0.1.json`
+- `docs/civs-domain-semantic-admission-portability.md`
+- `tests/civs/portability.test.ts`
+- `GitHubActions:37710329869`
+- `research/civs/domain-semantic-admission-correspondence-handoff-v0.1.json`
+- `docs/civs-domain-semantic-admission-correspondence-handoff.md`
+- `tests/civs/correspondence.test.ts`
+- `GitHubActions:37710751082`
+- `GitHubActions:37710751014`
+- `github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea`
+- `Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP`
 
 ## Omissions
 
@@ -168,3 +185,6 @@ Consumer: `ecos:consumer:fresh-agent`; use: Recover what Domain-Semantic Admissi
 - No fresh-agent behavioral cold-read qualification yet.
 - No universal graphical projection/control substrate or bidirectional human control surface.
 - PGO long-form Namecrafting remains open.
+- WP6 does not qualify any alternate evaluator/runtime/host/provider; alternate portability remains NOT ESTABLISHED.
+- WP7 selects no correspondence formalism; formalism status remains NOT_EARNED and semantic correspondence remains NOT_ESTABLISHED.
+- Predicted provider-outage cases are not destructive failover experiments and must not be reported as observed behavior.

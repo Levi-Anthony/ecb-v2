@@ -83,3 +83,10 @@ A dedicated test binds the procedure to the machine CIR handle and core nonpromo
 After the reentry procedure passed CIVS plus cross-cutting inquiry/URG/OAuth/circulation regressions at commit `4b8aed051ff107ce71ebc4b1f2f718d7374aedba`, the first CIR is versioned to `v1.2` and directly projects to `ecos:civs-cold-reentry:0.1.0`.
 
 The CIR now carries the procedure's structural qualification link and cold-reader bridge. Fresh-agent behavioral success remains explicitly NOT ESTABLISHED; this promotion removes a hidden discovery bridge, not the need for later independent qualification.
+
+
+## CIR v1.3 — WP6/WP7 reconciliation
+
+The first CIR now directly projects to the qualified WP6 portability/degradation matrix and WP7 correspondence-requirements handoff. The promotion is intentionally non-promotional: alternate-provider portability remains **NOT ESTABLISHED**; semantic correspondence remains **NOT ESTABLISHED**; formalism selection remains **NOT_EARNED / NONE**.
+
+Current exact mechanical evidence is rebound to main `b9d04a5122769b9d92d30a97a762466f341fc1ea` (inquiry `37710751014`, CIVS `37710751082`), and Production `dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP` is READY at that same source edition. Deployment remains separate from connected-consumer exposure and use.

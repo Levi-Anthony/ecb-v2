@@ -1,6 +1,6 @@
 {
   "contract": "ecos:capability-inspection-record:0.1.1",
-  "cir_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.2",
+  "cir_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.3",
   "subject_ref": "ecos:domain-semantic-admission:0.1.0",
   "subject_label": "Domain-Semantic Admission / D&I Boundary",
   "purpose": {
@@ -20,7 +20,7 @@
         "docs/domain-semantic-admission.md",
         "BRAIN:c5871f89-0c51-462d-831b-c90897a95e81"
       ],
-      "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
       "sensitivity_refs": [],
       "limits": [
         "Specification does not establish implementation or semantic truth."
@@ -34,9 +34,10 @@
       "evidence_refs": [
         "server/domain-admission.ts",
         "server/native-packages/systems-engineering.ts",
-        "server.ts"
+        "server.ts",
+        "GitHubActions:37710751014"
       ],
-      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
       "sensitivity_refs": [],
       "limits": [
         "Implementation presence does not prove current native premises or consumer exposure."
@@ -44,17 +45,21 @@
     },
     {
       "kind": "mechanically_qualified",
-      "proposition": "Deterministic inquiry/domain-admission tests pass on a source-equivalent edition of the inspected runtime.",
+      "proposition": "The current main edition passes the ordinary inquiry/domain-admission mechanical qualification suite, including the first-specimen FEDERATE/QUALIFY sensitivity checks.",
       "standing": "SUPPORTED",
       "enforcement_mode": "STRUCTURAL",
       "evidence_refs": [
         "GitHubActions:37706155075",
-        "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "GitHubActions:37710751014",
+        "GitHubActions:37710751082"
       ],
-      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
       "sensitivity_refs": [
         "tests/inquiry/domain-admission.test.ts#adequate-native-coverage-is-inherited",
-        "tests/inquiry/domain-admission.test.ts#adequate-native-semantics-plus-cross-domain-targets-federate"
+        "tests/inquiry/domain-admission.test.ts#adequate-native-semantics-plus-cross-domain-targets-federate",
+        "tests/civs/contract.test.ts#first-FEDERATE-trace",
+        "tests/civs/correspondence.test.ts"
       ],
       "limits": [
         "PASS is bounded to tested structural propositions; it does not establish supplied semantic premises."
@@ -68,9 +73,10 @@
       "evidence_refs": [
         "server.ts",
         "tests/inquiry/ingress.test.ts",
-        "GitHubActions:37706155075"
+        "GitHubActions:37706155075",
+        "GitHubActions:37710751014"
       ],
-      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
       "sensitivity_refs": [],
       "limits": [
         "Integration does not establish connected action-schema reflection."
@@ -78,17 +84,20 @@
     },
     {
       "kind": "deployed",
-      "proposition": "A source-equivalent edition containing the inspected runtime is READY on the enduring Vercel Production service.",
+      "proposition": "The current main edition is READY on the enduring Vercel Production service.",
       "standing": "SUPPORTED",
       "enforcement_mode": "OBSERVATIONAL",
       "evidence_refs": [
-        "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ",
-        "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+        "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP",
+        "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
       ],
-      "currentness_ref": "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ:READY",
-      "sensitivity_refs": [],
+      "currentness_ref": "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP:READY@b9d04a5122769b9d92d30a97a762466f341fc1ea",
+      "sensitivity_refs": [
+        "deployment-ready-state",
+        "deployment-git-sha"
+      ],
       "limits": [
-        "Deployment metadata does not prove authenticated execution, consumer exposure, or use."
+        "Deployment metadata does not prove connected-consumer exposure, situated use, semantic truth, or operational sustainment."
       ]
     },
     {
@@ -158,7 +167,7 @@
           "evidence_refs": [
             "docs/domain-semantic-admission.md"
           ],
-          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
         }
       }
     },
@@ -187,7 +196,7 @@
           "evidence_refs": [
             "server/domain-admission.ts"
           ],
-          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
         }
       }
     },
@@ -216,7 +225,7 @@
           "evidence_refs": [
             "server.ts"
           ],
-          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
         }
       }
     },
@@ -243,9 +252,10 @@
           "activation": "ACTIVE",
           "disposition": "RELIED_FOR_DECLARED_USE",
           "evidence_refs": [
-            "GitHubActions:37706155075"
+            "GitHubActions:37710751014",
+            "tests/inquiry/domain-admission.test.ts"
           ],
-          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
         }
       }
     },
@@ -259,7 +269,7 @@
         "participants": [
           {
             "role": "qualification",
-            "referent_id": "GitHubActions:37706155075"
+            "referent_id": "GitHubActions:37710751014"
           },
           {
             "role": "qualified_subject",
@@ -272,9 +282,9 @@
           "activation": "ACTIVE",
           "disposition": "RELIED_FOR_DECLARED_USE",
           "evidence_refs": [
-            "GitHubActions:37706155075"
+            "GitHubActions:37710751014"
           ],
-          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
         }
       }
     },
@@ -288,22 +298,22 @@
         "participants": [
           {
             "role": "deployment",
-            "referent_id": "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ"
+            "referent_id": "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP"
           },
           {
             "role": "deployed_edition",
-            "referent_id": "github:commit:77f6ab2b1a443f48e7808aaacef352365373ed9e"
+            "referent_id": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
           }
         ],
-        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "situated_basis_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
         "fidelity": {
           "coverage": "EXAMINED",
           "activation": "ACTIVE",
           "disposition": "RELIED_FOR_DECLARED_USE",
           "evidence_refs": [
-            "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ"
+            "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP"
           ],
-          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
         }
       }
     },
@@ -333,7 +343,7 @@
             "server.ts",
             "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ"
           ],
-          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
         }
       }
     },
@@ -362,7 +372,7 @@
           "evidence_refs": [
             "Linear:ECO-202"
           ],
-          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
         }
       }
     },
@@ -391,7 +401,7 @@
           "evidence_refs": [
             "server/native-packages/systems-engineering.ts"
           ],
-          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
         }
       }
     },
@@ -420,7 +430,7 @@
           "evidence_refs": [
             "GitHubActions:37706155075"
           ],
-          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
         }
       }
     },
@@ -449,7 +459,7 @@
           "evidence_refs": [
             "BRAIN:06b3ca69-0805-45aa-8ab9-cc75d618894b"
           ],
-          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
         }
       }
     },
@@ -463,14 +473,14 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.2"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.3"
           },
           {
             "role": "projection",
             "referent_id": "civs:projection:domain-semantic-admission:human"
           }
         ],
-        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+        "situated_basis_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
         "fidelity": {
           "coverage": "EXAMINED",
           "activation": "ACTIVE",
@@ -479,7 +489,7 @@
             "server/civs.ts",
             "GitHubActions:37707382882@6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
           ],
-          "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce"
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
         }
       }
     },
@@ -493,14 +503,14 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.2"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.3"
           },
           {
             "role": "projection",
             "referent_id": "ecos:civs-cold-reentry:0.1.0"
           }
         ],
-        "situated_basis_ref": "github:Levi-Anthony/ecb-v2:4b8aed051ff107ce71ebc4b1f2f718d7374aedba",
+        "situated_basis_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
         "fidelity": {
           "coverage": "EXAMINED",
           "activation": "ACTIVE",
@@ -510,7 +520,70 @@
             "tests/civs/reentry.test.ts",
             "GitHubActions:37709285781"
           ],
-          "currentness_ref": "github:commit:4b8aed051ff107ce71ebc4b1f2f718d7374aedba"
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:projects-to-portability",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:projects_to",
+        "participants": [
+          {
+            "role": "source",
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.3"
+          },
+          {
+            "role": "projection",
+            "referent_id": "ecos:civs:domain-semantic-admission:portability-degradation:2026-10-07:v0.1"
+          }
+        ],
+        "situated_basis_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "research/civs/domain-semantic-admission-portability-v0.1.json",
+            "tests/civs/portability.test.ts",
+            "GitHubActions:37710329869",
+            "GitHubActions:37710751082"
+          ],
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
+        }
+      }
+    },
+    {
+      "ref": "civs:rel:projects-to-correspondence-handoff",
+      "record": {
+        "kind": "native_relation",
+        "schema_ref": "ecos:civs-object-relations",
+        "schema_edition_ref": "0.1.0",
+        "relation_kind_ref": "ecos:civs-object-relations:projects_to",
+        "participants": [
+          {
+            "role": "source",
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-07:v1.3"
+          },
+          {
+            "role": "projection",
+            "referent_id": "ecos:civs:domain-semantic-admission:correspondence-handoff:2026-10-07:v0.1"
+          }
+        ],
+        "situated_basis_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
+        "fidelity": {
+          "coverage": "EXAMINED",
+          "activation": "ACTIVE",
+          "disposition": "RELIED_FOR_DECLARED_USE",
+          "evidence_refs": [
+            "research/civs/domain-semantic-admission-correspondence-handoff-v0.1.json",
+            "tests/civs/correspondence.test.ts",
+            "GitHubActions:37710751082"
+          ],
+          "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea"
         }
       }
     }
@@ -523,7 +596,7 @@
       "evidence_refs": [
         "docs/civs-wp0-current-inventory-2026-10-07.json"
       ],
-      "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
       "limits": [
         "Repository identity is not runtime execution."
       ]
@@ -537,19 +610,19 @@
         "server/domain-admission.ts",
         "GitHubActions:37706155075"
       ],
-      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
       "limits": [
         "Loaded module path is not consumer exposure."
       ]
     },
     {
       "kind": "deployment",
-      "object_ref": "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ",
+      "object_ref": "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP",
       "observation": "OBSERVED",
       "evidence_refs": [
-        "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ"
+        "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP"
       ],
-      "currentness_ref": "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ:READY",
+      "currentness_ref": "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP:READY@b9d04a5122769b9d92d30a97a762466f341fc1ea",
       "limits": [
         "READY metadata is not authenticated invocation evidence."
       ]
@@ -562,7 +635,7 @@
         "server.ts",
         "tests/inquiry/ingress.test.ts"
       ],
-      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
       "limits": [
         "Backend ingress does not establish frozen connected action-schema reflection."
       ]
@@ -801,6 +874,55 @@
       "limits": [
         "This establishes instruction-surface structure and drift resistance only; fresh-agent behavioral success remains NOT ESTABLISHED."
       ]
+    },
+    {
+      "ref": "civs:verify:wp6-portability-degradation",
+      "proposition": "The WP6 matrix keeps alternate portability NOT_ESTABLISHED, separates pure evaluator from integrated ordinary-use dependencies, and requires each degradation case to expose retained/lost capability and an exact reentry route without standing promotion.",
+      "method_ref": "tests/civs/portability.test.ts",
+      "enforcement_mode": "STRUCTURAL",
+      "evidence_refs": [
+        "GitHubActions:37710751082",
+        "GitHubActions:37710329869",
+        "tests/civs/portability.test.ts",
+        "research/civs/domain-semantic-admission-portability-v0.1.json",
+        "docs/civs-domain-semantic-admission-portability.md"
+      ],
+      "standing": "SUPPORTED",
+      "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
+      "sensitivity_refs": [
+        "test:WP6-matrix-validates-and-human-projection-is-exact",
+        "test:pure-evaluator-and-integrated-ordinary-use-dependencies-remain-separate",
+        "test:degradation-is-visible-and-never-promotes-standing",
+        "test:native-source-loss-QUALIFY-HOLDs-rather-than-defaulting-to-EXTEND"
+      ],
+      "limits": [
+        "This qualifies degradation characterization, not any alternate implementation/provider.",
+        "Predicted outage cases remain hypotheses until observed or independently simulated."
+      ]
+    },
+    {
+      "ref": "civs:verify:wp7-correspondence-handoff",
+      "proposition": "The WP7 handoff derives fourteen explicit correspondence requirements/falsifiers from the first specimen while keeping formalism selection NOT_EARNED and semantic correspondence NOT_ESTABLISHED.",
+      "method_ref": "tests/civs/correspondence.test.ts",
+      "enforcement_mode": "STRUCTURAL",
+      "evidence_refs": [
+        "GitHubActions:37710751082",
+        "tests/civs/correspondence.test.ts",
+        "research/civs/domain-semantic-admission-correspondence-handoff-v0.1.json",
+        "docs/civs-domain-semantic-admission-correspondence-handoff.md"
+      ],
+      "standing": "SUPPORTED",
+      "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
+      "sensitivity_refs": [
+        "test:WP7-handoff-validates-and-human-projection-is-exact",
+        "test:formalism-selection-is-explicitly-not-earned",
+        "test:handoff-covers-core-mapping-semantics-without-selecting-algebra",
+        "test:next-route-is-WP8-qualification-not-automatic-formalism-installation"
+      ],
+      "limits": [
+        "A complete requirements handoff is not semantic correspondence truth.",
+        "No mathematical formalism or bidirectional mutation is selected/authorized."
+      ]
     }
   ],
   "field_reconstitution": {
@@ -849,9 +971,13 @@
       "enforcement_mode": "SEMANTIC",
       "evidence_refs": [
         "server/domain-admission.ts",
-        "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json"
+        "research/systems-engineering/DI-Native-Package-Boundary-v0.1.json",
+        "research/civs/domain-semantic-admission-correspondence-handoff-v0.1.json",
+        "docs/civs-domain-semantic-admission-correspondence-handoff.md",
+        "tests/civs/correspondence.test.ts",
+        "GitHubActions:37710751082"
       ],
-      "currentness_ref": "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+      "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
       "composition_expectation": "Must preserve native meaning across any composed cross-domain mapping.",
       "inversion_expectation": "Not established.",
       "partiality_expectation": "Likely partial; exact contract unresolved.",
@@ -860,7 +986,17 @@
         "composition law where consequential",
         "partiality",
         "invertibility requirements if any",
-        "schema/edition change behavior"
+        "schema/edition change behavior",
+        "relation-kind/identity semantics",
+        "directionality",
+        "cardinality",
+        "partiality/undefined cases",
+        "composition evidence propagation",
+        "inversion/equivalence conditions",
+        "mapping standing/currentness across editions",
+        "multiplicity/uncertainty",
+        "authorized update propagation",
+        "consumer legibility"
       ],
       "question_forward_refs": [
         "civs:qf:domain-admission:correspondence-truth"
@@ -868,26 +1004,40 @@
     }
   ],
   "portability": {
-    "proposition": "A different runtime/renderer can realize the same Domain-Semantic Admission and CIR semantic contracts without changing native ownership or inspection truth.",
-    "standing": "UNKNOWN",
+    "proposition": "WP6 structurally separates the bounded Domain-Semantic Admission contract from its current evaluator/runtime/host/recovery/consumer/coordination realizations and names substitution requirements; no alternate evaluator, runtime, host, persistence/recovery provider, source-custody provider, coordination surface, or consumer adapter has been independently qualified for equivalent behavior.",
+    "standing": "NOT_ESTABLISHED",
     "enforcement_mode": "STRUCTURAL",
-    "evidence_refs": [],
+    "evidence_refs": [
+      "research/civs/domain-semantic-admission-portability-v0.1.json",
+      "docs/civs-domain-semantic-admission-portability.md",
+      "tests/civs/portability.test.ts",
+      "GitHubActions:37710329869",
+      "GitHubActions:37710751082"
+    ],
+    "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
     "limits": [
-      "No substitute implementation has been qualified."
+      "Substitution requirements are not substitute proof.",
+      "Current decision identity uses Node SHA-256 and requires explicit reconciliation in a replacement runtime.",
+      "Predicted provider-outage behavior is not an observed failover result.",
+      "Native semantic ownership/currentness remains external."
     ]
   },
   "graceful_degradation": {
-    "proposition": "The capability and CIR remain inspectable through text/API surfaces when no graphical substrate is present.",
+    "proposition": "WP6 qualifies a dependency-specific degradation inspection: each case states retained and lost capability, visible signals, disposition, falsifier, and reentry route without upgrading semantic standing.",
     "standing": "SUPPORTED",
-    "enforcement_mode": "OBSERVATIONAL",
+    "enforcement_mode": "STRUCTURAL",
     "evidence_refs": [
-      "docs/domain-semantic-admission.md",
-      "server.ts",
-      "docs/civs-contract.md"
+      "research/civs/domain-semantic-admission-portability-v0.1.json",
+      "docs/civs-domain-semantic-admission-portability.md",
+      "tests/civs/portability.test.ts",
+      "GitHubActions:37710329869",
+      "GitHubActions:37710751082"
     ],
-    "currentness_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
+    "currentness_ref": "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
     "limits": [
-      "Does not prove graceful degradation when BRAIN, Linear, deployment metadata or native sources are unavailable."
+      "Support applies to the inspected matrix structure and its evidenced/simulated cases; predicted provider outages remain untested.",
+      "Graceful degradation never upgrades semantic standing, exposure, action authority, or substitute portability.",
+      "No destructive outage experiment was performed."
     ]
   },
   "role_assignments": [
@@ -1061,6 +1211,26 @@
         "research/civs/domain-semantic-admission.cir.json"
       ],
       "no_invention_rule": "Follow the cold-agent procedure; return an exact HOLD for unsupported bridges rather than inferring missing standing, exposure, authority, Level, correspondence truth, or PGO naming."
+    },
+    {
+      "ref": "civs:bridge:portability-degradation",
+      "question": "What survives, what is lost, and where should work reenter when a current dependency is unavailable?",
+      "answer_route_refs": [
+        "research/civs/domain-semantic-admission-portability-v0.1.json",
+        "docs/civs-domain-semantic-admission-portability.md",
+        "docs/civs-reentry.md"
+      ],
+      "no_invention_rule": "Use the exact WP6 case for the missing surface; do not infer substitute portability, exposure, authority, or semantic truth from retained capability."
+    },
+    {
+      "ref": "civs:bridge:correspondence-handoff",
+      "question": "What correspondence semantics are now required, and has a mathematical formalism been earned?",
+      "answer_route_refs": [
+        "research/civs/domain-semantic-admission-correspondence-handoff-v0.1.json",
+        "docs/civs-domain-semantic-admission-correspondence-handoff.md",
+        "civs:qf:domain-admission:correspondence-truth"
+      ],
+      "no_invention_rule": "Recover CR-01 through CR-14 and the formalism gate. Current standing is NOT_EARNED/NONE; do not select algebra from analogy or from FEDERATE."
     }
   ],
   "questions_forward": [
@@ -1114,8 +1284,8 @@
     }
   ],
   "verification": {
-    "observed_at_ref": "GitHubActions:37709285781:SUCCESS",
-    "as_of_ref": "github:Levi-Anthony/ecb-v2:4b8aed051ff107ce71ebc4b1f2f718d7374aedba",
+    "observed_at_ref": "GitHubActions:37710751082:SUCCESS",
+    "as_of_ref": "github:Levi-Anthony/ecb-v2:b9d04a5122769b9d92d30a97a762466f341fc1ea",
     "currentness_refs": [
       "GitHubCompare:67e6f7a12c7255bb5d964fcc3679355321972620...6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
       "Vercel:dpl_7QqFFYbJQptDnUPXxGGJE3ZKi2bQ:READY",
@@ -1128,9 +1298,14 @@
       "GitHubActions:37709285827:SUCCESS",
       "GitHubActions:37709285795:SUCCESS",
       "GitHubActions:37709285788:SUCCESS",
-      "github:commit:4b8aed051ff107ce71ebc4b1f2f718d7374aedba"
+      "github:commit:4b8aed051ff107ce71ebc4b1f2f718d7374aedba",
+      "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
+      "GitHubActions:37710751014",
+      "GitHubActions:37710751082",
+      "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP:READY",
+      "GitHubActions:37710329869"
     ],
-    "supersedes_ref": "github:Levi-Anthony/ecb-v2:b20e9375d7a6c851fe1fa2ea10d131d1b8219724:research/civs/domain-semantic-admission.cir.json"
+    "supersedes_ref": "github:Levi-Anthony/ecb-v2:b9d04a5122769b9d92d30a97a762466f341fc1ea:research/civs/domain-semantic-admission.cir.json#v1.2"
   },
   "vertical_placement": {
     "working_band": "projection",
@@ -1150,7 +1325,9 @@
       "civs:rel:eco202-coordinates",
       "civs:rel:depends-on-native-packages",
       "civs:rel:qf-correspondence",
-      "civs:rel:projects-to-human"
+      "civs:rel:projects-to-human",
+      "civs:rel:projects-to-portability",
+      "civs:rel:projects-to-correspondence-handoff"
     ],
     "role_assignment_refs": [
       "civs:role:principal",
@@ -1550,7 +1727,18 @@
     "docs/civs-reentry.md",
     "tests/civs/reentry.test.ts",
     "GitHubActions:37709285781",
-    "github:commit:4b8aed051ff107ce71ebc4b1f2f718d7374aedba"
+    "github:commit:4b8aed051ff107ce71ebc4b1f2f718d7374aedba",
+    "research/civs/domain-semantic-admission-portability-v0.1.json",
+    "docs/civs-domain-semantic-admission-portability.md",
+    "tests/civs/portability.test.ts",
+    "GitHubActions:37710329869",
+    "research/civs/domain-semantic-admission-correspondence-handoff-v0.1.json",
+    "docs/civs-domain-semantic-admission-correspondence-handoff.md",
+    "tests/civs/correspondence.test.ts",
+    "GitHubActions:37710751082",
+    "GitHubActions:37710751014",
+    "github:commit:b9d04a5122769b9d92d30a97a762466f341fc1ea",
+    "Vercel:dpl_9JxBvAuJ7NZ9sgsgS6CqPsjm9baP"
   ],
   "omissions": [
     "No connected-consumer invocation proving inquiry.domain_admission exposure.",
@@ -1560,6 +1748,9 @@
     "No cross-domain correspondence truth, equivalence, invertibility or selected mathematics.",
     "No fresh-agent behavioral cold-read qualification yet.",
     "No universal graphical projection/control substrate or bidirectional human control surface.",
-    "PGO long-form Namecrafting remains open."
+    "PGO long-form Namecrafting remains open.",
+    "WP6 does not qualify any alternate evaluator/runtime/host/provider; alternate portability remains NOT ESTABLISHED.",
+    "WP7 selects no correspondence formalism; formalism status remains NOT_EARNED and semantic correspondence remains NOT_ESTABLISHED.",
+    "Predicted provider-outage cases are not destructive failover experiments and must not be reported as observed behavior."
   ]
 }
