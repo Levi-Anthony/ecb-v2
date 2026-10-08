@@ -156,7 +156,7 @@ test('graphical readiness remains decomposed and projection is a URG Projection 
       evidence_refs: ['fixture:cir-edition'], currentness_ref: basis },
   });
   assert.equal(projection.kind, 'projection');
-  assert.equal(projection.mapping_relation_ref, 'ecos:civs-human-projection:0.1.0');
+  assert.equal(projection.mapping_relation_ref, 'ecos:civs-human-projection:0.1.1');
 });
 
 
