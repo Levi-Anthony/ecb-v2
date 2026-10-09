@@ -14,6 +14,7 @@ import { bearerChallenge, oauthEnabled, oauthToolDenial, verifyOAuthToken } from
 import { runBrainInquiry } from './server/orchestration-brain.js';
 import { canonical } from './server/orchestration.js';
 import { evaluateDIBoundary } from './server/domain-admission.js';
+import { assessResponsibilitySet } from './server/responsibility-set.js';
 import { systemsEngineeringNativePackages } from './server/native-packages/systems-engineering.js';
 
 const SUPABASE_URL = 'https://vezxivrvhakclxuvxzso.supabase.co';
@@ -621,7 +622,7 @@ function buildServer(): McpServer {
   server.registerTool('search', {
     title: 'Search Thoughts',
     description:
-      'Contract ecb-v2-search/0.7.1. Search canonical thought evidence through one hybrid retrieval surface. Optional inquiry context also opens cross-context native/structural discovery, exact candidate recovery and an editioned working projection with explicit qualification/reentry. Similarity creates no standing. This call can repair missing semantic representations; lexical retrieval remains available when embeddings fail, with coverage/degradation reported.',
+      'Contract ecb-v2-search/0.7.2. Search canonical thought evidence through one hybrid retrieval surface. Optional inquiry context also opens cross-context native/structural discovery, exact candidate recovery and an editioned working projection with explicit qualification/reentry. Similarity creates no standing. This call can repair missing semantic representations; lexical retrieval remains available when embeddings fail, with coverage/degradation reported.',
     // Search repairs missing embeddings before retrieval, so it can write representations.
     annotations: { readOnlyHint: false, destructiveHint: false },
     scopeChallenge: capabilityCheck('recover'),
@@ -684,28 +685,42 @@ function buildServer(): McpServer {
           domain: inquiry.domain_admission.domain, inquiry_basis_ref: inquiryResult.inquiry_basis_ref,
           package_ids: packageIds, responsibilities: inquiry.domain_admission.responsibilities,
         }, systemsEngineeringNativePackages);
+        // The D&I evaluator verifies the supplied items, not whether the necessary set was supplied.
+        // The ordinary path has no independent semantic set assessor yet; never invent validation.
+        const responsibilitySet = await assessResponsibilitySet({
+          inquiry_basis_ref: inquiryResult.inquiry_basis_ref, intended_use: inquiry.intended_use,
+          obligation_ref: inquiry.context.referent_id ?? '',
+          responsibility_ids: inquiry.domain_admission.responsibilities.map(r => r.id),
+          source_editions: [],
+        });
         const unresolved = [...new Set([
           ...inquiryResult.reentry.unresolved_refs,
           ...domainAdmission.unresolved_refs.map(ref => 'domain_admission:' + ref),
+          ...responsibilitySet.unresolved_refs.map(ref => 'responsibility_set:' + ref),
         ])];
-        const disposition = inquiryResult.disposition === 'HOLD' || domainAdmission.disposition === 'HOLD' ? 'HOLD' : 'READY';
+        const disposition = inquiryResult.disposition === 'HOLD' || domainAdmission.disposition === 'HOLD' ||
+          responsibilitySet.disposition === 'HOLD' ? 'HOLD' : 'READY';
         const reentry = {
           ...inquiryResult.reentry, unresolved_refs: unresolved,
-          condition: domainAdmission.disposition === 'HOLD'
-            ? 'Resolve domain-semantic admission qualification gates, then ' + inquiryResult.reentry.condition
-            : inquiryResult.reentry.condition,
+          condition: responsibilitySet.disposition === 'HOLD'
+            ? 'Obtain an attributable, independently source-verified responsibility-set validation for this use; ' + inquiryResult.reentry.condition
+            : domainAdmission.disposition === 'HOLD'
+              ? 'Resolve domain-semantic admission qualification gates, then ' + inquiryResult.reentry.condition
+              : inquiryResult.reentry.condition,
         };
         const artifactContent = canonical({
           contract: inquiryResult.contract,
           indexical_binding: inquiryResult.indexical_binding,
           projection: inquiryResult.projection,
           domain_admission: domainAdmission,
+          responsibility_set: responsibilitySet,
           disposition,
           reentry,
         });
         return result({
           ...inquiryResult,
           domain_admission: domainAdmission,
+          responsibility_set: responsibilitySet,
           disposition,
           reentry,
           preservation: { ...inquiryResult.preservation, artifact_content: artifactContent },

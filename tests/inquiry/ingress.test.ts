@@ -100,6 +100,10 @@ test('ordinary inquiry applies systems-engineering domain admission without a ne
     const body = JSON.parse((r.content as Array<{ text: string }>)[0].text);
     assert.equal(body.domain_admission.contract, 'ecos:domain-semantic-admission:0.1.0');
     assert.equal(body.domain_admission.disposition, 'READY');
+    assert.equal(body.responsibility_set.disposition, 'HOLD');
+    assert.equal(body.responsibility_set.verification.status, 'UNVERIFIED');
+    assert.equal(body.responsibility_set.validation.status, 'UNKNOWN');
+    assert(body.reentry.unresolved_refs.includes('responsibility_set:semantic_responsibility_set_assessment'));
     assert.equal(body.domain_admission.decisions[0].disposition, 'INHERIT');
     assert.match(body.domain_admission.decisions[0].id, /^sha256:[0-9a-f]{64}$/);
     assert.equal(body.disposition, 'HOLD'); // the existing semantic relation adapter still holds independently
@@ -108,5 +112,6 @@ test('ordinary inquiry applies systems-engineering domain admission without a ne
     const preserved = JSON.parse(body.preservation.artifact_content);
     assert.equal(preserved.indexical_binding.basis_ref, body.inquiry_basis_ref);
     assert.equal(preserved.domain_admission.decisions[0].disposition, 'INHERIT');
+    assert.equal(preserved.responsibility_set.validation.status, 'UNKNOWN');
   });
 });
