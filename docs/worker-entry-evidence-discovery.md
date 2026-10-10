@@ -1,0 +1,30 @@
+# Ordinary-worker pre-reasoning source discovery
+
+**Role:** compact agent-facing entry projection over existing ECOS source-recovery, constructive D&I, and consumer-bound installation contracts. **Standing:** operational reminder from the Principal's 2026-10-10 continuity commission; no new constitutional invariant, truth store, model-runtime gate, authority or independent RPC-1 workstream. **Consumer:** project-specific workers and situated-inquiry entrants on surfaces that expose this file. **Owners:** ECO-202 (ordinary inquiry) / ECO-156 and ECO-219 (instruction surface delivery).
+
+## At the entrance to consequential work
+
+Before forming consequential project claims, recommendations, tasks or authority judgments, **quietly discover** what the active work already knows. Do this as part of the ordinary opening orientation; do not demand the human repeat a bootstrap command.
+
+1. **Seat the actual job:** current point of view, focal referent and containing work, intended outcome/PGO, and first contrast noticed. Look up the active commission/current decision surface; do not substitute an attractive local subtask as the governing objective.
+2. **Recover distributed context:** use the authorized connected BRAIN/inquiry route where exposed, and the repository's `START_HERE.md`, `docs/inquiry-orchestration.md`, current issue/source handles and any exact supplied materials as appropriate. Use discovery/search to locate candidates; **read actual identified sources** before consequential reliance. Record degraded/unavailable channels when they change the decision; do not infer absence or irrelevance from a missing hit.
+3. **Apply inherited standing distinctions:** a source, inferred relation, hypothesis, proposed action, current activity, and existing resource have different statuses. Preserve source identity/edition/currentness, comparator scope, reader relevance, operational permission, and material uncertainty. A retrieved record or persuasive wording never confers warrant, standing or authority by itself.
+4. **Check generated relational structure at the point of use:** before allowing a material opposition, ranking, exclusion, equivalence, invented alternate, ongoing-activity claim or implementation dependency to steer understanding or action, identify what supports that relationship and what interpretive force it is receiving. Also check whether an otherwise defensible contrast earns the attention it consumes. Repair unsupported claims or modal language; omit nonproductive contrast; preserve truly warranted negative criticism.
+5. **Return to the governing action:** perform the next authorized, outcome-bearing ordinary-work operation under the existing receiving/realization path. Record only outcome-relevant uncertainty and follow-up. Do not create a new evaluation campaign, tracker, gate, object or issue merely because an interesting specimen or method appeared.
+
+**Concrete recurring traps:** "We're refreshing current impact" when the notes only contain a plan to assess impact; "the volunteer's existing working sheet" when no sheet is established; contrasting a real proposal against a fictional inferior method; scientifically plausible caveats that correct no live misconception. These defects can change the reader's conceptual model immediately, even without external action. A literal ban on "not X but Y" would lose useful distinctions and does not address the underlying problem.
+
+**If recovery is unavailable:** report the specific missing source/access or adapter only when it materially limits the next decision; continue warranted non-mutating work with explicitly bounded assumptions. Gate or HOLD only the effect actually requiring unavailable basis/authority. The mere unavailability of an optional source must not halt the whole active project.
+
+**Seam and scope warning:** an instruction is discoverable only where the worker's runtime actually loads it. This file cannot ensure pre-reasoning automatic retrieval, independently witnessed model-internal repair, or source attestation on unsupported surfaces. Where a consequential transition needs machine-enforced fidelity, use the existing controller / semantic evaluation / authority / observational surfaces per `docs/invariants.md`; verify actual invocation within the owner's ordinary-use work. Do not certify passive projection as runtime enforcement.
+
+## Further reading / exact evidence
+
+- [Full relational-completion campaign harvest](../research/ordinary-inquiry/Relational-Completion-Side-Quest-Harvest-2026-10-10.md): naturalistic reader harm; D1 service/calendar episodes; calibrated RPC-1 C1–C8; RSC-01 ceiling; pilot and masked-score limitations; causal hypothesis; rejected diversion.
+- [ECO-202 ordinary inquiry runtime](inquiry-orchestration.md): substantive receiving owner and current real-use gap.
+- [Constructive D&I worker disposition](working-preferences-constructive-di.md): inherit settled rules; harvest actual generative value; eliminate invented objections and proof gates.
+- [Operational tool action/continuity authorization](tool-action-routing-and-continuity-authorization.md): BRAIN-first route and bounded downstream continuity actions.
+- [Governing invariants](invariants.md): in particular no silent promotion, source/standing distinctions, and no consequential transition resting solely on remembered instructions.
+- ECO-156, ECO-219, ECO-218 own cross-surface delivery and connector exposure. Do not unilaterally replace their present consumer bootloader editions or claim they are already installed.
+
+**Success observation, bounded to the current worker:** this procedure is successful *as a working practice* when an ordinary request uses recovered current sources, avoids unsupported relational promotion and gratuitous reader-costly alternatives, makes useful progress, and accurately reports which pre-work discoveries actually occurred. Distinct verification of automatic surface injection and machine-gate timing belongs to the existing consumer work.
