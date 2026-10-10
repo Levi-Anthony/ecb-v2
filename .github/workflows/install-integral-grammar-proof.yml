@@ -1,0 +1,60 @@
+name: Install integral grammar proof
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_ref:
+        description: Supabase project reference to install into
+        required: true
+        default: lqbrzoicorehwidkdhoi
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      SUPABASE_PROJECT_REF: ${{ inputs.project_ref }}
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+
+      - name: Use Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Verify package projections
+        shell: bash
+        run: |
+          set -euo pipefail
+          cmp server/installation/ecb-ingestion-v3-proof/request-profile-v3.json server/ingestion-experiment/request-profile-v3.json
+          cmp server/installation/ecb-ingestion-v3-proof/grammar-runtime-v0.1.json server/ingestion-experiment/grammar-runtime-v0.1.json
+          node --check server/installation/ecb-ingestion-v3-proof/proof.ts
+
+      - name: Install Supabase CLI
+        uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
+      - name: Deploy exact package
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$SUPABASE_ACCESS_TOKEN"
+          rm -rf supabase/functions/ecb-ingestion-v3-proof
+          mkdir -p supabase/functions/ecb-ingestion-v3-proof
+          cp server/installation/ecb-ingestion-v3-proof/* supabase/functions/ecb-ingestion-v3-proof/
+          supabase functions deploy ecb-ingestion-v3-proof \
+            --project-ref "$SUPABASE_PROJECT_REF" \
+            --no-verify-jwt
+
+      - name: Record source installation identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "source_commit=${GITHUB_SHA}"
+          echo "source_bundle=ecb-ingestion-v3-proof"
+          echo "target_project=${SUPABASE_PROJECT_REF}"
+          echo "target_function=ecb-ingestion-v3-proof"
