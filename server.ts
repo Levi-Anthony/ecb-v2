@@ -14,7 +14,8 @@ import { bearerChallenge, oauthEnabled, oauthToolDenial, verifyOAuthToken } from
 import { runBrainInquiry } from './server/orchestration-brain.js';
 import { canonical } from './server/orchestration.js';
 import { evaluateDIBoundary } from './server/domain-admission.js';
-import { assessResponsibilitySet } from './server/responsibility-set.js';
+import { produceResponsibilitySet, type RecoveredSource } from './server/responsibility-producer.js';
+import { createBrainInquiryAdapters } from './server/orchestration-brain.js';
 import { systemsEngineeringNativePackages } from './server/native-packages/systems-engineering.js';
 
 const SUPABASE_URL = 'https://vezxivrvhakclxuvxzso.supabase.co';
@@ -622,7 +623,7 @@ function buildServer(): McpServer {
   server.registerTool('search', {
     title: 'Search Thoughts',
     description:
-      'Contract ecb-v2-search/0.7.2. Search canonical thought evidence through one hybrid retrieval surface. Optional inquiry context also opens cross-context native/structural discovery, exact candidate recovery and an editioned working projection with explicit qualification/reentry. Similarity creates no standing. This call can repair missing semantic representations; lexical retrieval remains available when embeddings fail, with coverage/degradation reported.',
+      'Contract ecb-v2-search/0.7.3. Search canonical thought evidence through one hybrid retrieval surface. Optional inquiry context also opens cross-context native/structural discovery, exact candidate recovery and an editioned working projection with explicit qualification/reentry. Similarity creates no standing. This call can repair missing semantic representations; lexical retrieval remains available when embeddings fail, with coverage/degradation reported.',
     // Search repairs missing embeddings before retrieval, so it can write representations.
     annotations: { readOnlyHint: false, destructiveHint: false },
     scopeChallenge: capabilityCheck('recover'),
@@ -685,14 +686,28 @@ function buildServer(): McpServer {
           domain: inquiry.domain_admission.domain, inquiry_basis_ref: inquiryResult.inquiry_basis_ref,
           package_ids: packageIds, responsibilities: inquiry.domain_admission.responsibilities,
         }, systemsEngineeringNativePackages);
-        // The D&I evaluator verifies the supplied items, not whether the necessary set was supplied.
-        // The ordinary path has no independent semantic set assessor yet; never invent validation.
-        const responsibilitySet = await assessResponsibilitySet({
+        // Recover the exact source through the same authorized ordinary BRAIN/native readers.
+        // This producer returns verbatim evidence candidates, never semantic validation by inference.
+        const brainPorts = { searchThoughts: (q: string, n: number) => runtime.search(q, n),
+          fetchThought: (id: string) => runtime.fetch(id), dispatch: circulationDispatch, embed };
+        const sourceReader = createBrainInquiryAdapters(brainPorts, actor);
+        const produced = await produceResponsibilitySet({
           inquiry_basis_ref: inquiryResult.inquiry_basis_ref, intended_use: inquiry.intended_use,
           obligation_ref: inquiry.context.referent_id ?? '',
           responsibility_ids: inquiry.domain_admission.responsibilities.map(r => r.id),
-          source_editions: [],
+        }, {
+          async recoverSource(ref): Promise<RecoveredSource | null> {
+            const evidence = await sourceReader.fetchEvidence(ref);
+            return evidence && evidence.content ? {
+              ref: evidence.referent_id, content: evidence.content, custody_ref: evidence.custody_ref,
+              basis_digest: evidence.digest, source_refs: evidence.source_refs,
+              currentness: evidence.currentness,
+            } : null;
+          },
+          // No implied provider commission: qualified semantic writer remains an explicit adapter.
         });
+        const responsibilitySet = produced.assessment;
+        const responsibilityProposal = produced.proposal;
         const unresolved = [...new Set([
           ...inquiryResult.reentry.unresolved_refs,
           ...domainAdmission.unresolved_refs.map(ref => 'domain_admission:' + ref),
@@ -714,6 +729,7 @@ function buildServer(): McpServer {
           projection: inquiryResult.projection,
           domain_admission: domainAdmission,
           responsibility_set: responsibilitySet,
+          responsibility_proposal: responsibilityProposal,
           disposition,
           reentry,
         });
@@ -721,6 +737,7 @@ function buildServer(): McpServer {
           ...inquiryResult,
           domain_admission: domainAdmission,
           responsibility_set: responsibilitySet,
+          responsibility_proposal: responsibilityProposal,
           disposition,
           reentry,
           preservation: { ...inquiryResult.preservation, artifact_content: artifactContent },

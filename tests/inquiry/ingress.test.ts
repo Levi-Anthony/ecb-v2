@@ -101,6 +101,8 @@ test('ordinary inquiry applies systems-engineering domain admission without a ne
     assert.equal(body.domain_admission.contract, 'ecos:domain-semantic-admission:0.1.0');
     assert.equal(body.domain_admission.disposition, 'READY');
     assert.equal(body.responsibility_set.disposition, 'HOLD');
+    assert.equal(body.responsibility_proposal.contract, 'ecos:source-bound-responsibility-producer:0.1.0');
+    assert.equal(body.responsibility_proposal.status, 'SOURCE_RECOVERED');
     assert.equal(body.responsibility_set.verification.status, 'UNVERIFIED');
     assert.equal(body.responsibility_set.validation.status, 'UNKNOWN');
     assert(body.reentry.unresolved_refs.includes('responsibility_set:semantic_responsibility_set_assessment'));
@@ -113,5 +115,6 @@ test('ordinary inquiry applies systems-engineering domain admission without a ne
     assert.equal(preserved.indexical_binding.basis_ref, body.inquiry_basis_ref);
     assert.equal(preserved.domain_admission.decisions[0].disposition, 'INHERIT');
     assert.equal(preserved.responsibility_set.validation.status, 'UNKNOWN');
+    assert.equal(preserved.responsibility_proposal.obligation_ref, focal);
   });
 });
