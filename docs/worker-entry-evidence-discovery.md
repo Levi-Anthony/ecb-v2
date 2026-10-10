@@ -18,6 +18,10 @@ Before forming consequential project claims, recommendations, tasks or authority
 
 **Seam and scope warning:** an instruction is discoverable only where the worker's runtime actually loads it. This file cannot ensure pre-reasoning automatic retrieval, independently witnessed model-internal repair, or source attestation on unsupported surfaces. Where a consequential transition needs machine-enforced fidelity, use the existing controller / semantic evaluation / authority / observational surfaces per `docs/invariants.md`; verify actual invocation within the owner's ordinary-use work. Do not certify passive projection as runtime enforcement.
 
+## Production-cycle contact
+
+Within the current viable-system realization commission, inspect the registered [workflow account](workflow-governance.md) and [acceptance plan](../research/workflow-governance/2026-10-10-production-cycle-plan.json) after source recovery. Keep the containing outcome and current realization obligation in view together. A locally true discovery enters as a scope proposal with its decision consequence, omission failure and bounded return; it does not silently displace required work. Native transitions enforce this rule on the covered controller path; this entry projection makes that path discoverable.
+
 ## Further reading / exact evidence
 
 - [Full relational-completion campaign harvest](../research/ordinary-inquiry/Relational-Completion-Side-Quest-Harvest-2026-10-10.md): naturalistic reader harm; D1 service/calendar episodes; calibrated RPC-1 C1–C8; RSC-01 ceiling; pilot and masked-score limitations; causal hypothesis; rejected diversion.

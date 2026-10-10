@@ -40,7 +40,7 @@ async function withClient(run: (client: Client, calls: Array<{ name: string; pay
 test('ordinary search opens exact cross-context candidates under recover capability with no new tool', async () => {
   await withClient(async (client, calls) => {
     const tools = (await client.listTools()).tools;
-    assert.deepEqual(tools.map(t => t.name), ['capture_thought', 'search', 'fetch', 'set_thought_disposition', 'create_artifact', 'fetch_artifact']);
+    assert.deepEqual(tools.map(t => t.name), ['workflow_inspect', 'workflow_command', 'capture_thought', 'search', 'fetch', 'set_thought_disposition', 'create_artifact', 'fetch_artifact']);
     assert((tools.find(t => t.name === 'search')!.inputSchema.properties as Record<string, unknown>).inquiry);
     const r = await client.callTool({ name: 'search', arguments: { query: 'apparently unrelated future concern', inquiry } });
     assert.equal(r.isError, undefined);

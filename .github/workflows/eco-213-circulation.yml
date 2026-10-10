@@ -4,6 +4,10 @@ on:
     branches: [main]
     paths:
       - 'server.ts'
+      - 'server/workflow-governance.ts'
+      - 'api/workflow.ts'
+      - 'sql/migrations/*workflow*'
+      - 'tests/workflow/**'
       - 'server/orchestration*.ts'
       - 'server/domain-admission.ts'
       - 'server/native-packages/**'
@@ -20,6 +24,10 @@ on:
     branches: [main]
     paths:
       - 'server.ts'
+      - 'server/workflow-governance.ts'
+      - 'api/workflow.ts'
+      - 'sql/migrations/*workflow*'
+      - 'tests/workflow/**'
       - 'server/orchestration*.ts'
       - 'server/domain-admission.ts'
       - 'server/native-packages/**'
@@ -86,3 +94,8 @@ jobs:
 
       - name: Public compiled edition receipt
         run: node --import tsx scripts/eco-213/edition-receipt.ts
+      - name: Outcome-governed workflow kernel and both ordinary doors
+        run: |
+          node tests/workflow/install.mjs
+          npm run typecheck:workflow
+          npm run test:workflow

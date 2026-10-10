@@ -123,6 +123,7 @@ export async function oauthToolDenial(request: Request, auth: AuthInfo): Promise
   const family: Record<string, OAuthCapability> = {
     fetch: 'recover', fetch_artifact: 'recover', search: 'recover',
     capture_thought: 'preserve', create_artifact: 'preserve', set_thought_disposition: 'transition',
+    workflow_inspect: 'recover', workflow_command: 'transition',
   };
   const capability = family[body.params?.name];
   if (!capability || auth.scopes.includes(`ecb:${capability}`)) return;

@@ -6,6 +6,8 @@
     "node": "24.x"
   },
   "scripts": {
+    "typecheck:workflow": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server/workflow-governance.ts api/workflow.ts tests/workflow/ingress.test.ts",
+    "test:workflow": "node --import tsx --test tests/workflow/*.test.ts",
     "typecheck:inquiry": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server.ts server/orchestration.ts server/orchestration-brain.ts server/domain-admission.ts server/native-packages/systems-engineering.ts tests/inquiry/orchestration.test.ts tests/inquiry/brain.test.ts tests/inquiry/ingress.test.ts tests/inquiry/domain-admission.test.ts tests/inquiry/responsibility-set.test.ts tests/inquiry/responsibility-producer.test.ts",
     "test:inquiry": "node --import tsx --test tests/inquiry/*.test.ts",
     "typecheck:oauth": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server/oauth.ts server/oauth-consent.ts api/metadata.ts api/oauth/[action].ts tests/eco-218/oauth.test.ts",

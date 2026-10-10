@@ -20,6 +20,7 @@ process.env.ECB_MCP_CAPABILITY_GRANTS = JSON.stringify(Object.entries(credential
 })));
 
 const names = [
+  'workflow_inspect', 'workflow_command',
   'capture_thought', 'search', 'fetch', 'set_thought_disposition',
   'create_artifact', 'fetch_artifact',
 ];
@@ -69,15 +70,17 @@ const invalidArgs: Record<string, Record<string, unknown>> = {
   capture_thought: { operation_id: 'invalid', content: 'x', source: 'test' },
   create_artifact: { operation_id: 'invalid', content: 'x' },
   set_thought_disposition: { operation_id: 'invalid' },
+  workflow_inspect: {cycle_id:'invalid'},
+  workflow_command: {command:{action:'advance',operation_id:'invalid'}},
 };
 
 for (const mode of ['modern', 'legacy'] as const) {
   test(`${mode} capability grants gate each tool before input validation or database dispatch`, async () => {
     const allowedByCredential: Record<string, string[]> = {
-      recover: ['fetch', 'fetch_artifact', 'search'],
+      recover: ['fetch', 'fetch_artifact', 'search','workflow_inspect'],
       preserve: ['capture_thought', 'create_artifact'],
-      transition: ['set_thought_disposition'],
-      compose: ['capture_thought', 'create_artifact', 'set_thought_disposition'],
+      transition: ['set_thought_disposition','workflow_command'],
+      compose: ['capture_thought', 'create_artifact', 'set_thought_disposition','workflow_command'],
     };
     for (const [principal, allowedNames] of Object.entries(allowedByCredential)) {
       await withClient(mode, async (client) => {
@@ -255,7 +258,7 @@ test('bad capability configuration fails closed before dispatch', async () => {
 });
 
 for (const mode of ['modern', 'legacy'] as const) {
-  test(`${mode} client retains the six existing tool contracts`, async () => {
+  test(`${mode} client retains existing contracts and adds governed workflow controls`, async () => {
     await withClient(mode, async (client) => {
       const tools = (await client.listTools()).tools;
       assert.deepEqual(tools.map((tool) => tool.name), names);
@@ -263,7 +266,7 @@ for (const mode of ['modern', 'legacy'] as const) {
       assert.equal(tools.find((tool) => tool.name === 'fetch')?.annotations?.readOnlyHint, true);
       assert.deepEqual(
         tools.filter((tool) => tool.annotations?.idempotentHint).map((tool) => tool.name),
-        ['capture_thought', 'set_thought_disposition', 'create_artifact'],
+        ['workflow_command','capture_thought', 'set_thought_disposition', 'create_artifact'],
       );
       const capture = tools.find((tool) => tool.name === 'capture_thought');
       const captureSchema = capture?.inputSchema as {

@@ -17,6 +17,7 @@ import { evaluateDIBoundary } from './server/domain-admission.js';
 import { produceResponsibilitySet, type RecoveredSource } from './server/responsibility-producer.js';
 import { createBrainInquiryAdapters } from './server/orchestration-brain.js';
 import { systemsEngineeringNativePackages } from './server/native-packages/systems-engineering.js';
+import { executeWorkflow, registerWorkflowTools, workflowContract, workflowError, type WorkflowPorts } from './server/workflow-governance.js';
 
 const SUPABASE_URL = 'https://vezxivrvhakclxuvxzso.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_4mAxzOfWinJcn-98szUEYA_Wh88UdPW';
@@ -573,11 +574,26 @@ const runtime = {
   },
 };
 
+async function workflowRpc(name: string, body: Record<string, unknown>): Promise<unknown> {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${name}`, {
+    method: 'POST', headers: rpcHeaders(), body: JSON.stringify(body), signal: AbortSignal.timeout(15000),
+  });
+  const value = await response.json();
+  if (!response.ok) throw new Error(/workflow_[a-z_]+/.exec(String(value.message))?.[0] ?? 'workflow_database_unavailable');
+  return value;
+}
+const workflowPorts: WorkflowPorts = {
+  inspect: (cycleId) => workflowRpc('ecb_workflow_inspect', {p_cycle_id:cycleId ?? null}),
+  command: (action,payload,actor) => workflowRpc('ecb_workflow_command', {p_action:action,p_payload:payload,p_actor:actor}),
+};
+
 function buildServer(): McpServer {
   const server = new McpServer(
-    { name: 'ecb-v2-open-brain', version: '0.6.0' },
+    { name: 'ecb-v2-open-brain', version: '0.7.0' },
     { capabilities: { tools: {} } },
   );
+
+  registerWorkflowTools(server,workflowPorts,capabilityCheck);
 
   server.registerTool('capture_thought', {
     title: 'Capture Thought',
@@ -882,6 +898,7 @@ app.get('/', (context) => context.json({
   runtime: 'vercel-node',
   canonical_brain: 'vezxivrvhakclxuvxzso',
   model: 'Supabase/gte-small',
+  workflow_contract: workflowContract,
   ordinary_tools: [
     'capture_thought',
     'search',
@@ -889,6 +906,8 @@ app.get('/', (context) => context.json({
     'set_thought_disposition',
     'create_artifact',
     'fetch_artifact',
+    'workflow_inspect',
+    'workflow_command',
     ...(process.env.ECB_CIRCULATION_ENABLED === 'true' ? Object.keys(circulationContracts) : []),
   ],
   provider_admin_credentials_required: false,
@@ -897,6 +916,34 @@ app.get('/', (context) => context.json({
 app.options('*', (context) => {
   const rejected = validateMcpHostAndOrigin(context.req.raw);
   return rejected ?? context.text('ok', 200, corsHeaders);
+});
+
+// Human/client door over the same native records and controller as the agent door.
+app.all('/workflow', async (context) => {
+  const rejected = validateMcpHostAndOrigin(context.req.raw);
+  if (rejected) return rejected;
+  if (!['GET','POST'].includes(context.req.method)) return context.json({error:'method_not_allowed'},405);
+  let auth: AuthInfo | null;
+  try { auth=await authenticateOrdinaryCredential(context.req.raw); }
+  catch { return context.json({error:'workflow_auth_unavailable'},503,corsHeaders); }
+  if (!auth) return context.json({error:'unauthorized'},401,{...corsHeaders,'WWW-Authenticate':bearerChallenge()});
+  const required=context.req.method==='GET' ? 'recover' : 'transition';
+  if (!auth.scopes.includes(CAPABILITIES[required])) return context.json({error:'insufficient_scope',required_capability:required},403,corsHeaders);
+  try {
+    if (context.req.method==='GET') {
+      const cycleId=context.req.query('cycle_id');
+      if (cycleId && !z.string().uuid().safeParse(cycleId).success) return context.json({error:'workflow_invalid_cycle_id'},400,corsHeaders);
+      return context.json(await workflowPorts.inspect(cycleId),200,corsHeaders);
+    }
+    const length=Number(context.req.header('content-length') ?? 0);
+    if (length>1024*1024) return context.json({error:'request_too_large'},413,corsHeaders);
+    const body=await context.req.text();
+    if (body.length>1024*1024) return context.json({error:'request_too_large'},413,corsHeaders);
+    return context.json(await executeWorkflow(JSON.parse(body),auth.clientId,workflowPorts),200,corsHeaders);
+  } catch(error) {
+    if (error instanceof z.ZodError || error instanceof SyntaxError) return context.json({error:'workflow_invalid_command'},400,corsHeaders);
+    return context.json(workflowError(error),409,corsHeaders);
+  }
 });
 
 app.all('/mcp', async (context) => {
