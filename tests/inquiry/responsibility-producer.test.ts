@@ -59,6 +59,13 @@ test('unknown governing currentness cannot be promoted from byte-equivalent sour
   assert.equal(p.assessment.disposition, 'HOLD');
   assert.equal(p.assessment.verification.status, 'UNVERIFIED');
 });
+test('verbatim source offsets survive CRLF line endings', () => {
+  const content = 'Intro\r\nWorker SHALL recover source.\r\nWorker MUST report changes.';
+  const found = extractNormativeClauses({ ...source, content });
+  assert.equal(found.length, 2);
+  for (const item of found) assert.equal(content.slice(item.start, item.end), item.excerpt);
+});
+
 test('no source and empty lexical match cannot manufacture semantic adequacy', async () => {
   const absent = await produceResponsibilitySet(input, { recoverSource: async () => null });
   assert.equal(absent.proposal.status, 'SOURCE_UNAVAILABLE');

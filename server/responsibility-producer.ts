@@ -49,7 +49,9 @@ export function extractNormativeClauses(source: RecoveredSource): SourceClause[]
       out.push({ source_ref: source.ref, line: index + 1, excerpt: line,
         start, end: start + line.length });
     }
-    start += line.length + 1;
+    const end = start + line.length;
+    const suffix = source.content.slice(end);
+    start = end + (suffix.startsWith('\r\n') ? 2 : suffix.startsWith('\n') ? 1 : 0);
   }
   return out;
 }

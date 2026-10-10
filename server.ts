@@ -623,7 +623,7 @@ function buildServer(): McpServer {
   server.registerTool('search', {
     title: 'Search Thoughts',
     description:
-      'Contract ecb-v2-search/0.7.3. Search canonical thought evidence through one hybrid retrieval surface. Optional inquiry context also opens cross-context native/structural discovery, exact candidate recovery and an editioned working projection with explicit qualification/reentry. Similarity creates no standing. This call can repair missing semantic representations; lexical retrieval remains available when embeddings fail, with coverage/degradation reported.',
+      'Contract ecb-v2-search/0.7.4. Search canonical thought evidence through one hybrid retrieval surface. Optional inquiry context also opens cross-context native/structural discovery, exact candidate recovery and an editioned working projection with explicit qualification/reentry. Similarity creates no standing. This call can repair missing semantic representations; lexical retrieval remains available when embeddings fail, with coverage/degradation reported.',
     // Search repairs missing embeddings before retrieval, so it can write representations.
     annotations: { readOnlyHint: false, destructiveHint: false },
     scopeChallenge: capabilityCheck('recover'),
@@ -645,6 +645,9 @@ function buildServer(): McpServer {
         projection_chars: z.number().int().min(1024).max(100000).optional(),
         domain_admission: z.strictObject({
           domain: z.literal('systems-engineering'),
+          // Governing obligation identity is distinct from focal inquiry referent.
+          // Omission remains HOLD without breaking legacy client requests.
+          obligation_ref: z.string().uuid().optional(),
           package_ids: z.array(nonBlankText()).min(1).max(25).optional(),
           responsibilities: z.array(z.strictObject({
             id: nonBlankText(), construct_ref: nonBlankText(), problem_solved: nonBlankText(),
@@ -693,7 +696,7 @@ function buildServer(): McpServer {
         const sourceReader = createBrainInquiryAdapters(brainPorts, actor);
         const produced = await produceResponsibilitySet({
           inquiry_basis_ref: inquiryResult.inquiry_basis_ref, intended_use: inquiry.intended_use,
-          obligation_ref: inquiry.context.referent_id ?? '',
+          obligation_ref: inquiry.domain_admission.obligation_ref ?? '',
           responsibility_ids: inquiry.domain_admission.responsibilities.map(r => r.id),
         }, {
           async recoverSource(ref): Promise<RecoveredSource | null> {

@@ -54,6 +54,26 @@ test('ordinary search opens exact cross-context candidates under recover capabil
     assert.equal(calls.length, before);
   });
 });
+test('domain admission cannot silently substitute inquiry focal object for a missing governing obligation', async () => {
+  await withClient(async client => {
+    const response = await client.callTool({ name: 'search', arguments: {
+      query: 'identify governing obligation',
+      inquiry: { ...inquiry, domain_admission: { domain: 'systems-engineering', responsibilities: [{
+        id: 'frame', construct_ref: 'SysML Viewpoint', problem_solved: 'Frame concerns.',
+        source_lane: 'CURRENT_PRACTICE', source_refs: ['fixture:source'],
+        native_package_ids: ['se:omg:sysml:2.0'], native_coverage: 'ADEQUATE',
+        relation_type: 'OVERLAP', prior_art: { checked: true, evidence_refs: ['fixture:source'] },
+      }] } },
+    } });
+    const body = JSON.parse((response.content as Array<{ text: string }>)[0].text);
+    assert.equal(body.domain_admission.disposition, 'READY');
+    assert.equal(body.responsibility_proposal.obligation_ref, '');
+    assert.equal(body.responsibility_proposal.status, 'SOURCE_UNAVAILABLE');
+    assert(body.responsibility_set.verification.reasons.includes('SITUATED_BASIS_MISSING'));
+    assert.equal(body.disposition, 'HOLD');
+  });
+});
+
 test('query-only search preserves the prior contract', async () => {
   await withClient(async (client, calls) => {
     const r = await client.callTool({ name: 'search', arguments: { query: 'ordinary search' } });
@@ -78,6 +98,7 @@ test('ordinary inquiry applies systems-engineering domain admission without a ne
         ...inquiry,
         domain_admission: {
           domain: 'systems-engineering',
+          obligation_ref: focal,
           responsibilities: [{
             id: 'viewpoint-concern-framing',
             construct_ref: 'SysML Viewpoint',
