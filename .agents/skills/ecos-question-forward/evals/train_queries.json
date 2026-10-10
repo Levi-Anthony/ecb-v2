@@ -1,0 +1,14 @@
+[
+  {"query":"We cannot decide the provider-retention rule until deletion receipts exist. Preserve the question so work can continue safely and it reopens when that capability appears.","should_trigger":true},
+  {"query":"These two governing sources conflict, but the conflict does not block the current read-only investigation. Record the exact unresolved issue, present effect, trigger, and adjudication route.","should_trigger":true},
+  {"query":"Do not guess whether the dormant branch must be migrated. Turn that uncertainty into a calibrated aperture tied to the event that would make migration consequential.","should_trigger":true},
+  {"query":"The implementation choice is deliberately deferred until real use exposes load. Capture what can proceed now and what observation should send the decision back into Shape.","should_trigger":true},
+  {"query":"We have three competing explanations and insufficient evidence. Preserve their provenance and formulate the smallest answerable question whose resolution changes the decision.","should_trigger":true},
+  {"query":"This dependency may change after the vendor release. Define the concrete reactivation condition and route instead of adding a vague future TODO.","should_trigger":true},
+  {"query":"Investigate the available evidence now and answer which timestamp is correct; do not defer the question if it can be resolved from the supplied files.","should_trigger":false},
+  {"query":"List all uncertainties in this brainstorming document, including harmless curiosities that cannot change any decision.","should_trigger":false},
+  {"query":"Convert the source doctrine into SHALL, SHOULD, and OPEN requirements, preserving source standing and acceptance conditions.","should_trigger":false},
+  {"query":"Run this bounded task through Sense, Shape, Move, and Metabolize, including execution of the already-authorized test.","should_trigger":false},
+  {"query":"Add a recurring calendar reminder to review the database every Friday at nine, regardless of whether any dependency changes.","should_trigger":false},
+  {"query":"The obligation is ratified and mechanically decidable: implement the constraint now and prove it with the specified negative control.","should_trigger":false}
+]

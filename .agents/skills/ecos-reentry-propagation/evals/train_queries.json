@@ -1,0 +1,14 @@
+[
+  {"query":"Close this long architecture episode by producing a loss-resistant handoff with governing pointers, decisions, hypotheses, unresolved conflicts, dependencies, and the exact next seam.","should_trigger":true},
+  {"query":"Another agent must resume this branch cold tomorrow. Compile only the task-relative state needed to continue without turning the handoff into a second source of truth.","should_trigger":true},
+  {"query":"Prepare a branch commission that preserves known ground, the unresolved distinction, protected freedoms, forbidden collapses, source leads, falsifiers, and return obligations.","should_trigger":true},
+  {"query":"We have several investigator returns. Reconcile their evidence and frames, preserve disagreements and dropped loops, and produce the fan-in packet without self-authorizing promotion.","should_trigger":true},
+  {"query":"The conversation accumulated corrections that are not yet in the repository. Create a reentry projection that preserves provenance and points a successor to the legitimate authority surfaces.","should_trigger":true},
+  {"query":"Summarize the completed build for handoff, including what explicitly was not established and what upstream or downstream work may be affected.","should_trigger":true},
+  {"query":"Give me a three-sentence executive summary of this article for immediate reading; nobody will continue the work later.","should_trigger":false},
+  {"query":"Recover the live build state and legitimate next seam from repository sources before starting a new session.","should_trigger":false},
+  {"query":"Audit whether the handoff itself has governing standing or merely points to authoritative sources.","should_trigger":false},
+  {"query":"Implement the approved change and run tests; do not create a session summary or successor packet.","should_trigger":false},
+  {"query":"Turn this doctrine into testable requirements with source-supported acceptance conditions and OPEN design choices.","should_trigger":false},
+  {"query":"Write release notes describing user-visible changes in version 2.4 for publication on the website.","should_trigger":false}
+]

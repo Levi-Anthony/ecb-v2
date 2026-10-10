@@ -1,0 +1,10 @@
+[
+  {"query":"The schema looks complete, but does it actually preserve the behavior the governing source requires? Classify the evidence for every functional obligation.","should_trigger":true},
+  {"query":"Compare the user workflow now deployed with the stated system purpose and distinguish healthy omission from contradiction and mere lack of observation.","should_trigger":true},
+  {"query":"I want a bounded audit of what the repository presently realizes versus what the accepted design intended, including the next discriminator for unknown cases.","should_trigger":true},
+  {"query":"This subsystem works in isolation. Determine whether its current freedom, control, and awareness distribution becomes pathological at the containing level.","should_trigger":true},
+  {"query":"Read this doctrine and produce implementation-neutral SHALL and SHOULD statements plus unresolved OPEN choices.","should_trigger":false},
+  {"query":"Which of these artifacts is current and who had authority to promote it? Trace the standing transition evidence.","should_trigger":false},
+  {"query":"Review the pull request for bugs, security issues, and test failures using the code as the intended specification.","should_trigger":false},
+  {"query":"Write a cold-successor handoff for the completed work episode with pointers, open loops, and the exact reentry seam.","should_trigger":false}
+]
