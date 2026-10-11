@@ -82,7 +82,13 @@ try {
     assert.equal((await reserve(l)).dispatch_permitted,true);assert.equal((await reserve(l)).dispatch_permitted,false);
     await rejects(()=>reserve(l,3),'reservation_conflict');
   });
-  const unitBundle={resolution:'one reported desire with participant coupling',context:{question:'What was desired?',scope:'quoted report',limitations:[]},
+  const unitBundle={resolution:'one reported desire with participant coupling',context:{question:'What was desired?',scope:'quoted report',limitations:[],
+      source_function:'ACTIVATION_CUE',source_function_basis:'The speaker reported a desire; this phrase does not declare an exhaustive system specification.',
+      activated_neighborhood:[{cue:'wanted me to call',candidate:'desire versus performed action',basis:'INTERPRETIVE_HYPOTHESIS',
+        referent_id:null,basis_refs:['constructed:source'],relation_hypothesis:'A desire may or may not lead to action; missing outcome remains unknown.'}],
+      warnings:[{concern:'Desire must not become performed action',actions:['Retain desired modality','Request outcome evidence'],
+        recommendation:'Retain desired modality',rationale:'No completed call occurs in the supplied sentence.',
+        mind_changers:['Independent evidence of a completed call'],decision_route:'fixture:source-evaluator'}]},
     units:[{handle:'desire',text:'Jennifer wanted the narrator to call her back.',subject_id:null,subject_status:'UNKNOWN',modality:'desired',polarity:'positive',attribution:'narrator',conditions:[],
       participants:[{role:'desiring person',mention:'Jennifer',subject_id:null,identity_status:'UNKNOWN'},{role:'requested caller',mention:'me',subject_id:null,identity_status:'UNKNOWN'}],
       anchors:[{carrier_id:l.source.carrier_id,byte_start:0,byte_end:Buffer.byteLength(input.content),excerpt:input.content}]}],
@@ -96,6 +102,11 @@ try {
     output=await finish(l,unitBundle);assert.ok(output.decomposition_id);
     assert.equal((await one('select count(*)::int as n from ecb_circulation.unit_participants')).n,2);
     assert.equal((await one('select modality from ecb_circulation.semantic_units')).modality,'desired');
+    const stored=(await one('select context from ecb_circulation.decompositions where id=$1',[output.decomposition_id])).context;
+    assert.equal(stored.source_function,'ACTIVATION_CUE');
+    assert.equal(stored.activated_neighborhood[0].referent_id,null);
+    assert.equal(stored.activated_neighborhood[0].basis,'INTERPRETIVE_HYPOTHESIS');
+    assert.equal(stored.warnings[0].decision_route,'fixture:source-evaluator');
     assert.equal((await one('select c.epistemic_standing from public.claims c join ecb_circulation.claim_contexts cc on cc.claim_id=c.id')).epistemic_standing,'unassessed');
     assert.equal((await one('select count(*)::int as n from ecb_circulation.activities where kind=\'assess\'')).n,1);
   });
