@@ -145,6 +145,8 @@ local witnessed constitutive dependence/organization.
 
 ### Quadrant
 
+**CURRENT CROSS-EDITION OVERRIDE (10–11 October 2026):** This October 5 v0.1 full-core working surface historically listed the original Register-B formula below. **It is retired** as a Quadrant generator. Current [positive disclosure v3](Quadrant-Disclosure-Contract-v3.0.md) is **Individual/Relational × Left/Right** over fixed R/B. Vertical constitution and horizontal participation are separate typed relation inquiries, not replacement quadrant axes; the four positive English function labels are **only one provisional candidate set among several, as yet undecided**. The formula below is preserved as dated evidence, NOT present-use classification. See also [PGO/temporal/reciprocal repair](../formal-semantics/2026-10-11-PGO-Temporal-Reciprocal-Constitution-Repair.md).
+
 `Q_B(R)={Constitutive,Participatory}×{Governing,Determinate}`
 
 an inquiry-position product over fixed R/B.
