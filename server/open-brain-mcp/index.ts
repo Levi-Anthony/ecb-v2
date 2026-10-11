@@ -86,6 +86,7 @@ type OperationFailureCode =
   | "runtime_unauthorized"
   | "persistence_failed"
   | "capture_failed"
+  | "capture_operation_identity_required"
   | "search_failed"
   | "fetch_failed";
 
@@ -181,14 +182,14 @@ function operationFailure(error: unknown, fallback: OperationFailureCode) {
 }
 
 function buildServer(runtime: BrainRuntime): McpServer {
-  const server = new McpServer({ name: "ecb-v2-open-brain", version: "0.2.0" });
+  const server = new McpServer({ name: "ecb-v2-open-brain", version: "0.2.1" });
 
   server.registerTool(
     "capture_thought",
     {
       title: "Capture Thought",
       description:
-        "Persist one atomic evidence thought under a stable operation UUID. Reuse the same operation_id to reconcile an uncertain retry; use a new operation_id for a distinct encounter, even when content repeats.",
+        "Contract ecb-v2-capture/0.2.1. Persist exact thought custody under a stable operation UUID. Prefer explicit operation_id; for legacy clients with an older tool schema, supply a stable captured_at occurrence timestamp and the server derives a UUIDv8 bound to source and exact content. Requests without either key fail before persistence. Retry with the same occurrence identity, not a new timestamp.",
       annotations: {
         readOnlyHint: false,
         destructiveHint: false,
@@ -196,7 +197,7 @@ function buildServer(runtime: BrainRuntime): McpServer {
         openWorldHint: false,
       },
       inputSchema: {
-        operation_id: z.string().uuid(),
+        operation_id: z.string().uuid().optional(),
         content: z.string().trim().min(1),
         source: z.string().trim().min(1),
         captured_at: z.string().datetime({ offset: true }).optional(),
@@ -204,9 +205,10 @@ function buildServer(runtime: BrainRuntime): McpServer {
     },
     async ({ operation_id, content, source, captured_at }) => {
       try {
+        const operationId = operation_id ?? await legacyCaptureOperationId(content, source, captured_at);
         return result(
           await runtime.capture({
-            operationId: operation_id,
+            operationId,
             content,
             source,
             capturedAt: captured_at,
@@ -266,6 +268,23 @@ async function digest(value: string): Promise<Uint8Array> {
     await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)),
   );
 }
+/** Compatibility for pre-operation_id client snapshots.
+ * The single-principal Bearer guard executes before the MCP handler.
+ * The caller-supplied timestamp identifies an occurrence, not a server clock.
+ */
+async function legacyCaptureOperationId(
+  content: string, source: string, capturedAt?: string,
+): Promise<string> {
+  if (!capturedAt) throw new BrainOperationError("capture_operation_identity_required");
+  const bytes = await digest(JSON.stringify([
+    "ecb-v2:edge-capture-legacy:1", source, content, capturedAt,
+  ]));
+  bytes[6] = (bytes[6] & 15) | 128;
+  bytes[8] = (bytes[8] & 63) | 128;
+  const hex = Array.from(bytes.subarray(0, 16), (x) => x.toString(16).padStart(2, "0")).join("");
+  return [hex.slice(0, 8), hex.slice(8, 12), hex.slice(12, 16), hex.slice(16, 20), hex.slice(20, 32)].join("-");
+}
+
 
 async function keysMatch(provided: string, expected: string): Promise<boolean> {
   const [providedDigest, expectedDigest] = await Promise.all([

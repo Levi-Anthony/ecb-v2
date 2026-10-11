@@ -121,7 +121,9 @@ Deno.test("keeps the three-tool surface and makes capture structurally idempoten
     tool.name === "capture_thought"
   );
   assertEquals(capture.annotations.idempotentHint, true);
-  assert(capture.inputSchema.required.includes("operation_id"));
+  assertEquals(capture.inputSchema.required.includes("operation_id"), false);
+  assert(capture.inputSchema.required.includes("content"));
+  assert(capture.inputSchema.required.includes("source"));
 });
 
 Deno.test("returns operation identity and durable Thought identity through MCP", async () => {
@@ -143,6 +145,51 @@ Deno.test("returns operation identity and durable Thought identity through MCP",
   assertEquals(captured.operation_id, operationId);
   assertEquals(captured.thought.id, thought.id);
   assertEquals(captured.representation.ready, true);
+});
+
+
+Deno.test("stale client capture uses stable event-bound UUID and fails closed without identity", async () => {
+  const seen: string[] = [];
+  const guarded = createMcpApp({
+    accessKey: "test-key",
+    runtime: {
+      ...runtime,
+      async capture(input) {
+        seen.push(input.operationId);
+        return { operation_id: input.operationId, replayed: seen.slice(0, -1).includes(input.operationId),
+          thought, representation: { model_id: "gte-small", ready: true } };
+      },
+    },
+  });
+  async function legacyCall(args: Record<string, unknown>, key = "test-key") {
+    const response = await guarded.request("http://localhost/", {
+      method: "POST",
+      headers: { authorization: `Bearer ${key}`, "content-type": "application/json",
+        accept: "application/json, text/event-stream" },
+      body: JSON.stringify({ jsonrpc: "2.0", id: 42, method: "tools/call",
+        params: { name: "capture_thought", arguments: args } }),
+    });
+    return { status: response.status, body: await responseJson(response) };
+  }
+  const core = { content: thought.content, source: thought.source };
+  const absent = await legacyCall(core);
+  assertEquals(JSON.parse(absent.body.result.content[0].text).error, "capture_operation_identity_required");
+  assertEquals(seen.length, 0);
+  const first = await legacyCall({ ...core, captured_at: "2026-10-11T00:18:03Z" });
+  const second = await legacyCall({ ...core, captured_at: "2026-10-11T00:18:03Z" });
+  const distinct = await legacyCall({ ...core, captured_at: "2026-10-11T00:18:04Z" });
+  const explicit = await legacyCall({ ...core, operation_id: operationId });
+  const denied = await legacyCall({ ...core, captured_at: "2026-10-11T00:18:05Z" }, "wrong-key");
+  assertEquals(denied.status, 401);
+  assertEquals(seen.length, 4);
+  assertEquals(seen[0], seen[1]);
+  assert(seen[0] !== seen[2]);
+  assertEquals(seen[3], operationId);
+  assert(/^[0-9a-f]{8}-[0-9a-f]{4}-8[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(seen[0]));
+  assertEquals(JSON.parse(first.body.result.content[0].text).replayed, false);
+  assertEquals(JSON.parse(second.body.result.content[0].text).replayed, true);
+  assertEquals(JSON.parse(distinct.body.result.content[0].text).replayed, false);
+  assertEquals(JSON.parse(explicit.body.result.content[0].text).operation_id, operationId);
 });
 
 Deno.test("returns an explicit not-found result", async () => {
