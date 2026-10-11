@@ -103,26 +103,17 @@ Broaden permissions only when the demonstrated blocker is actually the permissio
 
 Current disposition: retain the inherited **Allow low-risk actions** setting for both ECB-v2-BRAIN and Linear. Both ordinary BRAIN capture and authorized Linear continuity writes have succeeded under this setting.
 
-## ECB-v2-BRAIN capture contract
+## ECB-v2-BRAIN capture contract — current 11 October 2026
 
-Canonical and deployed MCP behavior requires a caller-supplied `operation_id` UUID — a Universally Unique Identifier used as the stable idempotency identity for the operation.
+**Current contract `ecb-v2-capture/0.5.3` (verified on the actual connected consumer):** `content` and `source` are required. `operation_id` is *optional*, preferred when the consumer exposes it. **If the invoking client cannot send `operation_id`, supply an explicit stable `captured_at` timestamp**. The server derives a deterministic UUIDv8 from authenticated client identity, exact source/content, and the normalized timestamp. Neither an arbitrary new timestamp per retry nor a different source/content is the same logical operation. If both identity inputs are absent, the server correctly fails with `capture_operation_identity_required` before persistence.
 
-Required ordinary capture contract:
+Current connected ChatGPT BRAIN tool exposure omits `operation_id` but **does accept `captured_at`**. The ordinary worker should capture once with an actual, retained event timestamp, preserve the returned operation and Thought identifiers, and exact-fetch/read back. If acknowledgement is lost, replay with **identical content/source/captured_at**, not a newly generated timestamp. Avoid presenting the missing field as a persistent capture blocker or a reason for app-permission changes. A separate authorized provider/worker remit is still needed for trusted semantic circulation; ordinary Thought custody does not grant semantic standing.
 
-- `operation_id: UUID`
-- `content: nonblank string`
-- `source: nonblank string`
+**Hosted observation, 11 October:** unchanged app permissions; a `capture_thought` request using `captured_at=2026-10-11T07:48:38.344Z` succeeded with operation `4eddd1ff-de6c-83b0-86d3-5b4ad2310968` and Thought `974057e6-917c-4888-8a94-cb7ff1dde689`; exact `fetch` returned the retained content and source; identical replay reported `replayed=true` and the same IDs. This is a **real connected-consumer custody/idempotency receipt**, not proof of semantic-circulation deployment, generalized client capability, or permission-control availability.
 
-Optional fields currently include:
+The **6 October observation** that the server required a supplied UUID was true of that earlier tested contract/surface, and the field-injection route succeeded. It is **superseded for today's deployed capture/0.5.3 server**; retain as dated failure history, not as current instructions. Continue to expose the optional `operation_id` in the connected tool definition (ECO-218), because caller control matters for multi-step operation custody. The refreshed consumer need not make it mandatory; match the **live `tools/list` required-fields set**.
 
-- `captured_at`
-- `producer_context`
-- `parent_receipt_id`
-- `processing_mode`
-
-The October 6 tool-friction incident demonstrated a consumer-reflection defect: ChatGPT exposed a stale/narrower capture schema omitting `operation_id`, while the live MCP validator required it. Supplying the live required UUID succeeded without changing permissions.
-
-**Required repair:** the tool-facing schema presented to consumers must match the deployed server contract. Do not remove caller-controlled operation identity merely to accommodate a stale consumer schema.
+The source-contract and fallback already have deterministic tests in `tests/mcp-protocol.test.ts`. Do not weaken database idempotency or actor validation to accommodate a stale consumer snapshot.
 
 ## Contract-conformance qualification
 
@@ -153,9 +144,9 @@ Therefore a live-server / connected-consumer mismatch is repaired at the app-app
 2. use **Refresh** to pull changed actions/definitions where that control is available;
 3. review the diff and publish/approve the updated action definition;
 4. if the workspace/app state does not support updating the published app, recreate and republish the custom app against the same trusted MCP endpoint;
-5. verify a fresh chat sees `capture_thought.operation_id` as a required UUID before declaring consumer conformance restored.
+5. verify a fresh chat sees the **actual current** schema: `content` and `source` required, optional `operation_id: UUID`, optional `captured_at: ISO timestamp` with documented identity fallback, tool annotations, and the current contract version.
 
-Until that human-only authenticated UI step is completed, knowledgeable callers may continue supplying the live required `operation_id`, but the connected-consumer surface remains **contract-degraded**.
+Until that human-only authenticated UI step is completed, the current consumer may still preserve safely through the **verified stable-`captured_at` fallback**. The reflected-schema mismatch remains **contract-degraded** for callers needing direct operation-ID control; it is not itself a blanket write prohibition.
 
 BRAIN receipt for this exact platform finding: `f656fd8f-73f0-433b-89ab-c11a87d360cd`.
 
@@ -164,6 +155,31 @@ BRAIN receipt for this exact platform finding: `f656fd8f-73f0-433b-89ab-c11a87d3
 An attempted app-specific ChatGPT permission update returned `404 Action not found`.
 
 Current disposition: record as non-blocking platform/tooling evidence. Do not make it an ECOS critical-path dependency while the existing permission mode permits the authorized actions. Reopen only if an otherwise valid, currently authorized operation is demonstrably blocked by the permission layer.
+
+## Recurring cross-worker friction — route before asking the Principal (11 October 2026)
+
+**Principal direction:** Multiple workers have repeated the same connector and permission-navigation friction. Resolve it at the shared worker/consumer boundary rather than forcing one person through settings on every session. This is a refinement of this **existing** profile, not a new permission schema, issue, primitive, or release gate. ECOS workers operating from a repo source should read this document through `AGENTS.md` and `docs/worker-entry-evidence-discovery.md` **before recommending a connector permission or UI intervention**. Consumer-delivery obligations remain ECO-156/ECO-219; connector reflection remains ECO-218; toolscape observations remain ECO-155.
+
+**Classify a failure by the rejecting component, not by the fact that a tool call failed:**
+
+| Evidence/fingerprint | Local disposition and next action | Must not infer |
+| --- | --- | --- |
+| Connected `capture_thought` lacks `operation_id` | Use the proven stable-`captured_at` identity route; fetch; identical replay. ECO-218 owns cached action-schema refresh and genuine fresh-chat conformance. | That BRAIN capture is unavailable or app permissions need broadening |
+| `capture_operation_identity_required` | Supply one stable event timestamp or explicit operation UUID where exposed. If still rejected, inspect authenticated actor/contract surface and route exact error to ECO-218. | Authorization to generate a different ID/timestamp on every retry |
+| `404 Action not found` on ChatGPT's `update_app_permissions` control | **Control-plane action absent.** Record the exact tool/action and continue permitted work with inherited permissions. Only revisit settings when independently proven to be the rejecting layer. | A Supabase/Linear/BRAIN connection failure or need to navigate inaccessible menus |
+| `This tool call was blocked by OpenAI's safety checks` before provider execution | **Platform pre-invocation denial**; do not call it a PostgreSQL permission error, MCP validation result or downstream failed mutation. Preserve tool name, intended effect, exact error and receiving work; continue unaffected read-only/authorized steps. Route the affected change to the existing reviewed/authorized execution path, never a disguised payload or broader permission experiment. | That production received the query; that a different spelling is authorized to bypass the guard |
+| MCP `401/403`, missing OAuth scope, stale consent or `eco213_remit_denied` | Recover the exact rejecting server/client identity, grant, work/remit and current version; use the designated owner and authenticated approval path. Do not edit credentials or widen effect scope as a diagnostic. | That ChatGPT's global plugin permission is at fault |
+| SQL/HTTP validation error from an executed request | Diagnose the contract or query with exact current schema and idempotent operation identity, repair only the proved defect, then read back. | That a green CI, Vercel READY, or an SDK reconnect pays hosted consumer use |
+
+**Principled escalation rule:** A worker should not send the Principal to account menus unless it can name the relevant control, show evidence the exact operation was denied there, and identify the human-only decision the platform actually exposes. The screenshots from iOS and mobile Safari in this incident exposed no plugin permission selector; do not repeat instructions to hunt for it. Maintain default `Allow low-risk actions` unless a separately witnessed access decision warrants change.
+
+**An actionable failure return** records the intended action, tool/schema/edition, exact error and stage, available evidence (did the provider receive it?), bounded effect already achieved, independently useful work completed, relevant owning ECO, and the next exact authorized retry/readback or human-only hinge. A misleading generic “tools blocked” report is not acceptable. A platform refusal may limit that effect; it does **not** cancel source analysis, repo work, validated documentation, or other independent obligations.
+
+**Qualification**: the current BRAIN path has completed a real capture/fetch/identical-replay test under unchanged permissions. Full cross-worker correction requires (a) a visible worker-entry pointer, (b) ECO-218 actual connected action-schema refresh or a verified stable fallback per consumer, (c) ECO-219/156 projection into each applicable worker bootstrap with a cold-reader receipt, and (d) two fresh-consumer runs which do not misdiagnose a missing schema field as an app-permission change. Repo instructions alone do not establish that every ChatGPT, Claude, or Codex worker loaded the profile. Mark individual consumers **UNQUALIFIED** until observed.
+
+### Custody for the 11 October correction
+
+BRAIN Thought `974057e6-917c-4888-8a94-cb7ff1dde689` is the first-class Principal correction; the corresponding replay operation is `4eddd1ff-de6c-83b0-86d3-5b4ad2310968`. Preserve links in existing ECO-155/ECO-218/ECO-219 owner surfaces. Do not open a parallel tool-safety initiative.
 
 ## Reentry
 
