@@ -8,7 +8,11 @@ export const LEGACY_IDS=[
  '9cb62145-7042-491a-bdf1-8f2c406447ac','aab4816f-4445-438b-82fb-06157287c2e4','7fc2aae6-0e17-4565-a40e-2722d69591ca',
  '8bf88173-1582-41b2-8d70-9853657b8164','cc356b5a-40b0-44f2-ad0a-1910957723f3',
 ];
+// Source-complete for the ordinary ingress and worker transitive local modules.
+// Source digest is a compiled-edition custody boundary, not a semantic-proof receipt.
 const SOURCE_FILES=['server.ts','server/orchestration.ts','server/orchestration-brain.ts','server/urg-core.ts',
+ 'server/oauth.ts','server/workflow-governance.ts','server/domain-admission.ts',
+ 'server/native-packages/systems-engineering.ts','server/responsibility-producer.ts','server/responsibility-set.ts',
  'server/circulation/profile.ts','server/circulation/tools.ts','server/circulation/worker.ts',
  'package.json','package-lock.json',
  'api/circulation/run.ts','sql/migrations/20260930155729_eco213_circulation_native.sql',
