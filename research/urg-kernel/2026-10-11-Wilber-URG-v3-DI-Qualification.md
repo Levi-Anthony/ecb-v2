@@ -101,3 +101,40 @@ A report contains protocol_id and trials. Each trial declares: case_id, conditio
 Change the positive LL rubric if a genuinely grounded domain demonstrates that the same work cannot be distinguished from UR/LR/mapper accounts under controlled contrasts; retain the counterexample. Narrow fourfold universality if genuinely independent, predeclared comparisons show a three-function or nonquadrant rival preserving all required distinctions and affording equal or better discovery/recontact at comparable cost. Change current mechanical standing only on exact code/CI/account readback, not a source analogy or persuasive explanation. Promote any new mathematical analogy (sheaf/gluing, coalgebra, lens, gauge) only after its objects, maps, semantics, preservation theorem/countermodel and downstream decision are explicit.
 
 **Terminal standing of this return:** D&I analysis and runnable prospective evidence-intake package delivered; no actual independent generativity experiment, real semantic writer qualification, Namecrafting selection, production transition, or hosted-use validation is claimed.
+
+## 7. ECO-202 semantic-protocol adapter qualification return — 11 October 2026
+
+**Exact test source edition:** [main commit `dd398237b74a2e56ed3c961a90536f91ca0c2df8`](https://github.com/Levi-Anthony/ecb-v2/commit/dd398237b74a2e56ed3c961a90536f91ca0c2df8). Isolated Vercel sandbox `sbx_v40Du1VkehDK3AStAyG7Caycu0Pc`, Node 24.21.0 and npm 11.19.0, exact Git checkout verified before test. No production credentials were supplied to the sandbox; the checkout is a public Git clone. **First-class Greenfield BRAIN atomic verification receipt:** `220b140e-d948-47c5-980d-6478877da893`, exact readback PASS.
+
+### What was installed in source
+
+- [`server/semantic-protocol.ts`](../../server/semantic-protocol.ts) now requires a native verifier port, recoverable native receipt bound internally to exact protocol/execution digests, focal referent and occurrence, and a positively discriminated native ALLOW/DENY contrast. The three writer-selected accounts are the execution, separate verifier characterization, and governing protocol conditions; the current v3 reader must recover each exact account independently.
+- [`server/orchestration-brain.ts`](../../server/orchestration-brain.ts) now has an **optional, server-only `semanticProtocol` port** for source selection, native verification, and source-bound `recoverCurrent`. The existing ordinary inquiry coordinator independently re-fetches exact accounts, checks their editions, retains unmapped and unresolved quadrants, and refuses unearned READY. The ordinary server runtime currently **does not install a production implementation** of this port and preserves its conservative HOLD behavior.
+- [`tests/inquiry/semantic-protocol.test.ts`](../../tests/inquiry/semantic-protocol.test.ts) exercises a positive source-bound protocol LL with triple-account readback plus six fail-closed cases: no port, no pair, mapper-only model, coupling-only account, stale proof, changed proof. These are controlled construction/integration tests, **not independent physical-domain or hosted semantic results**.
+- `package.json` includes the new producer and regression tests in the existing inquiry TypeScript gate. No new quadrant generator, public API tool, database table, provider remit, or Namecrafting selection was introduced.
+
+### Performed qualification and exact observables
+
+| Executed command / suite | Result | Standing |
+| --- | --- | --- |
+| `npm ci --no-audit --no-fund` | PASS | Fresh isolated dependencies for exact source checkout |
+| `npm run typecheck:inquiry` + `npm run test:inquiry` | PASS — 90/90 tests | Adapter and controlled writer/reader discrimination |
+| `npm run typecheck:urg` + `npm run test:urg` | PASS — 45/45 | Current URG v3 structural semantics |
+| `npm run typecheck:workflow` + `npm run test:workflow` | PASS — 3/3 | Workflow contract admission and failure behavior |
+| `npm run typecheck:mcp` + `npm run test:mcp` | PASS — 13/13 | Ordinary MCP ingress controls |
+| `npm run typecheck:civs` + `npm run test:civs` | PASS — 44/44 | Capability inspection/verification spine controls |
+| `npm run typecheck:circulation` + `npm run test:circulation` | PASS — 40/40 | Provider/worker containment, not an executed provider call |
+| `npm run typecheck:oauth` + `npm run test:oauth` | PASS — 7/7 | OAuth/capability fail-closed controls |
+| `npm run qualify:quadrant` | PASS, authored-case scope | No independent semantic universality claim |
+| `node scripts/qualify-wilber-urg-v3.mjs --self-test` | PASS, synthetic harness only | Intake correctness, not real studies |
+| `node scripts/qualify-wilber-urg-v3.mjs` without results | HOLD: 0/18 conditions submitted | Honest prospective study standing |
+
+**Total: 242/242 runtime tests passed and seven relevant TypeScript gates passed**, with commit- and session-scoped output. Sandbox command references: `cmd_4f5e47adee1445b6a41324509ec2`, `cmd_1a4faf7d0d9b478cb6d9f410583d`, `cmd_672402b70fd74e0b94f43bc33b2c`, `cmd_5c7c6b5439b44d168c8de6a557c8`, `cmd_ad7f2cc3746143bd8b597c828d85`. This is **real isolated program execution** at the given source revision, not a simulation of commands or a pass inferred from deployment status.
+
+### Unpaid work and next legitimate Move
+
+No actual hosted source-to-writer semantic evaluation, independently implemented native verification port, writer-owned durable semantic enrichment, ordinary authenticated consumer call, production query-to-projection preservation or later reentry was executed. The root `ecb_workflow` production cycle's semantic writer/hosting obligations therefore remain unpaid. The positive protocol test proves only the **conditional structural mechanism**: *given* an independently warranted current native receipt and three source accounts, the existing reader accepts an LL position while preserving all other required unknowns. It does not demonstrate the independent producer actually generating the stipulated warrant in production.
+
+**Exact next owner route (ECO-202):** implement the authenticated native verifier and genuinely current source-account readers inside the existing service boundary, with custody and capability checks. Revalidate the same protocol and atomic negative controls using real source events and independently fetched artifacts, then preserve and recontact the result through ordinary ingress. Keep any required worker/provider activation inside its existing separately commissioned and presently expired effects envelope. Do not use passing tests to assert universal LL completeness or a settled natural-language function name.
+
+**Function label standing remains explicitly PROVISIONAL, one as-yet-untested candidate name set among several.** The reader-intelligibility and Namecrafting work remains separate under ECO-136.
