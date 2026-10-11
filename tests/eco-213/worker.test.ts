@@ -39,7 +39,9 @@ const carrier = randomUUID();
 const source = 'Jennifer wanted me to call her back.';
 const bundle = {
   resolution: 'one reported desire with participant coupling',
-  context: { question: 'What was desired?', scope: 'quoted report', limitations: [] },
+  context: { question: 'What was desired?', scope: 'quoted report', limitations: [],
+    source_function: 'UNRESOLVED', source_function_basis: 'Source reports a desire; it does not establish whether any broader list is an exhaustive specification.',
+    activated_neighborhood: [], warnings: [] },
   units: [{ handle: 'desire', text: 'Jennifer wanted the narrator to call her back.', subject_id: null, subject_status: 'UNKNOWN',
     modality: 'desired', polarity: 'positive', attribution: 'narrator', conditions: [],
     participants: [{ role: 'desiring person', mention: 'Jennifer', subject_id: null, identity_status: 'UNKNOWN' },
@@ -140,7 +142,54 @@ test('exact quote cannot establish semantic adequacy of a false description', ()
   assert.equal('verdict' in result, false); // Deliberate structural checker limit, not a semantic PASS.
 });
 test('blocking semantic UNKNOWN cannot be labeled satisfied', () => {
-  assert.throws(() => validateOutput('assess', { verdict: 'SATISFIED', coverage: { participants: 'UNKNOWN', modality: 'SATISFIED', polarity: 'SATISFIED', conditions: 'SATISFIED', attribution: 'SATISFIED', dependencies: 'SATISFIED' }, findings: [], unresolved: [], limitations: [] }, new Map()));
+  assert.throws(() => validateOutput('assess', { verdict: 'SATISFIED', coverage: { participants: 'UNKNOWN', modality: 'SATISFIED', polarity: 'SATISFIED', conditions: 'SATISFIED', attribution: 'SATISFIED', dependencies: 'SATISFIED', source_function: 'SATISFIED', activated_neighborhood: 'SATISFIED' }, findings: [], unresolved: [], limitations: [] }, new Map()));
+});
+test('D&I source-function classification is preserved as a hypothesis, not minted ontology', () => {
+  const cue = structuredClone(bundle);
+  cue.context.source_function = 'ACTIVATION_CUE';
+  cue.context.source_function_basis = 'The speaker supplies a provisional memory cue rather than an exhaustive list.';
+  cue.context.activated_neighborhood = [{
+    cue: 'Jennifer', candidate: 'reported desired action versus performed call',
+    basis: 'INTERPRETIVE_HYPOTHESIS', referent_id: null,
+    basis_refs: ['source:exact-carrier'], relation_hypothesis: 'Distinguish reported desire, identity and eventual action.',
+  }];
+  cue.context.warnings = [{
+    concern: 'Do not infer performed action from reported desire.', actions: ['Preserve desired modality', 'Ask whether the call occurred'],
+    recommendation: 'Preserve desired modality', rationale: 'Only desire is present in the quote.',
+    mind_changers: ['Independent evidence of completed action'], decision_route: 'ECO-202:source-evaluator',
+  }];
+  const validated = validateOutput('differentiate', cue, new Map([[carrier, source]]));
+  assert.equal(validated.context.source_function, 'ACTIVATION_CUE');
+  assert.equal(validated.context.activated_neighborhood[0].referent_id, null);
+  assert.equal(validated.context.warnings[0].decision_route, 'ECO-202:source-evaluator');
+  const promoted = structuredClone(cue);
+  promoted.context.activated_neighborhood[0].referent_id = randomUUID();
+  assert.throws(() => validateOutput('differentiate', promoted, new Map([[carrier, source]])), /output_neighborhood_identity_promotion/);
+  const fakeRecovered = structuredClone(cue);
+  fakeRecovered.context.activated_neighborhood[0].basis = 'RECOVERED_STRUCTURE';
+  assert.throws(() => validateOutput('differentiate', fakeRecovered, new Map([[carrier, source]])), /output_neighborhood_identity_promotion/);
+});
+
+test('explicit specification is not silently reclassified as a cue', () => {
+  const declared = structuredClone(bundle);
+  declared.context.source_function = 'EXPLICIT_SPECIFICATION';
+  declared.context.source_function_basis = 'The source explicitly declares the scope and completeness of the enumerated requirement.';
+  const result = validateOutput('differentiate', declared, new Map([[carrier, source]]));
+  assert.equal(result.context.source_function, 'EXPLICIT_SPECIFICATION');
+  // Status is an attributable interpretation, not independent proof that the cited source was exhaustive.
+  assert.equal(result.context.activated_neighborhood.length, 0);
+});
+
+test('independent assessment cannot pass with unresolved source-function or neighborhood coverage', () => {
+  const adequate = { verdict: 'SATISFIED', coverage: {
+    participants: 'SATISFIED', modality: 'SATISFIED', polarity: 'SATISFIED',
+    conditions: 'SATISFIED', attribution: 'SATISFIED', dependencies: 'SATISFIED',
+    source_function: 'SATISFIED', activated_neighborhood: 'SATISFIED',
+  }, findings: [], unresolved: [], limitations: [] };
+  assert.equal(validateOutput('assess', adequate, new Map()).verdict, 'SATISFIED');
+  const missing = structuredClone(adequate);
+  missing.coverage.source_function = 'UNKNOWN';
+  assert.throws(() => validateOutput('assess', missing, new Map()), /output_assessment_false_satisfied/);
 });
 test('unrecognized fields cannot silently widen mechanism output', () => {
   assert.throws(() => validateOutput('differentiate', { ...bundle, policy_override: true }, new Map([[carrier, source]])));
