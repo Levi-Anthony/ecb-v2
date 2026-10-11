@@ -123,6 +123,7 @@ type FailureCode =
   | 'runtime_unauthorized'
   | 'persistence_failed'
   | 'capture_failed'
+  | 'capture_operation_identity_required'
   | 'search_failed'
   | 'fetch_failed'
   | 'disposition_write_failed'
@@ -185,6 +186,27 @@ function hex(bytes: Uint8Array): string {
 
 async function sha256Hex(value: string): Promise<string> {
   return hex(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value))));
+}
+
+/**
+ * Transitional compatibility for clients that cached the pre-operation_id
+ * MCP input schema. They must supply captured_at as their stable event key.
+ * The UUIDv8 namespace includes the authenticated client and exact payload:
+ * retries replay; distinct source occurrences do not accidentally collapse.
+ * Missing both keys fails closed before any storage/RPC call.
+ */
+async function legacyCaptureOperationId(input: {
+  actor?: string; source: string; content: string; capturedAt?: string;
+}): Promise<string> {
+  if (!input.actor || !input.capturedAt) throw new BrainOperationError('capture_operation_identity_required');
+  const hash = await sha256Hex(JSON.stringify([
+    'ecb-v2:legacy-capture-id:1', input.actor, input.source, input.content, input.capturedAt,
+  ]));
+  const variant = ((parseInt(hash[16], 16) & 0x3) | 0x8).toString(16);
+  return [
+    hash.slice(0, 8), hash.slice(8, 12), '8' + hash.slice(13, 16),
+    variant + hash.slice(17, 20), hash.slice(20, 32),
+  ].join('-');
 }
 
 function digestEquals(actual: string, expected: string): boolean {
@@ -598,7 +620,7 @@ function buildServer(): McpServer {
   server.registerTool('capture_thought', {
     title: 'Capture Thought',
     description:
-      'Contract ecb-v2-capture/0.5.1. Requires caller-supplied operation_id UUID for stable idempotency. Preserve exact Thought custody under that operation identity. When circulation is commissioned, default trusted mode atomically admits bounded processing under its separate service remit. raw_only preserves without commissioning continuation. Custody, admission and semantic success are separately reported; no standing is granted.',
+      'Contract ecb-v2-capture/0.5.2. Supply operation_id UUID for stable idempotency. Older client snapshots without that field must supply stable captured_at: the server derives a payload- and authenticated-client-bound UUIDv8; requests lacking both are rejected before persistence. Preserve exact Thought custody. Trusted circulation requires separate remit; raw_only only preserves. Custody, admission and semantic success remain separate; no standing is granted.',
     annotations: {
       readOnlyHint: false,
       destructiveHint: false,
@@ -607,7 +629,7 @@ function buildServer(): McpServer {
     },
     scopeChallenge: capabilityCheck('preserve'),
     inputSchema: {
-      operation_id: z.string().uuid(),
+      operation_id: z.string().uuid().optional(),
       content: nonBlankText(),
       source: nonBlankText(),
       captured_at: z.string().datetime({ offset: true }).optional(),
@@ -617,14 +639,16 @@ function buildServer(): McpServer {
     },
   }, async ({ operation_id, content, source, captured_at, producer_context, parent_receipt_id, processing_mode }, context) => {
     try {
+      const actor = context.http?.authInfo?.clientId;
+      const operationId = operation_id ?? await legacyCaptureOperationId({ actor, content, source, capturedAt: captured_at });
       return result(await runtime.capture({
-        operationId: operation_id,
+        operationId,
         content,
         source,
         capturedAt: captured_at,
         producerContext: producer_context,
         parentReceiptId: parent_receipt_id,
-        actor: context.http?.authInfo?.clientId,
+        actor,
         processingMode: processing_mode,
       }));
     } catch (error) {

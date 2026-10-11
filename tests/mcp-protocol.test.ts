@@ -316,3 +316,47 @@ test('oversized bodies and JSON-RPC batches are rejected before dispatch', async
   assert.equal(response.status, 400);
   assert.equal((await response.json()).error.code, -32600);
 });
+
+
+test('stale MCP capture schema preserves operation identity using an explicit timestamp', async () => {
+  const originalFetch = globalThis.fetch;
+  const sent: Array<Record<string, unknown>> = [];
+  globalThis.fetch = async (input, init) => {
+    if (String(input).endsWith('/rpc/ecb11_capture_thought')) {
+      sent.push(JSON.parse(String(init?.body)) as Record<string, unknown>);
+      return Response.json([]);
+    }
+    throw new Error('unexpected persistence or processing route');
+  };
+  try {
+    await withClient('modern', async (client) => {
+      const stale = { content: 'captured exact material', source: 'chat-connector-snapshot',
+        captured_at: '2026-10-10T23:12:34.000Z', processing_mode: 'raw_only' };
+      const absent = await client.callTool({name:'capture_thought',arguments:{
+        content:stale.content,source:stale.source,processing_mode:'raw_only',
+      }});
+      assert.equal(absent.isError,true);
+      assert.match(absent.content[0]?.type==='text'?absent.content[0].text:'',
+        /capture_operation_identity_required/);
+      for (let i=0;i<2;i++) {
+        const response = await client.callTool({name:'capture_thought',arguments:stale});
+        assert.equal(response.isError,true); // Native mock returned no row; identity was dispatched.
+      }
+      const later = await client.callTool({name:'capture_thought',arguments:{
+        ...stale,captured_at:'2026-10-10T23:12:35.000Z',
+      }});
+      assert.equal(later.isError,true);
+      const explicit = await client.callTool({name:'capture_thought',arguments:{
+        operation_id:'349f628f-eebf-4a43-90c0-bc8587a4ee50',
+        content:stale.content,source:stale.source,processing_mode:'raw_only',
+      }});
+      assert.equal(explicit.isError,true);
+    });
+    assert.equal(sent.length,4);
+    const ids = sent.map(x=>String(x.p_operation_id));
+    assert.match(ids[0],/^[a-f0-9]{8}-[a-f0-9]{4}-8[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/);
+    assert.equal(ids[0],ids[1]); // Stable retry / lost-ack replay.
+    assert.notEqual(ids[0],ids[2]); // Different event occurrence never aliases.
+    assert.equal(ids[3],'349f628f-eebf-4a43-90c0-bc8587a4ee50');
+  } finally {globalThis.fetch=originalFetch;}
+});
