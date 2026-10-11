@@ -122,7 +122,14 @@ export async function runStep(io: WorkerIO) {
     if (typeof content !== 'string') throw new StepError('provider_output_missing');
     const carriers = new Map<string, string>([[lease.source.carrier_id, lease.source.text]]);
     if (lease.source.original_carrier_id) carriers.set(lease.source.original_carrier_id, lease.source.original_text);
-    const bundle = validateOutput(stage, JSON.parse(content), carriers);
+    // A proposed "recovered" native referent must actually occur in the
+    // exact seated work or native index snapshot. A model UUID is not evidence.
+    const knownNativeReferents = new Set<string>([
+      lease.source.id, lease.work?.focal_id,
+      ...(Array.isArray(lease.work?.parts) ? lease.work.parts.map((p: { constituent_id?: string }) => p.constituent_id) : []),
+      ...(Array.isArray(lease.context_subjects) ? lease.context_subjects.map((r: { subject_id?: string }) => r.subject_id) : []),
+    ].filter((id): id is string => typeof id === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id)));
+    const bundle = validateOutput(stage, JSON.parse(content), carriers, knownNativeReferents);
     return await rpc('eco213_finish', { ...basis, p_bundle: bundle, p_provider: provider });
   } catch (error) {
     const timeout = error instanceof Error && (error.name === 'TimeoutError' || error.name === 'AbortError');
