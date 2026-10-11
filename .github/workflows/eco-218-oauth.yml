@@ -2,7 +2,7 @@ name: ECO-218 ordinary OAuth qualification
 on:
   push:
     branches: [main]
-    paths: ['server.ts', 'server/domain-admission.ts', 'server/native-packages/**', 'server/oauth*.ts', 'api/**', 'tests/eco-218/**', 'package*.json', 'vercel.json', '.github/workflows/eco-218-oauth.yml']
+    paths: ['server.ts', 'server/domain-admission.ts', 'server/native-packages/**', 'server/oauth*.ts', 'api/**', 'server/open-brain-mcp/**', 'tests/eco-218/**', 'package*.json', 'vercel.json', '.github/workflows/eco-218-oauth.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,3 +22,16 @@ jobs:
       - run: npm run test:oauth
       - run: npm run test:mcp
       - run: npm run test:circulation
+
+  brain-edge-compatibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - uses: denoland/setup-deno@22d081ff2d3a40755e97629de92e3bcbfa7cf2ed # v2.0.5
+        with:
+          deno-version: '2.5.5'
+      - name: Verify Edge compatibility, stable replay and authentication
+        run: deno test --frozen --allow-net --allow-env server/open-brain-mcp/index.test.ts
