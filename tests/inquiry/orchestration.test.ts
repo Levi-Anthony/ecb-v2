@@ -4,7 +4,7 @@ import {
   orchestrateInquiry, inquiryBasisRef, digest, preserveInquiryProjection, projectionDelta,
   type InquiryRequest, type InquiryAdapters, type ExactEvidence, type Disclosure, type CandidateDecision,
 } from '../../server/orchestration.ts';
-import { QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_DISCLOSURES, type SituatedContext, type LevelClaim, type ChangeRecord } from '../../server/urg-core.ts';
+import { QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_DISCLOSURES, QUADRANT_COORDINATES, type SituatedContext, type LevelClaim, type ChangeRecord } from '../../server/urg-core.ts';
 
 // Constructed semantic evaluations test coordination and denial, not empirical semantic adequacy.
 const focal = '00000000-0000-4000-8000-000000000001', prior = '00000000-0000-4000-8000-000000000002';
@@ -18,7 +18,7 @@ const evidence = (id: string): ExactEvidence => ({ referent_id: id, digest: dige
 function disclosure(r: InquiryRequest): Disclosure {
   return { records: QUADRANT_DISCLOSURES.map(disclosure => ({
     ref: `fixture:${disclosure}`, record: { kind: 'quadrant' as const, result: 'QUADRANT_POSITION' as const,
-      disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT, disclosure,
+      disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT, disclosure, coordinates:QUADRANT_COORDINATES[disclosure],
       content_ref: `fixture:content:${disclosure}`, characterization_ref: `fixture:characterization:${disclosure}`, conditions_ref:'fixture:conditions',
       context: r.context as SituatedContext,
       fidelity: { coverage: 'EXAMINED' as const, activation: 'DORMANT' as const, disposition: 'NONCONSEQUENTIAL_NOW' as const } },
@@ -199,13 +199,37 @@ test('URG projection preservation refuses to fabricate missing situated coordina
 });
 
 
-test('coverage follows positive disclosure even when every claim has the same old qualifiers', async () => {
+test('retired qualifiers cannot acquire current coverage beside valid coordinates', async () => {
   const a=adapters(); a.disclose=async r=> {const d=disclosure(r); for(const x of d.records) if(x.record.kind==='quadrant')
-    x.record.qualifiers={seat:'Constitutive',burden:'Determinate'}; return d;};
+    (x.record as unknown as Record<string,unknown>).qualifiers={seat:'Constitutive',burden:'Determinate'}; return d;};
   const r=await orchestrateInquiry(request,a);
-  assert.equal(r.disposition,'READY');
-  assert.equal(r.disclosure_contract,QUADRANT_DISCLOSURE_CONTRACT);
-  for(const q of QUADRANT_DISCLOSURES) assert.equal(r.quadrant_coverage[q].status,'EXAMINED');
+  assert.equal(r.disposition,'HOLD');
+  for(const q of QUADRANT_DISCLOSURES) assert.equal(r.quadrant_coverage[q].status,'UNEXAMINED');
+});
+test('missing or conflated individual/relational indexing cannot count as fourfold coverage', async () => {
+  for (const missing of [true,false]) {
+    const a=adapters();a.disclose=async r=>{const d=disclosure(r);
+      for (const x of d.records) if(x.record.kind==='quadrant' && x.record.disclosure==='LL') {
+        if(missing) delete x.record.coordinates;
+        else x.record.coordinates=QUADRANT_COORDINATES.UL;
+      }
+      return d;};
+    const r=await orchestrateInquiry(request,a);
+    assert.equal(r.disposition,'HOLD');
+    assert.equal(r.quadrant_coverage.LL.status,'UNEXAMINED');
+    assert.equal(r.quadrant_coverage.UL.status,'EXAMINED');
+  }
+});
+test('a v2 account cannot gain current coverage by retaining the same quadrant labels', async () => {
+  const a=adapters();a.disclose=async r=>{const d=disclosure(r);
+    for(const x of d.records)if(x.record.kind==='quadrant') {
+      (x.record as unknown as Record<string,unknown>).disclosure_contract='ecos:quadrant-disclosure:v2';
+      delete x.record.coordinates;
+    }
+    return d;};
+  const r=await orchestrateInquiry(request,a);
+  assert.equal(r.disposition,'HOLD');
+  for(const q of QUADRANT_DISCLOSURES) assert.equal(r.quadrant_coverage[q].status,'UNEXAMINED');
 });
 test('old four-cell coverage cannot impersonate the successor four disclosures', async () => {
   const a=adapters(); a.disclose=async r=> {const d=disclosure(r); d.records=(['Constitutive','Participatory']).flatMap(seat=>['Governing','Determinate'].map(burden=>({
@@ -229,7 +253,7 @@ test('grammar-only change requires requalification even with equal legacy basis 
 test('an unresolved extra record cannot disappear behind four examined positions', async () => {
   const a=adapters();a.disclose=async r=>{const d=disclosure(r);d.records.push({ref:'fixture:extra-unknown',record:{
     kind:'quadrant',context:r.context as SituatedContext,disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT,
-    result:'QUADRANT_UNKNOWN',disclosure:'UL',qf_ref:'fixture:missing-proper-account',
+    result:'QUADRANT_UNKNOWN',disclosure:'UL',coordinates:QUADRANT_COORDINATES.UL,qf_ref:'fixture:missing-proper-account',
     fidelity:{coverage:'EXAMINED',activation:'ACTIVE',disposition:'UNRESOLVED'}}});return d;};
   const r=await orchestrateInquiry(request,a);assert.equal(r.disposition,'HOLD');
   assert(r.questions_forward.some(q=>q.unresolved_ref==='fixture:extra-unknown'));

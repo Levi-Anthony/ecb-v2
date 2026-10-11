@@ -6,7 +6,7 @@ import {
   QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_QUESTIONS, type QuadrantDisclosure,
 } from './urg-core.js';
 
-export const INQUIRY_CONTRACT = 'ecos:inquiry-orchestration:0.3.0';
+export const INQUIRY_CONTRACT = 'ecos:inquiry-orchestration:0.4.0';
 export type InquiryRequest = {
   query: string;
   intended_use: string;

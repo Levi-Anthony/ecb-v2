@@ -1,3 +1,5 @@
+> **HISTORICAL SOURCE BASIS — 10 October 2026:** this candidate and its companion simulation use the earlier v2/0.3.0 source edition. [Current structural contract v3](../urg-kernel/Quadrant-Disclosure-Contract-v3.0.md) restores Individual/Relational × Left/Right and removes generic seat/burden qualifiers. The simulation is dated candidate evidence; it is not a current v3 consumer or an installation dependency.
+
 STATUS: CANDIDATE — PENDING PRINCIPAL REVIEW (no contract, kernel, runtime or authority change)
 DATE: 8 October 2026, America/Phoenix
 COMPANION SIMULATION: https://claude.ai/artifact/8mePefjLn5JZB4oW4SsJdj (private Artifact; 25 log-computed checks; ports inquiry 0.3.0)

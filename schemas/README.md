@@ -10,4 +10,4 @@ This directory now contains shared machine-consumable contract surfaces earned b
 
 A schema/descriptor is a representation of an accepted semantic contract. It does not independently confer truth, currentness, authority, or domain validity. Native domain schemas remain native and should be referenced/composed rather than silently replaced.
 
-Current Quadrant replacement: `urg-core-v2.contract.json` and `civs-v0.2.contract.json` govern successor consumers. The v1 / v0.1 descriptors are retained historical editions; they do not generate current coverage.
+Current Quadrant structure: `urg-core-v3.contract.json` and `civs-v0.3.contract.json` require explicit Individual/Relational and Left/Right coordinates. The v1/v2 and CIVS v0.1/v0.2 descriptors retain historical meanings and cannot supply current coverage. Constitution/participation and governing/determinate are not generic quadrant qualifiers.

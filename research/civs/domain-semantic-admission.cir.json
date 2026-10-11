@@ -1,6 +1,6 @@
 {
-  "contract": "ecos:capability-inspection-record:0.2.0",
-  "cir_id": "ecos:cir:domain-semantic-admission:2026-10-08:v1.5",
+  "contract": "ecos:capability-inspection-record:0.3.0",
+  "cir_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.6",
   "subject_ref": "ecos:domain-semantic-admission:0.1.0",
   "subject_label": "Domain-Semantic Admission / D&I Boundary",
   "purpose": {
@@ -475,7 +475,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-08:v1.5"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.6"
           },
           {
             "role": "projection",
@@ -505,7 +505,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-08:v1.5"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.6"
           },
           {
             "role": "projection",
@@ -536,7 +536,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-08:v1.5"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.6"
           },
           {
             "role": "projection",
@@ -568,7 +568,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-08:v1.5"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.6"
           },
           {
             "role": "projection",
@@ -599,7 +599,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-08:v1.5"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.6"
           },
           {
             "role": "projection",
@@ -1404,7 +1404,7 @@
         "kind": "question_forward",
         "unresolved_ref": "civs:consumer-sim:fresh-agent-domain-admission:UL",
         "basis_ref": "github:Levi-Anthony/ecb-v2:6fb7ae8a9f23d309f1a9c40e279efd9dd6ef11ce",
-        "current_standing_ref": "ecos:quadrant-disclosure:v2:unresolved",
+        "current_standing_ref": "ecos:quadrant-disclosure:v3:unresolved",
         "discriminator_question": "What proper determination of the prospective consumer occurrence is consequential here, and what account can be supported without substituting its report or performance?",
         "paired_signal_scenario": "A qualified mapping account establishes the bounded semantic correspondence; otherwise FEDERATE remains only a routing disposition.",
         "evidence_change_criteria": "Recover explicit source/target semantics, semantic owner, mapping basis, and evidence sufficient to test composition/partiality/inversion requirements where consequential.",
@@ -1541,7 +1541,11 @@
               ]
             }
           },
-          "characterization_ref": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md#positive-characteristic-functions"
+          "characterization_ref": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md#positive-characteristic-functions",
+          "coordinates": {
+            "relational_index": "RELATIONAL",
+            "disclosure_side": "LEFT"
+          }
         },
         {
           "ref": "civs:consumer:UR:predict-gate",
@@ -1615,7 +1619,11 @@
               ]
             }
           },
-          "characterization_ref": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md#positive-characteristic-functions"
+          "characterization_ref": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md#positive-characteristic-functions",
+          "coordinates": {
+            "relational_index": "INDIVIDUAL",
+            "disclosure_side": "RIGHT"
+          }
         },
         {
           "ref": "civs:consumer:LL:norms-authority",
@@ -1684,7 +1692,11 @@
               ]
             }
           },
-          "characterization_ref": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md#positive-characteristic-functions"
+          "characterization_ref": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md#positive-characteristic-functions",
+          "coordinates": {
+            "relational_index": "RELATIONAL",
+            "disclosure_side": "LEFT"
+          }
         },
         {
           "ref": "civs:consumer:LR:located-surfaces",
@@ -1754,14 +1766,18 @@
               ]
             }
           },
-          "characterization_ref": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md#positive-characteristic-functions"
+          "characterization_ref": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md#positive-characteristic-functions",
+          "coordinates": {
+            "relational_index": "RELATIONAL",
+            "disclosure_side": "RIGHT"
+          }
         }
       ],
       "limits": [
         "This is hypothesis-based consumer simulation. No fresh-agent behavioral qualification has yet converted the UL dependency hypothesis into an observed consumer fact.",
         "8 October successor interpretation: the historical UL dependency-hypothesis item is reassessed as LL field articulation. Its original reference is retained for lineage, not interpreted as current coordinate identity. Proper determination remains an explicit unresolved consumer disclosure; historical observations do not establish it."
       ],
-      "disclosure_contract": "ecos:quadrant-disclosure:v2"
+      "disclosure_contract": "ecos:quadrant-disclosure:v3"
     }
   ],
   "graphical_door": {
@@ -1890,7 +1906,9 @@
     "ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2",
     "Vercel:dpl_8EeP8R6TNE6APZy7FpqEmHJ1kVgk",
     "github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839",
-    "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md"
+    "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md",
+    "research/urg-kernel/Quadrant-Disclosure-Contract-v3.0.md",
+    "brain:6e5d24bb-5e58-4198-b1fc-f02caf815af1"
   ],
   "omissions": [
     "No connected-consumer invocation proving inquiry.domain_admission exposure.",
@@ -1907,6 +1925,7 @@
     "WP8 overall disposition is PARTIAL_HOLD because an independent fresh-agent behavioral run has not been performed.",
     "The current orchestrator's own successful reentry/qualification work is not evidence for the fresh-reader behavioral gate.",
     "Connected-consumer exposure/use and operational sustainment remain separately unqualified after WP8.",
-    "Quadrant successor migration changes the current CIR contract and consumer disclosure interpretation; prior WP8/deployment observations retain their exact historical scope and do not qualify successor hosted use."
+    "Quadrant successor migration changes the current CIR contract and consumer disclosure interpretation; prior WP8/deployment observations retain their exact historical scope and do not qualify successor hosted use.",
+    "CIR v1.6 is an authored structural-axis reassessment under the 10 October commission. Dated observation references and verification as-of retain their earlier scope; explicit coordinates do not establish fresh connected-consumer use."
   ]
 }

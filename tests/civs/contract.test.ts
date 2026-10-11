@@ -1,4 +1,4 @@
-import { QUADRANT_DISCLOSURE_CONTRACT } from '../../server/urg-core.ts';
+import { QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_COORDINATES } from '../../server/urg-core.ts';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
@@ -83,7 +83,7 @@ function specimen(): CapabilityInspectionRecord {
         governing_orientation_ref: 'fixture:consumer-g', mapper_ref: 'fixture:consumer-mapper', frame_ref: 'fixture:consumer-frame',
         access_ref: 'fixture:consumer-access', declared_use: 'Cold-read the fixture.' },
       items: [{
-        ref: 'fixture:ul', quadrant: 'UL', entry_kind: 'PROPER_DETERMINATION', characterization_ref:'fixture:proper-determination', binding_status: 'LATENT', statement: 'Hypothesis about a prospective consumer occurrence: its own proper determination of uncertainty is distinct from the report and modeled response.',
+        ref: 'fixture:ul', quadrant: 'UL', coordinates: QUADRANT_COORDINATES.UL, entry_kind: 'PROPER_DETERMINATION', characterization_ref:'fixture:proper-determination', binding_status: 'LATENT', statement: 'Hypothesis about a prospective consumer occurrence: its own proper determination of uncertainty is distinct from the report and modeled response.',
         observation_refs: [], observation_route: 'future cold-reader trial', falsifier: 'Consumer succeeds without this distinction or another dependency explains the result.',
         support: {
           affordance: { claim: 'Inspection can surface proof boundaries.', standing: 'NOT_ESTABLISHED', enforcement_mode: 'STRUCTURAL', evidence_refs: [], accountability_ref: 'fixture:coordination', limits: ['Hypothesis only.'] },
@@ -102,11 +102,12 @@ function specimen(): CapabilityInspectionRecord {
 }
 
 test('portable CIVS vocabulary mirrors executable constants', () => {
-  const vocabulary = JSON.parse(readFileSync(new URL('../../schemas/civs-v0.2.contract.json', import.meta.url), 'utf8'));
+  const vocabulary = JSON.parse(readFileSync(new URL('../../schemas/civs-v0.3.contract.json', import.meta.url), 'utf8'));
   assert.equal(vocabulary.cir_contract, CIVS_CONTRACT_ID);
   assert.deepEqual(vocabulary.installation_assessments, CIVS_INSTALLATION_KINDS);
   assert.deepEqual(vocabulary.working_bands, CIVS_WORKING_BANDS);
   assert.deepEqual(vocabulary.relation_schema.kinds, CIVS_RELATION_KINDS);
+  assert.deepEqual(vocabulary.consumer_simulation_coordinates, QUADRANT_COORDINATES);
 });
 
 test('complete CIR validates and human view is generated from the same record', () => {
@@ -116,6 +117,19 @@ test('complete CIR validates and human view is generated from the same record', 
   assert.match(human, /generated human projection/);
   assert.match(human, /operationally_sustained/);
   assert.match(human, /NOT ESTABLISHED/);
+  assert.match(human, /INDIVIDUAL \/ LEFT/);
+});
+
+test('consumer simulations require the structural index and reject qualifier reification', () => {
+  const missing=specimen();
+  delete (missing.consumer_simulations[0].items[0] as unknown as Record<string,unknown>).coordinates;
+  assert(validateCapabilityInspectionRecord(missing).errors.some(error=>error.includes('coordinates')));
+  const conflated=specimen();
+  conflated.consumer_simulations[0].items[0].coordinates=QUADRANT_COORDINATES.LL;
+  assert(validateCapabilityInspectionRecord(conflated).errors.some(error=>error.includes('relational_index')));
+  const reified=specimen();
+  (reified.consumer_simulations[0].items[0] as unknown as Record<string,unknown>).qualifiers={seat:'Constitutive'};
+  assert(validateCapabilityInspectionRecord(reified).errors.some(error=>error.includes('retired')));
 });
 
 test('installation assessment is not a scalar ladder', () => {
@@ -157,7 +171,7 @@ test('graphical readiness remains decomposed and projection is a URG Projection 
       evidence_refs: ['fixture:cir-edition'], currentness_ref: basis },
   });
   assert.equal(projection.kind, 'projection');
-  assert.equal(projection.mapping_relation_ref, 'ecos:civs-human-projection:0.2.0');
+  assert.equal(projection.mapping_relation_ref, 'ecos:civs-human-projection:0.3.0');
 });
 
 
@@ -270,7 +284,7 @@ test('human URG Projection maps object connections, verification links and Quest
     fidelity: { coverage: 'EXAMINED', activation: 'ACTIVE', disposition: 'RELIED_FOR_DECLARED_USE',
       evidence_refs: ['research/civs/domain-semantic-admission.cir.json'], currentness_ref: cir.verification.as_of_ref },
   });
-  assert.equal(p.mapping_relation_ref, 'ecos:civs-human-projection:0.2.0');
+  assert.equal(p.mapping_relation_ref, 'ecos:civs-human-projection:0.3.0');
   assert(p.mapped_claim_refs?.includes(cir.object_connections[0].ref));
   assert(p.mapped_claim_refs?.includes(cir.verification_links[0].ref));
   assert(p.mapped_claim_refs?.includes(cir.questions_forward[0].ref));

@@ -7,18 +7,18 @@
  */
 import {
   validateUrgRecord,
-  QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_FUNCTIONS,
-  type QuadrantFunction,
+  QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_FUNCTIONS, validateQuadrantCoordinates,
+  type QuadrantFunction, type QuadrantCoordinates,
   type FidelityCoordinates,
   type NativeRelationClaim,
   type ProjectionRecord,
   type QuestionForward,
 } from './urg-core.js';
 
-export const CIVS_CONTRACT_ID = 'ecos:capability-inspection-record:0.2.0' as const;
+export const CIVS_CONTRACT_ID = 'ecos:capability-inspection-record:0.3.0' as const;
 export const CIVS_RELATION_SCHEMA_ID = 'ecos:civs-object-relations' as const;
 export const CIVS_RELATION_SCHEMA_EDITION = '0.1.0' as const;
-export const CIVS_HUMAN_PROJECTION_ID = 'ecos:civs-human-projection:0.2.0' as const;
+export const CIVS_HUMAN_PROJECTION_ID = 'ecos:civs-human-projection:0.3.0' as const;
 
 export const CIVS_INSTALLATION_KINDS = [
   'specified',
@@ -224,6 +224,7 @@ export type SupportClaim = {
 export type ConsumerSimulationItem = {
   ref: string;
   quadrant: 'UL' | 'UR' | 'LL' | 'LR';
+  coordinates: QuadrantCoordinates;
   entry_kind: QuadrantFunction;
   characterization_ref: string;
   binding_status: 'LATENT' | 'LOCATED';
@@ -605,6 +606,10 @@ export function validateCapabilityInspectionRecord(value: unknown): CivsValidati
       if (!item || !['UL','UR','LL','LR'].includes(String(item.quadrant))) errors.push(`consumer_simulations[${i}].items[${j}].quadrant is invalid`);
       const expectedKind: Record<string,string> = QUADRANT_FUNCTIONS;
       if (item && expectedKind[String(item.quadrant)] !== String(item.entry_kind)) errors.push(`consumer_simulations[${i}].items[${j}].entry_kind does not match quadrant job`);
+      if (item) {
+        errors.push(...validateQuadrantCoordinates(item.quadrant, item.coordinates).errors.map(error => `consumer_simulations[${i}].items[${j}]: ${error}`));
+        if (item.qualifiers !== undefined || item.seat !== undefined || item.burden !== undefined) errors.push(`consumer_simulations[${i}].items[${j}]: generic seat/burden qualifiers are retired`);
+      }
       if (!item || !text(item.characterization_ref)) errors.push(`consumer_simulations[${i}].items[${j}].characterization_ref is required`);
       if (!item || !['LATENT','LOCATED'].includes(String(item.binding_status))) errors.push(`consumer_simulations[${i}].items[${j}].binding_status is invalid`);
       if (!item || !text(item.statement) || !text(item.observation_route) || !text(item.falsifier)) errors.push(`consumer_simulations[${i}].items[${j}] requires statement, observation_route and falsifier`);
@@ -788,9 +793,12 @@ export function renderCapabilityInspectionRecord(cir: CapabilityInspectionRecord
   const lines: string[] = [
     `# Capability Inspection Record — ${cir.subject_label}`,
     '',
-    `**CIR:** \`${cir.cir_id}\`  `,
-    `**Subject:** \`${cir.subject_ref}\`  `,
-    `**Contract:** \`${cir.contract}\`  `,
+    `**CIR:** \`${cir.cir_id}\``,
+    '',
+    `**Subject:** \`${cir.subject_ref}\``,
+    '',
+    `**Contract:** \`${cir.contract}\``,
+    '',
     `**As-of:** \`${cir.verification.as_of_ref}\``,
     '',
     '> This document is a generated human projection of the machine-readable CIR. It is not a second source of truth.',
@@ -862,7 +870,7 @@ export function renderCapabilityInspectionRecord(cir: CapabilityInspectionRecord
     ...cir.consumer_simulations.flatMap(sim => [
       `### ${sim.ref}`,
       `Consumer: \`${sim.consumer_basis.consumer_referent_ref}\`; use: ${sim.consumer_basis.declared_use}.`,
-      ...sim.items.map(i => `- **${i.quadrant} / ${i.entry_kind} / ${i.binding_status}:** ${i.statement} Observation route: ${i.observation_route}. Falsifier: ${i.falsifier}`),
+      ...sim.items.map(i => `- **${i.quadrant} / ${i.coordinates.relational_index} / ${i.coordinates.disclosure_side} / ${i.entry_kind} / ${i.binding_status}:** ${i.statement} Observation route: ${i.observation_route}. Falsifier: ${i.falsifier}`),
       '',
     ]),
     '## Graphical-door obligations',

@@ -1,0 +1,239 @@
+{
+  "kind": "quadrant_structural_axis_repair_manifest",
+  "source_baseline": "2f1fbcfda4be20a227a487f9aca84c0131bfa4c2",
+  "principal_commission_ref": "brain:6e5d24bb-5e58-4198-b1fc-f02caf815af1",
+  "source_contract": "ecos:quadrant-disclosure:v2",
+  "destination_contract": "ecos:quadrant-disclosure:v3",
+  "versions": {
+    "URG": "3.0.0",
+    "inquiry": "0.4.0",
+    "CIVS": "0.3.0"
+  },
+  "current_coordinates": {
+    "UL": {
+      "relational_index": "INDIVIDUAL",
+      "disclosure_side": "LEFT"
+    },
+    "UR": {
+      "relational_index": "INDIVIDUAL",
+      "disclosure_side": "RIGHT"
+    },
+    "LL": {
+      "relational_index": "RELATIONAL",
+      "disclosure_side": "LEFT"
+    },
+    "LR": {
+      "relational_index": "RELATIONAL",
+      "disclosure_side": "RIGHT"
+    }
+  },
+  "changed_files": [
+    {
+      "path": ".github/workflows/eco-136-urg-core.yml",
+      "sha256": "f62deab5de19219760bb2d932eb66fa3d8519292bc91198999408050690eb5a8"
+    },
+    {
+      "path": ".github/workflows/inquiry-orchestration.yml",
+      "sha256": "79af8855f0a6689196874bc4a1bf66507eb36de05ba93e00f8d57f3e649ceca2"
+    },
+    {
+      "path": "START_HERE.md",
+      "sha256": "6ab0269fbbe971e5986fa18e63249289f1c12a5bfa57ce54e5b13436d1e1b655"
+    },
+    {
+      "path": "docs/architecture-decisions/009-urg-core-portable-package.md",
+      "sha256": "46b75e0f663105f3307ee8ccdee812bc95ffd80e6c224f341d6179f3504d0543"
+    },
+    {
+      "path": "docs/capability-inspection-verification-spine-plan.md",
+      "sha256": "1449b7ca747968bcbe8c791d1110f2cf8308018c3a3d69d623ba10d40072f79b"
+    },
+    {
+      "path": "docs/civs-domain-semantic-admission.md",
+      "sha256": "0fb0cbf256d442ef203ea23df37e545b54c41bd5ecefd9bc76c8dee48d13a422"
+    },
+    {
+      "path": "docs/civs-reentry.md",
+      "sha256": "48b89abd9b445ccfcdb1d3ecab6e391e1523d5889be62998f48b2b72a088f0ea"
+    },
+    {
+      "path": "docs/inquiry-orchestration.md",
+      "sha256": "de57cbbb73b0ce4828436a8d44f211e298110a9e71ad47c680906b3b991f6f4c"
+    },
+    {
+      "path": "docs/working-preferences-constructive-di.md",
+      "sha256": "7195022f6cfb67313d3ae99145df5eb1a7582eb3805f7725e6745adcab28929d"
+    },
+    {
+      "path": "research/civs/domain-semantic-admission.cir.json",
+      "sha256": "18027071998443f6482cd8e9bed81f83755ac6654ef6ac9a5a39af5817dbe61f"
+    },
+    {
+      "path": "research/control-surface/Substrate-First-Ladder-2026-10-08.md",
+      "sha256": "da26cf1f7154667cc9d02199fc1c0eb662dbb44ab32236c6791b2db96aeebf98"
+    },
+    {
+      "path": "research/control-surface/substrate-atlas-simulation-1.html",
+      "sha256": "cb61c002431a74b762d1bef8b1dd0c636645e2dd9b0ba35ad1971fef47712551"
+    },
+    {
+      "path": "research/formal-semantics/Constructive-Fidelity-Tracking.md",
+      "sha256": "a74e3aee6b231adbddcaca4b8fb2c68d2a7760884cd6231c14e62a70fe383625"
+    },
+    {
+      "path": "research/formal-semantics/ECO-220-Invariant-Lattice-Index-v1.1.md",
+      "sha256": "955be7a4c8f83f52aba0244cd78daf814aa852c134a0c07df3e00347895d13f9"
+    },
+    {
+      "path": "research/formal-semantics/PGO-Directed-Situated-Referent-Orchestration-Profile-v0.1.md",
+      "sha256": "a1d268434cb6e2d3dd8d13ec309aa172265cdbd08826d95203be8be2011a80c7"
+    },
+    {
+      "path": "research/formal-semantics/Proper-Fact-Quadrant-Constructive-Delta-2026-10-08.md",
+      "sha256": "b4ac82a57c3aedb1c6d3095c0eaa2e3abd78d99d0949d5e09e3d2751bda66932"
+    },
+    {
+      "path": "research/formal-semantics/Situated-Referent-Discovery-Frontier.md",
+      "sha256": "ddf6fd5bfd6dda3d761c1f2ff417d3301b70d8ff7d2455f81b1bc6ba6a93d21b"
+    },
+    {
+      "path": "research/quadrant-grammar/README.md",
+      "sha256": "1ea70d582aec84de2601aada118aea4233286adbd498d45f151819313ee3043b"
+    },
+    {
+      "path": "research/quadrant-grammar/SIGMA-ECOS-Quadrant-Grammar-Register-B-Functional-Contract-v0.2.md",
+      "sha256": "d4bcd81be4b8a87e2ce4beea5b51f137c784d38ccd181f454d565787ec08b609"
+    },
+    {
+      "path": "research/urg-kernel/Directional-Pressures-Formal-Contract-v1.0.md",
+      "sha256": "07a4cd848e02222acf60e40682d89758deebd3d555401f4b7098d321e425b77e"
+    },
+    {
+      "path": "research/urg-kernel/Level-Quadrant-Formal-Contract-v1.0.md",
+      "sha256": "de7440ae019e12ca8aead6d3096be6eb8790ce5a0a68e1de2f588816497ffb77"
+    },
+    {
+      "path": "research/urg-kernel/Quadrant-Completion-Release-2026-10-08.md",
+      "sha256": "1bce21df23aa255ee81194351d7012b669912873ea032ccdb815ef0b03c8b80c"
+    },
+    {
+      "path": "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md",
+      "sha256": "f6e3d46517f2fdc30d1364907ec4f4729960e51b85f8b5f8ef3169b048adda26"
+    },
+    {
+      "path": "research/urg-kernel/Quadrant-Disclosure-Contract-v3.0.md",
+      "sha256": "504cf14ccf8cf493d5b8d2136ee39a6076a61e84766cf65d84fff300fe6ba99e"
+    },
+    {
+      "path": "research/urg-kernel/Quadrant-Disclosure-Replacement-Receipt-2026-10-08.md",
+      "sha256": "8990b217f75c5de5e05f1bdd185b91ea215b5d1a321e89faa8fc19bc16cbea16"
+    },
+    {
+      "path": "research/urg-kernel/Quadrant-Replacement-Completion-Audit-2026-10-08.md",
+      "sha256": "6980170727f9c1875e0e8178e179eb851a67bc6bc55c9d357aa65cbe128574db"
+    },
+    {
+      "path": "research/urg-kernel/README.md",
+      "sha256": "d72b755d41cfffb3b20a5a5c29fa473f25c547b703bcced6f74f6ea92cc706ac"
+    },
+    {
+      "path": "research/urg-kernel/URG-Core-Register-B-Candidate-v1.0.md",
+      "sha256": "daa7b9cb74c4bb95449c1950bcdf20afa53961199fb9156464519d15c47a575e"
+    },
+    {
+      "path": "research/urg-kernel/check_level_quadrant_contract.py",
+      "sha256": "4f1c007b1f6dda3c1af88793423b14c2f79dea992892196f661fcaf26b38550b"
+    },
+    {
+      "path": "research/urg-kernel/level-quadrant-fixtures-v3.0.json",
+      "sha256": "78fe7ae81b2dabf27f51d0506234daed8e30defee1be375507aed878cc8ebb65"
+    },
+    {
+      "path": "schemas/README.md",
+      "sha256": "a6898a7e6d52a686569dd6a9aeb94c7f4cd6edb8e49f927af142136cfa400e3d"
+    },
+    {
+      "path": "schemas/civs-v0.3.contract.json",
+      "sha256": "c3eca24e3969bb0ba60e7ae69e6617e637aa55dee06bcf60c031fb8e1b784cf1"
+    },
+    {
+      "path": "schemas/urg-core-v3.contract.json",
+      "sha256": "dc974218e425ac155fee3d9f851211022dbea75e6cd62e364359692de31aba37"
+    },
+    {
+      "path": "scripts/qualify-quadrant-disclosure.ts",
+      "sha256": "e11369ecd0b7fa21ec953e02bdb2158c5d8bad579301b05844f06cbfb0b1128b"
+    },
+    {
+      "path": "server/civs.ts",
+      "sha256": "cfb3de70cca1816c83ab15ca214aded097cd7f6277294b231a14a4234cdd1d57"
+    },
+    {
+      "path": "server/orchestration.ts",
+      "sha256": "65fa731018f38b44c6aff4c480119acf77879bfef82f4de54b68291f168d5d80"
+    },
+    {
+      "path": "server/urg-core.ts",
+      "sha256": "81306179bcfd457fe2e27097478ee86d18d343d4174a46eb60ed29082b80b1f2"
+    },
+    {
+      "path": "tests/civs/contract.test.ts",
+      "sha256": "f9de5b59df23b15dae1f617ec8eb7b40f87fa39062cf2cc870f3aaf527f02f7c"
+    },
+    {
+      "path": "tests/civs/correspondence.test.ts",
+      "sha256": "c95e0161a232c75e8114f1fb887d8178ccf8b6195686dc75b711c23e3103f58d"
+    },
+    {
+      "path": "tests/civs/qualification.test.ts",
+      "sha256": "ae46d6800affbd3159b8db25152aed976f000bead15550786b99292d383d886f"
+    },
+    {
+      "path": "tests/inquiry/orchestration.test.ts",
+      "sha256": "0c0f7531ff321639fa16eb3b7b133486336268b25cf2bf8c8cc73829e2575684"
+    },
+    {
+      "path": "tests/urg-core/contract.test.ts",
+      "sha256": "5f779c217e0218a9a078b97d639b59f8742775a8490004994b0c357f048dd102"
+    }
+  ],
+  "receipt_files_not_self_hashed": [
+    "research/urg-kernel/Quadrant-Structural-Axis-Repair-2026-10-10.md",
+    "research/urg-kernel/Quadrant-Structural-Axis-Repair-Manifest-v3.0.json",
+    "research/urg-kernel/Quadrant-Structural-Axis-Repair-Verification-v3.0.json"
+  ],
+  "reconciliation": {
+    "kind": "change",
+    "change_kind": "GrammarChange",
+    "subject_referent_id": "ecos:quadrant-disclosure",
+    "source_basis_ref": "github:Levi-Anthony/ecb-v2:2f1fbcfda4be20a227a487f9aca84c0131bfa4c2:ecos:quadrant-disclosure:v2",
+    "destination_basis_ref": "ecos:quadrant-disclosure:v3:2026-10-10",
+    "continuity_mode_ref": "same-focal-disclosure-functions-explicit-axis-repair",
+    "affected_claim_refs": [
+      "quadrant-generic-seat-burden-qualifiers",
+      "missing-individual-relational-index"
+    ],
+    "affected_dependency_refs": [
+      "URG-current-record-validation",
+      "ECO-202-inquiry-coverage-and-assessment",
+      "CIVS-consumer-simulation-and-human-projection",
+      "current-worker-instruction-overlays"
+    ],
+    "requalify_refs": [
+      "current-quadrant-accounts-before-reliance",
+      "ECO-202-ordinary-semantic-production",
+      "ECO-218-connected-consumer-use",
+      "ECO-214-hosted-use-current-source-envelope"
+    ],
+    "fidelity": {
+      "coverage": "EXAMINED",
+      "activation": "ACTIVE",
+      "disposition": "RELIED_FOR_DECLARED_USE",
+      "evidence_refs": [
+        "research/urg-kernel/Quadrant-Structural-Axis-Repair-2026-10-10.md"
+      ],
+      "authority_ref": "brain:6e5d24bb-5e58-4198-b1fc-f02caf815af1",
+      "currentness_ref": "source-baseline-plus-exact-changed-file-digests"
+    }
+  }
+}

@@ -1,3 +1,5 @@
+> **HISTORICAL v2 EVIDENCE — superseded 10 October 2026:** [Current v3 structural contract](Quadrant-Disclosure-Contract-v3.0.md) restores explicit Individual/Relational and Left/Right indexing and retires generic seat/burden qualifiers. Statements below retaining those qualifiers describe the earlier source edition; they no longer govern current records. Dated verification remains evidence for its exact earlier edition.
+
 > **Historical initial replacement receipt.** Initial implementation commit: `c4fad7797ed9c9b46c9ffa16b14369b549f3f992`. The [completion audit](Quadrant-Replacement-Completion-Audit-2026-10-08.md) records subsequently discovered defects and their repairs under inquiry 0.3.0. In this initial edition, “recoverable content/characterization/conditions” below described required references, but consumption enforced only reference syntax. Actual resolution and exit revalidation were added by the audit repair. Its verification file and manifest remain evidence for the original source bytes, not current bytes.
 
 # Quadrant disclosure replacement — source implementation and qualification receipt

@@ -10,7 +10,7 @@ on:
       - 'server/urg-core.ts'
       - 'tests/inquiry/**'
       - 'scripts/qualify-quadrant-disclosure.ts'
-      - 'research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md'
+      - 'research/urg-kernel/Quadrant-Disclosure-Contract-v*.md'
       - 'package*.json'
       - '.github/workflows/inquiry-orchestration.yml'
   pull_request:
@@ -23,7 +23,7 @@ on:
       - 'server/urg-core.ts'
       - 'tests/inquiry/**'
       - 'scripts/qualify-quadrant-disclosure.ts'
-      - 'research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md'
+      - 'research/urg-kernel/Quadrant-Disclosure-Contract-v*.md'
       - 'package*.json'
       - '.github/workflows/inquiry-orchestration.yml'
   workflow_dispatch:

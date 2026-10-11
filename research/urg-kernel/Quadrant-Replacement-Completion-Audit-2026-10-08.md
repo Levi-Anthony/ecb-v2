@@ -1,3 +1,5 @@
+> **HISTORICAL v2 EVIDENCE — superseded 10 October 2026:** [Current v3 structural contract](Quadrant-Disclosure-Contract-v3.0.md) restores explicit Individual/Relational and Left/Right indexing and retires generic seat/burden qualifiers. Statements below retaining those qualifiers describe the earlier source edition; they no longer govern current records. Dated verification remains evidence for its exact earlier edition.
+
 # Quadrant replacement completion audit
 
 Date: 8 October 2026, America/Phoenix.

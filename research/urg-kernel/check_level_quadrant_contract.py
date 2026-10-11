@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded structural checker for Level + positive Quadrant disclosure; explicit v1 replay retained.
+"""Bounded structural checker for Level + two-axis disclosure; explicit v1/v2 replay retained.
 
 Validates declared fixture structure only. It does not infer semantic truth,
 referent boundaries, constitutive relations, natural-language quadrant burden,
@@ -12,6 +12,12 @@ from pathlib import Path
 
 POSITIONS = {("C", "G"): "UL", ("C", "D"): "UR", ("P", "G"): "LL", ("P", "D"): "LR"}
 CONTINUITY = {"same_r_revised_boundary", "different_existing_r", "newly_individuated_composite"}
+COORDINATES = {
+    "UL": {"relational_index": "INDIVIDUAL", "disclosure_side": "LEFT"},
+    "UR": {"relational_index": "INDIVIDUAL", "disclosure_side": "RIGHT"},
+    "LL": {"relational_index": "RELATIONAL", "disclosure_side": "LEFT"},
+    "LR": {"relational_index": "RELATIONAL", "disclosure_side": "RIGHT"},
+}
 
 def check_level(f):
     required = ["constituency", "organization", "whole_depends", "reverse_constitutive_dep", "boundary_explicit", "rank_leakage"]
@@ -31,13 +37,18 @@ def check_legacy_quadrant(f):
         return "QUADRANT_UNKNOWN"
     return POSITIONS.get((seat, burden), "QUADRANT_UNKNOWN")
 
-def check_quadrant(f):
-    if f.get("disclosure_contract") != "ecos:quadrant-disclosure:v2":
+def check_quadrant(f, historical_v2=False):
+    contract = "ecos:quadrant-disclosure:v2" if historical_v2 else "ecos:quadrant-disclosure:v3"
+    if f.get("disclosure_contract") != contract:
         return "CONTRACT_MISMATCH"
+    if not historical_v2 and any(k in f for k in ("qualifiers", "seat", "burden")):
+        return "RETIRED_QUALIFIERS"
     if f.get("compound"):
         return "DECOMPOSE" if len(set(f.get("component_refs", []))) >= 2 else "QUADRANT_UNKNOWN"
     if not all(f.get(k) for k in ("content_ref", "characterization_ref", "conditions_ref")):
         return "QUADRANT_UNKNOWN"
+    if not historical_v2 and f.get("disclosure") in COORDINATES and f.get("coordinates") != COORDINATES[f["disclosure"]]:
+        return "COORDINATE_MISMATCH"
     return f.get("disclosure") if f.get("disclosure") in {"UL", "UR", "LL", "LR"} else "QUADRANT_UNKNOWN"
 
 def check_transition(f):
@@ -64,15 +75,16 @@ def check_transition(f):
 def main(path):
     data = json.loads(Path(path).read_text())
     legacy = data.get("schema") == "eco221-level-quadrant-fixtures-v1"
-    if not legacy and data.get("schema") != "level-quadrant-disclosure-fixtures-v2":
+    historical_v2 = data.get("schema") == "level-quadrant-disclosure-fixtures-v2"
+    if not legacy and not historical_v2 and data.get("schema") != "level-quadrant-disclosure-fixtures-v3":
         print("UNKNOWN FIXTURE CONTRACT"); return 1
-    print("HISTORICAL v1 REPLAY ONLY" if legacy else "CURRENT positive disclosure v2")
+    print("HISTORICAL v1 REPLAY ONLY" if legacy else "HISTORICAL v2 REPLAY ONLY" if historical_v2 else "CURRENT two-axis disclosure v3")
     failures = []
     for f in data["fixtures"]:
         if f["kind"] == "level":
             actual, expected = check_level(f), f["expected"]
         elif f["kind"] == "quadrant":
-            actual, expected = (check_legacy_quadrant(f) if legacy else check_quadrant(f)), f["expected"]
+            actual, expected = (check_legacy_quadrant(f) if legacy else check_quadrant(f, historical_v2)), f["expected"]
         elif f["kind"] == "transition":
             actual, expected = check_transition(f), f["expected_valid"]
         else:
@@ -89,5 +101,5 @@ def main(path):
     return 0
 
 if __name__ == "__main__":
-    p = sys.argv[1] if len(sys.argv) > 1 else Path(__file__).with_name("level-quadrant-fixtures-v2.0.json")
+    p = sys.argv[1] if len(sys.argv) > 1 else Path(__file__).with_name("level-quadrant-fixtures-v3.0.json")
     raise SystemExit(main(p))

@@ -1,0 +1,118 @@
+{
+  "kind": "quadrant_structural_axis_repair_verification",
+  "recorded_at": "2026-10-11T04:10:45.514436+00:00",
+  "principal_commission_ref": "brain:6e5d24bb-5e58-4198-b1fc-f02caf815af1",
+  "source_baseline": "2f1fbcfda4be20a227a487f9aca84c0131bfa4c2",
+  "runtime_tests": {
+    "URG_inquiry_CIVS": {
+      "pass": 160,
+      "fail": 0
+    },
+    "MCP": {
+      "pass": 12,
+      "fail": 0
+    },
+    "OAuth": {
+      "pass": 7,
+      "fail": 0
+    },
+    "circulation": {
+      "pass": 33,
+      "fail": 0
+    },
+    "total_pass": 212
+  },
+  "commands": [
+    {
+      "script": "typecheck:urg",
+      "exit_code": 0,
+      "summary": []
+    },
+    {
+      "script": "typecheck:inquiry",
+      "exit_code": 0,
+      "summary": []
+    },
+    {
+      "script": "typecheck:civs",
+      "exit_code": 0,
+      "summary": []
+    },
+    {
+      "script": "typecheck:mcp",
+      "exit_code": 0,
+      "summary": []
+    },
+    {
+      "script": "typecheck:oauth",
+      "exit_code": 0,
+      "summary": []
+    },
+    {
+      "script": "typecheck:circulation",
+      "exit_code": 0,
+      "summary": []
+    },
+    {
+      "script": "test:mcp",
+      "exit_code": 0,
+      "summary": [
+        "\u2139 tests 12",
+        "\u2139 pass 12",
+        "\u2139 fail 0"
+      ]
+    },
+    {
+      "script": "test:oauth",
+      "exit_code": 0,
+      "summary": [
+        "\u2139 tests 7",
+        "\u2139 pass 7",
+        "\u2139 fail 0"
+      ]
+    },
+    {
+      "script": "test:circulation",
+      "exit_code": 0,
+      "summary": [
+        "\u2139 tests 33",
+        "\u2139 pass 33",
+        "\u2139 fail 0"
+      ]
+    }
+  ],
+  "python_fixtures": {
+    "current_v3": 23,
+    "historical_v2": 18,
+    "historical_v1": 17,
+    "inherited_full_core": 42,
+    "fail": 0
+  },
+  "local_coordinator_qualification": {
+    "pass": 8,
+    "claim": "Actual local coordinator execution over explicitly authored semantic accounts and recovered exact source/characterization/conditions; not hosted semantic-use evidence."
+  },
+  "static_readback": {
+    "new_relative_contract_links": "PASS",
+    "machine_descriptors_match_runtime": "PASS",
+    "human_CIVS_generated_from_same_record": "PASS",
+    "historical_meaning_retained": "PASS"
+  },
+  "publication": {
+    "status": "PENDING_MAIN_PUBLICATION",
+    "expected_parent": "2f1fbcfda4be20a227a487f9aca84c0131bfa4c2",
+    "target_branch": "main",
+    "target_project": "ecb-v2",
+    "target_environment": "production"
+  },
+  "receiving_surfaces": {
+    "BRAIN_commission": "CAPTURED_AND_FETCHED",
+    "Linear": "PENDING_EXISTING_OWNER_CONTINUITY"
+  },
+  "scope_boundary": [
+    "Four positive functions preserved; two explicit structural axes required.",
+    "Natural-language semantic adequacy remains attributable evaluator work.",
+    "Default ordinary semantic producer and fresh connected/hosted-use obligations remain open.",
+    "No whole-production-cycle completion or automation reactivation."
+  ]
+}

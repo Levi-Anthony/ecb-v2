@@ -5,7 +5,8 @@ import {
   URG_CORE_ID,
   URG_IMPLEMENTATION_REVISION,
   URG_RECORD_KINDS,
-  QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_DISCLOSURES,
+  QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_DISCLOSURES, QUADRANT_COORDINATES,
+  PREVIOUS_DISCLOSURE_CONTRACT, validatePreviousDisclosureRecord,
   LEGACY_QUADRANT_CONTRACT, validateLegacyQuadrantRecord,
   validateUrgRecord,
 } from "../../server/urg-core.ts";
@@ -40,11 +41,13 @@ function invalid(record: unknown, contains?: string) {
 }
 
 test("machine descriptor and executable module agree", () => {
-  const path = new URL("../../schemas/urg-core-v2.contract.json", import.meta.url);
+  const path = new URL("../../schemas/urg-core-v3.contract.json", import.meta.url);
   const descriptor = JSON.parse(readFileSync(path, "utf8"));
   assert.equal(descriptor.contract_id, URG_CORE_ID);
   assert.equal(descriptor.implementation_revision, URG_IMPLEMENTATION_REVISION);
   assert.deepEqual(descriptor.record_kinds, [...URG_RECORD_KINDS]);
+  assert.deepEqual(descriptor.quadrant_disclosure.coordinates, QUADRANT_COORDINATES);
+  assert.equal(descriptor.quadrant_disclosure.contract, QUADRANT_DISCLOSURE_CONTRACT);
 });
 
 test("coverage, activation and disposition remain orthogonal", () => valid({
@@ -76,11 +79,10 @@ test("witnessed Level without organization is rejected", () => invalid({
   constituent_referent_ids:["22222222-2222-4222-8222-222222222222"],
 }, "organization_ref"));
 
-test("actual proper determination is UL regardless of determinate burden", () => valid({
+test("actual proper determination uses the individual Left coordinate", () => valid({
   kind:"quadrant", context:ctx, fidelity, result:"QUADRANT_POSITION",
-  disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT, disclosure:"UL",
+  disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT, disclosure:"UL", coordinates:QUADRANT_COORDINATES.UL,
   content_ref:"proper-state:1", characterization_ref:"instantiation-only:1", conditions_ref:"occasion:1",
-  qualifiers:{seat:"Constitutive", burden:"Determinate"},
 }));
 
 test("Quadrant unknown must retain a QF route", () => invalid({
@@ -280,13 +282,38 @@ test("material change declares affected dependencies as well as claims", () => i
 }, "affected_dependency_refs"));
 
 
-test("retained qualifiers cannot select, erase or change any disclosure", () => {
+test("generic qualifiers are rejected for every current disclosure", () => {
   for (const disclosure of QUADRANT_DISCLOSURES) for (const seat of ["Constitutive", "Participatory"]) for (const burden of ["Governing", "Determinate"]) {
-    valid({kind:"quadrant", context:ctx, fidelity, result:"QUADRANT_POSITION",
-      disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT, disclosure,
+    invalid({kind:"quadrant", context:ctx, fidelity, result:"QUADRANT_POSITION",
+      disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT, disclosure, coordinates:QUADRANT_COORDINATES[disclosure],
       content_ref:"content:1", characterization_ref:"semantic-assessment:1", conditions_ref:"conditions:1",
-      qualifiers:{seat, burden}});
+      qualifiers:{seat, burden}}, "retired");
   }
+});
+test("both disclosure axes are required and discriminate the original coordinate loss", () => {
+  for (const disclosure of QUADRANT_DISCLOSURES) {
+    const base = {kind:"quadrant",context:ctx,fidelity,result:"QUADRANT_POSITION",
+      disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT,disclosure,
+      content_ref:"content:1",characterization_ref:"semantic-assessment:1",conditions_ref:"conditions:1"};
+    const coordinates = QUADRANT_COORDINATES[disclosure];
+    valid({...base,coordinates});
+    invalid(base,"coordinates");
+    invalid({...base,coordinates:{disclosure_side:coordinates.disclosure_side}},"relational_index");
+    invalid({...base,coordinates:{...coordinates,relational_index:coordinates.relational_index === "INDIVIDUAL" ? "RELATIONAL" : "INDIVIDUAL"}},"relational_index");
+    invalid({...base,coordinates:{...coordinates,disclosure_side:coordinates.disclosure_side === "LEFT" ? "RIGHT" : "LEFT"}},"disclosure_side");
+    invalid({...base,coordinates:{...coordinates,seat:"Constitutive"}},"two disclosure axes");
+  }
+});
+test("previous v2 qualifiers retain historical interpretation without current coverage or automatic coordinates", () => {
+  const previous = {kind:"quadrant",context:ctx,fidelity,result:"QUADRANT_POSITION",
+    disclosure_contract:PREVIOUS_DISCLOSURE_CONTRACT,disclosure:"UL",
+    content_ref:"content:1",characterization_ref:"assessment:1",conditions_ref:"conditions:1",
+    qualifiers:{seat:"Constitutive",burden:"Determinate"}};
+  assert.equal(validatePreviousDisclosureRecord(previous,PREVIOUS_DISCLOSURE_CONTRACT).valid,true);
+  assert.equal(validatePreviousDisclosureRecord(previous,QUADRANT_DISCLOSURE_CONTRACT).valid,false);
+  assert.equal(validatePreviousDisclosureRecord({...previous,coordinates:QUADRANT_COORDINATES.UL},PREVIOUS_DISCLOSURE_CONTRACT).valid,false);
+  invalid(previous,"disclosure_contract");
+  invalid({...previous,disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT},"retired");
 });
 test("historical records remain interpretable but cannot enter current disclosure coverage", () => {
   const old = {kind:"quadrant", context:ctx, fidelity, result:"QUADRANT_POSITION", seat:"Constitutive", burden:"Determinate"};
@@ -297,7 +324,7 @@ test("historical records remain interpretable but cannot enter current disclosur
 });
 test("a disclosure label without its positive account and characterization cannot pass", () => {
   invalid({kind:"quadrant",context:ctx,fidelity,result:"QUADRANT_POSITION",
-    disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT,disclosure:"LL"}, "characterization_ref");
+    disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT,disclosure:"LL", coordinates:QUADRANT_COORDINATES.LL}, "characterization_ref");
 });
 test("compound inquiries require distinct recoverable components", () => {
   const base = {kind:"quadrant",context:ctx,fidelity,result:"DECOMPOSE",disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT};
@@ -306,5 +333,5 @@ test("compound inquiries require distinct recoverable components", () => {
 });
 test("unknown content preserves an identified disclosure without manufacturing a result", () => valid({
   kind:"quadrant",context:ctx,fidelity:{coverage:"EXAMINED",activation:"ACTIVE",disposition:"UNRESOLVED"},
-  result:"QUADRANT_UNKNOWN",disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT,disclosure:"UL",qf_ref:"question:proper-account",
+  result:"QUADRANT_UNKNOWN",disclosure_contract:QUADRANT_DISCLOSURE_CONTRACT,disclosure:"UL", coordinates:QUADRANT_COORDINATES.UL,qf_ref:"question:proper-account",
 }));

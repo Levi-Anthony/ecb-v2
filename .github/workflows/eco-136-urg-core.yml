@@ -40,6 +40,8 @@ jobs:
       - run: npm run test:urg
       - run: npm run qualify:quadrant
       - run: python3 research/urg-kernel/check_level_quadrant_contract.py
+      - run: python3 research/urg-kernel/check_level_quadrant_contract.py research/urg-kernel/level-quadrant-fixtures-v2.0.json
+      - run: python3 research/urg-kernel/check_level_quadrant_contract.py research/urg-kernel/level-quadrant-fixtures-v1.0.json
       - run: python3 research/urg-kernel/check_urg_core_contract.py research/urg-kernel/URG-Core-Qualification-Matrix-v1.0.json
 
       # Existing ordinary-runtime regressions required by the Move opening.
