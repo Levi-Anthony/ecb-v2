@@ -34,8 +34,19 @@ export async function recoverCorpusInputs(call:Call){
   const predecessor=c.receipt.supersedes_receipt_artifact;
   if(!predecessor)continue;
   const prior=candidates.find(p=>p.id===predecessor);
-  if(prior&&(prior.work.id!==c.work.id||prior.receipt.revision_id!==c.receipt.revision_id))
-   throw new Error('corpus_prepared_succession_scope_mismatch');
+  if(!prior)throw new Error('corpus_prepared_succession_predecessor_missing');
+  if(prior.work.id!==c.work.id||prior.receipt.revision_id!==c.receipt.revision_id){
+   // A legitimate successor changes the immutable work/remit seat. It is
+   // accepted only through three mutually corroborating predecessor witnesses:
+   // work ancestry, remit-revision ancestry, and the immutable receipt chain.
+   const successorRevision=(discovery.remits??[]).find((r:any)=>r.id===c.receipt.revision_id);
+   if(c.work.predecessor_id!==prior.work.id
+     ||c.receipt.predecessor_work_id!==prior.work.id
+     ||c.receipt.predecessor_revision_id!==prior.receipt.revision_id
+     ||successorRevision?.predecessor_id!==prior.receipt.revision_id
+     ||successorRevision?.remit_id!==c.receipt.remit_id)
+    throw new Error('corpus_prepared_succession_scope_mismatch');
+  }
   superseded.add(predecessor);
  }
  const selected=candidates.filter(c=>!superseded.has(c.id));
