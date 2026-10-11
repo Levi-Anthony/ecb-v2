@@ -17,7 +17,9 @@
 
 **Constructive initial whole:** following ECO-51, provisionally compose X from the proximal telos together with situated participants (including Principal and worker where warranted), constraints, dependencies, possibilities and actual state. Ask what X is part of; then inspect its constituent/realizing relations in both directions. G participates in the account of a purpose-bearing composite under declared individuation without granting independent ontological or authorization standing. PGO selects relevant inquiry and sufficiency; it cannot manufacture a Level witness or evidence.
 
-## 2. Exact omitted dimension: State and occasion, not just R/B
+## 2. Omitted situational dimensions — State/occasion is a qualified hypothesis about the Principal's intended referent
+
+**Source-versus-inference correction (11 October, post-initial repair):** The Principal asked what was missing from “which are constituents depends on the referent and its boundary,” specifically “at any given time,” but did **not** explicitly ratify my answer that this referred *only* to State/occasion. The same exchange separately foregrounds adequate **PGO-first** seating, and the stronger situated-composite inquiry includes actually organized participants/relationships and potentially changed orientations. These are **several plausible answers**, not interchangeable explanations. **State/occasion is an independently installed and clearly relevant contract**, but calling it the Principal's *exact intended omission* smuggles standing. Continue to test the intersection, preserve the alternative, and ask the Principal only if the unresolved distinction changes the next decision. My prior certainty is withdrawn as an attribution claim; the existing URG State formula remains governing in its own scope.
 
 The assistant's sentence “which are constituents depends on the referent and its boundary” is **incomplete at the occasion of use**. The URG State contract already defines:
 - situated State basis Ω = (Σ,D,ρ,N,v), including domain/scope, dimensions, resolution, normalization and edition;
@@ -72,10 +74,24 @@ Do not turn all three into the same “parent-child” edge. A subfunction can b
 
 | Occasion / referent | Functional account | Situated participants and State | Constituent / Level assessment |
 | --- | --- | --- | --- |
-| o₀, actual cold session E₀, disconnected | establish working basis, disclose missing channels, continue lawful work | human + assistant exchanging instructions, no demonstrated BRAIN call | A viable degraded entry can be constituted without an actually participating ECB service; connected ECB is only a possible realization for another case |
-| o₁, different connected reentry E₁ | recover current governing material, reconcile, act | human + assistant + authenticated ECB interaction, exact recovery, accepted evidence | The organized recovery interaction can be constitutive of E₁ under a declared boundary; whether the exact service *token* is constitutively indispensable needs separate identity/Level evidence |
-| o₂, continuing session E₂ after changed intent/evidence | reorient, requalify old support, disclose new obligations, continue | same agent identity may persist; substantive State, partners or PGO may change | Do not assume one opening reply exhausts boot/reorientation; do not force E₁ and E₂ into same occurrence or quietly change their focal seats |
+| o₀, **hypothetical** cold session E₀, disconnected | establish working basis, disclose missing channels, continue lawful work | human + assistant exchanging instructions, no demonstrated BRAIN call | A viable degraded entry can be constituted without an actually participating ECB service; connected ECB is only a possible realization for another case |
+| o₁, **hypothetical** connected reentry E₁ | recover current governing material, reconcile, act | human + assistant + authenticated ECB interaction, exact recovery, accepted evidence | The organized recovery interaction can be constitutive of E₁ under a declared boundary; whether the exact service *token* is constitutively indispensable needs separate identity/Level evidence |
+| o₂, **hypothetical** continuing session E₂ after changed intent/evidence | reorient, requalify old support, disclose new obligations, continue | same agent identity may persist; substantive State, partners or PGO may change | Do not assume one opening reply exhausts boot/reorientation; do not force E₁ and E₂ into same occurrence or quietly change their focal seats |
 | H, durable cross-client capacity | permit repeatable situated entry and reentry | alternative realizations may be connected, portable-offline, or mixed across occasions | Existence of a capability family ≠ an installed universal subsystem. Verify which *organized mechanisms/relationships* constitute a specific deployed H, not a list of hypothetical components |
+
+### Further vertical D&I discrimination — constructed two-occasion example
+
+**Governing intention** (example-local, not Principal-ratified Boot definition): the agent must resume a consequential task with correct current evidence and authorization after a context change. **Actuality:** every condition in this subsection is a *hypothetical case fixture*, not a report of a hosted boot or an accepted system topology.
+
+**From function downward:** “Resume correctly” can be functionally differentiated into: recover the governing orientation; discover relevant prior evidence; distinguish changes and current standing; reconcile old support and newly applicable obligations; then route an authorized action or a bounded HOLD. These are *outcome-relevant functions*. They may be further decomposed into subfunctions, but that does not identify the specific parts or services of the eventual whole.
+
+**From constitution upward:** suppose one occurrence actually has a user, worker and ECB connection cooperating under a specific recovery-and-requalification protocol. Their organized contributions and interaction might constitute that *connected reentry episode*, with a Level witness required for a claim that a particular participant or relation is part of the episode under its declared boundary. A different episode uses a portable, disconnected working packet. Both can fulfill the higher-level functional demand for truthful recovery yet have different *actually realized* relations. The durable capability's continued identity is not a mechanical inference from either one's success.
+
+**Where both directions constrain the other:** top-down outcome specifies that the recovered material must be current and reliance-worthy; bottom-up observation of a stale but exact document forces a new qualification requirement or a bounded degraded result. It does not authorize the observer to redefine the Principal's goal downward, nor allow the goal to assert that a connection or constituent exists. A replacement service is not automatically identical to the old service, yet a changed performer may preserve the qualified higher-level capability when its identity and continuity conditions are met.
+
+**Two independent switches:** changing G can alter which capacities and prior evidence are relevant without itself changing the referent's State; changing a State at occasion o can alter which relations are *actually participating* without automatically changing G or B. If a new whole is discovered, do not project its constituents backward onto the old seat—use Compose/Reseat and two-sided reconciliation.
+
+**This example can fail:** if a cold-reader cannot identify the focal event/capability/containing whole, demonstrate required Level witnesses or distinguish an intended participant from an observed one, its apparent functional completeness does not qualify it. This is a genuine discrimination, not a license to invent a new physical boot module.
 
 **Unchanged method across examples:** first establish source-backed local G and R/B; declare actual versus intended mapper F; preserve Ω/o/x and sources; explore upward containing wholes, downward realizations, horizontal interactions, and four positive v3 Quadrant disclosures for a fixed R/B; change seat or frame explicitly. No physical client assertion is warranted by this invented case.
 
@@ -102,7 +118,7 @@ Do not turn all three into the same “parent-child” edge. A subfunction can b
 
 | Surface | Observed defect/contribution | This repair's disposition |
 | --- | --- | --- |
-| Principal in this conversation | direct PGO-first, reciprocal-flow, temporal constituency and intended-mapper corrections | preserve quotation in BRAIN; use exact source, no standing laundering |
+| Principal in this conversation | direct PGO-first, reciprocal-flow and intended-mapper corrections; *exact intended nature of the “at any given time” omission remains unconfirmed* | preserve exact quotes; State/occasion is independently relevant but the Principal attribution remains HYPOTHESIZED, not ratified |
 | Level v1 + State v1 + Quadrant v3 | already distinguish identity/dependency, actual State/occasion and four disclosures | **UNCHANGED**; compose rather than reopen a proven kernel |
 | ECO-51 + situated-discovery frontier | already seat telos-bearing X and reciprocally discover up/down/lateral | integrate as antecedent; preserve PGO adequacy and open investigation standing |
 | ECO-191 change/reconciliation and ECO-202 inquiry | already require two-sided checks and source-backed dynamic Context | add local operational derivation and testable failure example; no silent runtime guard |
@@ -119,7 +135,7 @@ Do not turn all three into the same “parent-child” edge. A subfunction can b
 
 **Hold remains:** original Boot Shape, v4 consumer move, new schema/DB/API effects, fresh provider release, authority changes. The original Boot System Shape/v4 installation remains HALTed pending evidence-based repair review. No automatic resumption from a document or successful CI.
 
-**Before unhalt:** source readback, cold-worker reproduction of G-1/G-2, V-2, T-1/T-2, M-1, D-1/D-2, and exact proof of receiving instructions where installed. ECO-219/156 owns client-specific verification. A future accepted physical integration may implement additional guardrails; this report does not claim such gates are installed.
+**Before unhalt:** preserve the unresolved Principal-intent discriminator (State/occasion vs PGO/situated actual composite, or both), source readback, cold-worker reproduction of G-1/G-2, V-2, T-1/T-2, M-1, D-1/D-2, and exact proof of receiving instructions where installed. ECO-219/156 owns client-specific verification. A future accepted physical integration may implement additional guardrails; this report does not claim such gates are installed.
 
 **Question Forward:** For which lawfully seated actual referent/occasion does organized participation enter its qualifying Level witness, and what changes in source, organization, temporal State, or mapper warrant maintaining the same referent/Level relation rather than an explicit state transition, boundary revision or reseat?
 
