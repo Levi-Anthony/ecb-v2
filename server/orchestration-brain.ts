@@ -174,7 +174,8 @@ export function createBrainInquiryAdapters(ports: BrainInquiryPorts, actor: stri
           operational_disposition: ordinary?.disposition ?? null,
           derived_source_role: derivedContext?.source_function ?? null,
           derived_neighborhood: Array.isArray(derivedContext?.activated_neighborhood) ? derivedContext.activated_neighborhood : [],
-          derived_context_status: carrierRecord?.native_type === 'semantic_units' ? (derivedContext ? 'RECOVERED' : 'UNAVAILABLE') : 'NOT_APPLICABLE',
+          derived_context_status: carrierRecord?.native_type === 'semantic_units'
+            ? (derivedContext?.source_function ? 'RECOVERED' : derivedContext ? 'HISTORICAL_UNTYPED' : 'UNAVAILABLE') : 'NOT_APPLICABLE',
           source_role_standing: 'UNASSESSED_INTERPRETATION',
           interpretation: 'Native derived meanings remain attributable proposals; exact custody and source-function labels do not confer truth, same-referent standing or present-use applicability.',
           original_basis_alternatives: bases.length > 1 ? bases : [], original_basis_status: bases.length === 1 ? 'RECOVERED' : bases.length ? 'MULTIPLE' : 'UNKNOWN' },
