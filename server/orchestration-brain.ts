@@ -138,16 +138,45 @@ export function createBrainInquiryAdapters(ports: BrainInquiryPorts, actor: stri
             basis_ref: text(work.epoch) ?? workId, intended_use: text(work.intended_use) });
         } catch { /* exact custody is retained, missing original situation is explicit */ }
       }
-      const content = text(thought.content) ?? text(artifact.content) ?? canonical({ native_records: nativeRecords, claim,
+      // Native semantic units and composed accounts store their meaning in immutable
+      // carriers, not their row metadata. Fetch that exact text before offering the
+      // record to a semantic evaluator; generated row JSON is not semantic source.
+      const carrierRecord = nativeRecords.find(entry => ['semantic_units', 'composition_accounts', 'source_occurrences', 'activity_outputs'].includes(String(entry.native_type)));
+      const carrierId = carrierRecord ? text(object(carrierRecord.record).carrier_id) : undefined;
+      let carrierContent: string | undefined, derivedContext: ObjectRecord | null = null, decompositionSource: string | undefined;
+      if (carrierId && !text(thought.content) && !text(artifact.content) && !Object.keys(claim).length) {
+        try {
+          const carrier = object(await ports.dispatch('fetch_referent', { referent_id: carrierId }, actor));
+          carrierContent = text(object(carrier.artifact).content) ?? text(object(carrier.thought).content);
+        } catch { /* partial carrier recovery is a failed exact read, never a successful interpretation */ }
+        if (!carrierContent) return null;
+        const decompositionId = text(object(carrierRecord?.record).decomposition_id);
+        if (decompositionId) {
+          try {
+            const recovered = object(await ports.dispatch('fetch_referent', { referent_id: decompositionId }, actor));
+            const decomp = rows(recovered.native_records).find(entry => entry.native_type === 'decompositions');
+            if (decomp) {
+              derivedContext = object(object(decomp.record).context);
+              decompositionSource = text(object(decomp.record).source_id);
+            }
+          } catch { /* missing interpretive context is represented as unknown below */ }
+        }
+      }
+      const content = text(thought.content) ?? text(artifact.content) ?? carrierContent ?? canonical({ native_records: nativeRecords, claim,
         evidence: native?.evidence ?? null, standing_history: native?.standing_history ?? null });
-      const sourceRefs = ids(id, thought.source, ...nativeRecords.flatMap(entry => {
-        const row = object(entry.record); return [row.source_id, row.carrier_id, row.original_carrier_id, row.output_id];
+      const sourceRefs = ids(id, thought.source, carrierId, decompositionSource, ...nativeRecords.flatMap(entry => {
+        const row = object(entry.record); return [row.source_id, row.carrier_id, row.original_carrier_id, row.output_id, row.decomposition_id];
       }));
       return { referent_id: id, digest: text(native?.basis_digest) ?? digest({ id, content, source: thought.source, captured_at: thought.captured_at }),
         content, source_refs: sourceRefs,
         original_basis: bases.length === 1 ? bases[0] : null,
         stored_standing: { claim: Object.keys(claim).length ? claim : null, standing_history: native?.standing_history ?? null,
-          operational_disposition: ordinary?.disposition ?? null, interpretation: 'Operational disposition and exact custody do not confer proposition truth or current-use standing.',
+          operational_disposition: ordinary?.disposition ?? null,
+          derived_source_role: derivedContext?.source_function ?? null,
+          derived_neighborhood: Array.isArray(derivedContext?.activated_neighborhood) ? derivedContext.activated_neighborhood : [],
+          derived_context_status: carrierRecord?.native_type === 'semantic_units' ? (derivedContext ? 'RECOVERED' : 'UNAVAILABLE') : 'NOT_APPLICABLE',
+          source_role_standing: 'UNASSESSED_INTERPRETATION',
+          interpretation: 'Native derived meanings remain attributable proposals; neither exact custody nor a source-function label confers truth, same-referent standing or present-use applicability.',
           original_basis_alternatives: bases.length > 1 ? bases : [], original_basis_status: bases.length === 1 ? 'RECOVERED' : bases.length ? 'MULTIPLE' : 'UNKNOWN' },
         currentness: 'UNKNOWN', custody_ref: id };
     },
