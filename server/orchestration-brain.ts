@@ -5,6 +5,7 @@ import {
   type InquiryAdapters, type InquiryRequest,
 } from './orchestration.js';
 import type { SituatedContext } from './urg-core.js';
+import { produceProtocolSemantics, type ProtocolEvidencePair, type ProtocolSemanticPorts } from './semantic-protocol.js';
 
 type ObjectRecord = Record<string, unknown>;
 export type BrainInquiryPorts = {
@@ -12,6 +13,16 @@ export type BrainInquiryPorts = {
   fetchThought(id: string): Promise<ObjectRecord | null>;
   dispatch(operation: string, payload: ObjectRecord, actor: string): Promise<unknown>;
   embed(query: string): Promise<number[]>;
+  /**
+   * Trust-boundary port supplied only by the authenticated server runtime,
+   * NEVER through caller inquiry JSON. It must independently recover exact,
+   * current content and native validation, not infer standing from labels.
+   * Absence preserves the existing conservative HOLD adapter.
+   */
+  semanticProtocol?: ProtocolSemanticPorts & {
+    selectPair(request: InquiryRequest, discovered: ExactEvidence[]): Promise<ProtocolEvidencePair | null>;
+    recoverCurrent(id: string): Promise<ExactEvidence | null>;
+  };
 };
 const object = (x: unknown): ObjectRecord => x !== null && typeof x === 'object' && !Array.isArray(x) ? x as ObjectRecord : {};
 const rows = (x: unknown): ObjectRecord[] => Array.isArray(x) ? x.map(object) : [];
@@ -113,6 +124,17 @@ export function createBrainInquiryAdapters(ports: BrainInquiryPorts, actor: stri
     },
     async fetchEvidence(id): Promise<ExactEvidence | null> {
       if (!uuid(id)) return null; // a provisional external URG reference is not a native UUID
+      if (ports.semanticProtocol) {
+        try {
+          const account = await ports.semanticProtocol.recoverCurrent(id);
+          // A current source is not a present-use judgment, but an editor-picked
+          // account cannot pass v3 consumption without this exact independent read.
+          if (account && account.referent_id === id && account.currentness === 'CURRENT'
+            && text(account.content) && text(account.digest) && text(account.custody_ref)
+            && Array.isArray(account.source_refs) && account.source_refs.length > 0
+            && account.source_refs.every(ref => Boolean(text(ref)))) return structuredClone(account);
+        } catch { /* Unknown remains unknown; never degrade to a fictitious current account. */ }
+      }
       let native: ObjectRecord | null = null, ordinary: ObjectRecord | null = null;
       const fetched = await Promise.allSettled([
         ports.dispatch('fetch_referent', { referent_id: id }, actor), ports.fetchThought(id),
@@ -188,7 +210,16 @@ export function createBrainInquiryAdapters(ports: BrainInquiryPorts, actor: stri
           'Is this prior material consequential here, and by which typed relation under the current PGO?',
           'Admit after independent applicability/standing qualification; otherwise defer or reject without changing its historical standing.') };
     },
-    async disclose(request) {
+    async disclose(request, discovered) {
+      if (ports.semanticProtocol) {
+        try {
+          const pair = await ports.semanticProtocol.selectPair(structuredClone(request), structuredClone(discovered));
+          return (await produceProtocolSemantics(request, pair, ports.semanticProtocol)).disclosure;
+        } catch {
+          // A failed producer is NOT a negative LL result and cannot earn READY.
+          return (await produceProtocolSemantics(request, null)).disclosure;
+        }
+      }
       return { records: [], changes: [], sufficiency: { inquiry_basis_ref: inquiryBasisRef(request),
         assessment_ref: 'ecos:inquiry:semantic-disclosure-required', satisfied: false, unresolved_refs: ['level_quadrant_disclosure'] } };
     },
