@@ -5,7 +5,7 @@ import {
   URG_CORE_ID,
   URG_IMPLEMENTATION_REVISION,
   URG_RECORD_KINDS,
-  QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_DISCLOSURES, QUADRANT_COORDINATES,
+  QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_DISCLOSURES, QUADRANT_COORDINATES, QUADRANT_FUNCTION_LABEL_STANDING,
   PREVIOUS_DISCLOSURE_CONTRACT, validatePreviousDisclosureRecord,
   LEGACY_QUADRANT_CONTRACT, validateLegacyQuadrantRecord,
   validateUrgRecord,
@@ -47,6 +47,7 @@ test("machine descriptor and executable module agree", () => {
   assert.equal(descriptor.implementation_revision, URG_IMPLEMENTATION_REVISION);
   assert.deepEqual(descriptor.record_kinds, [...URG_RECORD_KINDS]);
   assert.deepEqual(descriptor.quadrant_disclosure.coordinates, QUADRANT_COORDINATES);
+  assert.equal(descriptor.quadrant_disclosure.function_label_standing, QUADRANT_FUNCTION_LABEL_STANDING);
   assert.equal(descriptor.quadrant_disclosure.contract, QUADRANT_DISCLOSURE_CONTRACT);
 });
 

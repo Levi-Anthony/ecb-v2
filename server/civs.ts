@@ -7,7 +7,7 @@
  */
 import {
   validateUrgRecord,
-  QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_FUNCTIONS, validateQuadrantCoordinates,
+  QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_FUNCTIONS, QUADRANT_FUNCTION_LABEL_STANDING, validateQuadrantCoordinates,
   type QuadrantFunction, type QuadrantCoordinates,
   type FidelityCoordinates,
   type NativeRelationClaim,
@@ -866,6 +866,8 @@ export function renderCapabilityInspectionRecord(cir: CapabilityInspectionRecord
     `Participatory relations: ${cir.participatory_neighborhood.relation_refs.map(r => `\`${r}\``).join(', ')}. Role assignments: ${cir.participatory_neighborhood.role_assignment_refs.map(r => `\`${r}\``).join(', ')}.`,
     '',
     '## Consumer simulations',
+    '',
+    `**Quadrant function labels: ${QUADRANT_FUNCTION_LABEL_STANDING}** Existing entry-kind tokens identify the working candidate edition; they do not select a final label set.`,
     '',
     ...cir.consumer_simulations.flatMap(sim => [
       `### ${sim.ref}`,

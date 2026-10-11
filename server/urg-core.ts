@@ -25,7 +25,10 @@ export const QUADRANT_COORDINATES = {
   LR: { relational_index: "RELATIONAL", disclosure_side: "RIGHT" },
 } as const;
 export type QuadrantCoordinates = typeof QUADRANT_COORDINATES[QuadrantDisclosure];
-/** Working handles; positive definitions live in Quadrant-Disclosure-Contract-v3.0.md. */
+/** PROVISIONAL: one candidate label set among several; no set has been selected.
+ * Existing tokens identify this working edition, not a ratified label-set choice.
+ */
+export const QUADRANT_FUNCTION_LABEL_STANDING = "PROVISIONAL \u2014 one candidate label set among several; no set has been selected." as const;
 export const QUADRANT_FUNCTIONS = {
   UL: "PROPER_DETERMINATION", UR: "DETERMINATE_MANIFESTATION",
   LL: "FIELD_ARTICULATION", LR: "ENACTED_ORGANIZATION",

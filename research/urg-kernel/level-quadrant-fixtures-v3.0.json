@@ -1,6 +1,6 @@
 {
   "schema": "level-quadrant-disclosure-fixtures-v3",
-  "standing": "Explicitly authored v3 coordinates and positive functions; bounded structural checks only. Prior fixture editions retain their historical meaning.",
+  "standing": "Explicitly authored v3 structural coordinates; function labels are PROVISIONAL, one candidate set among several, as yet undecided. Bounded structural checks do not select a label set. Prior fixture editions retain their historical meaning.",
   "fixtures": [
     {
       "id": "F6-level-software-service",

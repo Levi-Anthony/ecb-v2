@@ -32,6 +32,8 @@ For commissioned ECOS continuity, preservation, reconciliation, or propagation w
 
 BRAIN-first is a custody and routing rule. It does not make BRAIN content governing merely by possession.
 
+**Managed documents — Principal direction, 11 October 2026.** Real ECOS documents must live in and be managed by Greenfield, with accountable ownership, current standing and recoverable source/edition pointers. Greenfield v2 BRAIN is first-class custody; existing owning human document surfaces carry the reader-facing view. Repository files serve the managed implementation/source role. Library documents may be optional copies, but a Library or sandbox Markdown download must not be the sole access path. The Principal reports that Library Markdown downloads do not work in the mobile chat app; return a readable managed-document link. Preserve this direction in Greenfield custody and propagate it with current document work. Source: BRAIN `c73c3209-2f9a-49b1-9698-30a43ca66304`.
+
 ## Standing Linear destination authorization
 
 The Principal has explicitly authorized **Linear as a downstream ECOS continuity destination**, with Greenfield v2 BRAIN remaining the first-class capture destination.

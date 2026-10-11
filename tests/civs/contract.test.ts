@@ -115,6 +115,8 @@ test('complete CIR validates and human view is generated from the same record', 
   assert.deepEqual(result, { valid: true, errors: [] });
   const human = renderCapabilityInspectionRecord(cir);
   assert.match(human, /generated human projection/);
+  assert.match(human, /Quadrant function labels: PROVISIONAL/);
+  assert.match(human, /one candidate label set among several; no set has been selected/);
   assert.match(human, /operationally_sustained/);
   assert.match(human, /NOT ESTABLISHED/);
   assert.match(human, /INDIVIDUAL \/ LEFT/);

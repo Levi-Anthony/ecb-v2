@@ -30,6 +30,8 @@ Wilber's [primary excerpt](https://integral-life-home.s3.amazonaws.com/Wilber-An
 
 ## Reconstructed structural account
 
+**11 October Principal standing correction:** the four labels are explicitly PROVISIONAL, one candidate set among several, as yet undecided. No set has been selected. The earlier report/table's “Preserved function” / “Retained positive function” wording gave those labels unsupported settled standing. Structural-axis installation and qualification do not decide the label set. This correction governs mentions of those labels throughout this report.
+
 | Structure | What it indexes or traverses | Current carrier |
 | --- | --- | --- |
 | Individual/Relational disclosure axis | Individuated focal instantiation versus its shared field and organization of participation, with the same focal referent/boundary | Required `coordinates.relational_index` when a disclosure is identified |
@@ -38,7 +40,7 @@ Wilber's [primary excerpt](https://integral-life-home.s3.amazonaws.com/Wilber-An
 | Horizontal participatory decomposition | Co-relata, couplings and coordination, with exact relation participants and basis | Existing native-relation machinery and accountable participation records |
 | Claim modality or answer role | What obtains, is predicted, is hypothetical, or constrains what can occur | Attributable claim/account characterization and conditions; no universal quadrant qualifier |
 
-| Quadrant | Structural coordinates | Retained positive function |
+| Quadrant | Structural coordinates | Candidate function label — PROVISIONAL |
 | --- | --- | --- |
 | UL — Upper Left | Individual × Left | Proper determination |
 | UR — Upper Right | Individual × Right | Determinate manifestation |
@@ -96,3 +98,9 @@ The inspected containing viable-system cycle, `40ca3bbd-c905-4ec5-b202-bfb49fcd6
 Implementation commit `453adbd7096896493b98ee9bc274f8c1b04269c1` is published on main. All 42 manifest-bound files match remote SHA-256 readback. Six typechecks and 212 runtime tests pass; 23 current, 18 historical v2, 17 historical v1 and 42 inherited full-core cases pass, with eight local coordinator controls. All four applicable GitHub continuous-integration runs succeeded at that exact commit. Vercel production deployment `dpl_4SraRbTeYuqV5WRSxevrafKzEjCT` is READY with that source commit and the enduring `ecb-v2-eight.vercel.app` alias. Public MCP and workflow requests return the expected authentication challenge; this is not authenticated consumer qualification.
 
 BRAIN source-return `f3dd26f2-76bf-41ac-94cd-3b5b3682c9a4` and verified-release `38501e06-6194-4801-9770-d351bc955526` were captured and fetched before receiving continuity updates. Five existing Linear issues (ECO-202, ECO-136, ECO-221, ECO-143 and ECO-218) and three directly affected human working documents carry one current structural notice each. Fresh readback confirms their original bodies and titles, plus issue states, are preserved. The completed verification receipt records exact release and receiver identities. This documentation-only return changes no manifest-bound implementation or authored account.
+
+### Managed-document access correction — 11 October
+
+The Principal requires the real documents to live in and be managed by Greenfield. BRAIN retains first-class custody; ECO-136/ECO-221 retain the owning document/decision surfaces, with readable existing human working documents rather than a required Library Markdown download. Library documents may be optional copies. The mobile inability to download Library Markdown files is the reported access failure; a sandbox or Library link must not be the only return. Governing correction: BRAIN `c73c3209-2f9a-49b1-9698-30a43ca66304`. The 10 October manifest/verification remain exact historical release receipts; this standing correction has its own successor Git custody.
+
+The 11 October correction updates current contract tables, currentness notices, machine-facing label standing, the generated human projection and CIR v1.7 without selecting another label set. Both affected TypeScript checks pass; 45 Universal Referent Grammar and 44 Capability Inspection / Verification Spine tests pass (89 total). The generated human file remains byte-identical to rendering the current machine record. Previous release receipts retain their exact historical scope.

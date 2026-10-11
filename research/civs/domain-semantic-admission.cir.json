@@ -1,6 +1,6 @@
 {
   "contract": "ecos:capability-inspection-record:0.3.0",
-  "cir_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.6",
+  "cir_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.7",
   "subject_ref": "ecos:domain-semantic-admission:0.1.0",
   "subject_label": "Domain-Semantic Admission / D&I Boundary",
   "purpose": {
@@ -475,7 +475,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.6"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.7"
           },
           {
             "role": "projection",
@@ -505,7 +505,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.6"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.7"
           },
           {
             "role": "projection",
@@ -536,7 +536,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.6"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.7"
           },
           {
             "role": "projection",
@@ -568,7 +568,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.6"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.7"
           },
           {
             "role": "projection",
@@ -599,7 +599,7 @@
         "participants": [
           {
             "role": "source",
-            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.6"
+            "referent_id": "ecos:cir:domain-semantic-admission:2026-10-10:v1.7"
           },
           {
             "role": "projection",
@@ -1908,7 +1908,8 @@
     "github:commit:2fcc0d6e7b4358c9804f9f90ac79af61557ce839",
     "research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md",
     "research/urg-kernel/Quadrant-Disclosure-Contract-v3.0.md",
-    "brain:6e5d24bb-5e58-4198-b1fc-f02caf815af1"
+    "brain:6e5d24bb-5e58-4198-b1fc-f02caf815af1",
+    "brain:c73c3209-2f9a-49b1-9698-30a43ca66304"
   ],
   "omissions": [
     "No connected-consumer invocation proving inquiry.domain_admission exposure.",
@@ -1926,6 +1927,7 @@
     "The current orchestrator's own successful reentry/qualification work is not evidence for the fresh-reader behavioral gate.",
     "Connected-consumer exposure/use and operational sustainment remain separately unqualified after WP8.",
     "Quadrant successor migration changes the current CIR contract and consumer disclosure interpretation; prior WP8/deployment observations retain their exact historical scope and do not qualify successor hosted use.",
-    "CIR v1.6 is an authored structural-axis reassessment under the 10 October commission. Dated observation references and verification as-of retain their earlier scope; explicit coordinates do not establish fresh connected-consumer use."
+    "CIR v1.6 is an authored structural-axis reassessment under the 10 October commission. Dated observation references and verification as-of retain their earlier scope; explicit coordinates do not establish fresh connected-consumer use.",
+    "Function labels Proper determination / Determinate manifestation / Field articulation / Enacted organization are explicitly PROVISIONAL: one candidate set among several; no set has been selected. CIR v1.7 corrects label-set standing and does not establish new semantic or consumer-use observations."
   ]
 }

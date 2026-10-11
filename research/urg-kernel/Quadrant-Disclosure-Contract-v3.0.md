@@ -1,7 +1,7 @@
 # Quadrant Disclosure Contract v3.0
 
 Date: 10 October 2026, America/Phoenix. Contract: `ecos:quadrant-disclosure:v3`.
-Standing: structural repair under the Principal's 10 October commission, held in BRAIN `6e5d24bb-5e58-4198-b1fc-f02caf815af1` (the qualifier-reification repair commission). Names are working handles; mechanical and semantic evidence are reported separately in the replacement receipt.
+Standing: structural repair under the Principal's 10 October commission, held in BRAIN `6e5d24bb-5e58-4198-b1fc-f02caf815af1` (the qualifier-reification repair commission). Function labels are explicitly PROVISIONAL: one candidate set among several, as yet undecided; no set has been selected. Mechanical installation and tests do not settle that choice. Principal correction: Greenfield v2 BRAIN `c73c3209-2f9a-49b1-9698-30a43ca66304`. Mechanical and semantic evidence are reported separately in the replacement receipt.
 
 ## Origin and purpose
 
@@ -19,9 +19,11 @@ Reuse `kappa=(R,B,G,F)`: focal referent R; boundary/individuation B; governing o
 
 All four disclosures index the same situated referent. Source identity, claim standing, explanatory frame, evidence access and subject identity are independent of disclosure identity. Missing content does not remove an obligation. Shared evidence may support several disclosures; these are not exclusive bins for facts or objects.
 
-## Positive characteristic functions
+## Positive characteristic functions — provisional candidate labels
 
-| Coordinate | Working handle | Characteristic function and discriminator |
+**Label-set standing: PROVISIONAL.** Proper determination, Determinate manifestation, Field articulation and Enacted organization are one candidate label set among several. No set has been selected. The descriptions below support ongoing discrimination and inquiry; their use in the installed structural carrier, authored cases or projections does not ratify this label set or exclude other candidates.
+
+| Coordinate | Candidate function label — PROVISIONAL | Characteristic function and discriminator |
 | --- | --- | --- |
 | UL — Upper Left | Proper determination | What obtains in/as the particular instantiation, with acquaintance by instantiation distinguished from information about its consequences. The proper qualitative character is not exhausted by adding an identity stamp to a manifestation record. Arbitrarily accurate reconstruction, inference or behavioral equivalence can be rich and useful without becoming that acquaintance or transferring occurrence identity. A perfect functional twin is another instantiation. This does not require ignorance to be preserved, privileged testimony, or a consciousness claim about every referent. |
 | UR — Upper Right | Determinate manifestation | The referent's differentiated configuration, variation and response under specified conditions. A model can reconstruct consequences and response profiles; claimed actuality, counterfactual response and prediction retain their respective basis. Observability is an evidence route, not the generator. UR is positively characterized rather than defined as public UL residue. |
@@ -41,7 +43,7 @@ For a nonconceptual domain, LL requires an explicit domain-native articulation a
 
 Quadrant coordinates cross **Individual/Relational indexing** with **Left/Right disclosure** over one situated referent. The Universal Referent Grammar (URG) is the shared structural language; these are its disclosure coordinates, distinct from the operations that follow relationships between referents.
 
-| Coordinate | Individual/Relational index | Left/Right side | Positive function |
+| Coordinate | Individual/Relational index | Left/Right side | Candidate function label — PROVISIONAL |
 | --- | --- | --- | --- |
 | UL — Upper Left | Individual | Left | Proper determination |
 | UR — Upper Right | Individual | Right | Determinate manifestation |
@@ -118,4 +120,8 @@ Unknowns and compound records carry their own obligations irrespective of other 
 
 [Structural axis repair audit](Quadrant-Structural-Axis-Repair-2026-10-10.md) supplies the exact scope, source lineage, causal hypotheses, local failure modes, acceptance rubric, controls, changed-file receipt and receiving boundaries. This v3 contract is the current meaning reference; v1/v2 contracts and dated qualification artifacts are historical evidence.
 
-Wilber's [published guided tour](https://integrallife.com/the-four-quadrants-a-guided-tour/) distinguishes interior/exterior and individual/collective; his [course outline](https://kenwilber.com/finding-radical-wholeness-9-week-course) separately treats individual and collective quadrants. These are upstream source statements. ECOS's domain-general Individual/Relational characterization and retained proper-determination function are its own implementation commitments. External sources do not independently establish that refinement's universality. Wilber's quadrants/quadrivia distinction is preserved as an upstream research difference; it does not reverse the Principal's already accepted universal ECOS design scope.
+Wilber's [published guided tour](https://integrallife.com/the-four-quadrants-a-guided-tour/) distinguishes interior/exterior and individual/collective; his [course outline](https://kenwilber.com/finding-radical-wholeness-9-week-course) separately treats individual and collective quadrants. These are upstream source statements. ECOS's domain-general Individual/Relational characterization and proper-determination candidate characterization are its own working development; the label set remains provisional and undecided. External sources do not independently establish that refinement's universality. Wilber's quadrants/quadrivia distinction is preserved as an upstream research difference; it does not reverse the Principal's already accepted universal ECOS design scope.
+
+## Document custody and management
+
+This document belongs to Greenfield's managed Universal Referent Grammar work under ECO-136/ECO-221. Greenfield v2 BRAIN is the first-class custody destination; the existing owning human working documents carry current standing and source pointers. Git records implementation/source editions. Library copies are optional derivatives and are not the canonical managed document or the sole reader access path. The 11 October Principal correction is preserved in BRAIN `c73c3209-2f9a-49b1-9698-30a43ca66304`.

@@ -1,6 +1,6 @@
 # Capability Inspection Record — Domain-Semantic Admission / D&I Boundary
 
-**CIR:** `ecos:cir:domain-semantic-admission:2026-10-10:v1.6`
+**CIR:** `ecos:cir:domain-semantic-admission:2026-10-10:v1.7`
 
 **Subject:** `ecos:domain-semantic-admission:0.1.0`
 
@@ -40,11 +40,11 @@ Given caller-declared atomic responsibilities, registered Native Package descrip
 - **civs:rel:depends-on-native-packages:** ecos:civs-object-relations:depends_on; dependent=`ecos:domain-semantic-admission:0.1.0`; dependency=`server/native-packages/systems-engineering.ts`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:ci-evidence-for-mechanical:** ecos:civs-object-relations:evidence_for; evidence=`GitHubActions:37706155075`; claim_or_assessment=`civs:assessment:mechanically_qualified`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:qf-correspondence:** ecos:civs-object-relations:question_forward_for; question_forward=`civs:qf:domain-admission:correspondence-truth`; unresolved_subject=`ecos:domain-semantic-admission:0.1.0`; standing UNRESOLVED.
-- **civs:rel:projects-to-human:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-10:v1.6`; projection=`civs:projection:domain-semantic-admission:human`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:projects-to-cold-reentry:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-10:v1.6`; projection=`ecos:civs-cold-reentry:0.1.0`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:projects-to-portability:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-10:v1.6`; projection=`ecos:civs:domain-semantic-admission:portability-degradation:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:projects-to-correspondence-handoff:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-10:v1.6`; projection=`ecos:civs:domain-semantic-admission:correspondence-handoff:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
-- **civs:rel:projects-to-wp8-qualification:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-10:v1.6`; projection=`ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-human:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-10:v1.7`; projection=`civs:projection:domain-semantic-admission:human`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-cold-reentry:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-10:v1.7`; projection=`ecos:civs-cold-reentry:0.1.0`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-portability:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-10:v1.7`; projection=`ecos:civs:domain-semantic-admission:portability-degradation:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-correspondence-handoff:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-10:v1.7`; projection=`ecos:civs:domain-semantic-admission:correspondence-handoff:2026-10-07:v0.1`; standing RELIED_FOR_DECLARED_USE.
+- **civs:rel:projects-to-wp8-qualification:** ecos:civs-object-relations:projects_to; source=`ecos:cir:domain-semantic-admission:2026-10-10:v1.7`; projection=`ecos:civs:domain-semantic-admission:qualification:2026-10-07:v0.2`; standing RELIED_FOR_DECLARED_USE.
 - **civs:rel:qf-fresh-reader:** ecos:civs-object-relations:question_forward_for; question_forward=`civs:qf:wp8:fresh-reader`; unresolved_subject=`wp8:gate:fresh-reader`; standing UNRESOLVED.
 
 ## Physical realization
@@ -131,6 +131,8 @@ Participatory relations: `civs:rel:specifies-domain-admission`, `civs:rel:implem
 
 ## Consumer simulations
 
+**Quadrant function labels: PROVISIONAL — one candidate label set among several; no set has been selected.** Existing entry-kind tokens identify the working candidate edition; they do not select a final label set.
+
 ### civs:consumer-sim:fresh-agent-domain-admission
 Consumer: `ecos:consumer:fresh-agent`; use: Recover what Domain-Semantic Admission does, predict a structural gate, locate physical realization, distinguish premise from proof and deployed from connected exposure, and recover reentry without hidden-bridge invention..
 - **LL / RELATIONAL / LEFT / FIELD_ARTICULATION / LATENT:** Hypothesis about the consumer’s participation in an articulated field: distinctions between semantic premise and structural proof, and between deployment and exposure, organize what its conclusions count as. Hypothesis: legitimate use requires the consumer to distinguish supplied semantic premises from what the structural evaluator actually proves, and to distinguish deployment from connected exposure. Observation route: future fresh-agent cold-read qualification. Falsifier: A cold consumer can reliably orient, predict the gate, preserve authority/currentness and avoid proof inflation without this dependency, or another dependency explains performance.
@@ -193,6 +195,7 @@ Consumer: `ecos:consumer:fresh-agent`; use: Recover what Domain-Semantic Admissi
 - `research/urg-kernel/Quadrant-Disclosure-Contract-v2.0.md`
 - `research/urg-kernel/Quadrant-Disclosure-Contract-v3.0.md`
 - `brain:6e5d24bb-5e58-4198-b1fc-f02caf815af1`
+- `brain:c73c3209-2f9a-49b1-9698-30a43ca66304`
 
 ## Omissions
 
@@ -212,3 +215,4 @@ Consumer: `ecos:consumer:fresh-agent`; use: Recover what Domain-Semantic Admissi
 - Connected-consumer exposure/use and operational sustainment remain separately unqualified after WP8.
 - Quadrant successor migration changes the current CIR contract and consumer disclosure interpretation; prior WP8/deployment observations retain their exact historical scope and do not qualify successor hosted use.
 - CIR v1.6 is an authored structural-axis reassessment under the 10 October commission. Dated observation references and verification as-of retain their earlier scope; explicit coordinates do not establish fresh connected-consumer use.
+- Function labels Proper determination / Determinate manifestation / Field articulation / Enacted organization are explicitly PROVISIONAL: one candidate set among several; no set has been selected. CIR v1.7 corrects label-set standing and does not establish new semantic or consumer-use observations.
