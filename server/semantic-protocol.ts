@@ -6,7 +6,9 @@
  * This producer only supplies an LL position when an independently supplied
  * native verification receipt binds an enacted occurrence to a versioned rule
  * system with a discriminating admissible/inadmissible contrast. A trusted, independently wired native verifier must recover and bind the
- * receipt itself; a caller-supplied boolean is never sufficient evidence. Failed or incomplete evidence preserves LL UNKNOWN.
+ * receipt itself; a caller-supplied boolean is never sufficient evidence.
+ * The producer's three account references force independent current readback
+ * of the execution, verification judgment and governing protocol edition. Failed or incomplete evidence preserves LL UNKNOWN.
  */
 import {
   inquiryBasisRef, questionForward, type Disclosure, type ExactEvidence, type InquiryRequest,
@@ -132,6 +134,12 @@ export async function produceProtocolSemantics(
   const proof = parseObject(receipt.content);
   if (!proof || proof.contract !== 'ecos:native-protocol-verification:v1'
     || proof.standing !== 'VERIFIED' || !nonblank(proof.ll_discriminator)
+    || proof.protocol_ref !== protocol.referent_id || proof.protocol_digest !== protocol.digest
+    || proof.execution_ref !== execution.referent_id || proof.execution_digest !== execution.digest
+    || proof.occurrence_ref !== verified.occurrence_ref
+    || proof.focal_referent_id !== request.context.referent_id
+    || proof.boundary_ref !== request.context.boundary_ref
+    || proof.verifier_ref !== verified.verifier_ref
     || !receipt.source_refs.includes(verified.verifier_ref))
     return unresolved('The recovered native verification receipt lacks a current positive articulation account.');
   if (!recoverable(protocol) || !recoverable(execution) || protocol.referent_id === execution.referent_id)
@@ -172,7 +180,7 @@ export async function produceProtocolSemantics(
         disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT, result: 'QUADRANT_POSITION',
         disclosure: 'LL', coordinates: QUADRANT_COORDINATES.LL,
         content_ref: execution.referent_id, characterization_ref: receipt.referent_id,
-        conditions_ref: execution.referent_id,
+        conditions_ref: protocol.referent_id,
         fidelity: { coverage: 'EXAMINED', activation: 'ACTIVE', disposition: 'RELIED_FOR_DECLARED_USE',
           evidence_refs: evidenceRefs, warrant_ref: receipt.referent_id,
           currentness_ref: basis },
