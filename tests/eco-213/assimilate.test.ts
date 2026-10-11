@@ -119,3 +119,20 @@ test('cross-work supersession cannot silently steal an unrelated prior receipt',
  f.discovery.remits=[...(f.discovery.remits??[]),{id:revision,predecessor_id:f.receipt.revision_id}];
  await assert.rejects(()=>recoverCorpusInputs(f.call),/scope_mismatch/);
 });
+
+test('explicitly timeless successor remit still requires active head, actor, permitted cohort and effects',async()=>{
+ const f=fixture();
+ f.recovery.remits[0].expires_at=null;
+ f.recovery.remits[0].expired=false;
+ const calls:string[]=[];
+ const result=await assimilate(f.plan,f.exported,async(op,payload)=>{
+  calls.push(op);
+  if(op==='recover_work')return f.recovery;
+  assert.equal(op,'assimilate_corpus');
+  return {processing:'admitted',source_occurrence_id:randomUUID(),activity_id:randomUUID()};
+ });
+ assert.equal(result.status,'SOURCE_ADMISSION_COMPLETE');
+ assert.equal(calls.filter(x=>x==='assimilate_corpus').length,8);
+ f.recovery.remits[0].enabled=false;
+ await assert.rejects(()=>assimilate(f.plan,f.exported,async()=>f.recovery),/inactive/);
+});
