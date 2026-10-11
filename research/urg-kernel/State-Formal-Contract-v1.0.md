@@ -1,3 +1,5 @@
+> **CROSS-CONTRACT CURRENTNESS / NOT A STATE-KERNEL CHANGE — 11 October 2026:** This State v1.0 contract remains governing for basis-indexed actualized configuration, occasion, evidence and typed changes. The examples in its historic §11 State × Quadrant use the **retired** C+D/P+D *Quadrant generator terminology*. They are not current Quadrant classification instructions. Current [Quadrant disclosure v3.0](Quadrant-Disclosure-Contract-v3.0.md) uses **Individual/Relational × Left/Right** over one focal R/B; constitution/participation and governing/determinate claims retain their own typed contracts without creating quadrant coordinates. Positive function labels remain **provisional and undecided**. Preserve dated old examples as history; classify present uses through v3 with attributed disclosure evidence. See the [11 October PGO/temporal whole/part repair](../formal-semantics/2026-10-11-PGO-Temporal-Reciprocal-Constitution-Repair.md). No State semantics, contracts, checker, runtime or accepted identity relations change here.
+
 # <issue id="e06a68f2-06bc-4d89-acfe-39324f78c606" href="https://linear.app/ecos-ops/issue/ECO-224/sense-formalization-urg-state-actual-configuration-basis-equality">ECO-224</issue> — Shape Return — URG State Contract v1.0
 
 **Date:** 5 October 2026, America/Phoenix
@@ -224,6 +226,8 @@ Direction remains independently classified.
 ## 11. Cross-axis contracts
 
 ### State × Quadrant
+
+**CURRENT V3-QUALIFIED READING:** The State of a focal referent can be investigated through any warranted current Quadrant disclosure: UL Individual/Left, UR Individual/Right, LL Relational/Left, LR Relational/Right. A State record is not a disclosure classification and cannot automatically supply quadrant coverage. **The following C+D, P+D and Governing-burden examples describe the old 5 October quadrant vocabulary and are retained for historical reference only**; do not use those labels to generate or assign present Quadrants. The independently recoverable distinctions they were intended to express must be claimed through current Level/typed relations, State and attributed question/claim semantics.
 
 State content can be asked under different Quadrant positions.
 
