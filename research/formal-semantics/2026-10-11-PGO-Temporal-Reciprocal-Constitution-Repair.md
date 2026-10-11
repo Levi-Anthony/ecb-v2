@@ -45,7 +45,7 @@ Current URG Level witness: W_L=(C,O,d), C drawn from the basis admitted by B; O 
 
 Do not turn all three into the same “parent-child” edge. A subfunction can be logically necessary for a chosen intended outcome without requiring one fixed concrete implementing service as an irreplaceable token. A participant can be transient yet constitute an actual occurrence; a recurring durable capability can persist across successive realizing participants. Replacements require continuity and realization requalification, not an automatic loss or preservation of identity. Multiple kinds of vertical decomposition may coexist; disclose which one a claim asserts.
 
-**Constitution–participation synthesis:** At R₁ = one worker service, its interaction with an ECB service may be an outward participatory relation. At R₂ = an actual worker–ECB–human reorientation episode, that organized interaction may be *inside the qualifying constitutive basis* of R₂. At R₃ = durable ambient interaction capability, the specific episode may be a realization/instance rather than an indispensable constituent token. These are lawful changed seats, not an exclusive binary kind of relation. Each asserted Level relation still needs its own witness; no participation label proves constitution.
+**Constitution–participation synthesis:** A participatory relation of one referent may be constitutive of a differently seated containing whole under a qualifying Level witness; no relation-word alone grants that witness.  At R₁ = one worker service, its interaction with an ECB service may be an outward participatory relation. At R₂ = an actual worker–ECB–human reorientation episode, that organized interaction may be *inside the qualifying constitutive basis* of R₂. At R₃ = durable ambient interaction capability, the specific episode may be a realization/instance rather than an indispensable constituent token. These are lawful changed seats, not an exclusive binary kind of relation. Each asserted Level relation still needs its own witness; no participation label proves constitution.
 
 ## 4. Systemwide reciprocal meta-behavior — derived from earned architecture
 
@@ -59,7 +59,7 @@ Do not turn all three into the same “parent-child” edge. A subfunction can b
 
 ## 5. Mapper/frame/access — standing-controlled counterfactuals
 
-“F = our analysis, using commissions and evidence” was an unattributed compressed substitution. The **mapper** is the actor/process producing or interpreting this particular map, not a text summary of the underlying evidence. Distinguish **actual observed mapper**, **proposed/intended mapper**, **hypothesized mapper**, **unknown mapper** and **source reporter** with basis and standing. A map can use an intended future mapper in a simulated design without falsely claiming that actor has already acted.
+“F = our analysis, using commissions and evidence” was an unattributed compressed substitution. A projected future map-maker may be labeled PROPOSED/HYPOTHESIZED; neither label implies an observed mapping. The **mapper** is the actor/process producing or interpreting this particular map, not a text summary of the underlying evidence. Distinguish **actual observed mapper**, **proposed/intended mapper**, **hypothesized mapper**, **unknown mapper** and **source reporter** with basis and standing. A map can use an intended future mapper in a simulated design without falsely claiming that actor has already acted.
 
 - Here: mapping author = this assistant; frame = declared purpose-specific URG Level/State and functional/constituent D&I; access = connected GitHub/Linear/BRAIN sources *actually read*, with gaps and editions. The Principal directs and corrects this work, and can also be a participant of the focal ECOS work composite without necessarily authoring the assistant's specific model.
 - In a future Boot occurrence: intended mapper could be a specific assistant process, credentialed consumer, human observer or coordinated mapper group. This remains **PROPOSED** until an attributable occurrence/readback establishes what participated and what mapping actually occurred.
@@ -117,7 +117,7 @@ Do not turn all three into the same “parent-child” edge. A subfunction can b
 
 ## 9. Required reentry and Question Forward
 
-**Hold remains:** original Boot Shape, v4 consumer move, new schema/DB/API effects, fresh provider release, authority changes. No automatic resumption from a document or successful CI.
+**Hold remains:** original Boot Shape, v4 consumer move, new schema/DB/API effects, fresh provider release, authority changes. The original Boot System Shape/v4 installation remains HALTed pending evidence-based repair review. No automatic resumption from a document or successful CI.
 
 **Before unhalt:** source readback, cold-worker reproduction of G-1/G-2, V-2, T-1/T-2, M-1, D-1/D-2, and exact proof of receiving instructions where installed. ECO-219/156 owns client-specific verification. A future accepted physical integration may implement additional guardrails; this report does not claim such gates are installed.
 
