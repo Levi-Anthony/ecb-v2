@@ -1,0 +1,164 @@
+{
+  "protocol_id": "ecos:research:wilber-urg-v3-di:2026-10-11:v0.1",
+  "source_contract": "ecos:quadrant-disclosure:v3",
+  "label_set_standing": "PROVISIONAL - one candidate set among several; no set selected",
+  "standing": "Prospective qualification design, not an actual semantic, empirical, hosted-use or independent validation result",
+  "owning_surfaces": [
+    "ECO-136",
+    "ECO-202"
+  ],
+  "coordinates": {
+    "UL": [
+      "INDIVIDUAL",
+      "LEFT"
+    ],
+    "UR": [
+      "INDIVIDUAL",
+      "RIGHT"
+    ],
+    "LL": [
+      "RELATIONAL",
+      "LEFT"
+    ],
+    "LR": [
+      "RELATIONAL",
+      "RIGHT"
+    ]
+  },
+  "preservation_obligations": [
+    "addressability",
+    "navigability",
+    "recovery",
+    "reentry",
+    "resurfacing_recontact",
+    "view_transform_integrity"
+  ],
+  "comparative_conditions": [
+    "full",
+    "minus_UL",
+    "minus_UR",
+    "minus_LL",
+    "minus_LR",
+    "rival_nonquadrant"
+  ],
+  "cases": [
+    {
+      "id": "E1_EXECUTION_TOKEN",
+      "lane": "writer",
+      "conditions": [
+        "writer"
+      ],
+      "expected_disposition": {
+        "writer": "READY"
+      },
+      "focal_referent": "one versioned non-conscious execution occurrence; not its program text or replay",
+      "discriminator": "two behaviorally equivalent runs retain distinct proper occurrence IDs; evidence accounts, actual run and reproduction never substitute",
+      "necessary_basis": "actual execution, attributable semantic producer, current account editions and exact evidence recovery",
+      "defeater": "the producer merges two execution tokens because outputs are equal"
+    },
+    {
+      "id": "E2_PROTOCOL_LL",
+      "lane": "writer",
+      "conditions": [
+        "writer"
+      ],
+      "expected_disposition": {
+        "writer": "READY"
+      },
+      "focal_referent": "one versioned protocol execution; field interpretation remains referent-bound",
+      "discriminator": "valid versus invalid transition in a versioned operative protocol changes accepted downstream action, while neither physical coupling nor an observer description alone supplies the distinction",
+      "necessary_basis": "attributable rule edition, conditions, actual transition evidence, referent participation and independently recovered characterization",
+      "defeater": "LL is filled from merely descriptive notes with no warranted operative consequence"
+    },
+    {
+      "id": "A1_ATOM_MAPPER_ONLY",
+      "lane": "writer",
+      "conditions": [
+        "writer"
+      ],
+      "expected_disposition": {
+        "writer": "HOLD"
+      },
+      "focal_referent": "one bounded experimentally prepared atom, not its physicist or model",
+      "discriminator": "a scientist's symmetry description by itself cannot settle the atom's domain-native LL participation",
+      "necessary_basis": "UL/UR/LR may be authored, LL remains QF unless physical articulation with discriminating consequences is independently established",
+      "defeater": "mapper theory alone is accepted as atom LL and closes fourfold coverage"
+    },
+    {
+      "id": "A2_ATOM_COUPLING_ONLY",
+      "lane": "writer",
+      "conditions": [
+        "writer"
+      ],
+      "expected_disposition": {
+        "writer": "HOLD"
+      },
+      "focal_referent": "same atom and boundary as A1",
+      "discriminator": "physical interaction/coupling alone can support LR but cannot certify LL field articulation",
+      "necessary_basis": "unresolved LL question retained with source and reentry route",
+      "defeater": "a coupling diagram or interaction record is automatically promoted to LL"
+    },
+    {
+      "id": "R1_MODEL_RESEAT",
+      "lane": "writer",
+      "conditions": [
+        "writer"
+      ],
+      "expected_disposition": {
+        "writer": "HOLD"
+      },
+      "focal_referent": "model of original experiment, explicitly reseated as distinct referent",
+      "discriminator": "original atom accounts cannot satisfy model's new fourfold merely by copied labels",
+      "necessary_basis": "new focal/boundary, typed change and requalified model accounts; deliberately omit these in the negative control",
+      "defeater": "inherited old atom disclosure accounts yield READY for the new model"
+    },
+    {
+      "id": "T1_FOLD_UNFOLD_REENTRY",
+      "lane": "transformation",
+      "conditions": [
+        "transform"
+      ],
+      "expected_disposition": {
+        "transform": "READY"
+      },
+      "focal_referent": "versioned referent graph with constituent, participation, source and unresolved-LL obligations",
+      "discriminator": "fold/unfold/zoom/reseat preserve declared identity, provenance, QF, traversal and later recontact paths, or disclose attributable losses",
+      "necessary_basis": "actual transformation receipt with before/after account identity and recovery tasks under declared scope",
+      "defeater": "apparently equivalent summary silently loses member, unknown, source or later recontact"
+    },
+    {
+      "id": "C1_COMPUTATION_ABLATION",
+      "lane": "comparative",
+      "conditions": [
+        "full",
+        "minus_UL",
+        "minus_UR",
+        "minus_LL",
+        "minus_LR",
+        "rival_nonquadrant"
+      ],
+      "expected_disposition": {},
+      "focal_referent": "independently selected non-conscious program/protocol inquiry",
+      "discriminator": "matched evidence and task budget; independently adjudicated valid novel findings and recoverability under each inquiry condition",
+      "necessary_basis": "frozen material, independently selected comparator, blind raters, predeclared validity and cost metrics",
+      "defeater": "ablations or a nonquadrant rival match or exceed full fourfold without loss of required affordances"
+    },
+    {
+      "id": "C2_PHYSICAL_ABLATION",
+      "lane": "comparative",
+      "conditions": [
+        "full",
+        "minus_UL",
+        "minus_UR",
+        "minus_LL",
+        "minus_LR",
+        "rival_nonquadrant"
+      ],
+      "expected_disposition": {},
+      "focal_referent": "independently selected physical experiment with bounded atom and explicit mapper/instrument reseating",
+      "discriminator": "same material and budget, separate distinctions grounded in the physical referent versus its scientific model",
+      "necessary_basis": "preregistered rival grammar, independent adjudication and unknown-preservation scoring",
+      "defeater": "LL remains permanently non-discriminating or rival grammar achieves equal/better qualified performance"
+    }
+  ]
+}
