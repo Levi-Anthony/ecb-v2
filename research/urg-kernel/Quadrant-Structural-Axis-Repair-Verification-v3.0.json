@@ -57,27 +57,27 @@
       "script": "test:mcp",
       "exit_code": 0,
       "summary": [
-        "\u2139 tests 12",
-        "\u2139 pass 12",
-        "\u2139 fail 0"
+        "ℹ tests 12",
+        "ℹ pass 12",
+        "ℹ fail 0"
       ]
     },
     {
       "script": "test:oauth",
       "exit_code": 0,
       "summary": [
-        "\u2139 tests 7",
-        "\u2139 pass 7",
-        "\u2139 fail 0"
+        "ℹ tests 7",
+        "ℹ pass 7",
+        "ℹ fail 0"
       ]
     },
     {
       "script": "test:circulation",
       "exit_code": 0,
       "summary": [
-        "\u2139 tests 33",
-        "\u2139 pass 33",
-        "\u2139 fail 0"
+        "ℹ tests 33",
+        "ℹ pass 33",
+        "ℹ fail 0"
       ]
     }
   ],
@@ -99,20 +99,160 @@
     "historical_meaning_retained": "PASS"
   },
   "publication": {
-    "status": "PENDING_MAIN_PUBLICATION",
+    "status": "VERIFIED_IMPLEMENTATION_RELEASE",
+    "source_commit": "453adbd7096896493b98ee9bc274f8c1b04269c1",
+    "source_tree": "6302be369f6015639a14a250b0fa0735a9d9153c",
     "expected_parent": "2f1fbcfda4be20a227a487f9aca84c0131bfa4c2",
     "target_branch": "main",
     "target_project": "ecb-v2",
-    "target_environment": "production"
+    "target_environment": "production",
+    "manifest_file_readback": {
+      "count": 42,
+      "sha256_match": 42,
+      "mismatch": 0
+    },
+    "github_ci": [
+      {
+        "id": 38110819406,
+        "name": "Ordinary inquiry orchestration",
+        "head_sha": "453adbd7096896493b98ee9bc274f8c1b04269c1",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Levi-Anthony/ecb-v2/actions/runs/38110819406"
+      },
+      {
+        "id": 38110819431,
+        "name": "ECO-136 URG portable core",
+        "head_sha": "453adbd7096896493b98ee9bc274f8c1b04269c1",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Levi-Anthony/ecb-v2/actions/runs/38110819431"
+      },
+      {
+        "id": 38110819427,
+        "name": "Capability inspection verification spine",
+        "head_sha": "453adbd7096896493b98ee9bc274f8c1b04269c1",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Levi-Anthony/ecb-v2/actions/runs/38110819427"
+      },
+      {
+        "id": 38110819423,
+        "name": "ECO-213 native circulation qualification",
+        "head_sha": "453adbd7096896493b98ee9bc274f8c1b04269c1",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Levi-Anthony/ecb-v2/actions/runs/38110819423"
+      }
+    ],
+    "production": {
+      "id": "dpl_4SraRbTeYuqV5WRSxevrafKzEjCT",
+      "url": "https://ecb-v2-94bf0qfx6-levi-anthonys-projects.vercel.app",
+      "enduring_alias": "https://ecb-v2-eight.vercel.app",
+      "state": "READY",
+      "target": "production",
+      "source_commit": "453adbd7096896493b98ee9bc274f8c1b04269c1",
+      "alias_error": null
+    },
+    "receipt_custody": "This document is completed in a documentation-only successor commit. Implementation, tests and deployment evidence remain bound to source_commit; receipt files are excluded from their own content manifest."
   },
   "receiving_surfaces": {
-    "BRAIN_commission": "CAPTURED_AND_FETCHED",
-    "Linear": "PENDING_EXISTING_OWNER_CONTINUITY"
+    "BRAIN_commission": {
+      "id": "6e5d24bb-5e58-4198-b1fc-f02caf815af1",
+      "status": "CAPTURED_AND_FETCHED"
+    },
+    "BRAIN_source_return": {
+      "id": "f3dd26f2-76bf-41ac-94cd-3b5b3682c9a4",
+      "status": "CAPTURED_AND_FETCHED"
+    },
+    "BRAIN_verified_release": {
+      "id": "38501e06-6194-4801-9770-d351bc955526",
+      "status": "CAPTURED_AND_FETCHED_BEFORE_LINEAR_WRITES"
+    },
+    "Linear": {
+      "status": "UPDATED_AND_READ_BACK",
+      "existing_issues": 5,
+      "existing_documents": 3,
+      "records": [
+        {
+          "id": "ECO-202",
+          "url": "https://linear.app/ecos-ops/issue/ECO-202/move-situated-inquiry-orchestration-discovery-structural-resurfacing",
+          "status": "Working",
+          "noticeCount": 1,
+          "originalBodyRetained": true
+        },
+        {
+          "id": "ECO-136",
+          "url": "https://linear.app/ecos-ops/issue/ECO-136/shape-universal-referent-grammar-specify-and-qualify-a-portable",
+          "status": "Done",
+          "noticeCount": 1,
+          "originalBodyRetained": true
+        },
+        {
+          "id": "ECO-221",
+          "url": "https://linear.app/ecos-ops/issue/ECO-221/sense-formalization-urg-kernel-level-quadrant-composition-optional",
+          "status": "Done",
+          "noticeCount": 1,
+          "originalBodyRetained": true
+        },
+        {
+          "id": "ECO-143",
+          "url": "https://linear.app/ecos-ops/issue/ECO-143/eco-136-shape-move-quadrant-generator-register-b-operational",
+          "status": "Done",
+          "noticeCount": 1,
+          "originalBodyRetained": true
+        },
+        {
+          "id": "ECO-218",
+          "url": "https://linear.app/ecos-ops/issue/ECO-218/install-extensible-ecb-v2-ordinary-mcp-oauth-qualify-claudemobile",
+          "status": "Needs Input",
+          "noticeCount": 1,
+          "originalBodyRetained": true
+        },
+        {
+          "id": "b7babc03-dbe6-4aa3-bd3f-4b44f8934120",
+          "url": "https://linear.app/ecos-ops/document/eco-221-human-working-surface-level-quadrant-kernel-v01-2026-10-05-25f6d88f3f52",
+          "noticeCount": 1,
+          "originalBodyRetained": true
+        },
+        {
+          "id": "9c0a8b70-cac0-49a8-8863-24eae98fed46",
+          "url": "https://linear.app/ecos-ops/document/eco-136-human-working-surface-urg-full-core-integration-v01-2026-10-05-3a61af6c3a63",
+          "noticeCount": 1,
+          "originalBodyRetained": true
+        },
+        {
+          "id": "3c5e6d1f-e792-4e98-b4a1-dc6d6c51cc83",
+          "url": "https://linear.app/ecos-ops/document/eco-136-principal-shape-acceptance-move-opening-urg-full-core-v10-2026-95ea69367691",
+          "noticeCount": 1,
+          "originalBodyRetained": true
+        }
+      ],
+      "title_status_preserved": true,
+      "ownership_priority_unchanged": true
+    }
   },
   "scope_boundary": [
     "Four positive functions preserved; two explicit structural axes required.",
     "Natural-language semantic adequacy remains attributable evaluator work.",
     "Default ordinary semantic producer and fresh connected/hosted-use obligations remain open.",
     "No whole-production-cycle completion or automation reactivation."
-  ]
+  ],
+  "completed_readback_at": "2026-10-11T04:19:53.518977+00:00",
+  "public_auth_smoke": {
+    "enduring_alias": "https://ecb-v2-eight.vercel.app",
+    "GET_api_mcp": {
+      "http_status": 401,
+      "body": {
+        "error": "unauthorized"
+      }
+    },
+    "GET_api_workflow": {
+      "http_status": 401,
+      "body": {
+        "error": "unauthorized"
+      }
+    },
+    "claim": "The released public services preserve their authentication boundary. This is not fresh authenticated consumer or hosted semantic-use evidence."
+  }
 }
