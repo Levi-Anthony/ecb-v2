@@ -182,14 +182,14 @@ function operationFailure(error: unknown, fallback: OperationFailureCode) {
 }
 
 function buildServer(runtime: BrainRuntime): McpServer {
-  const server = new McpServer({ name: "ecb-v2-open-brain", version: "0.2.1" });
+  const server = new McpServer({ name: "ecb-v2-open-brain", version: "0.2.2" });
 
   server.registerTool(
     "capture_thought",
     {
       title: "Capture Thought",
       description:
-        "Contract ecb-v2-capture/0.2.1. Persist exact thought custody under a stable operation UUID. Prefer explicit operation_id; for legacy clients with an older tool schema, supply a stable captured_at occurrence timestamp and the server derives a UUIDv8 bound to source and exact content. Requests without either key fail before persistence. Retry with the same occurrence identity, not a new timestamp.",
+        "Contract ecb-v2-capture/0.2.2. Timestamp spellings for one instant normalize to UTC before deriving the retry key. Persist exact thought custody under a stable operation UUID. Prefer explicit operation_id; for legacy clients with an older tool schema, supply a stable captured_at occurrence timestamp and the server derives a UUIDv8 bound to source and exact content. Requests without either key fail before persistence. Retry with the same occurrence identity, not a new timestamp.",
       annotations: {
         readOnlyHint: false,
         destructiveHint: false,
@@ -277,7 +277,7 @@ async function legacyCaptureOperationId(
 ): Promise<string> {
   if (!capturedAt) throw new BrainOperationError("capture_operation_identity_required");
   const bytes = await digest(JSON.stringify([
-    "ecb-v2:edge-capture-legacy:1", source, content, capturedAt,
+    "ecb-v2:edge-capture-legacy:1", source, content, new Date(capturedAt).toISOString(),
   ]));
   bytes[6] = (bytes[6] & 15) | 128;
   bytes[8] = (bytes[8] & 63) | 128;

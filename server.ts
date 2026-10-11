@@ -200,7 +200,7 @@ async function legacyCaptureOperationId(input: {
 }): Promise<string> {
   if (!input.actor || !input.capturedAt) throw new BrainOperationError('capture_operation_identity_required');
   const hash = await sha256Hex(JSON.stringify([
-    'ecb-v2:legacy-capture-id:1', input.actor, input.source, input.content, input.capturedAt,
+    'ecb-v2:legacy-capture-id:1', input.actor, input.source, input.content, new Date(input.capturedAt).toISOString(),
   ]));
   const variant = ((parseInt(hash[16], 16) & 0x3) | 0x8).toString(16);
   return [
@@ -620,7 +620,7 @@ function buildServer(): McpServer {
   server.registerTool('capture_thought', {
     title: 'Capture Thought',
     description:
-      'Contract ecb-v2-capture/0.5.2. Supply operation_id UUID for stable idempotency. Older client snapshots without that field must supply stable captured_at: the server derives a payload- and authenticated-client-bound UUIDv8; requests lacking both are rejected before persistence. Preserve exact Thought custody. Trusted circulation requires separate remit; raw_only only preserves. Custody, admission and semantic success remain separate; no standing is granted.',
+      'Contract ecb-v2-capture/0.5.3. Equivalent timestamp encodings normalize to one UTC event key. Supply operation_id UUID for stable idempotency. Older client snapshots without that field must supply stable captured_at: the server derives a payload- and authenticated-client-bound UUIDv8; requests lacking both are rejected before persistence. Preserve exact Thought custody. Trusted circulation requires separate remit; raw_only only preserves. Custody, admission and semantic success remain separate; no standing is granted.',
     annotations: {
       readOnlyHint: false,
       destructiveHint: false,

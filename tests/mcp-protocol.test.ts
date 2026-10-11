@@ -273,8 +273,8 @@ for (const mode of ['modern', 'legacy'] as const) {
         required?: string[];
         properties?: Record<string, { type?: string; format?: string; enum?: string[] }>;
       };
-      assert.match(capture?.description ?? '', /Contract ecb-v2-capture\/0\.5\.2/);
-      assert.deepEqual([...(captureSchema.required ?? [])].sort(), ['content', 'operation_id', 'source']);
+      assert.match(capture?.description ?? '', /Contract ecb-v2-capture\/0\.5\.3/);
+      assert.deepEqual([...(captureSchema.required ?? [])].sort(), ['content', 'source']);
       assert.equal(captureSchema.properties?.operation_id?.format, 'uuid');
       assert.equal(captureSchema.properties?.operation_id?.type, 'string');
       assert.deepEqual(captureSchema.properties?.processing_mode?.enum, ['trusted', 'raw_only']);
@@ -339,7 +339,7 @@ test('stale MCP capture schema preserves operation identity using an explicit ti
       assert.match(absent.content[0]?.type==='text'?absent.content[0].text:'',
         /capture_operation_identity_required/);
       for (let i=0;i<2;i++) {
-        const response = await client.callTool({name:'capture_thought',arguments:stale});
+        const response = await client.callTool({name:'capture_thought',arguments:i===0?stale:{...stale,captured_at:'2026-10-10T23:12:34+00:00'}});
         assert.equal(response.isError,true); // Native mock returned no row; identity was dispatched.
       }
       const later = await client.callTool({name:'capture_thought',arguments:{

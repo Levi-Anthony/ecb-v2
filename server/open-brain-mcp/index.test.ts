@@ -176,7 +176,7 @@ Deno.test("stale client capture uses stable event-bound UUID and fails closed wi
   assertEquals(JSON.parse(absent.body.result.content[0].text).error, "capture_operation_identity_required");
   assertEquals(seen.length, 0);
   const first = await legacyCall({ ...core, captured_at: "2026-10-11T00:18:03Z" });
-  const second = await legacyCall({ ...core, captured_at: "2026-10-11T00:18:03Z" });
+  const second = await legacyCall({ ...core, captured_at: "2026-10-11T00:18:03+00:00" });
   const distinct = await legacyCall({ ...core, captured_at: "2026-10-11T00:18:04Z" });
   const explicit = await legacyCall({ ...core, operation_id: operationId });
   const denied = await legacyCall({ ...core, captured_at: "2026-10-11T00:18:05Z" }, "wrong-key");
