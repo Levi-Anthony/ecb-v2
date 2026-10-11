@@ -393,7 +393,7 @@ test('worker entry and operational guidance preserve the current capture fallbac
   assert.match(profile, /UNAVAILABLE: Connection failed/);
   assert.match(profile, /SQL-only/i);
   assert.match(profile, /186\/186/);
-  assert.match(profile, /not.*(?:proof|prove).*another consumer loaded startup instructions/i);
+  assert.match(profile, /none proves that another consumer loaded startup instructions/i);
   assert.match(profile, /5222b116-5f42-4999-8881-59dbb6c889ff/);
   assert.match(profile, /UNQUALIFIED/);
 });
