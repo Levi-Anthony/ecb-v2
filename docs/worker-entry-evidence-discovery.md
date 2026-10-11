@@ -4,6 +4,8 @@
 
 ## At the entrance to consequential work
 
+**When a connected tool appears unavailable or a write is rejected**, recover [the established tool-action authorization and failure-routing profile](tool-action-routing-and-continuity-authorization.md) before telling the Principal to change settings or redo account connection. Separate interface/schema, authenticated server, platform pre-invocation review and destination effects. The exposed ChatGPT BRAIN capture field `captured_at` now provides a **verified stable replay path** when `operation_id` is omitted; exact readback and identical replay have succeeded under unchanged permissions. A platform `404 Action not found` or tool-safety denial is not evidence that ECOS needs a broader remit or user settings. Do the remaining useful work and route only the specifically blocked effect to its existing owner. Cross-consumer adoption still requires ECO-219/156 injection and ECO-218 actual fresh-client readback—not a claim that this document automatically reaches every worker.
+
 Before forming consequential project claims, recommendations, tasks or authority judgments, **quietly discover** what the active work already knows. Do this as part of the ordinary opening orientation; do not demand the human repeat a bootstrap command.
 
 1. **Seat the actual job:** current point of view, focal referent and containing work, intended outcome/PGO, and first contrast noticed. Look up the active commission/current decision surface; do not substitute an attractive local subtask as the governing objective.
