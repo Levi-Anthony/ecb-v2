@@ -11,6 +11,20 @@ STANDING: Principal's explicit taste/method corrections in the current work epis
 
 # Constructive Differentiation & Integration — standing collaboration disposition
 
+## PGO-first reciprocal D&I — Principal-directed systemwide meta-behavior (11 October 2026)
+
+**Governing source:** the Principal's accepted repair instruction; BRAIN `032cb9c3-bd94-49eb-9a38-ba5fa0a3afca`. [Full source-linked repair, with temporal and mapper tests](../research/formal-semantics/2026-10-11-PGO-Temporal-Reciprocal-Constitution-Repair.md). **Status:** systemwide *worker reasoning behavior* under the existing PGO/URG/ECO-191/ECO-202 obligations, not a newly proven ontology law or permission to alter the frozen constitutional kernel.
+
+**Before consequential mapping**, explicitly recover and test adequacy of the containing and local PGO (G/purpose-orientation interface; long-form Namecrafting remains open); provisionally construct a telos-bearing situated composite X and place it within the containing whole. Preserve which purposes are Principal-sourced and which are the worker's proposed reconstructions. Inadequate G returns a discriminating Question Forward/HOLD, not a confident arbitrary decomposition. G can participate in X's declared composition without thereby manufacturing Level, truth or authority.
+
+**Reciprocal derivation is mandatory as analysis conduct:** inspect whole/intended functions and dependency constraints **top-down** while discovering actually organized constituents, relations, failures and capacities **bottom-up**. Let each correct and qualify the other during the work, not merely at its end. Neither can dictate the other's reality/standing unilaterally. Inherit ECO-191 two-sided affected-old/destination-new reconciliation and existing functional-to-realization evidence, rather than inventing an extra semantic axis or formal primitive.
+
+**Constitution is occasion-sensitive:** R/B alone do not exhaust situated membership or realization; recover relevant State basis Ω, occasion o and actualized configuration x, together with typed organizing relations. Separate available, intended, actually participating, and qualifying constituent roles. A participatory relation of one referent may be constitutive of another properly seated containing whole when its Level witness qualifies; do not make a false disjoint partition. StateTransition is distinct from ReviseBoundary, Reseat and Reorient.
+
+**Mapper/frame/access:** the actor/process that actually produced the map is independently attributable; a possible future **intended mapper** is legitimate as PROPOSED/HYPOTHESIZED, never silently presented as an observed agent. Keep mapper, frame, source/access and authority distinct. Elevating speculative frame, mapper, membership, function or State into actuality without warrant is the established **smuggled-standing Gödel Signal**, not a success.
+
+**Encounter scope:** this instruction applies across cold entries, resumed and ongoing engagements, changed PGO, evidence and models. A first substantive reply is one test, not an exclusive lifetime boundary. Repo text is not proof of ChatGPT/Claude instruction receipt; ECO-156/219 own qualified deployment. The original Boot System Shape/v4 installation remains HALTed pending the receiving repair return.
+
 ## Why this exists
 
 During the 7–8 October Quadrant/proper-fact discussion the assistant repeatedly failed in a distinctive way: it encountered original and potentially generative external derivations, reconstructed weaker claims, performed skeptical refutations or qualifications, and then re-derived ECOS distinctions that were already deeply established. This was repeatedly corrected by the Principal. The correction is to change how work is done, not merely acknowledge the objection.
