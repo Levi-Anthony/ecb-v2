@@ -17,6 +17,8 @@ const paths = {
   repair: 'research/formal-semantics/2026-10-11-PGO-Temporal-Reciprocal-Constitution-Repair.md',
   pgo: 'research/formal-semantics/PGO-Directed-Situated-Referent-Orchestration-Profile-v0.1.md',
   state: 'research/urg-kernel/State-Formal-Contract-v1.0.md',
+  fullcore: 'research/urg-kernel/URG-Core-Register-B-Candidate-v1.0.md',
+  frontier: 'research/formal-semantics/Situated-Referent-Discovery-Frontier.md',
   level: 'research/urg-kernel/Level-Quadrant-Formal-Contract-v1.0.md',
   quadrant: 'research/urg-kernel/Quadrant-Disclosure-Contract-v3.0.md',
 };
@@ -103,4 +105,36 @@ test('ordinary inquiry profile cannot present retired Quadrant seat/burden gener
   assert.match(repair, /Neither direction alone can settle/);
   assert.match(profile, /PGO-adequacy addition/);
   assert.match(profile, /simultaneously|reciprocally/i);
+});
+
+
+test('inherited State/full-core/frontier examples disclose supersession locally, preserving their historical source', async () => {
+  const [state, fullcore, frontier] = await Promise.all([
+    source(paths.state), source(paths.fullcore), source(paths.frontier),
+  ]);
+  // The underlying State v1 contract is still the source of State semantics;
+  // only its older Quadrant labels are retired.
+  assert.match(state.slice(0,1250), /CROSS-CONTRACT CURRENTNESS/i);
+  const stateSection=state.split('### State × Quadrant')[1]?.split('### State × Level')[0]??'';
+  assert.match(stateSection, /CURRENT V3-QUALIFIED READING/);
+  assert.ok(stateSection.indexOf('CURRENT V3-QUALIFIED READING') < stateSection.indexOf('C+D'));
+  assert.match(stateSection, /historical reference only/i);
+  assert.match(stateSection, /A determinate constitutive configuration question is C\+D/);
+  assert.match(stateSection, /A determinate participatory relation question is P\+D/);
+  assert.match(state, /State\(R,B,Ω,F,o\) = x/);
+
+  const coreSection=fullcore.split('### Quadrant')[1]?.split('### Direction')[0]??'';
+  assert.match(coreSection, /CURRENT CROSS-EDITION OVERRIDE/);
+  assert.match(coreSection, /Individual\/Relational × Left\/Right/);
+  assert.ok(coreSection.indexOf('CURRENT CROSS-EDITION OVERRIDE') < coreSection.indexOf('Q_B(R)='));
+  assert.match(coreSection, /retired/i);
+  assert.match(coreSection, /one provisional candidate set among several/i);
+  assert.match(coreSection, /Q_B\(R\)=\{Constitutive,Participatory\}×\{Governing,Determinate\}/);
+
+  const compareSection=frontier.split('**CURRENTNESS OF THIS DATED COMPARISON')[1]
+    ?.split('## 3. Reciprocal bootstrap')[0]??'';
+  assert.match(compareSection, /superseded/);
+  assert.match(compareSection, /Individual\/Relational × Left\/Right/);
+  assert.match(compareSection, /ECO-221's current contract/);
+  assert.ok(compareSection.indexOf('superseded') < compareSection.indexOf("ECO-221's current contract"));
 });
