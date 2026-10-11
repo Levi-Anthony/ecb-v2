@@ -4,7 +4,7 @@ import {
   orchestrateInquiry, inquiryBasisRef, digest, preserveInquiryProjection, projectionDelta,
   type InquiryRequest, type InquiryAdapters, type ExactEvidence, type Disclosure, type CandidateDecision,
 } from '../../server/orchestration.ts';
-import { QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_DISCLOSURES, QUADRANT_COORDINATES, type SituatedContext, type LevelClaim, type ChangeRecord } from '../../server/urg-core.ts';
+import { QUADRANT_DISCLOSURE_CONTRACT, QUADRANT_DISCLOSURES, QUADRANT_COORDINATES, validateUrgRecord, type SituatedContext, type StateClaim, type LevelClaim, type ChangeRecord } from '../../server/urg-core.ts';
 
 // Constructed semantic evaluations test coordination and denial, not empirical semantic adequacy.
 const focal = '00000000-0000-4000-8000-000000000001', prior = '00000000-0000-4000-8000-000000000002';
@@ -344,3 +344,98 @@ for (const field of ['context', 'questions_forward', 'quadrant_coverage', 'recon
     assert.equal(writes, 0);
   });
 }
+
+
+// Bounded HALT-repair probes. All evidence/adapters here are constructed. These
+// qualify coordination and typed rejection, not whether a real relationship is
+// constitutive or a real user PGO is sufficient.
+test('a nonblank but independently marked inadequate PGO cannot earn READY', async () => {
+  const a=adapters();
+  a.disclose=async r => {
+    const d=disclosure(r);
+    d.sufficiency={ ...d.sufficiency, satisfied:false, unresolved_refs:['fixture:pgo-adequacy'] };
+    return d;
+  };
+  const r=await orchestrateInquiry({ ...request, context: { ...request.context,
+    governing_orientation_ref:'fixture:purpose-named-but-not-adequate' } },a);
+  assert.equal(r.disposition,'HOLD');
+  assert(r.questions_forward.some(q => q.unresolved_ref==='sufficiency'));
+  // A syntactically populated PGO cannot establish adequacy without a real assessor.
+});
+
+test('the same collaboration may be participating at one seat and constitutive of a newly seated composite with an independent Level witness', async () => {
+  const participant=adapters(), evaluator=participant.evaluateCandidate!;
+  participant.evaluateCandidate=async (...args) => {
+    const d=await evaluator(...args);
+    return args[1].referent_id===prior ? { ...d, membership:'PARTICIPATORY' } : d;
+  };
+  const horizontal=await orchestrateInquiry(request,participant);
+  assert.equal(horizontal.disposition,'READY');
+  assert.equal(horizontal.admitted.find(c=>c.hit.referent_id===prior)?.decision.membership,'PARTICIPATORY');
+
+  const episode='00000000-0000-4000-8000-000000000003';
+  const atComposite:InquiryRequest={ ...request,context:{ ...request.context,
+    referent_id:episode,boundary_ref:'fixture:actual-composite-occurrence' } };
+  const a=adapters();
+  a.evaluateCandidate=async (r,h,e,basis)=>{
+    if(h.referent_id===r.context.referent_id) return { disposition:'REJECT',
+      reason:'The containing composite is already focal',assessment_ref:'fixture:seat-qualification',
+      inquiry_basis_ref:basis,candidate_digest:e.digest };
+    const d=decision(r,h.referent_id);
+    return { ...d,membership:'CONSTITUTIVE',level_claim_ref:'fixture:episode-level' };
+  };
+  const withoutWitness=await orchestrateInquiry(atComposite,a);
+  assert.equal(withoutWitness.disposition,'HOLD');
+  assert.equal(withoutWitness.admitted.some(c=>c.hit.referent_id===prior),false);
+  a.disclose=async r=>{
+    const d=disclosure(r);
+    const level:LevelClaim={ kind:'level',context:r.context as SituatedContext,
+      fidelity:{ coverage:'EXAMINED',activation:'ACTIVE',disposition:'RELIED_FOR_DECLARED_USE',
+        evidence_refs:['fixture:independent-organization-review'],currentness_ref:inquiryBasisRef(r) },
+      result:'LEVEL_WITNESSED',constituent_referent_ids:[prior],
+      organization_ref:'fixture:episode-organizing-interaction',
+      dependence_witness_ref:'fixture:episode-asymmetry-witness' };
+    d.records.unshift({ref:'fixture:episode-level',record:level});return d;
+  };
+  const withWitness=await orchestrateInquiry(atComposite,a);
+  assert.equal(withWitness.disposition,'READY');
+  assert.equal(withWitness.admitted.find(c=>c.hit.referent_id===prior)?.decision.membership,'CONSTITUTIVE');
+  assert.notEqual(withWitness.situated_basis.referent_id,horizontal.situated_basis.referent_id);
+  // This proves the existing coordinator accepts both typed readings ONLY if
+  // their asserted native evidence is supplied. The assertions do not prove it true in nature.
+});
+
+test('changing actual State across occasions keeps R/B and triggers requalification without an invented reseat', async () => {
+  const initial=await orchestrateInquiry(request,adapters());
+  const before=structuredClone(initial),after=structuredClone(initial);
+  const state=(occasion:string,connected:boolean):StateClaim=>({
+    kind:'state', context:request.context as SituatedContext,
+    fidelity:{coverage:'EXAMINED',activation:'ACTIVE',disposition:'NONCONSEQUENTIAL_NOW'},
+    state_basis_ref:'fixture:connection-configuration-basis:v1',occasion_ref:occasion,
+    result:'STATE_WITNESSED',state_value:{connected}
+  });
+  const s0=state('fixture:occasion:before',false),s1=state('fixture:occasion:after',true);
+  assert.equal(validateUrgRecord(s0).valid,true);
+  assert.equal(validateUrgRecord(s1).valid,true);
+  before.records.push({ref:'fixture:state:before',record:s0});
+  after.records.push({ref:'fixture:state:after',record:s1});
+  const delta=projectionDelta(before,after);
+  assert.equal(delta.state_record_changed,true);
+  assert.equal(delta.requires_requalification,true);
+  assert.deepEqual(delta.coordinate_classes,[]);
+  assert.equal(before.situated_basis.referent_id,after.situated_basis.referent_id);
+  assert.equal(before.situated_basis.boundary_ref,after.situated_basis.boundary_ref);
+  // Changing State under an equal declared R/B is not a Level or identity assertion.
+});
+
+test('a changed mapper frame is detected as basis change, not proof of an actual mapper or StateTransition', async () => {
+  const expected=await orchestrateInquiry({ ...request,context:{ ...request.context,
+    mapper_ref:'fixture:anticipated-mapper' } },adapters());
+  const contacted=await orchestrateInquiry({ ...request,context:{ ...request.context,
+    mapper_ref:'fixture:map-author-reported-by-source' } },adapters());
+  const delta=projectionDelta(expected,contacted);
+  assert(delta.coordinate_classes.includes('G_OR_F'));
+  assert.equal(delta.state_record_changed,false);
+  assert.equal(delta.requires_requalification,true);
+  // This structural check does not prove either mapper actually produced a map.
+});
