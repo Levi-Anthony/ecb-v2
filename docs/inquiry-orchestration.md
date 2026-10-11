@@ -8,6 +8,43 @@
 
 # Ordinary inquiry orchestration
 
+## Differentiation & Integration at the ordinary inquiry boundary — Principal direction, 10 October 2026
+
+**Governing shorthand:** **Replacement is disallowed; D&I to properly seat instead.** This concerns semantic erasure/substitution of an independently addressable referent, disclosure, relation, account, history or warranted distinction. It does not prohibit lawful historical supersession, changing an active projection, or replacing an implementation/file while retaining required lineage and requalification. D&I = Differentiation & Integration, the already-established method; this section creates no new primitive, universal Context object, taxonomy, service, or independent work front.
+
+### Interpretive intake — activation cues are not enumerated schema
+
+An interlocutor's remembered list, sketch, analogy, compressed phrase or provisional contrast may be **a cue intended to activate a semantic neighborhood**, not a declaration that its listed items are exhaustive, equally fundamental, correctly named, or ready for installation. Do not transcribe such a list into system prose as a canonical ontology. Preserve exact wording as attributed source evidence when warranted, but separately reconstruct the intended territory using the existing corpus and current situated inquiry. Distinguish explicit decisions from exploratory pointers; do not silently upgrade either.
+
+Apply D&I before promotion:
+1. **Recover** the focal concern, larger purpose, original expression, situational basis and the implicated neighborhood of established terms and structures (including credible omitted neighbors).
+2. **Differentiate** identity, boundary/Level constitution, participation, quadrant disclosure, claim modality, evidence, source standing, mapper, method, intent, PGO and changing Context wherever consequential. Do not convert a memory list into one field per word.
+3. **Integrate** the warranted distinctions into existing referents, native relations, typed transformations and receiving responsibilities. Seek simpler established formulations and non-obvious connections; avoid redundant primitives and the opposite error of collapsing genuine differences.
+4. **Properly seat** each resulting insight at its warranted referent/relationship, scope, edition and authority; preserve historical words and the current source-to-derived interpretation link. Consider alternative decompositions and named uncertainties rather than freezing the first gloss.
+5. **Return the delta**: what was conserved, corrected, combined, newly exposed or left unresolved; consequential next action and decision/reentry surface. A verbatim restatement is not evidence of integration.
+
+The known Individual/Relational quadrant coordinate may prompt investigation of a focal whole's boundary, constituents and participation; it is **not** itself a Level witness, a whole/part decision, or a permission to reseat without an explicit typed change. Vertical constituent/containing relations and horizontal participatory relations remain differentiated; the four positive quadrant disclosures remain recoverable at each legitimately seated focus.
+
+### Warning → actionable disposition, alongside Question Forward
+
+A consequential warning such as “there is a fire” is incomplete without a resolution route. Normally provide the lawful available actions, a recommended action, its rationale, and concrete mind-changers; if options or evidence are insufficient, bind the concern to an accountable information/decision surface with an exact return/reentry route. Do not invent options, urgency, owners, failures or priorities to fill a template. Question Forward holds and directs a live discrimination; D&I reconstructs and integrates its territory; the existing obligation/decision/transition path owns action and closure. Avoid an independent warning engine.
+
+### Structural non-erasure and dynamically situated Context
+
+Context (Integral usage) includes, where material, the referent, boundary, maps and mapper, method/access, meaning, intention, governing orientation/PGO, temporal basis, relationships, history, evidence and standing. The installed `kappa=(R,B,G,F)` is a **binding interface, not an exhaustive ontology of Context**. Context may be incompletely known, multiple, contested or changing. Preserve these differences rather than making a mandatory scalar or monolithic record.
+
+A discovery may disclose recurring or mutually constraining relational configurations (candidate **attractor structures**); neither repetition nor suggestiveness automatically grants type, co-reference, constitution, relevance, truth or authority. Recover source/basis, test structural paths, admit or defer under the current G/F and declared use, and let composition respond to changed Context. The original composition and its obligations remain recoverable; later work may recontact the prior material from an unrelated PGO through the existing FR-3 discovery/requalification route.
+
+**Do not implement `REPLACE` as a generic domain-semantic transition.** Where source records say “replacement,” differentiate among amendment, historical supersession, view revision, reorientation, reseating, boundary revision, enrichment, composition, and requalification; choose existing typed operations with source/destination identities and two-sided affected-old/destination-new reconciliation. If such operations cannot conserve a required distinction, STOP the affected build unit and route the demonstrated gap through existing architecture governance. Actual code-level enforcement remains limited to the named implemented surfaces; this text alone is not a runtime guard.
+
+### Qualification and receiving route
+
+Re-use ECO-202 ordinary inquiry and ECO-220 invariant-lattice classification. Decision-bearing cases: a rough exploratory list should not create schema/ontology; a coordinate cue may lead to boundary inquiry without illicit Level promotion; a warning must return actions or a decision owner/reentry; a historical supersession must not erase old identity; a changed PGO must support rediscovery without a source-PGO namespace filter; the writer/consumer must not claim semantic PASS from structural checks alone.
+
+**Status:** Principal-directed interpretive/convention reconciliation, documented on main. Not proof of automatic assistant compliance, complete cross-client instruction delivery, semantic producer qualification or hosted use. ECO-202 owns ordinary writer/evaluator integration; ECO-156/ECO-219 own instruction projection; ECO-218/ECO-214 retain exposure and hosted-use evidence. Concrete runtime gaps require exact evidence, owner and named checks; no new stand-alone program or blanket acceptance claim.
+
+
+
 **Owner:** ECO-202 — situated inquiry orchestration.  
 **Accountable Principal:** Levi Anthony. **Executor:** current Codex worker.  
 **Commission:** BRAIN `6c02e4d4-0d57-4f0e-ab85-fd7fae945a38`, 6 October 2026, America/Phoenix.  
