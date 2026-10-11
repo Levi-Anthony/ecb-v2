@@ -71,6 +71,8 @@ Where standing differs, later accepted sources and governing invariants control.
 
 ## 3. Situated inquiry basis
 
+> **CURRENT REPAIR — 11 October 2026:** [PGO-first, temporal, reciprocal constitution repair](2026-10-11-PGO-Temporal-Reciprocal-Constitution-Repair.md) now clarifies this profile's ordinary-use procedure. The containing and proximal PGO must be **recovered and shown adequate for the consequential distinction**, not merely populated by a label. The current G can be provisional during investigation, but unsupported adequacy cannot support a confident result. Actual State/occasion and organized participants may matter beyond κ, which remains a situated inquiry index rather than complete Context. Top-down functional inquiry and bottom-up actually realized organization constrain and correct one another. Mapper, frame and access are independently attributable; an intended mapper is PROPOSED, not an observed actor. This is a source-level repair, not an assertion of runtime semantic-evaluator or cross-client boot-instruction installation.
+
 Use the installed inquiry index:
 
 `kappa = (R, B, G, F)`
@@ -98,11 +100,13 @@ PGO does not by itself manufacture:
 - Type membership;
 - authority or permission.
 
-A relation can become essential to the current inquiry without becoming constitutive of the focal referent.
+A relation may be consequential to the current inquiry without itself supplying a Level witness for the **currently focal** referent. That is a limit on proof, **not a categorical exclusion**: the relation's organized participation may constitute a *newly discovered containing whole* under its own explicitly re-seated referent/boundary and qualified Level witness. Changes of seat and occasion must be visible.
 
 ## 4. Positive orchestration procedure
 
 ### O1 — Bootstrap / recover orientation
+
+**Current PGO-adequacy addition (11 October):** recover the containing end, Principal-sourced proximal orientation and what changes the current decision. Test the orientation's **sufficiency for identifying/discriminating the focal composite and its relevant relations** before consequential decomposition. If merely syntactically present or inadequately situated, enrich through the existing inquiry aperture or return a bounded Question Forward/HOLD; do not fabricate a complete PGO or infer constitution from purpose. This is a reasoning obligation; the current native evaluator still requires a separately attributable semantic assessment.
 
 Invoke the existing `Bootstrap B` semantics over encounter/recovery inputs, source provenance, access and remit.
 
@@ -142,6 +146,8 @@ Do not restrict discovery to material indexed by the current or original PGO.
 
 ### O2 — Seat and expose holonic structure
 
+**Current integration (11 October):** provisionally construct the telos-bearing composite and disclose its containing whole and actually organized participants/relations, not just a static list of components. Compare the whole's functional demands **top-down** with the actual realization and evidence **bottom-up**, reciprocally and throughout inquiry. Distinguish functional hierarchy, realized-by/allocation and warranted constituent Level as separate typed relations. Attribute actual State and occasion when consequential; a configured but uninvoked service is not thereby an actual participant. Changing focus to a higher composite requires explicit Reseat and rebinding of the native relation's situated participants, as verified by the existing ECO-202 inquiry tests.
+
 Seat the provisional focal referent.
 
 Expose, without forcing closure:
@@ -154,18 +160,31 @@ Expose, without forcing closure:
 
 Constitution requires the installed Level witness discipline. Consequentiality, causal importance, enclosure, common purpose or dependency alone do not establish constituency.
 
-### O3 — Traverse Quadrant at fixed R/B
+### O3 — Traverse Quadrant at fixed R/B — corrected current reading
 
-For the same focal referent and boundary, expose all four installed obligations:
+**CURRENT as of 10–11 October 2026:** Follow the [positive Quadrant disclosure contract v3.0](../urg-kernel/Quadrant-Disclosure-Contract-v3.0.md) over the **same focal R/B**:
 
-- UL = Constitutive x Governing
-- UR = Constitutive x Determinate
-- LL = Participatory x Governing
-- LR = Participatory x Determinate
+- **UL** — Individual × Left
+- **UR** — Individual × Right
+- **LL** — Relational × Left
+- **LR** — Relational × Right
 
-Unknown or nonconsequential answers remain visibly unknown/nonconsequential. A missing answer does not erase an obligation.
+Four positive disclosure functions are jointly required, but proposed English labels remain **one explicitly provisional candidate set among several, not selected**. Constituent/containing Level and participatory relations remain separately typed and can be investigated both vertically and horizontally; they do **not** replace the Quadrant coordinates. Unknown/nonconsequential answers remain visible, and ordinary `TraverseQ` preserves R/B. If the inquiry finds a different containing whole, declare Compose/Reseat and qualify its relations rather than silently changing the focal referent.
 
-Ordinary `TraverseQ` preserves R and B.
+**HISTORICAL 6 OCTOBER TEXT — RETIRED AS A GENERATOR, PRESERVED FOR SOURCE TRACEABILITY:**
+
+> For the same focal referent and boundary, expose all four installed obligations:
+>
+> - UL = Constitutive x Governing
+> - UR = Constitutive x Determinate
+> - LL = Participatory x Governing
+> - LR = Participatory x Determinate
+>
+> Unknown or nonconsequential answers remain visibly unknown/nonconsequential. A missing answer does not erase an obligation.
+>
+> Ordinary `TraverseQ` preserves R and B.
+
+The historical list above is **not the governing present Quadrant classifier**.
 
 ### O4 — Route each material discovery through an existing typed transformation
 
@@ -267,25 +286,31 @@ This profile makes explicit the following composition laws already supported by 
 2. **Boundary revision need not change G.** A mistaken or underspecified whole/part cut can be corrected under the same PGO.
 3. **Quadrant traversal does not itself change R/B.**
 4. **A new composite requires explicit individuation and continuity basis.**
-5. **A relation becoming consequential does not make it constitutive.**
+5. **Consequentiality and Level warrant remain distinct.** A relation may be consequential under G; its organized participation may constitute a separately situated higher composite under an independently qualified Level witness. Its relevance alone neither proves nor excludes that constitution.
 6. **A constitutive witness can itself become Quadrant subject matter without assigning Level permanently to one quadrant.**
 7. **A changed seat/orientation does not silently transport old answer standing.**
 
-## 7. Quadrant-generator disposition
+## 7. Quadrant-generator disposition — current versus superseded
 
-The installed ECO-221 generator remains governing for this profile:
+**CURRENT as of 10–11 October 2026:** [Quadrant disclosure v3](../urg-kernel/Quadrant-Disclosure-Contract-v3.0.md) is the governing positive generator: **Individual/Relational × Left/Right**. The former **Constitutive/Participatory × Governing/Determinate** generator and its fallback “generic qualifier” treatment are **retired**. Four-function names including *Proper determination / Determinate manifestation / Field articulation / Enacted organization* are **provisional candidates only, one of several sets, undecided**. They are not instructions to classify referents using historical labels. Keep the accepted Level witness and typed participation machinery intact and separate, with explicit new-whole seating where warranted. These revisions preserve the originating fourfold commitment without silently promoting a historical formulation.
 
-`{Constitutive, Participatory} x {Governing, Determinate}`
+**HISTORICAL POSITION — 6 OCTOBER 2026; SUPERSEDED AFTER THE 10 OCTOBER REPLACEMENT:**
 
-The I / It / We / Its formulation remains a serious explanatory/disclosure candidate in the situated-referent frontier, but this orchestration solution does not require generator replacement.
+> The installed ECO-221 generator remains governing for this profile:
+>
+> `{Constitutive, Participatory} x {Governing, Determinate}`
+>
+> The I / It / We / Its formulation remains a serious explanatory/disclosure candidate in the situated-referent frontier, but this orchestration solution does not require generator replacement.
+>
+> Until a concrete contradiction or lost capability is demonstrated:
+>
+> - do not reopen ECO-221;
+> - do not silently claim equivalence;
+> - use I / It / We / Its as an explanatory projection only where its source/standing is explicit.
+>
+> This preserves forward motion while retaining the source commitment that holons have four quadrants.
 
-Until a concrete contradiction or lost capability is demonstrated:
-
-- do not reopen ECO-221;
-- do not silently claim equivalence;
-- use I / It / We / Its as an explanatory projection only where its source/standing is explicit.
-
-This preserves forward motion while retaining the source commitment that holons have four quadrants.
+The older posture above describes **its date's standing**, not current instructions. The closed core is not reopened merely because this source's readers require the correct current version.
 
 ## 8. Reuse / clarify / amend disposition
 
@@ -310,11 +335,11 @@ This preserves forward motion while retaining the source commitment that holons 
 - mapping of the Three Goedel-Signals onto existing failure/repair routes;
 - explicit independence of PGO reorientation versus whole/part boundary revision.
 
-### Amend now
+### Amend now — original 6 October disposition, historical
 
-**None.**
+**6 October original answer:** None, within that profile's earlier source edition and then-installed generator. This is **not** a present-tense veto over the 10 October accepted positive Quadrant replacement or the 11 October PGO/State/reciprocity *source-delivery repair*.
 
-A future semantic amendment is earned only if ordinary use demonstrates a capability that cannot be expressed faithfully through the installed contracts and this composition profile.
+A future **new semantic kernel amendment** must still earn its own concrete need, exact affected contracts and decision-based authority; this document's correction creates no new URG primitive, runtime gate or substitute for hosted consumer proof.
 
 ## 8.1 FR-3 anti-collapse rules
 
