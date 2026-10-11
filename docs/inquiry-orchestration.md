@@ -12,6 +12,19 @@
 
 # Ordinary inquiry orchestration
 
+## Principal-directed correction — PGO first, temporal constituency and reciprocal D&I (11 October 2026)
+
+[Source-linked global repair dossier](../research/formal-semantics/2026-10-11-PGO-Temporal-Reciprocal-Constitution-Repair.md). **Current source/worker orientation, not runtime enforcement:** the Principal halted the affected Boot System reasoning after the assistant treated participation/constitution as disjoint, substituted functions for constituent witnesses, treated “first use” as an exhaustive time boundary, and invented the mapper coordinate. The larger Boot System Shape and client v4 release remain HALTed in their existing commission; ECO-202's unrelated qualified runtime work continues.
+
+**PGO recovery and adequacy precede consequential decomposition.** Recover the actual containing outcome, Principal-sourced local governing orientation and proximal effect; label speculative refinements. The installed `κ=(R,B,G,F)` is an inquiry interface, not exhaustive Context. Begin with ECO-51's constructive, telos-bearing composite and its containing whole. If G is under-enriched, recover/enrich or return QF/HOLD; do not let a syntactically filled G manufacture a referent, Level or fact.
+
+**Systemwide reciprocal reasoning practice (inherited and reinforced):** simultaneously test top-down functions, intended whole/constraints and potential realizing roles against bottom-up witnessed participants, relations, actual State/occasion, capability, evidence and negative cases. Neither direction can settle the other without a warranted native relation; contradictions return to the same inquiry. Functional decomposition, `realized-by` allocation and constitutive Level witness are different claim types; Level still requires `W_L=(C,O,d)` under R/B and actual organizing basis. A service's horizontal participation in one referent may constitute a lawfully seated larger whole; do not infer either categorical inclusion or exclusion from the word “participatory.”
+
+**Situate actuality and mapper:** where consequential, recover State `State(R,B,Ω,F,o)=x`; distinguish possible, configured, intended and actually participating constituents at the relevant occasion. Same R/B can undergo a State change; changing the boundary, focal referent, frame or purpose requires its own typed operation and requalification. Attribute the map-maker separately from source documents, the Principal's authority, and access method. Future `intended_mapper` is admissible only as a clearly PROPOSED hypothetical until observed; otherwise the *smuggled-standing* Gödel Signal fires.
+
+**Existing qualification and readers:** [ECO-191](https://linear.app/ecos-ops/issue/ECO-191) already requires affected-old **and** destination-new checks; [ECO-156](https://linear.app/ecos-ops/issue/ECO-156) owns ongoing ambient reentry; [ECO-219](https://linear.app/ecos-ops/issue/ECO-219) owns consumer projections and actual uptake. These paragraphs clarify interpretation and source recovery, not proof the deployed adapter automatically enforces this method. Cold-reader probes and exact negative cases live in the linked repair dossier; the frozen `docs/invariants.md` and installed URG contracts stay unchanged.
+
+
 ## Differentiation & Integration at the ordinary inquiry boundary — Principal direction, 10 October 2026
 
 **Governing shorthand:** **Replacement is disallowed; D&I to properly seat instead.** This concerns semantic erasure/substitution of an independently addressable referent, disclosure, relation, account, history or warranted distinction. It does not prohibit lawful historical supersession, changing an active projection, or replacing an implementation/file while retaining required lineage and requalification. D&I = Differentiation & Integration, the already-established method; this section creates no new primitive, universal Context object, taxonomy, service, or independent work front.
