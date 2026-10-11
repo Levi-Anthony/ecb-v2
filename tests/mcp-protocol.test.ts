@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
 import { Client, StreamableHTTPClientTransport } from '@modelcontextprotocol/client';
 import app from '../server.ts';
@@ -277,6 +278,9 @@ for (const mode of ['modern', 'legacy'] as const) {
       assert.deepEqual([...(captureSchema.required ?? [])].sort(), ['content', 'source']);
       assert.equal(captureSchema.properties?.operation_id?.format, 'uuid');
       assert.equal(captureSchema.properties?.operation_id?.type, 'string');
+      assert.equal(captureSchema.properties?.captured_at?.format, 'date-time');
+      assert.equal((captureSchema.required ?? []).includes('operation_id'), false);
+      assert.match(capture?.description ?? '', /Older client snapshots without that field must supply stable captured_at/);
       assert.deepEqual(captureSchema.properties?.processing_mode?.enum, ['trusted', 'raw_only']);
       assert.equal(capture?.annotations?.readOnlyHint, false);
       assert.equal(capture?.annotations?.destructiveHint, false);
@@ -359,4 +363,29 @@ test('stale MCP capture schema preserves operation identity using an explicit ti
     assert.notEqual(ids[0],ids[2]); // Different event occurrence never aliases.
     assert.equal(ids[3],'349f628f-eebf-4a43-90c0-bc8587a4ee50');
   } finally {globalThis.fetch=originalFetch;}
+});
+
+test('worker entry and operational guidance preserve the current capture fallback and known platform boundary', async () => {
+  const [entry, discovery, profile] = await Promise.all([
+    readFile(new URL('../AGENTS.md', import.meta.url), 'utf8'),
+    readFile(new URL('../docs/worker-entry-evidence-discovery.md', import.meta.url), 'utf8'),
+    readFile(new URL('../docs/tool-action-routing-and-continuity-authorization.md', import.meta.url), 'utf8'),
+  ]);
+  const canonical = 'tool-action-routing-and-continuity-authorization.md';
+  assert.ok(entry.includes(canonical), 'repository workers must reach the canonical tool-recovery profile');
+  assert.ok(discovery.includes(canonical), 'ordinary worker-entry discovery must reach the same canonical profile');
+  const begin = profile.indexOf('## ECB-v2-BRAIN capture contract');
+  const end = profile.indexOf('## Contract-conformance qualification', begin);
+  assert.ok(begin >= 0 && end > begin, 'current BRAIN capture contract must have a unique source section');
+  const current = profile.slice(begin, end);
+  assert.match(current, /content.*source.*required/i);
+  assert.match(current, /operation_id.*optional/i);
+  assert.match(current, /captured_at.*stable/i);
+  assert.match(current, /identical.*replay/i);
+  assert.match(profile, /404 Action not found/);
+  assert.match(profile, /platform pre-invocation denial/i);
+  assert.match(profile, /not.*(broaden|broadening).*permission/i);
+  assert.match(profile, /ECO-218/);
+  assert.match(profile, /ECO-219/);
+  assert.match(profile, /UNQUALIFIED/);
 });
