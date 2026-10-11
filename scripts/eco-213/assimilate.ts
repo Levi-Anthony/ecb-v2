@@ -93,7 +93,7 @@ export async function assimilate(plan:Plan,exported:FrozenExport,call:Call){
  const mechanism=recovered.mechanisms?.find((m:any)=>m.id===plan.ids.differentiate);
  if(recovered.contract_version!=='eco213-v1'||work?.remit_revision_id!==plan.ids.revision
   ||mechanism?.kind!=='differentiate'||mechanism.code_digest!==plan.host_bindings.ECB_CIRCULATION_CODE_DIGEST)throw new Error('corpus_current_basis_mismatch');
- if(!remit?.enabled||remit.expired||(remit.expires_at!==null && !(Date.parse(remit.expires_at)>Date.now())))
+ if(!remit?.enabled||remit.expired||(remit.expires_at!==null && !(Date.parse(remit.expires_at)>Date.now()))
   ||!remit.allowed_effects?.includes('assimilate')||!remit.allowed_sources?.includes(exported.origin)
   ||LEGACY_IDS.some(id=>!remit.allowed_legacy_ids?.includes(id)))throw new Error('corpus_remit_inactive_or_out_of_scope');
  const results=[];
