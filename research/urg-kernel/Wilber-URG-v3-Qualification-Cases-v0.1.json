@@ -2,6 +2,19 @@
   "protocol_id": "ecos:research:wilber-urg-v3-di:2026-10-11:v0.1",
   "source_contract": "ecos:quadrant-disclosure:v3",
   "label_set_standing": "PROVISIONAL - one candidate set among several; no set selected",
+  "label_qualification": {
+    "standing": "PROVISIONAL_UNTESTED_FOR_NAMECRAFTING",
+    "principal_source": "brain:556eb491-73ea-44cf-8d96-bb3d8029dfc4",
+    "qualification_state": {
+      "natural_language_name_selection": "NOT_SELECTED",
+      "exact_conceptual_origin": "UNVERIFIED",
+      "empirical_or_cross_domain_semantic_adequacy": "UNQUALIFIED",
+      "cold_reader_comprehension": "UNTESTED; PRINCIPAL REPORTS OBTUSE WORDING",
+      "mechanical_record_tokens": "CURRENT_V3; does not ratify explanatory labels"
+    },
+    "receiving_owner": "ECO-136",
+    "followup": "Recover actual prior formulations and established terms of art; run semantic boundary contrasts and reader-intelligibility cases before proposing settled names. Do not block ECO-202 current wire-token use."
+  },
   "standing": "Prospective qualification design, not an actual semantic, empirical, hosted-use or independent validation result",
   "owning_surfaces": [
     "ECO-136",
