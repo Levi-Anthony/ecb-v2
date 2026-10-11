@@ -15,6 +15,7 @@ const paths = {
   practice: 'docs/working-preferences-constructive-di.md',
   inquiry: 'docs/inquiry-orchestration.md',
   repair: 'research/formal-semantics/2026-10-11-PGO-Temporal-Reciprocal-Constitution-Repair.md',
+  pgo: 'research/formal-semantics/PGO-Directed-Situated-Referent-Orchestration-Profile-v0.1.md',
   state: 'research/urg-kernel/State-Formal-Contract-v1.0.md',
   level: 'research/urg-kernel/Level-Quadrant-Formal-Contract-v1.0.md',
   quadrant: 'research/urg-kernel/Quadrant-Disclosure-Contract-v3.0.md',
@@ -74,4 +75,32 @@ test('the error-to-repair chain keeps speculative mapper standing and Boot HALT 
   assert.match(entry, /HALTed/);
   assert.match(practice, /The original Boot System Shape\/v4 installation remains HALTed/i);
   assert.match(repair, /not.*actual.*ChatGPT\/Claude.*consumer uptake/i);
+});
+
+
+test('ordinary inquiry profile cannot present retired Quadrant seat/burden generator as current instruction', async () => {
+  const [profile, v3, repair] = await Promise.all([
+    source(paths.pgo), source(paths.quadrant), source(paths.repair),
+  ]);
+  assert.match(profile, /O3 — Traverse Quadrant at fixed R\/B — corrected current reading/);
+  const current = profile.split('### O3 — Traverse Quadrant at fixed R/B — corrected current reading')[1]
+    .split('**HISTORICAL 6 OCTOBER TEXT')[0];
+  for (const assertion of ['UL** — Individual × Left', 'UR** — Individual × Right',
+    'LL** — Relational × Left', 'LR** — Relational × Right']) {
+    assert.ok(current.includes(assertion), 'Current O3 missing '+assertion);
+  }
+  assert.match(current, /provisional candidate set/i);
+  assert.doesNotMatch(current, /UL = Constitutive x Governing/);
+  const legacy = profile.split('**HISTORICAL 6 OCTOBER TEXT')[1];
+  assert.match(legacy, /UL = Constitutive x Governing/);
+  assert.match(profile, /## 7. Quadrant-generator disposition — current versus superseded/);
+  const disposition = profile.split('## 7. Quadrant-generator disposition — current versus superseded')[1]
+    .split('**HISTORICAL POSITION')[0];
+  assert.match(disposition, /Individual\/Relational × Left\/Right/);
+  assert.match(disposition, /retired/);
+  assert.match(disposition, /provisional candidates/i);
+  assert.match(v3, /Individual\/Relational/);
+  assert.match(repair, /Neither direction alone can settle/);
+  assert.match(profile, /PGO-adequacy addition/);
+  assert.match(profile, /simultaneously|reciprocally/i);
 });
