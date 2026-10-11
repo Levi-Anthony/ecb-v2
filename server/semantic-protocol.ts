@@ -5,9 +5,8 @@
  *
  * This producer only supplies an LL position when an independently supplied
  * native verification receipt binds an enacted occurrence to a versioned rule
- * system with a discriminating admissible/inadmissible contrast. The caller
- * remains responsible for verifying that receipt through its owning native
- * system. Failed or incomplete evidence preserves LL UNKNOWN.
+ * system with a discriminating admissible/inadmissible contrast. A trusted, independently wired native verifier must recover and bind the
+ * receipt itself; a caller-supplied boolean is never sufficient evidence. Failed or incomplete evidence preserves LL UNKNOWN.
  */
 import {
   inquiryBasisRef, questionForward, type Disclosure, type ExactEvidence, type InquiryRequest,
@@ -19,18 +18,26 @@ import {
 export const SEMANTIC_PROTOCOL_PRODUCER = 'ecos:semantic-protocol-producer:0.1.0' as const;
 
 export type NativeVerification = {
+  /** Produced by an independently bound native verifier, not copied from input. */
   verifier_ref: string;
-  verification_receipt_ref: string;
-  /** This must be established outside the authored protocol/trace content. */
-  protocol_edition_verified: boolean;
-  actual_occurrence_verified: boolean;
-  source_currentness_verified: boolean;
+  verification_receipt: ExactEvidence;
+  protocol_ref: string;
+  protocol_digest: string;
+  execution_ref: string;
+  execution_digest: string;
+  occurrence_ref: string;
+  focal_referent_id: string;
+  boundary_ref: string;
 };
 
 export type ProtocolEvidencePair = {
   protocol: ExactEvidence;
   execution: ExactEvidence;
-  native_verification: NativeVerification | null;
+};
+
+/** A trusted native capability must obtain and verify its own proof of occurrence. */
+export type ProtocolSemanticPorts = {
+  verifyNative(request: InquiryRequest, pair: ProtocolEvidencePair): Promise<NativeVerification | null>;
 };
 
 export type ProtocolSemanticsResult = {
@@ -85,10 +92,11 @@ function transition(x: unknown): x is Transition {
  * is not an attested occurrence. A negative physical-domain control therefore
  * cannot be promoted by merely filling in a plausible LL label.
  */
-export function produceProtocolSemantics(
+export async function produceProtocolSemantics(
   request: InquiryRequest,
   pair: ProtocolEvidencePair | null,
-): ProtocolSemanticsResult {
+  ports?: ProtocolSemanticPorts,
+): Promise<ProtocolSemanticsResult> {
   const basis = inquiryBasisRef(request);
   const unresolved = (reason: string): ProtocolSemanticsResult => {
     const qf = questionForward(request, basis, 'quadrant:LL',
@@ -105,11 +113,27 @@ export function produceProtocolSemantics(
         satisfied: false, unresolved_refs: [qf.unresolved_ref] },
     }};
   };
-  if (!pair) return unresolved('No independently verified domain-native protocol evidence supplied.');
-  const { protocol, execution, native_verification: verified } = pair;
-  if (!verified || !nonblank(verified.verifier_ref) || !nonblank(verified.verification_receipt_ref)
-    || !verified.protocol_edition_verified || !verified.actual_occurrence_verified
-    || !verified.source_currentness_verified) return unresolved('Native verification is absent, partial, or unattributed.');
+  if (!pair || !ports) return unresolved('Native protocol evidence or independent verification capability is unavailable.');
+  const { protocol, execution } = pair;
+  let verified: NativeVerification | null;
+  try {
+    verified = await ports.verifyNative(structuredClone(request), structuredClone(pair));
+  } catch {
+    return unresolved('Native verification failed without a current attributable receipt.');
+  }
+  const receipt = verified?.verification_receipt;
+  if (!verified || !nonblank(verified.verifier_ref) || !receipt || !recoverable(receipt))
+    return unresolved('Native verification is absent, partial, stale or unattributed.');
+  if (verified.protocol_ref !== protocol.referent_id || verified.protocol_digest !== protocol.digest
+    || verified.execution_ref !== execution.referent_id || verified.execution_digest !== execution.digest
+    || verified.focal_referent_id !== request.context.referent_id
+    || verified.boundary_ref !== request.context.boundary_ref)
+    return unresolved('The native verifier did not bind this exact source, execution and focal seat.');
+  const proof = parseObject(receipt.content);
+  if (!proof || proof.contract !== 'ecos:native-protocol-verification:v1'
+    || proof.standing !== 'VERIFIED' || !nonblank(proof.ll_discriminator)
+    || !receipt.source_refs.includes(verified.verifier_ref))
+    return unresolved('The recovered native verification receipt lacks a current positive articulation account.');
   if (!recoverable(protocol) || !recoverable(execution) || protocol.referent_id === execution.referent_id)
     return unresolved('Exact independent protocol and execution account editions are not recoverable and current.');
   const rawSpec = parseObject(protocol.content), rawRun = parseObject(execution.content);
@@ -124,7 +148,8 @@ export function produceProtocolSemantics(
   if (spec.boundary_ref !== request.context.boundary_ref || run.boundary_ref !== request.context.boundary_ref
     || run.focal_referent_id !== request.context.referent_id
     || run.protocol_ref !== protocol.referent_id || run.protocol_digest !== protocol.digest
-    || run.protocol_edition !== spec.edition) return unresolved('Source/occasion, protocol edition, or focal seat mismatched.');
+    || run.protocol_edition !== spec.edition || verified.occurrence_ref !== run.occurrence_ref)
+    return unresolved('Source/occasion, protocol edition, or focal seat mismatched.');
   const matching = spec.transitions.filter(t => t.from === run.from && t.action === run.action);
   if (matching.length !== 1 || matching[0].decision !== 'ALLOW' || matching[0].to !== run.to)
     return unresolved('Observed run and declared allowed transition disagree.');
@@ -137,7 +162,7 @@ export function produceProtocolSemantics(
   if (duplicated.size !== spec.transitions.length) return unresolved('Ambiguous native transition grammar.');
   const ref = `${SEMANTIC_PROTOCOL_PRODUCER}:LL:${execution.referent_id}`;
   const evidenceRefs = [...new Set([...protocol.source_refs, ...execution.source_refs,
-    protocol.referent_id, execution.referent_id, verified.verification_receipt_ref])];
+    protocol.referent_id, execution.referent_id, receipt.referent_id])];
   return {
     disposition: 'DISCLOSED_LL',
     reason: 'A verified enacted occurrence participates in versioned native ALLOW/DENY distinctions with independently recovered accounts.',
@@ -146,13 +171,13 @@ export function produceProtocolSemantics(
         kind: 'quadrant', context: request.context as SituatedContext,
         disclosure_contract: QUADRANT_DISCLOSURE_CONTRACT, result: 'QUADRANT_POSITION',
         disclosure: 'LL', coordinates: QUADRANT_COORDINATES.LL,
-        content_ref: execution.referent_id, characterization_ref: protocol.referent_id,
+        content_ref: execution.referent_id, characterization_ref: receipt.referent_id,
         conditions_ref: execution.referent_id,
         fidelity: { coverage: 'EXAMINED', activation: 'ACTIVE', disposition: 'RELIED_FOR_DECLARED_USE',
-          evidence_refs: evidenceRefs, warrant_ref: verified.verification_receipt_ref,
+          evidence_refs: evidenceRefs, warrant_ref: receipt.referent_id,
           currentness_ref: basis },
       }}],
-      account_editions: [protocol, execution].map(e => ({ ref: e.referent_id, digest: e.digest })),
+      account_editions: [protocol, execution, receipt].map(e => ({ ref: e.referent_id, digest: e.digest })),
       changes: [],
       sufficiency: { inquiry_basis_ref: basis, assessment_ref: `${SEMANTIC_PROTOCOL_PRODUCER}:${verified.verifier_ref}`,
         satisfied: false, unresolved_refs: ['quadrant:UL', 'quadrant:UR', 'quadrant:LR'] },
