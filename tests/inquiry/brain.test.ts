@@ -57,6 +57,65 @@ test('no semantic adapter result is fabricated from native edges or embedding hi
   assert(r.questions_forward.some(q => q.unresolved_ref === prior));
   assert(log.every(c => ['search_structure', 'traverse_structure', 'fetch_referent', 'recover_work'].includes(c.operation)));
 });
+test('real native semantic unit is re-read through its immutable carrier and source-function context', async () => {
+  const carrier = '00000000-0000-4000-8000-000000000005';
+  const decomposition = '00000000-0000-4000-8000-000000000006';
+  const occurrence = '00000000-0000-4000-8000-000000000007';
+  const log: Array<{ operation: string; payload: Record<string, unknown>; actor: string }> = [];
+  const p = ports(log), oldDispatch = p.dispatch;
+  p.dispatch = async (operation, payload, actor) => {
+    if (operation === 'fetch_referent' && payload.referent_id === prior) return {
+      referent_id: prior, basis_digest: 'native-edition', native_records: [
+        { native_type: 'semantic_units', record: { id: prior, carrier_id: carrier, decomposition_id: decomposition } },
+      ],
+    };
+    if (operation === 'fetch_referent' && payload.referent_id === carrier)
+      return { referent_id: carrier, artifact: { id: carrier, content: 'The source expression is a non-exhaustive cue.' } };
+    if (operation === 'fetch_referent' && payload.referent_id === decomposition)
+      return { referent_id: decomposition, native_records: [
+        { native_type: 'decompositions', record: { id: decomposition, source_id: occurrence, context: {
+          source_function: 'ACTIVATION_CUE', activated_neighborhood: [{ cue: 'boundary', candidate: 'Level witness',
+            basis: 'INTERPRETIVE_HYPOTHESIS', referent_id: null, relation_hypothesis: 'Potentially related' }] } } },
+      ] };
+    return oldDispatch(operation, payload, actor);
+  };
+  const a = createBrainInquiryAdapters(p, 'actual-client');
+  const exact = await a.fetchEvidence(prior);
+  assert.equal(exact?.content, 'The source expression is a non-exhaustive cue.');
+  assert(exact?.source_refs.includes(carrier));
+  assert(exact?.source_refs.includes(occurrence));
+  const standing = exact?.stored_standing as Record<string, unknown>;
+  assert.equal(standing.derived_source_role, 'ACTIVATION_CUE');
+  assert.equal(standing.source_role_standing, 'UNASSESSED_INTERPRETATION');
+  assert.equal(standing.derived_context_status, 'RECOVERED');
+  assert.equal((standing.derived_neighborhood as unknown[]).length, 1);
+  const r = await runBrainInquiry(request, p, 'actual-client');
+  assert.equal(r.disposition, 'HOLD');
+  assert.equal(r.admitted_relation_count, 0);
+  assert(log.every(c => ['search_structure', 'traverse_structure', 'fetch_referent', 'recover_work'].includes(c.operation)));
+});
+
+test('unavailable derived semantic carrier cannot masquerade as recovered source', async () => {
+  const carrier = '00000000-0000-4000-8000-000000000005';
+  const p = ports(), oldDispatch = p.dispatch;
+  p.dispatch = async (op, payload, actor) => {
+    if (op === 'fetch_referent' && payload.referent_id === prior)
+      return { referent_id: prior, basis_digest: 'native-edition', native_records: [
+        { native_type: 'semantic_units', record: { id: prior, carrier_id: carrier } },
+      ] };
+    if (op === 'fetch_referent' && payload.referent_id === carrier) throw new Error('carrier_unavailable');
+    return oldDispatch(op, payload, actor);
+  };
+  assert.equal(await createBrainInquiryAdapters(p, 'actual-client').fetchEvidence(prior), null);
+});
+
+test('lexical mention does not manufacture a Mentions relation or identity', () => {
+  const paths = encounteredPaths({ referent_id: focal, participants: [
+    { id: edge, unit_id: focal, role: 'named candidate', mention: 'Jennifer', subject_id: null },
+  ] });
+  assert.equal(paths.length, 0);
+});
+
 test('native lexical and canonical custody survive embedding/native recovery failures visibly', async () => {
   const p = ports(); p.embed = async () => { throw new Error('embedding_offline'); };
   p.dispatch = async (op) => { if (op === 'search_structure') return { results: [], coverage: { lexical_available: true, semantic_query_available: false } }; throw new Error('native_offline'); };
