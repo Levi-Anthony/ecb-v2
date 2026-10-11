@@ -168,8 +168,35 @@ test('D&I source-function classification is preserved as a hypothesis, not minte
   const fakeRecovered = structuredClone(cue);
   fakeRecovered.context.activated_neighborhood[0].basis = 'RECOVERED_STRUCTURE';
   assert.throws(() => validateOutput('differentiate', fakeRecovered, new Map([[carrier, source]])), /output_neighborhood_identity_promotion/);
+  const recovered = structuredClone(cue);
+  const native = randomUUID();
+  recovered.context.activated_neighborhood[0].basis = 'RECOVERED_STRUCTURE';
+  recovered.context.activated_neighborhood[0].referent_id = native;
+  assert.throws(() => validateOutput('differentiate', recovered, new Map([[carrier, source]])), /output_neighborhood_identity_not_recovered/);
+  assert.equal(validateOutput('differentiate', recovered, new Map([[carrier, source]]), new Set([native]))
+    .context.activated_neighborhood[0].referent_id, native);
 });
 
+test('worker refuses model-promoted native referent absent from the actual work and index snapshot', async () => {
+  const known = randomUUID();
+  const h = harness({ context_subjects: [{ subject_id: known, basis_digest: 'constructed', content: 'Known fact' }] });
+  const attempted = structuredClone(bundle);
+  attempted.context.activated_neighborhood = [{ cue: 'Jennifer', candidate: 'Recovered narrative',
+    basis: 'RECOVERED_STRUCTURE', referent_id: randomUUID(), basis_refs: ['constructed:index'],
+    relation_hypothesis: 'Could be relevant.' }];
+  h.reply({ model: MODEL, provider: 'OpenAI', id: 'constructed-generation',
+    choices: [{ finish_reason: 'stop', message: { content: JSON.stringify(attempted) } }] });
+  assert.equal((await h.run()).failure_code, 'output_validation_failed');
+  assert.equal(h.calls.some(x => x.url.endsWith('eco213_finish')), false);
+
+  const admissible = harness({ context_subjects: [{ subject_id: known, basis_digest: 'constructed', content: 'Known fact' }] });
+  attempted.context.activated_neighborhood[0].referent_id = known;
+  admissible.reply({ model: MODEL, provider: 'OpenAI', id: 'constructed-generation',
+    choices: [{ finish_reason: 'stop', message: { content: JSON.stringify(attempted) } }] });
+  assert.equal((await admissible.run()).status, 'complete');
+  const committed = admissible.calls.find(x => x.url.endsWith('eco213_finish'));
+  assert.equal(committed?.body.p_bundle.context.activated_neighborhood[0].referent_id, known);
+});
 test('explicit specification is not silently reclassified as a cue', () => {
   const declared = structuredClone(bundle);
   declared.context.source_function = 'EXPLICIT_SPECIFICATION';
