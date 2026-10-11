@@ -380,7 +380,7 @@ test('worker entry and operational guidance preserve the current capture fallbac
   const current = profile.slice(begin, end);
   assert.match(current, /content.*source.*required/i);
   assert.match(current, /operation_id.*optional/i);
-  assert.match(current, /captured_at.*stable/i);
+  assert.match(current, /stable.*captured_at/i);
   assert.match(current, /identical.*replay/i);
   assert.match(profile, /404 Action not found/);
   assert.match(profile, /platform pre-invocation denial/i);
