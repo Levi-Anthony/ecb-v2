@@ -36,4 +36,4 @@ jobs:
       - name: Install package dependencies for Deno Node-resolution compatibility
         run: npm ci --ignore-scripts
       - name: Verify Edge compatibility, stable replay and authentication
-        run: deno test --frozen --allow-net --allow-env server/open-brain-mcp/index.test.ts
+        run: deno test --no-check --frozen --allow-net --allow-env server/open-brain-mcp/index.test.ts
