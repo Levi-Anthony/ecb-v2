@@ -6,6 +6,11 @@ import app from '../../server.ts';
 import {makeCommission,LEGACY_IDS,sourceManifest} from '../../scripts/eco-213/commission.js';
 test('commission binds exact eight envelopes and real mechanism digests while remaining dormant',async()=>{
  const manifest=await sourceManifest();assert.match(manifest.code_digest,/^[0-9a-f]{64}$/);
+ const covered=new Set(manifest.entries.map(e=>e.path));
+ for(const module of ['server/circulation/profile.ts','server/circulation/worker.ts','server/orchestration-brain.ts',
+   'server/domain-admission.ts','server/native-packages/systems-engineering.ts',
+   'server/responsibility-producer.ts','server/responsibility-set.ts','server/workflow-governance.ts','server/oauth.ts'])
+   assert(covered.has(module), 'Source manifest omits transitive module: '+module);
  const c={authority_basis:'CONSTRUCTED renderer fixture only',qualified_commit:'0'.repeat(40),code_digest:manifest.code_digest,
   launch_artifact_id:randomUUID(),requirements_artifact_id:randomUUID(),frozen_export_artifact_id:randomUUID(),actors:['constructed-cold'],
   worker:'constructed-worker',qualification:{status:'CONSTRUCTED'},issued_at:'2026-09-30T16:00:00.000Z',
