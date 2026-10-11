@@ -273,7 +273,7 @@ for (const mode of ['modern', 'legacy'] as const) {
         required?: string[];
         properties?: Record<string, { type?: string; format?: string; enum?: string[] }>;
       };
-      assert.match(capture?.description ?? '', /Contract ecb-v2-capture\/0\.5\.1/);
+      assert.match(capture?.description ?? '', /Contract ecb-v2-capture\/0\.5\.2/);
       assert.deepEqual([...(captureSchema.required ?? [])].sort(), ['content', 'operation_id', 'source']);
       assert.equal(captureSchema.properties?.operation_id?.format, 'uuid');
       assert.equal(captureSchema.properties?.operation_id?.type, 'string');
