@@ -382,7 +382,10 @@ test('the same collaboration may be participating at one seat and constitutive o
       reason:'The containing composite is already focal',assessment_ref:'fixture:seat-qualification',
       inquiry_basis_ref:basis,candidate_digest:e.digest };
     const d=decision(r,h.referent_id);
-    return { ...d,membership:'CONSTITUTIVE',level_claim_ref:'fixture:episode-level' };
+    return { ...d,membership:'CONSTITUTIVE',level_claim_ref:'fixture:episode-level',
+      relation:{ ...d.relation!, situated_basis_ref:basis,
+        participants:[{role:'containing-episode',referent_id:r.context.referent_id!},
+          {role:'contributing-service',referent_id:h.referent_id}] } };
   };
   const withoutWitness=await orchestrateInquiry(atComposite,a);
   assert.equal(withoutWitness.disposition,'HOLD');
