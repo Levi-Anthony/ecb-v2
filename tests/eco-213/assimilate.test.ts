@@ -83,3 +83,39 @@ test('explicit prepared-receipt succession selects a terminal edition while fork
  f.work.parts.pop();f.receipt.supersedes_receipt_artifact=next;
  await assert.rejects(()=>recoverCorpusInputs(f.call),/ambiguous/);
 });
+
+test('explicit successor across work and remit revisions preserves corpus custody without latest selection',async()=>{
+ const f=nativeRecoveryFixture(),successorWork=randomUUID(),successorRevision=randomUUID(),successorReceipt=randomUUID(),remitId=randomUUID();
+ const oldRevision=f.receipt.revision_id;
+ const next={
+  ...f.receipt,corpus_work_id:successorWork,revision_id:successorRevision,remit_id:remitId,
+  predecessor_work_id:f.work.id,predecessor_revision_id:oldRevision,
+  supersedes_receipt_artifact:f.receiptId,
+ };
+ f.artifacts.set(successorReceipt,next);
+ f.discovery.work.push({id:successorWork,predecessor_id:f.work.id,remit_revision_id:successorRevision,
+  parts:[{constituent_id:successorReceipt,role:'prepared circulation commission; selection must be explicitly revalidated'},
+   {constituent_id:f.plan.manifest.export_artifact_id,role:'exact frozen source package; preservation is not semantic qualification'}]});
+ f.discovery.remits=[...(f.discovery.remits??[]),{id:successorRevision,remit_id:remitId,predecessor_id:oldRevision,enabled:false}];
+ const recovered=await recoverCorpusInputs(f.call);
+ assert.equal(recovered.plan.ids.corpus_work,successorWork);
+ assert.equal(recovered.plan.ids.revision,successorRevision);
+ assert.deepEqual(recovered.plan.manifest,f.plan.manifest);
+ assert.deepEqual(recovered.plan.corpus_operations,f.plan.corpus_operations);
+ // A copied-looking receipt without the exact revision predecessor cannot select a successor.
+ next.predecessor_revision_id=randomUUID();
+ await assert.rejects(()=>recoverCorpusInputs(f.call),/scope_mismatch/);
+ next.predecessor_revision_id=oldRevision;
+ f.discovery.remits.at(-1).predecessor_id=randomUUID();
+ await assert.rejects(()=>recoverCorpusInputs(f.call),/scope_mismatch/);
+});
+
+test('cross-work supersession cannot silently steal an unrelated prior receipt',async()=>{
+ const f=nativeRecoveryFixture(),another=randomUUID(),candidate=randomUUID(),revision=randomUUID();
+ f.artifacts.set(candidate,{...f.receipt,corpus_work_id:another,revision_id:revision,
+  supersedes_receipt_artifact:f.receiptId,predecessor_revision_id:f.receipt.revision_id,predecessor_work_id:f.work.id,remit_id:randomUUID()});
+ f.discovery.work.push({id:another,predecessor_id:randomUUID(),remit_revision_id:revision,
+  parts:[{constituent_id:candidate,role:'prepared circulation commission; selection must be explicitly revalidated'}]});
+ f.discovery.remits=[...(f.discovery.remits??[]),{id:revision,predecessor_id:f.receipt.revision_id}];
+ await assert.rejects(()=>recoverCorpusInputs(f.call),/scope_mismatch/);
+});
