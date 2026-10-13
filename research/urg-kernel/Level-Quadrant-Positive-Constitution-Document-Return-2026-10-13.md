@@ -97,6 +97,37 @@ The inspection implements this declared convention for the observed file. It is 
 
 This is an attributable semantic interpretation supported by native facts and a stated realization rule. The analytic implications of source-text identity are identified as such. They are not represented as an additional independent empirical discovery about causal necessity.
 
+### Set-theoretic expression of this qualified case
+
+Let N=21,475 and let t(i) be the observed UTF-8 byte at source position i. Represent the complete text by its position-value graph:
+
+\[
+T_H=\{(i,t(i)):0\le i<N\}.
+\]
+
+Read: **T-sub-H contains each byte together with its position in the full source.** Positions preserve order and distinguish repeated text. T_H is the mathematical representation of H's source body at the selected boundary.
+
+For recovered segment j, let I_j be its half-open byte interval and restrict the graph:
+
+\[
+T_j=\{(i,t(i))\in T_H:i\in I_j\}.
+\]
+
+Read: **T-sub-j is the part of the positioned source graph lying in the observed segment interval.** For example, “Shared situation” uses [2307,2984), while “Common account and machine carrier” uses [11430,13177).
+
+The inspected interval coverage and reconstruction warrant:
+
+\[
+\bigcup_j T_j=T_H,\qquad I_j\cap I_k=\varnothing\ (j\ne k),\qquad T_j\subsetneq T_H.
+\]
+
+Read: **the recovered segments jointly cover the whole positioned text; distinct segments use different positions; every selected segment is smaller than the whole.** These are claims about the observed segmentation, not rules requiring all possible constituents in all domains to be disjoint.
+
+The source-text interpretation supplies the positive bridge from these set relationships to textual constitution. A bare chosen collection would supply only membership; here the native realization rule, observed source correspondence, and exact reconstruction supply the additional grounds. Recovering source order from positions also shows why an unstructured set of fragment names would lose decision-relevant information.
+
+At the declared section-tree grain, two different sections are local siblings when the native section hierarchy assigns both the same immediate parent. The two selected depth-two sections satisfy that condition. “Immediate” refers to that explicitly selected hierarchy; arbitrary substrings belong to a different structural grain.
+
+
 ### Return to exact Level obligations
 
 | Obligation | Native support and qualified return |
