@@ -1,3 +1,5 @@
+> **CURRENT FOT PARTICIPATORY RETURN — 13 October 2026.** [QF-PL-01-R UGA/SECIS evaluation](./FOT-QF-PL-01-R-UGA-SECIS-Bounded-Evaluation-2026-10-13.md) records one bounded positive biological transfer beyond adopted human protocols, evaluated against immutable [integrated v0.1](./FOT-Participatory-Disclosure-Integrated-Provisional-Formalization-v0.1-2026-10-13.md). Native decoding correspondence and actual organization/outcome remain separately qualified; full PR invariance is not claimed. Greenfield full-text Thought custody: `593fb8ac-ab9e-4716-9fa1-c232cd118071`. [FOT Shape reentry](https://linear.app/ecos-ops/document/first-operational-theory-register-b-shape-governing-delta-and-reentry-0807f12ca59d) and the ECO-221 human surface carry the receiving result. Retain v0.1 unchanged; this local QF evaluation is complete, with its exact source-defeat reopening trigger. PL-02 and conditional consumer recovery remain separate. No new experimental gate, universal ratification, operative contract or runtime change. Historical frontier notes below retain source-time standing.
+
 STATUS: ACTIVE
 
 DISPOSITION: PROJECTION
