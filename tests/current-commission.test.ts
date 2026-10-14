@@ -27,25 +27,140 @@ function fixture() {
     },
     async capture(input) {
       calls.push('capture'); assert.equal(input.processingMode,'raw_only');
-      const previous=replay.get(input.operationId) as {thought:{id:string};disposition:{revision_id:string}} | undefined;
-      if(previous) return previous;
+      const previous=replay.get(input.operationId) as {request:unknown;thought:{id:string}} | undefined;
+      // ecb11_capture_thought and the ordinary adapter both return the CURRENT
+      // head on replay, not a snapshot of the original capture disposition.
+      if(previous) {
+        assert.deepEqual(previous.request,input);
+        assert.equal(anchor?.id,previous.thought.id);
+        return {thought:previous.thought,disposition:structuredClone(anchor!.disposition)};
+      }
       anchor={id:uuid(3),disposition:{revision_id:uuid(4),state:'unresolved'},projection:{artifact_id:uuid(5),kind:'HOLD',content:'not selected'}};
-      const result={thought:{id:anchor.id},disposition:anchor.disposition}; replay.set(input.operationId,structuredClone(result)); return result;
+      const result={thought:{id:anchor.id},disposition:anchor.disposition};
+      replay.set(input.operationId,{request:structuredClone(input),thought:result.thought}); return structuredClone(result);
     },
     async setDisposition(input) {
       calls.push('setDisposition');
       const previous=replay.get(input.operationId) as {request:unknown;result:{disposition:{revision_id:string}}} | undefined;
-      if(previous) { assert.deepEqual(previous.request,input); return previous.result; }
+      if(previous) {
+        if(JSON.stringify(previous.request)!==JSON.stringify(input)) throw new Error('ecb11_operation_conflict');
+        return structuredClone(previous.result);
+      }
       if(!anchor || anchor.id!==input.thoughtId || anchor.disposition.revision_id!==input.expectedRevisionId)
         throw new Error('eco138_disposition_predecessor_conflict');
       anchor={id:anchor.id,disposition:{revision_id:uuid(30+replay.size),state:input.disposition},
         projection:{artifact_id:input.projectionArtifactId,kind:input.projectionKind,content:artifacts.get(input.projectionArtifactId)!}};
-      const result={disposition:anchor.disposition}; replay.set(input.operationId,{request:input,result}); return result;
+      const result={disposition:anchor.disposition}; replay.set(input.operationId,{request:structuredClone(input),result:structuredClone(result)}); return result;
     },
   };
   return {ports,calls,artifacts,get anchor(){return anchor;},set anchor(value:CommissionAnchor|null){anchor=value;}};
 }
 const operations={capture:uuid(100),artifact:uuid(101),transition:uuid(102)};
+
+test('native capture replay exposes the current head and transition replay binds its original predecessor', async () => {
+  const f=fixture(), input={operationId:operations.capture,content:'anchor',source:'fixture',processingMode:'raw_only' as const};
+  const captured=await f.ports.capture(input);
+  const artifact=await f.ports.createArtifact({operationId:operations.artifact,content:JSON.stringify(projection)});
+  const transition={operationId:operations.transition,thoughtId:captured.thought.id,expectedRevisionId:captured.disposition.revision_id,
+    disposition:'current_commission',projectionArtifactId:artifact.artifact.id,projectionKind:'ACTION' as const};
+  const installed=await f.ports.setDisposition(transition), replayed=await f.ports.capture(input);
+  assert.notEqual(replayed.disposition.revision_id,captured.disposition.revision_id);
+  assert.equal(replayed.disposition.revision_id,installed.disposition.revision_id);
+  assert.deepEqual(await f.ports.setDisposition(transition),installed);
+  await assert.rejects(f.ports.setDisposition({...transition,expectedRevisionId:replayed.disposition.revision_id}),/ecb11_operation_conflict/);
+});
+
+for(const stage of ['createArtifact','capture','setDisposition'] as const)
+  test(`interrupted after ${stage} commits: retry recovers the identical install with stable identities`, async () => {
+    const f=fixture();
+    const interrupted:CommissionInstallPorts={...f.ports,async [stage](input:any) {
+      await f.ports[stage](input); throw new Error('lost_acknowledgement');
+    }};
+    await assert.rejects(installCommissionProjection(projection,operations,interrupted),/lost_acknowledgement/);
+    const installedHead=stage==='setDisposition' ? structuredClone(f.anchor) : null;
+    const transitions=f.calls.filter(c=>c==='setDisposition').length;
+    const recovered=await installCommissionProjection(projection,operations,f.ports);
+    assert.deepEqual(await installCommissionProjection(projection,operations,f.ports),recovered);
+    assert.equal(f.artifacts.size,2);
+    assert.equal(f.calls.filter(c=>c==='setDisposition').length,stage==='setDisposition' ? transitions : 1);
+    if(installedHead) assert.equal(recovered.revision_id,installedHead.disposition.revision_id);
+    assert.equal(recovered.source_content,source);
+  });
+
+test('update with lost transition acknowledgement recovers without rebasing the saved predecessor', async () => {
+  const f=fixture(), first=await installCommissionProjection(projection,operations,f.ports);
+  const updated={...projection,next_action:'Verify the accepted connected consumer.'};
+  const nextOps={capture:uuid(110),artifact:uuid(111),transition:uuid(112)};
+  const update={anchorId:first.anchor_id,expectedRevisionId:first.revision_id};
+  await assert.rejects(installCommissionProjection(updated,nextOps,{...f.ports,async setDisposition(input){
+    await f.ports.setDisposition(input); throw new Error('lost_acknowledgement');
+  }},update),/lost_acknowledgement/);
+  const committed=structuredClone(f.anchor!), transitions=f.calls.filter(c=>c==='setDisposition').length;
+  const recovered=await installCommissionProjection(updated,nextOps,f.ports,update);
+  assert.equal(recovered.revision_id,committed.disposition.revision_id);
+  assert.equal(recovered.next_action,updated.next_action);
+  assert.equal(f.calls.filter(c=>c==='setDisposition').length,transitions);
+});
+
+for(const updated of [false,true]) test(`${updated ? 'update' : 'initial'} retry refuses a conflicting current head without a transition`, async () => {
+  const f=fixture(), first=await installCommissionProjection(projection,operations,f.ports);
+  const competing={...projection,next_action:'A separately admitted current action.'};
+  const next=await installCommissionProjection(competing,{capture:uuid(110),artifact:uuid(111),transition:uuid(112)},f.ports,
+    {anchorId:first.anchor_id,expectedRevisionId:first.revision_id});
+  const baseline=structuredClone(f.anchor), transitions=f.calls.filter(c=>c==='setDisposition').length;
+  await assert.rejects(installCommissionProjection(projection,operations,f.ports,
+    updated ? {anchorId:first.anchor_id,expectedRevisionId:first.revision_id} : undefined),/predecessor_conflict/);
+  assert.deepEqual(f.anchor,baseline);
+  assert.equal((await getCurrentCommission(first.anchor_id,f.ports)).revision_id,next.revision_id);
+  assert.equal(f.calls.filter(c=>c==='setDisposition').length,transitions);
+});
+
+for(const conflict of ['disposition','artifact','authority','summary','edition'] as const)
+  test(`initial retry rejects competing ${conflict} even when the source identity is unchanged`, async () => {
+    const f=fixture(), installed=await installCommissionProjection(projection,operations,f.ports);
+    const changed={...projection,
+      ...(conflict==='authority' ? {authority_refs:[uuid(777)]} : {}),
+      ...(conflict==='summary' ? {summary:'A different projection over the same source.'} : {}),
+      ...(conflict==='edition' ? {source:{...projection.source,edition:'unadmitted-edition'}} : {}),
+    };
+    const artifact=conflict==='disposition' ? installed.projection_artifact_id
+      : (await f.ports.createArtifact({operationId:uuid(120),content:JSON.stringify(changed)})).artifact.id;
+    await f.ports.setDisposition({operationId:uuid(121),thoughtId:installed.anchor_id,expectedRevisionId:installed.revision_id,
+      disposition:conflict==='disposition' ? 'withdrawn' : 'current_commission',projectionArtifactId:artifact,projectionKind:'ACTION'});
+    const baseline=structuredClone(f.anchor), transitions=f.calls.filter(c=>c==='setDisposition').length;
+    await assert.rejects(installCommissionProjection(projection,operations,f.ports),/predecessor_conflict/);
+    assert.deepEqual(f.anchor,baseline);
+    assert.equal(f.calls.filter(c=>c==='setDisposition').length,transitions);
+  });
+
+for(const failure of ['source','head'] as const) test(`retry revalidates ${failure} before returning an existing installation`, async () => {
+  const f=fixture(); await installCommissionProjection(projection,operations,f.ports);
+  const transitions=f.calls.filter(c=>c==='setDisposition').length;
+  let reads=0;
+  const ports:CommissionInstallPorts={...f.ports,
+    async fetchThought(id) {
+      const head=await f.ports.fetchThought(id);
+      if(failure==='head' && ++reads===3) head!.disposition.revision_id=uuid(999);
+      return head;
+    },
+    async fetchArtifact(id) {
+      const artifact=await f.ports.fetchArtifact(id);
+      if(failure==='source' && id===projection.source.artifact_id && ++reads===2) artifact!.content+='\ntampered';
+      return artifact;
+    },
+  };
+  await assert.rejects(installCommissionProjection(projection,operations,ports),failure==='source' ? /binding_mismatch/ : /head_changed/);
+  assert.equal(f.calls.filter(c=>c==='setDisposition').length,transitions);
+});
+
+test('competing transition between head check and write still loses the native predecessor compare', async () => {
+  const f=fixture();
+  await assert.rejects(installCommissionProjection(projection,operations,{...f.ports,async setDisposition(input) {
+    await f.ports.setDisposition({...input,operationId:uuid(777),disposition:'withdrawn'});
+    return f.ports.setDisposition(input);
+  }}),/predecessor_conflict/);
+  assert.equal(f.anchor!.disposition.state,'withdrawn');
+});
 
 test('exact governing source edition/digest and useful current product decisions are compiled', () => {
   assert.equal(Buffer.byteLength(source),12648);

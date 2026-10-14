@@ -105,6 +105,23 @@ export async function installCommissionProjection(projection: CommissionProjecti
   const anchor = update ?? await ports.capture({ operationId: operations.capture, processingMode: 'raw_only',
     content: 'ECOS current-commission distribution anchor. Its current predecessor-checked disposition selects the operative projection; original capture content does not select an edition.',
     source: 'ecos_current_commission_distribution_anchor' }).then(r => ({ anchorId: r.thought.id, expectedRevisionId: r.disposition.revision_id }));
+  // Native capture replay returns the current head. After a lost transition ACK,
+  // using that revision as a new predecessor changes the stable operation's
+  // request digest. Recover the exact installed binding without another write.
+  const head = await ports.fetchThought(anchor.anchorId);
+  if (!head || head.id !== anchor.anchorId) throw new CommissionUnavailable('commission_anchor_unavailable');
+  if (head.disposition.state === 'current_commission' && head.projection.kind === 'ACTION'
+    && head.projection.artifact_id === artifact.id && head.projection.content === content) {
+    const current = await getCurrentCommission(anchor.anchorId, ports);
+    if (current.revision_id !== head.disposition.revision_id || current.projection_artifact_id !== artifact.id)
+      throw new CommissionUnavailable('commission_installation_superseded');
+    return current;
+  }
+  // A fresh install may only advance its unresolved capture. An update retains
+  // the caller's exact predecessor; neither path rebases onto a competing head.
+  if (head.disposition.revision_id !== anchor.expectedRevisionId
+    || (!update && (head.disposition.state !== 'unresolved' || head.projection.kind !== 'HOLD')))
+    throw new CommissionUnavailable('commission_disposition_predecessor_conflict');
   const transition = await ports.setDisposition({ operationId: operations.transition, thoughtId: anchor.anchorId,
     expectedRevisionId: anchor.expectedRevisionId, disposition: 'current_commission', projectionArtifactId: artifact.id, projectionKind: 'ACTION' });
   const current = await getCurrentCommission(anchor.anchorId, ports);
