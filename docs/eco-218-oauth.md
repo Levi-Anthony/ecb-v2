@@ -1,5 +1,13 @@
 # ECO-218 — shared ordinary-client OAuth installation
 
+## Current-commission distribution — implementation candidate, 14 October 2026
+
+`get_current_commission` is an authorized, read-only ordinary MCP tool with no arguments. It reads `ECB_CURRENT_COMMISSION_THOUGHT_ID`, recovers that admitted navigation Thought's current disposition/projection, verifies the exact immutable source Artifact and its edition/SHA-256, then rereads the head. Missing, unqualified, changed or unavailable state returns an explicit error. Recovery uses no semantic search, embedding repair or writes. Existing recover capability applies to header-bearer and OAuth clients; initialization instructions contain only the generic trigger, never private commission text. Ordinary search/fetch arguments and results remain compatible.
+
+Prepare the reviewable payload with `node --import tsx scripts/prepare-current-commission.ts`. It binds repository source to existing Greenfield Artifact `a95956b6-11c0-4607-90fb-8e1adae499cb` and performs no remote operation. After separate release authorization, an operator can run `node --import tsx scripts/install-current-commission.ts --apply <reviewed-payload.json>` with the authorized HTTPS `/api/mcp` endpoint in `ECB_COMMISSION_RELEASE_URL` and an existing credential in `ECB_COMMISSION_RELEASE_TOKEN`. Never print or rotate that credential. The installer uses existing capture (`raw_only`), immutable Artifact and predecessor-checked disposition, verifies readback, and returns the anchor UUID. Set only the nonsecret `ECB_CURRENT_COMMISSION_THOUGHT_ID` under release authorization. Updates use the same anchor plus `update.anchorId`/`update.expectedRevisionId` and new stable operation identities; historical Artifacts remain intact.
+
+This candidate does not repair earlier SQL-readable Thoughts by inserting lifecycle rows, edit denied `AGENTS.md`, deploy, merge, refresh a connector or enable OAuth. The older Edge capture/search/fetch endpoint is distinct: confirm the consumer targets the ordinary Node endpoint before a permitted refresh. A commit or initialized SDK fixture is not product acceptance. Observe a fresh authorized worker recovering this edition and identifying next real work without Principal reconstruction; qualify additional clients separately.
+
 5 October 2026 UTC / 4 October America/Phoenix. ECO-208's completed client→ECB Shape is accepted by the Principal's “If so, yes. Fully authorized.” ECO-218 carries the ordinary-client implementation Move. Its explicit consumer-extensibility steering governs this installation. Code is carried directly on designated `main` and the enduring Production host, under the current Greenfield disposition.
 
 ## Consumer extension contract

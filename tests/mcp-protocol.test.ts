@@ -22,6 +22,7 @@ process.env.ECB_MCP_CAPABILITY_GRANTS = JSON.stringify(Object.entries(credential
 
 const names = [
   'workflow_inspect', 'workflow_command',
+  'get_current_commission',
   'capture_thought', 'search', 'fetch', 'set_thought_disposition',
   'create_artifact', 'fetch_artifact',
 ];
@@ -65,6 +66,7 @@ async function withClient(mode: 'modern' | 'legacy', callback: (client: Client) 
 }
 
 const invalidArgs: Record<string, Record<string, unknown>> = {
+  get_current_commission: {}, // Unconfigured anchor: no database dispatch or disclosure.
   fetch: { id: 'invalid' },
   fetch_artifact: { id: 'invalid' },
   search: { query: '' },
@@ -78,7 +80,7 @@ const invalidArgs: Record<string, Record<string, unknown>> = {
 for (const mode of ['modern', 'legacy'] as const) {
   test(`${mode} capability grants gate each tool before input validation or database dispatch`, async () => {
     const allowedByCredential: Record<string, string[]> = {
-      recover: ['fetch', 'fetch_artifact', 'search','workflow_inspect'],
+      recover: ['get_current_commission', 'fetch', 'fetch_artifact', 'search','workflow_inspect'],
       preserve: ['capture_thought', 'create_artifact'],
       transition: ['set_thought_disposition','workflow_command'],
       compose: ['capture_thought', 'create_artifact', 'set_thought_disposition','workflow_command'],
