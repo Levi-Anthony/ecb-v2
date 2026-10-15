@@ -113,7 +113,7 @@ export async function handlePersonalApp(
   if (url.origin !== ORIGIN) return unsupported(403, 'canonical_private_origin_required');
   if (request.method !== 'GET' && request.method !== 'POST') return unsupported(405, 'method_not_allowed');
   const session = await (options.authorize ?? authorizePrincipal)(request);
-  if (!session.allowed) {
+  if ('status' in session) {
     if (request.method === 'GET' && !url.searchParams.has('action')) {
       return wrap('<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1">' +
         '<title>ECOS | Sign in</title><main style="font:18px/1.6 system-ui;max-width:36rem;margin:12vh auto;padding:1.5rem">' +
