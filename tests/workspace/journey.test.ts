@@ -83,3 +83,11 @@ test('private shell uses CSP, no-store, bounded input and explicit confirmation'
   const html=await r.text();new Function(html.match(/<script nonce="[^"]+">([\s\S]*?)<\/script>/)![1]);assert.match(html,/viewport/);assert.match(html,/I have reviewed/);assert.ok(!html.includes('private-session-test-secret'));
   const cookie=await f.login();assert.equal((await f.request('capture',{operation_id:id(1),content:'x'.repeat(100000)},cookie)).status,413);
 });
+
+test('expired and duplicate session cookies do not recover private records',async()=>{
+  const f=fixture(),cookie=await f.login(),now=Date.now;
+  try {Date.now=()=>now()+3600001;assert.equal((await f.request('context',undefined,cookie)).status,401);}
+  finally {Date.now=now;}
+  assert.equal((await f.request('context',undefined,cookie+'; '+cookie)).status,401);
+  assert.deepEqual(f.calls,[]);
+});
