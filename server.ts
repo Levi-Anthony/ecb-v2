@@ -19,6 +19,7 @@ import { createBrainInquiryAdapters } from './server/orchestration-brain.js';
 import { systemsEngineeringNativePackages } from './server/native-packages/systems-engineering.js';
 import { executeWorkflow, registerWorkflowTools, workflowContract, workflowError, type WorkflowPorts } from './server/workflow-governance.js';
 import { commissionInstructions, commissionFailure, getCurrentCommission } from './server/current-commission.js';
+import { handlePersonalApp } from './server/personal-app.js';
 
 const SUPABASE_URL = 'https://vezxivrvhakclxuvxzso.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_4mAxzOfWinJcn-98szUEYA_Wh88UdPW';
@@ -958,6 +959,22 @@ app.get('/', (context) => context.json({
 app.options('*', (context) => {
   const rejected = validateMcpHostAndOrigin(context.req.raw);
   return rejected ?? context.text('ok', 200, corsHeaders);
+});
+
+// Personal human door: same BRAIN custody and native workflow controller, with
+// existing first-party authenticated Principal enrollment. Fail closed on unknown users.
+app.all('/personal', async (context) => {
+  const rejected = validateMcpHostAndOrigin(context.req.raw);
+  if (rejected) return rejected;
+  return handlePersonalApp(context.req.raw, {
+    inspect: (cycleId) => workflowPorts.inspect(cycleId),
+    commission: () => getCurrentCommission(process.env.ECB_CURRENT_COMMISSION_THOUGHT_ID, {
+      fetchThought: id => runtime.fetch(id), fetchArtifact: id => runtime.fetchArtifact(id),
+    }),
+    capture: (input) => runtime.capture(input),
+    fetch: (id) => runtime.fetch(id),
+    search: (query, limit) => runtime.search(query, limit),
+  });
 });
 
 // Human/client door over the same native records and controller as the agent door.
