@@ -8,6 +8,7 @@ export const PERSONAL_HTML = String.raw`<!doctype html>
   <style nonce="%%NONCE%%">
     :root { color-scheme:light; --ink:#122c29; --quiet:#5c706b; --line:#d8e3dd; --paper:#f6f8f5; --panel:#fff; --strong:#145c49; --pale:#e7f1ea; --gold:#a66e28; --red:#9c3f31; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
     * { box-sizing:border-box; }
+    [data-space="mt15"] { margin-top:15px; } [data-space="mt10"] { margin-top:10px; } [data-space="mb13"] { margin-bottom:13px; } [data-space="mt7"] { margin-top:7px; } [data-space="mt18"] { margin-top:18px; } [data-space="my18"] { margin:18px 0 8px; }
     html,body { min-height:100%; margin:0; background:var(--paper); color:var(--ink); }
     body { font-size:16px; line-height:1.5; }
     button,input,textarea { font:inherit; }
@@ -110,18 +111,18 @@ export const PERSONAL_HTML = String.raw`<!doctype html>
     <div class="stack">
       <article class="card">
         <div class="row"><span class="eyebrow">Governing commission</span><span class="status">BRAIN current head</span></div>
-        <h2 id="commission-heading" style="margin-top:15px">Recovering current edition…</h2>
+        <h2 id="commission-heading" data-space="mt15">Recovering current edition…</h2>
         <p id="commission-summary" class="muted"></p>
         <div class="current">
           <div class="eyebrow">Next commissioned outcome</div>
-          <p id="commission-next" style="margin-top:10px">Reading current source…</p>
+          <p id="commission-next" data-space="mt10">Reading current source…</p>
           <div class="subtitle" id="commission-standing"></div>
         </div>
         <p class="note" id="commission-limit"></p>
       </article>
       <article class="card">
         <div class="row"><span class="eyebrow">Native workflow • live</span><button class="btn secondary" type="button" id="refresh">Refresh</button></div>
-        <h2 id="cycle-heading" style="margin-top:15px">Reading controller…</h2>
+        <h2 id="cycle-heading" data-space="mt15">Reading controller…</h2>
         <p id="cycle-phase" class="subtitle"></p>
         <div class="columns">
           <div class="metric"><b id="metric-debt">—</b><small>Unpaid obligations</small></div>
@@ -137,7 +138,7 @@ export const PERSONAL_HTML = String.raw`<!doctype html>
   </section>
 
   <section id="panel-map" class="panel" hidden aria-label="Structural navigation">
-    <div class="row" style="margin-bottom:13px"><div><h2>Unfold the work</h2><p class="subtitle">Live controller topology: containing cycle → stage → obligation. Not yet a universal URG map.</p></div></div>
+    <div class="row" data-space="mb13"><div><h2>Unfold the work</h2><p class="subtitle">Live controller topology: containing cycle → stage → obligation. Not yet a universal URG map.</p></div></div>
     <div class="graph-layout">
       <div class="canvas">
         <div class="graph-control">
@@ -154,10 +155,10 @@ export const PERSONAL_HTML = String.raw`<!doctype html>
       </div>
       <div class="side-note">
         <div class="eyebrow">Situated selection</div>
-        <h3 id="selected-title" style="margin-top:7px">Select a structure</h3>
+        <h3 id="selected-title" data-space="mt7">Select a structure</h3>
         <p id="selected-detail">Select a stage to unfold its obligations, or select an obligation to inspect its source criterion.</p>
         <button class="btn secondary" type="button" id="add-selection" disabled>Add to composition</button>
-        <div class="eyebrow" style="margin:18px 0 8px">On-the-spot composition</div>
+        <div class="eyebrow" data-space="my18">On-the-spot composition</div>
         <div id="selection-chips" class="chips"><span class="subtitle">No obligations selected</span></div>
         <div class="actions">
           <button class="btn" type="button" id="compose-view" disabled>Use composed work view</button>
@@ -174,7 +175,7 @@ export const PERSONAL_HTML = String.raw`<!doctype html>
         <div class="eyebrow">Real service action</div>
         <h2>Capture a thought</h2>
         <p class="subtitle">The action preserves source bytes under a stable operation identity. It does not claim semantic enrichment, task completion, or circulation.</p>
-        <label class="field" for="thought-content" style="margin-top:18px">What do you want to remember?</label>
+        <label class="field" for="thought-content" data-space="mt18">What do you want to remember?</label>
         <textarea id="thought-content" placeholder="Capture the actual statement, observation, or work material…"></textarea>
         <div class="actions"><button class="btn" type="button" id="review-capture">Review intended action</button></div>
         <div id="capture-review" class="review" hidden>
