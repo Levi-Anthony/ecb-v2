@@ -162,10 +162,29 @@ export async function handlePersonalApp(
   }
   const action = url.searchParams.get('action');
   if (action !== 'capture') return json({ error: 'unsupported_mutation' }, 403, session);
-  const bytes = await request.text();
-  if (bytes.length > 20000) return json({ error: 'request_too_large' }, 413, session);
+  // Bound streamed bodies before allocation; Content-Length is advisory only.
+  const reader = request.body?.getReader();
+  if (!reader) return json({ error: 'invalid_json' }, 400, session);
+  const decoder = new TextDecoder();
+  let bytes = 0;
+  let body = '';
+  try {
+    while (true) {
+      const part = await reader.read();
+      if (part.done) break;
+      bytes += part.value.byteLength;
+      if (bytes > 20000) {
+        void reader.cancel();
+        return json({ error: 'request_too_large' }, 413, session);
+      }
+      body += decoder.decode(part.value, { stream: true });
+    }
+    body += decoder.decode();
+  } catch {
+    return json({ error: 'request_body_unavailable' }, 400, session);
+  }
   let parsed: unknown;
-  try { parsed = JSON.parse(bytes); } catch { return json({ error: 'invalid_json' }, 400, session); }
+  try { parsed = JSON.parse(body); } catch { return json({ error: 'invalid_json' }, 400, session); }
   if (!isObject(parsed) || parsed.authorized !== true ||
       typeof parsed.operation_id !== 'string' || !UUID.test(parsed.operation_id) ||
       typeof parsed.content !== 'string' || !parsed.content.trim() ||
