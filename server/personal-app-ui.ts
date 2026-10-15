@@ -189,7 +189,6 @@ export const PERSONAL_HTML = String.raw`<!doctype html>
       <article class="card">
         <div class="eyebrow">Action qualification</div>
         <h2>Claim only what happened</h2>
-        <p>**</p>
         <p class="subtitle">Capture, custody verification, semantic qualification, and real-world completion are separate. Success requires returning to the exact stored thought and comparing its content and source.</p>
         <div class="debt">
           <div class="obligation"><span class="number">1</span><div><b>Review and authorize</b><small>You choose whether to make the consequential write.</small></div></div>
