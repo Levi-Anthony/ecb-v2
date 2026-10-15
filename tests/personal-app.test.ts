@@ -114,6 +114,6 @@ test('capture with unavailable readback returns same-identity recovery, not a fa
 });
 test('search is read-only and rejects empty query', async () => {
   assert.equal((await handlePersonalApp(request('search'),ports(),{authorize:authorized})).status,400);
-  const result=await handlePersonalApp(request('search&q=a%20real'),ports(),{authorize:authorized});
+  const result=await handlePersonalApp(new Request(origin + '/api/personal?action=search&q=a%20real'),ports(),{authorize:authorized});
   assert.equal(result.status,200);
 });
