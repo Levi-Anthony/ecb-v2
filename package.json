@@ -20,7 +20,9 @@
     "test:urg": "node --import tsx --test tests/urg-core/contract.test.ts",
     "typecheck:civs": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server/civs.ts server/urg-core.ts tests/civs/contract.test.ts tests/civs/reentry.test.ts tests/civs/portability.test.ts tests/civs/correspondence.test.ts",
     "test:civs": "node --import tsx --test tests/civs/*.test.ts",
-    "qualify:quadrant": "node --import tsx scripts/qualify-quadrant-disclosure.ts"
+    "qualify:quadrant": "node --import tsx scripts/qualify-quadrant-disclosure.ts",
+    "test:workspace": "node --import tsx --test tests/workspace/*.test.ts",
+    "typecheck:workspace": "tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server/personal-workspace.ts server/personal-workspace-view.ts api/workspace.ts api/app.ts tests/workspace/*.test.ts"
   },
   "allowScripts": {
     "onnxruntime-node@1.21.0": true

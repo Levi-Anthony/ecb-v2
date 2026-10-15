@@ -18,6 +18,7 @@ import { produceResponsibilitySet, type RecoveredSource } from './server/respons
 import { createBrainInquiryAdapters } from './server/orchestration-brain.js';
 import { systemsEngineeringNativePackages } from './server/native-packages/systems-engineering.js';
 import { executeWorkflow, registerWorkflowTools, workflowContract, workflowError, type WorkflowPorts } from './server/workflow-governance.js';
+import { createWorkspaceHandler } from './server/personal-workspace.js';
 import { commissionInstructions, commissionFailure, getCurrentCommission } from './server/current-commission.js';
 
 const SUPABASE_URL = 'https://vezxivrvhakclxuvxzso.supabase.co';
@@ -933,6 +934,29 @@ function validateMcpHostAndOrigin(request: Request): Response | undefined {
   return hostHeaderValidationResponse(request, hosts)
     ?? originValidationResponse(request, origins);
 }
+
+const workspaceHandler = createWorkspaceHandler({
+  authenticate: authenticateOrdinaryCredential,
+  sessionSecret: () => requiredEnv('ECB_ORDINARY_DB_KEY'),
+  commission: () => getCurrentCommission(process.env.ECB_CURRENT_COMMISSION_THOUGHT_ID, {
+    fetchThought: id => runtime.fetch(id), fetchArtifact: id => runtime.fetchArtifact(id),
+  }),
+  work: id => workflowPorts.inspect(id),
+  async capture(input) {
+    const data = await rpc<unknown[]>('ecb11_capture_thought', {
+      p_operation_id: input.operationId, p_content: input.content, p_source: input.source,
+      p_captured_at: null, p_producer_context: null, p_parent_operation_id: null,
+    }, 'persistence_failed');
+    const row = Array.isArray(data) ? data[0] as Record<string,unknown> | undefined : undefined;
+    if (!row) throw new Error('capture_failed');
+    return { id: String(row.thought_id), content: String(row.content), source: String(row.source), captured_at: String(row.captured_at) };
+  },
+  fetchThought: id => runtime.fetch(id),
+  createArtifact: input => runtime.createArtifact(input).then(value => value.artifact),
+  fetchArtifact: id => runtime.fetchArtifact(id),
+});
+app.all('/app', context => workspaceHandler(context.req.raw));
+app.all('/workspace', context => workspaceHandler(context.req.raw));
 
 app.get('/', (context) => context.json({
   service: 'ecb-v2-open-brain',
