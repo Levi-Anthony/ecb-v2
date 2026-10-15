@@ -105,7 +105,7 @@ Deno.test("initializes statelessly", async () => {
   assertEquals(typeof body?.result?.protocolVersion, "string");
 });
 
-Deno.test("keeps the three-tool surface and makes capture structurally idempotent", async () => {
+Deno.test("preserves custody tools and adds read-only commission recovery and makes capture structurally idempotent", async () => {
   const response = await request({
     jsonrpc: "2.0",
     id: 2,
@@ -115,7 +115,12 @@ Deno.test("keeps the three-tool surface and makes capture structurally idempoten
   const body = await responseJson(response);
   const tools = body.result.tools;
   const names = tools.map((tool: { name: string }) => tool.name).sort();
-  assertEquals(names, ["capture_thought", "fetch", "search"]);
+  assertEquals(names, [
+    "capture_thought",
+    "fetch",
+    "get_current_commission",
+    "search",
+  ]);
 
   const capture = tools.find((tool: { name: string }) =>
     tool.name === "capture_thought"
@@ -147,7 +152,6 @@ Deno.test("returns operation identity and durable Thought identity through MCP",
   assertEquals(captured.representation.ready, true);
 });
 
-
 Deno.test("stale client capture uses stable event-bound UUID and fails closed without identity", async () => {
   const seen: string[] = [];
   const guarded = createMcpApp({
@@ -156,40 +160,75 @@ Deno.test("stale client capture uses stable event-bound UUID and fails closed wi
       ...runtime,
       async capture(input) {
         seen.push(input.operationId);
-        return { operation_id: input.operationId, replayed: seen.slice(0, -1).includes(input.operationId),
-          thought, representation: { model_id: "gte-small", ready: true } };
+        return {
+          operation_id: input.operationId,
+          replayed: seen.slice(0, -1).includes(input.operationId),
+          thought,
+          representation: { model_id: "gte-small", ready: true },
+        };
       },
     },
   });
   async function legacyCall(args: Record<string, unknown>, key = "test-key") {
     const response = await guarded.request("http://localhost/", {
       method: "POST",
-      headers: { authorization: `Bearer ${key}`, "content-type": "application/json",
-        accept: "application/json, text/event-stream" },
-      body: JSON.stringify({ jsonrpc: "2.0", id: 42, method: "tools/call",
-        params: { name: "capture_thought", arguments: args } }),
+      headers: {
+        authorization: `Bearer ${key}`,
+        "content-type": "application/json",
+        accept: "application/json, text/event-stream",
+      },
+      body: JSON.stringify({
+        jsonrpc: "2.0",
+        id: 42,
+        method: "tools/call",
+        params: { name: "capture_thought", arguments: args },
+      }),
     });
     return { status: response.status, body: await responseJson(response) };
   }
   const core = { content: thought.content, source: thought.source };
   const absent = await legacyCall(core);
-  assertEquals(JSON.parse(absent.body.result.content[0].text).error, "capture_operation_identity_required");
+  assertEquals(
+    JSON.parse(absent.body.result.content[0].text).error,
+    "capture_operation_identity_required",
+  );
   assertEquals(seen.length, 0);
-  const first = await legacyCall({ ...core, captured_at: "2026-10-11T00:18:03Z" });
-  const second = await legacyCall({ ...core, captured_at: "2026-10-11T00:18:03+00:00" });
-  const distinct = await legacyCall({ ...core, captured_at: "2026-10-11T00:18:04Z" });
+  const first = await legacyCall({
+    ...core,
+    captured_at: "2026-10-11T00:18:03Z",
+  });
+  const second = await legacyCall({
+    ...core,
+    captured_at: "2026-10-11T00:18:03+00:00",
+  });
+  const distinct = await legacyCall({
+    ...core,
+    captured_at: "2026-10-11T00:18:04Z",
+  });
   const explicit = await legacyCall({ ...core, operation_id: operationId });
-  const denied = await legacyCall({ ...core, captured_at: "2026-10-11T00:18:05Z" }, "wrong-key");
+  const denied = await legacyCall({
+    ...core,
+    captured_at: "2026-10-11T00:18:05Z",
+  }, "wrong-key");
   assertEquals(denied.status, 401);
   assertEquals(seen.length, 4);
   assertEquals(seen[0], seen[1]);
   assert(seen[0] !== seen[2]);
   assertEquals(seen[3], operationId);
-  assert(/^[0-9a-f]{8}-[0-9a-f]{4}-8[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(seen[0]));
+  assert(
+    /^[0-9a-f]{8}-[0-9a-f]{4}-8[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/
+      .test(seen[0]),
+  );
   assertEquals(JSON.parse(first.body.result.content[0].text).replayed, false);
   assertEquals(JSON.parse(second.body.result.content[0].text).replayed, true);
-  assertEquals(JSON.parse(distinct.body.result.content[0].text).replayed, false);
-  assertEquals(JSON.parse(explicit.body.result.content[0].text).operation_id, operationId);
+  assertEquals(
+    JSON.parse(distinct.body.result.content[0].text).replayed,
+    false,
+  );
+  assertEquals(
+    JSON.parse(explicit.body.result.content[0].text).operation_id,
+    operationId,
+  );
 });
 
 Deno.test("returns an explicit not-found result", async () => {
@@ -415,4 +454,90 @@ Deno.test("search repairs missing representations before hybrid retrieval when p
   assertEquals(embedCalls, 2);
   assertEquals(searched.repair, { attempted: 1, repaired: 1 });
   assertEquals(searched.coverage.degraded, false);
+});
+
+Deno.test("commission startup instruction and authenticated recovery traverse MCP without custody calls", async () => {
+  const { commissionDigest, commissionInstructions } = await import(
+    "./current-commission.ts"
+  );
+  const source = "Edition: mcp-test/1\nPrincipal commission\n";
+  const projection = {
+    contract: "ecos:current-commission:1.0.0",
+    source: {
+      artifact_id: thought.id,
+      sha256: await commissionDigest(source),
+      edition: "mcp-test/1",
+    },
+    authority_refs: [thought.id],
+    standing: "PRINCIPAL_DIRECTED_DISTRIBUTION",
+    summary: "governing decisions",
+    next_action: "qualified next work",
+    limitations: "read only",
+  };
+  let reads = 0;
+  const guarded = createMcpApp({
+    accessKey: "test-key",
+    runtime: {
+      capture: async () => {
+        throw Error("unexpected custody write");
+      },
+      search: async () => {
+        throw Error("unexpected search or repair");
+      },
+      fetch: async () => {
+        throw Error("unexpected legacy fetch");
+      },
+    },
+    commission: {
+      anchorId: thought.id,
+      ports: {
+        fetchThought: async () => {
+          reads++;
+          return {
+            id: thought.id,
+            disposition: {
+              revision_id: operationId,
+              state: "current_commission",
+            },
+            projection: {
+              artifact_id: operationId,
+              kind: "ACTION",
+              content: JSON.stringify(projection),
+            },
+          };
+        },
+        fetchArtifact: async () => {
+          reads++;
+          return { id: thought.id, content: source };
+        },
+      },
+    },
+  });
+  async function call(body: unknown, token = "test-key") {
+    return guarded.request("http://localhost/", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json, text/event-stream",
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(body),
+    });
+  }
+  assertEquals(
+    (await responseJson(await call(initialize))).result.instructions,
+    commissionInstructions,
+  );
+  const invocation = {
+    jsonrpc: "2.0",
+    id: 4,
+    method: "tools/call",
+    params: { name: "get_current_commission", arguments: {} },
+  };
+  assertEquals((await call(invocation, "wrong")).status, 401);
+  assertEquals(reads, 0);
+  const result = (await responseJson(await call(invocation))).result;
+  assertEquals(result.isError, undefined);
+  assertEquals(JSON.parse(result.content[0].text).source_content, source);
+  assertEquals(reads, 3);
 });

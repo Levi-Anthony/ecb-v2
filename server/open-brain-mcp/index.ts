@@ -5,6 +5,13 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { createClient } from "@supabase/supabase-js";
 import { Hono } from "hono";
 import { z } from "zod";
+import {
+  commissionFailure,
+  commissionInstructions,
+  type CommissionPorts,
+  CURRENT_COMMISSION_ANCHOR,
+  getCurrentCommission,
+} from "./current-commission.ts";
 
 declare const Supabase: {
   ai: {
@@ -149,6 +156,7 @@ export type Embedder = (text: string) => Promise<number[]>;
 type AppDependencies = {
   accessKey: string;
   runtime: BrainRuntime;
+  commission?: { anchorId: string; ports: CommissionPorts };
 };
 
 const corsHeaders = {
@@ -181,8 +189,40 @@ function operationFailure(error: unknown, fallback: OperationFailureCode) {
   return failure(code);
 }
 
-function buildServer(runtime: BrainRuntime): McpServer {
-  const server = new McpServer({ name: "ecb-v2-open-brain", version: "0.2.2" });
+function buildServer(
+  runtime: BrainRuntime,
+  commission?: AppDependencies["commission"],
+): McpServer {
+  const server = new McpServer(
+    { name: "ecb-v2-open-brain", version: "0.2.3" },
+    { instructions: commissionInstructions },
+  );
+  server.registerTool("get_current_commission", {
+    title: "Recover Current ECOS Commission",
+    description:
+      "Use before consequential ECOS product or engineering work. No arguments or remembered UUID required. Reads the current admitted navigation Thought, its projection and exact source Artifact; verifies digest, edition and unchanged head. Returns governing decisions, authority limits and next action. No search, embeddings or writes. Recovery grants no execution permission.",
+    annotations: {
+      readOnlyHint: true,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+    inputSchema: {},
+  }, async () => {
+    try {
+      if (!commission) {
+        return {
+          ...result({ error: "commission_anchor_unconfigured" }),
+          isError: true,
+        };
+      }
+      return result(
+        await getCurrentCommission(commission.anchorId, commission.ports),
+      );
+    } catch (error) {
+      return { ...result(commissionFailure(error)), isError: true };
+    }
+  });
 
   server.registerTool(
     "capture_thought",
@@ -205,7 +245,8 @@ function buildServer(runtime: BrainRuntime): McpServer {
     },
     async ({ operation_id, content, source, captured_at }) => {
       try {
-        const operationId = operation_id ?? await legacyCaptureOperationId(content, source, captured_at);
+        const operationId = operation_id ??
+          await legacyCaptureOperationId(content, source, captured_at);
         return result(
           await runtime.capture({
             operationId,
@@ -273,18 +314,33 @@ async function digest(value: string): Promise<Uint8Array> {
  * The caller-supplied timestamp identifies an occurrence, not a server clock.
  */
 async function legacyCaptureOperationId(
-  content: string, source: string, capturedAt?: string,
+  content: string,
+  source: string,
+  capturedAt?: string,
 ): Promise<string> {
-  if (!capturedAt) throw new BrainOperationError("capture_operation_identity_required");
+  if (!capturedAt) {
+    throw new BrainOperationError("capture_operation_identity_required");
+  }
   const bytes = await digest(JSON.stringify([
-    "ecb-v2:edge-capture-legacy:1", source, content, new Date(capturedAt).toISOString(),
+    "ecb-v2:edge-capture-legacy:1",
+    source,
+    content,
+    new Date(capturedAt).toISOString(),
   ]));
   bytes[6] = (bytes[6] & 15) | 128;
   bytes[8] = (bytes[8] & 63) | 128;
-  const hex = Array.from(bytes.subarray(0, 16), (x) => x.toString(16).padStart(2, "0")).join("");
-  return [hex.slice(0, 8), hex.slice(8, 12), hex.slice(12, 16), hex.slice(16, 20), hex.slice(20, 32)].join("-");
+  const hex = Array.from(
+    bytes.subarray(0, 16),
+    (x) => x.toString(16).padStart(2, "0"),
+  ).join("");
+  return [
+    hex.slice(0, 8),
+    hex.slice(8, 12),
+    hex.slice(12, 16),
+    hex.slice(16, 20),
+    hex.slice(20, 32),
+  ].join("-");
 }
-
 
 async function keysMatch(provided: string, expected: string): Promise<boolean> {
   const [providedDigest, expectedDigest] = await Promise.all([
@@ -305,7 +361,9 @@ function bearerToken(request: Request): string | null {
   return token.length > 0 ? token : null;
 }
 
-export function createMcpApp({ accessKey, runtime }: AppDependencies): Hono {
+export function createMcpApp(
+  { accessKey, runtime, commission }: AppDependencies,
+): Hono {
   const app = new Hono();
 
   app.options("*", (context) => context.text("ok", 200, corsHeaders));
@@ -331,7 +389,7 @@ export function createMcpApp({ accessKey, runtime }: AppDependencies): Hono {
       Object.defineProperty(context.req, "raw", { value: patched });
     }
 
-    const server = buildServer(runtime);
+    const server = buildServer(runtime, commission);
     const transport = new StreamableHTTPTransport();
     await server.connect(transport);
     const response = await transport.handleRequest(context);
@@ -504,8 +562,8 @@ function rpcFailure(error: unknown, fallback: OperationFailureCode): never {
   throw new BrainOperationError(fallback);
 }
 
-function createStore(): OrdinaryStore {
-  const supabase = createClient(
+function createOrdinaryClient() {
+  return createClient(
     requiredEnv("SUPABASE_URL"),
     requiredEnv("SUPABASE_ANON_KEY"),
     {
@@ -517,7 +575,10 @@ function createStore(): OrdinaryStore {
       },
     },
   );
+}
 
+function createStore(): OrdinaryStore {
+  const supabase = createOrdinaryClient();
   return {
     async capture({ operationId, content, source, capturedAt }) {
       const { data, error } = await supabase.rpc("ecb11_capture_thought", {
@@ -611,9 +672,50 @@ function createEmbedder(): Embedder {
   };
 }
 
+function createCommissionPorts(): CommissionPorts {
+  const client = createOrdinaryClient();
+  return {
+    async fetchThought(id) {
+      const { data, error } = await client.rpc("eco140_fetch_thought", {
+        p_id: id,
+        p_model_id: MODEL_ID,
+      });
+      if (error) throw new Error("commission_anchor_unavailable");
+      const row = Array.isArray(data) ? data[0] : null;
+      return row
+        ? {
+          id: String(row.id),
+          disposition: {
+            revision_id: String(row.disposition_revision_id),
+            state: String(row.disposition),
+          },
+          projection: {
+            artifact_id: String(row.projection_artifact_id),
+            kind: row.projection_kind,
+            content: String(row.projection_content),
+          },
+        }
+        : null;
+    },
+    async fetchArtifact(id) {
+      const { data, error } = await client.rpc("ecb12_fetch_artifact", {
+        p_id: id,
+      });
+      if (error) throw new Error("commission_source_unavailable");
+      const row = Array.isArray(data) ? data[0] : null;
+      return row ? { id: String(row.id), content: String(row.content) } : null;
+    },
+  };
+}
+
 function createRuntime(): AppDependencies {
   return {
     accessKey: requiredEnv("ECB_BRAIN_KEY"),
+    commission: {
+      anchorId: Deno.env.get("ECB_CURRENT_COMMISSION_THOUGHT_ID") ??
+        CURRENT_COMMISSION_ANCHOR,
+      ports: createCommissionPorts(),
+    },
     runtime: createBrainRuntime(createStore(), createEmbedder()),
   };
 }

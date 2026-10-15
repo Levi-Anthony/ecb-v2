@@ -6,11 +6,12 @@ ROLE: Layer A ordinary-operation MCP
 
 This directory contains the ordinary ECB MCP surface. BUILD 11 keeps the outward tool inventory small while moving mechanically decidable correctness into the database/controller boundary.
 
-The MCP still exposes exactly:
+The managed Edge MCP exposes:
 
 - `capture_thought`;
 - `search`;
-- `fetch`.
+- `fetch`;
+- `get_current_commission` (source-bound read-only recovery).
 
 ## BUILD 11 structural behavior
 
@@ -102,3 +103,23 @@ deno test --allow-env --allow-net --config deno.json index.test.ts
 BUILD 11 database qualification is exercised separately against disposable PostgreSQL 17 + pgvector before any canonical installation.
 
 Body-level MCP authentication remains mandatory. `ECB_BRAIN_KEY`, `ECB_ORDINARY_DB_KEY`, service-role credentials used during commissioning, and database secrets must remain server-side or in ignored local files; none belongs in source, client configuration, logs, or tool results.
+
+## ECO-219 connected commission exposure
+
+The Edge server advertises the same startup recovery instruction as released Node
+commission delivery `a320b47`. Its no-argument `get_current_commission` reads the
+existing admitted anchor `58ec9e33-1b29-4312-90b5-38df68f2064d` (optionally overridden
+by nonsecret `ECB_CURRENT_COMMISSION_THOUGHT_ID`), using existing capability-guarded
+`eco140_fetch_thought` and `ecb12_fetch_artifact` RPCs. It checks the current disposition,
+projection contract, exact source digest and edition, then revalidates the head.
+Missing, changed or unqualified bindings fail explicitly. Recovery performs no
+search, embedding repair, installation or transition. Existing bearer authentication
+and capture/fetch/search contracts are preserved. No new database grant is needed.
+
+`current-commission.ts` is the read-only Edge adaptation of the released Node
+module, using Web Crypto for SHA-256. Keep validation semantics aligned when changing
+either implementation. The admitted anchor is navigation configuration, not a new
+governing source. Server deployment, reflected client inventory and actual fresh-client
+use require separate observations.
+
+Verify with `deno test --config deno.json --allow-env --allow-net index.test.ts current-commission.test.ts`.
