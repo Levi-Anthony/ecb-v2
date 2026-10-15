@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { Script } from 'node:vm';
 import { handlePersonalApp, type PersonalPorts } from '../server/personal-app.js';
 
 const origin = 'https://ecb-v2-eight.vercel.app';
@@ -65,6 +66,10 @@ test('authorized UI is private and carries a nonce-bound CSP', async () => {
   assert.match(html, /Unfold the work/);
   assert.match(html, /Authorize and capture/);
   assert.doesNotMatch(html, /%%NONCE%%/);
+  assert.doesNotMatch(html, / style="/);
+  const script = /<script nonce="[^"]+">([\s\S]*?)<\/script>/.exec(html);
+  assert.ok(script, 'inline interface script present');
+  assert.doesNotThrow(() => new Script(script[1]), 'interface code parses in JavaScript runtime');
 });
 test('cross-origin capture and missing authorization fail before execution', async () => {
   let calls = 0;
