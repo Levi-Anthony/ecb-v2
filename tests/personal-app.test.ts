@@ -117,3 +117,13 @@ test('search is read-only and rejects empty query', async () => {
   const result=await handlePersonalApp(new Request(origin + '/api/personal?action=search&q=a%20real'),ports(),{authorize:authorized});
   assert.equal(result.status,200);
 });
+
+test('oversized streaming POST is rejected before invoking a capture', async () => {
+  let captures = 0;
+  const p=ports();
+  p.capture=async()=>{captures++;return {};};
+  const response=await handlePersonalApp(request('capture','POST',
+    {authorized:true,operation_id:validId,content:'x'.repeat(22000)}),p,{authorize:authorized});
+  assert.equal(response.status,413);
+  assert.equal(captures,0);
+});
