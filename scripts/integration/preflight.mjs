@@ -98,7 +98,8 @@ export async function inspectOpenPRConflicts(repo, prNumber, token) {
     const overlaps = [];
     for (const pr of all) {
       if (pr.number === prNumber) continue;
-      const shared = current.filter(area=>affectedAreas(await fileList(pr.number)).includes(area));
+      const areas = affectedAreas(await fileList(pr.number));
+      const shared = current.filter(area=>areas.includes(area));
       if (shared.length) overlaps.push({pr:pr.number,url:pr.html_url,areas:shared,draft:pr.draft});
     }
     return {state:'SCANNED',current,overlaps,scope:'Shared path families only, not semantic equivalence or GitHub mergeability'};
