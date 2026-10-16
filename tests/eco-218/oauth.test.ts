@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { createLocalJWKSet, exportJWK, generateKeyPair, SignJWT } from 'jose';
 import { bearerChallenge, OAUTH_ISSUER, OAUTH_METADATA_URL, OAUTH_RESOURCE, oauthToolDenial,
   protectedResourceMetadata, verifyOAuthToken } from '../../server/oauth.ts';
-import { handleConsent, safeRedirect, classifyEmailStartFailure, isDefinitivelyInvalidSession } from '../../server/oauth-consent.ts';
+import { handleConsent, safeRedirect, classifyEmailStartFailure } from '../../server/oauth-consent.ts';
 import metadata from '../../api/metadata.ts';
 
 const { privateKey, publicKey } = await generateKeyPair('ES256');
@@ -150,30 +150,28 @@ test('email send status distinguishes real provider throttling from other failur
   assert.equal(classifyEmailStartFailure({ status: 503 }).code, 'email_delivery_unavailable');
 });
 
+const browserAccess = (exp = Date.now()/1000+3600) => 'eyJhbGciOiJIUzI1NiJ9.' + Buffer.from(JSON.stringify({ sub:'constructed-user', exp })).toString('base64url') + '.constructed';
+
 test('transient auth provider failure never erases existing browser cookies or claims a sign-out', async () => {
-  const target = 'https://ecb-v2-eight.vercel.app/oauth/context';
-  const request = () => new Request(target, { headers: { cookie: '__Host-ecb_access=constructed; __Host-ecb_refresh=constructed' } });
-  for (const error of [{ status: 503, code: 'provider_unavailable' }, { status: 0, code: 'network_error' }, { status: 429, code: 'over_request_rate_limit' }]) {
-    const fake = { auth: { setSession: async () => ({ data: { session: null, user: null }, error }) } } as never;
-    const response = await handleConsent(request(), { authClient: fake });
+  for (const error of [{ status: 503 }, { status: 0 }, { status: 429 }]) {
+    const fake = { auth: { getUser: async () => ({ data: { user: null }, error }) } } as never;
+    const response = await handleConsent(new Request('https://ecb-v2-eight.vercel.app/oauth/context', {
+      headers: { cookie: '__Host-ecb_access='+browserAccess()+'; __Host-ecb_refresh=constructed' },
+    }), { authClient: fake });
     assert.equal(response.status, 503);
     assert.equal((await response.json()).code, 'session_check_unavailable');
-    assert.equal(response.headers.get('set-cookie'), null, 'no credential erasure on transient error');
+    assert.equal(response.headers.get('set-cookie'), null);
   }
-  assert.equal(isDefinitivelyInvalidSession({ status: 503 }), false);
-  assert.equal(isDefinitivelyInvalidSession({ code: 'refresh_token_not_found' }), true);
 });
 
-test('definitively rejected browser session is denied and its invalid cookies cleared', async () => {
-  const fake = { auth: { setSession: async () => ({
-    data: { session: null, user: null }, error: { status: 401, code: 'refresh_token_not_found' },
-  }) } } as never;
+test('invalid session is denied without a stale response erasing newer cookies', async () => {
+  const fake = { auth: { getUser: async () => ({ data: { user: null }, error: { status: 401 } }) } } as never;
   const response = await handleConsent(new Request('https://ecb-v2-eight.vercel.app/oauth/context', {
-    headers: { cookie: '__Host-ecb_access=invalid; __Host-ecb_refresh=invalid' },
+    headers: { cookie: '__Host-ecb_access='+browserAccess()+'; __Host-ecb_refresh=invalid' },
   }), { authClient: fake });
-  assert.equal(response.status, 401);
+  assert.equal(response.status, 200);
   assert.deepEqual(await response.json(), { signed_in: false });
-  assert.match(response.headers.get('set-cookie') ?? '', /Max-Age=0/);
+  assert.equal(response.headers.get('set-cookie'), null);
 });
 
 test('signed-in Principal sees a direct route to private work rather than only connector instructions', async () => {
