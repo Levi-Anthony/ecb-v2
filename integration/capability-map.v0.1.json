@@ -50,7 +50,8 @@
       "Linear",
       "reentry"
     ],
-    "stopping": "Do not claim product acceptance until verified situated end-to-end use; hold only affected high-consequence actions while unrelated ordinary work proceeds"
+    "stopping": "Do not claim product acceptance until verified situated end-to-end use; hold only affected high-consequence actions while unrelated ordinary work proceeds",
+    "point_of_view": "Bounded technical lead interpreting Principal product commission; inferred actors must be marked provisional"
   },
   "stakeholders": [
     {
@@ -205,7 +206,7 @@
       "next": "Keep one private authorization model; selectively extract Artifact-save/verify value, not both doors"
     },
     {
-      "id": "PGO",
+      "id": "PGO-DILUTION",
       "url": "https://github.com/Levi-Anthony/ecb-v2/blob/main/docs/inquiry-orchestration.md",
       "owner": "ECO-202/ECO-151",
       "risk": "PGO may be diluted to vague purpose-only guidance",
