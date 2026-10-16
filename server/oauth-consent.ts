@@ -6,7 +6,7 @@ import { OAUTH_CAPABILITIES, OAUTH_RESOURCE, SUPABASE_PUBLISHABLE_KEY, SUPABASE_
 const ORIGIN = new URL(OAUTH_RESOURCE).origin;
 const COOKIES = ['__Host-ecb_access', '__Host-ecb_refresh'] as const;
 const headers = {
-  'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer',
+  'Cache-Control': 'no-store', 'Vary': 'Cookie', 'Referrer-Policy': 'no-referrer',
   'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY',
 };
 function client() {
@@ -19,6 +19,22 @@ function cookie(request: Request, name: string): string {
   return request.headers.get('cookie')?.split(';').map(part => part.trim())
     .find(part => part.startsWith(name + '='))?.slice(name.length + 1) ?? '';
 }
+// Do not interpret every provider failure as an email quota or expired session.
+type AuthFailure = { status?: number; code?: string };
+export function classifyEmailStartFailure(error: AuthFailure) {
+  const throttled = error.status === 429 || error.code === 'over_email_send_rate_limit' ||
+    error.code === 'over_request_rate_limit';
+  return throttled
+    ? { status: 429, code: 'email_throttled', message: 'Email delivery is temporarily limited. Do not request another link yet.' }
+    : { status: 503, code: 'email_delivery_unavailable', message: 'ECB could not send a sign-in email. No new link was confirmed sent.' };
+}
+export function isDefinitivelyInvalidSession(error: AuthFailure) {
+  return error.status === 400 || error.status === 401 || error.status === 403 ||
+    error.code === 'refresh_token_not_found' || error.code === 'refresh_token_already_used' ||
+    error.code === 'session_not_found';
+}
+type ConsentHandlerOptions = { authClient?: ReturnType<typeof client> };
+
 function setCookies(response: Response, access: string, refresh: string) {
   for (const [index, value] of [access, refresh].entries()) {
     response.headers.append('Set-Cookie', `${COOKIES[index]}=${value}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${value ? 604800 : 0}`);
@@ -53,16 +69,16 @@ export function consentPage(nonce: string): string {
   <label class="permission"><input name="capability" type="checkbox" value="preserve" checked><span><b>Preserve</b><small>Capture thoughts and create immutable artifacts.</small></span></label>
   <label class="permission"><input name="capability" type="checkbox" value="transition" checked><span><b>Transition</b><small>Record disposition changes under the existing operation safeguards.</small></span></label></div>
   <button id="approve">Allow connection</button><button id="deny" class="secondary">Deny</button></section>
-  <section id="account" hidden><h2>Your connections</h2><div id="grants"></div><button id="logout" class="secondary">Sign out</button></section>
+  <section id="account" hidden><h2>Your connections</h2><p id="private-workspace" hidden><a href="/api/personal">Open your private ECOS workspace</a></p><div id="grants"></div><button id="logout" class="secondary">Sign out</button></section>
   </main><script nonce="${nonce}">
   const $=id=>document.getElementById(id);const params=new URLSearchParams(location.search);const authorization_id=params.get('authorization_id');
   async function api(action,body){const response=await fetch('/oauth/'+action,{method:body?'POST':'GET',headers:body?{'content-type':'application/json'}:{},body:body?JSON.stringify(body):undefined});const data=await response.json();if(!response.ok)throw new Error(data.message||'The request could not be completed. Please try again.');return data;}
   function status(message){$('status').textContent=message;}
   async function run(action){document.querySelectorAll('button').forEach(b=>b.disabled=true);try{await action();}catch(e){status(e.message);}finally{document.querySelectorAll('button').forEach(b=>b.disabled=false);}}
   async function load(){const data=await api('context'+(authorization_id?'?authorization_id='+encodeURIComponent(authorization_id):''));$('login').hidden=data.signed_in;$('account').hidden=!data.signed_in;$('consent').hidden=true;if(!data.signed_in)return;
-    $('identity').textContent='Signed in as '+data.email;$('grants').replaceChildren();for(const grant of data.grants||[]){const row=document.createElement('p');row.textContent=grant.client_name+' — '+(grant.disconnect_pending?'Access revoked; removal pending':grant.capabilities.join(', '));const button=document.createElement('button');button.className='secondary';button.textContent=grant.disconnect_pending?'Finish disconnecting':'Revoke';button.onclick=()=>run(async()=>{const result=await api('revoke',{client_id:grant.client_id});await load();status(result.native_revocation_pending?'Access is revoked. Select Finish disconnecting to complete removal.':'Connection revoked.');});row.append(document.createElement('br'),button);$('grants').append(row);}
+    $('private-workspace').hidden=!data.enrolled;$('identity').textContent='Signed in as '+data.email;$('grants').replaceChildren();for(const grant of data.grants||[]){const row=document.createElement('p');row.textContent=grant.client_name+' — '+(grant.disconnect_pending?'Access revoked; removal pending':grant.capabilities.join(', '));const button=document.createElement('button');button.className='secondary';button.textContent=grant.disconnect_pending?'Finish disconnecting':'Revoke';button.onclick=()=>run(async()=>{const result=await api('revoke',{client_id:grant.client_id});await load();status(result.native_revocation_pending?'Access is revoked. Select Finish disconnecting to complete removal.':'Connection revoked.');});row.append(document.createElement('br'),button);$('grants').append(row);}
     if(!data.enrolled){status('Signed in as '+data.email+'. Your account is awaiting ECB enrollment. Return to your setup conversation to continue.');return;}
-    if(data.redirect_url){location.assign(data.redirect_url);return;}if(data.authorization){$('consent').hidden=false;$('client-name').textContent=data.authorization.client.client_name||data.consumer;$('scope').textContent='Identity information requested: '+data.authorization.scope;for(const input of document.querySelectorAll('input[name=capability]')){input.disabled=!data.capability_ceiling.includes(input.value);input.checked=!input.disabled;}status('Choose the permissions for this '+data.consumer+' connection.');}else status('Your ECB account is ready. Add the ECB connector in your app to continue.');}
+    if(data.redirect_url){location.assign(data.redirect_url);return;}if(data.authorization){$('consent').hidden=false;$('client-name').textContent=data.authorization.client.client_name||data.consumer;$('scope').textContent='Identity information requested: '+data.authorization.scope;for(const input of document.querySelectorAll('input[name=capability]')){input.disabled=!data.capability_ceiling.includes(input.value);input.checked=!input.disabled;}status('Choose the permissions for this '+data.consumer+' connection.');}else status('Your ECB account is ready. Open your private ECOS workspace above or connect another supported app.');}
   $('email-form').onsubmit=e=>{e.preventDefault();run(async()=>{await api('start',{email:$('email').value,authorization_id});$('code-form').hidden=false;status('Check your email and open the sign-in link in this browser. If your email includes a code, you can enter it here.');});};
   $('code-form').onsubmit=e=>{e.preventDefault();run(async()=>{await api('verify',{email:$('email').value,code:$('code').value});await load();});};
   $('approve').onclick=()=>run(async()=>{const capabilities=Array.from(document.querySelectorAll('input[name=capability]:checked:not(:disabled)')).map(input=>input.value);const data=await api('decision',{authorization_id,action:'approve',capabilities});location.assign(data.redirect_url);});
@@ -72,7 +88,7 @@ export function consentPage(nonce: string): string {
   </script></body></html>`;
 }
 
-export async function handleConsent(request: Request): Promise<Response> {
+export async function handleConsent(request: Request, options: ConsentHandlerOptions = {}): Promise<Response> {
   const url = new URL(request.url);
   const action = url.pathname.split('/').pop();
   const response = (value: unknown, status = 200) => Response.json(value, { status, headers });
@@ -104,7 +120,7 @@ export async function handleConsent(request: Request): Promise<Response> {
       body = value as Record<string, unknown>;
     } catch { return response({ message: 'Invalid request.' }, 400); }
   }
-  const auth = client();
+  const auth = options.authClient ?? client();
   try {
     if (request.method === 'POST' && action === 'start') {
       if (typeof body.email !== 'string' || body.email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) {
@@ -114,7 +130,10 @@ export async function handleConsent(request: Request): Promise<Response> {
       const { error } = await auth.auth.signInWithOtp({ email: body.email, options: {
         emailRedirectTo: `${ORIGIN}/oauth/consent${id ? `?authorization_id=${encodeURIComponent(id)}` : ''}`,
       } });
-      if (error) return response({ message: 'Email sign-in is unavailable or rate-limited. Please try again shortly.' }, 503);
+      if (error) {
+        const failure = classifyEmailStartFailure(error);
+        return response({ code: failure.code, message: failure.message }, failure.status);
+      }
       return response({ sent: true });
     }
     if (request.method === 'POST' && (action === 'verify' || action === 'session')) {
@@ -130,6 +149,12 @@ export async function handleConsent(request: Request): Promise<Response> {
     const access = cookie(request, COOKIES[0]); const refresh = cookie(request, COOKIES[1]);
     if (!access || !refresh) return response({ signed_in: false }, action === 'context' && request.method === 'GET' ? 200 : 401);
     const { data, error } = await auth.auth.setSession({ access_token: access, refresh_token: refresh });
+    if (error && !isDefinitivelyInvalidSession(error)) {
+      // Provider/network errors do not establish that the client session is invalid.
+      // Clearing cookies here makes a transient outage into an unnecessary new email sign-in.
+      return response({ code: 'session_check_unavailable',
+        message: 'Session verification is temporarily unavailable. Your browser session was not cleared.' }, 503);
+    }
     if (error || !data.session || !data.user || decodeJwt(data.session.access_token).client_id) {
       return setCookies(response({ signed_in: false }, 401), '', '');
     }
