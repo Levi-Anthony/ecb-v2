@@ -38,3 +38,12 @@ test('no live credentials gives UNVERIFIED, never a false clean result', async (
   assert.equal(result.state,'UNVERIFIED');
   assert.match(report(map,[],result),/Live PR overlap scan: UNVERIFIED/);
 });
+
+test('semantic contract cannot be replaced by the list of missing tests or a generic adapter pointer', () => {
+  const wrong=clone();
+  wrong.capabilities[0].semantic_contract.meaning=wrong.capabilities[0].acceptance.missing;
+  delete wrong.capabilities[1].physical_adapter.description;
+  const problems=validateIndex(wrong).join('\n');
+  assert.match(problems,/portable contract collapsed/);
+  assert.match(problems,/physical_adapter.description/);
+});
