@@ -1,5 +1,5 @@
-import { readFileSync, existsSync, appendFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { readFileSync, realpathSync, statSync, appendFileSync } from 'node:fs';
+import { join, resolve, relative, isAbsolute, sep, win32 } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
@@ -7,7 +7,23 @@ const MAP = join(ROOT, 'integration/capability-map.v0.1.json');
 const requiredPGO = ['source','focal','containing_whole','initiating_contrast','point_of_view','intended_end_state','definition_of_done','discrimination','authority','stopping','scope'];
 const liveStandings = new Set(['DESCRIBED','CODE_PRESENT','INSTALLED','DEPLOYED','MECHANICALLY_VERIFIED','ACTUAL_USE_VALIDATED']);
 
-export function validateIndex(index, sourceExists = p => existsSync(resolve(ROOT, p))) {
+// A source pointer is a regular file inside this checkout, not just an existing path.
+// Check both the supplied path and its canonical target; symlinks can cross the boundary.
+export function isRepositoryFile(path) {
+  if (typeof path !== 'string' || !path.trim() || isAbsolute(path) || win32.isAbsolute(path) || path.includes('\\\\') || path.includes('\\0')) return false;
+  const inside = rel => rel.length > 0 && rel !== '..' && !rel.startsWith('..' + sep) && !isAbsolute(rel);
+  const candidate = resolve(ROOT, path);
+  if (!inside(relative(ROOT, candidate))) return false;
+  try {
+    const target = realpathSync(candidate);
+    if (!inside(relative(realpathSync(ROOT), target))) return false;
+    return statSync(target).isFile();
+  } catch {
+    return false;
+  }
+}
+
+export function validateIndex(index, sourceExists = isRepositoryFile) {
   const errors = [];
   const nonempty = (value, label) => {
     if (typeof value !== 'string' || value.trim().length < 5) errors.push(label + ': missing or unusably short');
