@@ -10,7 +10,7 @@ const liveStandings = new Set(['DESCRIBED','CODE_PRESENT','INSTALLED','DEPLOYED'
 // A source pointer is a regular file inside this checkout, not just an existing path.
 // Check both the supplied path and its canonical target; symlinks can cross the boundary.
 export function isRepositoryFile(path) {
-  if (typeof path !== 'string' || !path.trim() || isAbsolute(path) || win32.isAbsolute(path) || path.includes('\\\\') || path.includes('\\0')) return false;
+  if (typeof path !== 'string' || !path.trim() || isAbsolute(path) || win32.isAbsolute(path) || path.includes(String.fromCharCode(92)) || path.includes(String.fromCharCode(0))) return false;
   const inside = rel => rel.length > 0 && rel !== '..' && !rel.startsWith('..' + sep) && !isAbsolute(rel);
   const candidate = resolve(ROOT, path);
   if (!inside(relative(ROOT, candidate))) return false;
