@@ -1,0 +1,219 @@
+{
+  "schema": "ecos-integration-projection-v0.1",
+  "standing": "WORKING_INTEGRATION_PROJECTION_NOT_SEMANTIC_OR_WORKFLOW_AUTHORITY",
+  "baseline": {
+    "main_sha": "16065905d28ac1946a50f2b200648fa61ac6a878",
+    "date": "2026-10-15",
+    "currentness": "Check fresh GitHub main and canonical BRAIN head; the baseline is not a claim of current native standing"
+  },
+  "pgo": {
+    "source": "docs/current-product-delivery-commission.md",
+    "standing": "PRINCIPAL_DIRECTED_PRODUCT_WITH_EXPLICIT_WORKING_DISCRIMINATION",
+    "focal": "Usable situated personal SIGMA/ECOS application across authorized workers, devices, accounts and physical-world participation",
+    "containing_whole": "Principal, device and service topology, credentials, workers, BRAIN, code and provider constraints—not the GitHub repository alone",
+    "initiating_contrast": "Competing human doors; prior implementation branches lacking current integration; strong PGO losing operative discrimination",
+    "mapper": "Bounded technical lead interpreting Principal product commission; inferred actors must be marked provisional",
+    "intended_end_state": "Principal captures, recovers governing state, authorizes a real service action, verifies the actual outcome and resumes without repeating context",
+    "definition_of_done": [
+      "Source-bound cold-worker current commission and next obligation recovered without Principal recap",
+      "One private phone interface completes actual Principal-authenticated capture, real authorized service action, verified result and later resumption",
+      "Earned older contracts remain recoverable while superseded code cannot silently outrank current sources",
+      "Authority, identity and work persist and recover across interrupted workers, devices and services"
+    ],
+    "discrimination": {
+      "method": "For each proposed change compare situated success, installed adapters, actual grounded evidence, alternative methods and omission costs; trace affected old and destination new obligations; use positive and negative consumer tests, not source wording as proof",
+      "helps": [
+        "New worker recovers current authorized work and acts without replayed human onboarding",
+        "Phone client can preserve and verify one real result with exact readback",
+        "Old qualifying mechanism is extracted while its superseded theory stays historical"
+      ],
+      "hinders": [
+        "PR #109 second /app identity model merges independently beside deployed /api/personal",
+        "Worker reduces PGO to 'ship an app' and drops definition of done and help/hinder discrimination",
+        "GitHub green build is mislabeled actual Principal acceptance",
+        "Device/account trust boundary disappears from product scope"
+      ],
+      "method_example": "The competing interfaces count as hinder unless their capabilities are reconciled into one agreed trust and work path; the independently verified Artifact-save specimen may help without importing its credential/session design",
+      "stopping": "Do not claim product acceptance until verified situated end-to-end use; hold only affected high-consequence actions while unrelated ordinary work proceeds"
+    },
+    "authority": "Principal product and consequential effect authorization; technical lead chooses engineering methods within authorized execution",
+    "scope": [
+      "mobile",
+      "desktop",
+      "accounts",
+      "credentials",
+      "authorized workers",
+      "physical participation",
+      "Supabase BRAIN",
+      "GitHub",
+      "Vercel",
+      "Linear",
+      "reentry"
+    ]
+  },
+  "stakeholders": [
+    {
+      "kind": "Principal",
+      "standing": "OBSERVED",
+      "value": "Useful, resilient personal action with minimal explanation burden"
+    },
+    {
+      "kind": "authorized technical workers",
+      "standing": "ROLE—ACTUAL PARTICIPATION MUST BE VERIFIED",
+      "value": "Correct current task and low-friction source/adapter/action recovery"
+    },
+    {
+      "kind": "hypothetical public clients",
+      "standing": "NOT_CURRENT_STAKEHOLDER_ACCEPTANCE",
+      "value": "Do not add unsupported requirements"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "orientation",
+      "semantic_contract": {
+        "source": "docs/inquiry-orchestration.md",
+        "meaning": "PGO version/currentness/adequacy through actual cold worker, distinct from semantic ratification",
+        "standing": "QUALIFIED_SOURCE_REQUIRED"
+      },
+      "physical_adapter": {
+        "source": "docs/workflow-governance.md",
+        "standing": "ISOLATED_PROOF_NOT_QUALIFIED_LIVE_ENFORCEMENT"
+      },
+      "durable_control": {
+        "source": "docs/worker-entry-evidence-discovery.md",
+        "owner": "ECO-151/ECO-202",
+        "reentry": "Recover current native source and next governed action; do not infer authority from a role name"
+      },
+      "acceptance": {
+        "missing": "PGO version/currentness/adequacy through actual cold worker, distinct from semantic ratification"
+      }
+    },
+    {
+      "id": "native-work",
+      "semantic_contract": {
+        "source": "docs/workflow-governance.md",
+        "meaning": "Auth workflow actor, current unpaid debts, correct versioned state transitions and complete closure",
+        "standing": "QUALIFIED_SOURCE_REQUIRED"
+      },
+      "physical_adapter": {
+        "source": "server/workflow-governance.ts",
+        "standing": "INSTALLED_HISTORICALLY"
+      },
+      "durable_control": {
+        "source": "research/workflow-governance/2026-10-10-production-cycle-plan.json",
+        "owner": "ECO-202",
+        "reentry": "Recover current native source and next governed action; do not infer authority from a role name"
+      },
+      "acceptance": {
+        "missing": "Auth workflow actor, current unpaid debts, correct versioned state transitions and complete closure"
+      }
+    },
+    {
+      "id": "human-door",
+      "semantic_contract": {
+        "source": "docs/current-product-delivery-commission.md",
+        "meaning": "Repair sign-in then verify identity, enrollment and actual full mobile action/resumption",
+        "standing": "QUALIFIED_SOURCE_REQUIRED"
+      },
+      "physical_adapter": {
+        "source": "server/personal-app.ts",
+        "standing": "PRODUCTION_DEPLOYED_NOT_ACTUAL_PRINCIPAL_ACCEPTED"
+      },
+      "durable_control": {
+        "source": "docs/current-product-delivery-commission.md",
+        "owner": "ECO-202/ECO-218",
+        "reentry": "Recover current native source and next governed action; do not infer authority from a role name"
+      },
+      "acceptance": {
+        "missing": "Repair sign-in then verify identity, enrollment and actual full mobile action/resumption"
+      }
+    },
+    {
+      "id": "commission-distribution",
+      "semantic_contract": {
+        "source": "docs/current-product-delivery-commission.md",
+        "meaning": "Reconcile PR #108 deployed source with repository and qualify cross-client use",
+        "standing": "QUALIFIED_SOURCE_REQUIRED"
+      },
+      "physical_adapter": {
+        "source": "server/open-brain-mcp/index.ts",
+        "standing": "EDGE_V7_DEPLOYED_REPORTED_UNMERGED_SOURCE"
+      },
+      "durable_control": {
+        "source": "server/current-commission.ts",
+        "owner": "ECO-219/ECO-218",
+        "reentry": "Recover current native source and next governed action; do not infer authority from a role name"
+      },
+      "acceptance": {
+        "missing": "Reconcile PR #108 deployed source with repository and qualify cross-client use"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "id": "VALUE-01",
+      "stakeholder": "Principal",
+      "outcome": "Continuity without recap",
+      "source": "docs/current-product-delivery-commission.md",
+      "owner": "ECO-219",
+      "acceptance": "Cold receiving worker correctly uses exact current commission",
+      "standing": "BOUNDED_CHATGPT_PASS"
+    },
+    {
+      "id": "VALUE-02",
+      "stakeholder": "Principal",
+      "outcome": "Useful mobile action",
+      "source": "docs/current-product-delivery-commission.md",
+      "owner": "ECO-202/ECO-218",
+      "acceptance": "Observed authenticated capture, actual action, verification, resumption",
+      "standing": "NOT_ACCEPTED"
+    },
+    {
+      "id": "VALUE-03",
+      "stakeholder": "Principal",
+      "outcome": "Strong PGO preservation",
+      "source": "docs/inquiry-orchestration.md",
+      "owner": "ECO-202/ECO-151",
+      "acceptance": "Cold worker recovers and exercises definition of done and helps/hinders method",
+      "standing": "METHOD_PROJECTION_ONLY"
+    },
+    {
+      "id": "VALUE-04",
+      "stakeholder": "Principal",
+      "outcome": "Whole-boundary topology",
+      "source": "docs/current-product-delivery-commission.md",
+      "owner": "ECO-208/ECO-218",
+      "acceptance": "Qualified nonsecret account/device/service map and cross-device reentry",
+      "standing": "UNQUALIFIED"
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "PR-108",
+      "url": "https://github.com/Levi-Anthony/ecb-v2/pull/108",
+      "owner": "ECO-219",
+      "risk": "Edge v7 reportedly deployed from draft unmerged source",
+      "next": "Byte-check deployed Edge to PR and selected main integration; no unneeded redeploy"
+    },
+    {
+      "id": "PR-109",
+      "url": "https://github.com/Levi-Anthony/ecb-v2/pull/109",
+      "owner": "ECO-202/ECO-218",
+      "risk": "Overlapping private /app and /api/personal session/UX; PR not mergeable",
+      "next": "Keep one private authorization model; selectively extract Artifact-save/verify value, not both doors"
+    },
+    {
+      "id": "PGO",
+      "url": "https://github.com/Levi-Anthony/ecb-v2/blob/main/docs/inquiry-orchestration.md",
+      "owner": "ECO-202/ECO-151",
+      "risk": "PGO may be diluted to vague purpose-only guidance",
+      "next": "Positive/negative case-based situated adequacy test against governing source"
+    }
+  ],
+  "limits": [
+    "Not canonical BRAIN or ratified theory",
+    "Structural CI passing does not prove semantic adequacy, actual runtime or actual-use validation",
+    "Advisory on unaffected work; hold only independently identified consequential defect"
+  ]
+}
