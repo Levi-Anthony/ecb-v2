@@ -1,0 +1,10 @@
+[
+  {"query":"Someone labeled this proposal accepted in a comment, but the constitutional decision route may not have run. Determine what standing it actually has.","should_trigger":true},
+  {"query":"Production behaves correctly, yet the closure receipt is missing. Tell me what operational evidence establishes and what it cannot establish about currentness.","should_trigger":true},
+  {"query":"The search result ranked this memo first and it contradicts the build contract. Audit whether retrieval rank supplies any authority or supersession basis.","should_trigger":true},
+  {"query":"Before we let the agent execute this governance action, trace the claimed warrant to actor, operation, scope, and recorded authorization.","should_trigger":true},
+  {"query":"I know the exact sources that govern. Orient a new worker to the purpose, focal object, current phase, open loops, and next seam.","should_trigger":false},
+  {"query":"Extract testable requirements and acceptance failures from this source packet without introducing implementation decisions.","should_trigger":false},
+  {"query":"Run the complete Sense, Shape, Move, and Metabolize cycle for this already-authorized bounded experiment.","should_trigger":false},
+  {"query":"Summarize the differences between these two markdown files; neither file makes claims about governance status or permission.","should_trigger":false}
+]

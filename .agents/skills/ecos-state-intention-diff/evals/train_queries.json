@@ -1,0 +1,14 @@
+[
+  {"query":"Compare the live MCP runtime against the ratified ordinary-operation contract and classify each behavioral obligation as realized, deferred, drifted, or unobservable.","should_trigger":true},
+  {"query":"The implementation passes its local tests, but I need to know whether it still serves the containing Master Key. Produce an intention-versus-evidence audit by function.","should_trigger":true},
+  {"query":"Determine whether this missing transition is deliberately withheld by the design or accidentally absent from the current repository and runtime.","should_trigger":true},
+  {"query":"Use the supplied architecture source and production traces to identify the smallest consequential mismatch; do not turn every difference into a build ticket.","should_trigger":true},
+  {"query":"The code uses different vocabulary from the contract. Compare actual affordances and failure behavior rather than matching filenames or labels.","should_trigger":true},
+  {"query":"Real use suggests the local control is preserving itself at the expense of the larger system purpose. Test that suspected drift across altitudes.","should_trigger":true},
+  {"query":"Show the textual diff between these two commits and list the files whose lines changed.","should_trigger":false},
+  {"query":"Extract behavioral requirements from this research note; there is no implementation or runtime evidence to compare yet.","should_trigger":false},
+  {"query":"Audit whether this deployment receipt is authoritative and whether its PASS actually verifies the proposition being claimed.","should_trigger":false},
+  {"query":"Recover the current build, phase, focal object, source precedence, and next legitimate seam for a cold session.","should_trigger":false},
+  {"query":"Run the existing runtime test suite and report failures exactly as observed without interpreting architectural intent.","should_trigger":false},
+  {"query":"Preserve the unresolved provider question with its trigger and route because current evidence cannot discriminate the alternatives.","should_trigger":false}
+]
