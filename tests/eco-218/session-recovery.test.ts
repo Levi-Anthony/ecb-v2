@@ -148,3 +148,33 @@ test('context returns credential-free cause; personal door denies all work and r
   }
   assert.equal(workCalls,0);
 });
+
+test('each sanitized recoverable cause traverses the locked refresh path once, then retries private read', async () => {
+  for (const code of [
+    'session_refresh_required', 'session_access_missing_recoverable',
+    'session_access_malformed_recoverable', 'session_access_invalid_recoverable',
+    'session_provider_rejected_recoverable',
+  ]) {
+    let restored = false, refreshes = 0, privateReads = 0;
+    const fetch = async (url: string) => {
+      if (url === '/oauth/context') return Response.json(restored ? {signed_in:true} : {code},
+        {status:restored ? 200 : 401});
+      if (url === '/oauth/refresh') {
+        refreshes++; restored = true; return Response.json({signed_in:true});
+      }
+      if (url === '/api/personal?action=load') {
+        privateReads++;
+        return Response.json(restored ? {work:true} : {error:code}, {status:restored ? 200 : 401});
+      }
+      throw Error('unexpected fetch target');
+    };
+    const execute = new Script(BROWSER_SESSION_SCRIPT + ';sessionFetch').runInNewContext({
+      fetch, navigator: {locks:{request:async (_key:string,fn:()=>Promise<unknown>)=>fn()}}, Promise, Error,
+    }) as (url:string)=>Promise<Response>;
+    const result = await execute('/api/personal?action=load');
+    assert.equal(result.status,200,code);
+    assert.deepEqual(await result.json(), {work:true});
+    assert.equal(refreshes,1,code);
+    assert.equal(privateReads,2,code);
+  }
+});
