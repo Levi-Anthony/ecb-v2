@@ -169,8 +169,9 @@ test('invalid session is denied without a stale response erasing newer cookies',
   const response = await handleConsent(new Request('https://ecb-v2-eight.vercel.app/oauth/context', {
     headers: { cookie: '__Host-ecb_access='+browserAccess()+'; __Host-ecb_refresh=invalid' },
   }), { authClient: fake });
-  assert.equal(response.status, 200);
-  assert.deepEqual(await response.json(), { signed_in: false });
+  assert.equal(response.status, 401);
+  assert.deepEqual(await response.json(), { code: 'session_provider_rejected_recoverable',
+    message: 'Session recovery is required in this browser.' });
   assert.equal(response.headers.get('set-cookie'), null);
 });
 
