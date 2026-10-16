@@ -1,0 +1,24 @@
+name: ECOS integration preflight (advisory)
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  advisory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Test PGO and source visibility controls
+        run: node --test tests/integration/preflight.test.mjs
+      - name: Check indexed contracts and report live PR overlap
+        run: node scripts/integration/preflight.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
