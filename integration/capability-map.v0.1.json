@@ -4,7 +4,7 @@
   "baseline": {
     "main_sha": "16065905d28ac1946a50f2b200648fa61ac6a878",
     "date": "2026-10-15",
-    "currentness": "Check fresh GitHub main and canonical BRAIN head; the baseline is not a claim of current native standing"
+    "currentness": "Main source SHA is a recorded engineering basis, not a live current-head claim. On review refresh GitHub and BRAIN separately."
   },
   "pgo": {
     "source": "docs/current-product-delivery-commission.md",
@@ -75,17 +75,18 @@
       "id": "orientation",
       "semantic_contract": {
         "source": "docs/inquiry-orchestration.md",
-        "meaning": "PGO version/currentness/adequacy through actual cold worker, distinct from semantic ratification",
+        "meaning": "For each consequential inquiry there is an active, sufficiently situated Principal Governing Orientation; its focal referent, intended end state, definition of done, positive helps/hinders discrimination, examples, evidence and stopping govern selection. Exact Resolution, qualification, current binding and authority are distinct. PGO cannot manufacture reality evidence or semantic standing.",
         "standing": "QUALIFIED_SOURCE_REQUIRED"
       },
       "physical_adapter": {
         "source": "docs/workflow-governance.md",
-        "standing": "ISOLATED_PROOF_NOT_QUALIFIED_LIVE_ENFORCEMENT"
+        "standing": "ISOLATED_PROOF_NOT_QUALIFIED_LIVE_ENFORCEMENT",
+        "description": "Working inquiry guidance in docs/inquiry-orchestration.md; ECO-151 physical Shape and ECO-152 disposable-postgres qualified orientation lifecycle are prior evidence, not an established production orientation binding."
       },
       "durable_control": {
         "source": "docs/worker-entry-evidence-discovery.md",
         "owner": "ECO-151/ECO-202",
-        "reentry": "Recover current native source and next governed action; do not infer authority from a role name"
+        "reentry": "Recover current Greenfield commission/head and source-qualified PGO, test sufficiency for the specific decision, then inspect ECO-151/152 actual installed-status before invoking any current binding."
       },
       "acceptance": {
         "missing": "PGO version/currentness/adequacy through actual cold worker, distinct from semantic ratification"
@@ -95,17 +96,18 @@
       "id": "native-work",
       "semantic_contract": {
         "source": "docs/workflow-governance.md",
-        "meaning": "Auth workflow actor, current unpaid debts, correct versioned state transitions and complete closure",
+        "meaning": "A native outcome-oriented cycle preserves its containing result, current PGO, child dependencies, required obligations, validated receipts and unpaid debt. Authorized transitions use version/operation identity and do not equate local PASS with whole completion.",
         "standing": "QUALIFIED_SOURCE_REQUIRED"
       },
       "physical_adapter": {
         "source": "server/workflow-governance.ts",
-        "standing": "INSTALLED_HISTORICALLY"
+        "standing": "INSTALLED_HISTORICALLY",
+        "description": "Greenfield ecb_workflow PostgreSQL cycles/obligations/proposals/results with server/workflow-governance.ts and protected workflow inspect/command; last inspected root remains open, not certified complete."
       },
       "durable_control": {
         "source": "research/workflow-governance/2026-10-10-production-cycle-plan.json",
         "owner": "ECO-202",
-        "reentry": "Recover current native source and next governed action; do not infer authority from a role name"
+        "reentry": "Authenticate as a commissioned allowed actor, inspect root 40ca3bbd-c905-4ec5-b202-bfb49fcd6605 and current child, select first eligible unpaid obligation; use workflow_command with exact version/operation ID."
       },
       "acceptance": {
         "missing": "Auth workflow actor, current unpaid debts, correct versioned state transitions and complete closure"
@@ -115,17 +117,18 @@
       "id": "human-door",
       "semantic_contract": {
         "source": "docs/current-product-delivery-commission.md",
-        "meaning": "Repair sign-in then verify identity, enrollment and actual full mobile action/resumption",
+        "meaning": "The Principal's private mobile-first entry reuses source-qualified BRAIN and native workflow; it must support review/authorization, a real service action, independent readback and resumption under one first-party verified identity. Human and agent doors share native authority but not credential/session affordances.",
         "standing": "QUALIFIED_SOURCE_REQUIRED"
       },
       "physical_adapter": {
         "source": "server/personal-app.ts",
-        "standing": "PRODUCTION_DEPLOYED_NOT_ACTUAL_PRINCIPAL_ACCEPTED"
+        "standing": "PRODUCTION_DEPLOYED_NOT_ACTUAL_PRINCIPAL_ACCEPTED",
+        "description": "Production GitHub main server/personal-app.ts via Vercel /api/personal; Supabase Auth email callback and explicit Principal enrollment gate. Distinct PR #109 /app alternative not incorporated."
       },
       "durable_control": {
         "source": "docs/current-product-delivery-commission.md",
         "owner": "ECO-202/ECO-218",
-        "reentry": "Recover current native source and next governed action; do not infer authority from a role name"
+        "reentry": "Read current production deployment, inspect hosted Supabase Auth URL Site URL and exact consent redirect, repair only with authorized provider control, verify session/identity before separate enrollment and real phone acceptance."
       },
       "acceptance": {
         "missing": "Repair sign-in then verify identity, enrollment and actual full mobile action/resumption"
@@ -135,17 +138,18 @@
       "id": "commission-distribution",
       "semantic_contract": {
         "source": "docs/current-product-delivery-commission.md",
-        "meaning": "Reconcile PR #108 deployed source with repository and qualify cross-client use",
+        "meaning": "An authorized interlocutor discovers and recovers the unique current admitted commission from canonical BRAIN; source edition/digest, projection, unchanged current head and authority limitations are checked before acting. Actual client receipt is distinct from server tool availability.",
         "standing": "QUALIFIED_SOURCE_REQUIRED"
       },
       "physical_adapter": {
         "source": "server/open-brain-mcp/index.ts",
-        "standing": "EDGE_V7_DEPLOYED_REPORTED_UNMERGED_SOURCE"
+        "standing": "EDGE_V7_DEPLOYED_REPORTED_UNMERGED_SOURCE",
+        "description": "Node MCP via deployed Vercel /api/mcp; separately deployed Supabase Edge open-brain-mcp v7 was reported to expose get_current_commission, while exact source remains draft PR #108."
       },
       "durable_control": {
         "source": "server/current-commission.ts",
         "owner": "ECO-219/ECO-218",
-        "reentry": "Recover current native source and next governed action; do not infer authority from a role name"
+        "reentry": "ECO-219 worker checks deployed Edge code versus source PR #108 and current Node, then uses supported client refresh and cold-worker reception to verify source-bound current edition without memory-only identifiers."
       },
       "acceptance": {
         "missing": "Reconcile PR #108 deployed source with repository and qualify cross-client use"
