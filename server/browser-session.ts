@@ -63,7 +63,7 @@ export async function readBrowserSession(request: Request, injected?: BrowserAut
 // Same-origin Web Locks coordinate cookie writers across tabs in the SAME browser profile.
 // No unsafe in-memory fallback across tabs; unsupported browsers get an explicit disposition.
 export const BROWSER_SESSION_SCRIPT = String.raw`
-const recoveryCodes=new Set(["session_refresh_required","session_access_missing_recoverable","session_access_malformed_recoverable","session_access_invalid_recoverable","session_provider_rejected_recoverable"]);
+const recoveryCodes=new Set(${JSON.stringify(RECOVERABLE_SESSION_CODES)});
 const sessionLock=fn=>{
   if(!navigator.locks)return Promise.reject(new Error('Session recovery needs a browser with Web Locks. Open ECOS in current Safari. No new email is needed.'));
   return navigator.locks.request('ecb-browser-session',fn);
