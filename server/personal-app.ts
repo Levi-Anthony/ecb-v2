@@ -1,6 +1,6 @@
 import { randomBytes } from 'node:crypto';
 import { OAUTH_RESOURCE } from './oauth.js';
-import { readBrowserSession, BROWSER_SESSION_SCRIPT, type BrowserAuthClient } from './browser-session.js';
+import { readBrowserSession, isRecoverableSessionCode, BROWSER_SESSION_SCRIPT, type BrowserAuthClient } from './browser-session.js';
 import { PERSONAL_HTML } from './personal-app-ui.js';
 
 const ORIGIN = new URL(OAUTH_RESOURCE).origin;
@@ -87,14 +87,27 @@ export async function handlePersonalApp(
   if ('status' in session) {
     if (request.method === 'GET' && !url.searchParams.has('action')) {
       const nonce = randomBytes(18).toString('base64url');
-      const recovering = session.code === 'session_refresh_required';
-      const message = recovering ? 'Restoring your existing browser session…' : session.status === 503
-        ? 'Session verification is temporarily unavailable. Retry this page; your browser session was preserved.'
-        : session.status === 403 ? 'This account is not currently enrolled. No work data is exposed.'
-        : 'Authentication is required. No work data is exposed.';
+      const recovering = isRecoverableSessionCode(session.code);
+      const message = recovering ? session.code === 'session_access_missing_recoverable'
+        ? 'The access credential is missing; checking whether your existing session can recover…'
+        : session.code === 'session_access_malformed_recoverable' || session.code === 'session_access_invalid_recoverable'
+          ? 'The access credential is invalid; checking the existing recovery credential…'
+          : session.code === 'session_provider_rejected_recoverable'
+            ? 'The identity provider rejected the access credential; checking existing session recovery…'
+            : 'Restoring your existing browser session…'
+        : session.status === 503
+          ? 'Session verification is temporarily unavailable. Retry this page; your browser session was preserved.'
+          : session.status === 403 ? 'This account is not currently enrolled. No work data is exposed.'
+          : session.code === 'session_refresh_missing'
+            ? 'The session recovery credential is missing from this browser profile. No work data is exposed.'
+            : session.code === 'session_identity_mismatch'
+              ? 'The browser session identity did not match. No work data is exposed.'
+              : session.code === 'session_missing'
+                ? 'No session is available in this browser profile. No work data is exposed.'
+                : 'Authentication is required. No work data is exposed.';
       return wrap('<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1">' +
         '<title>ECOS | Session</title><main><h1>ECOS private work surface</h1><p id="status">' + message + '</p>' +
-        (session.code === 'sign_in_required' ? '<p><a href="/oauth/consent">Sign in with your ECB account</a></p>' : '<p><a href="/api/personal">Retry workspace</a></p>') +
+        (!recovering && session.status === 401 ? '<p><a href="/oauth/consent">Sign in with your ECB account</a></p>' : '<p><a href="/api/personal">Retry workspace</a></p>') +
         '<p id="session-signin" hidden><a href="/oauth/consent">Sign in when ready</a></p></main>' + (recovering ? '<script nonce="' + nonce + '">' + BROWSER_SESSION_SCRIPT +
           "sessionFetch('/oauth/context').then(async r=>{const d=await r.json();if(r.ok&&d.signed_in)location.reload();else document.getElementById('status').textContent=d.message||'Session recovery is unavailable. Retry this page.';}).catch(e=>{if(e.code==='session_reauthentication_required'){document.getElementById('status').textContent='The provider rejected this session. Sign in when ready; no new email was requested.';document.getElementById('session-signin').hidden=false;return;}document.getElementById('status').textContent=navigator.locks?'Session recovery is unavailable. Retry this page; no new email is needed.':'Open ECOS in current Safari for session recovery. No new email is needed.';});</script>" : ''),
         session.status, 'text/html; charset=utf-8', undefined, nonce);

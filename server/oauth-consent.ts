@@ -17,6 +17,18 @@ export function classifyEmailStartFailure(error: AuthFailure) {
     ? { status: 429, code: 'email_throttled', message: 'Email delivery is temporarily limited. Do not request another link yet.' }
     : { status: 503, code: 'email_delivery_unavailable', message: 'ECB could not send a sign-in email. No new link was confirmed sent.' };
 }
+// Provider responses are untrusted even when no error accompanies them.
+// Reject incomplete or cookie-unsafe sessions before any Set-Cookie header.
+function safeSessionPair(session: { access_token?: unknown; refresh_token?: unknown } | null | undefined): session is { access_token: string; refresh_token: string } {
+  const safe = (value: unknown): value is string =>
+    typeof value === 'string' && value.length > 0 && /^[A-Za-z0-9._~+=/-]+$/.test(value);
+  return Boolean(session && safe(session.access_token) && safe(session.refresh_token));
+}
+const TERMINAL_REFRESH_ERRORS = new Set([
+  'refresh_token_not_found', 'refresh_token_already_used', 'session_not_found',
+  'session_expired', 'user_not_found', 'user_banned', 'invalid_credentials',
+]);
+
 type ConsentHandlerOptions = { authClient?: ReturnType<typeof client> };
 
 // Provider REST adapter follows the pinned SDK endpoints, but carries no refresh state.
@@ -153,7 +165,14 @@ export async function handleConsent(request: Request, options: ConsentHandlerOpt
         : await auth.auth.setSession({ access_token: String(body.access_token ?? ''), refresh_token: String(body.refresh_token ?? '') });
       const session = result.data.session;
       if (result.error && ![400,401,403].includes(result.error.status)) return response({ message: 'Sign-in verification is temporarily unavailable. Retry session recovery; no new email is needed.' }, 503);
-      if (result.error || !session || decodeJwt(session.access_token).client_id) {
+      if (result.error || !safeSessionPair(session)) {
+        return response({ message: 'This sign-in link or code is invalid or expired.' }, 401);
+      }
+      let claims;
+      try { claims = decodeJwt(session.access_token); }
+      catch { return response({ message: 'This sign-in link or code is invalid or expired.' }, 401); }
+      if (claims.client_id || typeof claims.sub !== 'string' || typeof claims.exp !== 'number' ||
+          claims.exp <= Date.now() / 1000) {
         return response({ message: 'This sign-in link or code is invalid or expired.' }, 401);
       }
       return setCookies(response({ signed_in: true }), session.access_token, session.refresh_token);
@@ -168,24 +187,53 @@ export async function handleConsent(request: Request, options: ConsentHandlerOpt
     }
     if (request.method === 'POST' && action === 'refresh') {
       const [access, refresh] = sessionCookies(request);
-      if (!access || !refresh) return response({ code: 'sign_in_required', message: 'No browser session is available in this browser profile.' }, 401);
-      let claims;
-      try { claims = decodeJwt(access); } catch { return response({ code: 'sign_in_required' }, 401); }
-      if (claims.client_id) return response({ code: 'first_party_session_required' }, 401);
+      if (!refresh) return response({ code: access ? 'session_refresh_missing' : 'session_missing',
+        message: 'No session recovery credential exists in this browser profile.' }, 401);
+      // Refresh tokens are provider credentials in their own right. A missing or
+      // malformed access cookie does not invalidate a surviving, valid refresh token.
+      // Do not accept an OAuth client token or switch subjects when an old sub exists.
+      let previousSubject: string | undefined;
+      if (access) {
+        try {
+          const claims = decodeJwt(access);
+          if (claims.client_id) return response({ code: 'first_party_session_required' }, 401);
+          if (typeof claims.sub === 'string') previousSubject = claims.sub;
+        } catch { /* Provider must independently authenticate the refresh credential. */ }
+      }
       const result = await auth.auth.refreshSession({ refresh_token: refresh });
-      if (result.error || !result.data.session || !result.data.user) {
+      if (result.error || !result.data?.session || !result.data?.user) {
         // Never erase a sibling writer's newer pair on a delayed rejected request.
-        if (['refresh_token_not_found','refresh_token_already_used','session_not_found','user_not_found','user_banned'].includes(result.error?.code ?? '')) {
+        if (TERMINAL_REFRESH_ERRORS.has(result.error?.code ?? '')) {
           return response({ code: 'session_reauthentication_required', message: 'The provider rejected this session. Sign in when ready; no new email was requested.' }, 401);
         }
         return response({ code: 'session_recovery_unavailable', message: 'Session recovery could not be completed. Retry this page; no new email was requested.' }, 503);
       }
-      if (decodeJwt(result.data.session.access_token).client_id || result.data.user.id !== claims.sub) return response({ code: 'first_party_session_required' }, 401);
+      // A provider success lacking either replacement credential must never
+      // poison the still-surviving browser pair or report signed_in:true.
+      if (!safeSessionPair(result.data.session))
+        return response({ code: 'session_recovery_unavailable',
+          message: 'Session recovery could not be completed. Retry this page; no new email was requested.' }, 503);
+      let renewed;
+      try { renewed = decodeJwt(result.data.session.access_token); }
+      catch { return response({ code: 'session_recovery_unavailable' }, 503); }
+      if (renewed.client_id || typeof renewed.sub !== 'string' || typeof renewed.exp !== 'number'
+          || renewed.exp <= Date.now() / 1000 || renewed.sub !== result.data.user.id
+          || (previousSubject && renewed.sub !== previousSubject)) {
+        return response({ code: 'session_identity_mismatch',
+          message: 'The renewed session did not match its verified first-party identity.' }, 401);
+      }
       return setCookies(response({ signed_in: true }), result.data.session.access_token, result.data.session.refresh_token);
     }
     const session = await readBrowserSession(request, options.authClient);
     if (session.ok === false) {
-      if (session.code === 'sign_in_required' && action === 'context' && request.method === 'GET') return response({ signed_in: false });
+      if (action === 'context' && request.method === 'GET' && session.status === 401 &&
+          !['session_refresh_required', 'session_access_missing_recoverable',
+            'session_access_malformed_recoverable', 'session_access_invalid_recoverable',
+            'session_provider_rejected_recoverable'].includes(session.code)) {
+        // Existing context contract stays 200/signed_in:false for terminal failures;
+        // the sanitized reason makes missing versus malformed/rejected distinguishable.
+        return response({ signed_in: false, code: session.code });
+      }
       return response({ code: session.code, message: session.status === 503
         ? 'Session verification is temporarily unavailable. Retry session recovery; no new email is needed.'
         : 'Session recovery is required in this browser.' }, session.status);
