@@ -1,0 +1,168 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:mcp
+> node --import tsx --test tests/mcp-protocol.test.ts tests/current-commission.test.ts
+
+✔ native capture replay exposes the current head and transition replay binds its original predecessor (2.379825ms)
+✔ interrupted after createArtifact commits: retry recovers the identical install with stable identities (2.58934ms)
+✔ interrupted after capture commits: retry recovers the identical install with stable identities (1.316333ms)
+✔ interrupted after setDisposition commits: retry recovers the identical install with stable identities (1.414901ms)
+✔ update with lost transition acknowledgement recovers without rebasing the saved predecessor (1.321391ms)
+✔ initial retry refuses a conflicting current head without a transition (1.869636ms)
+✔ update retry refuses a conflicting current head without a transition (1.163492ms)
+✔ initial retry rejects competing disposition even when the source identity is unchanged (1.149441ms)
+✔ initial retry rejects competing artifact even when the source identity is unchanged (0.680755ms)
+✔ initial retry rejects competing authority even when the source identity is unchanged (1.054809ms)
+✔ initial retry rejects competing summary even when the source identity is unchanged (0.594295ms)
+✔ initial retry rejects competing edition even when the source identity is unchanged (0.780256ms)
+✔ retry revalidates source before returning an existing installation (1.359568ms)
+✔ retry revalidates head before returning an existing installation (0.930312ms)
+✔ competing transition between head check and write still loses the native predecessor compare (0.396257ms)
+✔ exact governing source edition/digest and useful current product decisions are compiled (0.287633ms)
+✔ supported installation, identical replay, head update and stale predecessor preserve source custody (1.624477ms)
+✔ unconfigured, unqualified, unavailable, tampered and changing heads never return governing content (2.087264ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+✔ modern normal MCP initialization and no-argument recovery expose current source only to authorized recovery (151.703963ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-oauth-v1","client_id":"fixture","required":"ecb:recover","decision":"deny"}
+✔ legacy normal MCP initialization and no-argument recovery expose current source only to authorized recovery (103.798763ms)
+✔ OAuth recovery capability gates new tool without a fictitious step-up (0.976702ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:preserve","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:preserve","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:transition","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:transition","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:transition","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:preserve","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:transition","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:preserve","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:recover","decision":"deny"}
+✔ modern capability grants gate each tool before input validation or database dispatch (336.486143ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:preserve","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:preserve","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:transition","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:transition","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:transition","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:preserve","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:transition","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:preserve","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:recover","decision":"deny"}
+✔ legacy capability grants gate each tool before input validation or database dispatch (241.448877ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:preserve","decision":"deny","operation_id":"00000000-0000-4000-8000-000000000001"}
+✔ allowed recovery dispatches while denied preservation consumes no operation (12.22878ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:transition","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:preserve","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:transition","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:preserve","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:recover","decision":"allow"}
+✔ compatibility credential retains the full ordinary catalog and invocation access (44.152628ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:transition","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:preserve","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:transition","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:preserve","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:preserve","decision":"allow","operation_id":"00000000-0000-4000-8000-000000000021"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:preserve","decision":"allow","operation_id":"00000000-0000-4000-8000-000000000021"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:transition","decision":"allow","operation_id":"00000000-0000-4000-8000-000000000022"}
+disposition_conflict disposition_conflict
+✔ absent capability grants preserve compatibility, reject unconfigured bearers, replay operation identity, and retain currentness (47.227009ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:preserve","decision":"allow","operation_id":"00000000-0000-4000-8000-000000000011"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"compose","required":"ecb:transition","decision":"allow","operation_id":"00000000-0000-4000-8000-000000000012"}
+disposition_conflict disposition_conflict
+runtime_configuration_failed invalid_ecb_mcp_capability_grants
+✔ a composed preservation then transition uses distinct operation identities and still enforces currentness (9.537456ms)
+✔ bad capability configuration fails closed before dispatch (0.528085ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:recover","decision":"allow"}
+✔ modern client retains existing contracts and adds governed workflow controls (16.666946ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:recover","decision":"allow"}
+✔ legacy client retains existing contracts and adds governed workflow controls (13.776843ms)
+✔ host and origin are checked before parsing or authorization (1.457666ms)
+✔ oversized bodies and JSON-RPC batches are rejected before dispatch (9.335633ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:preserve","decision":"allow"}
+capture_operation_identity_required capture_operation_identity_required
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:preserve","decision":"allow"}
+persistence_failed persistence_failed
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:preserve","decision":"allow"}
+persistence_failed persistence_failed
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:preserve","decision":"allow"}
+persistence_failed persistence_failed
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:preserve","decision":"allow","operation_id":"349f628f-eebf-4a43-90c0-bc8587a4ee50"}
+persistence_failed persistence_failed
+✔ stale MCP capture schema preserves operation identity using an explicit timestamp (32.870954ms)
+✔ worker entry and operational guidance preserve the current capture fallback and known platform boundary (1.558557ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1546.821382

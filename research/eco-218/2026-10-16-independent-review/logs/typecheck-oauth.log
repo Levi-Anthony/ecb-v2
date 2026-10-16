@@ -1,0 +1,5 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> typecheck:oauth
+> tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server/oauth.ts server/oauth-consent.ts api/metadata.ts api/oauth/[action].ts tests/eco-218/*.test.ts
+

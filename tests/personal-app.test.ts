@@ -61,7 +61,7 @@ test('authorized UI is private and carries a nonce-bound CSP', async () => {
   const response = await handlePersonalApp(request(), ports(), { authorize: authorized });
   assert.equal(response.status, 200);
   assert.match(response.headers.get('content-security-policy') ?? '', /script-src 'nonce-/);
-  assert.match(response.headers.get('set-cookie') ?? '', /__Host-ecb_access=/);
+  assert.equal(response.headers.get('set-cookie'), null, 'ordinary responses never overwrite newer session cookies');
   const html = await response.text();
   assert.match(html, /Unfold the work/);
   assert.match(html, /Authorize and capture/);
