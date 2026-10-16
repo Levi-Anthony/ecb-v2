@@ -1,0 +1,100 @@
+{
+  "focal": {
+    "id": "a6ad4441-722d-4a6b-8a84-afbac417ceed",
+    "handle": "ECO-179",
+    "kind": "governed_work_episode"
+  },
+  "seat_boundary": {
+    "parent": "ECO-136",
+    "seat": "bounded semantic-definition episode inside the URG program",
+    "start": "commissioned/unopened Sense",
+    "stop": "cold-readable Sense return before Shape"
+  },
+  "pgo": {
+    "id": "eco179-pgo-2026-09-22",
+    "digest": "pgo-ul-invariant-v1",
+    "summary": "Define the Quadrant axis to sufficient Register-B structural closure while preserving holarchic altitude, fixed referent seating, mapper accountability, PGO-governed relevance, and explicit residual uncertainty."
+  },
+  "phase": {
+    "status": "commissioned_unopened",
+    "authorized_span": ["sense"],
+    "stop_before": "shape"
+  },
+  "sources": [
+    {
+      "id": "eco179-harvest",
+      "path": "research/quadrant-grammar/ECO-179-Pre-Sense-Session-Harvest-2026-09-22.md",
+      "expected_blob_sha": "be8a0b83d7febea43d8a27d6a25330a8a5b3136e",
+      "current_blob_sha": "be8a0b83d7febea43d8a27d6a25330a8a5b3136e",
+      "standing": "closed_pre_sense_evidence",
+      "materiality": "material"
+    },
+    {
+      "id": "eco179-commission",
+      "path": "research/quadrant-grammar/ECO-179-UL-Invariant-Sense-Commission-2026-09-22.md",
+      "expected_blob_sha": "e7e6b82521969660f45cdf50b0044c4013ed8c54",
+      "current_blob_sha": "e7e6b82521969660f45cdf50b0044c4013ed8c54",
+      "standing": "commission_mirror_linear_controls",
+      "materiality": "material"
+    },
+    {
+      "id": "quadrant-functional-contract",
+      "path": "research/quadrant-grammar/SIGMA-ECOS-Quadrant-Grammar-Register-B-Functional-Contract-v0.2.md",
+      "expected_blob_sha": "a61642dfdf5a2abdb4edf0fa81b7842d23e3970f",
+      "current_blob_sha": "a61642dfdf5a2abdb4edf0fa81b7842d23e3970f",
+      "standing": "bounded_register_b_use",
+      "materiality": "material"
+    },
+    {
+      "id": "quadrant-logical-architecture",
+      "path": "research/quadrant-grammar/Quadrant-Logical-Architecture-Contract-v0.1.md",
+      "expected_blob_sha": "e3d6fef43d1e81190547e6fa453424c0341190a3",
+      "current_blob_sha": "e3d6fef43d1e81190547e6fa453424c0341190a3",
+      "standing": "reviewable_architecture_candidate",
+      "materiality": "enabling"
+    }
+  ],
+  "orientation": {
+    "resolution_id": "eco170-fixture-orientation-resolution-e179",
+    "qualification_id": "eco170-fixture-qualification-e179",
+    "qualified_focal_id": "a6ad4441-722d-4a6b-8a84-afbac417ceed",
+    "qualified_pgo_digest": "pgo-ul-invariant-v1",
+    "qualification_result": "PASS",
+    "currentness": "fixture_current_for_probe",
+    "realization_standing": "ECO-152 qualified isolated pattern",
+    "installation_state": "not_production_installed"
+  },
+  "authority": {
+    "status": "absent",
+    "source_reference": "present Principal instruction launches ECO-170, not ECO-179",
+    "permitted_phases": []
+  },
+  "dependencies": [
+    {"id": "parent-eco136", "kind": "evidential_functional", "status": "satisfied_for_use"},
+    {"id": "principal-launch-eco179", "kind": "authorization", "status": "unsatisfied_real_state"},
+    {"id": "eco152-realization", "kind": "enabling_evidential", "status": "qualified_isolated_unmerged"},
+    {"id": "eco156-interaction-contract", "kind": "functional_enabling", "status": "shape_only"}
+  ],
+  "question_forward": [
+    {
+      "id": "qf-focal-indexed-disclosure",
+      "question": "Is focal indexing upstream transformation machinery, UL, or partly both?",
+      "signal_fired": false
+    }
+  ],
+  "reentry": {
+    "trigger": "explicit continuation or authorized ECO-179 launch",
+    "cold_recovery_required": true
+  },
+  "limits": [
+    "projection is derived and non-authoritative",
+    "fixture qualification does not assert real semantic reviewer truth",
+    "no production installation or real ECO-179 execution"
+  ],
+  "interaction_lineage": {
+    "episode": "ECO-170",
+    "parent_contract": "ECO-181:33c83850-f7da-4431-8c0e-b1f425988dad",
+    "operation_id": "eco170-probe-operation"
+  },
+  "repository_discovery_head": "18059fd7a752aa93e716598847956c96faf3611a"
+}
