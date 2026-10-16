@@ -41,6 +41,9 @@ export function validateIndex(index, sourceExists = p => existsSync(resolve(ROOT
     for (const [property, location] of [['semantic_contract','source'],['physical_adapter','source'],['durable_control','source']]) {
       checkRef(c[property]?.[location], c.id + '.' + property);
     }
+    nonempty(c.semantic_contract?.meaning, c.id + '.semantic_contract.meaning');
+    nonempty(c.physical_adapter?.description, c.id + '.physical_adapter.description');
+    if (c.semantic_contract?.meaning === c.acceptance?.missing) errors.push(c.id + ': portable contract collapsed into missing-acceptance text');
     nonempty(c.durable_control?.owner, c.id + '.owner');
     nonempty(c.durable_control?.reentry, c.id + '.reentry');
     nonempty(c.acceptance?.missing, c.id + '.acceptance');
