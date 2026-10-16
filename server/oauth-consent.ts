@@ -17,6 +17,18 @@ export function classifyEmailStartFailure(error: AuthFailure) {
     ? { status: 429, code: 'email_throttled', message: 'Email delivery is temporarily limited. Do not request another link yet.' }
     : { status: 503, code: 'email_delivery_unavailable', message: 'ECB could not send a sign-in email. No new link was confirmed sent.' };
 }
+// Provider responses are untrusted even when no error accompanies them.
+// Reject incomplete or cookie-unsafe sessions before any Set-Cookie header.
+function safeSessionPair(session: { access_token?: unknown; refresh_token?: unknown } | null | undefined): session is { access_token: string; refresh_token: string } {
+  const safe = (value: unknown): value is string =>
+    typeof value === 'string' && value.length > 0 && /^[A-Za-z0-9._~+=/-]+$/.test(value);
+  return Boolean(session && safe(session.access_token) && safe(session.refresh_token));
+}
+const TERMINAL_REFRESH_ERRORS = new Set([
+  'refresh_token_not_found', 'refresh_token_already_used', 'session_not_found',
+  'session_expired', 'user_not_found', 'user_banned', 'invalid_credentials',
+]);
+
 type ConsentHandlerOptions = { authClient?: ReturnType<typeof client> };
 
 // Provider REST adapter follows the pinned SDK endpoints, but carries no refresh state.
@@ -153,7 +165,14 @@ export async function handleConsent(request: Request, options: ConsentHandlerOpt
         : await auth.auth.setSession({ access_token: String(body.access_token ?? ''), refresh_token: String(body.refresh_token ?? '') });
       const session = result.data.session;
       if (result.error && ![400,401,403].includes(result.error.status)) return response({ message: 'Sign-in verification is temporarily unavailable. Retry session recovery; no new email is needed.' }, 503);
-      if (result.error || !session || decodeJwt(session.access_token).client_id) {
+      if (result.error || !safeSessionPair(session)) {
+        return response({ message: 'This sign-in link or code is invalid or expired.' }, 401);
+      }
+      let claims;
+      try { claims = decodeJwt(session.access_token); }
+      catch { return response({ message: 'This sign-in link or code is invalid or expired.' }, 401); }
+      if (claims.client_id || typeof claims.sub !== 'string' || typeof claims.exp !== 'number' ||
+          claims.exp <= Date.now() / 1000) {
         return response({ message: 'This sign-in link or code is invalid or expired.' }, 401);
       }
       return setCookies(response({ signed_in: true }), session.access_token, session.refresh_token);
@@ -182,13 +201,18 @@ export async function handleConsent(request: Request, options: ConsentHandlerOpt
         } catch { /* Provider must independently authenticate the refresh credential. */ }
       }
       const result = await auth.auth.refreshSession({ refresh_token: refresh });
-      if (result.error || !result.data.session || !result.data.user) {
+      if (result.error || !result.data?.session || !result.data?.user) {
         // Never erase a sibling writer's newer pair on a delayed rejected request.
-        if (['refresh_token_not_found','refresh_token_already_used','session_not_found','user_not_found','user_banned'].includes(result.error?.code ?? '')) {
+        if (TERMINAL_REFRESH_ERRORS.has(result.error?.code ?? '')) {
           return response({ code: 'session_reauthentication_required', message: 'The provider rejected this session. Sign in when ready; no new email was requested.' }, 401);
         }
         return response({ code: 'session_recovery_unavailable', message: 'Session recovery could not be completed. Retry this page; no new email was requested.' }, 503);
       }
+      // A provider success lacking either replacement credential must never
+      // poison the still-surviving browser pair or report signed_in:true.
+      if (!safeSessionPair(result.data.session))
+        return response({ code: 'session_recovery_unavailable',
+          message: 'Session recovery could not be completed. Retry this page; no new email was requested.' }, 503);
       let renewed;
       try { renewed = decodeJwt(result.data.session.access_token); }
       catch { return response({ code: 'session_recovery_unavailable' }, 503); }

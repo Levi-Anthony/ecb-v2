@@ -30,6 +30,14 @@ export function writeSessionCookies(response: Response, access: string, refresh:
   }
   return response;
 }
+// Supabase Auth code semantics, not status alone, decide whether an access token
+// was rejected. An unrecognized 400 or a provider outage is never an auth verdict.
+const ACCESS_REJECTION_CODES = new Set([
+  'bad_jwt', 'invalid_credentials', 'no_authorization',
+  'unexpected_audience', 'session_not_found', 'user_not_found', 'user_banned',
+]);
+const TERMINAL_SESSION_CODES = new Set(['session_expired']);
+
 export type BrowserSession = { ok: true; auth: BrowserAuthClient; user: { id: string; email?: string }; access: string; refresh: string } |
   { ok: false; status: number; code: string };
 // Ordinary requests never rotate or write cookies: delayed responses cannot roll a newer pair back.
@@ -50,7 +58,10 @@ export async function readBrowserSession(request: Request, injected?: BrowserAut
     const auth = injected ?? browserAuthClient(access);
     const result = await auth.auth.getUser(access);
     if (result.error) {
-      const rejected = result.error.status === 401 || result.error.status === 403;
+      if (TERMINAL_SESSION_CODES.has(result.error.code ?? ''))
+        return { ok: false, status: 401, code: 'session_reauthentication_required' };
+      const rejected = ACCESS_REJECTION_CODES.has(result.error.code ?? '') ||
+        result.error.status === 401 || result.error.status === 403;
       return { ok: false, status: rejected ? 401 : 503,
         code: rejected ? 'session_provider_rejected_recoverable' : 'session_check_unavailable' };
     }
