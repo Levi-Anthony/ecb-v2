@@ -3,15 +3,18 @@
  * semantic writer is needed to judge intended-use validation. The reader may
  * verify source bytes but may not infer governing currentness from recency. */
 import { createHash } from 'node:crypto';
-import { assessResponsibilitySet, type SemanticSetAssessment, type ResponsibilitySetInput, type ResponsibilitySetResult } from './responsibility-set.js';
+import { assessResponsibilitySet, type SemanticSetAssessment, type ResponsibilitySetInput, type ResponsibilitySetResult, type RecoverEditionSnapshot } from './responsibility-set.js';
 import type { NativePackageDescriptor } from './domain-admission.js';
 
-export const RESPONSIBILITY_PRODUCER_CONTRACT = 'ecos:source-bound-responsibility-producer:0.3.0' as const;
+export const RESPONSIBILITY_PRODUCER_CONTRACT = 'ecos:source-bound-responsibility-producer:0.4.0' as const;
 export type ResponsibilityProposalInput = Omit<ResponsibilitySetInput, 'source_editions' | 'candidate_digest'> & {
   /** Exact derivative being evaluated, including semantics, standing and declared scope. */
   candidate_content: string;
   /** Trusted selected registry descriptions, never user-supplied authority. */
   native_packages?: NativePackageDescriptor[];
+  /** All responsibility package dependencies, derived by the trusted caller;
+   * a referenced-but-unbound native edition cannot earn a positive result. */
+  required_native_package_ids: string[];
 };
 export type RecoveredSource = {
   ref: string;
@@ -39,6 +42,9 @@ export type ResponsibilityProducerPorts = {
     descriptor: NativePackageDescriptor;
     currentness: RecoveredSource['currentness'];
   } | null>;
+  /** A qualified common current-selection snapshot, NEVER just assembled
+   * from independent package/source reads or a caller-authored assertion. */
+  recoverEditionSnapshot?: RecoverEditionSnapshot;
   /** A distinct, attributable semantic evaluator—not caller-supplied proof. */
   semanticReview?: (
     input: ResponsibilitySetInput,
@@ -99,10 +105,14 @@ export async function produceResponsibilitySet(
 ): Promise<ProducedSet> {
   input = structuredClone(input);
   const nativePackages = input.native_packages ?? [];
-  const nativeBasisValid = input.native_packages === undefined ||
-    (Array.isArray(nativePackages) && nativePackages.length > 0 &&
+  const requiredIds = input.required_native_package_ids;
+  const requiredValid = Array.isArray(requiredIds) && requiredIds.every(nonblank) &&
+    new Set(requiredIds).size === requiredIds.length;
+  const nativeBasisValid = requiredValid &&
+    (input.native_packages === undefined || (Array.isArray(nativePackages) &&
       nativePackages.every(nativeValid) &&
-      new Set(nativePackages.map(p => p.id)).size === nativePackages.length);
+      new Set(nativePackages.map(p => p.id)).size === nativePackages.length)) &&
+    requiredIds.every(id => nativePackages.some(p => p.id === id));
   const nativeEditions = nativeBasisValid ? nativePackages.map(nativeEdition) : [];
   const candidateUsable = typeof input.candidate_content === 'string' &&
     input.candidate_content.trim().length > 0 && nativeBasisValid;
@@ -112,7 +122,7 @@ export async function produceResponsibilitySet(
     RESPONSIBILITY_PRODUCER_CONTRACT, input.inquiry_basis_ref, input.intended_use,
     input.obligation_ref, input.responsibility_ids, input.candidate_content,
     // A package ID is not its current specification, provenance or authority.
-    nativePackages,
+    nativePackages, [...requiredIds].sort(),
   ])) : '';
   let source: RecoveredSource | null = null;
   try { source = structuredClone(await ports.recoverSource(input.obligation_ref)); } catch { /* no source == no inferred validation */ }
@@ -127,7 +137,7 @@ export async function produceResponsibilitySet(
     limitations: usable
       ? ['Lexical clauses are not a semantic responsibility decomposition.',
         'Candidate digest binds submitted bytes, not meaning, actual use, installation or action authority.',
-        ...(!candidateUsable ? ['Exact candidate content or valid package qualification basis is missing; no derivative can be validated.'] : []),
+        ...(!candidateUsable ? ['Exact candidate content, complete dependency edition closure or valid package basis is missing; no derivative can be validated.'] : []),
         ...(nativePackages.length ? ['Native package editions require an independent CURRENT registry qualification before reliance.'] : []),
         'Absence of lexical clauses does not establish absence of obligations.',
         ...(source!.currentness !== 'CURRENT' ? ['Governing source currentness remains unqualified.'] : [])]
@@ -162,6 +172,8 @@ export async function produceResponsibilitySet(
       ...sourceEdition(check), currentness: check.currentness,
     } : null;
   };
-  return { proposal, assessment: await assessResponsibilitySet(assessmentInput, semantic, recoverEdition) };
+  return { proposal, assessment: await assessResponsibilitySet(
+    assessmentInput, semantic, recoverEdition, ports.recoverEditionSnapshot,
+  ) };
 }
 

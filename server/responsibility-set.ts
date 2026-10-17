@@ -4,7 +4,7 @@
  * Only a server-injected semantic assessor may provide the second argument.
  * Caller-authored "complete" flags are intentionally not an input.
  */
-export const RESPONSIBILITY_SET_CONTRACT = 'ecos:responsibility-set-assessment:0.2.0' as const;
+export const RESPONSIBILITY_SET_CONTRACT = 'ecos:responsibility-set-assessment:0.3.0' as const;
 
 export type SourceEdition = { ref: string; digest: string };
 export type ResponsibilitySetInput = {
@@ -46,6 +46,15 @@ export type ResponsibilitySetResult = {
 };
 
 export type RecoverEdition = (ref: string) => Promise<(SourceEdition & { currentness: 'CURRENT' | 'STALE' | 'UNKNOWN' }) | null>;
+/** Trusted port must attest ONE coherent source-system selection; sequential
+ * individually-CURRENT observations cannot create this receipt. Port authority
+ * and the meaning of its transaction token require separate qualification. */
+export type CoherentEditionSnapshot = {
+  snapshot_ref: string;
+  consistency: 'ATOMIC_CURRENT_SELECTION';
+  source_editions: Array<SourceEdition & { currentness: 'CURRENT' | 'STALE' | 'UNKNOWN' }>;
+};
+export type RecoverEditionSnapshot = (requested: SourceEdition[]) => Promise<CoherentEditionSnapshot | null>;
 const nonblank = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0;
 const distinct = (xs: string[]) => xs.length === new Set(xs).size;
 const equalSet = (a: string[], b: string[]) => a.length === b.length && a.every(v => b.includes(v));
@@ -58,6 +67,7 @@ export async function assessResponsibilitySet(
   input: ResponsibilitySetInput,
   assessment?: SemanticSetAssessment,
   recoverEdition?: RecoverEdition,
+  recoverEditionSnapshot?: RecoverEditionSnapshot,
 ): Promise<ResponsibilitySetResult> {
   // An asynchronous reader/assessor must not mutate the basis being checked.
   input = structuredClone(input);
@@ -104,6 +114,24 @@ export async function assessResponsibilitySet(
       try { current = await recoverEdition(edition.ref); } catch { /* failure remains visible */ }
       if (!current || current.ref !== edition.ref || current.digest !== edition.digest || current.currentness !== 'CURRENT')
         reasons.push('SOURCE_EDITION_NOT_CURRENT_OR_UNRECOVERABLE:' + edition.ref);
+    }
+  }
+  // F4: sequentially reading an obligation followed by native dependencies
+  // does not prove they were CURRENT at one consistent point. Requalify all
+  // editions using a trusted atomic/current-selection reader at exit.
+  // The ordinary ingress supplies no such reader and remains HOLD.
+  if (sourceEditions.length > 1 && !reasons.includes('SOURCE_EDITION_BASIS_INCOMPLETE')) {
+    if (!recoverEditionSnapshot) reasons.push('SOURCE_EDITION_COHERENT_SNAPSHOT_UNAVAILABLE');
+    else {
+      let snapshot: CoherentEditionSnapshot | null = null;
+      try { snapshot = structuredClone(await recoverEditionSnapshot(structuredClone(sourceEditions))); }
+      catch { /* no inferred currentness on read failure */ }
+      if (!snapshot || !nonblank(snapshot.snapshot_ref) ||
+          snapshot.consistency !== 'ATOMIC_CURRENT_SELECTION' ||
+          !Array.isArray(snapshot.source_editions) ||
+          !sameEd(sourceEditions, snapshot.source_editions) ||
+          snapshot.source_editions.some(e => e.currentness !== 'CURRENT'))
+        reasons.push('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED');
     }
   }
   const verified = reasons.length === 0 && assessment !== undefined;

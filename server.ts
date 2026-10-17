@@ -741,15 +741,20 @@ function buildServer(): McpServer {
           limits: { candidates: Math.min(limit, 50), structural_depth: inquiry.structural_depth, projection_chars: inquiry.projection_chars },
         }, { searchThoughts: (q, n) => runtime.search(q, n), fetchThought: id => runtime.fetch(id), dispatch: circulationDispatch, embed }, actor);
         if (!inquiry.domain_admission) return result(inquiryResult);
-        const packageIds = inquiry.domain_admission.package_ids
+        const declaredPackageIds = inquiry.domain_admission.package_ids
           ?? systemsEngineeringNativePackages.filter(p => p.domain === inquiry.domain_admission!.domain).map(p => p.id);
+        // F3: the native receiving basis must include EVERY package used by any
+        // admitted responsibility, even if omitted from explicit package_ids.
+        const requiredNativePackageIds = [...new Set(inquiry.domain_admission.responsibilities
+          .flatMap(r => r.native_package_ids))];
+        const boundPackageIds = [...new Set([...declaredPackageIds, ...requiredNativePackageIds])];
         const domainAdmission = evaluateDIBoundary({
           domain: inquiry.domain_admission.domain, inquiry_basis_ref: inquiryResult.inquiry_basis_ref,
-          package_ids: packageIds, responsibilities: inquiry.domain_admission.responsibilities,
+          package_ids: boundPackageIds, responsibilities: inquiry.domain_admission.responsibilities,
         }, systemsEngineeringNativePackages);
-        // Domain admission checked every selected ID; carry the actual native
-        // edition/authority/semantic scope rather than only the stable identifier.
-        const selectedNativePackages = packageIds.map(id =>
+        // Admission already rejects unknown/cross-domain dependencies.
+        // Bound in-repo descriptors do NOT imply current normative standing.
+        const boundNativePackages = boundPackageIds.map(id =>
           systemsEngineeringNativePackages.find(p => p.id === id)!);
         // Recover the exact source through the same authorized ordinary BRAIN/native readers.
         // This producer returns verbatim evidence candidates, never semantic validation by inference.
@@ -762,9 +767,11 @@ function buildServer(): McpServer {
           responsibility_ids: inquiry.domain_admission.responsibilities.map(r => r.id),
           // Bind the entire submitted semantic/standing account, not just its IDs.
           candidate_content: canonical({ domain: inquiry.domain_admission.domain,
-            native_packages: selectedNativePackages,
+            declared_package_ids: declaredPackageIds,
+            native_packages: boundNativePackages,
             responsibilities: inquiry.domain_admission.responsibilities }),
-          native_packages: selectedNativePackages,
+          native_packages: boundNativePackages,
+          required_native_package_ids: requiredNativePackageIds,
         }, {
           async recoverSource(ref): Promise<RecoveredSource | null> {
             const evidence = await sourceReader.fetchEvidence(ref);

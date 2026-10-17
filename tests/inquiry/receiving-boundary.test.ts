@@ -16,6 +16,7 @@ const inputFor = (candidate: typeof map): ResponsibilityProposalInput => ({
   inquiry_basis_ref: 'fixture:source-bound-reception', intended_use: 'qualify this bounded derivative for contribution to the containing personal workflow',
   obligation_ref: source.ref, responsibility_ids: candidate.capabilities.map((c: { id: string }) => c.id),
   candidate_content: JSON.stringify(candidate),
+  required_native_package_ids: [],
 });
 const review = (set: ResponsibilitySetInput): SemanticSetAssessment => ({
   inquiry_basis_ref: set.inquiry_basis_ref, intended_use: set.intended_use, obligation_ref: set.obligation_ref,

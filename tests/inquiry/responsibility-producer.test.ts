@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { produceResponsibilitySet, extractNormativeClauses, type RecoveredSource } from '../../server/responsibility-producer.ts';
-import type { ResponsibilitySetInput, SemanticSetAssessment } from '../../server/responsibility-set.ts';
+import type { ResponsibilitySetInput, SemanticSetAssessment, RecoverEditionSnapshot } from '../../server/responsibility-set.ts';
 import type { NativePackageDescriptor } from '../../server/domain-admission.ts';
 
 const source: RecoveredSource = {
@@ -11,7 +11,8 @@ const source: RecoveredSource = {
 };
 const input = { inquiry_basis_ref: 'fixture:inquiry', intended_use: 'qualify use at consumer boundary',
   obligation_ref: source.ref, responsibility_ids: ['source-recovery', 'use-validation'],
-  candidate_content: 'Recover governing source, validate its declared consumer use, and preserve the received result.' };
+  candidate_content: 'Recover governing source, validate its declared consumer use, and preserve the received result.',
+  required_native_package_ids: [] as string[] };
 const read = async () => ({ ...source });
 const review = (set: ResponsibilitySetInput): SemanticSetAssessment => ({
   inquiry_basis_ref: set.inquiry_basis_ref, intended_use: set.intended_use,
@@ -83,9 +84,16 @@ const nativePackage: NativePackageDescriptor = {
   semantic_scope: ['governing requirements'], source_refs: ['fixture:publication'],
   status: 'ACTIVE', access_routes: [], validation_routes: [], currentness_routes: [],
 };
-const withNative = { ...input, native_packages: [nativePackage] };
+const withNative = { ...input, native_packages: [nativePackage],
+  required_native_package_ids: [nativePackage.id] };
 const qualifiedNative = async (id: string) => id === nativePackage.id
   ? { descriptor: structuredClone(nativePackage), currentness: 'CURRENT' as const } : null;
+/** Fixture of a qualified atomic selection, not a real normative reader. */
+const qualifiedSnapshot: RecoverEditionSnapshot = async requested => ({
+  snapshot_ref: 'fixture:transaction:qualified-atomic-selection',
+  consistency: 'ATOMIC_CURRENT_SELECTION',
+  source_editions: requested.map(e => ({ ...e, currentness: 'CURRENT' })),
+});
 
 test('reviewer-visible recovered provenance is edition-bound across exact re-read', async () => {
   let reads = 0;
@@ -132,7 +140,7 @@ test('native package requires an actual CURRENT qualified reread, not its ACTIVE
 test('native package current, unchanged and freshly assessed can remain scoped READY', async () => {
   const result = await produceResponsibilitySet(withNative, {
     recoverSource: read, recoverNativePackage: qualifiedNative,
-    semanticReview: async set => review(set),
+    recoverEditionSnapshot: qualifiedSnapshot, semanticReview: async set => review(set),
   });
   assert.equal(result.assessment.disposition, 'READY');
   assert(result.assessment.verification.source_editions.some(s => s.ref ===
@@ -142,7 +150,7 @@ test('same package ID cannot reuse assessment after edition/authority/scope/stat
   let oldReview: SemanticSetAssessment | undefined;
   const initial = await produceResponsibilitySet(withNative, {
     recoverSource: read, recoverNativePackage: qualifiedNative,
-    semanticReview: async set => (oldReview = review(set)),
+    recoverEditionSnapshot: qualifiedSnapshot, semanticReview: async set => (oldReview = review(set)),
   });
   assert.equal(initial.assessment.disposition, 'READY');
   const variants: NativePackageDescriptor[] = [
@@ -156,6 +164,7 @@ test('same package ID cannot reuse assessment after edition/authority/scope/stat
     const result = await produceResponsibilitySet({ ...input, native_packages: [descriptor] }, {
       recoverSource: read, recoverNativePackage: async () =>
         ({ descriptor, currentness: 'CURRENT' as const }),
+      recoverEditionSnapshot: qualifiedSnapshot,
       semanticReview: async () => structuredClone(oldReview!),
     });
     assert.notEqual(result.proposal.candidate_digest, initial.proposal.candidate_digest);
@@ -168,9 +177,109 @@ test('native descriptor changes between candidate and exact reread are denied', 
   const result = await produceResponsibilitySet(withNative, {
     recoverSource: read,
     recoverNativePackage: async () => ({ descriptor: changed, currentness: 'CURRENT' as const }),
+    recoverEditionSnapshot: qualifiedSnapshot,
     semanticReview: async set => review(set),
   });
   assert.equal(result.assessment.disposition, 'HOLD');
   assert(result.assessment.verification.reasons.some(x =>
     x.startsWith('SOURCE_EDITION_NOT_CURRENT_OR_UNRECOVERABLE:native-package:')));
+});
+
+test('F3 omitted required native dependency cannot obtain a READY assessment or digest', async () => {
+  const other = { ...nativePackage, id: 'fixture:sysml', edition_ref: 'fixture:sysml-edition' };
+  const omitted = await produceResponsibilitySet({
+    ...input, native_packages: [nativePackage],
+    required_native_package_ids: [nativePackage.id, other.id],
+  }, {
+    recoverSource: read, recoverNativePackage: qualifiedNative,
+    recoverEditionSnapshot: qualifiedSnapshot, semanticReview: async set => review(set),
+  });
+  assert.equal(omitted.assessment.disposition, 'HOLD');
+  assert.equal(omitted.proposal.candidate_digest, '');
+  assert(omitted.assessment.verification.reasons.includes('CANDIDATE_EDITION_MISSING'));
+});
+test('F3 full dependency closure binds a same-ID native authority/edition/status change', async () => {
+  const other = { ...nativePackage, id: 'fixture:sysml', edition_ref: 'fixture:sysml-edition' };
+  const baseline = { ...input, required_native_package_ids: [nativePackage.id, other.id],
+    native_packages: [nativePackage, other] };
+  let heldAssessment: SemanticSetAssessment | undefined;
+  const accepted = await produceResponsibilitySet(baseline, {
+    recoverSource: read,
+    recoverNativePackage: async id => ({ descriptor: id === other.id ? other : nativePackage,
+      currentness: 'CURRENT' as const }),
+    recoverEditionSnapshot: qualifiedSnapshot,
+    semanticReview: async set => (heldAssessment = review(set)),
+  });
+  assert.equal(accepted.assessment.disposition, 'READY');
+  assert(accepted.assessment.verification.source_editions.some(e => e.ref === 'native-package:' + other.id));
+  for (const edited of [
+    { ...other, authority_ref: 'fixture:other-authority' },
+    { ...other, edition_ref: 'fixture:other-edition' },
+    { ...other, status: 'HISTORICAL' as const },
+  ]) {
+    const replay = await produceResponsibilitySet({ ...baseline, native_packages: [nativePackage, edited] }, {
+      recoverSource: read,
+      recoverNativePackage: async id => ({ descriptor: id === other.id ? edited : nativePackage,
+        currentness: 'CURRENT' as const }),
+      recoverEditionSnapshot: qualifiedSnapshot,
+      semanticReview: async () => structuredClone(heldAssessment!),
+    });
+    assert.notEqual(replay.proposal.candidate_digest, accepted.proposal.candidate_digest);
+    assert.equal(replay.assessment.disposition, 'HOLD');
+    assert(replay.assessment.verification.reasons.includes('ASSESSMENT_CANDIDATE_MISMATCH'));
+  }
+});
+test('F4 revocation during later package reread cannot be promoted by sequential CURRENT', async () => {
+  let governing = { ...source };
+  let rereads = 0;
+  const result = await produceResponsibilitySet(withNative, {
+    recoverSource: async () => { rereads++; return { ...governing }; },
+    recoverNativePackage: async () => {
+      governing = { ...governing, currentness: 'STALE', basis_digest: 'fixture:revoked' };
+      return { descriptor: nativePackage, currentness: 'CURRENT' as const };
+    },
+    semanticReview: async set => review(set),
+    // No qualified atomic selection; the old algorithm returned READY here.
+  });
+  assert.equal(rereads, 2);
+  assert.equal(governing.currentness, 'STALE');
+  assert.equal(result.assessment.disposition, 'HOLD');
+  assert(result.assessment.verification.reasons.includes('SOURCE_EDITION_COHERENT_SNAPSHOT_UNAVAILABLE'));
+});
+test('F4 qualified end-of-window snapshot observes source revocation during package read', async () => {
+  let governing = { ...source };
+  const result = await produceResponsibilitySet(withNative, {
+    recoverSource: async () => ({ ...governing }),
+    recoverNativePackage: async () => {
+      governing = { ...source, currentness: 'STALE', basis_digest: 'fixture:revoked' };
+      return { descriptor: nativePackage, currentness: 'CURRENT' as const };
+    },
+    recoverEditionSnapshot: async requested => ({
+      snapshot_ref: 'fixture:atomic-revocation-evidence',
+      consistency: 'ATOMIC_CURRENT_SELECTION',
+      source_editions: requested.map(e => ({
+        ...e, currentness: e.ref === source.ref ? 'STALE' as const : 'CURRENT' as const,
+      })),
+    }),
+    semanticReview: async set => review(set),
+  });
+  assert.equal(governing.currentness, 'STALE');
+  assert.equal(result.assessment.disposition, 'HOLD');
+  assert(result.assessment.verification.reasons.includes('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED'));
+});
+test('coherent snapshot cannot omit an earlier native dependency or use a casual token', async () => {
+  for (const receipt of [
+    { snapshot_ref: '', consistency: 'ATOMIC_CURRENT_SELECTION' as const,
+      source_editions: [{ ref: source.ref, digest: '0'.repeat(64), currentness: 'CURRENT' as const }] },
+    { snapshot_ref: 'fixture:token', consistency: 'ATOMIC_CURRENT_SELECTION' as const,
+      source_editions: [] },
+  ]) {
+    const result = await produceResponsibilitySet(withNative, {
+      recoverSource: read, recoverNativePackage: qualifiedNative,
+      recoverEditionSnapshot: async () => receipt,
+      semanticReview: async set => review(set),
+    });
+    assert.equal(result.assessment.disposition, 'HOLD');
+    assert(result.assessment.verification.reasons.includes('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED'));
+  }
 });
