@@ -120,6 +120,7 @@ Deno.test("preserves custody tools and adds read-only commission recovery and ma
     "fetch",
     "get_current_commission",
     "search",
+    "workflow_inspect",
   ]);
 
   const capture = tools.find((tool: { name: string }) =>

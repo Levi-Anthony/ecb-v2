@@ -1,7 +1,9 @@
 import type { McpServer, ScopeChallengeHandler } from '@modelcontextprotocol/server';
 import { z } from 'zod';
 
-export const workflowContract = 'ecos:workflow-governance:1.0.0';
+import { workflowInspectAnnotations, workflowInspectDescription, workflowInspectFailure } from './open-brain-mcp/workflow-inspection.ts';
+export { workflowContract } from './open-brain-mcp/workflow-inspection.ts';
+import { workflowContract } from './open-brain-mcp/workflow-inspection.ts';
 const id = z.string().uuid();
 const text = z.string().trim().min(1).max(20000);
 const stage = z.enum(['plan','implement','verify','deploy','validate','metabolize','close']);
@@ -62,12 +64,12 @@ export function registerWorkflowTools(server: McpServer, ports: WorkflowPorts,
   check: (capability: 'recover'|'transition') => ScopeChallengeHandler) {
   server.registerTool('workflow_inspect', {
     title: 'Inspect Production Cycle',
-    description: `${workflowContract}. Recover the containing outcome, current stage, required unpaid obligations, child returns, scope decisions, proof history, observer health and exact next action. Zero balance does not follow from local PASS or deployment.`,
-    annotations: {readOnlyHint:true,destructiveHint:false,openWorldHint:false},
+    description: workflowInspectDescription,
+    annotations: workflowInspectAnnotations,
     scopeChallenge: check('recover'), inputSchema:{cycle_id:id.optional()},
   }, async ({cycle_id}) => {
     try { return {content:[{type:'text' as const,text:JSON.stringify(await ports.inspect(cycle_id))}]}; }
-    catch(error){return {isError:true,content:[{type:'text' as const,text:JSON.stringify(workflowError(error))}]};}
+    catch(error){return {isError:true,content:[{type:'text' as const,text:JSON.stringify(workflowInspectFailure(error))}]};}
   });
   server.registerTool('workflow_command', {
     title: 'Govern Production Cycle',

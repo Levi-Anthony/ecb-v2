@@ -13,6 +13,14 @@ import {
   getCurrentCommission,
 } from "./current-commission.ts";
 
+import {
+  createWorkflowReader,
+  workflowInspectAnnotations,
+  workflowInspectDescription,
+  workflowInspectFailure,
+  type WorkflowReader,
+} from "./workflow-inspection.ts";
+
 declare const Supabase: {
   ai: {
     Session: new (model: string) => {
@@ -156,6 +164,7 @@ export type Embedder = (text: string) => Promise<number[]>;
 type AppDependencies = {
   accessKey: string;
   runtime: BrainRuntime;
+  workflow?: WorkflowReader;
   commission?: { anchorId: string; ports: CommissionPorts };
 };
 
@@ -192,11 +201,25 @@ function operationFailure(error: unknown, fallback: OperationFailureCode) {
 function buildServer(
   runtime: BrainRuntime,
   commission?: AppDependencies["commission"],
+  workflow?: WorkflowReader,
 ): McpServer {
   const server = new McpServer(
-    { name: "ecb-v2-open-brain", version: "0.2.3" },
+    { name: "ecb-v2-open-brain", version: "0.2.4" },
     { instructions: commissionInstructions },
   );
+  server.registerTool("workflow_inspect", {
+    title: "Inspect Production Cycle",
+    description: workflowInspectDescription,
+    annotations: workflowInspectAnnotations,
+    inputSchema: { cycle_id: z.string().uuid().optional() },
+  }, async ({ cycle_id }) => {
+    try {
+      if (!workflow) throw new Error("workflow_recover_denied");
+      return result(await workflow.inspect(cycle_id));
+    } catch (error) {
+      return { ...result(workflowInspectFailure(error)), isError: true };
+    }
+  });
   server.registerTool("get_current_commission", {
     title: "Recover Current ECOS Commission",
     description:
@@ -362,7 +385,7 @@ function bearerToken(request: Request): string | null {
 }
 
 export function createMcpApp(
-  { accessKey, runtime, commission }: AppDependencies,
+  { accessKey, runtime, commission, workflow }: AppDependencies,
 ): Hono {
   const app = new Hono();
 
@@ -389,7 +412,7 @@ export function createMcpApp(
       Object.defineProperty(context.req, "raw", { value: patched });
     }
 
-    const server = buildServer(runtime, commission);
+    const server = buildServer(runtime, commission, workflow);
     const transport = new StreamableHTTPTransport();
     await server.connect(transport);
     const response = await transport.handleRequest(context);
@@ -711,6 +734,11 @@ function createCommissionPorts(): CommissionPorts {
 function createRuntime(): AppDependencies {
   return {
     accessKey: requiredEnv("ECB_BRAIN_KEY"),
+    // The existing single-Principal bearer already permits recovery. Its guarded
+    // ordinary DB client supplies the same runtime credential as commission reads.
+    workflow: createWorkflowReader(async (name, args) => {
+      return await createOrdinaryClient().rpc(name, args);
+    }),
     commission: {
       anchorId: Deno.env.get("ECB_CURRENT_COMMISSION_THOUGHT_ID") ??
         CURRENT_COMMISSION_ANCHOR,

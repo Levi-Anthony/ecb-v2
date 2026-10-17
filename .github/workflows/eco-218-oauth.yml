@@ -2,10 +2,10 @@ name: ECO-218 ordinary OAuth qualification
 on:
   push:
     branches: [main]
-    paths: ['AGENTS.md', 'docs/worker-entry-evidence-discovery.md', 'docs/tool-action-routing-and-continuity-authorization.md', 'tests/mcp-protocol.test.ts', 'tests/current-commission.test.ts', 'server/current-commission.ts', 'server/personal-app*.ts', 'tests/personal-app.test.ts', 'scripts/*current-commission.ts', 'server.ts', 'server/domain-admission.ts', 'server/native-packages/**', 'server/oauth*.ts', 'server/browser-session.ts', 'api/**', 'server/open-brain-mcp/**', 'tests/eco-218/**', 'package*.json', 'vercel.json', '.github/workflows/eco-218-oauth.yml']
+    paths: ['AGENTS.md', 'docs/worker-entry-evidence-discovery.md', 'docs/tool-action-routing-and-continuity-authorization.md', 'server/workflow-governance.ts', 'tests/workflow/**', 'tests/mcp-protocol.test.ts', 'tests/current-commission.test.ts', 'server/current-commission.ts', 'server/personal-app*.ts', 'tests/personal-app.test.ts', 'scripts/*current-commission.ts', 'server.ts', 'server/domain-admission.ts', 'server/native-packages/**', 'server/oauth*.ts', 'server/browser-session.ts', 'api/**', 'server/open-brain-mcp/**', 'tests/eco-218/**', 'package*.json', 'vercel.json', '.github/workflows/eco-218-oauth.yml']
   pull_request:
     branches: [main]
-    paths: ['server.ts', 'server/current-commission.ts', 'scripts/*current-commission.ts', 'tests/current-commission.test.ts', 'tests/mcp-protocol.test.ts', 'server/oauth*.ts', 'server/browser-session.ts', 'api/**', 'tests/eco-218/**', 'package*.json', '.github/workflows/eco-218-oauth.yml']
+    paths: ['server/open-brain-mcp/**', 'server/workflow-governance.ts', 'tests/workflow/**', 'server.ts', 'server/current-commission.ts', 'scripts/*current-commission.ts', 'tests/current-commission.test.ts', 'tests/mcp-protocol.test.ts', 'server/oauth*.ts', 'server/browser-session.ts', 'api/**', 'tests/eco-218/**', 'package*.json', '.github/workflows/eco-218-oauth.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -19,6 +19,8 @@ jobs:
         with:
           node-version: '24'
       - run: npm ci --ignore-scripts
+      - run: npm run typecheck:workflow
+      - run: npm run test:workflow
       - run: npm run typecheck:oauth
       - run: npm run typecheck:mcp
       - run: npm run typecheck:personal
@@ -41,4 +43,4 @@ jobs:
       - name: Install package dependencies for Deno Node-resolution compatibility
         run: npm ci --ignore-scripts
       - name: Verify Edge compatibility, stable replay and authentication
-        run: deno test --no-check --frozen --config server/open-brain-mcp/deno.json --node-modules-dir=auto --allow-net --allow-env server/open-brain-mcp/index.test.ts
+        run: deno test --no-check --frozen --config server/open-brain-mcp/deno.json --node-modules-dir=auto --allow-net --allow-env server/open-brain-mcp/
