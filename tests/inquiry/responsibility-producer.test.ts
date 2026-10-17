@@ -143,6 +143,7 @@ test('native package current, unchanged and freshly assessed can remain scoped R
     recoverEditionSnapshot: qualifiedSnapshot, semanticReview: async set => review(set),
   });
   assert.equal(result.assessment.disposition, 'READY');
+  assert.equal(result.assessment.verification.snapshot_ref, 'fixture:transaction:qualified-atomic-selection');
   assert(result.assessment.verification.source_editions.some(s => s.ref ===
     'native-package:' + nativePackage.id));
 });
@@ -245,6 +246,7 @@ test('F4 revocation during later package reread cannot be promoted by sequential
   assert.equal(governing.currentness, 'STALE');
   assert.equal(result.assessment.disposition, 'HOLD');
   assert(result.assessment.verification.reasons.includes('SOURCE_EDITION_COHERENT_SNAPSHOT_UNAVAILABLE'));
+  assert.equal(result.assessment.verification.snapshot_ref, null);
 });
 test('F4 qualified end-of-window snapshot observes source revocation during package read', async () => {
   let governing = { ...source };

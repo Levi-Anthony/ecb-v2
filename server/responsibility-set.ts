@@ -37,7 +37,10 @@ export type ResponsibilitySetResult = {
   obligation_ref: string;
   candidate_digest: string;
   responsibility_ids: string[];
-  verification: { status: 'VERIFIED' | 'UNVERIFIED'; reasons: string[]; source_editions: SourceEdition[] };
+  verification: { status: 'VERIFIED' | 'UNVERIFIED'; reasons: string[]; source_editions: SourceEdition[];
+    /** Attribution handle for an accepted coherent source-system current selection.
+     * Null is never evidence of a multi-edition verified selection. */
+    snapshot_ref: string | null };
   validation: { status: 'VALIDATED' | 'NOT_VALIDATED' | 'UNKNOWN'; criterion: string | null;
     assessor_ref: string | null; method: string | null; evidence_refs: string[];
     excluded_responsibility_ids: string[]; unresolved_refs: string[] };
@@ -116,6 +119,7 @@ export async function assessResponsibilitySet(
         reasons.push('SOURCE_EDITION_NOT_CURRENT_OR_UNRECOVERABLE:' + edition.ref);
     }
   }
+  let acceptedSnapshotRef: string | null = null;
   // F4: sequentially reading an obligation followed by native dependencies
   // does not prove they were CURRENT at one consistent point. Requalify all
   // editions using a trusted atomic/current-selection reader at exit.
@@ -132,6 +136,7 @@ export async function assessResponsibilitySet(
           !sameEd(sourceEditions, snapshot.source_editions) ||
           snapshot.source_editions.some(e => e.currentness !== 'CURRENT'))
         reasons.push('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED');
+      else acceptedSnapshotRef = snapshot.snapshot_ref;
     }
   }
   const verified = reasons.length === 0 && assessment !== undefined;
@@ -145,7 +150,8 @@ export async function assessResponsibilitySet(
     inquiry_basis_ref: input.inquiry_basis_ref, obligation_ref: input.obligation_ref,
     candidate_digest: input.candidate_digest,
     responsibility_ids: [...input.responsibility_ids],
-    verification: { status: verified ? 'VERIFIED' : 'UNVERIFIED', reasons, source_editions: [...sourceEditions] },
+    verification: { status: verified ? 'VERIFIED' : 'UNVERIFIED', reasons,
+      source_editions: [...sourceEditions], snapshot_ref: verified ? acceptedSnapshotRef : null },
     validation: { status: validationStatus, criterion: assessment?.criterion ?? null,
       assessor_ref: assessment?.assessor_ref ?? null, method: assessment?.method ?? null,
       evidence_refs: [...(assessment?.evidence_refs ?? [])],

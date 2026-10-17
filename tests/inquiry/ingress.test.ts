@@ -177,6 +177,7 @@ test('F3 actual ingress binds responsibility native dependency omitted from expl
     assert(body.domain_admission.package_refs.includes('se:omg:sysml:2.0'));
     assert.equal(body.responsibility_set.disposition, 'HOLD');
     assert(body.responsibility_set.verification.reasons.includes('SOURCE_EDITION_COHERENT_SNAPSHOT_UNAVAILABLE'));
+    assert.equal(body.responsibility_set.verification.snapshot_ref, null);
     assert.equal(body.disposition, 'HOLD');
   });
 });
