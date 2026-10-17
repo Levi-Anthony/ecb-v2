@@ -1,0 +1,105 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:circulation
+> node --import tsx --test tests/eco-213/worker.test.ts tests/eco-213/protocol.test.ts tests/eco-213/commission.test.ts tests/eco-213/assimilate.test.ts
+
+✔ complete cohort is checked before dispatch and operation identities survive replay (20.788483ms)
+✔ inactive recovered remit denies import even when a local plan exists (3.746263ms)
+✔ ambiguous second admission stops batch and preserves exact retry identity (3.644079ms)
+✔ cold native recovery hydrates the prepared edition and stable operations without source identifiers handed in (7.662833ms)
+✔ two prepared selections are visible ambiguity rather than a newest-edition choice (1.618969ms)
+✔ explicit prepared-receipt succession selects a terminal edition while forks and cycles block (9.467972ms)
+✔ explicit successor across work and remit revisions preserves corpus custody without latest selection (11.141192ms)
+✔ cross-work supersession cannot silently steal an unrelated prior receipt (1.749816ms)
+✔ explicitly timeless successor remit still requires active head, actor, permitted cohort and effects (1.682775ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"ordinary-compatibility","required":"ecb:preserve","decision":"allow","operation_id":"9313653b-2f67-4e10-bb1c-7e31372d1637"}
+eco213_constructed_stop eco213_constructed_stop
+✔ commission binds exact eight envelopes and real mechanism digests while remaining dormant (136.457618ms)
+✔ commission carries explicitly owned effect controls without universal phantom ceilings (18.277321ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:preserve","decision":"deny"}
+✔ modern: new operations gate capabilities before validation/dispatch (298.946652ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"preserve","required":"ecb:transition","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:recover","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"transition","required":"ecb:preserve","decision":"deny"}
+✔ legacy: new operations gate capabilities before validation/dispatch (193.965823ms)
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:recover","decision":"allow"}
+{"event":"ordinary_capability_decision","policy":"eco218-ordinary-v1","client_id":"recover","required":"ecb:transition","decision":"deny"}
+✔ cold discovery returns executable schemas and verified actor without transition authority (26.543603ms)
+✔ hosted worker exports Web fetch and fails closed before any dispatch (7.359406ms)
+✔ worker authentication requires installed key and Bearer scheme (0.232831ms)
+✔ missing provider credential is visible without provider dispatch (5.125851ms)
+✔ reserve before exactly one request; strict fixed route and price ceiling (13.388928ms)
+✔ unbounded tariff denies request (3.11999ms)
+✔ reservation replay retains ambiguity and does not dispatch again (2.083419ms)
+✔ explicit remit input fuse fails visibly before provider generation (1.889185ms)
+✔ bad anchor preserves raw output failure and cannot regenerate (2.421257ms)
+✔ provider HTTP failures expose safe code and delegated delayed retry (1.939381ms)
+✔ unexpected model/provider identity fails before semantic commit (2.141055ms)
+✔ exact quote cannot establish semantic adequacy of a false description (0.349116ms)
+✔ blocking semantic UNKNOWN cannot be labeled satisfied (1.356414ms)
+✔ D&I source-function classification is preserved as a hypothesis, not minted ontology (2.156549ms)
+✔ worker refuses model-promoted native referent absent from the actual work and index snapshot (4.246947ms)
+✔ explicit specification is not silently reclassified as a cue (0.304529ms)
+✔ independent assessment cannot pass with unresolved source-function or neighborhood coverage (0.235545ms)
+✔ unrecognized fields cannot silently widen mechanism output (0.773976ms)
+✔ late commit and failure rejection retain provider evidence without retry (2.490041ms)
+✔ changed mechanism code/prompt/schema cannot dispatch provider calls (1.115641ms)
+✔ documented completion without provider binds actual generation metadata before commit (1.775004ms)
+✔ missing or mismatched generation provenance retains output and denies regeneration (5.19143ms)
+✔ null tariff is unbounded and cannot authorize a zero-price dispatch (1.342391ms)
+✔ embedding validates its bound mechanism before compute or index commit (3.280721ms)
+✔ null remit input/output ceilings defer to provider capability metadata (1.86529ms)
+✔ provider context is the hard technical boundary when remit input ceiling is absent (1.903687ms)
+✔ missing provider resource metadata fails before reservation or generation (1.450885ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1522.72518

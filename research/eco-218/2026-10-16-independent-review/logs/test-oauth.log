@@ -1,0 +1,49 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:oauth
+> node --import tsx --test tests/eco-218/*.test.ts
+
+✔ verified identity, resource, capability and live grant remain distinct (14.292818ms)
+✔ wrong audience/issuer, expiry, missing identity, privileged roles and forged metadata deny before live grant dispatch (14.650918ms)
+✔ revocation, disabled user/session and changed capability grant are checked on every request (1.830026ms)
+{"event":"ordinary_capability_decision","policy":"eco218-oauth-v1","client_id":"00000000-0000-4000-8000-000000000102","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-oauth-v1","client_id":"00000000-0000-4000-8000-000000000102","required":"ecb:preserve","decision":"deny"}
+{"event":"ordinary_capability_decision","policy":"eco218-oauth-v1","client_id":"00000000-0000-4000-8000-000000000102","required":"ecb:transition","decision":"deny"}
+✔ OAuth capability denial precedes validation/dispatch and advertises no unsupported provider scope (13.336027ms)
+✔ protected resource discovery is exact, public, uncached and enabled explicitly (0.869489ms)
+✔ registered callbacks work across consumers without coupling their identity or redirect (0.422677ms)
+✔ consent serves without database/model loading; credentials stay out of page and CSRF/body checks precede auth (2.710082ms)
+✔ email send status distinguishes real provider throttling from other failures without inventing a sent link (1.439428ms)
+✔ transient auth provider failure never erases existing browser cookies or claims a sign-out (1.123362ms)
+✔ invalid session is denied without a stale response erasing newer cookies (0.416628ms)
+✔ signed-in Principal sees a direct route to private work rather than only connector instructions (0.309176ms)
+✔ independent: valid ordinary read authenticates remotely and never rotates credentials (2.466435ms)
+✔ independent: expired access requests explicit recovery before any provider or work dispatch (1.236142ms)
+✔ independent: OAuth client session cannot enter human door even when expired (0.528996ms)
+✔ independent: forged subject is denied after provider identity comparison (0.316727ms)
+✔ independent: provider outage is unavailable, never claimed sign-out (0.327794ms)
+✔ independent: syntactically malformed token is invalid rather than provider outage (3.117787ms)
+✔ independent: two same-profile tabs use one refresh after rechecking shared cookies under lock (15.01101ms)
+✔ independent: missing cross-tab locking fails visibly without attempting uncoordinated rotation (1.509765ms)
+✔ independent: transient under-lock context outage does not launch another refresh (1.249082ms)
+✔ independent: email-code credential writer takes the same browser session lock (10.880408ms)
+✔ independent: locked logout never recursively requests the same Web Lock on expired session (1.721984ms)
+✔ independent: transient callback handoff retries retained in-memory pair without another email (2.354607ms)
+✔ independent: exact terminal refresh rejection offers typed recovery without erasing newer cookies (3.783715ms)
+✔ independent: terminal refresh rechecks cookies before offering reauthentication and preserves outage disposition (3.348864ms)
+✔ independent: terminal recovery exposes existing sign-in control without sending email in either human surface (6.852302ms)
+✔ expiry reaches safe mobile bootstrap and authenticated actions return refresh-required before ports (6.072196ms)
+✔ pinned SDK refresh is explicit; ordinary routes bind authenticated bearer and never echo cookies (11.024807ms)
+✔ delayed refresh rejection never clears a newer pair and never exposes provider internals (0.749288ms)
+✔ existing Principal enrollment is enforced with the real authorization path before work ports (0.815729ms)
+✔ consent, approve, deny and revoke use existing provider bearer without implicit SDK refresh (8.140521ms)
+✔ explicit logout clears expired pair without refresh and reports failed native revocation (0.531321ms)
+✔ cross-origin refresh cannot rotate and OAuth or mismatched subjects cannot become a first-party session (0.984723ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 468.479081

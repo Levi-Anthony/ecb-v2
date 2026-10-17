@@ -18,6 +18,8 @@ import { produceResponsibilitySet, type RecoveredSource } from './server/respons
 import { createBrainInquiryAdapters } from './server/orchestration-brain.js';
 import { systemsEngineeringNativePackages } from './server/native-packages/systems-engineering.js';
 import { executeWorkflow, registerWorkflowTools, workflowContract, workflowError, type WorkflowPorts } from './server/workflow-governance.js';
+import { commissionInstructions, commissionFailure, getCurrentCommission } from './server/current-commission.js';
+import { handlePersonalApp } from './server/personal-app.js';
 
 const SUPABASE_URL = 'https://vezxivrvhakclxuvxzso.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_4mAxzOfWinJcn-98szUEYA_Wh88UdPW';
@@ -612,10 +614,26 @@ const workflowPorts: WorkflowPorts = {
 function buildServer(): McpServer {
   const server = new McpServer(
     { name: 'ecb-v2-open-brain', version: '0.7.0' },
-    { capabilities: { tools: {} } },
+    { capabilities: { tools: {} }, instructions: commissionInstructions },
   );
 
   registerWorkflowTools(server,workflowPorts,capabilityCheck);
+
+  server.registerTool('get_current_commission', {
+    title: 'Recover Current ECOS Commission',
+    description: 'Use before consequential ECOS product or engineering work. No arguments or remembered UUID required. Reads the configured navigation Thought current head, its immutable projection and exact source Artifact; returns governing decisions, edition, authority limits and next action. No semantic search, embeddings or writes. Unavailable or changing heads fail explicitly; this tool grants no execution permission.',
+    annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false },
+    scopeChallenge: capabilityCheck('recover'),
+    inputSchema: {},
+  }, async () => {
+    try {
+      return result(await getCurrentCommission(process.env.ECB_CURRENT_COMMISSION_THOUGHT_ID, {
+        fetchThought: id => runtime.fetch(id), fetchArtifact: id => runtime.fetchArtifact(id),
+      }));
+    } catch (error) {
+      return { ...result(commissionFailure(error)), isError: true };
+    }
+  });
 
   server.registerTool('capture_thought', {
     title: 'Capture Thought',
@@ -924,6 +942,7 @@ app.get('/', (context) => context.json({
   model: 'Supabase/gte-small',
   workflow_contract: workflowContract,
   ordinary_tools: [
+    'get_current_commission',
     'capture_thought',
     'search',
     'fetch',
@@ -940,6 +959,22 @@ app.get('/', (context) => context.json({
 app.options('*', (context) => {
   const rejected = validateMcpHostAndOrigin(context.req.raw);
   return rejected ?? context.text('ok', 200, corsHeaders);
+});
+
+// Personal human door: same BRAIN custody and native workflow controller, with
+// existing first-party authenticated Principal enrollment. Fail closed on unknown users.
+app.all('/personal', async (context) => {
+  const rejected = validateMcpHostAndOrigin(context.req.raw);
+  if (rejected) return rejected;
+  return handlePersonalApp(context.req.raw, {
+    inspect: (cycleId) => workflowPorts.inspect(cycleId),
+    commission: () => getCurrentCommission(process.env.ECB_CURRENT_COMMISSION_THOUGHT_ID, {
+      fetchThought: id => runtime.fetch(id), fetchArtifact: id => runtime.fetchArtifact(id),
+    }),
+    capture: (input) => runtime.capture(input),
+    fetch: (id) => runtime.fetch(id),
+    search: (query, limit) => runtime.search(query, limit),
+  });
 });
 
 // Human/client door over the same native records and controller as the agent door.

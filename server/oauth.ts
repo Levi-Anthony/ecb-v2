@@ -121,7 +121,7 @@ export async function oauthToolDenial(request: Request, auth: AuthInfo): Promise
   try { body = JSON.parse(new TextDecoder().decode(bytes)); } catch { return; }
   if (body?.method !== 'tools/call') return;
   const family: Record<string, OAuthCapability> = {
-    fetch: 'recover', fetch_artifact: 'recover', search: 'recover',
+    get_current_commission: 'recover', fetch: 'recover', fetch_artifact: 'recover', search: 'recover',
     capture_thought: 'preserve', create_artifact: 'preserve', set_thought_disposition: 'transition',
     workflow_inspect: 'recover', workflow_command: 'transition',
   };

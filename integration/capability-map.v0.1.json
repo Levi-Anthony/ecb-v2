@@ -1,0 +1,225 @@
+{
+  "schema": "ecos-integration-projection-v0.1",
+  "standing": "WORKING_INTEGRATION_PROJECTION_NOT_SEMANTIC_OR_WORKFLOW_AUTHORITY",
+  "baseline": {
+    "main_sha": "16065905d28ac1946a50f2b200648fa61ac6a878",
+    "date": "2026-10-15",
+    "currentness": "Main source SHA is a recorded engineering basis, not a live current-head claim. On review refresh GitHub and BRAIN separately."
+  },
+  "pgo": {
+    "source": "docs/current-product-delivery-commission.md",
+    "standing": "PRINCIPAL_DIRECTED_PRODUCT_WITH_EXPLICIT_WORKING_DISCRIMINATION",
+    "focal": "Usable situated personal SIGMA/ECOS application across authorized workers, devices, accounts and physical-world participation",
+    "containing_whole": "Principal, device and service topology, credentials, workers, BRAIN, code and provider constraints—not the GitHub repository alone",
+    "initiating_contrast": "Competing human doors; prior implementation branches lacking current integration; strong PGO losing operative discrimination",
+    "mapper": "Bounded technical lead interpreting Principal product commission; inferred actors must be marked provisional",
+    "intended_end_state": "Principal captures, recovers governing state, authorizes a real service action, verifies the actual outcome and resumes without repeating context",
+    "definition_of_done": [
+      "Source-bound cold-worker current commission and next obligation recovered without Principal recap",
+      "One private phone interface completes actual Principal-authenticated capture, real authorized service action, verified result and later resumption",
+      "Earned older contracts remain recoverable while superseded code cannot silently outrank current sources",
+      "Authority, identity and work persist and recover across interrupted workers, devices and services"
+    ],
+    "discrimination": {
+      "method": "For each proposed change compare situated success, installed adapters, actual grounded evidence, alternative methods and omission costs; trace affected old and destination new obligations; use positive and negative consumer tests, not source wording as proof",
+      "helps": [
+        "New worker recovers current authorized work and acts without replayed human onboarding",
+        "Phone client can preserve and verify one real result with exact readback",
+        "Old qualifying mechanism is extracted while its superseded theory stays historical"
+      ],
+      "hinders": [
+        "PR #109 second /app identity model merges independently beside deployed /api/personal",
+        "Worker reduces PGO to 'ship an app' and drops definition of done and help/hinder discrimination",
+        "GitHub green build is mislabeled actual Principal acceptance",
+        "Device/account trust boundary disappears from product scope"
+      ],
+      "method_example": "The competing interfaces count as hinder unless their capabilities are reconciled into one agreed trust and work path; the independently verified Artifact-save specimen may help without importing its credential/session design",
+      "stopping": "Do not claim product acceptance until verified situated end-to-end use; hold only affected high-consequence actions while unrelated ordinary work proceeds"
+    },
+    "authority": "Principal product and consequential effect authorization; technical lead chooses engineering methods within authorized execution",
+    "scope": [
+      "mobile",
+      "desktop",
+      "accounts",
+      "credentials",
+      "authorized workers",
+      "physical participation",
+      "Supabase BRAIN",
+      "GitHub",
+      "Vercel",
+      "Linear",
+      "reentry"
+    ],
+    "stopping": "Do not claim product acceptance until verified situated end-to-end use; hold only affected high-consequence actions while unrelated ordinary work proceeds",
+    "point_of_view": "Bounded technical lead interpreting Principal product commission; inferred actors must be marked provisional"
+  },
+  "stakeholders": [
+    {
+      "kind": "Principal",
+      "standing": "OBSERVED",
+      "value": "Useful, resilient personal action with minimal explanation burden"
+    },
+    {
+      "kind": "authorized technical workers",
+      "standing": "ROLE—ACTUAL PARTICIPATION MUST BE VERIFIED",
+      "value": "Correct current task and low-friction source/adapter/action recovery"
+    },
+    {
+      "kind": "hypothetical public clients",
+      "standing": "NOT_CURRENT_STAKEHOLDER_ACCEPTANCE",
+      "value": "Do not add unsupported requirements"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "orientation",
+      "semantic_contract": {
+        "source": "docs/inquiry-orchestration.md",
+        "meaning": "For each consequential inquiry there is an active, sufficiently situated Principal Governing Orientation; its focal referent, intended end state, definition of done, positive helps/hinders discrimination, examples, evidence and stopping govern selection. Exact Resolution, qualification, current binding and authority are distinct. PGO cannot manufacture reality evidence or semantic standing.",
+        "standing": "QUALIFIED_SOURCE_REQUIRED"
+      },
+      "physical_adapter": {
+        "source": "docs/workflow-governance.md",
+        "standing": "ISOLATED_PROOF_NOT_QUALIFIED_LIVE_ENFORCEMENT",
+        "description": "Working inquiry guidance in docs/inquiry-orchestration.md; ECO-151 physical Shape and ECO-152 disposable-postgres qualified orientation lifecycle are prior evidence, not an established production orientation binding."
+      },
+      "durable_control": {
+        "source": "docs/worker-entry-evidence-discovery.md",
+        "owner": "ECO-151/ECO-202",
+        "reentry": "Recover current Greenfield commission/head and source-qualified PGO, test sufficiency for the specific decision, then inspect ECO-151/152 actual installed-status before invoking any current binding."
+      },
+      "acceptance": {
+        "missing": "PGO version/currentness/adequacy through actual cold worker, distinct from semantic ratification"
+      }
+    },
+    {
+      "id": "native-work",
+      "semantic_contract": {
+        "source": "docs/workflow-governance.md",
+        "meaning": "A native outcome-oriented cycle preserves its containing result, current PGO, child dependencies, required obligations, validated receipts and unpaid debt. Authorized transitions use version/operation identity and do not equate local PASS with whole completion.",
+        "standing": "QUALIFIED_SOURCE_REQUIRED"
+      },
+      "physical_adapter": {
+        "source": "server/workflow-governance.ts",
+        "standing": "INSTALLED_HISTORICALLY",
+        "description": "Greenfield ecb_workflow PostgreSQL cycles/obligations/proposals/results with server/workflow-governance.ts and protected workflow inspect/command; last inspected root remains open, not certified complete."
+      },
+      "durable_control": {
+        "source": "research/workflow-governance/2026-10-10-production-cycle-plan.json",
+        "owner": "ECO-202",
+        "reentry": "Authenticate as a commissioned allowed actor, inspect root 40ca3bbd-c905-4ec5-b202-bfb49fcd6605 and current child, select first eligible unpaid obligation; use workflow_command with exact version/operation ID."
+      },
+      "acceptance": {
+        "missing": "Auth workflow actor, current unpaid debts, correct versioned state transitions and complete closure"
+      }
+    },
+    {
+      "id": "human-door",
+      "semantic_contract": {
+        "source": "docs/current-product-delivery-commission.md",
+        "meaning": "The Principal's private mobile-first entry reuses source-qualified BRAIN and native workflow; it must support review/authorization, a real service action, independent readback and resumption under one first-party verified identity. Human and agent doors share native authority but not credential/session affordances.",
+        "standing": "QUALIFIED_SOURCE_REQUIRED"
+      },
+      "physical_adapter": {
+        "source": "server/personal-app.ts",
+        "standing": "PRODUCTION_DEPLOYED_NOT_ACTUAL_PRINCIPAL_ACCEPTED",
+        "description": "Production GitHub main server/personal-app.ts via Vercel /api/personal; Supabase Auth email callback and explicit Principal enrollment gate. Distinct PR #109 /app alternative not incorporated."
+      },
+      "durable_control": {
+        "source": "docs/current-product-delivery-commission.md",
+        "owner": "ECO-202/ECO-218",
+        "reentry": "Read current production deployment, inspect hosted Supabase Auth URL Site URL and exact consent redirect, repair only with authorized provider control, verify session/identity before separate enrollment and real phone acceptance."
+      },
+      "acceptance": {
+        "missing": "Repair sign-in then verify identity, enrollment and actual full mobile action/resumption"
+      }
+    },
+    {
+      "id": "commission-distribution",
+      "semantic_contract": {
+        "source": "docs/current-product-delivery-commission.md",
+        "meaning": "An authorized interlocutor discovers and recovers the unique current admitted commission from canonical BRAIN; source edition/digest, projection, unchanged current head and authority limitations are checked before acting. Actual client receipt is distinct from server tool availability.",
+        "standing": "QUALIFIED_SOURCE_REQUIRED"
+      },
+      "physical_adapter": {
+        "source": "server/open-brain-mcp/index.ts",
+        "standing": "EDGE_V7_DEPLOYED_REPORTED_UNMERGED_SOURCE",
+        "description": "Node MCP via deployed Vercel /api/mcp; separately deployed Supabase Edge open-brain-mcp v7 was reported to expose get_current_commission, while exact source remains draft PR #108."
+      },
+      "durable_control": {
+        "source": "server/current-commission.ts",
+        "owner": "ECO-219/ECO-218",
+        "reentry": "ECO-219 worker checks deployed Edge code versus source PR #108 and current Node, then uses supported client refresh and cold-worker reception to verify source-bound current edition without memory-only identifiers."
+      },
+      "acceptance": {
+        "missing": "Reconcile PR #108 deployed source with repository and qualify cross-client use"
+      }
+    }
+  ],
+  "requirements": [
+    {
+      "id": "VALUE-01",
+      "stakeholder": "Principal",
+      "outcome": "Continuity without recap",
+      "source": "docs/current-product-delivery-commission.md",
+      "owner": "ECO-219",
+      "acceptance": "Cold receiving worker correctly uses exact current commission",
+      "standing": "BOUNDED_CHATGPT_PASS"
+    },
+    {
+      "id": "VALUE-02",
+      "stakeholder": "Principal",
+      "outcome": "Useful mobile action",
+      "source": "docs/current-product-delivery-commission.md",
+      "owner": "ECO-202/ECO-218",
+      "acceptance": "Observed authenticated capture, actual action, verification, resumption",
+      "standing": "NOT_ACCEPTED"
+    },
+    {
+      "id": "VALUE-03",
+      "stakeholder": "Principal",
+      "outcome": "Strong PGO preservation",
+      "source": "docs/inquiry-orchestration.md",
+      "owner": "ECO-202/ECO-151",
+      "acceptance": "Cold worker recovers and exercises definition of done and helps/hinders method",
+      "standing": "METHOD_PROJECTION_ONLY"
+    },
+    {
+      "id": "VALUE-04",
+      "stakeholder": "Principal",
+      "outcome": "Whole-boundary topology",
+      "source": "docs/current-product-delivery-commission.md",
+      "owner": "ECO-208/ECO-218",
+      "acceptance": "Qualified nonsecret account/device/service map and cross-device reentry",
+      "standing": "UNQUALIFIED"
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "PR-108",
+      "url": "https://github.com/Levi-Anthony/ecb-v2/pull/108",
+      "owner": "ECO-219",
+      "risk": "Edge v7 reportedly deployed from draft unmerged source",
+      "next": "Byte-check deployed Edge to PR and selected main integration; no unneeded redeploy"
+    },
+    {
+      "id": "PR-109",
+      "url": "https://github.com/Levi-Anthony/ecb-v2/pull/109",
+      "owner": "ECO-202/ECO-218",
+      "risk": "Overlapping private /app and /api/personal session/UX; PR not mergeable",
+      "next": "Keep one private authorization model; selectively extract Artifact-save/verify value, not both doors"
+    },
+    {
+      "id": "PGO-DILUTION",
+      "url": "https://github.com/Levi-Anthony/ecb-v2/blob/main/docs/inquiry-orchestration.md",
+      "owner": "ECO-202/ECO-151",
+      "risk": "PGO may be diluted to vague purpose-only guidance",
+      "next": "Positive/negative case-based situated adequacy test against governing source"
+    }
+  ],
+  "limits": [
+    "Not canonical BRAIN or ratified theory",
+    "Structural CI passing does not prove semantic adequacy, actual runtime or actual-use validation",
+    "Advisory on unaffected work; hold only independently identified consequential defect"
+  ]
+}
