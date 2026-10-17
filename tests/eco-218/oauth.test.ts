@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { createLocalJWKSet, exportJWK, generateKeyPair, SignJWT } from 'jose';
 import { bearerChallenge, OAUTH_ISSUER, OAUTH_METADATA_URL, OAUTH_RESOURCE, oauthToolDenial,
   protectedResourceMetadata, verifyOAuthToken } from '../../server/oauth.ts';
-import { handleConsent, safeRedirect } from '../../server/oauth-consent.ts';
+import { handleConsent, safeRedirect, classifyEmailStartFailure } from '../../server/oauth-consent.ts';
 import metadata from '../../api/metadata.ts';
 
 const { privateKey, publicKey } = await generateKeyPair('ES256');
@@ -123,4 +123,64 @@ test('consent serves without database/model loading; credentials stay out of pag
       origin: 'https://ecb-v2-eight.vercel.app', 'content-type': 'application/json',
     }, body: 'x'.repeat(32769) }))).status, 413);
   } finally { globalThis.fetch = original; }
+});
+
+
+test('email send status distinguishes real provider throttling from other failures without inventing a sent link', async () => {
+  const endpoint = 'https://ecb-v2-eight.vercel.app/oauth/start';
+  const request = () => new Request(endpoint, { method: 'POST', headers: {
+    origin: 'https://ecb-v2-eight.vercel.app', 'content-type': 'application/json',
+  }, body: JSON.stringify({ email: 'constructed@example.invalid' }) });
+  for (const [error, expectedStatus, expectedCode] of [
+    [{ status: 429, code: 'over_request_rate_limit' }, 429, 'email_throttled'],
+    [{ status: 400, code: 'over_email_send_rate_limit' }, 429, 'email_throttled'],
+    [{ status: 500, code: 'smtp_failure' }, 503, 'email_delivery_unavailable'],
+    [{ status: 503, code: 'provider_unavailable' }, 503, 'email_delivery_unavailable'],
+  ] as const) {
+    let calls = 0;
+    const fake = { auth: { signInWithOtp: async () => { calls++; return { error }; } } } as never;
+    const response = await handleConsent(request(), { authClient: fake });
+    assert.equal(calls, 1);
+    assert.equal(response.status, expectedStatus);
+    const value = await response.json();
+    assert.equal(value.code, expectedCode);
+    assert.equal(value.sent, undefined);
+    assert.doesNotMatch(JSON.stringify(value), /smtp_failure|provider_unavailable|constructed@example/);
+  }
+  assert.equal(classifyEmailStartFailure({ status: 503 }).code, 'email_delivery_unavailable');
+});
+
+const browserAccess = (exp = Date.now()/1000+3600) => 'eyJhbGciOiJIUzI1NiJ9.' + Buffer.from(JSON.stringify({ sub:'constructed-user', exp })).toString('base64url') + '.constructed';
+
+test('transient auth provider failure never erases existing browser cookies or claims a sign-out', async () => {
+  for (const error of [{ status: 503 }, { status: 0 }, { status: 429 }]) {
+    const fake = { auth: { getUser: async () => ({ data: { user: null }, error }) } } as never;
+    const response = await handleConsent(new Request('https://ecb-v2-eight.vercel.app/oauth/context', {
+      headers: { cookie: '__Host-ecb_access='+browserAccess()+'; __Host-ecb_refresh=constructed' },
+    }), { authClient: fake });
+    assert.equal(response.status, 503);
+    assert.equal((await response.json()).code, 'session_check_unavailable');
+    assert.equal(response.headers.get('set-cookie'), null);
+  }
+});
+
+test('invalid session is denied without a stale response erasing newer cookies', async () => {
+  const fake = { auth: { getUser: async () => ({ data: { user: null }, error: { status: 401 } }) } } as never;
+  const response = await handleConsent(new Request('https://ecb-v2-eight.vercel.app/oauth/context', {
+    headers: { cookie: '__Host-ecb_access='+browserAccess()+'; __Host-ecb_refresh=invalid' },
+  }), { authClient: fake });
+  assert.equal(response.status, 401);
+  assert.deepEqual(await response.json(), { code: 'session_provider_rejected_recoverable',
+    message: 'Session recovery is required in this browser.' });
+  assert.equal(response.headers.get('set-cookie'), null);
+});
+
+test('signed-in Principal sees a direct route to private work rather than only connector instructions', async () => {
+  const response = await handleConsent(new Request('https://ecb-v2-eight.vercel.app/oauth/consent'));
+  const html = await response.text();
+  assert.equal(response.headers.get('vary'), 'Cookie');
+  assert.match(html, /id="private-workspace" hidden/);
+  assert.match(html, /href="\/api\/personal">Open your private ECOS workspace/);
+  assert.match(html, /private-workspace'\)\.hidden=!data\.enrolled/);
+  assert.match(html, /Your ECB account is ready\. Open your private ECOS workspace/);
 });

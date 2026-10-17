@@ -1,0 +1,34 @@
+[
+  {
+    "command": "npm run typecheck:oauth",
+    "exit_code": 0
+  },
+  {
+    "command": "npm run typecheck:personal",
+    "exit_code": 0
+  },
+  {
+    "command": "npm run typecheck:mcp",
+    "exit_code": 0
+  },
+  {
+    "command": "npm run typecheck:circulation",
+    "exit_code": 0
+  },
+  {
+    "command": "npm run test:oauth",
+    "exit_code": 0
+  },
+  {
+    "command": "npm run test:personal",
+    "exit_code": 0
+  },
+  {
+    "command": "npm run test:mcp",
+    "exit_code": 0
+  },
+  {
+    "command": "npm run test:circulation",
+    "exit_code": 0
+  }
+]

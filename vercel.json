@@ -1,25 +1,14 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
-    {
-      "source": "/app",
-      "destination": "/api/app"
-    },
-    {
-      "source": "/.well-known/oauth-protected-resource/api/mcp",
-      "destination": "/api/metadata"
-    },
-    {
-      "source": "/.well-known/oauth-protected-resource",
-      "destination": "/api/metadata"
-    },
-    {
-      "source": "/oauth/:action",
-      "destination": "/api/oauth/:action"
-    }
+    { "source": "/.well-known/oauth-protected-resource/api/mcp", "destination": "/api/metadata" },
+    { "source": "/.well-known/oauth-protected-resource", "destination": "/api/metadata" },
+    { "source": "/oauth/:action", "destination": "/api/oauth/:action" }
   ],
   "git": {
     "deploymentEnabled": {
+      "feat/ecos-personal-workspace": false,
+      "fix/eco218-private-login-reliability-20261016": false,
       "move/eco-213-semantic-circulation": false
     }
   }
