@@ -7,6 +7,7 @@
   ],
   "git": {
     "deploymentEnabled": {
+      "fix/eco-219-edge-commission-exposure": false,
       "feat/ecos-personal-workspace": false,
       "fix/eco218-private-login-reliability-20261016": false,
       "move/eco-213-semantic-circulation": false
