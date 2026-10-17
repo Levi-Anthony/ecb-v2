@@ -269,7 +269,7 @@ for (const mode of ['modern', 'legacy'] as const) {
       assert.equal(tools.find((tool) => tool.name === 'fetch')?.annotations?.readOnlyHint, true);
       assert.deepEqual(
         tools.filter((tool) => tool.annotations?.idempotentHint).map((tool) => tool.name),
-        ['workflow_command','capture_thought', 'set_thought_disposition', 'create_artifact'],
+        ['workflow_inspect','workflow_command','capture_thought', 'set_thought_disposition', 'create_artifact'],
       );
       const capture = tools.find((tool) => tool.name === 'capture_thought');
       const captureSchema = capture?.inputSchema as {
