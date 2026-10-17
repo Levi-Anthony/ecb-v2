@@ -61,7 +61,18 @@ export type RecoverEditionSnapshot = (requested: SourceEdition[]) => Promise<Coh
 const nonblank = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0;
 const distinct = (xs: string[]) => xs.length === new Set(xs).size;
 const equalSet = (a: string[], b: string[]) => a.length === b.length && a.every(v => b.includes(v));
-const sameEd = (a: SourceEdition[], b: SourceEdition[]) => a.length === b.length &&
+// Untrusted provider data can violate its TypeScript contract at runtime.
+ // Array.from visits sparse slots, rejecting absent/null/malformed entries
+ // instead of treating them as a smaller or partly validated edition set.
+const validEdition = (value: unknown): value is SourceEdition =>
+  value !== null && typeof value === 'object' && !Array.isArray(value) &&
+  nonblank((value as SourceEdition).ref) &&
+  /^[a-f0-9]{64}$/i.test((value as SourceEdition).digest ?? '');
+const validEditions = (value: unknown): value is SourceEdition[] =>
+  Array.isArray(value) && Array.from(value).every(validEdition) &&
+  distinct(Array.from(value, edition => (edition as SourceEdition).ref));
+const sameEd = (a: unknown, b: unknown) =>
+  validEditions(a) && validEditions(b) && a.length === b.length &&
   a.every(v => b.some(w => v.ref === w.ref && v.digest === w.digest));
 
 /** Verification checks declared structural/source constraints. Validation still requires
@@ -84,8 +95,8 @@ export async function assessResponsibilitySet(
     reasons.push('SITUATED_BASIS_MISSING');
   if (!input.responsibility_ids.length || !input.responsibility_ids.every(nonblank) || !distinct(input.responsibility_ids))
     reasons.push('RESPONSIBILITY_IDENTITIES_INVALID');
-  if (!sourceEditions.length || !sourceEditions.every(s => nonblank(s.ref) && /^[a-f0-9]{64}$/i.test(s.digest)) ||
-      !distinct(sourceEditions.map(s => s.ref)) || !sourceEditions.some(s => s.ref === input.obligation_ref))
+  if (!validEditions(sourceEditions) || !sourceEditions.length ||
+      !sourceEditions.some(s => s.ref === input.obligation_ref))
     reasons.push('SOURCE_EDITION_BASIS_INCOMPLETE');
 
   if (!assessment) unresolved.push('semantic_responsibility_set_assessment');
@@ -127,16 +138,21 @@ export async function assessResponsibilitySet(
   if (sourceEditions.length > 1 && !reasons.includes('SOURCE_EDITION_BASIS_INCOMPLETE')) {
     if (!recoverEditionSnapshot) reasons.push('SOURCE_EDITION_COHERENT_SNAPSHOT_UNAVAILABLE');
     else {
-      let snapshot: CoherentEditionSnapshot | null = null;
-      try { snapshot = structuredClone(await recoverEditionSnapshot(structuredClone(sourceEditions))); }
-      catch { /* no inferred currentness on read failure */ }
-      if (!snapshot || !nonblank(snapshot.snapshot_ref) ||
-          snapshot.consistency !== 'ATOMIC_CURRENT_SELECTION' ||
-          !Array.isArray(snapshot.source_editions) ||
-          !sameEd(sourceEditions, snapshot.source_editions) ||
-          snapshot.source_editions.some(e => e.currentness !== 'CURRENT'))
-        reasons.push('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED');
-      else acceptedSnapshotRef = snapshot.snapshot_ref;
+      // Contain BOTH provider failures and receipt-validation failures. No
+      // malformed/null/sparse entry may escape the accountable HOLD result.
+      let snapshotVerified = false;
+      try {
+        const snapshot = structuredClone(await recoverEditionSnapshot(structuredClone(sourceEditions)));
+        if (snapshot && nonblank(snapshot.snapshot_ref) &&
+            snapshot.consistency === 'ATOMIC_CURRENT_SELECTION' &&
+            validEditions(snapshot.source_editions) &&
+            sameEd(sourceEditions, snapshot.source_editions) &&
+            snapshot.source_editions.every(e => e.currentness === 'CURRENT')) {
+          acceptedSnapshotRef = snapshot.snapshot_ref;
+          snapshotVerified = true;
+        }
+      } catch { /* malformed receipt or provider failure cannot grant standing */ }
+      if (!snapshotVerified) reasons.push('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED');
     }
   }
   const verified = reasons.length === 0 && assessment !== undefined;

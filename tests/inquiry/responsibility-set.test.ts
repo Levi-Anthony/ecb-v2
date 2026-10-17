@@ -69,3 +69,63 @@ test('caller-submitted attestation is not part of the ordinary public input cont
   assert(r.verification.reasons.includes('SOURCE_EDITION_RECOVERY_UNAVAILABLE'));
 });
 
+
+// F5: exercise malformed provider receipts as runtime data, regardless of their
+// compile-time TypeScript declarations. Every case must return, not throw.
+test('F5 null/undefined/sparse and malformed coherent-snapshot editions return UNVERIFIED/HOLD', async () => {
+  const multi = { ...input, source_editions: [
+    ...input.source_editions, { ref: 'native-package:fixture:sysml', digest },
+  ] };
+  const assessed = { ...assessment, source_editions: [...multi.source_editions] };
+  const qualified = multi.source_editions.map(e => ({ ...e, currentness: 'CURRENT' as const }));
+  const sparse = [...qualified] as unknown[];
+  delete sparse[0];
+  const cases: Array<[string, unknown[]]> = [
+    ['null', [null, qualified[1]]],
+    ['undefined', [undefined, qualified[1]]],
+    ['sparse', sparse],
+    ['primitive', ['invalid', qualified[1]]],
+    ['empty object', [{}, qualified[1]]],
+    ['missing ref', [{ digest, currentness: 'CURRENT' }, qualified[1]]],
+    ['blank ref', [{ ref: '', digest, currentness: 'CURRENT' }, qualified[1]]],
+    ['missing digest', [{ ref: source, currentness: 'CURRENT' }, qualified[1]]],
+    ['malformed digest', [{ ref: source, digest: 'not-a-digest', currentness: 'CURRENT' }, qualified[1]]],
+    ['wrong currentness', [{ ...qualified[0], currentness: 'UNKNOWN' }, qualified[1]]],
+    ['duplicate ref', [qualified[1], qualified[1]]],
+  ];
+  for (const [label, malformed] of cases) {
+    const result = await assessResponsibilitySet(multi, assessed,
+      async ref => ({ ref, digest, currentness: 'CURRENT' }),
+      async () => ({
+        snapshot_ref: 'fixture:apparently-qualified',
+        consistency: 'ATOMIC_CURRENT_SELECTION' as const,
+        source_editions: malformed as typeof qualified,
+      }));
+    assert.equal(result.disposition, 'HOLD', label);
+    assert.equal(result.verification.status, 'UNVERIFIED', label);
+    assert.equal(result.validation.status, 'UNKNOWN', label);
+    assert.equal(result.verification.snapshot_ref, null, label);
+    assert(result.verification.reasons.includes('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED'), label);
+    assert(result.unresolved_refs.includes('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED'), label);
+  }
+});
+test('F5 exact coherent positive and unresolved question behavior are preserved', async () => {
+  const multi = { ...input, source_editions: [
+    ...input.source_editions, { ref: 'native-package:fixture:sysml', digest },
+  ] };
+  const reviewed = { ...assessment, source_editions: [...multi.source_editions] };
+  const snapshot = async (requested: typeof multi.source_editions) => ({
+    snapshot_ref: 'fixture:verified-snapshot',
+    consistency: 'ATOMIC_CURRENT_SELECTION' as const,
+    source_editions: requested.map(e => ({ ...e, currentness: 'CURRENT' as const })),
+  });
+  const ready = await assessResponsibilitySet(multi, reviewed, recover, snapshot);
+  assert.equal(ready.disposition, 'READY');
+  assert.equal(ready.verification.snapshot_ref, 'fixture:verified-snapshot');
+  const unresolved = await assessResponsibilitySet(multi,
+    { ...reviewed, unresolved_refs: ['fixture:unresolved-criterion'] }, recover, snapshot);
+  assert.equal(unresolved.disposition, 'HOLD');
+  assert.equal(unresolved.verification.status, 'VERIFIED');
+  assert.equal(unresolved.verification.snapshot_ref, 'fixture:verified-snapshot');
+  assert(unresolved.unresolved_refs.includes('fixture:unresolved-criterion'));
+});

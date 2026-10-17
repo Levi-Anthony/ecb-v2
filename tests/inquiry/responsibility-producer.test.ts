@@ -285,3 +285,32 @@ test('coherent snapshot cannot omit an earlier native dependency or use a casual
     assert(result.assessment.verification.reasons.includes('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED'));
   }
 });
+
+// F5 producer integration: the malformed trusted-port response must not
+// escape the responsibility-set receipt boundary as a thrown exception.
+test('F5 malformed native source snapshot is returned as accountable HOLD by producer', async () => {
+  const second = { ...nativePackage, id: 'fixture:sysml', edition_ref: 'fixture:sysml-edition' };
+  const full = { ...input, required_native_package_ids: [nativePackage.id, second.id],
+    native_packages: [nativePackage, second] };
+  for (const invalid of [null, undefined]) {
+    const produced = await produceResponsibilitySet(full, {
+      recoverSource: read,
+      recoverNativePackage: async id => ({
+        descriptor: id === second.id ? second : nativePackage,
+        currentness: 'CURRENT' as const,
+      }),
+      recoverEditionSnapshot: async requested => ({
+        snapshot_ref: 'fixture:malformed-snapshot',
+        consistency: 'ATOMIC_CURRENT_SELECTION' as const,
+        source_editions: [invalid, ...requested.slice(1).map(e =>
+          ({ ...e, currentness: 'CURRENT' as const }))] as unknown as
+          Array<{ ref: string; digest: string; currentness: 'CURRENT' | 'STALE' | 'UNKNOWN' }>,
+      }),
+      semanticReview: async set => review(set),
+    });
+    assert.equal(produced.assessment.disposition, 'HOLD');
+    assert.equal(produced.assessment.verification.status, 'UNVERIFIED');
+    assert.equal(produced.assessment.verification.snapshot_ref, null);
+    assert(produced.assessment.verification.reasons.includes('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED'));
+  }
+});
