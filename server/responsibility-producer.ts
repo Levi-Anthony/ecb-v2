@@ -6,7 +6,7 @@ import { createHash } from 'node:crypto';
 import { assessResponsibilitySet, type SemanticSetAssessment, type ResponsibilitySetInput, type ResponsibilitySetResult, type RecoverEditionSnapshot } from './responsibility-set.js';
 import type { NativePackageDescriptor } from './domain-admission.js';
 
-export const RESPONSIBILITY_PRODUCER_CONTRACT = 'ecos:source-bound-responsibility-producer:0.4.0' as const;
+export const RESPONSIBILITY_PRODUCER_CONTRACT = 'ecos:source-bound-responsibility-producer:0.5.0' as const;
 export type ResponsibilityProposalInput = Omit<ResponsibilitySetInput, 'source_editions' | 'candidate_digest'> & {
   /** Exact derivative being evaluated, including semantics, standing and declared scope. */
   candidate_content: string;
@@ -56,8 +56,13 @@ export type ProducedSet = { proposal: ProposedResponsibilitySource; assessment: 
 
 const hex = (content: string) => createHash('sha256').update(content).digest('hex');
 const nonblank = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0;
-const refsValid = (refs: unknown): refs is string[] => Array.isArray(refs) &&
-  refs.length > 0 && refs.every(nonblank) && new Set(refs).size === refs.length;
+/** Array.every skips sparse holes. Provider/provenance arrays must be dense
+ * before identities, source editions or assessor judgments can rely on them. */
+const denseUniqueRefs = (value: unknown, mayBeEmpty = false): value is string[] =>
+  Array.isArray(value) && (mayBeEmpty || value.length > 0) &&
+  Array.from(value).every(nonblank) &&
+  new Set(Array.from(value)).size === value.length;
+const refsValid = (refs: unknown): refs is string[] => denseUniqueRefs(refs);
 const sourceValid = (s: RecoveredSource | null): s is RecoveredSource => !!s &&
   nonblank(s.ref) && nonblank(s.content) && nonblank(s.custody_ref) &&
   nonblank(s.basis_digest) && refsValid(s.source_refs);
@@ -106,11 +111,10 @@ export async function produceResponsibilitySet(
   input = structuredClone(input);
   const nativePackages = input.native_packages ?? [];
   const requiredIds = input.required_native_package_ids;
-  const requiredValid = Array.isArray(requiredIds) && requiredIds.every(nonblank) &&
-    new Set(requiredIds).size === requiredIds.length;
+  const requiredValid = denseUniqueRefs(requiredIds, true);
   const nativeBasisValid = requiredValid &&
     (input.native_packages === undefined || (Array.isArray(nativePackages) &&
-      nativePackages.every(nativeValid) &&
+      Array.from(nativePackages).every(nativeValid) &&
       new Set(nativePackages.map(p => p.id)).size === nativePackages.length)) &&
     requiredIds.every(id => nativePackages.some(p => p.id === id));
   const nativeEditions = nativeBasisValid ? nativePackages.map(nativeEdition) : [];

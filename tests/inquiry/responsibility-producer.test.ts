@@ -314,3 +314,89 @@ test('F5 malformed native source snapshot is returned as accountable HOLD by pro
     assert(produced.assessment.verification.reasons.includes('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED'));
   }
 });
+
+test('F6 sparse recovered source_refs never give SOURCE_RECOVERED or READY', async () => {
+  const holes = new Array<string>(1);
+  const variants: unknown[] = [holes, [undefined], [null], [''], ['fixture:ok', , 'fixture:other']];
+  for (const refs of variants) {
+    let assessorCalls = 0;
+    const result = await produceResponsibilitySet(input, {
+      recoverSource: async () => ({ ...source, source_refs: refs as string[] }),
+      semanticReview: async set => { assessorCalls++; return review(set); },
+    });
+    assert.equal(result.proposal.status, 'SOURCE_UNAVAILABLE');
+    assert.equal(result.assessment.disposition, 'HOLD');
+    assert.equal(result.assessment.verification.status, 'UNVERIFIED');
+    assert(result.assessment.verification.reasons.includes('SOURCE_EDITION_BASIS_INCOMPLETE'));
+    assert.equal(assessorCalls, 0);
+    assert(result.assessment.unresolved_refs.includes('semantic_responsibility_set_assessment'));
+  }
+});
+test('F6 sparse required native dependencies cannot silently become an empty qualified set', async () => {
+  for (const ids of [new Array<string>(1), [undefined] as unknown as string[],
+    ['fixture:native', , 'fixture:other'] as string[]]) {
+    let assessorCalls = 0;
+    const result = await produceResponsibilitySet({ ...input,
+      required_native_package_ids: ids,
+    }, {
+      recoverSource: read,
+      semanticReview: async set => { assessorCalls++; return review(set); },
+    });
+    assert.equal(result.proposal.candidate_digest, '');
+    assert.equal(result.assessment.disposition, 'HOLD');
+    assert(result.assessment.verification.reasons.includes('CANDIDATE_EDITION_MISSING'));
+    assert.equal(assessorCalls, 0);
+    assert(result.assessment.unresolved_refs.includes('CANDIDATE_EDITION_MISSING'));
+  }
+});
+test('F6 sparse native scope/provenance and package list cannot qualify', async () => {
+  for (const field of ['semantic_scope', 'source_refs'] as const) {
+    let assessorCalls = 0;
+    const result = await produceResponsibilitySet({ ...input,
+      native_packages: [{ ...nativePackage, [field]: new Array<string>(1) }],
+      required_native_package_ids: [nativePackage.id],
+    }, {
+      recoverSource: read, recoverNativePackage: qualifiedNative,
+      recoverEditionSnapshot: qualifiedSnapshot,
+      semanticReview: async set => { assessorCalls++; return review(set); },
+    });
+    assert.equal(result.assessment.disposition, 'HOLD');
+    assert.equal(result.proposal.candidate_digest, '');
+    assert.equal(assessorCalls, 0);
+  }
+  const sparsePackages = new Array<NativePackageDescriptor>(1);
+  const result = await produceResponsibilitySet({ ...input,
+    native_packages: sparsePackages, required_native_package_ids: [],
+  }, { recoverSource: read, semanticReview: async set => review(set) });
+  assert.equal(result.assessment.disposition, 'HOLD');
+  assert.equal(result.proposal.candidate_digest, '');
+});
+test('F7 malformed semanticReview arrays remain an accountable producer HOLD', async () => {
+  const sparse = new Array<string>(1);
+  const changes: Array<[string, Record<string, unknown>]> = [
+    ['required absent', { required_responsibility_ids: undefined }],
+    ['required sparse', { required_responsibility_ids: sparse }],
+    ['excluded null', { excluded_responsibility_ids: null }],
+    ['excluded sparse', { excluded_responsibility_ids: sparse }],
+    ['unresolved absent', { unresolved_refs: undefined }],
+    ['unresolved sparse', { unresolved_refs: sparse }],
+    ['evidence absent', { evidence_refs: undefined }],
+    ['evidence sparse', { evidence_refs: sparse }],
+    ['evidence explicit undefined', { evidence_refs: [undefined] }],
+    ['evidence null', { evidence_refs: [null] }],
+    ['source editions absent', { source_editions: undefined }],
+  ];
+  for (const [label, change] of changes) {
+    const result = await produceResponsibilitySet(input, {
+      recoverSource: read,
+      semanticReview: async set => ({ ...review(set), ...change }) as SemanticSetAssessment,
+    });
+    assert.equal(result.assessment.disposition, 'HOLD', label);
+    assert.equal(result.assessment.verification.status, 'UNVERIFIED', label);
+    assert.equal(result.assessment.validation.status, 'UNKNOWN', label);
+    assert(result.assessment.verification.reasons.includes('SEMANTIC_ASSESSMENT_PAYLOAD_INVALID'), label);
+    assert(result.assessment.unresolved_refs.includes('SEMANTIC_ASSESSMENT_PAYLOAD_INVALID'), label);
+    assert(result.assessment.unresolved_refs.includes('semantic_responsibility_set_assessment'), label);
+    assert.deepEqual(result.assessment.validation.evidence_refs, [], label);
+  }
+});

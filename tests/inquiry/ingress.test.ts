@@ -122,7 +122,7 @@ test('ordinary inquiry applies systems-engineering domain admission without a ne
     assert.equal(body.domain_admission.contract, 'ecos:domain-semantic-admission:0.1.0');
     assert.equal(body.domain_admission.disposition, 'READY');
     assert.equal(body.responsibility_set.disposition, 'HOLD');
-    assert.equal(body.responsibility_proposal.contract, 'ecos:source-bound-responsibility-producer:0.4.0');
+    assert.equal(body.responsibility_proposal.contract, 'ecos:source-bound-responsibility-producer:0.5.0');
     assert(body.responsibility_set.verification.source_editions.some(
       (e: { ref: string }) => e.ref === 'native-package:se:omg:sysml:2.0'));
     assert(body.responsibility_set.verification.reasons.some(

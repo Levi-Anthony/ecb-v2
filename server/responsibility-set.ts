@@ -4,7 +4,7 @@
  * Only a server-injected semantic assessor may provide the second argument.
  * Caller-authored "complete" flags are intentionally not an input.
  */
-export const RESPONSIBILITY_SET_CONTRACT = 'ecos:responsibility-set-assessment:0.3.0' as const;
+export const RESPONSIBILITY_SET_CONTRACT = 'ecos:responsibility-set-assessment:0.4.0' as const;
 
 export type SourceEdition = { ref: string; digest: string };
 export type ResponsibilitySetInput = {
@@ -60,6 +60,19 @@ export type CoherentEditionSnapshot = {
 export type RecoverEditionSnapshot = (requested: SourceEdition[]) => Promise<CoherentEditionSnapshot | null>;
 const nonblank = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0;
 const distinct = (xs: string[]) => xs.length === new Set(xs).size;
+/** Typed semantic ports may still return sparse or malformed runtime arrays.
+ * Array.from visits every index, including holes, unlike Array.every. */
+const denseStrings = (xs: unknown): xs is string[] =>
+  Array.isArray(xs) && Array.from(xs).every(nonblank);
+const validSemanticArrays = (value: unknown): value is SemanticSetAssessment => {
+  if (value === null || typeof value !== 'object' || Array.isArray(value)) return false;
+  const s = value as SemanticSetAssessment;
+  return denseStrings(s.required_responsibility_ids) &&
+    denseStrings(s.excluded_responsibility_ids) &&
+    denseStrings(s.unresolved_refs) &&
+    denseStrings(s.evidence_refs) &&
+    validEditions(s.source_editions);
+};
 const equalSet = (a: string[], b: string[]) => a.length === b.length && a.every(v => b.includes(v));
 // Untrusted provider data can violate its TypeScript contract at runtime.
  // Array.from visits sparse slots, rejecting absent/null/malformed entries
@@ -93,14 +106,22 @@ export async function assessResponsibilitySet(
     reasons.push('CANDIDATE_EDITION_MISSING');
   if (!nonblank(input.inquiry_basis_ref) || !nonblank(input.intended_use) || !nonblank(input.obligation_ref))
     reasons.push('SITUATED_BASIS_MISSING');
-  if (!input.responsibility_ids.length || !input.responsibility_ids.every(nonblank) || !distinct(input.responsibility_ids))
+  if (!denseStrings(input.responsibility_ids) || !input.responsibility_ids.length ||
+      !distinct(input.responsibility_ids))
     reasons.push('RESPONSIBILITY_IDENTITIES_INVALID');
   if (!validEditions(sourceEditions) || !sourceEditions.length ||
       !sourceEditions.some(s => s.ref === input.obligation_ref))
     reasons.push('SOURCE_EDITION_BASIS_INCOMPLETE');
 
+  // F7: an absent or malformed trusted evaluator is NOT an attributed verdict.
+  // Keep its arrays out of all comparison and response projection paths.
+  const qualifiedAssessment = validSemanticArrays(assessment) ? assessment : undefined;
   if (!assessment) unresolved.push('semantic_responsibility_set_assessment');
-  else {
+  else if (!qualifiedAssessment) {
+    reasons.push('SEMANTIC_ASSESSMENT_PAYLOAD_INVALID');
+    unresolved.push('semantic_responsibility_set_assessment');
+  } else {
+    assessment = qualifiedAssessment;
     if (assessment.candidate_digest !== input.candidate_digest)
       reasons.push('ASSESSMENT_CANDIDATE_MISMATCH');
     if (assessment.inquiry_basis_ref !== input.inquiry_basis_ref || assessment.intended_use !== input.intended_use ||
@@ -116,6 +137,8 @@ export async function assessResponsibilitySet(
     if (![assessment.criterion, assessment.method, assessment.assessor_ref].every(nonblank) ||
         !assessment.evidence_refs.length || !assessment.evidence_refs.every(nonblank))
       reasons.push('SEMANTIC_ASSESSMENT_UNATTRIBUTED');
+    if (!['VALIDATED', 'NOT_VALIDATED', 'UNKNOWN'].includes(assessment.judgment))
+      reasons.push('SEMANTIC_ASSESSMENT_JUDGMENT_INVALID');
     if (assessment.unresolved_refs.length || assessment.judgment === 'UNKNOWN')
       unresolved.push(...assessment.unresolved_refs, 'responsibility_set_validation');
   }
@@ -155,9 +178,9 @@ export async function assessResponsibilitySet(
       if (!snapshotVerified) reasons.push('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED');
     }
   }
-  const verified = reasons.length === 0 && assessment !== undefined;
+  const verified = reasons.length === 0 && qualifiedAssessment !== undefined;
   const validationStatus: ResponsibilitySetResult['validation']['status'] =
-    !assessment || !verified || unresolved.length > 0 ? 'UNKNOWN' : assessment.judgment;
+    !qualifiedAssessment || !verified || unresolved.length > 0 ? 'UNKNOWN' : qualifiedAssessment.judgment;
   if (!verified) unresolved.push(...reasons);
   if (validationStatus !== 'VALIDATED') unresolved.push('responsibility_set_validation');
   const unresolvedRefs = [...new Set(unresolved)];
@@ -168,11 +191,11 @@ export async function assessResponsibilitySet(
     responsibility_ids: [...input.responsibility_ids],
     verification: { status: verified ? 'VERIFIED' : 'UNVERIFIED', reasons,
       source_editions: [...sourceEditions], snapshot_ref: verified ? acceptedSnapshotRef : null },
-    validation: { status: validationStatus, criterion: assessment?.criterion ?? null,
-      assessor_ref: assessment?.assessor_ref ?? null, method: assessment?.method ?? null,
-      evidence_refs: [...(assessment?.evidence_refs ?? [])],
-      excluded_responsibility_ids: [...(assessment?.excluded_responsibility_ids ?? [])],
-      unresolved_refs: [...(assessment?.unresolved_refs ?? [])] },
+    validation: { status: validationStatus, criterion: qualifiedAssessment?.criterion ?? null,
+      assessor_ref: qualifiedAssessment?.assessor_ref ?? null, method: qualifiedAssessment?.method ?? null,
+      evidence_refs: [...(qualifiedAssessment?.evidence_refs ?? [])],
+      excluded_responsibility_ids: [...(qualifiedAssessment?.excluded_responsibility_ids ?? [])],
+      unresolved_refs: [...(qualifiedAssessment?.unresolved_refs ?? [])] },
     disposition: verified && validationStatus === 'VALIDATED' && unresolvedRefs.length === 0 ? 'READY' : 'HOLD',
     unresolved_refs: unresolvedRefs,
   };
