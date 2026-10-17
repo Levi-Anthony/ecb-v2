@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { produceResponsibilitySet, extractNormativeClauses, type RecoveredSource } from '../../server/responsibility-producer.ts';
 import type { ResponsibilitySetInput, SemanticSetAssessment } from '../../server/responsibility-set.ts';
+import type { NativePackageDescriptor } from '../../server/domain-admission.ts';
 
 const source: RecoveredSource = {
   ref: 'fixture:obligation', content: 'The worker SHALL recover governing sources.\nThe worker MUST validate intended use.\nOther narrative.',
@@ -75,3 +76,101 @@ test('no source and empty lexical match cannot manufacture semantic adequacy', a
   assert.deepEqual(extractNormativeClauses({ ...source, content: 'Purely implicit obligations.' }), []);
 });
 
+
+const nativePackage: NativePackageDescriptor = {
+  id: 'fixture:package', domain: 'systems-engineering', name: 'Qualified source specimen',
+  authority_ref: 'fixture:authorized-body', edition_ref: 'fixture:edition-1',
+  semantic_scope: ['governing requirements'], source_refs: ['fixture:publication'],
+  status: 'ACTIVE', access_routes: [], validation_routes: [], currentness_routes: [],
+};
+const withNative = { ...input, native_packages: [nativePackage] };
+const qualifiedNative = async (id: string) => id === nativePackage.id
+  ? { descriptor: structuredClone(nativePackage), currentness: 'CURRENT' as const } : null;
+
+test('reviewer-visible recovered provenance is edition-bound across exact re-read', async () => {
+  let reads = 0;
+  const result = await produceResponsibilitySet(input, {
+    recoverSource: async () => ({ ...source, source_refs: [
+      ++reads === 1 ? 'fixture:original-provenance' : 'fixture:substituted-provenance',
+    ] }),
+    semanticReview: async set => review(set),
+  });
+  assert.equal(result.assessment.disposition, 'HOLD');
+  assert(result.assessment.verification.reasons.some(x =>
+    x.startsWith('SOURCE_EDITION_NOT_CURRENT_OR_UNRECOVERABLE')));
+});
+test('unqualified or missing provenance cannot yield a fresh READY', async () => {
+  for (const refs of [[], [''], ['fixture:dup', 'fixture:dup']]) {
+    const result = await produceResponsibilitySet(input, {
+      recoverSource: async () => ({ ...source, source_refs: refs }),
+      semanticReview: async set => review(set),
+    });
+    assert.equal(result.proposal.status, 'SOURCE_UNAVAILABLE');
+    assert.equal(result.assessment.disposition, 'HOLD');
+  }
+});
+test('qualified unchanged provenance remains positive, and order alone is harmless', async () => {
+  let reads = 0;
+  const result = await produceResponsibilitySet(input, {
+    recoverSource: async () => ({ ...source, source_refs: ++reads === 1
+      ? ['fixture:first', 'fixture:second'] : ['fixture:second', 'fixture:first'] }),
+    semanticReview: async set => review(set),
+  });
+  assert.equal(result.assessment.disposition, 'READY');
+});
+test('native package requires an actual CURRENT qualified reread, not its ACTIVE label', async () => {
+  for (const recoverNativePackage of [undefined,
+    async (id: string) => ({ descriptor: nativePackage, currentness: 'UNKNOWN' as const })]) {
+    const result = await produceResponsibilitySet(withNative, {
+      recoverSource: read, recoverNativePackage, semanticReview: async set => review(set),
+    });
+    assert.equal(result.assessment.disposition, 'HOLD');
+    assert(result.assessment.verification.reasons.some(x =>
+      x.startsWith('SOURCE_EDITION_NOT_CURRENT_OR_UNRECOVERABLE:native-package:')));
+  }
+});
+test('native package current, unchanged and freshly assessed can remain scoped READY', async () => {
+  const result = await produceResponsibilitySet(withNative, {
+    recoverSource: read, recoverNativePackage: qualifiedNative,
+    semanticReview: async set => review(set),
+  });
+  assert.equal(result.assessment.disposition, 'READY');
+  assert(result.assessment.verification.source_editions.some(s => s.ref ===
+    'native-package:' + nativePackage.id));
+});
+test('same package ID cannot reuse assessment after edition/authority/scope/status/provenance change', async () => {
+  let oldReview: SemanticSetAssessment | undefined;
+  const initial = await produceResponsibilitySet(withNative, {
+    recoverSource: read, recoverNativePackage: qualifiedNative,
+    semanticReview: async set => (oldReview = review(set)),
+  });
+  assert.equal(initial.assessment.disposition, 'READY');
+  const variants: NativePackageDescriptor[] = [
+    { ...nativePackage, edition_ref: 'fixture:edition-2' },
+    { ...nativePackage, authority_ref: 'fixture:other-authority' },
+    { ...nativePackage, semantic_scope: ['unrelated scope'] },
+    { ...nativePackage, status: 'HISTORICAL' },
+    { ...nativePackage, source_refs: ['fixture:different-publication'] },
+  ];
+  for (const descriptor of variants) {
+    const result = await produceResponsibilitySet({ ...input, native_packages: [descriptor] }, {
+      recoverSource: read, recoverNativePackage: async () =>
+        ({ descriptor, currentness: 'CURRENT' as const }),
+      semanticReview: async () => structuredClone(oldReview!),
+    });
+    assert.notEqual(result.proposal.candidate_digest, initial.proposal.candidate_digest);
+    assert.equal(result.assessment.disposition, 'HOLD');
+    assert(result.assessment.verification.reasons.includes('ASSESSMENT_CANDIDATE_MISMATCH'));
+  }
+});
+test('native descriptor changes between candidate and exact reread are denied', async () => {
+  const changed = { ...nativePackage, authority_ref: 'fixture:new-authority' };
+  const result = await produceResponsibilitySet(withNative, {
+    recoverSource: read,
+    recoverNativePackage: async () => ({ descriptor: changed, currentness: 'CURRENT' as const }),
+    semanticReview: async set => review(set),
+  });
+  assert.equal(result.assessment.disposition, 'HOLD');
+  assert(result.assessment.verification.reasons.some(x =>
+    x.startsWith('SOURCE_EDITION_NOT_CURRENT_OR_UNRECOVERABLE:native-package:')));
+});

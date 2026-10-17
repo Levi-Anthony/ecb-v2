@@ -102,3 +102,43 @@ receiving tests, including assessor trust/wiring, source currentness, consumer
 scope and false-positive cases. Then use separately applicable integration and
 activation authority. Until actual receiver wiring/currentness evidence exists,
 retain this source candidate and hold only dependent semantic/install claims.
+
+## 17 October successor — provenance and native-registry exact binding
+
+Independent review of the 0.2.0 candidate found two material omissions:
+reviewer-visible recovered `source_refs` could change or disappear without
+changing the governing source edition, and a selected native package could keep
+its ID while authority, edition, semantic scope, status or provenance changed.
+The repair advances the producer contract to **0.3.0**, without granting new
+semantic or runtime authority.
+
+The producer now requires nonempty, well-formed, nonduplicated recovered source
+provenance and hashes the complete reviewer-visible source basis, including
+canonicalized source references. Recovered source equality is rechecked after
+assessment; a missing/changed provenance source cannot earn READY. Equivalent
+source-ref order is not treated as a changed set.
+
+Native domain admission supplies actual selected registry descriptors to the
+trusted producer. The candidate digest includes their full declarations, and
+`source_editions` contains exact descriptor digests under `native-package:`
+references. A second injected native-package reader must return the same
+package declaration and explicitly qualified CURRENT standing before READY.
+An ID match, in-repository ACTIVE label, source URL or later timestamp is not
+normative-source currentness. The ordinary server only knows its bundled
+registry, so it deliberately reports its native qualification currentness as
+UNKNOWN, and has no semantic assessor: consequential use stays HOLD until a
+proper source/currentness adapter and independent judgment are installed.
+
+New negative cases cover removed/changed governing provenance, same-ID package
+edition/authority/scope/status/source changes, changed native rereads and
+UNKNOWN native currentness. Positive cases preserve a qualified unchanged
+candidate, an explicitly revised new assessment, and nonsemantic source-ref
+ordering. The seven previously received semantic-substitution negatives and
+VALIDATED/unresolved-question HOLD remain separate. Mock CURRENT in tests is
+an injected trusted-port fixture, not an assertion of live native authority.
+
+Both existing historical 0.1.0 and 0.2.0 responsibility assessments require
+requalification at 0.3.0 receiving boundaries. This is **reviewable candidate**
+work only: no main integration, deploy, real provider activation, native state
+transition, Principal sign-in or semantic ratification is implied. Re-check
+exact source/test CI and independent source review before any integration.
