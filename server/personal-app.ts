@@ -71,8 +71,11 @@ function summary(commission: unknown) {
 function workflow(snapshot: unknown) {
   if (!isObject(snapshot)) return { state: 'unavailable' };
   return {
-    cycle: snapshot.cycle, phase: snapshot.phase, debt: snapshot.debt,
-    proposals: snapshot.proposals, children: snapshot.children,
+    contract: snapshot.contract, cycle: snapshot.cycle, phase: snapshot.phase,
+    debt: snapshot.debt, scope_decisions: snapshot.scope_decisions,
+    open_children: snapshot.open_children, obligations: snapshot.obligations,
+    routed_proposals: snapshot.routed_proposals, events: snapshot.events,
+    zero_balance: snapshot.zero_balance,
     next_action: snapshot.next_action, monitor: snapshot.monitor,
   };
 }
@@ -119,7 +122,13 @@ export async function handlePersonalApp(
     const action = url.searchParams.get('action');
     try {
       if (action === 'load') {
-        const [current, inspected] = await Promise.all([ports.commission(), ports.inspect(CYCLE_ID)]);
+        const requestedCycleId = url.searchParams.get('cycle_id') ?? CYCLE_ID;
+        if (!UUID.test(requestedCycleId)) return json({ error: 'invalid_cycle_id' }, 400, session);
+        const cycleId = requestedCycleId.toLowerCase();
+        const [current, inspected] = await Promise.all([ports.commission(), ports.inspect(cycleId)]);
+        if (!isObject(inspected) || !isObject(inspected.cycle) || inspected.cycle.id !== cycleId) {
+          return json({ error: 'native_cycle_identity_mismatch', retryable: true }, 502, session);
+        }
         return json({
           source: 'live_authenticated_read', observed_at: new Date().toISOString(),
           commission: summary(current), workflow: workflow(inspected),
@@ -187,7 +196,9 @@ export async function handlePersonalApp(
   const source = 'ecos-personal-app:principal-capture';
   try {
     const captured = await ports.capture({ operationId, content, source, processingMode: 'raw_only' });
-    if (!isObject(captured) || !isObject(captured.thought) || typeof captured.thought.id !== 'string') {
+    if (!isObject(captured) || typeof captured.operation_id !== 'string' ||
+        captured.operation_id.toLowerCase() !== operationId.toLowerCase() || !isObject(captured.thought) ||
+        typeof captured.thought.id !== 'string' || !UUID.test(captured.thought.id)) {
       return json({ state: 'UNKNOWN', operation_id: operationId, error: 'capture_receipt_unavailable' }, 502, session);
     }
     const id = captured.thought.id;
@@ -197,7 +208,7 @@ export async function handlePersonalApp(
       return json({ state: 'CAPTURE_REPORTED_VERIFY_UNAVAILABLE', operation_id: operationId,
         thought_id: id, next: 'Retry the same operation_id, never mint a new retry identity.' }, 202, session);
     }
-    if (!isObject(found) || found.content !== content || found.source !== source) {
+    if (!isObject(found) || found.id !== id || found.content !== content || found.source !== source) {
       return json({ state: 'CUSTODY_NOT_VERIFIED', operation_id: operationId, thought_id: id,
         next: 'Inspect exact custody. Do not infer semantic admission.' }, 409, session);
     }

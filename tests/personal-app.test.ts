@@ -13,7 +13,7 @@ const unenrolled = async () => ({ allowed: false as const, status: 403, code: 'p
 
 function ports(): PersonalPorts {
   return {
-    inspect: async () => ({ cycle: { version: 8, outcome: 'Viable system', edition: 'older/1' },
+    inspect: async () => ({ cycle: { id: '40ca3bbd-c905-4ec5-b202-bfb49fcd6605', version: 8, outcome: 'Viable system', edition: 'older/1' },
       phase: 'implement', debt: [{ id: 'debt-1', requirement: 'Unpaid' }] }),
     commission: async () => ({ source: { edition: '2026-10-13' }, standing: 'PRINCIPAL_DIRECTED_DISTRIBUTION',
       next_action: 'Deliver personal workflow', source_content: 'Do not distribute full source by default' }),
@@ -86,7 +86,7 @@ test('cross-origin capture and missing authorization fail before execution', asy
 test('one explicitly authorized capture receives exact independent readback', async () => {
   const p = ports();let attempted: unknown;
   p.capture = async input => {attempted=input;return {
-    replayed: false, thought:{id:thoughtId,content:input.content,source:input.source},
+    operation_id: input.operationId, replayed: false, thought:{id:thoughtId,content:input.content,source:input.source},
   };};
   const response = await handlePersonalApp(request('capture','POST',
     { authorized: true, operation_id: validId, content: 'A real capture' }),p,{ authorize: authorized });
@@ -131,4 +131,67 @@ test('oversized streaming POST is rejected before invoking a capture', async () 
     {authorized:true,operation_id:validId,content:'x'.repeat(22000)}),p,{authorize:authorized});
   assert.equal(response.status,413);
   assert.equal(captures,0);
+});
+
+
+test('native workflow projection conserves child returns, scope, proof and unknown observer standing', async () => {
+  const p = ports();
+  const snapshot = {
+    contract: 'ecos:workflow-governance:1.0.0',
+    cycle: { id: '40ca3bbd-c905-4ec5-b202-bfb49fcd6605', version: 9, edition: 'fixture/1' },
+    phase: 'implement', debt: [{ id: 'unpaid-child' }], zero_balance: false,
+    scope_decisions: [{ id: 'pending-scope', disposition: null }],
+    open_children: [{ id: thoughtId, phase: 'metabolize' }],
+    obligations: [{ id: 'unpaid-child', paid: false, latest_result: { status: 'UNKNOWN' } }],
+    routed_proposals: [{ id: 'routed', disposition: 'FUTURE' }],
+    events: [{ action: 'result', actor: 'attributed-fixture' }],
+    next_action: { action: 'reenter_child', cycle_id: thoughtId },
+    monitor: { health: 'UNKNOWN', last_observed_at: null },
+  };
+  p.inspect = async () => snapshot;
+  const response = await handlePersonalApp(request('load'), p, { authorize: authorized });
+  assert.equal(response.status, 200);
+  assert.deepEqual((await response.json()).workflow, snapshot);
+});
+
+test('child workflow read carries exact cycle identity and malformed selection dispatches no port', async () => {
+  const p = ports(); let reads = 0;
+  p.inspect = async id => { reads++; assert.equal(id, thoughtId); return {cycle:{id, version:15},debt:[]}; };
+  const response = await handlePersonalApp(new Request(origin + '/api/personal?action=load&cycle_id=' + thoughtId), p, {authorize:authorized});
+  assert.equal(response.status,200);
+  assert.equal((await response.json()).workflow.cycle.id, thoughtId);
+  const uppercase = await handlePersonalApp(new Request(origin + '/api/personal?action=load&cycle_id=' + thoughtId.toUpperCase()), p, {authorize:authorized});
+  assert.equal(uppercase.status,200);
+  const invalid = await handlePersonalApp(new Request(origin + '/api/personal?action=load&cycle_id=not-a-uuid'),p,{authorize:authorized});
+  assert.equal(invalid.status,400); assert.equal(reads,2);
+  p.inspect = async () => ({cycle:{id:'40ca3bbd-c905-4ec5-b202-bfb49fcd6605',version:8},debt:[]});
+  const wrong = await handlePersonalApp(new Request(origin + '/api/personal?action=load&cycle_id=' + thoughtId),p,{authorize:authorized});
+  assert.equal(wrong.status,502);
+  assert.equal((await wrong.json()).error,'native_cycle_identity_mismatch');
+});
+
+
+test('capture cannot verify a different operation, malformed identity or misrouted readback', async () => {
+  for (const failure of ['operation','malformed','readback']) {
+    const p=ports();
+    if(failure==='operation') p.capture=async()=>({operation_id:thoughtId,thought:{id:thoughtId}});
+    if(failure==='malformed') p.capture=async()=>({operation_id:validId,thought:{id:'not-an-id'}});
+    if(failure==='readback') p.fetch=async()=>({id:validId,content:'A real capture',source});
+    const response=await handlePersonalApp(request('capture','POST',{authorized:true,operation_id:validId,content:'A real capture'}),p,{authorize:authorized});
+    assert.equal(response.status,failure==='readback'?409:502);
+    assert.notEqual((await response.json()).state,'RAW_CUSTODY_VERIFIED');
+  }
+});
+
+
+test('uppercase capture operation remains the same UUID as canonical native receipt', async () => {
+  const p=ports();
+  p.capture=async input=>({operation_id:input.operationId.toLowerCase(),thought:{id:thoughtId}});
+  const response=await handlePersonalApp(request('capture','POST',{
+    authorized:true,operation_id:validId.toUpperCase(),content:'A real capture',
+  }),p,{authorize:authorized});
+  assert.equal(response.status,200);
+  const receipt=await response.json();
+  assert.equal(receipt.state,'RAW_CUSTODY_VERIFIED');
+  assert.equal(receipt.operation_id,validId.toUpperCase(),'response echoes exact pending request identity');
 });

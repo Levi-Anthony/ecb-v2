@@ -133,7 +133,11 @@ export const PERSONAL_HTML = String.raw`<!doctype html>
         <p class="hint">This is the native workflow controller, not a replicated Linear task list. The product commission and older native cycle retain their distinct editions.</p>
         <h3>Open obligation neighborhood</h3>
         <div id="debt-list" class="debt"><p class="muted">Loading from Greenfield…</p></div>
-        <div class="actions"><button class="btn secondary" type="button" id="see-map">Explore the work graph →</button></div>
+        <div class="actions"><button class="btn secondary" type="button" id="see-map">Explore the work graph →</button><button class="btn secondary" type="button" id="view-root">Containing work</button></div>
+        <h3>Required child work</h3>
+        <div id="child-work" class="debt"></div>
+        <p id="native-status" class="hint"></p>
+        <details><summary>Scope decisions, proof and next action</summary><pre id="native-proof"></pre></details>
       </article>
     </div>
   </section>
@@ -179,10 +183,12 @@ export const PERSONAL_HTML = String.raw`<!doctype html>
         <label class="field" for="thought-content" data-space="mt18">What do you want to remember?</label>
         <textarea id="thought-content" placeholder="Capture the actual statement, observation, or work material…"></textarea>
         <div class="actions"><button class="btn" type="button" id="review-capture">Review intended action</button></div>
+        <p id="capture-reentry" class="note" role="status" aria-live="polite"></p>
+        <div class="actions"><button class="btn secondary" type="button" id="new-capture" hidden>Start a new occurrence</button></div>
         <div id="capture-review" class="review" hidden>
           <div class="eyebrow">Explicit authorization</div>
           <blockquote id="capture-review-text"></blockquote>
-          <p class="note">Destination: Greenfield v2 BRAIN. Mode: raw-only capture. Operation identity persists across retries on this page.</p>
+          <p class="note">Destination: Greenfield v2 BRAIN. Mode: raw-only capture. Pending content and operation identity are stored in this tab’s session storage before sending. They survive reloads while that storage remains available; closing the tab, clearing browser data or browser loss can remove them. Same-origin scripts can read this content. No credentials are stored here.</p>
           <label class="check"><input type="checkbox" id="capture-consent"><span>I authorize preserving exactly this content in the connected personal BRAIN.</span></label>
           <div class="actions"><button class="btn" type="button" id="confirm-capture">Authorize and capture</button></div>
         </div>
@@ -233,6 +239,8 @@ ${BROWSER_SESSION_SCRIPT}
 const $ = id => document.getElementById(id);
 const ns = 'http://www.w3.org/2000/svg';
 let live = null;
+let workRead = 0;
+let activeCycleId = new URL(location.href).searchParams.get('cycle_id');
 let selectedNode = null;
 let selected = new Map();
 let composedFilter = null;
@@ -243,6 +251,33 @@ let pan = {x:0,y:0};
 let operationId = null;
 let capturedContent = null;
 let actionComplete = false;
+let pendingCapture = null;
+let captureBlocked = false;
+let captureInFlight = false;
+const pendingCaptureKey = 'ecos.personal.capture.pending.v1';
+function captureStop(message){
+  captureBlocked=true;$('thought-content').readOnly=true;$('review-capture').disabled=true;$('confirm-capture').disabled=true;
+  $('capture-reentry').textContent=message+' No capture will be sent. Preserve this tab and its existing storage for recovery; do not clear it or assume an earlier capture was absent.';
+  say(message,true);
+}
+function decodePending(raw){
+  const entry=JSON.parse(raw), body=JSON.parse(entry.body);
+  if(entry.version!==1||entry.endpoint!==location.pathname||typeof entry.body!=='string'||
+    Object.keys(entry).sort().join(',')!=='body,endpoint,version'||
+    Object.keys(body).sort().join(',')!=='authorized,content,operation_id'||body.authorized!==true||
+    typeof body.operation_id!=='string'||!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(body.operation_id)||
+    typeof body.content!=='string'||!body.content.trim()||body.content.length>12000)throw Error('Invalid pending capture');
+  return {raw,body:entry.body,operationId:body.operation_id,content:body.content};
+}
+function showPending(){
+  operationId=pendingCapture.operationId;capturedContent=pendingCapture.content;
+  $('thought-content').value=capturedContent;$('thought-content').readOnly=true;
+  $('capture-reentry').textContent='Unresolved operation '+operationId+'. Exact request retained in this tab. Review its content and explicitly authorize replay. No automatic replay occurs; another occurrence is blocked until verified resolution.';
+}
+function restoreCapture(){
+  try{const raw=sessionStorage.getItem(pendingCaptureKey);if(raw!==null){pendingCapture=decodePending(raw);showPending();}}
+  catch{captureStop('Pending capture storage is unavailable or corrupt.');}
+}
 function say(message, failed) { $('global-status').textContent=message; $('global-status').className=failed?'error':'subtitle'; }
 function txt(id,value){ $(id).textContent=String(value===undefined||value===null?'—':value); }
 function tab(name){
@@ -278,6 +313,17 @@ function renderWork(){
   txt('metric-debt',Array.isArray(w.debt)?w.debt.length:'—');
   txt('metric-version',cycle.version);
   txt('metric-selected',selected.size);
+  const childBox=$('child-work');childBox.replaceChildren();
+  if(Array.isArray(w.open_children)){
+    if(!w.open_children.length){const p=document.createElement('p');p.className='subtitle';p.textContent='No open child work returned by this snapshot.';childBox.append(p);}
+    for(const child of w.open_children){
+      const b=document.createElement('button');b.type='button';b.className='obligation';
+      b.textContent=String(child.outcome||child.owner||child.id)+' · '+String(child.phase||'phase unknown');
+      b.onclick=()=>refresh(child.id);childBox.append(b);
+    }
+  }else{const p=document.createElement('p');p.className='subtitle';p.textContent='Child-work state was not supplied by this read.';childBox.append(p);}
+  txt('native-status','Observer: '+String(w.monitor?.health||'UNKNOWN')+' · Zero balance: '+(typeof w.zero_balance==='boolean'?String(w.zero_balance):'UNKNOWN')+'. Snapshot only; closure and authorization require their own evidence.');
+  txt('native-proof',JSON.stringify({scope_decisions:w.scope_decisions,obligations:w.obligations,routed_proposals:w.routed_proposals,events:w.events,next_action:w.next_action,monitor:w.monitor},null,2));
   const box=$('debt-list');box.replaceChildren();
   const debts=visibleDebts();
   if(!debts.length){const p=document.createElement('p');p.className='subtitle';p.textContent=composedFilter?'No obligations are in the composed selection.':'No obligations returned by this read.';box.append(p);}
@@ -291,16 +337,23 @@ function renderWork(){
   }
   if(debts.length>9){const p=document.createElement('p');p.className='note';p.textContent='Showing 9 of '+debts.length+'; unfold the native work graph for the full current set.';box.append(p);}
 }
-async function refresh(){
+async function refresh(cycleId=activeCycleId){
+  const readId=++workRead;
   say('Revalidating current Greenfield source…');
   try{
-    live=await get('load');
+    const loaded=await get('load',cycleId?{cycle_id:cycleId}:{});
+    if(readId!==workRead)return;
+    if(!loaded.workflow?.cycle?.id)throw Error('Native cycle identity unavailable');
+    if(live?.workflow?.cycle?.id!==loaded.workflow.cycle.id){selected.clear();composedFilter=null;stageOpen.clear();selectedNode=null;updateComposition();}
+    live=loaded;activeCycleId=loaded.workflow.cycle.id;
+    const next=new URL(location.href);next.searchParams.set('cycle_id',activeCycleId);history.replaceState(null,'',next);
     $('connection-dot').classList.add('live');txt('connection','Live read');
     renderWork();renderMap();
     say('Live native source read at '+new Date(live.observed_at).toLocaleTimeString()+'. No changes made.');
-  }catch(e){$('connection-dot').classList.remove('live');txt('connection','Read unavailable');say(e.message,true);}
+  }catch(e){if(readId!==workRead)return;$('connection-dot').classList.remove('live');txt('connection','Read unavailable');txt('native-status',live?'Latest read unavailable. Displayed work is the earlier snapshot from '+String(live.observed_at)+', not a fresh current-state qualification.':'Native state is unavailable; no debt or closure result is established.');say(e.message,true);}
 }
-$('refresh').onclick=refresh;
+$('refresh').onclick=()=>refresh();
+$('view-root').onclick=()=>refresh('40ca3bbd-c905-4ec5-b202-bfb49fcd6605');
 $('see-map').onclick=()=>tab('map');
 
 function svg(tag,attrs,text){
@@ -424,39 +477,74 @@ function resultLine(box,heading,body){
   const content=document.createElement('pre');content.textContent=body;item.append(title,content);box.append(item);
 }
 $('review-capture').onclick=()=>{
+  if(captureBlocked||captureInFlight)return;
   const content=$('thought-content').value;
+  if(pendingCapture&&content!==pendingCapture.content){showPending();say('An unresolved occurrence cannot be edited or replaced.',true);return;}
+  if(actionComplete){say('This occurrence was verified. Use Start a new occurrence before capturing again.');return;}
   if(!content.trim()){say('Enter content to review.',true);return;}
   if(content.length>12000){say('The input exceeds the 12,000-character bounded capture.',true);return;}
-  if(capturedContent!==content){operationId=null;actionComplete=false;}
   capturedContent=content;$('capture-review-text').textContent=content;$('capture-review').hidden=false;$('capture-consent').checked=false;
-  $('capture-receipt').hidden=true; say('Review the exact content and grant specific capture authorization.');
+  $('capture-receipt').hidden=true;say('Review the exact content and grant specific capture authorization.');
 };
-$('thought-content').addEventListener('input',()=>{$('capture-review').hidden=true;$('capture-consent').checked=false;});
+$('thought-content').addEventListener('input',()=>{
+  if(pendingCapture)showPending();
+  $('capture-review').hidden=true;$('capture-consent').checked=false;
+});
+$('new-capture').onclick=()=>{
+  if(!actionComplete||pendingCapture||captureBlocked||captureInFlight)return;
+  operationId=null;capturedContent=null;actionComplete=false;
+  $('thought-content').value='';$('thought-content').readOnly=false;$('capture-consent').checked=false;
+  $('capture-review').hidden=true;$('capture-receipt').hidden=true;$('new-capture').hidden=true;
+  $('capture-reentry').textContent='New occurrence: review and authorize before sending.';
+};
 $('confirm-capture').onclick=async()=>{
+  if(captureBlocked||captureInFlight)return;
   const content=$('thought-content').value;
-  if(content!==capturedContent){say('Content changed after review. Review again before authorizing.',true);return;}
+  if($('capture-review').hidden||content!==capturedContent||(pendingCapture&&content!==pendingCapture.content)){
+    if(pendingCapture)showPending();say('Content changed after review. Review again before authorizing.',true);return;
+  }
   if(!$('capture-consent').checked){say('Explicit authorization is required.',true);return;}
-  if(actionComplete){say('This occurrence was already verified. Start a new draft for another capture.');return;}
-  operationId=operationId||crypto.randomUUID();
-  $('confirm-capture').disabled=true;say('Executing and verifying live BRAIN custody…');
+  if(actionComplete){say('This occurrence was already verified. Start a new occurrence for another capture.');return;}
+  try{
+    const previous=sessionStorage.getItem(pendingCaptureKey);
+    if(pendingCapture){if(previous!==pendingCapture.raw)throw Error('Pending storage changed');}
+    else{
+      if(previous!==null)throw Error('An existing capture requires recovery');
+      operationId=crypto.randomUUID();
+      const body=JSON.stringify({authorized:true,operation_id:operationId,content});
+      const raw=JSON.stringify({version:1,endpoint:location.pathname,body});
+      sessionStorage.setItem(pendingCaptureKey,raw);
+      if(sessionStorage.getItem(pendingCaptureKey)!==raw)throw Error('Pending storage could not be verified');
+      pendingCapture=decodePending(raw);showPending();
+    }
+  }catch{captureStop('Cannot safely preserve the exact pending request.');return;}
+  captureInFlight=true;$('confirm-capture').disabled=true;$('capture-consent').checked=false;
+  say('Executing and verifying live BRAIN custody…');
   try{
     const response=await sessionFetch(location.pathname+'?action=capture',{
-      method:'POST',headers:{'content-type':'application/json','x-ecos-action':'capture'},
-      body:JSON.stringify({authorized:true,operation_id:operationId,content})
+      method:'POST',headers:{'content-type':'application/json','x-ecos-action':'capture'},body:pendingCapture.body
     });
     const receipt=await response.json();
-    $('capture-receipt').hidden=false;
-    $('capture-receipt').replaceChildren();
+    $('capture-receipt').hidden=false;$('capture-receipt').replaceChildren();
     resultLine($('capture-receipt'),receipt.state||receipt.error||'Unresolved capture',JSON.stringify(receipt,null,2));
-    if(response.ok&&receipt.state==='RAW_CUSTODY_VERIFIED'){
-      actionComplete=true;const next=new URL(location.href);next.searchParams.set('thought',receipt.thought_id);history.replaceState(null,'',next);
-      $('thought-id').value=receipt.thought_id;
-      $('capture-review').hidden=true;
+    if(response.ok&&receipt.state==='RAW_CUSTODY_VERIFIED'&&receipt.operation_id===operationId&&
+      typeof receipt.thought_id==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(receipt.thought_id)){
+      actionComplete=true;
+      try{
+        if(sessionStorage.getItem(pendingCaptureKey)!==pendingCapture.raw)throw Error('Pending storage changed');
+        sessionStorage.removeItem(pendingCaptureKey);
+        if(sessionStorage.getItem(pendingCaptureKey)!==null)throw Error('Pending storage remains');
+        pendingCapture=null;
+      }catch{captureStop('Custody verified, but local retry storage could not be safely cleared.');return;}
+      const next=new URL(location.href);next.searchParams.set('thought',receipt.thought_id);history.replaceState(null,'',next);
+      $('thought-id').value=receipt.thought_id;$('capture-review').hidden=true;$('new-capture').hidden=false;
+      $('capture-reentry').textContent='Verified operation '+operationId+'. Resume thought '+receipt.thought_id+'.';
       say('Exact raw custody verified in Greenfield. Semantic and circulation qualification remain separate.');
-    }else{say('Capture is not verified complete. Retry with the same stable operation identity.',true);}
-  }catch(e){say('Network response unavailable; retain this operation identity before any retry.',true);}
-  finally{$('confirm-capture').disabled=false;}
+    }else{say('Capture is not verified complete. Review and authorize replay of the same retained request.',true);}
+  }catch(e){say('Response unavailable. Exact pending request retained; review and authorize replay to resolve it.',true);}
+  finally{captureInFlight=false;$('confirm-capture').disabled=captureBlocked;}
 };
+restoreCapture();
 $('search').onclick=async()=>{
   const query=$('query').value.trim();if(!query){say('Enter a query.',true);return;}
   const box=$('search-results');box.replaceChildren();say('Searching live BRAIN…');
