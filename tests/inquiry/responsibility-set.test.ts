@@ -7,11 +7,13 @@ const source = 'fixture:governing-obligation';
 const input: ResponsibilitySetInput = {
   inquiry_basis_ref: 'fixture:basis', intended_use: 'select an inspection mechanism',
   obligation_ref: source, responsibility_ids: ['source-recovery', 'consumer-use'],
+  candidate_digest: 'c'.repeat(64),
   source_editions: [{ ref: source, digest }],
 };
 const assessment: SemanticSetAssessment = {
   inquiry_basis_ref: input.inquiry_basis_ref, intended_use: input.intended_use,
   obligation_ref: source, source_editions: [...input.source_editions],
+  candidate_digest: input.candidate_digest,
   required_responsibility_ids: ['source-recovery', 'consumer-use'],
   excluded_responsibility_ids: [], unresolved_refs: [],
   criterion: 'Both necessary responsibilities support the declared inspection use',
@@ -65,4 +67,108 @@ test('caller-submitted attestation is not part of the ordinary public input cont
   const r = await assessResponsibilitySet(input, undefined);
   assert.equal(r.validation.status, 'UNKNOWN');
   assert(r.verification.reasons.includes('SOURCE_EDITION_RECOVERY_UNAVAILABLE'));
+});
+
+
+// F5: exercise malformed provider receipts as runtime data, regardless of their
+// compile-time TypeScript declarations. Every case must return, not throw.
+test('F5 null/undefined/sparse and malformed coherent-snapshot editions return UNVERIFIED/HOLD', async () => {
+  const multi = { ...input, source_editions: [
+    ...input.source_editions, { ref: 'native-package:fixture:sysml', digest },
+  ] };
+  const assessed = { ...assessment, source_editions: [...multi.source_editions] };
+  const qualified = multi.source_editions.map(e => ({ ...e, currentness: 'CURRENT' as const }));
+  const sparse = [...qualified] as unknown[];
+  delete sparse[0];
+  const cases: Array<[string, unknown[]]> = [
+    ['null', [null, qualified[1]]],
+    ['undefined', [undefined, qualified[1]]],
+    ['sparse', sparse],
+    ['primitive', ['invalid', qualified[1]]],
+    ['empty object', [{}, qualified[1]]],
+    ['missing ref', [{ digest, currentness: 'CURRENT' }, qualified[1]]],
+    ['blank ref', [{ ref: '', digest, currentness: 'CURRENT' }, qualified[1]]],
+    ['missing digest', [{ ref: source, currentness: 'CURRENT' }, qualified[1]]],
+    ['malformed digest', [{ ref: source, digest: 'not-a-digest', currentness: 'CURRENT' }, qualified[1]]],
+    ['wrong currentness', [{ ...qualified[0], currentness: 'UNKNOWN' }, qualified[1]]],
+    ['duplicate ref', [qualified[1], qualified[1]]],
+  ];
+  for (const [label, malformed] of cases) {
+    const result = await assessResponsibilitySet(multi, assessed,
+      async ref => ({ ref, digest, currentness: 'CURRENT' }),
+      async () => ({
+        snapshot_ref: 'fixture:apparently-qualified',
+        consistency: 'ATOMIC_CURRENT_SELECTION' as const,
+        source_editions: malformed as typeof qualified,
+      }));
+    assert.equal(result.disposition, 'HOLD', label);
+    assert.equal(result.verification.status, 'UNVERIFIED', label);
+    assert.equal(result.validation.status, 'UNKNOWN', label);
+    assert.equal(result.verification.snapshot_ref, null, label);
+    assert(result.verification.reasons.includes('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED'), label);
+    assert(result.unresolved_refs.includes('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED'), label);
+  }
+});
+test('F5 exact coherent positive and unresolved question behavior are preserved', async () => {
+  const multi = { ...input, source_editions: [
+    ...input.source_editions, { ref: 'native-package:fixture:sysml', digest },
+  ] };
+  const reviewed = { ...assessment, source_editions: [...multi.source_editions] };
+  const snapshot = async (requested: typeof multi.source_editions) => ({
+    snapshot_ref: 'fixture:verified-snapshot',
+    consistency: 'ATOMIC_CURRENT_SELECTION' as const,
+    source_editions: requested.map(e => ({ ...e, currentness: 'CURRENT' as const })),
+  });
+  const ready = await assessResponsibilitySet(multi, reviewed, recover, snapshot);
+  assert.equal(ready.disposition, 'READY');
+  assert.equal(ready.verification.snapshot_ref, 'fixture:verified-snapshot');
+  const unresolved = await assessResponsibilitySet(multi,
+    { ...reviewed, unresolved_refs: ['fixture:unresolved-criterion'] }, recover, snapshot);
+  assert.equal(unresolved.disposition, 'HOLD');
+  assert.equal(unresolved.verification.status, 'VERIFIED');
+  assert.equal(unresolved.verification.snapshot_ref, 'fixture:verified-snapshot');
+  assert(unresolved.unresolved_refs.includes('fixture:unresolved-criterion'));
+});
+
+test('F7 direct assessor boundary returns HOLD for missing, null and sparse arrays', async () => {
+  const hole = new Array<string>(1);
+  const bad: Array<[string, unknown]> = [
+    ['missing required', { ...assessment, required_responsibility_ids: undefined }],
+    ['null excluded', { ...assessment, excluded_responsibility_ids: null }],
+    ['missing evidence', { ...assessment, evidence_refs: undefined }],
+    ['sparse evidence', { ...assessment, evidence_refs: hole }],
+    ['sparse unresolved', { ...assessment, unresolved_refs: hole }],
+    ['null unresolved', { ...assessment, unresolved_refs: null }],
+    ['missing source editions', { ...assessment, source_editions: undefined }],
+    ['null assessment', null],
+    ['scalar assessment', 'review:invalid'],
+  ];
+  for (const [label, malformed] of bad) {
+    const result = await assessResponsibilitySet(input, malformed as SemanticSetAssessment, recover);
+    assert.equal(result.disposition, 'HOLD', label);
+    assert.equal(result.verification.status, 'UNVERIFIED', label);
+    assert.equal(result.validation.status, 'UNKNOWN', label);
+    assert.equal(result.verification.snapshot_ref, null, label);
+    assert.deepEqual(result.validation.evidence_refs, [], label);
+    if (malformed !== null) {
+      assert(result.verification.reasons.includes('SEMANTIC_ASSESSMENT_PAYLOAD_INVALID'), label);
+      assert(result.unresolved_refs.includes('SEMANTIC_ASSESSMENT_PAYLOAD_INVALID'), label);
+    } else assert(result.unresolved_refs.includes('semantic_responsibility_set_assessment'), label);
+  }
+});
+test('F7 malformed sparse submitted responsibility identities cannot be verified', async () => {
+  const hole = new Array<string>(1);
+  const result = await assessResponsibilitySet({ ...input, responsibility_ids: hole }, assessment, recover);
+  assert.equal(result.disposition, 'HOLD');
+  assert(result.verification.reasons.includes('RESPONSIBILITY_IDENTITIES_INVALID'));
+});
+test('F7 good dense attribution still supports READY, unresolved judgment still HOLD', async () => {
+  const ready = await assessResponsibilitySet(input, assessment, recover);
+  assert.equal(ready.disposition, 'READY');
+  assert.deepEqual(ready.validation.evidence_refs, [source]);
+  const open = await assessResponsibilitySet(input, { ...assessment,
+    unresolved_refs: ['fixture:open-question'] }, recover);
+  assert.equal(open.disposition, 'HOLD');
+  assert.equal(open.verification.status, 'VERIFIED');
+  assert.deepEqual(open.validation.unresolved_refs, ['fixture:open-question']);
 });

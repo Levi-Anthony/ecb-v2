@@ -122,8 +122,15 @@ test('ordinary inquiry applies systems-engineering domain admission without a ne
     assert.equal(body.domain_admission.contract, 'ecos:domain-semantic-admission:0.1.0');
     assert.equal(body.domain_admission.disposition, 'READY');
     assert.equal(body.responsibility_set.disposition, 'HOLD');
-    assert.equal(body.responsibility_proposal.contract, 'ecos:source-bound-responsibility-producer:0.1.0');
+    assert.equal(body.responsibility_proposal.contract, 'ecos:source-bound-responsibility-producer:0.5.0');
+    assert(body.responsibility_set.verification.source_editions.some(
+      (e: { ref: string }) => e.ref === 'native-package:se:omg:sysml:2.0'));
+    assert(body.responsibility_set.verification.reasons.some(
+      (reason: string) => reason.startsWith('SOURCE_EDITION_NOT_CURRENT_OR_UNRECOVERABLE:native-package:')));
+    // The in-repository registry is selected, but is not an independently qualified CURRENT source.
     assert.equal(body.responsibility_proposal.status, 'SOURCE_RECOVERED');
+    assert.match(body.responsibility_proposal.candidate_digest, /^[a-f0-9]{64}$/);
+    assert.equal(body.responsibility_set.candidate_digest, body.responsibility_proposal.candidate_digest);
     assert.equal(body.responsibility_set.verification.status, 'UNVERIFIED');
     assert.equal(body.responsibility_set.validation.status, 'UNKNOWN');
     assert(body.reentry.unresolved_refs.includes('responsibility_set:semantic_responsibility_set_assessment'));
@@ -137,5 +144,40 @@ test('ordinary inquiry applies systems-engineering domain admission without a ne
     assert.equal(preserved.domain_admission.decisions[0].disposition, 'INHERIT');
     assert.equal(preserved.responsibility_set.validation.status, 'UNKNOWN');
     assert.equal(preserved.responsibility_proposal.obligation_ref, focal);
+  });
+});
+
+
+test('F3 actual ingress binds responsibility native dependency omitted from explicit selection', async () => {
+  await withClient(async client => {
+    const response = await client.callTool({ name: 'search', arguments: {
+      query: 'selected ISO but native responsibility inherits SysML',
+      inquiry: { ...inquiry, domain_admission: {
+        domain: 'systems-engineering', obligation_ref: focal,
+        package_ids: ['se:iso:42010:2022'],
+        responsibilities: [{
+          id: 'sysml-frame', construct_ref: 'SysML Viewpoint',
+          problem_solved: 'Frame concerns for a model view.',
+          source_lane: 'CURRENT_PRACTICE',
+          source_refs: ['https://www.omg.org/spec/SysML/2.0/About-SysML'],
+          native_package_ids: ['se:omg:sysml:2.0'],
+          native_coverage: 'ADEQUATE', relation_type: 'OVERLAP',
+          required_for_current_use: true,
+          prior_art: { checked: true, evidence_refs: ['https://www.omg.org/spec/SysML/2.0/About-SysML'] },
+        }],
+      } },
+    } });
+    assert.equal(response.isError, undefined);
+    const body = JSON.parse((response.content as Array<{ text: string }>)[0].text);
+    assert.equal(body.domain_admission.disposition, 'READY');
+    assert.equal(body.domain_admission.decisions[0].disposition, 'INHERIT');
+    const refs = body.responsibility_set.verification.source_editions.map((e: { ref: string }) => e.ref);
+    assert(refs.includes('native-package:se:iso:42010:2022'));
+    assert(refs.includes('native-package:se:omg:sysml:2.0'));
+    assert(body.domain_admission.package_refs.includes('se:omg:sysml:2.0'));
+    assert.equal(body.responsibility_set.disposition, 'HOLD');
+    assert(body.responsibility_set.verification.reasons.includes('SOURCE_EDITION_COHERENT_SNAPSHOT_UNAVAILABLE'));
+    assert.equal(body.responsibility_set.verification.snapshot_ref, null);
+    assert.equal(body.disposition, 'HOLD');
   });
 });

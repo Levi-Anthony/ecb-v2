@@ -3,9 +3,19 @@
  * semantic writer is needed to judge intended-use validation. The reader may
  * verify source bytes but may not infer governing currentness from recency. */
 import { createHash } from 'node:crypto';
-import { assessResponsibilitySet, type SemanticSetAssessment, type ResponsibilitySetInput, type ResponsibilitySetResult } from './responsibility-set.js';
+import { assessResponsibilitySet, type SemanticSetAssessment, type ResponsibilitySetInput, type ResponsibilitySetResult, type RecoverEditionSnapshot } from './responsibility-set.js';
+import type { NativePackageDescriptor } from './domain-admission.js';
 
-export const RESPONSIBILITY_PRODUCER_CONTRACT = 'ecos:source-bound-responsibility-producer:0.1.0' as const;
+export const RESPONSIBILITY_PRODUCER_CONTRACT = 'ecos:source-bound-responsibility-producer:0.5.0' as const;
+export type ResponsibilityProposalInput = Omit<ResponsibilitySetInput, 'source_editions' | 'candidate_digest'> & {
+  /** Exact derivative being evaluated, including semantics, standing and declared scope. */
+  candidate_content: string;
+  /** Trusted selected registry descriptions, never user-supplied authority. */
+  native_packages?: NativePackageDescriptor[];
+  /** All responsibility package dependencies, derived by the trusted caller;
+   * a referenced-but-unbound native edition cannot earn a positive result. */
+  required_native_package_ids: string[];
+};
 export type RecoveredSource = {
   ref: string;
   content: string;
@@ -18,6 +28,7 @@ export type SourceClause = { source_ref: string; line: number; excerpt: string; 
 export type ProposedResponsibilitySource = {
   contract: typeof RESPONSIBILITY_PRODUCER_CONTRACT;
   obligation_ref: string;
+  candidate_digest: string;
   source_edition: { ref: string; digest: string } | null;
   candidate_clauses: SourceClause[];
   limitations: string[];
@@ -26,17 +37,54 @@ export type ProposedResponsibilitySource = {
 };
 export type ResponsibilityProducerPorts = {
   recoverSource: (ref: string) => Promise<RecoveredSource | null>;
+  /** Independently re-read an edition; CURRENT requires qualified registry authority. */
+  recoverNativePackage?: (id: string) => Promise<{
+    descriptor: NativePackageDescriptor;
+    currentness: RecoveredSource['currentness'];
+  } | null>;
+  /** A qualified common current-selection snapshot, NEVER just assembled
+   * from independent package/source reads or a caller-authored assertion. */
+  recoverEditionSnapshot?: RecoverEditionSnapshot;
   /** A distinct, attributable semantic evaluator—not caller-supplied proof. */
   semanticReview?: (
     input: ResponsibilitySetInput,
-    evidence: { source: RecoveredSource; proposal: ProposedResponsibilitySource },
+    evidence: { source: RecoveredSource; proposal: ProposedResponsibilitySource;
+      candidate: { content: string; digest: string } },
   ) => Promise<SemanticSetAssessment | null>;
 };
 export type ProducedSet = { proposal: ProposedResponsibilitySource; assessment: ResponsibilitySetResult };
 
 const hex = (content: string) => createHash('sha256').update(content).digest('hex');
+const nonblank = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0;
+/** Array.every skips sparse holes. Provider/provenance arrays must be dense
+ * before identities, source editions or assessor judgments can rely on them. */
+const denseUniqueRefs = (value: unknown, mayBeEmpty = false): value is string[] =>
+  Array.isArray(value) && (mayBeEmpty || value.length > 0) &&
+  Array.from(value).every(nonblank) &&
+  new Set(Array.from(value)).size === value.length;
+const refsValid = (refs: unknown): refs is string[] => denseUniqueRefs(refs);
+const sourceValid = (s: RecoveredSource | null): s is RecoveredSource => !!s &&
+  nonblank(s.ref) && nonblank(s.content) && nonblank(s.custody_ref) &&
+  nonblank(s.basis_digest) && refsValid(s.source_refs);
+const nativeValid = (p: NativePackageDescriptor): boolean => !!p &&
+  [p.id, p.domain, p.name, p.authority_ref, p.edition_ref].every(nonblank) &&
+  refsValid(p.semantic_scope) && refsValid(p.source_refs) &&
+  ['ACTIVE', 'HISTORICAL', 'UNKNOWN'].includes(p.status);
+// Preserve all meaning/standing-bearing descriptor fields, including optional routes.
+// Key ordering is not authority; a changed value is a changed source edition.
+const canonical = (value: unknown): string => {
+  if (Array.isArray(value)) return '[' + value.map(canonical).join(',') + ']';
+  if (value !== null && typeof value === 'object')
+    return '{' + Object.entries(value).filter(([, v]) => v !== undefined)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([k, v]) => JSON.stringify(k) + ':' + canonical(v)).join(',') + '}';
+  return JSON.stringify(value) ?? 'null';
+};
 const sourceEdition = (s: RecoveredSource) => ({ ref: s.ref,
-  digest: hex(JSON.stringify([s.ref, s.content, s.basis_digest, s.custody_ref])) });
+  digest: hex(canonical([s.ref, s.content, s.basis_digest, s.custody_ref, [...s.source_refs].sort()])) });
+const nativeEdition = (p: NativePackageDescriptor) => ({
+  ref: 'native-package:' + p.id, digest: hex(canonical(p)),
+});
 
 export function extractNormativeClauses(source: RecoveredSource): SourceClause[] {
   const lines = source.content.split(/\r?\n/);
@@ -57,41 +105,79 @@ export function extractNormativeClauses(source: RecoveredSource): SourceClause[]
 }
 
 export async function produceResponsibilitySet(
-  input: Omit<ResponsibilitySetInput, 'source_editions'>,
+  input: ResponsibilityProposalInput,
   ports: ResponsibilityProducerPorts,
 ): Promise<ProducedSet> {
+  input = structuredClone(input);
+  const nativePackages = input.native_packages ?? [];
+  const requiredIds = input.required_native_package_ids;
+  const requiredValid = denseUniqueRefs(requiredIds, true);
+  const nativeBasisValid = requiredValid &&
+    (input.native_packages === undefined || (Array.isArray(nativePackages) &&
+      Array.from(nativePackages).every(nativeValid) &&
+      new Set(nativePackages.map(p => p.id)).size === nativePackages.length)) &&
+    requiredIds.every(id => nativePackages.some(p => p.id === id));
+  const nativeEditions = nativeBasisValid ? nativePackages.map(nativeEdition) : [];
+  const candidateUsable = typeof input.candidate_content === 'string' &&
+    input.candidate_content.trim().length > 0 && nativeBasisValid;
+  // Content identity prevents a prior judgment from being reused for changed prose,
+  // standing or coverage. It supplies no semantic judgment or current authority.
+  const candidateDigest = candidateUsable ? hex(JSON.stringify([
+    RESPONSIBILITY_PRODUCER_CONTRACT, input.inquiry_basis_ref, input.intended_use,
+    input.obligation_ref, input.responsibility_ids, input.candidate_content,
+    // A package ID is not its current specification, provenance or authority.
+    nativePackages, [...requiredIds].sort(),
+  ])) : '';
   let source: RecoveredSource | null = null;
-  try { source = await ports.recoverSource(input.obligation_ref); } catch { /* no source == no inferred validation */ }
-  const usable = source && source.ref === input.obligation_ref && source.content.length > 0 &&
-    source.custody_ref.length > 0 && source.basis_digest.length > 0;
+  try { source = structuredClone(await ports.recoverSource(input.obligation_ref)); } catch { /* no source == no inferred validation */ }
+  const usable = sourceValid(source) && source.ref === input.obligation_ref;
   const edition = usable ? sourceEdition(source!) : null;
   const proposal: ProposedResponsibilitySource = {
     contract: RESPONSIBILITY_PRODUCER_CONTRACT,
     obligation_ref: input.obligation_ref,
+    candidate_digest: candidateDigest,
     source_edition: edition,
     candidate_clauses: usable ? extractNormativeClauses(source!) : [],
     limitations: usable
       ? ['Lexical clauses are not a semantic responsibility decomposition.',
+        'Candidate digest binds submitted bytes, not meaning, actual use, installation or action authority.',
+        ...(!candidateUsable ? ['Exact candidate content, complete dependency edition closure or valid package basis is missing; no derivative can be validated.'] : []),
+        ...(nativePackages.length ? ['Native package editions require an independent CURRENT registry qualification before reliance.'] : []),
         'Absence of lexical clauses does not establish absence of obligations.',
         ...(source!.currentness !== 'CURRENT' ? ['Governing source currentness remains unqualified.'] : [])]
       : ['Governing source unavailable or not exactly seated; no decomposition can be validated.'],
     producer: 'EXACT_NORMATIVE_CLAUSE_EXTRACTION',
     status: usable ? 'SOURCE_RECOVERED' : 'SOURCE_UNAVAILABLE',
   };
-  const assessmentInput: ResponsibilitySetInput = { ...input,
-    source_editions: edition ? [edition] : [] };
+  const assessmentInput: ResponsibilitySetInput = {
+    inquiry_basis_ref: input.inquiry_basis_ref, intended_use: input.intended_use,
+    obligation_ref: input.obligation_ref, responsibility_ids: [...input.responsibility_ids],
+    candidate_digest: candidateDigest,
+    source_editions: edition ? [edition, ...nativeEditions] : [...nativeEditions] };
   let semantic: SemanticSetAssessment | undefined;
-  if (usable && ports.semanticReview) {
-    try { semantic = (await ports.semanticReview(assessmentInput, { source: source!, proposal })) ?? undefined; }
+  if (usable && candidateUsable && ports.semanticReview) {
+    try { semantic = structuredClone((await ports.semanticReview(structuredClone(assessmentInput),
+      structuredClone({ source: source!, proposal, candidate: { content: input.candidate_content, digest: candidateDigest } }))) ?? undefined); }
     catch { /* retain unknown rather than treat a failed writer as negative evidence */ }
   }
   const recoverEdition = async (ref: string) => {
+    if (ref.startsWith('native-package:')) {
+      const id = ref.slice('native-package:'.length);
+      if (!nativePackages.some(p => p.id === id) || !ports.recoverNativePackage) return null;
+      let current: Awaited<ReturnType<NonNullable<ResponsibilityProducerPorts['recoverNativePackage']>>> = null;
+      try { current = await ports.recoverNativePackage(id); } catch { return null; }
+      if (!current || !nativeValid(current.descriptor) || current.descriptor.id !== id) return null;
+      return { ...nativeEdition(current.descriptor), currentness: current.currentness };
+    }
     if (ref !== input.obligation_ref) return null;
     let check: RecoveredSource | null = null;
     try { check = await ports.recoverSource(ref); } catch { return null; }
-    return check && check.ref === ref && check.custody_ref && check.basis_digest ? {
+    return sourceValid(check) && check.ref === ref ? {
       ...sourceEdition(check), currentness: check.currentness,
     } : null;
   };
-  return { proposal, assessment: await assessResponsibilitySet(assessmentInput, semantic, recoverEdition) };
+  return { proposal, assessment: await assessResponsibilitySet(
+    assessmentInput, semantic, recoverEdition, ports.recoverEditionSnapshot,
+  ) };
 }
+

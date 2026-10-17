@@ -4,13 +4,15 @@
  * Only a server-injected semantic assessor may provide the second argument.
  * Caller-authored "complete" flags are intentionally not an input.
  */
-export const RESPONSIBILITY_SET_CONTRACT = 'ecos:responsibility-set-assessment:0.1.0' as const;
+export const RESPONSIBILITY_SET_CONTRACT = 'ecos:responsibility-set-assessment:0.4.0' as const;
 
 export type SourceEdition = { ref: string; digest: string };
 export type ResponsibilitySetInput = {
   inquiry_basis_ref: string;
   intended_use: string;
   obligation_ref: string;
+  /** Exact submitted meaning/standing account, computed by the receiving producer. */
+  candidate_digest: string;
   responsibility_ids: string[];
   source_editions: SourceEdition[];
 };
@@ -18,6 +20,7 @@ export type SemanticSetAssessment = {
   inquiry_basis_ref: string;
   intended_use: string;
   obligation_ref: string;
+  candidate_digest: string;
   source_editions: SourceEdition[];
   required_responsibility_ids: string[];
   excluded_responsibility_ids: string[];
@@ -32,8 +35,12 @@ export type ResponsibilitySetResult = {
   contract: typeof RESPONSIBILITY_SET_CONTRACT;
   inquiry_basis_ref: string;
   obligation_ref: string;
+  candidate_digest: string;
   responsibility_ids: string[];
-  verification: { status: 'VERIFIED' | 'UNVERIFIED'; reasons: string[]; source_editions: SourceEdition[] };
+  verification: { status: 'VERIFIED' | 'UNVERIFIED'; reasons: string[]; source_editions: SourceEdition[];
+    /** Attribution handle for an accepted coherent source-system current selection.
+     * Null is never evidence of a multi-edition verified selection. */
+    snapshot_ref: string | null };
   validation: { status: 'VALIDATED' | 'NOT_VALIDATED' | 'UNKNOWN'; criterion: string | null;
     assessor_ref: string | null; method: string | null; evidence_refs: string[];
     excluded_responsibility_ids: string[]; unresolved_refs: string[] };
@@ -42,10 +49,43 @@ export type ResponsibilitySetResult = {
 };
 
 export type RecoverEdition = (ref: string) => Promise<(SourceEdition & { currentness: 'CURRENT' | 'STALE' | 'UNKNOWN' }) | null>;
+/** Trusted port must attest ONE coherent source-system selection; sequential
+ * individually-CURRENT observations cannot create this receipt. Port authority
+ * and the meaning of its transaction token require separate qualification. */
+export type CoherentEditionSnapshot = {
+  snapshot_ref: string;
+  consistency: 'ATOMIC_CURRENT_SELECTION';
+  source_editions: Array<SourceEdition & { currentness: 'CURRENT' | 'STALE' | 'UNKNOWN' }>;
+};
+export type RecoverEditionSnapshot = (requested: SourceEdition[]) => Promise<CoherentEditionSnapshot | null>;
 const nonblank = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0;
 const distinct = (xs: string[]) => xs.length === new Set(xs).size;
+/** Typed semantic ports may still return sparse or malformed runtime arrays.
+ * Array.from visits every index, including holes, unlike Array.every. */
+const denseStrings = (xs: unknown): xs is string[] =>
+  Array.isArray(xs) && Array.from(xs).every(nonblank);
+const validSemanticArrays = (value: unknown): value is SemanticSetAssessment => {
+  if (value === null || typeof value !== 'object' || Array.isArray(value)) return false;
+  const s = value as SemanticSetAssessment;
+  return denseStrings(s.required_responsibility_ids) &&
+    denseStrings(s.excluded_responsibility_ids) &&
+    denseStrings(s.unresolved_refs) &&
+    denseStrings(s.evidence_refs) &&
+    validEditions(s.source_editions);
+};
 const equalSet = (a: string[], b: string[]) => a.length === b.length && a.every(v => b.includes(v));
-const sameEd = (a: SourceEdition[], b: SourceEdition[]) => a.length === b.length &&
+// Untrusted provider data can violate its TypeScript contract at runtime.
+ // Array.from visits sparse slots, rejecting absent/null/malformed entries
+ // instead of treating them as a smaller or partly validated edition set.
+const validEdition = (value: unknown): value is SourceEdition =>
+  value !== null && typeof value === 'object' && !Array.isArray(value) &&
+  nonblank((value as SourceEdition).ref) &&
+  /^[a-f0-9]{64}$/i.test((value as SourceEdition).digest ?? '');
+const validEditions = (value: unknown): value is SourceEdition[] =>
+  Array.isArray(value) && Array.from(value).every(validEdition) &&
+  distinct(Array.from(value, edition => (edition as SourceEdition).ref));
+const sameEd = (a: unknown, b: unknown) =>
+  validEditions(a) && validEditions(b) && a.length === b.length &&
   a.every(v => b.some(w => v.ref === w.ref && v.digest === w.digest));
 
 /** Verification checks declared structural/source constraints. Validation still requires
@@ -54,20 +94,36 @@ export async function assessResponsibilitySet(
   input: ResponsibilitySetInput,
   assessment?: SemanticSetAssessment,
   recoverEdition?: RecoverEdition,
+  recoverEditionSnapshot?: RecoverEditionSnapshot,
 ): Promise<ResponsibilitySetResult> {
+  // An asynchronous reader/assessor must not mutate the basis being checked.
+  input = structuredClone(input);
+  assessment = assessment === undefined ? undefined : structuredClone(assessment);
   const reasons: string[] = [];
   const unresolved: string[] = [];
   const sourceEditions = input.source_editions;
+  if (!/^[a-f0-9]{64}$/.test(input.candidate_digest ?? ''))
+    reasons.push('CANDIDATE_EDITION_MISSING');
   if (!nonblank(input.inquiry_basis_ref) || !nonblank(input.intended_use) || !nonblank(input.obligation_ref))
     reasons.push('SITUATED_BASIS_MISSING');
-  if (!input.responsibility_ids.length || !input.responsibility_ids.every(nonblank) || !distinct(input.responsibility_ids))
+  if (!denseStrings(input.responsibility_ids) || !input.responsibility_ids.length ||
+      !distinct(input.responsibility_ids))
     reasons.push('RESPONSIBILITY_IDENTITIES_INVALID');
-  if (!sourceEditions.length || !sourceEditions.every(s => nonblank(s.ref) && /^[a-f0-9]{64}$/i.test(s.digest)) ||
-      !distinct(sourceEditions.map(s => s.ref)) || !sourceEditions.some(s => s.ref === input.obligation_ref))
+  if (!validEditions(sourceEditions) || !sourceEditions.length ||
+      !sourceEditions.some(s => s.ref === input.obligation_ref))
     reasons.push('SOURCE_EDITION_BASIS_INCOMPLETE');
 
+  // F7: an absent or malformed trusted evaluator is NOT an attributed verdict.
+  // Keep its arrays out of all comparison and response projection paths.
+  const qualifiedAssessment = validSemanticArrays(assessment) ? assessment : undefined;
   if (!assessment) unresolved.push('semantic_responsibility_set_assessment');
-  else {
+  else if (!qualifiedAssessment) {
+    reasons.push('SEMANTIC_ASSESSMENT_PAYLOAD_INVALID');
+    unresolved.push('semantic_responsibility_set_assessment');
+  } else {
+    assessment = qualifiedAssessment;
+    if (assessment.candidate_digest !== input.candidate_digest)
+      reasons.push('ASSESSMENT_CANDIDATE_MISMATCH');
     if (assessment.inquiry_basis_ref !== input.inquiry_basis_ref || assessment.intended_use !== input.intended_use ||
         assessment.obligation_ref !== input.obligation_ref) reasons.push('ASSESSMENT_BASIS_MISMATCH');
     if (!sameEd(sourceEditions, assessment.source_editions)) reasons.push('ASSESSMENT_SOURCE_EDITIONS_MISMATCH');
@@ -81,6 +137,8 @@ export async function assessResponsibilitySet(
     if (![assessment.criterion, assessment.method, assessment.assessor_ref].every(nonblank) ||
         !assessment.evidence_refs.length || !assessment.evidence_refs.every(nonblank))
       reasons.push('SEMANTIC_ASSESSMENT_UNATTRIBUTED');
+    if (!['VALIDATED', 'NOT_VALIDATED', 'UNKNOWN'].includes(assessment.judgment))
+      reasons.push('SEMANTIC_ASSESSMENT_JUDGMENT_INVALID');
     if (assessment.unresolved_refs.length || assessment.judgment === 'UNKNOWN')
       unresolved.push(...assessment.unresolved_refs, 'responsibility_set_validation');
   }
@@ -95,23 +153,51 @@ export async function assessResponsibilitySet(
         reasons.push('SOURCE_EDITION_NOT_CURRENT_OR_UNRECOVERABLE:' + edition.ref);
     }
   }
-  const verified = reasons.length === 0 && assessment !== undefined;
+  let acceptedSnapshotRef: string | null = null;
+  // F4: sequentially reading an obligation followed by native dependencies
+  // does not prove they were CURRENT at one consistent point. Requalify all
+  // editions using a trusted atomic/current-selection reader at exit.
+  // The ordinary ingress supplies no such reader and remains HOLD.
+  if (sourceEditions.length > 1 && !reasons.includes('SOURCE_EDITION_BASIS_INCOMPLETE')) {
+    if (!recoverEditionSnapshot) reasons.push('SOURCE_EDITION_COHERENT_SNAPSHOT_UNAVAILABLE');
+    else {
+      // Contain BOTH provider failures and receipt-validation failures. No
+      // malformed/null/sparse entry may escape the accountable HOLD result.
+      let snapshotVerified = false;
+      try {
+        const snapshot = structuredClone(await recoverEditionSnapshot(structuredClone(sourceEditions)));
+        if (snapshot && nonblank(snapshot.snapshot_ref) &&
+            snapshot.consistency === 'ATOMIC_CURRENT_SELECTION' &&
+            validEditions(snapshot.source_editions) &&
+            sameEd(sourceEditions, snapshot.source_editions) &&
+            snapshot.source_editions.every(e => e.currentness === 'CURRENT')) {
+          acceptedSnapshotRef = snapshot.snapshot_ref;
+          snapshotVerified = true;
+        }
+      } catch { /* malformed receipt or provider failure cannot grant standing */ }
+      if (!snapshotVerified) reasons.push('SOURCE_EDITION_COHERENT_SNAPSHOT_UNVERIFIED');
+    }
+  }
+  const verified = reasons.length === 0 && qualifiedAssessment !== undefined;
   const validationStatus: ResponsibilitySetResult['validation']['status'] =
-    !assessment || !verified ? 'UNKNOWN' : assessment.judgment;
+    !qualifiedAssessment || !verified || unresolved.length > 0 ? 'UNKNOWN' : qualifiedAssessment.judgment;
   if (!verified) unresolved.push(...reasons);
   if (validationStatus !== 'VALIDATED') unresolved.push('responsibility_set_validation');
   const unresolvedRefs = [...new Set(unresolved)];
   return {
     contract: RESPONSIBILITY_SET_CONTRACT,
     inquiry_basis_ref: input.inquiry_basis_ref, obligation_ref: input.obligation_ref,
+    candidate_digest: input.candidate_digest,
     responsibility_ids: [...input.responsibility_ids],
-    verification: { status: verified ? 'VERIFIED' : 'UNVERIFIED', reasons, source_editions: [...sourceEditions] },
-    validation: { status: validationStatus, criterion: assessment?.criterion ?? null,
-      assessor_ref: assessment?.assessor_ref ?? null, method: assessment?.method ?? null,
-      evidence_refs: [...(assessment?.evidence_refs ?? [])],
-      excluded_responsibility_ids: [...(assessment?.excluded_responsibility_ids ?? [])],
-      unresolved_refs: [...(assessment?.unresolved_refs ?? [])] },
-    disposition: verified && validationStatus === 'VALIDATED' ? 'READY' : 'HOLD',
+    verification: { status: verified ? 'VERIFIED' : 'UNVERIFIED', reasons,
+      source_editions: [...sourceEditions], snapshot_ref: verified ? acceptedSnapshotRef : null },
+    validation: { status: validationStatus, criterion: qualifiedAssessment?.criterion ?? null,
+      assessor_ref: qualifiedAssessment?.assessor_ref ?? null, method: qualifiedAssessment?.method ?? null,
+      evidence_refs: [...(qualifiedAssessment?.evidence_refs ?? [])],
+      excluded_responsibility_ids: [...(qualifiedAssessment?.excluded_responsibility_ids ?? [])],
+      unresolved_refs: [...(qualifiedAssessment?.unresolved_refs ?? [])] },
+    disposition: verified && validationStatus === 'VALIDATED' && unresolvedRefs.length === 0 ? 'READY' : 'HOLD',
     unresolved_refs: unresolvedRefs,
   };
 }
+

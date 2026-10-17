@@ -6,6 +6,7 @@ on:
       - 'server.ts'
       - 'server/orchestration*.ts'
       - 'server/domain-admission.ts'
+      - 'server/responsibility-*.ts'
       - 'server/native-packages/**'
       - 'server/urg-core.ts'
       - 'tests/inquiry/**'
@@ -29,6 +30,7 @@ on:
       - 'server.ts'
       - 'server/orchestration*.ts'
       - 'server/domain-admission.ts'
+      - 'server/responsibility-*.ts'
       - 'server/native-packages/**'
       - 'server/urg-core.ts'
       - 'tests/inquiry/**'
@@ -62,3 +64,4 @@ jobs:
       - run: npm run typecheck:inquiry
       - run: npm run test:inquiry
       - run: npm run qualify:quadrant
+

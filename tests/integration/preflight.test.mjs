@@ -47,3 +47,32 @@ test('semantic contract cannot be replaced by the list of missing tests or a gen
   assert.match(problems,/portable contract collapsed/);
   assert.match(problems,/physical_adapter.description/);
 });
+
+
+test('RED-TEAM WITNESS (known gap): syntactically valid but substantively weakened PGO passes structural preflight', () => {
+  // This proves only structural-validator insufficiency; it is not an independent red-team certification.
+  // Preserve the original full-PGO baseline and every source pointer. Change only decision-bearing semantics.
+  const diluted = clone();
+  diluted.pgo.intended_end_state = 'Report the repository build as a completed personal application';
+  diluted.pgo.definition_of_done = [
+    'GitHub Actions shows passing tests',
+    'A hosted deployment reports READY'
+  ];
+  diluted.pgo.discrimination.method =
+    'Prefer locally easy checkmarks even where no real person can use the result';
+  diluted.pgo.discrimination.method_example =
+    'A deployment is called a successful user journey without observing any user action';
+  diluted.pgo.discrimination.helps = [
+    'Count repository changes as completed capabilities',
+    'Treat deployment as sufficient evidence of product value'
+  ];
+  diluted.pgo.discrimination.hinders = [
+    'Ask whether the Principal can complete a real task',
+    'Inspect whether actual Greenfield native state changed'
+  ];
+  const errors = validateIndex(diluted);
+  assert.deepEqual(errors, [], 'Current structural preflight accepts deliberate attenuation; attack witness');
+  assert.notEqual(diluted.pgo.intended_end_state, map.pgo.intended_end_state);
+  assert.notEqual(diluted.pgo.discrimination.method, map.pgo.discrimination.method);
+});
+
