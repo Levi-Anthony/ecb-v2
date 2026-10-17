@@ -1,3 +1,4 @@
+import { BROWSER_SESSION_SCRIPT } from './browser-session.js';
 export const PERSONAL_HTML = String.raw`<!doctype html>
 <html lang="en">
 <head>
@@ -226,6 +227,7 @@ export const PERSONAL_HTML = String.raw`<!doctype html>
   </footer>
 </div>
 <script nonce="%%NONCE%%">
+${BROWSER_SESSION_SCRIPT}
 (function(){
 'use strict';
 const $ = id => document.getElementById(id);
@@ -252,7 +254,7 @@ for(const b of document.querySelectorAll('[data-tab]'))b.addEventListener('click
 async function get(action,params){
   const u=new URL(location.origin+location.pathname);u.searchParams.set('action',action);
   for(const [key,value] of Object.entries(params||{}))u.searchParams.set(key,value);
-  const response=await fetch(u.toString(),{cache:'no-store'});
+  const response=await sessionFetch(u.toString(),{cache:'no-store'});
   const data=await response.json();
   if(!response.ok)throw Error(data.error||'Connected operation unavailable');
   return data;
@@ -438,7 +440,7 @@ $('confirm-capture').onclick=async()=>{
   operationId=operationId||crypto.randomUUID();
   $('confirm-capture').disabled=true;say('Executing and verifying live BRAIN custody…');
   try{
-    const response=await fetch(location.pathname+'?action=capture',{
+    const response=await sessionFetch(location.pathname+'?action=capture',{
       method:'POST',headers:{'content-type':'application/json','x-ecos-action':'capture'},
       body:JSON.stringify({authorized:true,operation_id:operationId,content})
     });

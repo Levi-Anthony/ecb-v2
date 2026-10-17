@@ -4,13 +4,15 @@
  * Only a server-injected semantic assessor may provide the second argument.
  * Caller-authored "complete" flags are intentionally not an input.
  */
-export const RESPONSIBILITY_SET_CONTRACT = 'ecos:responsibility-set-assessment:0.1.0' as const;
+export const RESPONSIBILITY_SET_CONTRACT = 'ecos:responsibility-set-assessment:0.2.0' as const;
 
 export type SourceEdition = { ref: string; digest: string };
 export type ResponsibilitySetInput = {
   inquiry_basis_ref: string;
   intended_use: string;
   obligation_ref: string;
+  /** Exact submitted meaning/standing account, computed by the receiving producer. */
+  candidate_digest: string;
   responsibility_ids: string[];
   source_editions: SourceEdition[];
 };
@@ -18,6 +20,7 @@ export type SemanticSetAssessment = {
   inquiry_basis_ref: string;
   intended_use: string;
   obligation_ref: string;
+  candidate_digest: string;
   source_editions: SourceEdition[];
   required_responsibility_ids: string[];
   excluded_responsibility_ids: string[];
@@ -32,6 +35,7 @@ export type ResponsibilitySetResult = {
   contract: typeof RESPONSIBILITY_SET_CONTRACT;
   inquiry_basis_ref: string;
   obligation_ref: string;
+  candidate_digest: string;
   responsibility_ids: string[];
   verification: { status: 'VERIFIED' | 'UNVERIFIED'; reasons: string[]; source_editions: SourceEdition[] };
   validation: { status: 'VALIDATED' | 'NOT_VALIDATED' | 'UNKNOWN'; criterion: string | null;
@@ -55,9 +59,14 @@ export async function assessResponsibilitySet(
   assessment?: SemanticSetAssessment,
   recoverEdition?: RecoverEdition,
 ): Promise<ResponsibilitySetResult> {
+  // An asynchronous reader/assessor must not mutate the basis being checked.
+  input = structuredClone(input);
+  assessment = assessment === undefined ? undefined : structuredClone(assessment);
   const reasons: string[] = [];
   const unresolved: string[] = [];
   const sourceEditions = input.source_editions;
+  if (!/^[a-f0-9]{64}$/.test(input.candidate_digest ?? ''))
+    reasons.push('CANDIDATE_EDITION_MISSING');
   if (!nonblank(input.inquiry_basis_ref) || !nonblank(input.intended_use) || !nonblank(input.obligation_ref))
     reasons.push('SITUATED_BASIS_MISSING');
   if (!input.responsibility_ids.length || !input.responsibility_ids.every(nonblank) || !distinct(input.responsibility_ids))
@@ -68,6 +77,8 @@ export async function assessResponsibilitySet(
 
   if (!assessment) unresolved.push('semantic_responsibility_set_assessment');
   else {
+    if (assessment.candidate_digest !== input.candidate_digest)
+      reasons.push('ASSESSMENT_CANDIDATE_MISMATCH');
     if (assessment.inquiry_basis_ref !== input.inquiry_basis_ref || assessment.intended_use !== input.intended_use ||
         assessment.obligation_ref !== input.obligation_ref) reasons.push('ASSESSMENT_BASIS_MISMATCH');
     if (!sameEd(sourceEditions, assessment.source_editions)) reasons.push('ASSESSMENT_SOURCE_EDITIONS_MISMATCH');
@@ -97,13 +108,14 @@ export async function assessResponsibilitySet(
   }
   const verified = reasons.length === 0 && assessment !== undefined;
   const validationStatus: ResponsibilitySetResult['validation']['status'] =
-    !assessment || !verified ? 'UNKNOWN' : assessment.judgment;
+    !assessment || !verified || unresolved.length > 0 ? 'UNKNOWN' : assessment.judgment;
   if (!verified) unresolved.push(...reasons);
   if (validationStatus !== 'VALIDATED') unresolved.push('responsibility_set_validation');
   const unresolvedRefs = [...new Set(unresolved)];
   return {
     contract: RESPONSIBILITY_SET_CONTRACT,
     inquiry_basis_ref: input.inquiry_basis_ref, obligation_ref: input.obligation_ref,
+    candidate_digest: input.candidate_digest,
     responsibility_ids: [...input.responsibility_ids],
     verification: { status: verified ? 'VERIFIED' : 'UNVERIFIED', reasons, source_editions: [...sourceEditions] },
     validation: { status: validationStatus, criterion: assessment?.criterion ?? null,
@@ -111,7 +123,8 @@ export async function assessResponsibilitySet(
       evidence_refs: [...(assessment?.evidence_refs ?? [])],
       excluded_responsibility_ids: [...(assessment?.excluded_responsibility_ids ?? [])],
       unresolved_refs: [...(assessment?.unresolved_refs ?? [])] },
-    disposition: verified && validationStatus === 'VALIDATED' ? 'READY' : 'HOLD',
+    disposition: verified && validationStatus === 'VALIDATED' && unresolvedRefs.length === 0 ? 'READY' : 'HOLD',
     unresolved_refs: unresolvedRefs,
   };
 }
+

@@ -1,0 +1,23 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:personal
+> node --import tsx --test tests/personal-app.test.ts
+
+✔ private page denies unauthenticated access before reading ports (4.376032ms)
+✔ unenrolled owner does not receive native work state (1.146247ms)
+✔ current live commission and native workflow are separate and source qualified (0.984824ms)
+✔ authorized UI is private and carries a nonce-bound CSP (1.306478ms)
+✔ cross-origin capture and missing authorization fail before execution (1.216963ms)
+✔ one explicitly authorized capture receives exact independent readback (0.665522ms)
+✔ mismatched source bytes cannot become custody verification (0.57113ms)
+✔ capture with unavailable readback returns same-identity recovery, not a false PASS (0.576648ms)
+✔ search is read-only and rejects empty query (0.673755ms)
+✔ oversized streaming POST is rejected before invoking a capture (0.566213ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 330.626723

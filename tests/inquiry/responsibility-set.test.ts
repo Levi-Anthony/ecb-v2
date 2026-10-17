@@ -7,11 +7,13 @@ const source = 'fixture:governing-obligation';
 const input: ResponsibilitySetInput = {
   inquiry_basis_ref: 'fixture:basis', intended_use: 'select an inspection mechanism',
   obligation_ref: source, responsibility_ids: ['source-recovery', 'consumer-use'],
+  candidate_digest: 'c'.repeat(64),
   source_editions: [{ ref: source, digest }],
 };
 const assessment: SemanticSetAssessment = {
   inquiry_basis_ref: input.inquiry_basis_ref, intended_use: input.intended_use,
   obligation_ref: source, source_editions: [...input.source_editions],
+  candidate_digest: input.candidate_digest,
   required_responsibility_ids: ['source-recovery', 'consumer-use'],
   excluded_responsibility_ids: [], unresolved_refs: [],
   criterion: 'Both necessary responsibilities support the declared inspection use',
@@ -66,3 +68,4 @@ test('caller-submitted attestation is not part of the ordinary public input cont
   assert.equal(r.validation.status, 'UNKNOWN');
   assert(r.verification.reasons.includes('SOURCE_EDITION_RECOVERY_UNAVAILABLE'));
 });
+

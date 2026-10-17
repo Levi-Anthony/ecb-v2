@@ -1,0 +1,5 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> typecheck:mcp
+> tsc --noEmit --module nodenext --moduleResolution nodenext --target es2022 --skipLibCheck --allowImportingTsExtensions server.ts tests/mcp-protocol.test.ts tests/current-commission.test.ts scripts/prepare-current-commission.ts scripts/install-current-commission.ts
+

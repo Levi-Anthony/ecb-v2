@@ -71,7 +71,9 @@ This profile depends on, and remains subordinate to:
 - `docs/invariants.md`
 - ECO-162 fidelity invariants F1-F8
 
-Where standing differs, later accepted sources and governing invariants control.
+Resolve source conflicts by applicable scope, governing authority, qualification, current binding and explicit supersession, subject to governing invariants. Recency or later acceptance alone does not establish control. Where the controlling basis is unresolved, preserve the conflict and route it to the existing governing owner before relying on a supersession.
+
+**17 October 2026 source-delivery correction:** this repairs the recency wording under the existing no-silent-promotion invariant; it does not ratify a new semantic rule or establish runtime/consumer installation. The prior sentence, preserved in repository history, read: “Where standing differs, later accepted sources and governing invariants control.” An explicitly authorized in-scope supersession governs that scope; a newer unqualified or out-of-scope source does not. Governing currentness is supplied through the independently warranted selection route, not by a file date or this paragraph.
 
 ## 3. Situated inquiry basis
 
@@ -386,3 +388,4 @@ Use this profile as the positive orchestration surface over the already-installe
 ## 11. Executable realization and ownership
 
 The Principal commissioned implementation on 6 October 2026, America/Phoenix: BRAIN `6c02e4d4-0d57-4f0e-ab85-fd7fae945a38`. [ECO-202 runtime contract and responsibility map](../../docs/inquiry-orchestration.md) is the current execution/reentry door. It consumes this profile, URG revision 1.0.2 and the closed ECO-213 circulation substrate; it does not amend them. FR-3 receipt `13acf55f-0b5e-4b7c-a6f2-e2edf988762f` is first-class requirement custody. Exact recovery, current-use admission, fixed-R/B preflight, two-sided reconciliation and accountable READY/HOLD are one coordinator; semantic judgment remains attributable. ECO-214 hosted/provider release and ECO-218 authenticated consumer setup remain separately owned and unsatisfied.
+

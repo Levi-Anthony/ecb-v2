@@ -1,12 +1,9 @@
 import { randomBytes } from 'node:crypto';
-import { createClient } from '@supabase/supabase-js';
-import { decodeJwt } from 'jose';
-import { OAUTH_RESOURCE, SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL } from './oauth.js';
+import { OAUTH_RESOURCE } from './oauth.js';
+import { readBrowserSession, isRecoverableSessionCode, BROWSER_SESSION_SCRIPT, type BrowserAuthClient } from './browser-session.js';
 import { PERSONAL_HTML } from './personal-app-ui.js';
 
 const ORIGIN = new URL(OAUTH_RESOURCE).origin;
-const ACCESS_COOKIE = '__Host-ecb_access';
-const REFRESH_COOKIE = '__Host-ecb_refresh';
 const CYCLE_ID = '40ca3bbd-c905-4ec5-b202-bfb49fcd6605';
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const BASE_HEADERS = {
@@ -32,40 +29,18 @@ export type PersonalPorts = {
 export type PersonalHandlerOptions = {
   // Dependency injection is for deterministic non-production unit tests.
   authorize?: (request: Request) => Promise<Session>;
+  authClient?: BrowserAuthClient;
 };
 
-function cookie(request: Request, name: string): string {
-  return request.headers.get('cookie')?.split(';').map(part => part.trim())
-    .find(part => part.startsWith(name + '='))?.slice(name.length + 1) ?? '';
-}
-
-async function authorizePrincipal(request: Request): Promise<Session> {
-  const access = cookie(request, ACCESS_COOKIE);
-  const refresh = cookie(request, REFRESH_COOKIE);
-  if (!access || !refresh) return { allowed: false, status: 401, code: 'sign_in_required' };
-  const auth = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
-    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
-    global: { fetch: (input, init) => fetch(input, { ...init, signal: AbortSignal.timeout(8000) }) },
-  });
+async function authorizePrincipal(request: Request, authClient?: BrowserAuthClient): Promise<Session> {
+  const session = await readBrowserSession(request, authClient);
+  if (session.ok === false) return { allowed: false, status: session.status, code: session.code };
   try {
-    const { data, error } = await auth.auth.setSession({ access_token: access, refresh_token: refresh });
-    if (error || !data.session || !data.user || decodeJwt(data.session.access_token).client_id) {
-      return { allowed: false, status: 401, code: 'sign_in_required' };
-    }
-    // setSession alone is not an authorization proof: revalidate at the Auth server.
-    const verified = await auth.auth.getUser(data.session.access_token);
-    if (verified.error || !verified.data.user || verified.data.user.id !== data.user.id) {
-      return { allowed: false, status: 401, code: 'sign_in_required' };
-    }
-    // Fail closed on the existing explicitly enrolled Principal register.
-    // No implicit account creation or permission widening.
-    const { data: context, error: contextError } = await auth.rpc('ecb218_oauth_context');
-    if (contextError) return { allowed: false, status: 503, code: 'enrollment_unavailable' };
+    const { data: context, error } = await session.auth.rpc('ecb218_oauth_context');
+    if (error) return { allowed: false, status: 503, code: 'enrollment_unavailable' };
     if (context?.enrolled !== true) return { allowed: false, status: 403, code: 'principal_not_enrolled' };
-    return { allowed: true, access: data.session.access_token, refresh: data.session.refresh_token };
-  } catch {
-    return { allowed: false, status: 503, code: 'session_verification_unavailable' };
-  }
+    return { allowed: true, access: session.access, refresh: session.refresh };
+  } catch { return { allowed: false, status: 503, code: 'enrollment_unavailable' }; }
 }
 
 function wrap(body: BodyInit, status: number, contentType: string, session?: Session, nonce?: string) {
@@ -73,10 +48,6 @@ function wrap(body: BodyInit, status: number, contentType: string, session?: Ses
   headers.set('Content-Type', contentType);
   if (nonce) headers.set('Content-Security-Policy', "default-src 'none'; script-src 'nonce-" + nonce +
     "'; style-src 'nonce-" + nonce + "'; connect-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'");
-  if (session?.allowed) {
-    headers.append('Set-Cookie', ACCESS_COOKIE + '=' + session.access + '; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=604800');
-    headers.append('Set-Cookie', REFRESH_COOKIE + '=' + session.refresh + '; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=604800');
-  }
   return new Response(body, { status, headers });
 }
 function json(value: unknown, status = 200, session?: Session) {
@@ -112,14 +83,34 @@ export async function handlePersonalApp(
   const url = new URL(request.url);
   if (url.origin !== ORIGIN) return unsupported(403, 'canonical_private_origin_required');
   if (request.method !== 'GET' && request.method !== 'POST') return unsupported(405, 'method_not_allowed');
-  const session = await (options.authorize ?? authorizePrincipal)(request);
+  const session = await (options.authorize ?? ((r: Request) => authorizePrincipal(r, options.authClient)))(request);
   if ('status' in session) {
     if (request.method === 'GET' && !url.searchParams.has('action')) {
+      const nonce = randomBytes(18).toString('base64url');
+      const recovering = isRecoverableSessionCode(session.code);
+      const message = recovering ? session.code === 'session_access_missing_recoverable'
+        ? 'The access credential is missing; checking whether your existing session can recover…'
+        : session.code === 'session_access_malformed_recoverable' || session.code === 'session_access_invalid_recoverable'
+          ? 'The access credential is invalid; checking the existing recovery credential…'
+          : session.code === 'session_provider_rejected_recoverable'
+            ? 'The identity provider rejected the access credential; checking existing session recovery…'
+            : 'Restoring your existing browser session…'
+        : session.status === 503
+          ? 'Session verification is temporarily unavailable. Retry this page; your browser session was preserved.'
+          : session.status === 403 ? 'This account is not currently enrolled. No work data is exposed.'
+          : session.code === 'session_refresh_missing'
+            ? 'The session recovery credential is missing from this browser profile. No work data is exposed.'
+            : session.code === 'session_identity_mismatch'
+              ? 'The browser session identity did not match. No work data is exposed.'
+              : session.code === 'session_missing'
+                ? 'No session is available in this browser profile. No work data is exposed.'
+                : 'Authentication is required. No work data is exposed.';
       return wrap('<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1">' +
-        '<title>ECOS | Sign in</title><main style="font:18px/1.6 system-ui;max-width:36rem;margin:12vh auto;padding:1.5rem">' +
-        '<h1>ECOS private work surface</h1><p>Authentication and explicit enrollment are required. No work data is exposed.</p>' +
-        '<p><a href="/oauth/consent">Sign in with your ECB account</a>, then return to this page.</p></main>',
-        session.status, 'text/html; charset=utf-8');
+        '<title>ECOS | Session</title><main><h1>ECOS private work surface</h1><p id="status">' + message + '</p>' +
+        (!recovering && session.status === 401 ? '<p><a href="/oauth/consent">Sign in with your ECB account</a></p>' : '<p><a href="/api/personal">Retry workspace</a></p>') +
+        '<p id="session-signin" hidden><a href="/oauth/consent">Sign in when ready</a></p></main>' + (recovering ? '<script nonce="' + nonce + '">' + BROWSER_SESSION_SCRIPT +
+          "sessionFetch('/oauth/context').then(async r=>{const d=await r.json();if(r.ok&&d.signed_in)location.reload();else document.getElementById('status').textContent=d.message||'Session recovery is unavailable. Retry this page.';}).catch(e=>{if(e.code==='session_reauthentication_required'){document.getElementById('status').textContent='The provider rejected this session. Sign in when ready; no new email was requested.';document.getElementById('session-signin').hidden=false;return;}document.getElementById('status').textContent=navigator.locks?'Session recovery is unavailable. Retry this page; no new email is needed.':'Open ECOS in current Safari for session recovery. No new email is needed.';});</script>" : ''),
+        session.status, 'text/html; charset=utf-8', undefined, nonce);
     }
     return unsupported(session.status, session.code);
   }

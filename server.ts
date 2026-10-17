@@ -756,6 +756,9 @@ function buildServer(): McpServer {
           inquiry_basis_ref: inquiryResult.inquiry_basis_ref, intended_use: inquiry.intended_use,
           obligation_ref: inquiry.domain_admission.obligation_ref ?? '',
           responsibility_ids: inquiry.domain_admission.responsibilities.map(r => r.id),
+          // Bind the entire submitted semantic/standing account, not just its IDs.
+          candidate_content: canonical({ domain: inquiry.domain_admission.domain, package_ids: packageIds,
+            responsibilities: inquiry.domain_admission.responsibilities }),
         }, {
           async recoverSource(ref): Promise<RecoveredSource | null> {
             const evidence = await sourceReader.fetchEvidence(ref);
@@ -1030,3 +1033,4 @@ app.all('/mcp', async (context) => {
 });
 
 export default app;
+

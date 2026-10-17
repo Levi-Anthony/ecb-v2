@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { produceResponsibilitySet, extractNormativeClauses, type RecoveredSource } from '../../server/responsibility-producer.ts';
-import type { SemanticSetAssessment } from '../../server/responsibility-set.ts';
+import type { ResponsibilitySetInput, SemanticSetAssessment } from '../../server/responsibility-set.ts';
 
 const source: RecoveredSource = {
   ref: 'fixture:obligation', content: 'The worker SHALL recover governing sources.\nThe worker MUST validate intended use.\nOther narrative.',
@@ -9,11 +9,13 @@ const source: RecoveredSource = {
   source_refs: ['fixture:obligation'], currentness: 'CURRENT',
 };
 const input = { inquiry_basis_ref: 'fixture:inquiry', intended_use: 'qualify use at consumer boundary',
-  obligation_ref: source.ref, responsibility_ids: ['source-recovery', 'use-validation'] };
+  obligation_ref: source.ref, responsibility_ids: ['source-recovery', 'use-validation'],
+  candidate_content: 'Recover governing source, validate its declared consumer use, and preserve the received result.' };
 const read = async () => ({ ...source });
-const review = (set: typeof input & { source_editions: { ref: string; digest: string }[] }): SemanticSetAssessment => ({
+const review = (set: ResponsibilitySetInput): SemanticSetAssessment => ({
   inquiry_basis_ref: set.inquiry_basis_ref, intended_use: set.intended_use,
   obligation_ref: set.obligation_ref, source_editions: [...set.source_editions],
+  candidate_digest: set.candidate_digest,
   required_responsibility_ids: ['source-recovery', 'use-validation'], excluded_responsibility_ids: [],
   unresolved_refs: [], criterion: 'Both explicit governing clauses are addressed for this consumer',
   method: 'Independent exact-source semantic review', assessor_ref: 'fixture:separate-reviewer',
@@ -72,3 +74,4 @@ test('no source and empty lexical match cannot manufacture semantic adequacy', a
   assert.equal(absent.assessment.disposition, 'HOLD');
   assert.deepEqual(extractNormativeClauses({ ...source, content: 'Purely implicit obligations.' }), []);
 });
+

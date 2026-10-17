@@ -124,6 +124,7 @@ export function report(index, errors, live) {
     'Documented conflicts: ' + index.conflicts.map(c=>c.id).join(', '),
     '',
     'Structural source checks: ' + (errors.length ? 'FAIL' : 'PASS') + ' (does not prove semantic adequacy)',
+    'Receiving qualification: NOT ASSESSED. No current-use, installation or action standing follows from this report. Use the existing source-bound responsibility-set producer and independently attributable semantic assessment; see docs/integration-receiving.md.',
     ...errors.map(e=>'- ' + e),
     '',
     'Live PR overlap scan: ' + live.state,
@@ -145,3 +146,4 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, output);
   if (errors.length) process.exitCode = 1;
 }
+

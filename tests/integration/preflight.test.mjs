@@ -75,3 +75,4 @@ test('RED-TEAM WITNESS (known gap): syntactically valid but substantively weaken
   assert.notEqual(diluted.pgo.intended_end_state, map.pgo.intended_end_state);
   assert.notEqual(diluted.pgo.discrimination.method, map.pgo.discrimination.method);
 });
+

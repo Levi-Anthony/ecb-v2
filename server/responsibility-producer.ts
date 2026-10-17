@@ -5,7 +5,11 @@
 import { createHash } from 'node:crypto';
 import { assessResponsibilitySet, type SemanticSetAssessment, type ResponsibilitySetInput, type ResponsibilitySetResult } from './responsibility-set.js';
 
-export const RESPONSIBILITY_PRODUCER_CONTRACT = 'ecos:source-bound-responsibility-producer:0.1.0' as const;
+export const RESPONSIBILITY_PRODUCER_CONTRACT = 'ecos:source-bound-responsibility-producer:0.2.0' as const;
+export type ResponsibilityProposalInput = Omit<ResponsibilitySetInput, 'source_editions' | 'candidate_digest'> & {
+  /** Exact derivative being evaluated, including semantics, standing and declared scope. */
+  candidate_content: string;
+};
 export type RecoveredSource = {
   ref: string;
   content: string;
@@ -18,6 +22,7 @@ export type SourceClause = { source_ref: string; line: number; excerpt: string; 
 export type ProposedResponsibilitySource = {
   contract: typeof RESPONSIBILITY_PRODUCER_CONTRACT;
   obligation_ref: string;
+  candidate_digest: string;
   source_edition: { ref: string; digest: string } | null;
   candidate_clauses: SourceClause[];
   limitations: string[];
@@ -29,7 +34,8 @@ export type ResponsibilityProducerPorts = {
   /** A distinct, attributable semantic evaluator—not caller-supplied proof. */
   semanticReview?: (
     input: ResponsibilitySetInput,
-    evidence: { source: RecoveredSource; proposal: ProposedResponsibilitySource },
+    evidence: { source: RecoveredSource; proposal: ProposedResponsibilitySource;
+      candidate: { content: string; digest: string } },
   ) => Promise<SemanticSetAssessment | null>;
 };
 export type ProducedSet = { proposal: ProposedResponsibilitySource; assessment: ResponsibilitySetResult };
@@ -57,32 +63,47 @@ export function extractNormativeClauses(source: RecoveredSource): SourceClause[]
 }
 
 export async function produceResponsibilitySet(
-  input: Omit<ResponsibilitySetInput, 'source_editions'>,
+  input: ResponsibilityProposalInput,
   ports: ResponsibilityProducerPorts,
 ): Promise<ProducedSet> {
+  input = structuredClone(input);
+  const candidateUsable = typeof input.candidate_content === 'string' && input.candidate_content.trim().length > 0;
+  // Content identity prevents a prior judgment from being reused for changed prose,
+  // standing or coverage. It supplies no semantic judgment or current authority.
+  const candidateDigest = candidateUsable ? hex(JSON.stringify([
+    RESPONSIBILITY_PRODUCER_CONTRACT, input.inquiry_basis_ref, input.intended_use,
+    input.obligation_ref, input.responsibility_ids, input.candidate_content,
+  ])) : '';
   let source: RecoveredSource | null = null;
-  try { source = await ports.recoverSource(input.obligation_ref); } catch { /* no source == no inferred validation */ }
+  try { source = structuredClone(await ports.recoverSource(input.obligation_ref)); } catch { /* no source == no inferred validation */ }
   const usable = source && source.ref === input.obligation_ref && source.content.length > 0 &&
     source.custody_ref.length > 0 && source.basis_digest.length > 0;
   const edition = usable ? sourceEdition(source!) : null;
   const proposal: ProposedResponsibilitySource = {
     contract: RESPONSIBILITY_PRODUCER_CONTRACT,
     obligation_ref: input.obligation_ref,
+    candidate_digest: candidateDigest,
     source_edition: edition,
     candidate_clauses: usable ? extractNormativeClauses(source!) : [],
     limitations: usable
       ? ['Lexical clauses are not a semantic responsibility decomposition.',
+        'Candidate digest binds submitted bytes, not meaning, actual use, installation or action authority.',
+        ...(!candidateUsable ? ['Exact candidate content is missing; no derivative can be validated.'] : []),
         'Absence of lexical clauses does not establish absence of obligations.',
         ...(source!.currentness !== 'CURRENT' ? ['Governing source currentness remains unqualified.'] : [])]
       : ['Governing source unavailable or not exactly seated; no decomposition can be validated.'],
     producer: 'EXACT_NORMATIVE_CLAUSE_EXTRACTION',
     status: usable ? 'SOURCE_RECOVERED' : 'SOURCE_UNAVAILABLE',
   };
-  const assessmentInput: ResponsibilitySetInput = { ...input,
+  const assessmentInput: ResponsibilitySetInput = {
+    inquiry_basis_ref: input.inquiry_basis_ref, intended_use: input.intended_use,
+    obligation_ref: input.obligation_ref, responsibility_ids: [...input.responsibility_ids],
+    candidate_digest: candidateDigest,
     source_editions: edition ? [edition] : [] };
   let semantic: SemanticSetAssessment | undefined;
-  if (usable && ports.semanticReview) {
-    try { semantic = (await ports.semanticReview(assessmentInput, { source: source!, proposal })) ?? undefined; }
+  if (usable && candidateUsable && ports.semanticReview) {
+    try { semantic = structuredClone((await ports.semanticReview(structuredClone(assessmentInput),
+      structuredClone({ source: source!, proposal, candidate: { content: input.candidate_content, digest: candidateDigest } }))) ?? undefined); }
     catch { /* retain unknown rather than treat a failed writer as negative evidence */ }
   }
   const recoverEdition = async (ref: string) => {
@@ -95,3 +116,4 @@ export async function produceResponsibilitySet(
   };
   return { proposal, assessment: await assessResponsibilitySet(assessmentInput, semantic, recoverEdition) };
 }
+
